@@ -1,0 +1,58 @@
+:root {
+  --color-black: #222;
+  --color-white: #fff;
+
+  --color-brand-5: #f9c74f;
+  --color-brand-6: #90be6d;
+
+  --font-primary: 'Lato', sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  --index-header: 12;
+
+  --size-container-max-width: 100%;
+  --size-header-height: 6rem;
+  --size-input-height: 3.4rem;
+  --size-loginbar-height: 18rem;
+  --size-navbar-height: 12rem;
+
+  --transition-default: 0.2s cubic-bezier(0.42, 0, 1, 1);
+}
+
+@media (--sm) {
+  :root {
+    --size-loginbar-height: 12rem;
+  }
+}
+
+@media (--md) {
+  :root {
+    --size-header-height: 6rem;
+    --size-navbar-height: 6rem;
+  }
+
+  div.error-wrapper h1 {
+    font-size: 6rem;
+  }
+}
+
+@media (--lg) {
+  :root {
+    --size-container-max-width: 1030px;
+    --size-loginbar-height: 8rem;
+  }
+
+  div.error-wrapper h1 {
+    font-size: 8rem;
+  }
+}
+
+@media (--xxxl) {
+  :root {
+    --size-container-max-width: 1160px;
+    --size-header-height: 12rem;
+    --size-navbar-height: 8rem;
+  }
+}

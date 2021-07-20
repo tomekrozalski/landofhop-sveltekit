@@ -1,0 +1,17 @@
+html {
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-white);
+  font: var(--font-weight-regular) 1.5rem / 2.5rem var(--font-primary);
+  color: var(--color-black);
+}

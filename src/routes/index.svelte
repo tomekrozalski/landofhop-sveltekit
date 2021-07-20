@@ -1,2 +1,6 @@
-<h1>Welcome to Sveltit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+import { page } from "$app/stores";
+
+</script>
+<div>Landing page. We will have list of beverages here</div>
+
