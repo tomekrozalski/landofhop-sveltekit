@@ -1,6 +1,6 @@
-<script>
-import { page } from "$app/stores";
+<svelte:head>
+  <title>Land of Hop</title>
+</svelte:head>
 
-</script>
 <div>Landing page. We will have list of beverages here</div>
 

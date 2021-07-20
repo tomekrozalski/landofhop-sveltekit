@@ -15,3 +15,13 @@ body {
   font: var(--font-weight-regular) 1.5rem / 2.5rem var(--font-primary);
   color: var(--color-black);
 }
+
+button {
+  border: none;
+  background: inherit;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}

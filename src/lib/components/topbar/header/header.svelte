@@ -1,8 +1,10 @@
 <script>
   import Logo from './logo.svelte'
+  import SearchBar from './searchbar.svelte'
+  import NavigationSwitcher from './navigation-switcher.svelte'
 </script>
 
-<header><div><Logo /></div></header>
+<header><div><Logo /><SearchBar /><NavigationSwitcher /></div></header>
 
 <style>
   header {
@@ -25,5 +27,11 @@
     max-width: var(--size-container-max-width);
     margin: 0 auto;
     position: relative;
+  }
+
+  @media (--md) {
+    div {
+      grid-template-columns: minmax(10rem, auto) 1fr minmax(10rem, auto);
+    }
   }
 </style>
