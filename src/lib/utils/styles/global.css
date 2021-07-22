@@ -12,7 +12,7 @@ html {
 body {
 	margin: 0;
 	background-color: var(--color-white);
-	font: var(--font-weight-regular) 1.5rem / 2.5rem var(--font-primary);
+	font: var(--font-weight-regular) 1.6rem / 2.5rem var(--font-primary);
 	color: var(--color-black);
 }
 
@@ -22,6 +22,7 @@ main {
 
 button {
 	border: none;
+	font: inherit;
 	background: inherit;
 	cursor: pointer;
 }

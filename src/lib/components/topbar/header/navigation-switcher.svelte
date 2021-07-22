@@ -1,12 +1,18 @@
 <script lang="ts">
 	export let isNavigationOpened: boolean;
+	export let isLoginOpened: boolean;
+
+	function toggle() {
+		isNavigationOpened = !isNavigationOpened;
+		isLoginOpened = false;
+	}
 </script>
 
 <button
 	aria-expanded={isNavigationOpened}
 	aria-controls="navigation"
 	id="navigation-switcher"
-	on:click={() => (isNavigationOpened = !isNavigationOpened)}
+	on:click={toggle}
 >
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 9">
 		<title>

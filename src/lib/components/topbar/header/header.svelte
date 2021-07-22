@@ -4,19 +4,21 @@
 	import NavigationSwitcher from './navigation-switcher.svelte';
 
 	export let isNavigationOpened: boolean;
+	export let isLoginOpened: boolean;
 </script>
 
-<header class:isNavigationOpened>
+<header class:isNavigationOpened class:isLoginOpened>
 	<div>
 		<Logo />
 		<SearchBar />
-		<NavigationSwitcher bind:isNavigationOpened />
+		<NavigationSwitcher bind:isNavigationOpened bind:isLoginOpened />
 	</div>
 </header>
 
 <style>
 	header {
 		width: 100%;
+		height: var(--size-header-height);
 		background-color: var(--color-black);
 		position: fixed;
 		top: 0;
@@ -28,6 +30,10 @@
 
 	.isNavigationOpened {
 		transform: translateY(var(--size-navbar-height));
+	}
+
+	.isLoginOpened {
+		transform: translateY(calc(var(--size-navbar-height) + var(--size-loginbar-height)));
 	}
 
 	div {
