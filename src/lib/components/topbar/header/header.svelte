@@ -5,12 +5,13 @@
 
 	export let isNavigationOpened: boolean;
 	export let isLoginOpened: boolean;
+	export let closeNavigation: () => void;
 </script>
 
 <header class:isNavigationOpened class:isLoginOpened>
 	<div>
-		<Logo />
-		<SearchBar />
+		<Logo {closeNavigation} />
+		<SearchBar {closeNavigation} />
 		<NavigationSwitcher bind:isNavigationOpened bind:isLoginOpened />
 	</div>
 </header>

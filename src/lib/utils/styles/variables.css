@@ -1,64 +1,60 @@
 :root {
-  --color-black: #222;
-  --color-white: #fff;
+	--color-black: #222;
+	--color-white: #fff;
 
-  --color-brand-5: #f9c74f;
-  --color-brand-6: #90be6d;
+	--color-brand-5: #f9c74f;
+	--color-brand-6: #90be6d;
 
-  --color-grey-1: #aaa;
-  --color-grey-2: #ccc;
-  --color-grey-3: #ddd;
-  --color-grey-4: #eee;
-  --color-grey-5: #f5f5f5;
+	--color-grey-1: #aaa;
+	--color-grey-2: #ccc;
+	--color-grey-3: #ddd;
+	--color-grey-4: #eee;
+	--color-grey-5: #f5f5f5;
 
-  --font-primary: 'Lato', sans-serif;
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-bold: 700;
+	--font-primary: 'Lato', sans-serif;
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-bold: 700;
 
-  --index-header: 12;
+	--index-loginbar: 9;
+	--index-navbar: 10;
+	--index-main: 11;
+	--index-header: 12;
 
-  --size-container-max-width: 100%;
-  --size-header-height: 6rem;
-  --size-input-height: 3.4rem;
-  --size-loginbar-height: 18rem;
-  --size-navbar-height: 12rem;
+	--size-container-max-width: 100%;
+	--size-header-height: 6rem;
+	--size-input-height: 3.4rem;
+	--size-loginbar-height: 18rem;
+	--size-navbar-height: 12rem;
 
-  --transition-default: 0.2s cubic-bezier(0.42, 0, 1, 1);
-}
-
-@media (--sm) {
-  :root {
-    --size-loginbar-height: 12rem;
-  }
+	--transition-default: 0.2s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 @media (--md) {
-  :root {
-    --size-header-height: 6rem;
-    --size-navbar-height: 6rem;
-  }
+	:root {
+		--size-header-height: 6rem;
+		--size-navbar-height: 6rem;
+	}
 
-  div.error-wrapper h1 {
-    font-size: 6rem;
-  }
+	div.error-wrapper h1 {
+		font-size: 6rem;
+	}
 }
 
 @media (--lg) {
-  :root {
-    --size-container-max-width: 1030px;
-    --size-loginbar-height: 8rem;
-  }
+	:root {
+		--size-container-max-width: 1030px;
+	}
 
-  div.error-wrapper h1 {
-    font-size: 8rem;
-  }
+	div.error-wrapper h1 {
+		font-size: 8rem;
+	}
 }
 
 @media (--xxxl) {
-  :root {
-    --size-container-max-width: 1160px;
-    --size-header-height: 12rem;
-    --size-navbar-height: 8rem;
-  }
+	:root {
+		--size-container-max-width: 1160px;
+		--size-header-height: 12rem;
+		--size-navbar-height: 8rem;
+	}
 }

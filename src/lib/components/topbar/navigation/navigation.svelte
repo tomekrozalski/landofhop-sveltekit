@@ -1,26 +1,39 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import LockIcon from '$lib/elements/vectors/lockIcon.svelte';
 
 	export let isNavigationOpened: boolean;
 	export let isLoginOpened: boolean;
+	export let closeNavigation: () => void;
+
+	function toggleVisibility(node, options) {
+		return { duration: 200 };
+	}
 </script>
 
-<nav class:isNavigationOpened id="navigation" role="region" aria-labelledby="navigation-switcher">
-	<div>
-		<ul>
-			<button on:click={() => (isLoginOpened = !isLoginOpened)}>
-				<LockIcon />
-				Log in
-			</button>
-			<li><a href="/about">About</a></li>
-			<li><a href="/stats">Stats</a></li>
-		</ul>
-		<ul>
-			<li><a href="/">PL</a></li>
-			<li><a href="/">EN</a></li>
-		</ul>
-	</div>
-</nav>
+{#if isNavigationOpened}
+	<nav
+		transition:toggleVisibility
+		id="navigation"
+		role="region"
+		aria-labelledby="navigation-switcher"
+	>
+		<div>
+			<ul>
+				<button on:click={() => (isLoginOpened = !isLoginOpened)}>
+					<LockIcon />
+					Log in
+				</button>
+				<li><a on:click={closeNavigation} href="/about">About</a></li>
+				<li><a on:click={closeNavigation} href="/stats">Stats</a></li>
+			</ul>
+			<ul>
+				<li><a on:click={closeNavigation} href="/">PL</a></li>
+				<li><a on:click={closeNavigation} href="/">EN</a></li>
+			</ul>
+		</div>
+	</nav>
+{/if}
 
 <style>
 	nav {
@@ -32,11 +45,6 @@
 		top: 0;
 		left: 0;
 		z-index: var(--index-navbar);
-		transform: translateY(calc(var(--size-navbar-height) * -1));
-		transition: transform var(--transition-default);
-	}
-	nav.isNavigationOpened {
-		transform: translateY(0);
 	}
 
 	div {
