@@ -1,40 +1,50 @@
 <script lang="ts">
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
+	import type { FormTypes } from '$lib/utils/types/form';
 	import TextInputGroup from '$lib/elements/form/TextInputGroup.svelte';
 
 	export let isLoginOpened: boolean;
 
-	let email: string;
-	let password: string;
+	const formData: FormTypes = {
+		name: 'login',
+		fields: [
+			{
+				hasInvertedColors: true,
+				isRequired: true,
+				isTouched: false,
+				isValid: false,
+				label: 'E-mail',
+				name: 'email',
+				type: 'email',
+				value: ''
+			},
+			{
+				hasInvertedColors: true,
+				isRequired: true,
+				isTouched: false,
+				isValid: false,
+				label: 'Password',
+				name: 'password',
+				type: 'password',
+				validateWith: /abc/,
+				value: ''
+			}
+		]
+	};
 
 	function handleSubmit() {
-		console.log('BUM', email, password);
+		console.log('BUM', formData);
 	}
 </script>
 
 {#if isLoginOpened}
 	<section>
 		<form on:submit|preventDefault={handleSubmit} transition:toggleVisibility novalidate>
-			<div>
-				<TextInputGroup
-					isInverted
-					isRequired
-					label="E-mail"
-					name="login-email"
-					type="email"
-					bind:value={email}
-				/>
-			</div>
-			<div>
-				<TextInputGroup
-					isInverted
-					isRequired
-					label="Password"
-					name="login-password"
-					type="password"
-					bind:value={password}
-				/>
-			</div>
+			{#each formData.fields as field}
+				<div>
+					<TextInputGroup bind:data={field} />
+				</div>
+			{/each}
 			<button type="submit">Submit</button>
 		</form>
 	</section>

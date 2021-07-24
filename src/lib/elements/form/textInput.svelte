@@ -1,22 +1,35 @@
 <script lang="ts">
-	import type { InputTypeTypes } from '$lib/utils/types/form';
+	import type { FieldTypes } from '$lib/utils/types/form';
 	import StatusIndicator from './statusIndicator.svelte';
 
-	export let name: string,
-		type: InputTypeTypes = 'text',
-		isInverted: boolean = false,
-		value: string;
-
-	let isTouched = true;
-	let isValid = true;
+	export let data: FieldTypes;
+	let { hasInvertedColors, isRequired, name, type, validateWith } = data;
+	$: isTouched = data.isTouched;
+	$: isValid = data.isValid;
 
 	function typeAction(node: any) {
 		node.type = type;
 	}
+
+	function validate() {
+		if (validateWith) {
+			isValid = !!data.value.match(validateWith);
+		} else if (isRequired) {
+			isValid = data.value.length > 0;
+		}
+
+		isTouched = true;
+	}
 </script>
 
 <StatusIndicator {isTouched} {isValid}>
-	<input class:isInverted id={name} use:typeAction bind:value />
+	<input
+		class:hasInvertedColors
+		id={name}
+		use:typeAction
+		bind:value={data.value}
+		on:blur={validate}
+	/>
 </StatusIndicator>
 
 <style>
@@ -38,7 +51,7 @@
 		border-bottom-color: var(--color-black);
 	}
 
-	input.isInverted {
+	input.hasInvertedColors {
 		background-color: var(--color-white);
 	}
 </style>

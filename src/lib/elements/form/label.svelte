@@ -1,10 +1,12 @@
 <script lang="ts">
-	export let name: string,
-		isRequired: boolean = false;
+	import type { FieldTypes } from '$lib/utils/types/form';
+
+	export let data: FieldTypes;
+	let { isRequired, label, name } = data;
 </script>
 
 <label for={name}>
-	<slot />
+	{label}
 	{#if isRequired}
 		<span>*</span>
 	{/if}
