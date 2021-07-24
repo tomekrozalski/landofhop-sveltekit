@@ -1,6 +1,5 @@
 <script lang="ts">
-	export let isNavigationOpened: boolean;
-	export let isLoginOpened: boolean;
+	export let isNavigationOpened: boolean, isLoginOpened: boolean;
 
 	function toggle() {
 		isNavigationOpened = !isNavigationOpened;

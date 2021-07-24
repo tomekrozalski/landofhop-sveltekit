@@ -2,6 +2,7 @@
 	--color-black: #222;
 	--color-white: #fff;
 
+	--color-brand-1: #f94144;
 	--color-brand-5: #f9c74f;
 	--color-brand-6: #90be6d;
 
@@ -10,6 +11,10 @@
 	--color-grey-3: #ddd;
 	--color-grey-4: #eee;
 	--color-grey-5: #f5f5f5;
+
+	--color-success: var(--color-brand-6);
+	--color-danger: var(--color-brand-1);
+	--color-warning: var(--color-brand-5);
 
 	--font-primary: 'Lato', sans-serif;
 	--font-weight-light: 300;

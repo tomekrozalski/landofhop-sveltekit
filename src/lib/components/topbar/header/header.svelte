@@ -3,9 +3,7 @@
 	import SearchBar from './searchbar.svelte';
 	import NavigationSwitcher from './navigation-switcher.svelte';
 
-	export let isNavigationOpened: boolean;
-	export let isLoginOpened: boolean;
-	export let closeNavigation: () => void;
+	export let isNavigationOpened: boolean, isLoginOpened: boolean, closeNavigation: () => void;
 </script>
 
 <header class:isNavigationOpened class:isLoginOpened>

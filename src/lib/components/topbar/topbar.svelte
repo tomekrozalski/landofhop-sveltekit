@@ -3,8 +3,8 @@
 	import Navigation from './navigation/navigation.svelte';
 	import Login from './login/login.svelte';
 
-	let isNavigationOpened = false;
-	let isLoginOpened = false;
+	let isNavigationOpened = true;
+	let isLoginOpened = true;
 
 	function closeNavigation() {
 		isNavigationOpened = false;
