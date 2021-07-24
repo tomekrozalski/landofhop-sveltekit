@@ -1,11 +1,9 @@
 <script lang="ts">
-	import type { FieldTypes } from '$lib/utils/types/form';
-
-	export let data: FieldTypes;
-	let { isRequired, label, name } = data;
+	export let formStore: any, fieldName: string;
+	let { id, isRequired, label } = $formStore[fieldName];
 </script>
 
-<label for={name}>
+<label for={id}>
 	{label}
 	{#if isRequired}
 		<span>*</span>

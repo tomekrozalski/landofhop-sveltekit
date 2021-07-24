@@ -1,51 +1,49 @@
 <script lang="ts">
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
-	import type { FormTypes } from '$lib/utils/types/form';
-	import TextInputGroup from '$lib/elements/form/TextInputGroup.svelte';
+	import { makeFormStore } from '$lib/utils/makeFormStore';
+	import TextInputGroup from '$lib/elements/form/textInputGroup.svelte';
+	import Button from '$lib/elements/form/button.svelte';
 
 	export let isLoginOpened: boolean;
 
-	const formData: FormTypes = {
-		name: 'login',
-		fields: [
-			{
-				hasInvertedColors: true,
-				isRequired: true,
-				isTouched: false,
-				isValid: false,
-				label: 'E-mail',
-				name: 'email',
-				type: 'email',
-				value: ''
-			},
-			{
-				hasInvertedColors: true,
-				isRequired: true,
-				isTouched: false,
-				isValid: false,
-				label: 'Password',
-				name: 'password',
-				type: 'password',
-				validateWith: /abc/,
-				value: ''
-			}
-		]
-	};
+	const formStore = makeFormStore([
+		{
+			hasInvertedColors: true,
+			isRequired: true,
+			label: 'E-mail',
+			name: 'email',
+			type: 'email'
+		},
+		{
+			hasInvertedColors: true,
+			isRequired: true,
+			label: 'Password',
+			name: 'password',
+			type: 'password',
+			validateWith: [
+				{
+					errorMessage: 'The password should contain three letters',
+					regex: /abc/
+				}
+			]
+		}
+	]);
 
 	function handleSubmit() {
-		console.log('BUM', formData);
+		console.log('BUM');
 	}
 </script>
 
 {#if isLoginOpened}
 	<section>
 		<form on:submit|preventDefault={handleSubmit} transition:toggleVisibility novalidate>
-			{#each formData.fields as field}
-				<div>
-					<TextInputGroup bind:data={field} />
-				</div>
-			{/each}
-			<button type="submit">Submit</button>
+			<div>
+				<TextInputGroup fieldName="email" {formStore} />
+			</div>
+			<div>
+				<TextInputGroup fieldName="password" {formStore} />
+			</div>
+			<Button type="submit">Send</Button>
 		</form>
 	</section>
 {/if}
