@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LockIcon from '$lib/elements/vectors/LockIcon.svelte';
+	import LockIcon from '$lib/elements/vectors/lockIcon.svelte';
 
 	export let closeNavigation: () => void, toggleLogin: () => void;
 </script>
