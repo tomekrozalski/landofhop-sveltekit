@@ -12,7 +12,7 @@ html {
 body {
 	margin: 0;
 	background-color: var(--color-white);
-	font: var(--font-weight-regular) 1.6rem / 2.5rem var(--font-primary);
+	font: var(--font-weight-light) 1.6rem / 2.5rem var(--font-primary);
 	color: var(--color-black);
 }
 

@@ -1,8 +1,9 @@
 <script lang="ts">
-	export let type = 'button';
+	export let type: string = 'button';
+	export let disabled: boolean = false;
 </script>
 
-<button {type}><span><slot /></span></button>
+<button {disabled} {type}><span><slot /></span></button>
 
 <style>
 	button {
@@ -17,6 +18,12 @@
 		cursor: pointer;
 	}
 
+	button:disabled {
+		background-color: var(--color-grey-2);
+		color: var(--color-grey-4);
+		cursor: not-allowed;
+	}
+
 	button:hover:not(:disabled):not(.submitting) {
 		background-color: var(--color-grey-2);
 		color: var(--color-black);
@@ -24,6 +31,8 @@
 
 	span {
 		white-space: nowrap;
+		position: relative;
+		bottom: 0.5px;
 	}
 
 	span::first-letter {

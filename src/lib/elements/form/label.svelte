@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let formStore: any, fieldName: string;
-	let { id, isRequired, label } = $formStore[fieldName];
+	let { id, isRequired, label } = $formStore.fields[fieldName];
 </script>
 
 <label for={id}>

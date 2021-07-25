@@ -1,3 +1,5 @@
+export type ErrorReasons = 'isValidPassword' | 'isValidEmail';
+
 export type FieldTypes = {
 	hasInvertedColors?: boolean;
 	isRequired?: boolean;
@@ -5,12 +7,14 @@ export type FieldTypes = {
 	isValid?: boolean;
 	label: string;
 	name: string;
-	type?: 'text' | 'email' | 'password';
-	validateWith?: {
-		regex: RegExp;
-		errorMessage: string;
-	}[];
+	type?: string;
+	validateWith?: ErrorReasons[];
 	value?: string;
+};
+
+export type ValidationData = {
+	regex: RegExp;
+	errorMessage: string;
 };
 
 type StoreFieldDataTypes = {
@@ -19,14 +23,19 @@ type StoreFieldDataTypes = {
 	isTouched: boolean;
 	isValid: boolean;
 	label: string;
-	type?: 'text' | 'email' | 'password';
-	validateWith: {
-		regex: RegExp;
-		errorMessage: string;
-	}[];
+	type?: string;
+	validateWith: ErrorDataReasons[];
 	value: string;
 };
 
+export type StoreFieldListDataTypes = {
+	[string]: StoreFieldDataTypes;
+};
+
 export type StoreFormDataTypes = {
-	[string]: StoreFieldTypes;
+	summary: {
+		name: string;
+		isValid: boolean;
+	};
+	fields: StoreFieldListDataTypes;
 };

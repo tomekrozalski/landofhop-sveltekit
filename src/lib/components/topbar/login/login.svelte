@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
-	import { makeFormStore } from '$lib/utils/makeFormStore';
+	import { createFormStore } from '$lib/utils/stores/forms/createFormStore';
+	import type { FieldTypes } from '$lib/utils/types/form';
 	import TextInputGroup from '$lib/elements/form/textInputGroup.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 
 	export let isLoginOpened: boolean;
 
-	const formStore = makeFormStore([
+	const fields: FieldTypes[] = [
 		{
 			hasInvertedColors: true,
 			isRequired: true,
@@ -20,30 +21,26 @@
 			label: 'Password',
 			name: 'password',
 			type: 'password',
-			validateWith: [
-				{
-					errorMessage: 'The password should contain three letters',
-					regex: /abc/
-				}
-			]
+			validateWith: ['isValidPassword']
 		}
-	]);
+	];
+
+	const formStore = createFormStore(fields, 'login');
 
 	function handleSubmit() {
-		console.log('BUM');
+		console.log('BUM', $formStore);
 	}
 </script>
 
 {#if isLoginOpened}
 	<section>
 		<form on:submit|preventDefault={handleSubmit} transition:toggleVisibility novalidate>
-			<div>
-				<TextInputGroup fieldName="email" {formStore} />
-			</div>
-			<div>
-				<TextInputGroup fieldName="password" {formStore} />
-			</div>
-			<Button type="submit">Send</Button>
+			{#each fields as { name }}
+				<div>
+					<TextInputGroup fieldName={name} {formStore} />
+				</div>
+			{/each}
+			<Button type="submit" disabled={!$formStore.summary.isValid}>Send</Button>
 		</form>
 	</section>
 {/if}
