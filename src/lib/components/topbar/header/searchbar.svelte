@@ -20,18 +20,37 @@
 	}
 
 	button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		width: 100%;
 		height: 100%;
 	}
 
 	svg {
-		width: 3rem;
-		margin: 1rem 0 0 1rem;
+		width: 1.8rem;
+		height: 1.8rem;
+		margin: 0.2rem 0 0 0.2rem;
 		fill: var(--color-white);
 		transition: fill var(--transition-default);
 	}
 
 	button:hover svg {
 		fill: var(--color-grey-1);
+	}
+
+	@media (--md) {
+		svg {
+			width: 2.4rem;
+			height: 2.4rem;
+		}
+	}
+
+	@media (--xl) {
+		svg {
+			width: 3rem;
+			height: 3rem;
+			margin: 1rem 0 0 1rem;
+		}
 	}
 </style>

@@ -50,6 +50,13 @@
 		fill: var(--color-grey-1);
 	}
 
+	@media (--md) {
+		svg {
+			width: 3rem;
+			height: 0.6rem;
+		}
+	}
+
 	@media (--xxxl) {
 		svg {
 			width: 4rem;

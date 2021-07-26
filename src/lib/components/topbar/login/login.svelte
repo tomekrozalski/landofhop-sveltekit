@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { toggleVisibility } from '$lib/utils/helpers/transitions';
+	import { slide } from 'svelte/transition';
+	import { cubicInOut } from 'svelte/easing';
 	import { createFormStore } from '$lib/utils/stores/forms/createFormStore';
 	import type { FieldTypes } from '$lib/utils/types/form';
 	import TextInputGroup from '$lib/elements/form/textInputGroup.svelte';
@@ -13,7 +14,8 @@
 			isRequired: true,
 			label: 'E-mail',
 			name: 'email',
-			type: 'email'
+			type: 'email',
+			validateWith: ['isValidEmail']
 		},
 		{
 			hasInvertedColors: true,
@@ -33,14 +35,16 @@
 </script>
 
 {#if isLoginOpened}
-	<section>
-		<form on:submit|preventDefault={handleSubmit} transition:toggleVisibility novalidate>
+	<section transition:slide={{ duration: 200, easing: cubicInOut }}>
+		<form on:submit|preventDefault={handleSubmit} novalidate>
 			{#each fields as { name }}
-				<div>
+				<div class="input-group">
 					<TextInputGroup fieldName={name} {formStore} />
 				</div>
 			{/each}
-			<Button type="submit" disabled={!$formStore.summary.isValid}>Send</Button>
+			<div class="button-wrapper">
+				<Button type="submit" disabled={!$formStore.summary.isValid}>Send</Button>
+			</div>
 		</form>
 	</section>
 {/if}
@@ -49,27 +53,55 @@
 	section {
 		display: flex;
 		width: 100%;
-		height: var(--size-loginbar-height);
 		background-color: var(--color-grey-4);
 		position: fixed;
 		top: var(--size-navbar-height);
 		left: 0;
-		/* z-index: var(--index-loginbar); */
-	}
-	form {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-wrap: wrap;
-		width: var(--size-container-max-width);
-		margin: 0 auto;
-		padding: 0 2rem;
+		z-index: var(--index-loginbar);
 	}
 
-	div {
+	form {
+		display: flex;
+		flex-direction: column;
+		width: var(--size-container-max-width);
+		height: var(--size-loginbar-height);
+		margin: 0 auto;
+		padding: 1rem 2rem;
+	}
+
+	.input-group {
 		display: grid;
 		grid-gap: 1rem;
-		grid-template-columns: auto 30rem;
-		margin: 1rem;
+		grid-template-columns: 1fr 2fr;
+		margin: 1rem 0;
+	}
+
+	.button-wrapper {
+		align-self: flex-end;
+	}
+
+	@media (--md) {
+		form {
+			padding: 3rem 4rem;
+		}
+	}
+
+	@media (--lg) {
+		.input-group {
+			grid-template-columns: auto 30rem;
+			margin: 1rem;
+		}
+
+		form {
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			padding: 0 2rem;
+		}
+
+		.button-wrapper {
+			align-self: auto;
+		}
 	}
 </style>

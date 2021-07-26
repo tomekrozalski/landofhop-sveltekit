@@ -21,6 +21,7 @@ main {
 	min-height: calc(100vh - var(--size-header-height));
 	background-color: var(--color-white);
 	z-index: var(--index-main);
+	position: relative;
 }
 
 button {

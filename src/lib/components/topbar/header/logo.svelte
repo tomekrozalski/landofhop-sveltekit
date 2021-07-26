@@ -28,11 +28,13 @@
 
 	h1 {
 		display: flex;
+		align-items: center;
+		margin: 0;
 	}
 
 	svg {
-		width: 8rem;
-		height: 1.98rem;
+		width: 5.9rem;
+		height: 2.8rem;
 	}
 
 	.letter-h,
@@ -63,10 +65,17 @@
 		animation: smoothColor 15s infinite;
 	}
 
-	@media (--xxxl) {
+	@media (--md) {
 		svg {
-			width: 12rem;
-			height: 7.98rem;
+			width: 8.5rem;
+			height: 4rem;
+		}
+	}
+
+	@media (--xl) {
+		svg {
+			width: 12.7rem;
+			height: 7rem;
 		}
 	}
 </style>

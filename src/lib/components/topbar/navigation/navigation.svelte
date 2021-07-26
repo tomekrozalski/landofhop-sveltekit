@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { toggleVisibility } from '$lib/utils/helpers/transitions';
+	import { slide } from 'svelte/transition';
+	import { cubicInOut } from 'svelte/easing';
 	import Menus from './menus.svelte';
 
 	export let isNavigationOpened: boolean;
@@ -12,7 +13,7 @@
 </script>
 
 {#if isNavigationOpened}
-	<nav transition:toggleVisibility>
+	<nav transition:slide={{ duration: 200, easing: cubicInOut }}>
 		<div>
 			<Menus {closeNavigation} {toggleLogin} />
 		</div>
@@ -23,8 +24,7 @@
 	nav {
 		display: block;
 		width: 100%;
-		height: var(--size-navbar-height);
-		background: var(--color-white);
+		background-color: var(--color-white);
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -33,12 +33,13 @@
 
 	div {
 		display: flex;
-		flex-direction: column;
+		flex-direction: column-reverse;
 		width: 100%;
+		height: var(--size-navbar-height);
 		max-width: var(--size-container-max-width);
-		height: 100%;
 		margin: 0 auto;
 	}
+
 	@media (--md) {
 		div {
 			flex-direction: row-reverse;

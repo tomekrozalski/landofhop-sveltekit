@@ -12,7 +12,7 @@
 	<li><a on:click={closeNavigation} href="/about">About</a></li>
 	<li><a on:click={closeNavigation} href="/stats">Stats</a></li>
 </ul>
-<ul>
+<ul class="languages">
 	<li><a on:click={closeNavigation} href="/">PL</a></li>
 	<li><a on:click={closeNavigation} href="/">EN</a></li>
 </ul>
@@ -22,6 +22,10 @@
 		display: flex;
 		margin: 0 1rem;
 		padding: 0.5rem 0;
+	}
+
+	ul.languages {
+		justify-content: flex-end;
 	}
 
 	li {

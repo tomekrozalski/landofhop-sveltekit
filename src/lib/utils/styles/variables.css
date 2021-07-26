@@ -6,6 +6,7 @@
 
 	--color-brand-1: #f94144;
 	--color-brand-5: #f9c74f;
+	--color-brand-5-light: #fdf1d3;
 	--color-brand-6: #90be6d;
 
 	--color-grey-1: #aaa;
@@ -23,24 +24,25 @@
 	--font-weight-regular: 400;
 	--font-weight-bold: 700;
 
-	--index-loginbar: 9;
-	--index-navbar: 10;
 	--index-main: 11;
-	--index-header: 12;
+	--index-loginbar: 12;
+	--index-navbar: 13;
+	--index-header: 14;
 
 	--size-container-max-width: 100%;
 	--size-header-height: 6rem;
 	--size-input-height: 3.4rem;
-	--size-loginbar-height: 18rem;
-	--size-navbar-height: 12rem;
+	--size-loginbar-height: 16.2rem;
+	--size-navbar-height: 11rem;
 
 	--transition-default: 0.2s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 @media (--md) {
 	:root {
-		--size-header-height: 6rem;
-		--size-navbar-height: 6rem;
+		--size-header-height: 8rem;
+		--size-navbar-height: 8rem;
+		--size-loginbar-height: 20.2rem;
 	}
 
 	div.error-wrapper h1 {
@@ -51,6 +53,7 @@
 @media (--lg) {
 	:root {
 		--size-container-max-width: 1030px;
+		--size-loginbar-height: 12rem;
 	}
 
 	div.error-wrapper h1 {
@@ -58,10 +61,9 @@
 	}
 }
 
-@media (--xxxl) {
+@media (--xl) {
 	:root {
 		--size-container-max-width: 1160px;
 		--size-header-height: 12rem;
-		--size-navbar-height: 8rem;
 	}
 }

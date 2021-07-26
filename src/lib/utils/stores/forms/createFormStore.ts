@@ -33,27 +33,27 @@ export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
 			if (reason === 'isValidPassword') {
 				newArray.push({
 					regex: /.{8,}/,
-					errorMessage: 'The password must be at least eight characters long'
+					errorMessage: 'At least eight characters long is required'
 				});
 
 				newArray.push({
 					regex: /.*\d.*/,
-					errorMessage: 'Password must contain at least one number'
+					errorMessage: 'At least one number is required'
 				});
 
 				newArray.push({
 					regex: /.*[@$!%*#?&].*/,
-					errorMessage: 'Password must contain at least one special character'
+					errorMessage: 'At least one special character is required'
 				});
 
 				newArray.push({
 					regex: /.*[A-Z].*/,
-					errorMessage: 'Password must contain at least one uppercase letter'
+					errorMessage: 'At least one uppercase letter is required'
 				});
 
 				newArray.push({
 					regex: /.*[a-z].*/,
-					errorMessage: 'Password must contain at least one lowercase letter'
+					errorMessage: 'At least one lowercase letter is required'
 				});
 			}
 
@@ -110,12 +110,16 @@ export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
 	}
 
 	function getErrorMessage({ isRequired, validateWith, value }) {
-		if (validateWith.length) {
-			return validateWith.find(({ regex }) => !value.match(regex))?.errorMessage ?? null;
+		if (isRequired && !value.length) {
+			return 'Field is required';
 		}
 
-		if (isRequired) {
-			return !value.length ? 'Field is required' : null;
+		if (validateWith.length) {
+			const errorMessage = validateWith.find(({ regex }) => !value.match(regex))?.errorMessage;
+
+			if (errorMessage) {
+				return errorMessage;
+			}
 		}
 
 		return null;
