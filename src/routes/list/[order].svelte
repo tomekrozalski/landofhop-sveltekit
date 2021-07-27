@@ -2,7 +2,7 @@
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-	export async function load({ page }) {
+	export async function load({ fetch, page }) {
 		const order = +page.params.order;
 		const skip = order * 60 - 60;
 
@@ -20,7 +20,7 @@
 			};
 		}
 
-		const total: number = await serverCall(Endpoints.beverageTotal);
+		const total: number = await serverCall(fetch, Endpoints.beverageTotal);
 
 		if (skip > total) {
 			return {
@@ -29,7 +29,7 @@
 			};
 		}
 
-		const beverages: Basics[] = await serverCall(Endpoints.beverageBasics, {
+		const beverages: Basics[] = await serverCall(fetch, Endpoints.beverageBasics, {
 			pathParams: ['pl', skip, 60]
 		});
 

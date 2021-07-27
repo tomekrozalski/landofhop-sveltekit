@@ -29,7 +29,7 @@ type Props = {
 	body?: string | FormData;
 };
 
-const serverCall = (endpoint: Endpoints, props?: Props) => {
+const serverCall = (fetch, endpoint: Endpoints, props?: Props) => {
 	const { formData = false, method = 'GET', pathParams, token, ...rest } = props || {};
 
 	const baseUrl = `${import.meta.env.VITE_API_SERVER}/${endpoint}`;

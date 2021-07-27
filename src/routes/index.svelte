@@ -2,9 +2,9 @@
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-	export async function load() {
-		const total: number = await serverCall(Endpoints.beverageTotal);
-		const beverages: Basics[] = await serverCall(Endpoints.beverageBasics, {
+	export async function load({ fetch }) {
+		const total: number = await serverCall(fetch, Endpoints.beverageTotal);
+		const beverages: Basics[] = await serverCall(fetch, Endpoints.beverageBasics, {
 			pathParams: ['pl', 0, 60]
 		});
 
