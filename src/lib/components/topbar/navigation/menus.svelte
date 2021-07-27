@@ -7,14 +7,14 @@
 <ul>
 	<button on:click={toggleLogin}>
 		<LockIcon />
-		Log in
+		Zaloguj
 	</button>
-	<li><a on:click={closeNavigation} href="/about">About</a></li>
-	<li><a on:click={closeNavigation} href="/stats">Stats</a></li>
+	<li><a on:click={closeNavigation} href="/about">O stronie</a></li>
+	<li><a on:click={closeNavigation} href="/stats">Statystyki</a></li>
 </ul>
 <ul class="languages">
 	<li><a on:click={closeNavigation} href="/">PL</a></li>
-	<li><a on:click={closeNavigation} href="/">EN</a></li>
+	<li><span class="disabled-link" on:click={closeNavigation} href="/">EN</span></li>
 </ul>
 
 <style>
@@ -33,13 +33,20 @@
 	}
 
 	a,
-	button {
+	button,
+	.disabled-link {
 		display: flex;
 		align-items: center;
 		padding: 1rem;
 		background-color: var(--color-white);
 		color: var(--color-black);
 		transition: color var(--transition-default), background-color var(--transition-default);
+	}
+
+	.disabled-link {
+		background-color: var(--color-grey-4);
+		color: var(--color-grey-1);
+		cursor: not-allowed;
 	}
 
 	button {

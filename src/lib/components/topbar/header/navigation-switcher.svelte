@@ -16,9 +16,9 @@
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 9">
 		<title>
 			{#if isNavigationOpened}
-				Close
+				Zamknij
 			{:else}
-				Open
+				Otwórz
 			{/if}
 		</title>
 		<circle cx="35.5" cy="4.5" r="4.5" />

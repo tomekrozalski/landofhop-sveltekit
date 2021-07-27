@@ -26,34 +26,40 @@ export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
 			if (reason === 'isValidEmail') {
 				newArray.push({
 					regex: emailRegex,
-					errorMessage: 'The field should be valid e-mail address'
+					/* errorMessage: 'The field should be valid e-mail address' */
+					errorMessage: 'Pole musi zawierać prawidłowy adres e-mail'
 				});
 			}
 
 			if (reason === 'isValidPassword') {
 				newArray.push({
 					regex: /.{8,}/,
-					errorMessage: 'At least eight characters long is required'
+					// errorMessage: 'At least eight characters long is required'
+					errorMessage: 'Pole musi zawierać co najmniej osiem znaków'
 				});
 
 				newArray.push({
 					regex: /.*\d.*/,
-					errorMessage: 'At least one number is required'
+					// errorMessage: 'At least one number is required',
+					errorMessage: 'Pole musi zawierać cyfrę'
 				});
 
 				newArray.push({
 					regex: /.*[@$!%*#?&].*/,
-					errorMessage: 'At least one special character is required'
+					// errorMessage: 'At least one special character is required'
+					errorMessage: 'Pole musi zawierać znak specjalny'
 				});
 
 				newArray.push({
 					regex: /.*[A-Z].*/,
-					errorMessage: 'At least one uppercase letter is required'
+					// errorMessage: 'At least one uppercase letter is required'
+					errorMessage: 'Pole musi zawierać dużą literę'
 				});
 
 				newArray.push({
 					regex: /.*[a-z].*/,
-					errorMessage: 'At least one lowercase letter is required'
+					// errorMessage: 'At least one lowercase letter is required'
+					errorMessage: 'Pole musi zawierać małą literę'
 				});
 			}
 
@@ -111,7 +117,8 @@ export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
 
 	function getErrorMessage({ isRequired, validateWith, value }) {
 		if (isRequired && !value.length) {
-			return 'Field is required';
+			// return 'Field is required';
+			return 'Pole jest wymagane';
 		}
 
 		if (validateWith.length) {

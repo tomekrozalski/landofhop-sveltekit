@@ -20,7 +20,7 @@
 		{
 			hasInvertedColors: true,
 			isRequired: true,
-			label: 'Password',
+			label: 'Hasło',
 			name: 'password',
 			type: 'password',
 			validateWith: ['isValidPassword']
@@ -43,7 +43,7 @@
 				</div>
 			{/each}
 			<div class="button-wrapper">
-				<Button type="submit" disabled={!$formStore.summary.isValid}>Send</Button>
+				<Button type="submit" disabled={!$formStore.summary.isValid}>Wyślij</Button>
 			</div>
 		</form>
 	</section>

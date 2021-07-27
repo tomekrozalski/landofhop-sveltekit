@@ -1,6 +1,9 @@
+<script lang="ts">
+	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
+</script>
+
 <svelte:head>
-  <title>Land of Hop</title>
+	<title>Land of Hop</title>
 </svelte:head>
 
-<div>Landing page. We will have list of beverages here</div>
-
+<BeverageList order="1" />
