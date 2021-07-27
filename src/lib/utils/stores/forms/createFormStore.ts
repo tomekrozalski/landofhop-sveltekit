@@ -9,7 +9,6 @@ import type {
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
 	const store: StoreFormDataTypes = {
 		summary: {

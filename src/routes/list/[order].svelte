@@ -1,13 +1,37 @@
 <script context="module" lang="ts">
+	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+
 	export async function load({ page }) {
-		const order = page.params.order;
+		const order = +page.params.order;
 		const skip = order * 60 - 60;
 
-		const totalResponse = await fetch('http://localhost:4001/beverage/total');
-		const total: number = await totalResponse.json();
+		/*
+			@ToDo:
+				it should be moved to API, when we will try
+				to get beverages which are out of scope, we
+				should response with error
+		*/
 
-		const beveragesResponse = await fetch(`http://localhost:4001/beverage/basics/en/${skip}/60`);
-		const beverages = await beveragesResponse.json();
+		if (order === 1) {
+			return {
+				status: 301,
+				redirect: '/'
+			};
+		}
+
+		const total: number = await serverCall(Endpoints.beverageTotal);
+
+		if (skip > total) {
+			return {
+				status: 404,
+				error: 'Not found. List order is too high'
+			};
+		}
+
+		const beverages: Basics[] = await serverCall(Endpoints.beverageBasics, {
+			pathParams: ['pl', skip, 60]
+		});
 
 		return {
 			props: {
@@ -20,10 +44,10 @@
 </script>
 
 <script lang="ts">
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
+	import Pagination from '$lib/components/beverageList/pagination.svelte';
 
-	export let order: string;
+	export let order: number;
 	export let beverages: Basics[];
 	export let total: number;
 </script>
@@ -32,10 +56,5 @@
 	<title>Land of Hop, 📄 {order}</title>
 </svelte:head>
 
-<BeverageList {order} />
-<ul>
-	{#each beverages as beverage}
-		<li>{beverage.badge}</li>
-	{/each}
-</ul>
-<div>pagination {total}</div>
+<BeverageList {beverages} />
+<Pagination {order} {total} />
