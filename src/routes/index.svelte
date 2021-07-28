@@ -18,13 +18,20 @@
 </script>
 
 <script lang="ts">
-	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
-	import Pagination from '$lib/components/beverageList/pagination.svelte';
-	import IntersectionObserver from '$lib/utils/helpers/intersectionObserver.svelte';
-	import { PHOTO_SERVER } from '$lib/utils/constants';
-
 	export let beverages: Basics[];
 	export let total: number;
+
+	import { onMount } from 'svelte';
+	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
+	import { PHOTO_SERVER } from '$lib/utils/constants';
+
+	let Pagination;
+	const sleep = (ms) => new Promise((f) => setTimeout(f, ms));
+
+	onMount(async () => {
+		await sleep(1000);
+		Pagination = (await import('$lib/components/beverageList/pagination.svelte')).default;
+	});
 </script>
 
 <svelte:head>
@@ -33,8 +40,4 @@
 </svelte:head>
 
 <BeverageList {beverages} />
-<IntersectionObserver once={true} let:intersecting>
-	{#if intersecting}
-		<Pagination order={1} {total} />
-	{/if}
-</IntersectionObserver>
+<svelte:component this={Pagination} order={1} {total} />

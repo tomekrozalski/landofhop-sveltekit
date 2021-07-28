@@ -9,7 +9,6 @@
 		if (order === 1) {
 			return {
 				status: 301,
-				error: 'Moved as a main page',
 				redirect: '/'
 			};
 		}
