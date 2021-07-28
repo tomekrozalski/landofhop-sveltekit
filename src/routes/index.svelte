@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export async function load({ fetch }) {
 		const total: number = await serverCall(fetch, Endpoints.beverageTotal);
@@ -23,10 +24,14 @@
 
 	export let beverages: Basics[];
 	export let total: number;
+
+	const { badge, brand, shortId } = beverages[0];
+	const basicPath = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}/cover/jpg/1x.jpg`;
 </script>
 
 <svelte:head>
 	<title>Land of Hop</title>
+	<link rel="preload" href={basicPath} as="image" />
 </svelte:head>
 
 <BeverageList {beverages} />
