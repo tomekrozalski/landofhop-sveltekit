@@ -6,7 +6,7 @@
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
-	const getPath = (format: 'webp' | 'jpg', size: 1 | 2) => {
+	$: getPath = (format: 'webp' | 'jpg', size: 1 | 2) => {
 		const basicPath = `${PHOTO_SERVER}/${beverage.brand.badge}/${beverage.badge}/${beverage.shortId}`;
 		return `${basicPath}/cover/${format}/${size}x.${format}`;
 	};
@@ -42,7 +42,7 @@
 		height: 100%;
 		object-fit: cover;
 		object-position: center center;
-		opacity: 0.2;
+		opacity: 0;
 	}
 
 	.loaded {
