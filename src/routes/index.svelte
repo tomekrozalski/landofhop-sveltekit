@@ -24,14 +24,11 @@
 
 	export let beverages: Basics[];
 	export let total: number;
-
-	const { badge, brand, shortId } = beverages[0];
-	const basicPath = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}/cover/jpg/1x.jpg`;
 </script>
 
 <svelte:head>
 	<title>Land of Hop</title>
-	<link rel="preload" href={basicPath} as="image" />
+	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
 <BeverageList {beverages} />

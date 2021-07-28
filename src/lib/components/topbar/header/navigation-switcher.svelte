@@ -21,9 +21,9 @@
 				Otwórz
 			{/if}
 		</title>
-		<circle cx="35.5" cy="4.5" r="4.5" />
-		<circle cx="20" cy="4.5" r="4.5" />
-		<circle cx="4.5" cy="4.5" r="4.5" />
+		<circle fill="#fff" cx="35.5" cy="4.5" r="4.5" />
+		<circle fill="#fff" cx="20" cy="4.5" r="4.5" />
+		<circle fill="#fff" cx="4.5" cy="4.5" r="4.5" />
 	</svg>
 </button>
 
