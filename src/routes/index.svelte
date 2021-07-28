@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
-	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export async function load({ fetch }) {
 		const total: number = await serverCall(fetch, Endpoints.beverageTotal);
@@ -21,6 +20,8 @@
 <script lang="ts">
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
 	import Pagination from '$lib/components/beverageList/pagination.svelte';
+	import IntersectionObserver from '$lib/utils/helpers/intersectionObserver.svelte';
+	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export let beverages: Basics[];
 	export let total: number;
@@ -32,4 +33,8 @@
 </svelte:head>
 
 <BeverageList {beverages} />
-<Pagination order={1} {total} />
+<IntersectionObserver once={true} let:intersecting>
+	{#if intersecting}
+		<Pagination order={1} {total} />
+	{/if}
+</IntersectionObserver>

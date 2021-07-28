@@ -6,21 +6,22 @@
 		const order = +page.params.order;
 		const skip = order * 60 - 60;
 
+		if (order === 1) {
+			return {
+				status: 301,
+				error: 'Moved as a main page',
+				redirect: '/'
+			};
+		}
+
+		const total: number = await serverCall(fetch, Endpoints.beverageTotal);
+
 		/*
 			@ToDo:
 				it should be moved to API, when we will try
 				to get beverages which are out of scope, we
 				should response with error
 		*/
-
-		if (order === 1) {
-			return {
-				status: 301,
-				redirect: '/'
-			};
-		}
-
-		const total: number = await serverCall(fetch, Endpoints.beverageTotal);
 
 		if (skip > total) {
 			return {
@@ -46,6 +47,8 @@
 <script lang="ts">
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
 	import Pagination from '$lib/components/beverageList/pagination.svelte';
+	import IntersectionObserver from '$lib/utils/helpers/intersectionObserver.svelte';
+	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export let order: number;
 	export let beverages: Basics[];
@@ -54,7 +57,12 @@
 
 <svelte:head>
 	<title>Land of Hop, 📄 {order}</title>
+	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
 <BeverageList {beverages} />
-<Pagination {order} {total} />
+<IntersectionObserver once={true} let:intersecting>
+	{#if intersecting}
+		<Pagination {order} {total} />
+	{/if}
+</IntersectionObserver>
