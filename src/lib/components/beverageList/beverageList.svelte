@@ -1,7 +1,9 @@
 <script lang="ts">
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
-
 	export let beverages: Basics[];
+
+	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import CoverImageWrapper from './coverImageWrapper.svelte';
+	import BrokenCoverImage from './brokenCoverImage.svelte';
 </script>
 
 <ul>
@@ -9,25 +11,9 @@
 		<li>
 			<!-- <a href={`/details/${beverage.shortId}/${beverage.brand.badge}/${beverage.badge}`}> -->
 			{#if beverage.photos?.cover}
-				{beverage.badge}
-				<!-- <BeverageCoverImage
-						badge={badge}
-						brand={brand}
-						name={name}
-						outline={photos.outlines?.cover}
-						shortId={shortId}
-						ratio={
-							(photos?.cover?.height / photos?.cover?.width) * 100
-						}
-						type={ImageType.cover}
-					/> -->
+				<CoverImageWrapper {beverage} />
 			{:else}
-				<div>broken</div>
-				<!-- <img
-						className={styles.brokenContainer}
-						src={`${process.env.NEXT_PUBLIC_PHOTO_SERVER}/broken-${container.type}.svg`}
-						alt={formatMessage({ id: 'errors.imageNotFound' })}
-					/> -->
+				<BrokenCoverImage type={beverage.container.type} />
 			{/if}
 			<!-- </a> -->
 		</li>
@@ -60,21 +46,13 @@
 		text-align: center;
 	} */
 
-	div {
+	/* div {
 		transform: scale(1);
 		transition: transform var(--transition-default);
-	}
+	} */
 
 	/* a:hover > div {
 		transform: scale(0.9);
-	} */
-
-	/* .brokenContainer {
-		height: 22rem;
-		margin: 4rem 0;
-		transform: scale(1);
-		transition: transform var(--transition-default);
-		fill: var(--color-grey-1);
 	} */
 
 	@media (--xl) {
@@ -85,9 +63,5 @@
 		li {
 			contain-intrinsic-size: 0 45rem;
 		}
-
-		/* .brokenContainer {
-			height: 28rem;
-		} */
 	}
 </style>
