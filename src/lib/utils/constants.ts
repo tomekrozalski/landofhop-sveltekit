@@ -1,3 +1,3 @@
-const PHOTO_SERVER = 'https://land-of-hop-images.s3.eu-central-1.amazonaws.com';
+const PHOTO_SERVER = 'https://d37wyie9v4a2ot.cloudfront.net';
 
 export { PHOTO_SERVER };
