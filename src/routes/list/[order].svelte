@@ -44,14 +44,13 @@
 </script>
 
 <script lang="ts">
-	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
-	import Pagination from '$lib/components/beverageList/pagination.svelte';
-	import IntersectionObserver from '$lib/utils/helpers/intersectionObserver.svelte';
-	import { PHOTO_SERVER } from '$lib/utils/constants';
-
 	export let order: number;
 	export let beverages: Basics[];
 	export let total: number;
+
+	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
+	import Pagination from '$lib/components/beverageList/pagination.svelte';
+	import { PHOTO_SERVER } from '$lib/utils/constants';
 </script>
 
 <svelte:head>
@@ -60,8 +59,4 @@
 </svelte:head>
 
 <BeverageList {beverages} />
-<IntersectionObserver once={true} let:intersecting>
-	{#if intersecting}
-		<Pagination {order} {total} />
-	{/if}
-</IntersectionObserver>
+<Pagination {order} {total} />

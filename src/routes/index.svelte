@@ -21,17 +21,9 @@
 	export let beverages: Basics[];
 	export let total: number;
 
-	import { onMount } from 'svelte';
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
+	import Pagination from '$lib/components/beverageList/pagination.svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-
-	let Pagination;
-	const sleep = (ms) => new Promise((f) => setTimeout(f, ms));
-
-	onMount(async () => {
-		await sleep(1000);
-		Pagination = (await import('$lib/components/beverageList/pagination.svelte')).default;
-	});
 </script>
 
 <svelte:head>
@@ -40,4 +32,4 @@
 </svelte:head>
 
 <BeverageList {beverages} />
-<svelte:component this={Pagination} order={1} {total} />
+<Pagination order={1} {total} />
