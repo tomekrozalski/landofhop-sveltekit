@@ -18,6 +18,7 @@ module.exports = {
 		node: true
 	},
 	rules: {
-		'@typescript-eslint/explicit-module-boundary-types': 0
+		'@typescript-eslint/explicit-module-boundary-types': 0,
+		'@typescript-eslint/ban-ts-comment': 0
 	}
 };

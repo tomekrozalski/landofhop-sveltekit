@@ -6,7 +6,7 @@
 		const order = +page.params.order;
 		const skip = order * 60 - 60;
 
-		if (order === 1) {
+		if (!order || order === 1) {
 			return {
 				status: 301,
 				redirect: '/'

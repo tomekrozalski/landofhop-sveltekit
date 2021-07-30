@@ -3,6 +3,7 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { createFormStore } from '$lib/utils/stores/forms/createFormStore';
 	import type { FieldTypes } from '$lib/utils/types/form';
+	import Status from '$lib/utils/enums/Status.enum';
 	import TextInputGroup from '$lib/elements/form/textInputGroup.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 
@@ -27,10 +28,30 @@
 		}
 	];
 
-	const formStore = createFormStore(fields, 'login');
+	const formStore: any = createFormStore(fields, 'login');
+	let status = Status.idle;
 
 	function handleSubmit() {
-		console.log('BUM', $formStore);
+		status = Status.pending;
+
+		const formData = {
+			email: $formStore.fields.email.value,
+			password: $formStore.fields.password.value
+		};
+
+		fetch('/auth/login.json', {
+			method: 'POST',
+			body: JSON.stringify(formData)
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log({ data });
+				status = Status.fulfilled;
+			})
+			.catch((err) => {
+				console.log('->', err);
+				status = Status.rejected;
+			});
 	}
 </script>
 
