@@ -28,7 +28,7 @@
 
 	h1 {
 		margin: 4rem;
-		font: var(--font-weight-bold) 4rem / 1.2 var(--font-primary);
+		font: var(--font-weight-medium) 4rem / 1.2 var(--font-primary);
 		text-shadow: 1px 1px 1px var(--color-grey-4), 0 0 0 var(--color-grey-1),
 			1px 1px 1px var(--color-grey-4);
 		color: transparent;

@@ -6,8 +6,9 @@ const poolData = {
 	ClientId: import.meta.env.VITE_COGNITO_CLIENT_ID as string
 };
 
-export async function post({ body }) {
-	const { email, password } = JSON.parse(body);
+export const post = async (request) => {
+	const { email, password } = JSON.parse(request.body);
+
 	const UserPool = new CognitoUserPool(poolData);
 
 	const user = new CognitoUser({
@@ -20,10 +21,16 @@ export async function post({ body }) {
 		Password: password
 	});
 
-	await user.authenticateUser(authDetails, {
-		onSuccess: (data) => {
-			console.log('data', data);
+	try {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const data: any = await new Promise(function (resolve, reject) {
+			user.authenticateUser(authDetails, {
+				onSuccess: resolve,
+				onFailure: reject
+			});
+		});
 
+		if (data) {
 			const accessToken = data.getAccessToken().getJwtToken();
 			const refreshToken = data.getRefreshToken().getToken();
 
@@ -48,13 +55,11 @@ export async function post({ body }) {
 				status: 200,
 				body: { message: 'Successfully logged in' }
 			};
-		},
-		onFailure: (err) => {
-			console.log({ err });
-			return {
-				status: 500,
-				body: { message: 'hm' }
-			};
 		}
-	});
-}
+	} catch (err) {
+		return {
+			status: 500,
+			body: err
+		};
+	}
+};

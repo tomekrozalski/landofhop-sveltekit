@@ -1,9 +1,10 @@
-<script>
-	export let type = 'button';
-	export let disabled = false;
+<script lang="ts">
+	export let handleClick: () => void = () => {};
+	export let type: string = 'button';
+	export let disabled: boolean = false;
 </script>
 
-<button {disabled} {type}><span><slot /></span></button>
+<button {disabled} on:click={handleClick} {type}><span><slot /></span></button>
 
 <style>
 	button {

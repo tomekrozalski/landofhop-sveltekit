@@ -1,6 +1,5 @@
 <script>
 	import '$lib/utils/styles/app.postcss';
-	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
 	import '$lib/utils/styles/global.css';
 
@@ -8,6 +7,8 @@
 </script>
 
 <svelte:head>
+	<link rel="preconnect" href="https://use.typekit.net/" />
+	<link rel="stylesheet" href="https://use.typekit.net/hlt6lgk.css" />
 	<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png" />
 	<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png" />
 	<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png" />
