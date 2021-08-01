@@ -28,17 +28,15 @@
 
 	const formStore: any = createFormStore(fields, 'login');
 
-	const formData = {
-		email: $formStore.fields.email.value,
-		password: $formStore.fields.password.value
-	};
-
 	function handleSubmit() {
 		status = Status.pending;
 
 		fetch('/auth/login.json', {
 			method: 'POST',
-			body: JSON.stringify(formData)
+			body: JSON.stringify({
+				email: $formStore.fields.email.value,
+				password: $formStore.fields.password.value
+			})
 		})
 			.then(async (response) => {
 				const data = await response.json();
@@ -49,12 +47,10 @@
 
 				return data;
 			})
-			.then((data) => {
-				console.log({ data });
+			.then(() => {
 				status = Status.fulfilled;
 			})
-			.catch((err) => {
-				console.log('->', err);
+			.catch(() => {
 				status = Status.rejected;
 			});
 	}

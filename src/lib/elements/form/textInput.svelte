@@ -34,7 +34,7 @@
 		height: var(--size-input-height);
 		border: 0;
 		border-bottom: 1px solid var(--color-grey-2);
-		padding: 1px 1rem 0 1rem;
+		padding: 0.4rem 1rem 0 1rem;
 		box-shadow: none;
 		background-color: var(--color-grey-4);
 		font: var(--font-weight-regular) 1.6rem / 1 var(--font-primary);

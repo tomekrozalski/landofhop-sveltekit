@@ -6,9 +6,8 @@ const poolData = {
 	ClientId: import.meta.env.VITE_COGNITO_CLIENT_ID as string
 };
 
-export const post = async (request) => {
+export async function post(request) {
 	const { email, password } = JSON.parse(request.body);
-
 	const UserPool = new CognitoUserPool(poolData);
 
 	const user = new CognitoUser({
@@ -62,4 +61,4 @@ export const post = async (request) => {
 			body: err
 		};
 	}
-};
+}

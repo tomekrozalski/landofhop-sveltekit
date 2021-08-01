@@ -8,15 +8,15 @@
 	import LoginForm from './loginForm.svelte';
 	import SuccessMessage from './successMessage.svelte';
 
-	let status = Status.rejected;
+	let status = Status.idle;
 </script>
 
 {#if isLoginOpened}
 	<section transition:slide={{ duration: 200, easing: cubicInOut }}>
 		{#if status === Status.fulfilled}
-			<SuccessMessage />
+			<SuccessMessage bind:isLoginOpened />
 		{:else if status === Status.rejected}
-			<ErrorMessage />
+			<ErrorMessage bind:status />
 		{:else}
 			<LoginForm bind:status />
 		{/if}

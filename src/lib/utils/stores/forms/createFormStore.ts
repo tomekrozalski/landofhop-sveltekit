@@ -26,7 +26,7 @@ export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
 				newArray.push({
 					regex: emailRegex,
 					/* errorMessage: 'The field should be valid e-mail address' */
-					errorMessage: 'Pole musi zawierać prawidłowy adres e-mail'
+					errorMessage: 'Wymagany prawidłowy adres e-mail'
 				});
 			}
 
@@ -34,7 +34,7 @@ export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
 				newArray.push({
 					regex: /.{8,}/,
 					// errorMessage: 'At least eight characters long is required'
-					errorMessage: 'Pole musi zawierać co najmniej osiem znaków'
+					errorMessage: 'Wymagane co najmniej osiem znaków'
 				});
 
 				newArray.push({

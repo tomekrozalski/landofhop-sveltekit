@@ -1,9 +1,12 @@
-<script>
+<script lang="ts">
+	export let status: Status;
+
 	import Button from '$lib/elements/form/button.svelte';
 	import WarningIcon from '$lib/elements/vectors/warning.svelte';
+	import Status from '$lib/utils/enums/Status.enum';
 
 	const handleClick = () => {
-		console.log('onlick');
+		status = Status.idle;
 	};
 </script>
 
