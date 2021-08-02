@@ -34,10 +34,11 @@
 		height: var(--size-input-height);
 		border: 0;
 		border-bottom: 1px solid var(--color-grey-2);
-		padding: 0.4rem 1rem 0 1rem;
-		box-shadow: none;
+		padding: 0 1rem;
 		background-color: var(--color-grey-4);
-		font: var(--font-weight-regular) 1.6rem / 1 var(--font-primary);
+		font-size: 1.6rem;
+		font-family: var(--font-primary);
+		/* font: var(--font-weight-light) 1.6rem / 1 'Tahoma'; */
 		color: var(--color-black);
 	}
 

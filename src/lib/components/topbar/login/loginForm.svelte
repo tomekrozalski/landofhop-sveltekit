@@ -1,6 +1,4 @@
 <script lang="ts">
-	export let status: Status = Status.idle;
-
 	import navigation from '$lib/utils/stores/navigation';
 	import { createFormStore } from '$lib/utils/stores/forms/createFormStore';
 	import type { FieldTypes } from '$lib/utils/types/form';
@@ -30,7 +28,7 @@
 	const formStore: any = createFormStore(fields, 'login');
 
 	function handleSubmit() {
-		status = Status.pending;
+		navigation.setLoginStatus(Status.pending);
 
 		fetch('/auth/login.json', {
 			method: 'POST',
@@ -49,12 +47,10 @@
 				return data;
 			})
 			.then(() => {
-				status = Status.fulfilled;
-				navigation.logIn();
+				navigation.setLoginStatus(Status.fulfilled);
 			})
 			.catch(() => {
-				status = Status.rejected;
-				navigation.logOut();
+				navigation.setLoginStatus(Status.rejected);
 			});
 	}
 </script>

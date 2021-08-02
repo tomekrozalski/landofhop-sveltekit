@@ -1,13 +1,18 @@
 <script lang="ts">
+	import Status from '$lib/utils/enums/Status.enum';
 	import navigation from '$lib/utils/stores/navigation';
 	import LockIcon from '$lib/elements/vectors/lock.svelte';
 	import UnlockIcon from '$lib/elements/vectors/unlock.svelte';
+
+	function logOut() {
+		navigation.setLoginStatus(Status.idle);
+	}
 </script>
 
 <ul>
 	<li>
 		{#if $navigation.isLoggedIn}
-			<button class="unlock-button" on:click={navigation.logOut}>
+			<button class="unlock-button" on:click={logOut}>
 				<UnlockIcon />
 				Wyloguj
 			</button>

@@ -1,12 +1,11 @@
 <script lang="ts">
-	export let status: Status;
-
+	import navigation from '$lib/utils/stores/navigation';
 	import Button from '$lib/elements/form/button.svelte';
 	import WarningIcon from '$lib/elements/vectors/warning.svelte';
 	import Status from '$lib/utils/enums/Status.enum';
 
 	const handleClick = () => {
-		status = Status.idle;
+		navigation.setLoginStatus(Status.idle);
 	};
 </script>
 

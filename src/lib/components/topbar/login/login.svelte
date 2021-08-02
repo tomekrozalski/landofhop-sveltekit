@@ -6,18 +6,16 @@
 	import ErrorMessage from './errorMessage.svelte';
 	import LoginForm from './loginForm.svelte';
 	import SuccessMessage from './successMessage.svelte';
-
-	let status = Status.idle;
 </script>
 
 {#if $navigation.isLoginOpened}
 	<section transition:slide={{ duration: 200, easing: cubicInOut }}>
-		{#if status === Status.fulfilled}
+		{#if $navigation.loginStatus === Status.fulfilled}
 			<SuccessMessage />
-		{:else if status === Status.rejected}
-			<ErrorMessage bind:status />
+		{:else if $navigation.loginStatus === Status.rejected}
+			<ErrorMessage />
 		{:else}
-			<LoginForm bind:status />
+			<LoginForm />
 		{/if}
 	</section>
 {/if}

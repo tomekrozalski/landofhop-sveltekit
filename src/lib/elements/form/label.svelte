@@ -12,7 +12,6 @@
 
 <style>
 	label {
-		padding-top: 0.15rem;
 		line-height: var(--size-input-height);
 		height: var(--size-input-height);
 		text-align: right;

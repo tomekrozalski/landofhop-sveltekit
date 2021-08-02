@@ -1,9 +1,11 @@
 import { writable } from 'svelte/store';
+import Status from '$lib/utils/enums/Status.enum';
 
 const { subscribe, update, set } = writable({
 	isNavigationOpened: false,
 	isLoginOpened: false,
-	isLoggedIn: false
+	isLoggedIn: false,
+	loginStatus: Status.idle
 });
 
 function close() {
@@ -40,18 +42,15 @@ function closeLoginbar() {
 	});
 }
 
-function logIn() {
-	update((store) => {
-		store.isLoggedIn = true;
+function setLoginStatus(status: Status) {
+	if (status !== Status.fulfilled) {
+		document.cookie = 'accessToken=; Max-Age=0';
+		document.cookie = 'refreshToken=; Max-Age=0';
+	}
 
-		return store;
-	});
-}
-
-function logOut() {
-	// @ToDo: remove cookies
 	update((store) => {
-		store.isLoggedIn = false;
+		store.loginStatus = status;
+		store.isLoggedIn = status === Status.fulfilled;
 
 		return store;
 	});
@@ -60,9 +59,8 @@ function logOut() {
 export default {
 	close,
 	closeLoginbar,
-	logIn,
-	logOut,
 	set,
+	setLoginStatus,
 	subscribe,
 	toggleLoginbar,
 	toggleNavbar

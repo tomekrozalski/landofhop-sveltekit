@@ -12,7 +12,7 @@
 		justify-content: center;
 		align-items: center;
 		height: var(--size-input-height);
-		padding: 0.3rem 2rem 0 2rem;
+		padding: 0 2rem;
 		background-color: var(--color-black);
 		color: var(--color-white);
 		transition: background-color var(--transition-default), color var(--transition-default);
