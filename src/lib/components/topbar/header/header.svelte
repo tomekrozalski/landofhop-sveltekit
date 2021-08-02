@@ -1,16 +1,18 @@
 <script lang="ts">
+	import navigation from '$lib/utils/stores/navigation';
 	import Logo from './logo.svelte';
 	import SearchBar from './searchbar.svelte';
 	import NavigationSwitcher from './navigation-switcher.svelte';
-
-	export let isNavigationOpened: boolean, isLoginOpened: boolean, closeNavigation: () => void;
 </script>
 
-<header class:isNavigationOpened class:isLoginOpened>
+<header
+	class:isNavigationOpened={$navigation.isNavigationOpened}
+	class:isLoginOpened={$navigation.isLoginOpened}
+>
 	<div>
-		<Logo {closeNavigation} />
-		<SearchBar {closeNavigation} />
-		<NavigationSwitcher bind:isNavigationOpened bind:isLoginOpened />
+		<Logo />
+		<SearchBar />
+		<NavigationSwitcher />
 	</div>
 </header>
 

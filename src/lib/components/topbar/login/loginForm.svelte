@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let status: Status = Status.idle;
 
+	import navigation from '$lib/utils/stores/navigation';
 	import { createFormStore } from '$lib/utils/stores/forms/createFormStore';
 	import type { FieldTypes } from '$lib/utils/types/form';
 	import Status from '$lib/utils/enums/Status.enum';
@@ -49,9 +50,11 @@
 			})
 			.then(() => {
 				status = Status.fulfilled;
+				navigation.logIn();
 			})
 			.catch(() => {
 				status = Status.rejected;
+				navigation.logOut();
 			});
 	}
 </script>

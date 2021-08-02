@@ -1,21 +1,14 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
+	import navigation from '$lib/utils/stores/navigation';
 	import Menus from './menus.svelte';
-
-	export let isNavigationOpened: boolean;
-	export let isLoginOpened: boolean;
-	export let closeNavigation: () => void;
-
-	function toggleLogin() {
-		isLoginOpened = !isLoginOpened;
-	}
 </script>
 
-{#if isNavigationOpened}
+{#if $navigation.isNavigationOpened}
 	<nav transition:slide={{ duration: 200, easing: cubicInOut }}>
 		<div>
-			<Menus {closeNavigation} {toggleLogin} />
+			<Menus />
 		</div>
 	</nav>
 {/if}

@@ -1,8 +1,7 @@
 <script lang="ts">
-	export let isLoginOpened: boolean;
-
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
+	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
 	import ErrorMessage from './errorMessage.svelte';
 	import LoginForm from './loginForm.svelte';
@@ -11,10 +10,10 @@
 	let status = Status.idle;
 </script>
 
-{#if isLoginOpened}
+{#if $navigation.isLoginOpened}
 	<section transition:slide={{ duration: 200, easing: cubicInOut }}>
 		{#if status === Status.fulfilled}
-			<SuccessMessage bind:isLoginOpened />
+			<SuccessMessage />
 		{:else if status === Status.rejected}
 			<ErrorMessage bind:status />
 		{:else}

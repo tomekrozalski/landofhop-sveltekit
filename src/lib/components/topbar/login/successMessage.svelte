@@ -1,12 +1,11 @@
 <script lang="ts">
-	export let isLoginOpened: boolean;
-
 	import { onMount } from 'svelte';
+	import navigation from '$lib/utils/stores/navigation';
 	import SuccessIcon from '$lib/elements/vectors/success.svelte';
 
 	onMount(() => {
 		setTimeout(() => {
-			isLoginOpened = false;
+			navigation.closeLoginbar();
 		}, 3000);
 	});
 </script>

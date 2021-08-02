@@ -1,20 +1,29 @@
 <script lang="ts">
-	import LockIcon from '$lib/elements/vectors/lockIcon.svelte';
-
-	export let closeNavigation: () => void, toggleLogin: () => void;
+	import navigation from '$lib/utils/stores/navigation';
+	import LockIcon from '$lib/elements/vectors/lock.svelte';
+	import UnlockIcon from '$lib/elements/vectors/unlock.svelte';
 </script>
 
 <ul>
-	<button on:click={toggleLogin}>
-		<LockIcon />
-		Zaloguj
-	</button>
-	<li><a on:click={closeNavigation} href="/about">O stronie</a></li>
-	<li><a on:click={closeNavigation} href="/stats">Statystyki</a></li>
+	<li>
+		{#if $navigation.isLoggedIn}
+			<button class="unlock-button" on:click={navigation.logOut}>
+				<UnlockIcon />
+				Wyloguj
+			</button>
+		{:else}
+			<button on:click={navigation.toggleLoginbar}>
+				<LockIcon />
+				Zaloguj
+			</button>
+		{/if}
+	</li>
+	<li><a on:click={navigation.close} href="/about">O stronie</a></li>
+	<li><a on:click={navigation.close} href="/stats">Statystyki</a></li>
 </ul>
 <ul class="languages">
-	<li><a on:click={closeNavigation} href="/">PL</a></li>
-	<li><span class="disabled-link" on:click={closeNavigation} href="/">EN</span></li>
+	<li><a on:click={navigation.close} href="/">PL</a></li>
+	<li><span class="disabled-link" on:click={navigation.close} href="/">EN</span></li>
 </ul>
 
 <style>
@@ -66,6 +75,10 @@
 		top: 50%;
 		left: 1rem;
 		transform: translateY(-50%);
+	}
+
+	button.unlock-button :global(svg) {
+		transform: translateY(calc(-50% - 0.2rem));
 	}
 
 	button :global(svg path) {

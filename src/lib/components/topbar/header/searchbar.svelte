@@ -1,9 +1,9 @@
 <script lang="ts">
-	export let closeNavigation: () => void;
+	import navigation from '$lib/utils/stores/navigation';
 </script>
 
 <div>
-	<button on:click={closeNavigation}>
+	<button on:click={navigation.close}>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133.9 133.9">
 			<path
 				fill="#fff"

@@ -1,8 +1,8 @@
 <script lang="ts">
-	export let closeNavigation: () => void;
+	import navigation from '$lib/utils/stores/navigation';
 </script>
 
-<a on:click={closeNavigation} href="/">
+<a on:click={navigation.close} href="/">
 	<h1>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 271.3 127.3">
 			<title>Land of Hop</title>
