@@ -1,23 +1,28 @@
 @font-face {
-	font-family: 'fira-sans';
+	font-family: 'bilo';
 	font-style: normal;
 	font-weight: 300;
-	src: url('/fonts/fira-light.woff2') format('woff2');
+	src: url('/fonts/bilo-light.woff') format('woff'), url('/fonts/bilo-light.woff2') format('woff2'),
+		url('/fonts/bilo-light.otf') format('opentype');
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'fira-sans';
+	font-family: 'bilo';
 	font-style: normal;
 	font-weight: 400;
-	src: url('/fonts/fira-regular.woff2') format('woff2');
+	src: url('/fonts/bilo-regular.woff') format('woff'),
+		url('/fonts/bilo-regular.woff2') format('woff2'),
+		url('/fonts/bilo-regular.otf') format('opentype');
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'fira-sans';
+	font-family: 'bilo';
 	font-style: normal;
 	font-weight: 500;
-	src: url('/fonts/fira-medium.woff2') format('woff2');
+	src: url('/fonts/bilo-medium.woff') format('woff'),
+		url('/fonts/bilo-medium.woff2') format('woff2'),
+		url('/fonts/bilo-medium.otf') format('opentype');
 	font-display: swap;
 }

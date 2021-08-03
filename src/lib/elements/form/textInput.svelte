@@ -36,9 +36,7 @@
 		border-bottom: 1px solid var(--color-grey-2);
 		padding: 0 1rem;
 		background-color: var(--color-grey-4);
-		font-size: 1.6rem;
-		font-family: var(--font-primary);
-		/* font: var(--font-weight-light) 1.6rem / 1 'Tahoma'; */
+		font: var(--font-weight-light) 1.8rem / 1 var(--font-primary);
 		color: var(--color-black);
 	}
 
