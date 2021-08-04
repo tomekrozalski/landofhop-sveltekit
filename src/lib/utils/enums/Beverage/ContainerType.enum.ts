@@ -1,6 +1,6 @@
 enum ContainerType {
-	bottle = 'bottle',
-	can = 'can'
+  bottle = 'bottle',
+  can = 'can',
 }
 
 export default ContainerType;

@@ -7,7 +7,7 @@ export enum Endpoints {
 	// beverageAdminDetails = 'beverage/admin/details',
 	beverageBasics = 'beverage/basics',
 	// beverageDashboardDetails = 'beverage/admin/dashboard',
-	// beverageDetails = 'beverage/details',
+	beverageDetails = 'beverage/details',
 	// beverageSearch = 'beverage/search',
 	// beverageStats = 'beverage/stats',
 	beverageTotal = 'beverage/total'

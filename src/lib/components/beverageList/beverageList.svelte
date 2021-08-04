@@ -9,13 +9,13 @@
 <ul>
 	{#each beverages as beverage}
 		<li>
-			<!-- <a href={`/details/${beverage.shortId}/${beverage.brand.badge}/${beverage.badge}`}> -->
-			{#if beverage.photos?.cover}
-				<CoverImageWrapper {beverage} />
-			{:else}
-				<BrokenCoverImage type={beverage.container.type} />
-			{/if}
-			<!-- </a> -->
+			<a href={`/details/${beverage.shortId}/${beverage.brand.badge}/${beverage.badge}`}>
+				{#if beverage.photos?.cover}
+					<CoverImageWrapper {beverage} />
+				{:else}
+					<BrokenCoverImage type={beverage.container.type} />
+				{/if}
+			</a>
 		</li>
 	{/each}
 </ul>
@@ -41,19 +41,19 @@
 		contain-intrinsic-size: 0 35rem;
 	}
 
-	/* a {
+	a {
 		width: 100%;
 		text-align: center;
-	} */
+	}
 
-	/* div {
+	a > :global(*) {
 		transform: scale(1);
 		transition: transform var(--transition-default);
-	} */
+	}
 
-	/* a:hover > div {
+	a:hover > :global(*) {
 		transform: scale(0.9);
-	} */
+	}
 
 	@media (--xl) {
 		ul {
