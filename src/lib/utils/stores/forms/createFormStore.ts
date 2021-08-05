@@ -9,7 +9,11 @@ import type {
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
+export function createFormStore(
+	fieldsArr: FieldTypes[],
+	formName: string,
+	translate: (value: string, options?: unknown) => string
+) {
 	const store: StoreFormDataTypes = {
 		summary: {
 			name: formName,
@@ -25,40 +29,34 @@ export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
 			if (reason === 'isValidEmail') {
 				newArray.push({
 					regex: emailRegex,
-					/* errorMessage: 'The field should be valid e-mail address' */
-					errorMessage: 'Wymagany prawidłowy adres e-mail'
+					errorMessage: translate('form.validation.email')
 				});
 			}
 
 			if (reason === 'isValidPassword') {
 				newArray.push({
 					regex: /.{8,}/,
-					// errorMessage: 'At least eight characters long is required'
-					errorMessage: 'Wymagane co najmniej osiem znaków'
+					errorMessage: translate('form.validation.minLength', { value: 8 })
 				});
 
 				newArray.push({
 					regex: /.*\d.*/,
-					// errorMessage: 'At least one number is required',
-					errorMessage: 'Pole musi zawierać cyfrę'
+					errorMessage: translate('form.validation.atLeastOneDigit')
 				});
 
 				newArray.push({
 					regex: /.*[@$!%*#?&].*/,
-					// errorMessage: 'At least one special character is required'
-					errorMessage: 'Pole musi zawierać znak specjalny'
+					errorMessage: translate('form.validation.atLeastOneSpecialCharacter')
 				});
 
 				newArray.push({
 					regex: /.*[A-Z].*/,
-					// errorMessage: 'At least one uppercase letter is required'
-					errorMessage: 'Pole musi zawierać dużą literę'
+					errorMessage: translate('form.validation.atLeastOneCapitalLetter')
 				});
 
 				newArray.push({
 					regex: /.*[a-z].*/,
-					// errorMessage: 'At least one lowercase letter is required'
-					errorMessage: 'Pole musi zawierać małą literę'
+					errorMessage: translate('form.validation.atLeastOneSmallLetter')
 				});
 			}
 
@@ -116,8 +114,7 @@ export function createFormStore(fieldsArr: FieldTypes[], formName: string) {
 
 	function getErrorMessage({ isRequired, validateWith, value }) {
 		if (isRequired && !value.length) {
-			// return 'Field is required';
-			return 'Pole jest wymagane';
+			return translate('form.validation.required');
 		}
 
 		if (validateWith.length) {

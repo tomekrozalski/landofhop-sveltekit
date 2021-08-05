@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { translate } from 'svelte-intl';
+
 	import Aside from './aside.svelte';
 	import Header from './header/header.svelte';
 </script>
@@ -12,6 +14,7 @@
 	<!-- <FootNotes /> -->
 	<!-- {isLoggedIn && <AdminBar />} -->
 	<Aside />
+	<h2>{$translate('hello', { name: 'Tomek' })}</h2>
 </article>
 
 <style>

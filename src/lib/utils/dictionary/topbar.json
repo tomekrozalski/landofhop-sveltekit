@@ -1,0 +1,22 @@
+{
+	"en": {
+		"header.closeNavigation": "Close navigation",
+		"header.closeSearch": "Close search",
+		"header.openNavigation": "Open navigation",
+		"header.openSearch": "Open search",
+		"navigation.about": "About",
+		"navigation.login": "Log in",
+		"navigation.logout": "Log out",
+		"navigation.stats": "Stats"
+	},
+	"pl": {
+		"header.closeNavigation": "Zamknij nawigację",
+		"header.closeSearch": "Zamknij wyszukiwarkę",
+		"header.openNavigation": "Otwórz nawigację",
+		"header.openSearch": "Otwórz wyszukiwarkę",
+		"navigation.about": "O stronie",
+		"navigation.login": "Zaloguj",
+		"navigation.logout": "Wyloguj",
+		"navigation.stats": "Statystyki"
+	}
+}

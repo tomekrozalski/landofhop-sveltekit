@@ -1,0 +1,32 @@
+{
+	"en": {
+		"form.validation.atLeastOneCapitalLetter": "At least one uppercase letter is required",
+		"form.validation.atLeastOneDigit": "At least one number is required",
+		"form.validation.atLeastOneSmallLetter": "Pole musi zawierać małą literę",
+		"form.validation.atLeastOneSpecialCharacter": "At least one special character is required",
+		"form.validation.email": "The field should be valid e-mail address",
+		"form.validation.minLength": "At least {value, select, 8 {eight} other {}} characters long is required",
+		"form.validation.required": "Field is required",
+		"login.email": "E-mail",
+		"login.failed": "Login failed",
+		"login.password": "Password",
+		"login.submit": "Send",
+		"login.success": "Successfully logged in",
+		"login.tryAgain": "Try again"
+	},
+	"pl": {
+		"form.validation.atLeastOneCapitalLetter": "Pole musi zawierać dużą literę",
+		"form.validation.atLeastOneDigit": "Pole musi zawierać cyfrę",
+		"form.validation.atLeastOneSmallLetter": "At least one lowercase letter is required",
+		"form.validation.atLeastOneSpecialCharacter": "Pole musi zawierać znak specjalny",
+		"form.validation.email": "Wymagany prawidłowy adres e-mail",
+		"form.validation.minLength": "Wymagane co najmniej {value, select, 8 {osiem} other {}} znaków",
+		"form.validation.required": "Pole jest wymagane",
+		"login.email": "E-mail",
+		"login.failed": "Logowanie zakończyło się niepowowdzeniem",
+		"login.password": "Hasło",
+		"login.submit": "Wyślij",
+		"login.success": "Zalogowano poprawnie",
+		"login.tryAgain": "Spróbuj ponownie"
+	}
+}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { translate } from 'svelte-intl';
 	import navigation from '$lib/utils/stores/navigation';
 </script>
 
@@ -6,9 +7,9 @@
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 9">
 		<title>
 			{#if $navigation.isNavigationOpened}
-				Zamknij
+				{$translate('header.closeNavigation')}
 			{:else}
-				Otwórz
+				{$translate('header.openNavigation')}
 			{/if}
 		</title>
 		<circle fill="#fff" cx="35.5" cy="4.5" r="4.5" />

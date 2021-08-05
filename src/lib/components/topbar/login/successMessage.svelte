@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { translate } from 'svelte-intl';
 	import navigation from '$lib/utils/stores/navigation';
 	import SuccessIcon from '$lib/elements/vectors/success.svelte';
 
@@ -12,7 +13,7 @@
 
 <div>
 	<SuccessIcon />
-	Zalogowano poprawnie
+	{$translate('login.success')}
 </div>
 
 <style>

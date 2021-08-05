@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { translate } from 'svelte-intl';
 	import navigation from '$lib/utils/stores/navigation';
 	import { createFormStore } from '$lib/utils/stores/forms/createFormStore';
 	import type { FieldTypes } from '$lib/utils/types/form';
@@ -10,7 +11,7 @@
 		{
 			hasInvertedColors: true,
 			isRequired: true,
-			label: 'E-mail',
+			label: $translate('login.email'),
 			name: 'email',
 			type: 'email',
 			validateWith: ['isValidEmail']
@@ -18,14 +19,14 @@
 		{
 			hasInvertedColors: true,
 			isRequired: true,
-			label: 'Hasło',
+			label: $translate('login.password'),
 			name: 'password',
 			type: 'password',
 			validateWith: ['isValidPassword']
 		}
 	];
 
-	const formStore: any = createFormStore(fields, 'login');
+	const formStore: any = createFormStore(fields, 'login', $translate);
 
 	function handleSubmit() {
 		navigation.setLoginStatus(Status.pending);
@@ -62,7 +63,9 @@
 		</div>
 	{/each}
 	<div class="button-wrapper">
-		<Button type="submit" disabled={!$formStore.summary.isValid}>Wyślij</Button>
+		<Button type="submit" disabled={!$formStore.summary.isValid}
+			>{$translate('login.submit')}</Button
+		>
 	</div>
 </form>
 

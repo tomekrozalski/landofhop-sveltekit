@@ -1,10 +1,14 @@
 <script>
+	import { locale, translations } from 'svelte-intl';
+	import topbarDictionary from '$lib/utils/dictionary/topbar.json';
 	import '$lib/utils/styles/app.postcss';
 	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
 	import '$lib/utils/styles/global.css';
-
 	import Topbar from '$lib/components/topbar/topbar.svelte';
+
+	translations.update(topbarDictionary);
+	locale.set('pl');
 </script>
 
 <svelte:head>

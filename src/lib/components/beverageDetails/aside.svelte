@@ -6,7 +6,7 @@
 
 <aside>
 	{#if $next}
-		<a href={`/details/${$next.shortId}/${$next.brand.badge}/${$next.badge}`}>
+		<a sveltekit:prefetch href={`/details/${$next.shortId}/${$next.brand.badge}/${$next.badge}`}>
 			<LeftIcon>Next</LeftIcon>
 		</a>
 	{:else}
@@ -15,7 +15,10 @@
 		</span>
 	{/if}
 	{#if $previous}
-		<a href={`/details/${$previous.shortId}/${$previous.brand.badge}/${$previous.badge}`}>
+		<a
+			sveltekit:prefetch
+			href={`/details/${$previous.shortId}/${$previous.brand.badge}/${$previous.badge}`}
+		>
 			<RightIcon>Previous</RightIcon>
 		</a>
 	{:else}

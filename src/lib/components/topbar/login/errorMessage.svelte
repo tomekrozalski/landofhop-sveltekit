@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { translate } from 'svelte-intl';
 	import navigation from '$lib/utils/stores/navigation';
 	import Button from '$lib/elements/form/button.svelte';
 	import WarningIcon from '$lib/elements/vectors/warning.svelte';
@@ -11,8 +12,8 @@
 
 <div>
 	<WarningIcon />
-	Logowanie zakończyło się niepowowdzeniem
-	<Button {handleClick}>Spróbuj ponownie</Button>
+	{$translate('login.failed')}
+	<Button {handleClick}>{$translate('login.tryAgain')}</Button>
 </div>
 
 <style>

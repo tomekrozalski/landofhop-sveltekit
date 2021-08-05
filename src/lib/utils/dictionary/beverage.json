@@ -1,0 +1,8 @@
+{
+  "en": {
+    "hello": "Hello, {name}"
+  },
+  "pl": {
+    "hello": "Olá, {name}"
+  }
+}
