@@ -1,8 +1,24 @@
 {
-  "en": {
-    "hello": "Hello, {name}"
-  },
-  "pl": {
-    "hello": "Olá, {name}"
-  }
+	"en": {
+		"beverage.aside.next": "Next beverage",
+		"beverage.aside.previous": "Previous beverage",
+		"beverage.header.by": "by",
+		"beverage.header.for": "for",
+		"beverage.header.brewed": "Brewed",
+		"beverage.header.inCooperationWith": "in cooperation with",
+		"beverage.header.series": ", in series",
+		"beverage.longConjunction": "and",
+		"beverage.shortConjunction": "and"
+	},
+	"pl": {
+		"beverage.aside.next": "Następne piwo",
+		"beverage.aside.previous": "Poprzednie piwo",
+		"beverage.header.by": "przez",
+		"beverage.header.for": "dla",
+		"beverage.header.brewed": "Uwarzono",
+		"beverage.header.inCooperationWith": "w kooperacji z",
+		"beverage.header.series": ", w serii",
+		"beverage.longConjunction": "oraz",
+		"beverage.shortConjunction": "i"
+	}
 }

@@ -22,6 +22,7 @@
 </script>
 
 <script lang="ts">
+	import { beforeUpdate } from 'svelte';
 	import {
 		beverage as beverageStore,
 		next as nextStore,
@@ -37,23 +38,11 @@
 	export let next: Basics | null;
 	export let previous: Basics | null;
 
-	let prevDetails = null;
-	$: if (prevDetails?.id !== details.id) {
+	beforeUpdate(() => {
 		beverageStore.set(details);
-		prevDetails = details;
-	}
-
-	let prevNext = null;
-	$: if (prevNext?.id !== next.id) {
 		nextStore.set(next);
-		prevNext = next;
-	}
-
-	let prevPrevious = null;
-	$: if (prevPrevious?.id !== previous.id) {
 		previousStore.set(previous);
-		prevPrevious = previous;
-	}
+	});
 </script>
 
 <svelte:head>
@@ -61,4 +50,6 @@
 	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
-<BeverageDetails />
+{#if $beverageStore}
+	<BeverageDetails />
+{/if}

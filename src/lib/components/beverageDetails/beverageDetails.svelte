@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { translate } from 'svelte-intl';
-
 	import Aside from './aside.svelte';
-	import Header from './header/header.svelte';
+	import Header from './header.svelte';
 </script>
 
 <article>
@@ -14,7 +12,6 @@
 	<!-- <FootNotes /> -->
 	<!-- {isLoggedIn && <AdminBar />} -->
 	<Aside />
-	<h2>{$translate('hello', { name: 'Tomek' })}</h2>
 </article>
 
 <style>
@@ -64,5 +61,29 @@
 				'gallery . aside';
 			padding: 2rem 1rem;
 		}
+	}
+
+	article :global(em) {
+		font-weight: var(--font-weight-regular);
+		font-style: normal;
+	}
+
+	article :global(.label),
+	article :global(.producer),
+	article :global(.editorial) {
+		background-position: 0px 0.8em;
+		background-repeat: repeat-x;
+	}
+
+	article :global(.label) {
+		background-image: linear-gradient(var(--color-label-light), var(--color-label-light));
+	}
+
+	article :global(.producer) {
+		background-image: linear-gradient(var(--color-producer-light), var(--color-producer-light));
+	}
+
+	article :global(.editorial) {
+		background-image: linear-gradient(var(--color-editorial-light), var(--color-editorial-light));
 	}
 </style>

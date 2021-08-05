@@ -1,6 +1,8 @@
 <script>
+	import { afterUpdate } from 'svelte';
 	import { locale, translations } from 'svelte-intl';
 	import topbarDictionary from '$lib/utils/dictionary/topbar.json';
+	import navigation from '$lib/utils/stores/navigation';
 	import '$lib/utils/styles/app.postcss';
 	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
@@ -9,6 +11,11 @@
 
 	translations.update(topbarDictionary);
 	locale.set('pl');
+
+	afterUpdate(() => {
+		// when path change, close navigation
+		navigation.close();
+	});
 </script>
 
 <svelte:head>

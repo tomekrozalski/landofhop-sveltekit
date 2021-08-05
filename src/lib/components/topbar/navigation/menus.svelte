@@ -24,12 +24,12 @@
 			</button>
 		{/if}
 	</li>
-	<li><a on:click={navigation.close} href="/about">{$translate('navigation.about')}</a></li>
-	<li><a on:click={navigation.close} href="/stats">{$translate('navigation.stats')}</a></li>
+	<li><a href="/about">{$translate('navigation.about')}</a></li>
+	<li><a href="/stats">{$translate('navigation.stats')}</a></li>
 </ul>
 <ul class="languages">
-	<li><a on:click={navigation.close} href="/">PL</a></li>
-	<li><span class="disabled-link" on:click={navigation.close} href="/">EN</span></li>
+	<li><a href="/">PL</a></li>
+	<li><span class="disabled-link" href="/">EN</span></li>
 </ul>
 
 <style>

@@ -1,11 +1,12 @@
 <script lang="ts">
-	export let type: ContainerType;
-
+	import { translate } from 'svelte-intl';
 	import type { ContainerType } from '$lib/utils/enums/Beverage';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
+
+	export let type: ContainerType;
 </script>
 
-<img src={`${PHOTO_SERVER}/broken-${type}.svg`} alt="Nie znaleziono zdjęcia" />
+<img src={`${PHOTO_SERVER}/broken-${type}.svg`} alt={$translate('landingPage.imageNotFound')} />
 
 <style>
 	img {
