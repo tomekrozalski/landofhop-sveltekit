@@ -1,6 +1,5 @@
 <script lang="ts">
 	export let beverage: Basics;
-	let prevBeverage;
 
 	import { onMount } from 'svelte';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
@@ -8,18 +7,8 @@
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
 	import CoverImage from './coverImage.svelte';
 
-	$: formattedCoverOutline = beverage.photos.outlines.cover.replace(
-		'<svg',
-		`<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; transition: var(--transition-default);"`
-	);
-
 	let loaded = false;
 	let nativeLoading = false;
-
-	$: if (prevBeverage !== beverage) {
-		loaded = false;
-		prevBeverage = beverage;
-	}
 
 	onMount(() => {
 		if ('loading' in HTMLImageElement.prototype) {
@@ -35,7 +24,10 @@
 >
 	{#if !loaded}
 		<span transition:toggleVisibility>
-			{@html formattedCoverOutline}
+			{@html beverage.photos.outlines.cover.replace(
+				'<svg',
+				`<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; transition: var(--transition-default);"`
+			)}
 		</span>
 	{/if}
 	<IntersectionObserver once={true} let:intersecting>

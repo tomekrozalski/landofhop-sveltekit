@@ -1,10 +1,14 @@
 <script lang="ts">
+	import { beverage } from '$lib/utils/stores/beverage';
 	import Aside from './aside.svelte';
+	import Gallery from './gallery/gallery.svelte';
 	import Header from './header.svelte';
 </script>
 
 <article>
-	<!-- <Gallery /> -->
+	{#key $beverage.id}
+		<Gallery />
+	{/key}
 	<Header />
 	<!-- <Tale /> -->
 	<!-- <Testimony /> -->
