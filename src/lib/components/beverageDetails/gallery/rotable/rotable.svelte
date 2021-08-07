@@ -37,12 +37,63 @@
 		renderer.render(scene, camera);
 	}
 
+	function load360Icon() {
+		const iconLoader = new THREE.TextureLoader();
+
+		iconLoader.load(
+			'/images/icon360.png',
+			(map) => {
+				const iconGeometry = new THREE.PlaneGeometry(35, 20);
+				const iconMaterial = new THREE.MeshBasicMaterial({ map });
+				const icon = new THREE.Mesh(iconGeometry, iconMaterial);
+				icon.position.set(89, 237, 1);
+
+				scene.add(icon);
+			},
+			undefined,
+			(err) => console.warn(err)
+		);
+	}
+
+	let spinner;
+	let spinnerTimeout;
+
+	function loadSpinner() {
+		const spinnerGeometry = new THREE.CircleGeometry(3, 50);
+		const spinnerMaterial = new THREE.MeshBasicMaterial({ color: 0x222222 });
+		spinner = new THREE.Mesh(spinnerGeometry, spinnerMaterial);
+		spinner.position.set(89, 237, 2);
+
+		function animateSpinner(value, isGrowing = true) {
+			spinner.scale.set(value / 10, value / 10);
+			scene.add(spinner);
+			renderer.render(scene, camera);
+
+			spinnerTimeout = setTimeout(() => {
+				animateSpinner(
+					(isGrowing && value < 30) || (!isGrowing && value === 10) ? value + 1 : value - 1,
+					(isGrowing && value < 30) || (!isGrowing && value === 10)
+				);
+			}, 15);
+		}
+
+		animateSpinner(10);
+	}
+
+	function stopSpinner() {
+		spinner.scale.set(0, 0);
+		clearTimeout(spinnerTimeout);
+	}
+
 	onMount(async () => {
 		renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, canvas: el });
 		renderer.setSize(220, 500);
 		renderer.setPixelRatio(window.devicePixelRatio >= 2 ? 2 : 1);
+		loadSpinner();
 
 		textures = await Promise.all(texturePromises);
+		stopSpinner();
+		load360Icon();
 		rotate(0);
 	});
 

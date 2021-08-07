@@ -18,12 +18,12 @@ export default function prepareCanvas({ brand, imagesInGallery, name, shortId })
 		cameraWidth / 2,
 		cameraHeight / 2,
 		cameraHeight / -2,
-		0,
-		1000
+		-10,
+		0
 	);
 
 	// Set up geometry
-	const geometry = new THREE.BoxGeometry(220, 500, 0);
+	const geometry = new THREE.PlaneGeometry(220, 500);
 
 	// Load images
 	const basicPath = `${PHOTO_SERVER}/${brand}/${name}/${shortId}`;
