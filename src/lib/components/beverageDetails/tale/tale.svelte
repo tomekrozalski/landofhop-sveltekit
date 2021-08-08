@@ -4,33 +4,32 @@
 	import Article from './article.svelte';
 </script>
 
-{#if $beverage.tale}
-	<section>
-		{#if $beverage.tale.label}
-			<div lang={$beverage.tale.label.language !== 'pl' ? $beverage.tale.label.language : null}>
-				{@html marked($beverage.tale?.label.lead)}
-				{#if $beverage.tale.label.article}
-					<Article>{@html marked($beverage.tale.label.article)}</Article>
-				{/if}
-			</div>
-		{/if}
-		{#if $beverage.tale?.producer}
-			<div
-				class="tale-producer"
-				lang={$beverage.tale.producer.language !== 'pl' ? $beverage.tale.producer.language : null}
-			>
-				{@html marked($beverage.tale.producer.lead)}
-				{#if $beverage.tale.producer.article}
-					<Article>{@html marked($beverage.tale.producer.article)}</Article>
-				{/if}
-			</div>
-		{/if}
-	</section>
-{/if}
+<section>
+	{#if $beverage.tale?.label}
+		<div lang={$beverage.tale.label.language !== 'pl' ? $beverage.tale.label.language : null}>
+			{@html marked($beverage.tale?.label.lead)}
+			{#if $beverage.tale.label.article}
+				<Article>{@html marked($beverage.tale.label.article)}</Article>
+			{/if}
+		</div>
+	{/if}
+	{#if $beverage.tale?.producer}
+		<div
+			class="tale-producer"
+			lang={$beverage.tale.producer.language !== 'pl' ? $beverage.tale.producer.language : null}
+		>
+			{@html marked($beverage.tale.producer.lead)}
+			{#if $beverage.tale.producer.article}
+				<Article>{@html marked($beverage.tale.producer.article)}</Article>
+			{/if}
+		</div>
+	{/if}
+</section>
 
 <style>
 	section {
 		grid-area: tale;
+		/* margin-bottom: 1.8rem; */
 	}
 
 	.tale-producer {
@@ -42,7 +41,7 @@
 		margin: -1.8rem 0;
 	}
 
-	section div + div {
+	div + div {
 		margin-top: 3.6rem;
 	}
 

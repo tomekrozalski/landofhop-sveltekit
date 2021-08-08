@@ -4,6 +4,7 @@
 	import Gallery from './gallery/gallery.svelte';
 	import Header from './header.svelte';
 	import Tale from './tale/tale.svelte';
+	import Testimony from './testimony/testimony.svelte';
 </script>
 
 <article>
@@ -12,7 +13,7 @@
 	{/key}
 	<Header />
 	<Tale />
-	<!-- <Testimony /> -->
+	<Testimony />
 	<!-- <Impressions /> -->
 	<!-- <FootNotes /> -->
 	<!-- {isLoggedIn && <AdminBar />} -->

@@ -10,7 +10,15 @@
 		"beverage.longConjunction": "and",
 		"beverage.shortConjunction": "and",
 		"beverage.tale.readLess": "read less",
-		"beverage.tale.readMore": "read more"
+		"beverage.tale.readMore": "read more",
+		"beverage.testimonial.barcode": "barcode",
+		"beverage.testimonial.beverageType": "category",
+		"beverage.testimonial.city": "city",
+		"beverage.testimonial.country": "country",
+		"beverage.testimonial.fermentation": "fermentation",
+		"beverage.testimonial.fermentationType.bottom": "bottom",
+		"beverage.testimonial.fermentationType.spontaneous": "spontaneous",
+		"beverage.testimonial.fermentationType.top": "top"
 	},
 	"pl": {
 		"beverage.aside.next": "Następne piwo",
@@ -23,6 +31,14 @@
 		"beverage.longConjunction": "oraz",
 		"beverage.shortConjunction": "i",
 		"beverage.tale.readLess": "zwiń",
-		"beverage.tale.readMore": "czytaj więcej"
+		"beverage.tale.readMore": "czytaj więcej",
+		"beverage.testimonial.barcode": "kod kreskowy",
+		"beverage.testimonial.beverageType": "kategoria",
+		"beverage.testimonial.city": "miejscowość",
+		"beverage.testimonial.country": "kraj",
+		"beverage.testimonial.fermentation": "fermentacja",
+		"beverage.testimonial.fermentationType.bottom": "dolna",
+		"beverage.testimonial.fermentationType.spontaneous": "spontaniczna",
+		"beverage.testimonial.fermentationType.top": "górna"
 	}
 }
