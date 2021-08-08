@@ -54,9 +54,13 @@
 		{:else}
 			{$translate('beverage.header.by')}
 		{/if}
-		<MarkLanguage label tag="em" name={$beverage.brand.name} />
-		<!-- series -->
-		{#if $beverage.series}
+		<MarkLanguage
+			label
+			tag="em"
+			name={$beverage.brand.name}
+		/><!--
+			series (without space)
+		-->{#if $beverage.series}
 			{$translate('beverage.header.series')}
 			{#if $beverage.series.label?.length}
 				<FormattedList mode="narrow" let:item data={$beverage.series.label}>

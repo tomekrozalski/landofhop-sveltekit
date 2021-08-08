@@ -3,6 +3,7 @@
 	import Aside from './aside.svelte';
 	import Gallery from './gallery/gallery.svelte';
 	import Header from './header.svelte';
+	import Tale from './tale/tale.svelte';
 </script>
 
 <article>
@@ -10,7 +11,7 @@
 		<Gallery />
 	{/key}
 	<Header />
-	<!-- <Tale /> -->
+	<Tale />
 	<!-- <Testimony /> -->
 	<!-- <Impressions /> -->
 	<!-- <FootNotes /> -->

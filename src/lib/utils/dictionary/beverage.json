@@ -8,7 +8,9 @@
 		"beverage.header.inCooperationWith": "in cooperation with",
 		"beverage.header.series": ", in series",
 		"beverage.longConjunction": "and",
-		"beverage.shortConjunction": "and"
+		"beverage.shortConjunction": "and",
+		"beverage.tale.readLess": "read less",
+		"beverage.tale.readMore": "read more"
 	},
 	"pl": {
 		"beverage.aside.next": "Następne piwo",
@@ -19,6 +21,8 @@
 		"beverage.header.inCooperationWith": "w kooperacji z",
 		"beverage.header.series": ", w serii",
 		"beverage.longConjunction": "oraz",
-		"beverage.shortConjunction": "i"
+		"beverage.shortConjunction": "i",
+		"beverage.tale.readLess": "zwiń",
+		"beverage.tale.readMore": "czytaj więcej"
 	}
 }

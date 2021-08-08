@@ -10,7 +10,7 @@
 
 {#if mode === 'narrow'}
 	{#each data as item, i}
-		<slot {item} />{#if i + 2 <= data.length}, {/if}
+		<slot {item} />{#if i + 2 <= data.length}, {' '}{/if}
 	{/each}
 {/if}
 
