@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { beverage } from '$lib/utils/stores/beverage';
-	import MarkLanguage from '$lib/elements/markLanguage.svelte';
-	import FormattedList from '$lib/elements/formattedList.svelte';
 </script>
 
 {#if $beverage.alcohol}
@@ -26,7 +24,7 @@
 				{/if}
 			</em>
 		{/if}
-		{#if $beverage.alcohol.editorial.scope}
+		{#if $beverage.alcohol.editorial?.scope}
 			<em class="editorial no-separator">
 				{$translate(`beverage.testimonial.alcoholScope.${$beverage.alcohol.editorial.scope}`)}
 			</em>

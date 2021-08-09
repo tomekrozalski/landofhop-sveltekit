@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { beverage } from '$lib/utils/stores/beverage';
-	import MarkLanguage from '$lib/elements/markLanguage.svelte';
-	import FormattedList from '$lib/elements/formattedList.svelte';
 </script>
 
 {#if $beverage.extract}

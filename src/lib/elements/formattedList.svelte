@@ -1,10 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 
-	export let data: {
-		language: string;
-		value: string;
-	}[];
+	export let data: any[];
 	export let mode: 'long' | 'short' | 'narrow' = 'narrow';
 </script>
 
@@ -16,11 +13,9 @@
 
 {#if mode === 'short'}
 	{#each data as item, i}
-		<slot {item} />
-		{#if i + 3 <= data.length}
-			,
+		<slot {item} />{#if i + 3 <= data.length},{' '}
 		{:else if i + 2 === data.length}
-			{$translate('beverage.shortConjunction')}{' '}
+			{' '}{$translate('beverage.shortConjunction')}{' '}
 		{/if}
 	{/each}
 {/if}

@@ -1,5 +1,7 @@
 {
 	"en": {
+		"global.confirmation": "yes",
+		"global.denial": "no",
 		"header.closeNavigation": "Close navigation",
 		"header.closeSearch": "Close search",
 		"header.openNavigation": "Open navigation",
@@ -10,6 +12,8 @@
 		"navigation.stats": "Stats"
 	},
 	"pl": {
+		"global.confirmation": "tak",
+		"global.denial": "nie",
 		"header.closeNavigation": "Zamknij nawigację",
 		"header.closeSearch": "Zamknij wyszukiwarkę",
 		"header.openNavigation": "Otwórz nawigację",

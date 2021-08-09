@@ -6,6 +6,11 @@
 	import Fermentation from './fermentation.svelte';
 	import Extract from './extract.svelte';
 	import Alcohol from './alcohol.svelte';
+	import Filtration from './filtration.svelte';
+	import Pasteurization from './pasteurization.svelte';
+	import Aged from './aged/aged.svelte';
+	import BeverageStyle from './beverageStyle.svelte';
+	import DryHopped from './dryHopped.svelte';
 </script>
 
 <dl>
@@ -16,6 +21,11 @@
 	<Fermentation />
 	<Extract />
 	<Alcohol />
+	<Filtration />
+	<Pasteurization />
+	<Aged />
+	<BeverageStyle />
+	<DryHopped />
 </dl>
 
 <style>
