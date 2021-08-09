@@ -7,7 +7,7 @@
 	let loaded = false;
 </script>
 
-<aside>
+<section>
 	{#if $beverage.photos.gallery}
 		{#if !loaded}
 			<span transition:toggleVisibility>
@@ -22,10 +22,10 @@
 	{:else}
 		broken container image
 	{/if}
-</aside>
+</section>
 
 <style>
-	aside {
+	section {
 		grid-area: gallery;
 		width: 220px;
 		height: 500px;

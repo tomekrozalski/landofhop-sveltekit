@@ -4,6 +4,8 @@
 	import City from './city.svelte';
 	import Country from './country.svelte';
 	import Fermentation from './fermentation.svelte';
+	import Extract from './extract.svelte';
+	import Alcohol from './alcohol.svelte';
 </script>
 
 <dl>
@@ -12,6 +14,8 @@
 	<Barcode />
 	<BeverageType />
 	<Fermentation />
+	<Extract />
+	<Alcohol />
 </dl>
 
 <style>
@@ -40,5 +44,13 @@
 
 	:global(dd:not(:last-of-type)::after) {
 		content: ', ';
+	}
+
+	:global(dd > * + *:not(.no-separator)::before) {
+		content: ' / ';
+	}
+
+	:global(dd > * + .no-separator::before) {
+		content: ' ';
 	}
 </style>

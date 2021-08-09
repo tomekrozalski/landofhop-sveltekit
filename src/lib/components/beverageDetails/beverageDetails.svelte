@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { beverage } from '$lib/utils/stores/beverage';
-	import Aside from './aside.svelte';
+	import Navigation from './navigation.svelte';
 	import Gallery from './gallery/gallery.svelte';
 	import Header from './header.svelte';
 	import Tale from './tale/tale.svelte';
@@ -11,13 +11,15 @@
 	{#key $beverage.id}
 		<Gallery />
 	{/key}
-	<Header />
-	<Tale />
-	<Testimony />
-	<!-- <Impressions /> -->
-	<!-- <FootNotes /> -->
-	<!-- {isLoggedIn && <AdminBar />} -->
-	<Aside />
+	<div>
+		<Header />
+		<Tale />
+		<Testimony />
+		<!-- <Impressions /> -->
+		<!-- <FootNotes /> -->
+		<!-- {isLoggedIn && <AdminBar />} -->
+	</div>
+	<Navigation />
 </article>
 
 <style>
@@ -25,46 +27,32 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-template-areas:
-			'aside'
+			'navigation'
 			'gallery'
-			'header'
-			'tale'
-			'testimony'
-			'impressions'
-			'footnotes'
-			'admin';
+			'main';
 		column-gap: 4rem;
 		max-width: var(--size-container-max-width);
 		padding: 2rem;
 		margin: 0 auto 6rem auto;
 	}
 
+	div {
+		grid-area: main;
+	}
+
 	@media (--md) {
 		article {
 			grid-template-columns: 22rem 1fr 1fr;
 			grid-template-areas:
-				'aside aside aside'
-				'gallery header header'
-				'gallery tale tale'
-				'gallery testimony testimony'
-				'gallery impressions impressions'
-				'gallery footnotes footnotes'
-				'gallery admin admin'
-				'gallery . .';
+				'navigation navigation navigation'
+				'gallery main main';
 		}
 	}
 
 	@media (--lg) {
 		article {
 			grid-template-columns: 22rem 1fr 18rem;
-			grid-template-areas:
-				'gallery header aside'
-				'gallery tale aside'
-				'gallery testimony aside'
-				'gallery impressions aside'
-				'gallery footnotes aside'
-				'gallery admin aside'
-				'gallery . aside';
+			grid-template-areas: 'gallery main navigation';
 			padding: 2rem 1rem;
 		}
 	}

@@ -5,7 +5,7 @@
 	import RightIcon from '$lib/elements/vectors/right.svelte';
 </script>
 
-<aside>
+<nav>
 	{#if $next}
 		<a sveltekit:prefetch href={`/details/${$next.shortId}/${$next.brand.badge}/${$next.badge}`}>
 			<LeftIcon>{$translate('beverage.aside.next')}</LeftIcon>
@@ -27,11 +27,11 @@
 			<RightIcon>{$translate('beverage.aside.previous')}</RightIcon>
 		</span>
 	{/if}
-</aside>
+</nav>
 
 <style>
-	aside {
-		grid-area: aside;
+	nav {
+		grid-area: navigation;
 		display: flex;
 		justify-content: center;
 		padding: 1rem;
@@ -52,36 +52,36 @@
 		position: relative;
 	}
 
-	aside :global(svg) {
+	:global(svg) {
 		width: 2.6rem;
 		transition: fill var(--transition-default), transform var(--transition-default);
 	}
 
-	aside a :global(svg) {
+	a :global(svg) {
 		fill: var(--color-success);
 	}
 
-	aside span :global(svg) {
+	span :global(svg) {
 		fill: var(--color-grey-2);
 	}
 
-	aside a:hover {
+	a:hover {
 		background-color: var(--color-warning);
 	}
 
-	aside a:hover :global(svg) {
+	a:hover :global(svg) {
 		fill: var(--color-white);
 		transform: scale(2.5);
 	}
 
 	@media (--md) {
-		aside {
+		nav {
 			justify-content: flex-end;
 		}
 	}
 
 	@media (--lg) {
-		aside {
+		nav {
 			justify-content: center;
 		}
 	}

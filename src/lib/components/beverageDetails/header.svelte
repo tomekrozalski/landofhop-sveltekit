@@ -78,7 +78,6 @@
 
 <style>
 	header {
-		grid-area: header;
 		margin-top: 1rem;
 	}
 </style>
