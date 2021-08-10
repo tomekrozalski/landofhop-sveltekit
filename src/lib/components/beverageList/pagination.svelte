@@ -29,7 +29,7 @@
 				sveltekit:prefetch
 				sveltekit:noscroll
 				class="active"
-				href={order > 2 ? `/list/{order - 1}` : '/'}>←</a
+				href={order > 2 ? `/list/${order - 1}` : '/'}>←</a
 			>
 		{/if}
 	</li>

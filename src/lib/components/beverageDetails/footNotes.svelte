@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { format } from 'date-fns';
+	import format from 'date-fns/format/index.js';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
 	export let details: Details;

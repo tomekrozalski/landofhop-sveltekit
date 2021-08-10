@@ -1,13 +1,13 @@
 <script lang="ts">
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import Navigation from './navigation.svelte';
 	import Gallery from './gallery/gallery.svelte';
 	import Header from './header.svelte';
 	import Tale from './tale/tale.svelte';
 	import Testimony from './testimony/testimony.svelte';
 	import FootNotes from './footNotes.svelte';
-
-	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import Impressions from './impressions/impressions.svelte';
 
 	export let details: Details;
 	export let next: Basics | null;
@@ -20,7 +20,7 @@
 		<Header {details} />
 		<Tale {details} />
 		<Testimony {details} />
-		<!-- <Impressions /> -->
+		<Impressions {details} />
 		<FootNotes {details} />
 		<!-- {isLoggedIn && <AdminBar />} -->
 	</div>
