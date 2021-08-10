@@ -52,7 +52,7 @@
 		position: relative;
 	}
 
-	:global(svg) {
+	nav :global(svg) {
 		width: 2.6rem;
 		transition: fill var(--transition-default), transform var(--transition-default);
 	}

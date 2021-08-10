@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import isBoolean from 'lodash/isBoolean';
+	import isBoolean from 'lodash/isBoolean.js';
 	import { beverage } from '$lib/utils/stores/beverage';
 </script>
 

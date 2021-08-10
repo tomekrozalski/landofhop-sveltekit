@@ -2,6 +2,7 @@
 	"en": {
 		"beverage.aside.next": "Next beverage",
 		"beverage.aside.previous": "Previous beverage",
+		"beverage.footnotes.added": "added",
 		"beverage.header.by": "by",
 		"beverage.header.for": "for",
 		"beverage.header.brewed": "Brewed",
@@ -79,6 +80,7 @@
 	"pl": {
 		"beverage.aside.next": "Następne piwo",
 		"beverage.aside.previous": "Poprzednie piwo",
+		"beverage.footnotes.added": "dodano",
 		"beverage.header.by": "przez",
 		"beverage.header.for": "dla",
 		"beverage.header.brewed": "Uwarzono",

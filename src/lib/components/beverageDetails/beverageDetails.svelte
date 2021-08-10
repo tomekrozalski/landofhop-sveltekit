@@ -5,6 +5,7 @@
 	import Header from './header.svelte';
 	import Tale from './tale/tale.svelte';
 	import Testimony from './testimony/testimony.svelte';
+	import FootNotes from './footNotes.svelte';
 </script>
 
 <article>
@@ -16,7 +17,7 @@
 		<Tale />
 		<Testimony />
 		<!-- <Impressions /> -->
-		<!-- <FootNotes /> -->
+		<FootNotes />
 		<!-- {isLoggedIn && <AdminBar />} -->
 	</div>
 	<Navigation />
@@ -79,5 +80,40 @@
 
 	article :global(.editorial) {
 		background-image: linear-gradient(var(--color-editorial-light), var(--color-editorial-light));
+	}
+
+	:global(dl) {
+		grid-area: testimony;
+		margin: 1.8rem 0;
+	}
+
+	:global(dl::first-letter) {
+		text-transform: uppercase;
+	}
+
+	:global(dt) {
+		display: inline;
+	}
+
+	:global(dt::after) {
+		content: ': ';
+	}
+
+	:global(dd) {
+		display: inline;
+		margin: 0;
+		padding: 0;
+	}
+
+	:global(dd:not(:last-of-type)::after) {
+		content: ', ';
+	}
+
+	:global(dd > * + *:not(.no-separator)::before) {
+		content: ' / ';
+	}
+
+	:global(dd > * + .no-separator::before) {
+		content: ' ';
 	}
 </style>
