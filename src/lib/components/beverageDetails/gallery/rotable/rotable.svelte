@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import prepareCanvas from './prepareCanvas';
 
 	let renderer;
 
-	const brand = $beverage.brand.badge;
-	const name = $beverage.badge;
-	const shortId = $beverage.shortId;
-	const imagesInGallery = $beverage.photos.gallery;
+	export let details: Details;
+	const brand = details.brand.badge;
+	const name = details.badge;
+	const shortId = details.shortId;
+	const imagesInGallery = details.photos.gallery;
 
 	const { camera, geometry, scene, texturePromises } = prepareCanvas({
 		brand,
@@ -152,5 +153,6 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		z-index: 1;
 	}
 </style>

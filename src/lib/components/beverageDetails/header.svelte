@@ -1,74 +1,72 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import MarkLanguage from '$lib/elements/markLanguage.svelte';
 	import FormattedList from '$lib/elements/formattedList.svelte';
+
+	export let details: Details;
+	const { brand, contract, cooperation, isContract, name, remark, series } = details;
 </script>
 
 <header>
-	<MarkLanguage tag="h1" name={$beverage.name} />
+	<MarkLanguage tag="h1" {name} />
 	<p>
 		{$translate('beverage.header.brewed')}
 		<!-- remark -->
-		{#if $beverage.remark?.label}
-			<MarkLanguage label tag="em" name={$beverage.remark.label} />
+		{#if remark?.label}
+			<MarkLanguage label tag="em" name={remark.label} />
 		{/if}
-		{#if $beverage.remark?.producer}
-			<MarkLanguage tag="em" name={$beverage.remark.producer} />
+		{#if remark?.producer}
+			<MarkLanguage tag="em" name={remark.producer} />
 		{/if}
 		<!-- contract -->
-		{#if $beverage.contract}
+		{#if contract}
 			{$translate('beverage.header.by')}
-			{#if $beverage.contract.label}
-				<MarkLanguage label tag="span" name={$beverage.contract.label} />
+			{#if contract.label}
+				<MarkLanguage label tag="span" name={contract.label} />
 			{/if}
-			{#if $beverage.contract.producer}
-				<MarkLanguage producer tag="span" name={$beverage.contract.producer} />
+			{#if contract.producer}
+				<MarkLanguage producer tag="span" name={contract.producer} />
 			{/if}
-			{#if $beverage.contract.editorial}
-				<MarkLanguage editorial tag="span" name={$beverage.contract.editorial} />
+			{#if contract.editorial}
+				<MarkLanguage editorial tag="span" name={contract.editorial} />
 			{/if}
 		{/if}
 		<!-- cooperation -->
-		{#if $beverage.cooperation}
+		{#if cooperation}
 			{$translate('beverage.header.inCooperationWith')}
-			{#if $beverage.cooperation.label?.length}
-				<FormattedList mode="short" let:item data={$beverage.cooperation.label}>
+			{#if cooperation.label?.length}
+				<FormattedList mode="short" let:item data={cooperation.label}>
 					<MarkLanguage label tag="span" name={item} />
 				</FormattedList>
 			{/if}
-			{#if $beverage.cooperation.producer?.length}
-				<FormattedList mode="short" let:item data={$beverage.cooperation.producer}>
+			{#if cooperation.producer?.length}
+				<FormattedList mode="short" let:item data={cooperation.producer}>
 					<MarkLanguage producer tag="span" name={item} />
 				</FormattedList>
 			{/if}
-			{#if $beverage.cooperation.editorial?.length}
-				<FormattedList mode="short" let:item data={$beverage.cooperation.editorial}>
+			{#if cooperation.editorial?.length}
+				<FormattedList mode="short" let:item data={cooperation.editorial}>
 					<MarkLanguage editorial tag="span" name={item} />
 				</FormattedList>
 			{/if}
 		{/if}
 		<!-- brand -->
-		{#if $beverage.contract || $beverage.isContract}
+		{#if contract || isContract}
 			{$translate('beverage.header.for')}
 		{:else}
 			{$translate('beverage.header.by')}
 		{/if}
-		<MarkLanguage
-			label
-			tag="em"
-			name={$beverage.brand.name}
-		/><!--
-			series (without space)
-		-->{#if $beverage.series}
+		<MarkLanguage label tag="em" name={brand.name} />
+		{#if series}
 			{$translate('beverage.header.series')}
-			{#if $beverage.series.label?.length}
-				<FormattedList mode="narrow" let:item data={$beverage.series.label}>
+			{#if series.label?.length}
+				<FormattedList mode="narrow" let:item data={series.label}>
 					<MarkLanguage label tag="span" name={item} />
 				</FormattedList>
 			{/if}
-			{#if $beverage.series.producer?.length}
-				<FormattedList mode="narrow" let:item data={$beverage.series.producer}>
+			{#if series.producer?.length}
+				<FormattedList mode="narrow" let:item data={series.producer}>
 					<MarkLanguage producer tag="span" name={item} />
 				</FormattedList>
 			{/if}

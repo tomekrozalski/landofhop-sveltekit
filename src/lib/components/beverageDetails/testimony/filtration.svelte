@@ -1,27 +1,30 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import isBoolean from 'lodash/isBoolean.js';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+
+	export let details: Details;
+	const { filtration } = details;
 </script>
 
-{#if $beverage.filtration}
+{#if filtration}
 	<dt>
 		{$translate('beverage.testimonial.filtration')}
 	</dt>
 	<dd>
-		{#if isBoolean($beverage.filtration.label)}
+		{#if isBoolean(filtration.label)}
 			<em class="label">
-				{$translate($beverage.filtration.label ? 'global.confirmation' : 'global.denial')}
+				{$translate(filtration.label ? 'global.confirmation' : 'global.denial')}
 			</em>
 		{/if}
-		{#if isBoolean($beverage.filtration.producer)}
+		{#if isBoolean(filtration.producer)}
 			<em class="producer">
-				{$translate($beverage.filtration.producer ? 'global.confirmation' : 'global.denial')}
+				{$translate(filtration.producer ? 'global.confirmation' : 'global.denial')}
 			</em>
 		{/if}
-		{#if isBoolean($beverage.filtration.editorial)}
+		{#if isBoolean(filtration.editorial)}
 			<em class="editorial">
-				{$translate($beverage.filtration.editorial ? 'global.confirmation' : 'global.denial')}
+				{$translate(filtration.editorial ? 'global.confirmation' : 'global.denial')}
 			</em>
 		{/if}
 	</dd>

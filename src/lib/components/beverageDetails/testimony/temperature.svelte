@@ -1,34 +1,37 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+
+	export let details: Details;
+	const { temperature } = details;
 </script>
 
-{#if $beverage.temperature}
+{#if temperature}
 	<dt>
 		{$translate('beverage.testimonial.temperature')}
 	</dt>
 	<dd>
-		{#if $beverage.temperature.label}
+		{#if temperature.label}
 			<em class="label">
-				{#if $beverage.temperature.label.from === $beverage.temperature.label.to}
-					{$beverage.temperature.label.from}
+				{#if temperature.label.from === temperature.label.to}
+					{temperature.label.from}
 				{:else}
-					{$beverage.temperature.label.from}-{$beverage.temperature.label.to}
+					{temperature.label.from}-{temperature.label.to}
 				{/if}
 				{$translate('beverage.testimonial.temperatureUnit', {
-					unit: $beverage.temperature.label.unit
+					unit: temperature.label.unit
 				})}
 			</em>
 		{/if}
-		{#if $beverage.temperature.producer}
+		{#if temperature.producer}
 			<em class="producer">
-				{#if $beverage.temperature.producer.from === $beverage.temperature.producer.to}
-					{$beverage.temperature.producer.from}
+				{#if temperature.producer.from === temperature.producer.to}
+					{temperature.producer.from}
 				{:else}
-					{$beverage.temperature.producer.from}-{$beverage.temperature.producer.to}
+					{temperature.producer.from}-{temperature.producer.to}
 				{/if}
 				{$translate('beverage.testimonial.temperatureUnit', {
-					unit: $beverage.temperature.producer.unit
+					unit: temperature.producer.unit
 				})}
 			</em>
 		{/if}

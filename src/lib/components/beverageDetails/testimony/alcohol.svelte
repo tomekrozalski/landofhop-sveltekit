@@ -1,32 +1,35 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+
+	export let details: Details;
+	const { alcohol } = details;
 </script>
 
-{#if $beverage.alcohol}
+{#if alcohol}
 	<dt>
 		{$translate('beverage.testimonial.alcohol')}
 	</dt>
 	<dd>
-		{#if $beverage.alcohol.label}
+		{#if alcohol.label}
 			<em class="label">
-				{$translate('beverage.testimonial.alcohol.value', $beverage.alcohol.label)}
-				{#if $beverage.alcohol.label.scope}
-					{$translate(`beverage.testimonial.alcoholScope.${$beverage.alcohol.label.scope}`)}
+				{$translate('beverage.testimonial.alcohol.value', alcohol.label)}
+				{#if alcohol.label.scope}
+					{$translate(`beverage.testimonial.alcoholScope.${alcohol.label.scope}`)}
 				{/if}
 			</em>
 		{/if}
-		{#if $beverage.alcohol.producer}
+		{#if alcohol.producer}
 			<em class="producer">
-				{$translate('beverage.testimonial.alcohol.value', $beverage.alcohol.producer)}
-				{#if $beverage.alcohol.producer.scope}
-					{$translate(`beverage.testimonial.alcoholScope.${$beverage.alcohol.producer.scope}`)}
+				{$translate('beverage.testimonial.alcohol.value', alcohol.producer)}
+				{#if alcohol.producer.scope}
+					{$translate(`beverage.testimonial.alcoholScope.${alcohol.producer.scope}`)}
 				{/if}
 			</em>
 		{/if}
-		{#if $beverage.alcohol.editorial?.scope}
+		{#if alcohol.editorial?.scope}
 			<em class="editorial no-separator">
-				{$translate(`beverage.testimonial.alcoholScope.${$beverage.alcohol.editorial.scope}`)}
+				{$translate(`beverage.testimonial.alcoholScope.${alcohol.editorial.scope}`)}
 			</em>
 		{/if}
 	</dd>

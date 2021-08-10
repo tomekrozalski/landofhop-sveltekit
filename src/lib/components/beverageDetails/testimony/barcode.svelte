@@ -1,13 +1,16 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+
+	export let details: Details;
+	const { barcode } = details;
 </script>
 
-{#if $beverage.barcode}
+{#if barcode}
 	<dt>
 		{$translate('beverage.testimonial.barcode')}
 	</dt>
 	<dd>
-		<em class="label">{$beverage.barcode}</em>
+		<em class="label">{barcode}</em>
 	</dd>
 {/if}

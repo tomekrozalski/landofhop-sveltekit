@@ -6,7 +6,7 @@
 	export let type: ContainerType;
 </script>
 
-<img src={`${PHOTO_SERVER}/broken-${type}.svg`} alt={$translate('landingPage.imageNotFound')} />
+<img src="{PHOTO_SERVER}/broken-{type}.svg" alt={$translate('landingPage.imageNotFound')} />
 
 <style>
 	img {

@@ -1,17 +1,20 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import FormattedList from '$lib/elements/formattedList.svelte';
+
+	export let details: Details;
+	const { price } = details;
 </script>
 
-{#if $beverage.price}
+{#if price}
 	<dt>
 		{$translate('beverage.testimonial.price')}
 	</dt>
 	<dd>
-		{#if $beverage.price.label}
+		{#if price.label}
 			<em class="label">
-				<FormattedList mode="narrow" let:item data={$beverage.price.label}>
+				<FormattedList mode="narrow" let:item data={price.label}>
 					<em>
 						{new Intl.NumberFormat('pl', {
 							style: 'currency',
@@ -21,9 +24,9 @@
 				</FormattedList>
 			</em>
 		{/if}
-		{#if $beverage.price.producer}
+		{#if price.producer}
 			<em class="producer">
-				<FormattedList mode="narrow" let:item data={$beverage.price.producer}>
+				<FormattedList mode="narrow" let:item data={price.producer}>
 					<em>
 						{new Intl.NumberFormat('pl', {
 							style: 'currency',
@@ -33,9 +36,9 @@
 				</FormattedList>
 			</em>
 		{/if}
-		{#if $beverage.price.editorial}
+		{#if price.editorial}
 			<em class="editorial">
-				<FormattedList mode="narrow" let:item data={$beverage.price.editorial}>
+				<FormattedList mode="narrow" let:item data={price.editorial}>
 					<em>
 						{new Intl.NumberFormat('pl', {
 							style: 'currency',

@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { format } from 'date-fns';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+
+	export let details: Details;
+	const { added } = details;
 </script>
 
 <dl>
@@ -9,7 +12,7 @@
 		{$translate('beverage.footnotes.added')}
 	</dt>
 	<dd>
-		{format(new Date($beverage.added), 'pl' === 'pl' ? 'dd.MM.yyyy' : 'dd/MM/yyyy')}
+		{format(new Date(added), 'pl' === 'pl' ? 'dd.MM.yyyy' : 'dd/MM/yyyy')}
 	</dd>
 </dl>
 

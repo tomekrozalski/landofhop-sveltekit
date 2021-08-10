@@ -13,7 +13,7 @@
 <ul>
 	{#each beverages as beverage}
 		<li>
-			<a href={`/details/${beverage.shortId}/${beverage.brand.badge}/${beverage.badge}`}>
+			<a href="/details/{beverage.shortId}/{beverage.brand.badge}/{beverage.badge}">
 				{#if beverage.photos?.cover}
 					{#key beverages}
 						<CoverImageWrapper {beverage} />

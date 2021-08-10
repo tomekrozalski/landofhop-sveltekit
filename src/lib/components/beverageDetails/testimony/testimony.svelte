@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import Barcode from './barcode.svelte';
 	import BeverageType from './beverageType.svelte';
 	import City from './city.svelte';
@@ -18,26 +19,28 @@
 	import Temperature from './temperature.svelte';
 	import Container from './container.svelte';
 	import Price from './price.svelte';
+
+	export let details: Details;
 </script>
 
 <dl>
-	<City />
-	<Country />
-	<Barcode />
-	<BeverageType />
-	<Fermentation />
-	<Extract />
-	<Alcohol />
-	<Filtration />
-	<Pasteurization />
-	<Aged />
-	<BeverageStyle />
-	<DryHopped />
-	<HopRate />
-	<ExpirationTime />
-	<Ingredients />
-	<SmokedMalt />
-	<Temperature />
-	<Container />
-	<Price />
+	<City {details} />
+	<Country {details} />
+	<Barcode {details} />
+	<BeverageType {details} />
+	<Fermentation {details} />
+	<Extract {details} />
+	<Alcohol {details} />
+	<Filtration {details} />
+	<Pasteurization {details} />
+	<Aged {details} />
+	<BeverageStyle {details} />
+	<DryHopped {details} />
+	<HopRate {details} />
+	<ExpirationTime {details} />
+	<Ingredients {details} />
+	<SmokedMalt {details} />
+	<Temperature {details} />
+	<Container {details} />
+	<Price {details} />
 </dl>

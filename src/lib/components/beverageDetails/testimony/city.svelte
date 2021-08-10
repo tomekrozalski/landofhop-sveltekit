@@ -1,22 +1,25 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import MarkLanguage from '$lib/elements/markLanguage.svelte';
+
+	export let details: Details;
+	const { place } = details;
 </script>
 
-{#if $beverage.place}
+{#if place}
 	<dt>
 		{$translate('beverage.testimonial.city')}
 	</dt>
 	<dd>
-		{#if $beverage.place.label}
-			<MarkLanguage label tag="em" name={$beverage.place.label.city} />
+		{#if place.label}
+			<MarkLanguage label tag="em" name={place.label.city} />
 		{/if}
-		{#if $beverage.place.producer}
-			<MarkLanguage producer tag="em" name={$beverage.place.producer.city} />
+		{#if place.producer}
+			<MarkLanguage producer tag="em" name={place.producer.city} />
 		{/if}
-		{#if $beverage.place.editorial}
-			<MarkLanguage editorial tag="em" name={$beverage.place.editorial.city} />
+		{#if place.editorial}
+			<MarkLanguage editorial tag="em" name={place.editorial.city} />
 		{/if}
 	</dd>
 {/if}

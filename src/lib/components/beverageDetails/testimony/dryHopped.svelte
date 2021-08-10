@@ -1,19 +1,22 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import MarkLanguage from '$lib/elements/markLanguage.svelte';
 	import FormattedList from '$lib/elements/formattedList.svelte';
+
+	export let details: Details;
+	const { dryHopped, isDryHopped } = details;
 </script>
 
-{#if $beverage.isDryHopped}
+{#if isDryHopped}
 	<dt>
 		{$translate('beverage.testimonial.dryHopped')}
 	</dt>
 	<dd>
-		{#if $beverage.isDryHopped.label}
+		{#if isDryHopped.label}
 			<span class="label">
-				{#if $beverage.dryHopped?.label}
-					<FormattedList mode="short" let:item data={$beverage.dryHopped.label}>
+				{#if dryHopped?.label}
+					<FormattedList mode="short" let:item data={dryHopped.label}>
 						<MarkLanguage label tag="em" name={item} />
 					</FormattedList>
 				{:else}
@@ -23,10 +26,10 @@
 				{/if}
 			</span>
 		{/if}
-		{#if $beverage.isDryHopped.producer}
+		{#if isDryHopped.producer}
 			<span class="producer">
-				{#if $beverage.dryHopped?.producer}
-					<FormattedList mode="short" let:item data={$beverage.dryHopped.producer}>
+				{#if dryHopped?.producer}
+					<FormattedList mode="short" let:item data={dryHopped.producer}>
 						<MarkLanguage producer tag="em" name={item} />
 					</FormattedList>
 				{:else}

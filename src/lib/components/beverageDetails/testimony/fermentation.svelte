@@ -1,27 +1,29 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
-	import MarkLanguage from '$lib/elements/markLanguage.svelte';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import FormattedList from '$lib/elements/formattedList.svelte';
+
+	export let details: Details;
+	const { fermentation } = details;
 </script>
 
-{#if $beverage.fermentation}
+{#if fermentation}
 	<dt>
 		{$translate('beverage.testimonial.fermentation')}
 	</dt>
 	<dd>
-		{#if $beverage.fermentation.label}
-			<FormattedList mode="short" let:item data={$beverage.fermentation.label}>
+		{#if fermentation.label}
+			<FormattedList mode="short" let:item data={fermentation.label}>
 				<em>{$translate(`beverage.testimonial.fermentationType.${item}`)}</em>
 			</FormattedList>
 		{/if}
-		{#if $beverage.fermentation.producer}
-			<FormattedList mode="short" let:item data={$beverage.fermentation.producer}>
+		{#if fermentation.producer}
+			<FormattedList mode="short" let:item data={fermentation.producer}>
 				<em>{$translate(`beverage.testimonial.fermentationType.${item}`)}</em>
 			</FormattedList>
 		{/if}
-		{#if $beverage.fermentation.editorial}
-			<FormattedList mode="short" let:item data={$beverage.fermentation.editorial}>
+		{#if fermentation.editorial}
+			<FormattedList mode="short" let:item data={fermentation.editorial}>
 				<em>{$translate(`beverage.testimonial.fermentationType.${item}`)}</em>
 			</FormattedList>
 		{/if}

@@ -1,21 +1,24 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+
+	export let details: Details;
+	const { hopRate } = details;
 </script>
 
-{#if $beverage.hopRate}
+{#if hopRate}
 	<dt>
 		{$translate('beverage.testimonial.hopRate')}
 	</dt>
 	<dd>
-		{#if $beverage.hopRate.label}
+		{#if hopRate.label}
 			<em class="label">
-				{$translate('beverage.testimonial.hopRate.value', $beverage.hopRate.label)}
+				{$translate('beverage.testimonial.hopRate.value', hopRate.label)}
 			</em>
 		{/if}
-		{#if $beverage.hopRate.producer}
+		{#if hopRate.producer}
 			<em class="producer">
-				{$translate('beverage.testimonial.hopRate.value', $beverage.hopRate.producer)}
+				{$translate('beverage.testimonial.hopRate.value', hopRate.producer)}
 			</em>
 		{/if}
 	</dd>

@@ -21,11 +21,11 @@
 </script>
 
 <picture>
-	<source type="image/webp" srcSet={`${getPath('webp', 1)} 1x, ${getPath('webp', 2)} 2x`} />
-	<source srcSet={`${getPath('jpg', 1)} 1x, ${getPath('jpg', 2)} 2x`} />
+	<source type="image/webp" srcSet="{getPath('webp', 1)} 1x, {getPath('webp', 2)} 2x" />
+	<source srcSet="{getPath('jpg', 1)} 1x, {getPath('jpg', 2)} 2x" />
 	<img
 		alt={loaded ? `${beverage.name.value}, ${beverage.brand.name.value}` : ''}
-		srcset={`${getPath('jpg', 1)} 1x, ${getPath('jpg', 2)} 2x`}
+		srcset="{getPath('jpg', 1)} 1x, ${getPath('jpg', 2)} 2x"
 		src={getPath('jpg', 1)}
 		class:loaded
 		bind:this={thisImage}

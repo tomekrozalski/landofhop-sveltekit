@@ -1,24 +1,27 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+
+	export let details: Details;
+	const { expirationDate } = details;
 </script>
 
-{#if $beverage.expirationDate}
+{#if expirationDate}
 	<dt>
 		{$translate('beverage.testimonial.expirationTime')}
 	</dt>
 	<dd>
-		{#if $beverage.expirationDate.label}
+		{#if expirationDate.label}
 			<span class="label">
-				{$translate(`beverage.time.${$beverage.expirationDate.label.unit}`, {
-					value: $beverage.expirationDate.label.value
+				{$translate(`beverage.time.${expirationDate.label.unit}`, {
+					value: expirationDate.label.value
 				})}
 			</span>
 		{/if}
-		{#if $beverage.expirationDate.producer}
+		{#if expirationDate.producer}
 			<span class="producer">
-				{$translate(`beverage.time.${$beverage.expirationDate.producer.unit}`, {
-					value: $beverage.expirationDate.producer.value
+				{$translate(`beverage.time.${expirationDate.producer.unit}`, {
+					value: expirationDate.producer.value
 				})}
 			</span>
 		{/if}

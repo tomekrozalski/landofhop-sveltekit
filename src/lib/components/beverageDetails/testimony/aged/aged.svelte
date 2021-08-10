@@ -1,19 +1,22 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import FormattedList from '$lib/elements/formattedList.svelte';
 	import AgedItem from './agedItem.svelte';
+
+	export let details: Details;
+	const { aged, isAged } = details;
 </script>
 
-{#if $beverage.aged}
+{#if aged}
 	<dt>
 		{$translate('beverage.testimonial.aged')}
 	</dt>
 	<dd>
-		{#if $beverage.isAged?.label}
+		{#if isAged?.label}
 			<span>
-				{#if $beverage.aged?.label}
-					<FormattedList mode="long" let:item data={$beverage.aged.label}>
+				{#if aged?.label}
+					<FormattedList mode="long" let:item data={aged.label}>
 						<AgedItem {item} />
 					</FormattedList>
 				{:else}
@@ -21,10 +24,10 @@
 				{/if}
 			</span>
 		{/if}
-		{#if $beverage.isAged?.producer}
+		{#if isAged?.producer}
 			<span>
-				{#if $beverage.aged?.producer}
-					<FormattedList mode="long" let:item data={$beverage.aged.producer}>
+				{#if aged?.producer}
+					<FormattedList mode="long" let:item data={aged.producer}>
 						<AgedItem {item} />
 					</FormattedList>
 				{:else}
@@ -32,10 +35,10 @@
 				{/if}
 			</span>
 		{/if}
-		{#if $beverage.isAged?.editorial}
+		{#if isAged?.editorial}
 			<span>
-				{#if $beverage.aged?.editorial}
-					<FormattedList mode="long" let:item data={$beverage.aged.editorial}>
+				{#if aged?.editorial}
+					<FormattedList mode="long" let:item data={aged.editorial}>
 						<AgedItem {item} />
 					</FormattedList>
 				{:else}

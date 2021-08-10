@@ -2,12 +2,15 @@
 	import { onMount } from 'svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+	export let details: Details;
+	const { badge, brand, name, shortId } = details;
 
-	$: getPath = (format: 'webp' | 'jpg', size: 1 | 2) => {
-		const basicPath = `${PHOTO_SERVER}/${$beverage.brand.badge}/${$beverage.badge}/${$beverage.shortId}`;
-		return `${basicPath}/container/${format}/${size}x/01.${format}`;
-	};
+	const basicPath = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}`;
+	const pathJpgRegular = `${basicPath}/container/jpg/1x/01.jpg`;
+	const pathJpgLarge = `${basicPath}/container/jpg/2x/01.jpg`;
+	const pathWebpRegular = `${basicPath}/container/webp/1x/01.webp`;
+	const pathWebpLarge = `${basicPath}/container/webp/2x/01.webp`;
 
 	export let loaded: boolean;
 	let thisImage;
@@ -20,12 +23,12 @@
 </script>
 
 <picture>
-	<source type="image/webp" srcSet={`${getPath('webp', 1)} 1x, ${getPath('webp', 2)} 2x`} />
-	<source srcSet={`${getPath('jpg', 1)} 1x, ${getPath('jpg', 2)} 2x`} />
+	<source type="image/webp" srcSet="{pathWebpRegular} 1x, {pathWebpLarge} 2x" />
+	<source srcSet="{pathJpgRegular} 1x, {pathJpgLarge} 2x" />
 	<img
-		alt={loaded ? `${$beverage.name.value}, ${$beverage.brand.name.value}` : ''}
-		srcset={`${getPath('jpg', 1)} 1x, ${getPath('jpg', 2)} 2x`}
-		src={getPath('jpg', 1)}
+		alt={loaded ? `${name.value}, ${brand.name.value}` : ''}
+		srcset="{pathJpgRegular} 1x, {pathJpgLarge} 2x"
+		src={pathJpgRegular}
 		class:loaded
 		bind:this={thisImage}
 		loading="lazy"

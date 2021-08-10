@@ -22,27 +22,14 @@
 </script>
 
 <script lang="ts">
-	import { beforeUpdate } from 'svelte';
-	import {
-		beverage as beverageStore,
-		next as nextStore,
-		previous as previousStore
-	} from '$lib/utils/stores/beverage';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
-
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import BeverageDetails from '$lib/components/beverageDetails/beverageDetails.svelte';
 
 	export let details: Details;
 	export let next: Basics | null;
 	export let previous: Basics | null;
-
-	beforeUpdate(() => {
-		beverageStore.set(details);
-		nextStore.set(next);
-		previousStore.set(previous);
-	});
 </script>
 
 <svelte:head>
@@ -50,6 +37,6 @@
 	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
-{#if $beverageStore}
-	<BeverageDetails />
-{/if}
+{#key details.id}
+	<BeverageDetails {details} {next} {previous} />
+{/key}

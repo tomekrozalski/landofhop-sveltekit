@@ -1,19 +1,22 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+
+	export let details: Details;
+	const { smokedMalt } = details;
 </script>
 
-{#if $beverage.smokedMalt}
+{#if smokedMalt}
 	<dt>
 		{$translate('beverage.testimonial.smokedMalt')}
 	</dt>
 	<dd>
-		{#if $beverage.smokedMalt.label}
+		{#if smokedMalt.label}
 			<em class="label">
 				{$translate('global.confirmation')}
 			</em>
 		{/if}
-		{#if $beverage.smokedMalt.producer}
+		{#if smokedMalt.producer}
 			<em class="producer">
 				{$translate('global.confirmation')}
 			</em>

@@ -1,26 +1,29 @@
 <script lang="ts">
 	import marked from 'marked';
-	import { beverage } from '$lib/utils/stores/beverage';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import Article from './article.svelte';
+
+	export let details: Details;
+	const { tale } = details;
 </script>
 
-{#if $beverage.tale}
-	{#if $beverage.tale?.label}
-		<section lang={$beverage.tale.label.language !== 'pl' ? $beverage.tale.label.language : null}>
-			{@html marked($beverage.tale?.label.lead)}
-			{#if $beverage.tale.label.article}
-				<Article>{@html marked($beverage.tale.label.article)}</Article>
+{#if tale}
+	{#if tale?.label}
+		<section lang={tale.label.language !== 'pl' ? tale.label.language : null}>
+			{@html marked(tale?.label.lead)}
+			{#if tale.label.article}
+				<Article>{@html marked(tale.label.article)}</Article>
 			{/if}
 		</section>
 	{/if}
-	{#if $beverage.tale?.producer}
+	{#if tale?.producer}
 		<section
 			class="tale-producer"
-			lang={$beverage.tale.producer.language !== 'pl' ? $beverage.tale.producer.language : null}
+			lang={tale.producer.language !== 'pl' ? tale.producer.language : null}
 		>
-			{@html marked($beverage.tale.producer.lead)}
-			{#if $beverage.tale.producer.article}
-				<Article>{@html marked($beverage.tale.producer.article)}</Article>
+			{@html marked(tale.producer.lead)}
+			{#if tale.producer.article}
+				<Article>{@html marked(tale.producer.article)}</Article>
 			{/if}
 		</section>
 	{/if}

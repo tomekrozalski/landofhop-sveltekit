@@ -1,26 +1,30 @@
 <script lang="ts">
-	import { beverage } from '$lib/utils/stores/beverage';
 	import Navigation from './navigation.svelte';
 	import Gallery from './gallery/gallery.svelte';
 	import Header from './header.svelte';
 	import Tale from './tale/tale.svelte';
 	import Testimony from './testimony/testimony.svelte';
 	import FootNotes from './footNotes.svelte';
+
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+
+	export let details: Details;
+	export let next: Basics | null;
+	export let previous: Basics | null;
 </script>
 
 <article>
-	{#key $beverage.id}
-		<Gallery />
-	{/key}
+	<Gallery {details} />
 	<div>
-		<Header />
-		<Tale />
-		<Testimony />
+		<Header {details} />
+		<Tale {details} />
+		<Testimony {details} />
 		<!-- <Impressions /> -->
-		<FootNotes />
+		<FootNotes {details} />
 		<!-- {isLoggedIn && <AdminBar />} -->
 	</div>
-	<Navigation />
+	<Navigation {next} {previous} />
 </article>
 
 <style>
