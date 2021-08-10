@@ -11,6 +11,13 @@
 	import Aged from './aged/aged.svelte';
 	import BeverageStyle from './beverageStyle.svelte';
 	import DryHopped from './dryHopped.svelte';
+	import HopRate from './hopRate.svelte';
+	import ExpirationTime from './expirationTime.svelte';
+	import Ingredients from './ingredients.svelte';
+	import SmokedMalt from './smokedMalt.svelte';
+	import Temperature from './temperature.svelte';
+	import Container from './container.svelte';
+	import Price from './price.svelte';
 </script>
 
 <dl>
@@ -26,6 +33,13 @@
 	<Aged />
 	<BeverageStyle />
 	<DryHopped />
+	<HopRate />
+	<ExpirationTime />
+	<Ingredients />
+	<SmokedMalt />
+	<Temperature />
+	<Container />
+	<Price />
 </dl>
 
 <style>
@@ -47,7 +61,7 @@
 	}
 
 	:global(dd) {
-		display: inline-flex;
+		display: inline;
 		margin: 0;
 		padding: 0;
 	}

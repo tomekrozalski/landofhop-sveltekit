@@ -26,15 +26,19 @@
 		class:editorial
 		class:label
 		class:producer
-		lang={name.language !== 'pl' ? name.language : null}>{name.value}</em
+		lang={name.language !== 'pl' ? name.language : null}
 	>
+		{name.value}
+	</em>
 {:else if tag === 'span'}
 	<span
 		class:editorial
 		class:label
 		class:producer
-		lang={name.language !== 'pl' ? name.language : null}>{name.value}</span
+		lang={name.language !== 'pl' ? name.language : null}
 	>
+		{name.value}
+	</span>
 {:else}
 	<span>Something went wrong</span>
 {/if}

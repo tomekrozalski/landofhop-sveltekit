@@ -11,19 +11,25 @@
 	</dt>
 	<dd>
 		{#if $beverage.style.label}
-			<FormattedList mode="narrow" let:item data={$beverage.style.label}>
-				<MarkLanguage label tag="em" name={item} />
-			</FormattedList>
+			<span>
+				<FormattedList mode="narrow" let:item data={$beverage.style.label}>
+					<MarkLanguage label tag="em" name={item} />
+				</FormattedList>
+			</span>
 		{/if}
 		{#if $beverage.style.producer}
-			<FormattedList mode="narrow" let:item data={$beverage.style.producer}>
-				<MarkLanguage producer tag="em" name={item} />
-			</FormattedList>
+			<span>
+				<FormattedList mode="narrow" let:item data={$beverage.style.producer}>
+					<MarkLanguage producer tag="em" name={item} />
+				</FormattedList>
+			</span>
 		{/if}
 		{#if $beverage.style.editorial}
-			<FormattedList mode="narrow" let:item data={$beverage.style.editorial}>
-				<MarkLanguage editorial tag="em" name={item} />
-			</FormattedList>
+			<span>
+				<FormattedList mode="narrow" let:item data={$beverage.style.editorial}>
+					<MarkLanguage editorial tag="em" name={item} />
+				</FormattedList>
+			</span>
 		{/if}
 	</dd>
 {/if}
