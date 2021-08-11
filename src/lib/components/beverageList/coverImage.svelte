@@ -1,23 +1,20 @@
 <script lang="ts">
-	export let beverage: Basics;
-	export let loaded: boolean;
-
-	import { onMount } from 'svelte';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
+
+	export let beverage: Basics;
+	export let loaded: boolean;
 
 	$: getPath = (format: 'webp' | 'jpg', size: 1 | 2) => {
 		const basicPath = `${PHOTO_SERVER}/${beverage.brand.badge}/${beverage.badge}/${beverage.shortId}`;
 		return `${basicPath}/cover/${format}/${size}x.${format}`;
 	};
 
-	let thisImage;
-
-	onMount(() => {
-		thisImage.onload = () => {
+	function loadListener(image) {
+		image.onload = () => {
 			loaded = true;
 		};
-	});
+	}
 </script>
 
 <picture>
@@ -28,7 +25,7 @@
 		srcset="{getPath('jpg', 1)} 1x, ${getPath('jpg', 2)} 2x"
 		src={getPath('jpg', 1)}
 		class:loaded
-		bind:this={thisImage}
+		use:loadListener
 		loading="lazy"
 	/>
 </picture>

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	import type { Details } from '$lib/utils/types/Beverage/Details';
@@ -13,13 +12,12 @@
 	const pathWebpLarge = `${basicPath}/container/webp/2x/01.webp`;
 
 	export let loaded: boolean;
-	let thisImage;
 
-	onMount(() => {
-		thisImage.onload = () => {
+	function loadListener(image) {
+		image.onload = () => {
 			loaded = true;
 		};
-	});
+	}
 </script>
 
 <picture>
@@ -30,7 +28,7 @@
 		srcset="{pathJpgRegular} 1x, {pathJpgLarge} 2x"
 		src={pathJpgRegular}
 		class:loaded
-		bind:this={thisImage}
+		use:loadListener
 		loading="lazy"
 	/>
 </picture>
