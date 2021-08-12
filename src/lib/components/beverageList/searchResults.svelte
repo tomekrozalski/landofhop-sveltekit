@@ -3,9 +3,10 @@
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import navigation from '$lib/utils/stores/navigation';
+	import Spinner from '$lib/elements/spinner.svelte';
 	import BeverageList from './beverageList.svelte';
 
-	let beverages = [];
+	let value;
 
 	async function callToApi(phrase) {
 		const response: Basics[] = await serverCall(fetch, Endpoints.beverageSearch, {
@@ -13,16 +14,17 @@
 			body: JSON.stringify({ phrase, language: 'pl' })
 		});
 
-		beverages = response;
+		return response;
 	}
 
-	const search = debounce(callToApi, 1000);
-
-	$: search($navigation.searchPhrase);
+	const updateValue = debounce((newValue) => (value = newValue), 1000);
+	$: updateValue($navigation.searchPhrase);
 </script>
 
-{#if beverages.length}
-	<BeverageList {beverages} />
-{:else}
-	szukaj
+{#if value}
+	{#await callToApi(value)}
+		<Spinner />
+	{:then beverages}
+		<BeverageList {beverages} />
+	{/await}
 {/if}
