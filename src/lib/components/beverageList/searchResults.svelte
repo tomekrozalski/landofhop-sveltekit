@@ -5,6 +5,7 @@
 	import navigation from '$lib/utils/stores/navigation';
 	import Spinner from '$lib/elements/spinner.svelte';
 	import BeverageList from './beverageList.svelte';
+	import NothingFound from './nothingFound.svelte';
 
 	let value;
 
@@ -25,6 +26,10 @@
 	{#await callToApi(value)}
 		<Spinner />
 	{:then beverages}
-		<BeverageList {beverages} />
+		{#if beverages.length}
+			<BeverageList {beverages} />
+		{:else}
+			<NothingFound />
+		{/if}
 	{/await}
 {/if}

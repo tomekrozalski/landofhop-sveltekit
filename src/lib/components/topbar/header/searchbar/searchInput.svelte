@@ -11,7 +11,7 @@
 
 <input
 	on:input={(e) => setSearchParam(e.currentTarget.value)}
-	type="search"
+	type="text"
 	use:focusOnMount
 	bind:value={$navigation.searchPhrase}
 	transition:fade={{ duration: 200 }}
