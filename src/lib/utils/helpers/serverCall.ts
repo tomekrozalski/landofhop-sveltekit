@@ -4,11 +4,11 @@ export enum Endpoints {
 	// addInstitution = 'institution',
 	// addLanguage = 'language',
 	// addPlace = 'place',
-	// beverageAdminDetails = 'beverage/admin/details',
+	beverageAdminDetails = 'beverage/admin/details',
 	beverageBasics = 'beverage/basics',
 	// beverageDashboardDetails = 'beverage/admin/dashboard',
 	beverageDetails = 'beverage/details',
-	// beverageSearch = 'beverage/search',
+	beverageSearch = 'beverage/search',
 	// beverageStats = 'beverage/stats',
 	beverageTotal = 'beverage/total'
 	// country = 'country/getAll',

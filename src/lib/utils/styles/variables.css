@@ -40,6 +40,7 @@
 
 	--size-container-max-width: 100%;
 	--size-header-height: 6rem;
+	--size-header-button-width: 5rem;
 	--size-input-height: 3.4rem;
 	--size-loginbar-height: 16.2rem;
 	--size-navbar-height: 11rem;
@@ -50,6 +51,7 @@
 @media (--md) {
 	:root {
 		--size-header-height: 8rem;
+		--size-header-button-width: 10rem;
 		--size-navbar-height: 8rem;
 		--size-loginbar-height: 20.2rem;
 	}

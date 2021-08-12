@@ -23,6 +23,7 @@
 
 <style>
 	dl {
+		font-size: 1.6rem;
 		color: var(--color-grey-1);
 	}
 </style>

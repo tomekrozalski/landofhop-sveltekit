@@ -1,7 +1,7 @@
 <script lang="ts">
 	import navigation from '$lib/utils/stores/navigation';
 	import Logo from './logo.svelte';
-	import SearchBar from './searchbar.svelte';
+	import SearchBar from './searchbar/searchbar.svelte';
 	import NavigationSwitcher from './navigation-switcher.svelte';
 </script>
 
@@ -39,18 +39,15 @@
 
 	div {
 		display: grid;
-		grid-template-columns: minmax(5rem, auto) 1fr minmax(5rem, auto);
+		grid-template-columns:
+			minmax(var(--size-header-button-width), auto)
+			1fr
+			minmax(var(--size-header-button-width), auto);
 		grid-template-areas: 'search logo more';
 		grid-template-rows: var(--size-header-height);
 		width: 100%;
 		max-width: var(--size-container-max-width);
 		margin: 0 auto;
 		position: relative;
-	}
-
-	@media (--md) {
-		div {
-			grid-template-columns: minmax(10rem, auto) 1fr minmax(10rem, auto);
-		}
 	}
 </style>

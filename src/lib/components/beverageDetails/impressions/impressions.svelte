@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import isNumber from '$lib/utils/helpers/isNumber';
+	import isNumber from 'lodash/isNumber.js';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
 	export let details: Details;
@@ -159,6 +159,8 @@
 	}
 
 	progress {
+		-webkit-appearance: none;
+		appearance: none;
 		display: block;
 		height: 0.3rem;
 		width: 100%;
@@ -166,19 +168,27 @@
 		background-color: var(--color-grey-4);
 	}
 
+	progress.producer {
+		background-color: var(--color-producer);
+	}
+
 	progress + progress {
 		margin-top: 0.2rem;
 	}
 
-	progress[value]::-webkit-progress-value,
-	progress[value]::-moz-progress-bar {
+	progress::-webkit-progress-value,
+	progress::-moz-progress-bar {
 		background-color: var(--color-success);
 		border-radius: 2px;
 	}
 
-	progress.producer[value]::-webkit-progress-value,
-	progress.producer[value]::-moz-progress-bar {
+	progress.producer::-webkit-progress-value,
+	progress.producer::-moz-progress-bar {
 		background-color: var(--color-producer);
+	}
+
+	progress::-webkit-progress-bar {
+		background-color: var(--color-grey-4);
 	}
 
 	@media (--lg) {

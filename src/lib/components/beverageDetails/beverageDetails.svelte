@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import navigation from '$lib/utils/stores/navigation';
 	import Navigation from './navigation.svelte';
 	import Gallery from './gallery/gallery.svelte';
 	import Header from './header.svelte';
@@ -8,6 +9,7 @@
 	import Testimony from './testimony/testimony.svelte';
 	import FootNotes from './footNotes.svelte';
 	import Impressions from './impressions/impressions.svelte';
+	import AdminBar from './adminBar/adminBar.svelte';
 
 	export let details: Details;
 	export let next: Basics | null;
@@ -22,7 +24,9 @@
 		<Testimony {details} />
 		<Impressions {details} />
 		<FootNotes {details} />
-		<!-- {isLoggedIn && <AdminBar />} -->
+		{#if $navigation.isLoggedIn}
+			<AdminBar {details} />
+		{/if}
 	</div>
 	<Navigation {next} {previous} />
 </article>

@@ -1,5 +1,7 @@
 {
 	"en": {
+		"beverage.adminBar.updateContent": "Update data",
+		"beverage.adminBar.updateImages": "Update photos",
 		"beverage.aside.next": "Next beverage",
 		"beverage.aside.previous": "Previous beverage",
 		"beverage.footnotes.added": "added",
@@ -85,6 +87,8 @@
 		"time.year": "{value} {value, plural, one {year} other {years}}"
 	},
 	"pl": {
+		"beverage.adminBar.updateContent": "Popraw informacje",
+		"beverage.adminBar.updateImages": "Popraw zdjęcia",
 		"beverage.aside.next": "Następne piwo",
 		"beverage.aside.previous": "Poprzednie piwo",
 		"beverage.footnotes.added": "dodano",

@@ -8,6 +8,7 @@
 	import '$lib/utils/styles/variables.css';
 	import '$lib/utils/styles/global.css';
 	import Topbar from '$lib/components/topbar/topbar.svelte';
+	import Main from '$lib/components/main.svelte';
 
 	translations.update(topbarDictionary);
 	locale.set('pl');
@@ -39,6 +40,6 @@
 </svelte:head>
 
 <Topbar />
-<main>
+<Main>
 	<slot />
-</main>
+</Main>
