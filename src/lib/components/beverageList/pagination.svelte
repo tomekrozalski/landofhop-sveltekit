@@ -86,22 +86,24 @@
 		justify-content: center;
 		flex-wrap: wrap;
 		max-width: var(--size-container-max-width);
-		margin: 6rem auto;
+		margin: 6rem 0;
 	}
 
 	li {
-		margin: 0.5rem;
+		width: 100%;
+		margin: 1rem;
 	}
 
 	a,
 	span {
-		display: inline-block;
-		padding: 0.5rem 1rem;
+		display: block;
+		padding: 1rem;
 		border: 1px solid var(--color-grey-2);
 		background-color: var(--color-grey-2);
 		font-size: 1.6rem;
 		line-height: 1;
 		color: var(--color-white);
+		text-align: center;
 	}
 
 	a:hover:not(.inactive),
@@ -124,6 +126,31 @@
 		background: var(--color-black);
 		color: var(--color-white);
 		border-color: var(--color-black);
+	}
+
+	@media (--sm) {
+		ul {
+			margin: 6rem auto;
+		}
+
+		li {
+			width: auto;
+			margin: 0.5rem;
+		}
+
+		a,
+		span {
+			display: inline-block;
+			padding: 0.8rem 1.5rem;
+		}
+	}
+
+	@media (--lg) {
+		a,
+		span {
+			display: inline-block;
+			padding: 0.5rem 1rem;
+		}
 	}
 
 	@media (--xl) {

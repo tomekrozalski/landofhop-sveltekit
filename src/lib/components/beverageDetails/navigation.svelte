@@ -37,20 +37,19 @@
 		grid-area: navigation;
 		display: flex;
 		justify-content: center;
-		padding: 1rem;
+		margin-bottom: 2rem;
 	}
 
 	a,
 	span {
+		flex-grow: 1;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 5rem;
 		height: 5rem;
-		margin: 1rem;
-		border-radius: 50%;
 		overflow: hidden;
-		background-color: var(--color-white);
+		border: 1px solid var(--color-grey-3);
+		background-color: var(--color-grey-4);
 		transition: background-color var(--transition-default);
 		position: relative;
 	}
@@ -86,6 +85,18 @@
 	@media (--lg) {
 		nav {
 			justify-content: center;
+			margin-bottom: 0;
+			padding: 1rem;
+		}
+
+		a,
+		span {
+			flex-grow: 0;
+			width: 5rem;
+			margin: 1rem;
+			border: 0;
+			border-radius: 50%;
+			background-color: var(--color-white);
 		}
 	}
 </style>

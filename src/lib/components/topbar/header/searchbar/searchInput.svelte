@@ -20,16 +20,29 @@
 
 <style>
 	input {
-		margin: 3rem 0;
+		padding: 0 2rem;
 		width: calc(100% - var(--size-header-button-width));
 		border: 0;
-		border-bottom: 2px solid var(--color-white);
+		border-bottom: 2px solid var(--color-black);
 		background: transparent;
-		font: var(--font-weight-regular) 3rem / 1 var(--font-primary);
+		font: var(--font-weight-regular) 2.4rem / 1 var(--font-primary);
 		color: var(--color-white);
 	}
 
 	input:focus {
 		outline: none;
+	}
+
+	@media (--md) {
+		input {
+			font-size: 3rem;
+		}
+	}
+
+	@media (--xl) {
+		input {
+			margin: 3rem 0;
+			border-bottom-color: var(--color-white);
+		}
 	}
 </style>

@@ -5,6 +5,7 @@
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
 	import CoverImage from './coverImage.svelte';
 	import Rotable from './rotable/rotable.svelte';
+	import BrokenContainer from './brokenContainer.svelte';
 
 	export let details: Details;
 	const { badge, brand, name, photos, shortId } = details;
@@ -42,12 +43,15 @@
 			</picture>
 		</noscript>
 	{:else}
-		broken container image
+		<BrokenContainer {details} />
 	{/if}
 </section>
 
 <style>
 	section {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		grid-area: gallery;
 		width: 220px;
 		height: 500px;
