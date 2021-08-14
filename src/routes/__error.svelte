@@ -10,9 +10,15 @@
 </script>
 
 <script lang="ts">
+	import { translate } from 'svelte-intl';
+
 	export let status: number;
 	export let error: { message: string };
 </script>
+
+<svelte:head>
+	<title>{$translate('global.404.title')}</title>
+</svelte:head>
 
 <div>
 	<h1>{status} {error.message}</h1>

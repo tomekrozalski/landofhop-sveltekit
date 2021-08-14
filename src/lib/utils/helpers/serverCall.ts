@@ -9,7 +9,7 @@ export enum Endpoints {
 	// beverageDashboardDetails = 'beverage/admin/dashboard',
 	beverageDetails = 'beverage/details',
 	beverageSearch = 'beverage/search',
-	// beverageStats = 'beverage/stats',
+	beverageStats = 'beverage/stats',
 	beverageTotal = 'beverage/total'
 	// country = 'country/getAll',
 	// ingredient = 'ingredient/getAll',

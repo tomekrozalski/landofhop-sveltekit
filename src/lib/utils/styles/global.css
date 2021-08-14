@@ -12,7 +12,7 @@ html {
 body {
 	margin: 0;
 	background-color: var(--color-white);
-	font: var(--font-weight-light) 1.8rem / 2.5rem var(--font-primary);
+	font: var(--font-weight-light) 1.8rem / 2.8rem var(--font-primary);
 	color: var(--color-black);
 }
 
@@ -22,6 +22,24 @@ main {
 	background-color: var(--color-white);
 	z-index: var(--index-main);
 	position: relative;
+}
+
+article {
+	max-width: var(--size-container-max-width);
+	margin: 0 auto;
+}
+
+h1 {
+	margin: 2rem 0;
+	font: var(--font-weight-medium) 3rem / 3.8rem var(--font-primary);
+	text-align: center;
+}
+
+h2 {
+	margin: 4rem 0 2rem 0;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--color-grey-3);
+	font: var(--font-weight-regular) 1.6rem / 1 var(--font-primary);
 }
 
 button {

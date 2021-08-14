@@ -18,12 +18,12 @@
 </script>
 
 <script lang="ts">
-	export let beverages: Basics[];
-	export let total: number;
-
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
 	import Pagination from '$lib/components/beverageList/pagination.svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
+
+	export let beverages: Basics[];
+	export let total: number;
 </script>
 
 <svelte:head>

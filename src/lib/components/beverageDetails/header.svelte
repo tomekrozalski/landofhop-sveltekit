@@ -78,4 +78,8 @@
 	header {
 		margin-top: 1rem;
 	}
+
+	header :global(h1) {
+		text-align: left;
+	}
 </style>

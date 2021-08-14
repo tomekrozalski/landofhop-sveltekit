@@ -1,0 +1,22 @@
+{
+	"en": {
+		"stats.alcohol.alcohol": "Alcohol",
+		"stats.alcohol.barLabel": "{value}% alcohol, {beverages} beverages",
+		"stats.alcohol.isAverage": "average amount of alcohol of all beverages",
+		"stats.alcohol.isAverageWithoutNonAlcoholicBeverages": "average amount of alcohol of all beverages excluding non-alcoholic beverages",
+		"stats.alcohol.name": "Graph of alcohol quantity in beverages",
+		"stats.alcohol.numberOfBeverages": "Number of beverages",
+		"stats.name": "Statistics",
+		"stats.title": "📈 Statistics"
+	},
+	"pl": {
+		"stats.alcohol.alcohol": "Alkohol",
+		"stats.alcohol.barLabel": "{value}% alkoholu, {beverages, plural, one {# piwo} few {# piwa} other {# piw}}",
+		"stats.alcohol.isAverage": "średnia ilość alkoholu wszystkich piw",
+		"stats.alcohol.isAverageWithoutNonAlcoholicBeverages": "średnia ilość alkoholu wszystkich piw wyłączając bezalkoholowe",
+		"stats.alcohol.name": "Wykres ilości alkoholu w piwach",
+		"stats.alcohol.numberOfBeverages": "Ilość piw",
+		"stats.name": "Statystyki",
+		"stats.title": "📈 Statystyki"
+	}
+}

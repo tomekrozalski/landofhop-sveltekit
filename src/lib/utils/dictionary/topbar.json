@@ -1,5 +1,6 @@
 {
 	"en": {
+		"global.404.title": "404 Not Found",
 		"global.confirmation": "yes",
 		"global.denial": "no",
 		"header.closeNavigation": "Close navigation",
@@ -14,6 +15,7 @@
 		"navigation.stats": "Stats"
 	},
 	"pl": {
+		"global.404.title": "404 Nie znaleziono",
 		"global.confirmation": "tak",
 		"global.denial": "nie",
 		"header.closeNavigation": "Zamknij nawigację",

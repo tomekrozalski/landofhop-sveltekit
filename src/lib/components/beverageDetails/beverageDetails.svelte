@@ -40,7 +40,6 @@
 			'gallery'
 			'main';
 		column-gap: 4rem;
-		max-width: var(--size-container-max-width);
 		margin: 0 auto 6rem auto;
 	}
 
