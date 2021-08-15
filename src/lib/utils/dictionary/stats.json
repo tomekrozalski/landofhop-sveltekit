@@ -1,5 +1,10 @@
 {
 	"en": {
+		"stats.addTimeline.bottles": "bottles",
+		"stats.addTimeline.cans": "cans",
+		"stats.addTimeline.name": "Amount of beers added to the database in the following months",
+		"stats.addTimeline.numberOfBeverages": "Number of beverages",
+		"stats.addTimeline.total": "total",
 		"stats.alcohol.alcohol": "Alcohol",
 		"stats.alcohol.barLabel": "{value}% alcohol, {beverages} beverages",
 		"stats.alcohol.isAverage": "average amount of alcohol of all beverages",
@@ -10,6 +15,11 @@
 		"stats.title": "📈 Statistics"
 	},
 	"pl": {
+		"stats.addTimeline.bottles": "butelki",
+		"stats.addTimeline.cans": "puszki",
+		"stats.addTimeline.name": "Ilość dodawanych piw do bazy w kolejnych miesiącach",
+		"stats.addTimeline.numberOfBeverages": "Ilość piw",
+		"stats.addTimeline.total": "razem",
 		"stats.alcohol.alcohol": "Alkohol",
 		"stats.alcohol.barLabel": "{value}% alkoholu, {beverages, plural, one {# piwo} few {# piwa} other {# piw}}",
 		"stats.alcohol.isAverage": "średnia ilość alkoholu wszystkich piw",

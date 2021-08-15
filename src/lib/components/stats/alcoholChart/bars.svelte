@@ -25,16 +25,16 @@
 		totalAlcoholWithoutNonAlcoholicBeverages / alcoholicBeverages
 	).toPrecision(2);
 
-	let isCosVisible = false;
+	let isBarLabelVisible = false;
 	let activeBar;
 
 	function showLabel(e) {
-		isCosVisible = true;
+		isBarLabelVisible = true;
 		activeBar = filteredData[e.target.dataset.index];
 	}
 
 	function hideLabel() {
-		isCosVisible = false;
+		isBarLabelVisible = false;
 	}
 
 	function setHorintalPosition(bar) {
@@ -61,7 +61,7 @@
 		/>
 	{/each}
 </g>
-{#if isCosVisible}
+{#if isBarLabelVisible}
 	<Info
 		average={activeBar.value === average}
 		averageWithoutNonAlcoholicBeverages={activeBar.value === averageWithoutNonAlcoholicBeverages}
