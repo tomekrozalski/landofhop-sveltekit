@@ -4,6 +4,7 @@
 	import type { Sizes } from '$lib/components/stats/utils/Sizes';
 
 	export let addTimelineData: AddTimelineBar[];
+	export let selectedLine: 'bottles' | 'cans' | 'total' | null;
 	export let sizes: Sizes;
 
 	const { height, margin, width } = sizes.legend;
@@ -41,7 +42,12 @@
 </script>
 
 <g style="transform: translate({margin.left}px, {sizes.chart.height + margin.top}px)">
-	<g use:calculateHorizontalPosition={'total'} id="add-timeline-chart-legend-total">
+	<g
+		use:calculateHorizontalPosition={'total'}
+		id="add-timeline-chart-legend-total"
+		class:highlighted={selectedLine && selectedLine === 'total'}
+		class:muted={selectedLine && selectedLine !== 'total'}
+	>
 		<rect width={innerHeight} height={innerHeight} class="total" />
 		<g style="transform: translate({innerHeight + 10}px, 0)">
 			<text class="label" y="12">{$translate('stats.addTimeline.total')}</text>
@@ -50,7 +56,12 @@
 			</text>
 		</g>
 	</g>
-	<g use:calculateHorizontalPosition={'bottles'} id="add-timeline-chart-legend-bottles">
+	<g
+		use:calculateHorizontalPosition={'bottles'}
+		id="add-timeline-chart-legend-bottles"
+		class:highlighted={selectedLine && selectedLine === 'bottles'}
+		class:muted={selectedLine && selectedLine !== 'bottles'}
+	>
 		<rect width={innerHeight} height={innerHeight} class="bottles" />
 		<g style="transform: translate({innerHeight + 10}px, 0)">
 			<text class="label" y="12">{$translate('stats.addTimeline.bottles')}</text>
@@ -59,7 +70,12 @@
 			</text>
 		</g>
 	</g>
-	<g use:calculateHorizontalPosition={'cans'} id="add-timeline-chart-legend-cans">
+	<g
+		use:calculateHorizontalPosition={'cans'}
+		id="add-timeline-chart-legend-cans"
+		class:highlighted={selectedLine && selectedLine === 'cans'}
+		class:muted={selectedLine && selectedLine !== 'cans'}
+	>
 		<rect width={innerHeight} height={innerHeight} class="cans" />
 		<g style="transform: translate({innerHeight + 10}px, 0)">
 			<text class="label" y="12">{$translate('stats.addTimeline.cans')}</text>
@@ -69,22 +85,22 @@
 </g>
 
 <style>
-	rect.total {
-		fill: none;
-		stroke: var(--color-total);
+	rect {
+		fill: transparent;
+		transition: fill var(--transition-default);
 		stroke-width: 5;
+	}
+
+	rect.total {
+		stroke: var(--color-total);
 	}
 
 	rect.bottles {
-		fill: none;
 		stroke: var(--color-bottle);
-		stroke-width: 5;
 	}
 
 	rect.cans {
-		fill: none;
 		stroke: var(--color-can);
-		stroke-width: 5;
 	}
 
 	text.label {
@@ -93,5 +109,21 @@
 
 	text.amount {
 		font-size: 1.2rem;
+	}
+
+	g.highlighted rect.total {
+		fill: var(--color-total);
+	}
+
+	g.highlighted rect.bottles {
+		fill: var(--color-bottle);
+	}
+
+	g.highlighted rect.cans {
+		fill: var(--color-can);
+	}
+
+	g.muted {
+		opacity: 0.2;
 	}
 </style>

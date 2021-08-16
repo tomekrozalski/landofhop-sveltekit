@@ -2,6 +2,7 @@
 	"en": {
 		"stats.addTimeline.bottles": "bottles",
 		"stats.addTimeline.cans": "cans",
+		"stats.addTimeline.depiction": "{date}: {bottle, plural, one {# bottle} other {# bottles}} and {can, plural, one {# can} other {# cans}}",
 		"stats.addTimeline.name": "Amount of beers added to the database in the following months",
 		"stats.addTimeline.numberOfBeverages": "Number of beverages",
 		"stats.addTimeline.total": "total",
@@ -17,6 +18,7 @@
 	"pl": {
 		"stats.addTimeline.bottles": "butelki",
 		"stats.addTimeline.cans": "puszki",
+		"stats.addTimeline.depiction": "{date}: {bottle, plural, one {# butelka} few {# butelki} other {# butelek}} i {can, plural, one {# puszka} few {# puszki} other {# puszek}}",
 		"stats.addTimeline.name": "Ilość dodawanych piw do bazy w kolejnych miesiącach",
 		"stats.addTimeline.numberOfBeverages": "Ilość piw",
 		"stats.addTimeline.total": "razem",

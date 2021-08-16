@@ -4,6 +4,8 @@
 	import type { AddTimelineBar } from '$lib/utils/types/Beverage/Stats';
 
 	export let addTimelineData: AddTimelineBar[];
+	export let isBarSelected: boolean = false;
+	export let selectedLine: 'bottles' | 'cans' | 'total' | null;
 	export let xScale: any;
 	export let xValue: (value: AddTimelineBar) => string;
 	export let yScale: any;
@@ -19,10 +21,31 @@
 			.curve(curveBasis);
 </script>
 
-<g style="transform: translate({xScale.bandwidth() / 2}px, 0)">
-	<path class="line bottles" d={linePath(bottles)(addTimelineData)} in:draw />
-	<path class="line cans" d={linePath(cans)(addTimelineData)} in:draw />
-	<path class="line total" d={linePath(total)(addTimelineData)} in:draw />
+<g style="transform: translate({xScale.bandwidth() / 2}px, 0)" class:muted={isBarSelected}>
+	<path
+		class="line bottles"
+		class:muted={selectedLine && selectedLine !== 'bottles'}
+		d={linePath(bottles)(addTimelineData)}
+		in:draw
+		on:mouseenter={() => (selectedLine = 'bottles')}
+		on:mouseleave={() => (selectedLine = null)}
+	/>
+	<path
+		class="line cans"
+		class:muted={selectedLine && selectedLine !== 'cans'}
+		d={linePath(cans)(addTimelineData)}
+		in:draw
+		on:mouseenter={() => (selectedLine = 'cans')}
+		on:mouseleave={() => (selectedLine = null)}
+	/>
+	<path
+		class="line total"
+		class:muted={selectedLine && selectedLine !== 'total'}
+		d={linePath(total)(addTimelineData)}
+		in:draw
+		on:mouseenter={() => (selectedLine = 'total')}
+		on:mouseleave={() => (selectedLine = null)}
+	/>
 </g>
 
 <style>
@@ -36,5 +59,9 @@
 
 	path.cans {
 		stroke: var(--color-can);
+	}
+
+	.muted {
+		opacity: 0.2;
 	}
 </style>

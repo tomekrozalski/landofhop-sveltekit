@@ -1,8 +1,12 @@
 <script lang="ts">
+	import { translate } from 'svelte-intl';
 	import type { AddTimelineBar } from '$lib/utils/types/Beverage/Stats';
 
 	export let addTimelineData: AddTimelineBar[];
+	export let isBarSelected: boolean = false;
 	export let innerHeight: number;
+	export let innerWidth: number;
+	export let selectedLine: 'bottles' | 'cans' | 'total' | null;
 	export let xScale: any;
 	export let xValue: (value: AddTimelineBar) => string;
 	export let yScale: any;
@@ -10,13 +14,27 @@
 	const bottles = (d: AddTimelineBar) => d.bottle;
 	const cans = (d: AddTimelineBar) => d.can;
 	const total = (d: AddTimelineBar) => d.bottle + d.can;
+
+	let info: AddTimelineBar | null = null;
+
+	function showInfo(bar: AddTimelineBar) {
+		info = bar;
+		isBarSelected = true;
+	}
+
+	function hideInfo() {
+		info = null;
+		isBarSelected = false;
+	}
 </script>
 
-<g>
+<g class="wrapper" class:muted={!!selectedLine}>
 	{#each addTimelineData as bar}
 		<g
 			class="barGroup"
 			style="transform: translate({xScale(xValue(bar)) || ''}px, {yScale(total(bar))}px)"
+			on:mouseenter={() => showInfo(bar)}
+			on:mouseleave={() => hideInfo()}
 		>
 			<rect class="can" width={xScale.bandwidth()} height={innerHeight - yScale(cans(bar))} />
 			<rect
@@ -26,22 +44,24 @@
 				y={innerHeight - yScale(cans(bar))}
 			/>
 		</g>
-
-		<!-- <rect
-			data-index={index}
-			width={xScale.bandwidth()}
-			height={innerHeight - yScale(yValue(bar))}
-			x={setHorintalPosition(bar)}
-			y={setVerticalPosition(bar)}
-			class:average={bar.value === average}
-			class:averageWithoutNonAlcoholicBeverages={bar.value === averageWithoutNonAlcoholicBeverages}
-			on:mouseover={showLabel}
-			on:mouseleave={hideLabel}
-		/> -->
 	{/each}
+	{#if info}
+		<text class="label" x={innerWidth / 2} y="30" text-anchor="middle">
+			{$translate('stats.addTimeline.depiction', info)}
+		</text>
+	{/if}
 </g>
 
 <style>
+	g.wrapper {
+		opacity: 1;
+		transition: opacity var(--transition-default);
+	}
+
+	g.muted {
+		opacity: 0.35;
+	}
+
 	g.barGroup {
 		opacity: 0.25;
 		transition: opacity var(--transition-default);

@@ -56,6 +56,9 @@
 	const yScale = scaleLinear()
 		.domain([0, (max(addTimelineData, total) || 0) + 3])
 		.range([innerHeight, 0]);
+
+	let isBarSelected = false;
+	let selectedLine = null;
 </script>
 
 <h2>{$translate('stats.addTimeline.name')}</h2>
@@ -65,12 +68,21 @@
 		<g style="transform: translate({sizes.chart.margin.left}px, {sizes.chart.margin.top}px)">
 			<Xaxis {innerHeight} {xScale} />
 			<Yaxis {innerWidth} {yScale} />
-			<Bars {addTimelineData} {innerHeight} {xScale} {xValue} {yScale} />
+			<Bars
+				{addTimelineData}
+				{innerWidth}
+				{innerHeight}
+				{xScale}
+				{xValue}
+				{yScale}
+				{selectedLine}
+				bind:isBarSelected
+			/>
 			{#if intersecting}
-				<Line {addTimelineData} {xScale} {xValue} {yScale} />
+				<Line {addTimelineData} {xScale} {xValue} {yScale} bind:selectedLine {isBarSelected} />
 			{/if}
 		</g>
-		<Legend {addTimelineData} {sizes} />
+		<Legend {addTimelineData} {selectedLine} {sizes} />
 	</svg>
 </IntersectionObserver>
 
