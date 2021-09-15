@@ -11,8 +11,7 @@
 
 	async function callToApi(phrase) {
 		const response: Basics[] = await serverCall(fetch, Endpoints.beverageSearch, {
-			method: 'POST',
-			body: JSON.stringify({ phrase, language: 'pl' })
+			pathParams: ['pl', phrase]
 		});
 
 		return response;
