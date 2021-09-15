@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import MarkLanguage from '$lib/elements/markLanguage.svelte';
 
 	export let details: Details;
 	const { place } = details;
@@ -13,13 +12,13 @@
 	</dt>
 	<dd>
 		{#if place.label}
-			<MarkLanguage label tag="em" name={place.label.country} />
+			<em>{$translate(`country.${place.label.country}`)}</em>
 		{/if}
 		{#if place.producer}
-			<MarkLanguage producer tag="em" name={place.producer.country} />
+			<em>{$translate(`country.${place.producer.country}`)}</em>
 		{/if}
 		{#if place.editorial}
-			<MarkLanguage editorial tag="em" name={place.editorial.country} />
+			<em>{$translate(`country.${place.editorial.country}`)}</em>
 		{/if}
 	</dd>
 {/if}

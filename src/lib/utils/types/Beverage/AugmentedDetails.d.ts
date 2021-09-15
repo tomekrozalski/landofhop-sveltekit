@@ -1,8 +1,8 @@
-import { Basics } from './Basics';
+import { LinkData } from './LinkData';
 import { Details } from './Details';
 
 export type AugmentedDetails = {
-	previous: Basics | null;
+	previous: LinkData | null;
 	details: Details;
-	next: Basics | null;
+	next: LinkData | null;
 };

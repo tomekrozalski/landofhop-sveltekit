@@ -8,42 +8,39 @@
 	const { aged, isAged } = details;
 </script>
 
-{#if aged}
+{#if aged || isAged}
 	<dt>
 		{$translate('beverage.testimonial.aged')}
 	</dt>
 	<dd>
 		{#if isAged?.label}
+			<span>{$translate('global.confirmation')}</span>
+		{/if}
+		{#if aged?.label}
 			<span>
-				{#if aged?.label}
-					<FormattedList mode="long" let:item data={aged.label}>
-						<AgedItem {item} />
-					</FormattedList>
-				{:else}
-					{$translate('global.confirmation')}
-				{/if}
+				<FormattedList mode="long" let:item data={aged.label}>
+					<AgedItem {item} />
+				</FormattedList>
 			</span>
 		{/if}
 		{#if isAged?.producer}
+			<span>{$translate('global.confirmation')}</span>
+		{/if}
+		{#if aged?.producer}
 			<span>
-				{#if aged?.producer}
-					<FormattedList mode="long" let:item data={aged.producer}>
-						<AgedItem {item} />
-					</FormattedList>
-				{:else}
-					{$translate('global.confirmation')}
-				{/if}
+				<FormattedList mode="long" let:item data={aged.producer}>
+					<AgedItem {item} />
+				</FormattedList>
 			</span>
 		{/if}
 		{#if isAged?.editorial}
+			<span>{$translate('global.confirmation')}</span>
+		{/if}
+		{#if aged?.editorial}
 			<span>
-				{#if aged?.editorial}
-					<FormattedList mode="long" let:item data={aged.editorial}>
-						<AgedItem {item} />
-					</FormattedList>
-				{:else}
-					{$translate('global.confirmation')}
-				{/if}
+				<FormattedList mode="long" let:item data={aged.editorial}>
+					<AgedItem {item} />
+				</FormattedList>
 			</span>
 		{/if}
 	</dd>

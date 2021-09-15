@@ -14,12 +14,12 @@
 	{#each beverages as beverage}
 		<li>
 			<a href="/details/{beverage.shortId}/{beverage.brand.badge}/{beverage.badge}">
-				{#if beverage.photos?.cover}
+				{#if beverage.coverImage}
 					{#key beverages}
 						<CoverImageWrapper {beverage} />
 					{/key}
 				{:else}
-					<BrokenCoverImage type={beverage.container.type} />
+					<BrokenCoverImage type={beverage.containerType} />
 				{/if}
 			</a>
 		</li>

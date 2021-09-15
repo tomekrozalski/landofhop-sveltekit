@@ -8,35 +8,33 @@
 	const { dryHopped, isDryHopped } = details;
 </script>
 
-{#if isDryHopped}
+{#if dryHopped || isDryHopped}
 	<dt>
 		{$translate('beverage.testimonial.dryHopped')}
 	</dt>
 	<dd>
-		{#if isDryHopped.label}
+		{#if isDryHopped?.label}
 			<span class="label">
-				{#if dryHopped?.label}
-					<FormattedList mode="short" let:item data={dryHopped.label}>
-						<MarkLanguage label tag="em" name={item} />
-					</FormattedList>
-				{:else}
-					<em>
-						{$translate('global.confirmation')}
-					</em>
-				{/if}
+				<em>{$translate('global.confirmation')}</em>
 			</span>
 		{/if}
-		{#if isDryHopped.producer}
+		{#if dryHopped?.label}
+			<span class="label">
+				<FormattedList mode="short" let:item data={dryHopped.label}>
+					<MarkLanguage label tag="em" name={item.name} />
+				</FormattedList>
+			</span>
+		{/if}
+		{#if isDryHopped?.producer}
 			<span class="producer">
-				{#if dryHopped?.producer}
-					<FormattedList mode="short" let:item data={dryHopped.producer}>
-						<MarkLanguage producer tag="em" name={item} />
-					</FormattedList>
-				{:else}
-					<em>
-						{$translate('global.confirmation')}
-					</em>
-				{/if}
+				<em>{$translate('global.confirmation')}</em>
+			</span>
+		{/if}
+		{#if dryHopped?.producer}
+			<span class="producer">
+				<FormattedList mode="short" let:item data={dryHopped.producer}>
+					<MarkLanguage producer tag="em" name={item.name} />
+				</FormattedList>
 			</span>
 		{/if}
 	</dd>

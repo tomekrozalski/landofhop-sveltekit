@@ -37,6 +37,6 @@
 	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
-{#key details.id}
+{#key details.shortId}
 	<BeverageDetails {details} {next} {previous} />
 {/key}

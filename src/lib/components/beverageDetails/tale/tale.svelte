@@ -8,13 +8,15 @@
 </script>
 
 {#if tale}
-	{#if tale?.label}
-		<section lang={tale.label.language !== 'pl' ? tale.label.language : null}>
-			{@html marked(tale?.label.lead)}
-			{#if tale.label.article}
-				<Article>{@html marked(tale.label.article)}</Article>
-			{/if}
-		</section>
+	{#if tale?.label?.length}
+		{#each tale?.label as singleTale}
+			<section lang={singleTale.language !== 'pl' ? singleTale.language : null}>
+				{@html marked(singleTale.lead)}
+				{#if singleTale.article}
+					<Article>{@html marked(singleTale.article)}</Article>
+				{/if}
+			</section>
+		{/each}
 	{/if}
 	{#if tale?.producer}
 		<section

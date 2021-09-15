@@ -3,7 +3,6 @@ import {
 	AlcoholRelate,
 	AlcoholScope,
 	AlcoholUnit,
-	Category,
 	Clarity,
 	ExpirationDateUnit,
 	ExtractRelate,
@@ -16,7 +15,6 @@ import {
 import { Aged, Container, Price, Tale } from './fragments';
 
 export type Details = {
-	id: string;
 	shortId: string;
 	badge: string;
 	name: LanguageValue;
@@ -24,21 +22,16 @@ export type Details = {
 		label?: LanguageValue[];
 		producer?: LanguageValue[];
 	};
-	brand: {
-		badge: string;
-		name: LanguageValue;
-		consortium?: LanguageValue;
-		shortId: string;
-	};
+	brand: InsitutionOutput;
 	cooperation?: {
-		label?: LanguageValue[];
-		producer?: LanguageValue[];
-		editorial?: LanguageValue[];
+		label?: InsitutionOutput[];
+		producer?: InsitutionOutput[];
+		editorial?: InsitutionOutput[];
 	};
 	contract?: {
-		label?: LanguageValue;
-		producer?: LanguageValue;
-		editorial?: LanguageValue;
+		label?: InsitutionOutput;
+		producer?: InsitutionOutput;
+		editorial?: InsitutionOutput;
 	};
 	isContract?: {
 		label?: boolean;
@@ -48,15 +41,15 @@ export type Details = {
 	place?: {
 		label?: {
 			city: LanguageValue;
-			country: LanguageValue;
+			country: string;
 		};
 		producer?: {
 			city: LanguageValue;
-			country: LanguageValue;
+			country: string;
 		};
 		editorial?: {
 			city: LanguageValue;
-			country: LanguageValue;
+			country: string;
 		};
 	};
 	remark?: {
@@ -64,14 +57,10 @@ export type Details = {
 		producer?: LanguageValue;
 	};
 	tale?: {
-		label?: Tale;
+		label?: Tale[];
 		producer?: Tale;
 	};
 	barcode?: string;
-	beverageType?: {
-		label?: Category;
-		producer?: Category;
-	};
 	fermentation?: {
 		label?: Fermentation[];
 		producer?: Fermentation[];
@@ -137,9 +126,9 @@ export type Details = {
 		editorial?: boolean;
 	};
 	dryHopped?: {
-		label?: LanguageValue[];
-		producer?: LanguageValue[];
-		editorial?: LanguageValue[];
+		label?: IngredientBasic[];
+		producer?: IngredientBasic[];
+		editorial?: IngredientBasic[];
 	};
 	hopRate?: {
 		label?: {
@@ -234,10 +223,8 @@ export type Details = {
 	photos?: {
 		cap?: boolean;
 		gallery?: number;
-		outlines?: {
-			gallery?: string;
-		};
+		outline?: string;
 	};
-	added: Date;
-	updated?: Date;
+	added: string;
+	updated?: string;
 };

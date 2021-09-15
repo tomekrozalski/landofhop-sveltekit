@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
 	import LeftIcon from '$lib/elements/vectors/left.svelte';
 	import RightIcon from '$lib/elements/vectors/right.svelte';
 
-	export let next: Basics | null;
-	export let previous: Basics | null;
+	export let next: LinkData | null;
+	export let previous: LinkData | null;
 </script>
 
 <nav>
 	{#if next}
-		<a sveltekit:prefetch href="/details/{next.shortId}/{next.brand.badge}/{next.badge}">
+		<a sveltekit:prefetch href="/details/{next.shortId}/{next.brand}/{next.badge}">
 			<LeftIcon>{$translate('beverage.aside.next')}</LeftIcon>
 		</a>
 	{:else}
@@ -19,10 +19,7 @@
 		</span>
 	{/if}
 	{#if previous}
-		<a
-			sveltekit:prefetch
-			href="/details/{previous.shortId}/{previous.brand.badge}/{previous.badge}"
-		>
+		<a sveltekit:prefetch href="/details/{previous.shortId}/{previous.brand}/{previous.badge}">
 			<RightIcon>{$translate('beverage.aside.previous')}</RightIcon>
 		</a>
 	{:else}

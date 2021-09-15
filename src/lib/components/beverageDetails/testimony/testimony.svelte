@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import Barcode from './barcode.svelte';
-	import BeverageType from './beverageType.svelte';
 	import City from './city.svelte';
 	import Country from './country.svelte';
 	import Fermentation from './fermentation.svelte';
@@ -27,7 +26,6 @@
 	<City {details} />
 	<Country {details} />
 	<Barcode {details} />
-	<BeverageType {details} />
 	<Fermentation {details} />
 	<Extract {details} />
 	<Alcohol {details} />

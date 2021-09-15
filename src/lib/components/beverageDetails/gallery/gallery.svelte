@@ -20,9 +20,9 @@
 
 <section>
 	{#if photos?.gallery}
-		{#if !loaded}
+		{#if !loaded && photos.outline}
 			<span transition:toggleVisibility>
-				{@html photos.outlines.gallery.replace(
+				{@html photos.outline.replace(
 					'<svg',
 					`<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; transition: var(--transition-default);"`
 				)}

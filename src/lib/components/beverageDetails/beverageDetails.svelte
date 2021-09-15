@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
 	import navigation from '$lib/utils/stores/navigation';
 	import Navigation from './navigation.svelte';
 	import Gallery from './gallery/gallery.svelte';
@@ -12,8 +12,8 @@
 	import AdminBar from './adminBar/adminBar.svelte';
 
 	export let details: Details;
-	export let next: Basics | null;
-	export let previous: Basics | null;
+	export let next: LinkData | null;
+	export let previous: LinkData | null;
 </script>
 
 <article>

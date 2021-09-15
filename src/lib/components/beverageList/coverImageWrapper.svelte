@@ -7,7 +7,7 @@
 	import CoverImage from './coverImage.svelte';
 
 	export let beverage: Basics;
-	const { badge, brand, name, photos, shortId } = beverage;
+	const { badge, brand, name, coverImage, shortId } = beverage;
 
 	let loaded = false;
 	let nativeLoading = false;
@@ -19,10 +19,10 @@
 	});
 </script>
 
-<div style="padding-bottom: {(photos?.cover?.height / photos?.cover?.width) * 100}%">
-	{#if !loaded}
+<div style="padding-bottom: {(coverImage?.height / coverImage?.width) * 100}%">
+	{#if !loaded && coverImage?.outline}
 		<span transition:toggleVisibility>
-			{@html photos.outlines.cover.replace(
+			{@html coverImage.outline.replace(
 				'<svg',
 				`<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; transition: var(--transition-default);"`
 			)}
