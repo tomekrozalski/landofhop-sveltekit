@@ -10,7 +10,7 @@
 
 <article>
 	<h1>{$translate('stats.name')}</h1>
-	<AlcoholChart {alcoholChartData} />
+	<!-- <AlcoholChart {alcoholChartData} /> -->
 	<AddTimeline {addTimelineData} />
 	<!-- <FermentationTimeline data={fermentationTimelineData} /> -->
 	<!-- <TopBrandsTimeline data={topBrandsTimelineData} /> -->
