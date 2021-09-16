@@ -90,5 +90,6 @@
 		top: 0;
 		left: 0;
 		z-index: 1;
+		cursor: ew-resize;
 	}
 </style>
