@@ -11,7 +11,7 @@
 
 	async function callToApi(phrase) {
 		const response: Basics[] = await serverCall(fetch, Endpoints.beverageSearch, {
-			pathParams: ['pl', phrase]
+			pathParams: ['pl', phrase.trim()]
 		});
 
 		return response;

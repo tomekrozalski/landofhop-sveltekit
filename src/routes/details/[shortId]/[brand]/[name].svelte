@@ -21,15 +21,15 @@
 	import { translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/beverage.json';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import BeverageDetails from '$lib/components/beverageDetails/beverageDetails.svelte';
 
 	translations.update(dictionary);
 
 	export let details: Details;
-	export let next: Basics | null;
-	export let previous: Basics | null;
+	export let next: LinkData | null;
+	export let previous: LinkData | null;
 </script>
 
 <svelte:head>

@@ -26,6 +26,7 @@
 		border-bottom: 2px solid var(--color-black);
 		background: transparent;
 		font: var(--font-weight-regular) 2.4rem / 1 var(--font-primary);
+		text-transform: uppercase;
 		color: var(--color-white);
 	}
 
