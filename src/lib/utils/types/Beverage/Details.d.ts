@@ -126,9 +126,21 @@ export type Details = {
 		editorial?: boolean;
 	};
 	dryHopped?: {
-		label?: IngredientBasic[];
-		producer?: IngredientBasic[];
-		editorial?: IngredientBasic[];
+		label?: {
+			badge: string;
+			name: LanguageValue;
+			type: IngredientType;
+		}[];
+		producer?: {
+			badge: string;
+			name: LanguageValue;
+			type: IngredientType;
+		}[];
+		editorial?: {
+			badge: string;
+			name: LanguageValue;
+			type: IngredientType;
+		}[];
 	};
 	hopRate?: {
 		label?: {
@@ -150,24 +162,26 @@ export type Details = {
 			unit: ExpirationDateUnit;
 		};
 	};
-	ingredientsDescription?: {
+	ingredients?: {
 		label?: {
 			complete: boolean;
 			language: string;
-			value: string;
+			list: string[];
 		};
 		producer?: {
 			complete: boolean;
 			language: string;
-			value: string;
+			list: string[];
 		};
 	};
-	ingredientsList?: {
+	ingredientsTags?: {
 		label?: {
+			badge: string;
 			name: LanguageValue;
 			type: IngredientType;
 		}[];
 		producer?: {
+			badge: string;
 			name: LanguageValue;
 			type: IngredientType;
 		}[];

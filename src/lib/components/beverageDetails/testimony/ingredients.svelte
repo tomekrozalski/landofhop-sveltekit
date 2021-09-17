@@ -3,7 +3,7 @@
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
 	export let details: Details;
-	const { label, producer } = details.ingredientsDescription ?? {};
+	const { label, producer } = details.ingredients ?? {};
 </script>
 
 {#if label}
@@ -13,9 +13,17 @@
 		)}
 	</dt>
 	<dd>
-		<em class="label">{label.value}</em>
+		<ul>
+			{#each label.list as ingredient}
+				<li><span class="label">{ingredient}</span></li>
+			{/each}
+		</ul>
 		{#if producer && label.complete === producer.complete}
-			<em class="producer">{producer.value}</em>
+			<ul>
+				{#each producer.list as ingredient}
+					<li><span class="producer">{ingredient}</span></li>
+				{/each}
+			</ul>
 		{/if}
 	</dd>
 {/if}
@@ -27,6 +35,38 @@
 		)}
 	</dt>
 	<dd>
-		<em class="producer">{producer.value}</em>
+		<ul>
+			{#each producer.list as ingredient}
+				<li><span class="producer">{ingredient}</span></li>
+			{/each}
+		</ul>
 	</dd>
 {/if}
+
+<style>
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	li {
+		font-weight: var(--font-weight-regular);
+	}
+
+	li::before {
+		display: inline-block;
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 50%;
+		content: '';
+		margin-right: 0.6rem;
+		background-color: var(--color-black);
+		position: relative;
+		bottom: 0.2rem;
+	}
+
+	li:not(:last-of-type)::after {
+		content: ',';
+		margin-right: 0.4rem;
+	}
+</style>
