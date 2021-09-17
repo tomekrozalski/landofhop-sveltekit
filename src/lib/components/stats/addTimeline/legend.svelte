@@ -11,7 +11,7 @@
 	const innerWidth = width - margin.left - margin.right;
 	const innerHeight = height - margin.top - margin.bottom;
 
-	function calculateHorizontalPosition(node, type) {
+	function calculateHorizontalPosition(node: any, type: any) {
 		const label = node.querySelector('text.label');
 		const labelWidth = label.getBBox().width;
 
@@ -23,6 +23,7 @@
 
 		if (type === 'bottles') {
 			const blockWidth = labelWidth + innerHeight + 50;
+			// @ts-ignore
 			const cansWidth = document.getElementById('add-timeline-chart-legend-cans').getBBox().width;
 
 			node.style = `transform: translate(${innerWidth - blockWidth - cansWidth}px, 0)`;
@@ -30,7 +31,9 @@
 
 		if (type === 'total') {
 			const blockWidth = labelWidth + innerHeight + 90;
+			// @ts-ignore
 			const cansWidth = document.getElementById('add-timeline-chart-legend-cans').getBBox().width;
+			// @ts-ignore
 			const bottlesWidth = document.getElementById('add-timeline-chart-legend-bottles').getBBox()
 				.width;
 

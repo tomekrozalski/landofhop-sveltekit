@@ -14,10 +14,10 @@
 	const cans = (d: AddTimelineBar) => d.can;
 	const total = (d: AddTimelineBar) => d.bottle + d.can;
 
-	const linePath = (type) =>
+	const linePath = (type: any) =>
 		line()
-			.x((d) => xScale(xValue(d)) || 0)
-			.y((d) => yScale(type(d)))
+			.x((d: any) => xScale(xValue(d)) || 0)
+			.y((d: any) => yScale(type(d)))
 			.curve(curveBasis);
 </script>
 

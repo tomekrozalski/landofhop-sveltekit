@@ -12,13 +12,13 @@
 	</dt>
 	<dd>
 		{#if place.label}
-			<em>{$translate(`country.${place.label.country}`)}</em>
+			<em class="label">{$translate(`country.${place.label.country}`)}</em>
 		{/if}
 		{#if place.producer}
-			<em>{$translate(`country.${place.producer.country}`)}</em>
+			<em class="producer">{$translate(`country.${place.producer.country}`)}</em>
 		{/if}
 		{#if place.editorial}
-			<em>{$translate(`country.${place.editorial.country}`)}</em>
+			<em class="editorial">{$translate(`country.${place.editorial.country}`)}</em>
 		{/if}
 	</dd>
 {/if}

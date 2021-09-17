@@ -17,7 +17,7 @@
 			<span>{$translate('global.confirmation')}</span>
 		{/if}
 		{#if aged?.label}
-			<span>
+			<span class="label">
 				<FormattedList mode="long" let:item data={aged.label}>
 					<AgedItem {item} />
 				</FormattedList>
@@ -27,7 +27,7 @@
 			<span>{$translate('global.confirmation')}</span>
 		{/if}
 		{#if aged?.producer}
-			<span>
+			<span class="producer">
 				<FormattedList mode="long" let:item data={aged.producer}>
 					<AgedItem {item} />
 				</FormattedList>
@@ -37,7 +37,7 @@
 			<span>{$translate('global.confirmation')}</span>
 		{/if}
 		{#if aged?.editorial}
-			<span>
+			<span class="editorial">
 				<FormattedList mode="long" let:item data={aged.editorial}>
 					<AgedItem {item} />
 				</FormattedList>

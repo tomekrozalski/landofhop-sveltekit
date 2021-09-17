@@ -72,39 +72,9 @@
 		background-image: linear-gradient(var(--color-editorial-light), var(--color-editorial-light));
 	}
 
-	article :global(dl) {
-		grid-area: testimony;
-		margin: 1.8rem 0;
-	}
-
-	article :global(dl::first-letter) {
-		text-transform: uppercase;
-	}
-
-	article :global(dt) {
-		display: inline;
-	}
-
-	article :global(dt::after) {
-		content: ': ';
-	}
-
 	article :global(dd) {
-		display: inline;
 		margin: 0;
 		padding: 0;
-	}
-
-	article :global(dd:not(:last-of-type)::after) {
-		content: ', ';
-	}
-
-	article :global(dd > * + *:not(.no-separator)::before) {
-		content: ' / ';
-	}
-
-	article :global(dd > * + .no-separator::before) {
-		content: ' ';
 	}
 
 	@media (--md) {

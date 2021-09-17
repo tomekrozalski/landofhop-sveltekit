@@ -4,7 +4,7 @@
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 
-	export let details: Details;
+	// export let details: Details;
 
 	onMount(() => {
 		// serverCall(fetch, Endpoints.beverageAdminDetails, {

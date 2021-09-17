@@ -4,7 +4,7 @@
 	import navigation from '$lib/utils/stores/navigation';
 	import setSearchParam from '$lib/utils/helpers/setSearchParam';
 
-	function focusOnMount(input) {
+	function focusOnMount(input: HTMLInputElement) {
 		input.focus();
 	}
 </script>

@@ -8,9 +8,7 @@
 </script>
 
 {#if place}
-	<dt>
-		{$translate('beverage.testimonial.city')}
-	</dt>
+	<dt>{$translate('beverage.testimonial.city')}</dt>
 	<dd>
 		{#if place.label}
 			<MarkLanguage label tag="em" name={place.label.city} />

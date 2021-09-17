@@ -20,14 +20,10 @@
 	</dd>
 {/if}
 
-{#if producer && label && label.complete !== producer.complete}
-	/
-{/if}
-
 {#if producer && label?.complete !== producer.complete}
 	<dt>
 		{$translate(
-			label.complete ? 'beverage.testimonial.ingredients' : 'beverage.testimonial.contains'
+			producer.complete ? 'beverage.testimonial.ingredients' : 'beverage.testimonial.contains'
 		)}
 	</dt>
 	<dd>

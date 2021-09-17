@@ -42,3 +42,22 @@
 	<Container {details} />
 	<Price {details} />
 </dl>
+
+<style>
+	dl {
+		grid-area: testimony;
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		grid-column-gap: 2rem;
+		margin: 3rem 0 1.8rem 0;
+		border-collapse: collapse;
+	}
+
+	dl :global(dt) {
+		text-align: right;
+	}
+
+	dl :global(dt::after) {
+		content: ':';
+	}
+</style>

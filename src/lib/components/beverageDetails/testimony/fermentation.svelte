@@ -14,17 +14,17 @@
 	<dd>
 		{#if fermentation.label}
 			<FormattedList mode="short" let:item data={fermentation.label}>
-				<em>{$translate(`beverage.testimonial.fermentationType.${item}`)}</em>
+				<em class="label">{$translate(`beverage.testimonial.fermentationType.${item}`)}</em>
 			</FormattedList>
 		{/if}
 		{#if fermentation.producer}
 			<FormattedList mode="short" let:item data={fermentation.producer}>
-				<em>{$translate(`beverage.testimonial.fermentationType.${item}`)}</em>
+				<em class="producer">{$translate(`beverage.testimonial.fermentationType.${item}`)}</em>
 			</FormattedList>
 		{/if}
 		{#if fermentation.editorial}
 			<FormattedList mode="short" let:item data={fermentation.editorial}>
-				<em>{$translate(`beverage.testimonial.fermentationType.${item}`)}</em>
+				<em class="editorial">{$translate(`beverage.testimonial.fermentationType.${item}`)}</em>
 			</FormattedList>
 		{/if}
 	</dd>
