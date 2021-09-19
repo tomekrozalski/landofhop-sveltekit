@@ -6,6 +6,7 @@
 	import Status from '$lib/utils/enums/Status.enum';
 	import TextInputGroup from '$lib/elements/form/textInputGroup.svelte';
 	import Button from '$lib/elements/form/button.svelte';
+	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 
 	const fields: FieldTypes[] = [
 		{
@@ -31,22 +32,13 @@
 	function handleSubmit() {
 		navigation.setLoginStatus(Status.pending);
 
-		fetch('/auth/login.json', {
+		serverCall(fetch, Endpoints.authorize, {
 			method: 'POST',
 			body: JSON.stringify({
 				email: $formStore.fields.email.value,
 				password: $formStore.fields.password.value
 			})
 		})
-			.then(async (response) => {
-				const data = await response.json();
-
-				if (response.status >= 300) {
-					throw new Error(data);
-				}
-
-				return data;
-			})
 			.then(() => {
 				navigation.setLoginStatus(Status.fulfilled);
 			})
