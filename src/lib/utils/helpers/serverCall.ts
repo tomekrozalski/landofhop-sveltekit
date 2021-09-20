@@ -22,11 +22,12 @@ export enum Endpoints {
 }
 
 type Props = {
+	body?: string | FormData;
+	credentials?: 'include';
 	formData?: boolean;
 	method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
 	pathParams?: (string | number)[];
 	token?: string;
-	body?: string | FormData;
 };
 
 const serverCall = (fetch, endpoint: Endpoints, props?: Props) => {
