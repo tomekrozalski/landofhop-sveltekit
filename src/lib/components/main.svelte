@@ -1,5 +1,5 @@
 <script>
-	import { afterUpdate, onMount } from 'svelte';
+	import { afterUpdate } from 'svelte';
 	import navigation from '$lib/utils/stores/navigation';
 	import SearchResults from '$lib/components/beverageList/searchResults.svelte';
 

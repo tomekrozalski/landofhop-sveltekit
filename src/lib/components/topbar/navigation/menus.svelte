@@ -1,12 +1,23 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	import { translate } from 'svelte-intl';
 	import Status from '$lib/utils/enums/Status.enum';
 	import navigation from '$lib/utils/stores/navigation';
 	import LockIcon from '$lib/elements/vectors/lock.svelte';
 	import UnlockIcon from '$lib/elements/vectors/unlock.svelte';
+	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+
+	onMount(() => {
+		serverCall(fetch, Endpoints.verifyToken, { credentials: 'include' })
+			.then(() => navigation.setLoginStatus(Status.fulfilled))
+			.catch(() => navigation.setLoginStatus(Status.idle));
+	});
 
 	function logOut() {
-		navigation.setLoginStatus(Status.idle);
+		serverCall(fetch, Endpoints.unauthorize, { credentials: 'include' })
+			.then(() => navigation.setLoginStatus(Status.idle))
+			.catch(() => console.warn('Unauthorization failed'));
 	}
 </script>
 

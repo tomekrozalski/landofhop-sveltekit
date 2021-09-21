@@ -40,12 +40,8 @@
 			}),
 			credentials: 'include'
 		})
-			.then(() => {
-				navigation.setLoginStatus(Status.fulfilled);
-			})
-			.catch(() => {
-				navigation.setLoginStatus(Status.rejected);
-			});
+			.then(() => navigation.setLoginStatus(Status.fulfilled))
+			.catch(() => navigation.setLoginStatus(Status.rejected));
 	}
 </script>
 

@@ -57,11 +57,6 @@ function closeLoginbar() {
 }
 
 function setLoginStatus(status: Status) {
-	if (status !== Status.fulfilled) {
-		document.cookie = 'accessToken=; Max-Age=0';
-		document.cookie = 'refreshToken=; Max-Age=0';
-	}
-
 	update((store) => {
 		store.loginStatus = status;
 		store.isLoggedIn = status === Status.fulfilled;

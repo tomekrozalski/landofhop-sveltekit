@@ -11,7 +11,7 @@ export enum Endpoints {
 	beverageDetails = 'details',
 	beverageSearch = 'beverage/search',
 	beverageStats = 'beverage/stats',
-	beverageTotal = 'beverage/total'
+	beverageTotal = 'beverage/total',
 	// country = 'country/getAll',
 	// ingredient = 'ingredient/getAll',
 	// institution = 'institution/getAll',
@@ -19,6 +19,8 @@ export enum Endpoints {
 	// place = 'place/getAll',
 	// removeBeverage = 'beverage',
 	// saveBeverage = 'beverage',
+	unauthorize = 'unauthorize',
+	verifyToken = 'verifyToken'
 }
 
 type Props = {
