@@ -50,7 +50,6 @@
 		grid-template-columns: 1fr 2fr;
 		grid-column-gap: 2rem;
 		margin: 3rem 0 1.8rem 0;
-		border-collapse: collapse;
 	}
 
 	dl :global(dt) {

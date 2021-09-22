@@ -37,8 +37,7 @@
 			body: JSON.stringify({
 				email: $formStore.fields.email.value,
 				password: $formStore.fields.password.value
-			}),
-			credentials: 'include'
+			})
 		})
 			.then(() => navigation.setLoginStatus(Status.fulfilled))
 			.catch(() => navigation.setLoginStatus(Status.rejected));

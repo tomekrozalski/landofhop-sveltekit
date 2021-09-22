@@ -5,7 +5,7 @@ export enum Endpoints {
 	// addLanguage = 'language',
 	// addPlace = 'place',
 	authorize = 'authorize',
-	// beverageAdminDetails = 'beverage/admin/details',
+	beverageAdminNotes = 'admin/beverage/notes',
 	beverageBasics = 'basics',
 	// beverageDashboardDetails = 'beverage/admin/dashboard',
 	beverageDetails = 'details',
@@ -25,23 +25,27 @@ export enum Endpoints {
 
 type Props = {
 	body?: string | FormData;
-	credentials?: 'include';
 	formData?: boolean;
 	method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
 	pathParams?: (string | number)[];
-	token?: string;
 };
 
-const serverCall = (fetch, endpoint: Endpoints, props?: Props) => {
-	const { formData = false, method = 'GET', pathParams, token, ...rest } = props || {};
+function serverCall(fetch, endpoint: Endpoints, props?: Props) {
+	const { formData = false, method = 'GET', pathParams, ...rest } = props || {};
 
 	const baseUrl = `${import.meta.env.VITE_API_SERVER}/${endpoint}`;
 	const completeUrl = pathParams?.length ? `${baseUrl}/${pathParams.join('/')}` : baseUrl;
+	const isProtectedRoute = [
+		Endpoints.authorize,
+		Endpoints.beverageAdminNotes,
+		Endpoints.unauthorize,
+		Endpoints.verifyToken
+	].includes(endpoint);
 
 	return fetch(completeUrl, {
 		method,
+		...(isProtectedRoute && { credentials: 'include' }),
 		headers: {
-			Authorization: token ? `Bearer ${token}` : '',
 			...(!formData && { 'Content-Type': 'application/json' })
 		},
 		...rest
@@ -52,6 +56,6 @@ const serverCall = (fetch, endpoint: Endpoints, props?: Props) => {
 
 		return response.json();
 	});
-};
+}
 
 export default serverCall;
