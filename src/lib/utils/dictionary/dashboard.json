@@ -1,0 +1,14 @@
+{
+	"en": {
+		"dashboard.beverage.addNewBeverage": "Add new beverage",
+		"dashboard.beverage.labelInfo.description": "Data which could be taken just from the container",
+		"dashboard.beverage.labelInfo.title": "Label",
+		"dashboard.label.badge": "Badge"
+	},
+	"pl": {
+		"dashboard.beverage.addNewBeverage": "Dodaj nowe piwo",
+		"dashboard.beverage.labelInfo.description": "Dane, które można wyciągnąć tylko na podstawie opakowania",
+		"dashboard.beverage.labelInfo.title": "Etykieta",
+		"dashboard.label.badge": "Identyfikator"
+	}
+}

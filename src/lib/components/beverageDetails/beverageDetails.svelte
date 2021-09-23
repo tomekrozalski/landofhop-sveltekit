@@ -90,7 +90,7 @@
 		article {
 			grid-template-columns: 22rem 1fr 18rem;
 			grid-template-areas: 'gallery main navigation';
-			padding: 2rem 1rem;
+			padding-top: 2rem;
 		}
 
 		div {

@@ -27,6 +27,7 @@ main {
 article {
 	max-width: var(--size-container-max-width);
 	margin: 0 auto;
+	padding: 1rem;
 }
 
 h1 {
@@ -64,4 +65,8 @@ ul {
 
 li {
 	list-style-type: none;
+}
+
+p {
+	margin: 0.8rem 0;
 }

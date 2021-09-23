@@ -29,6 +29,13 @@
 	</li>
 	<li><a href="/about">{$translate('navigation.about')}</a></li>
 	<li><a href="/stats">{$translate('navigation.stats')}</a></li>
+	{#if $navigation.isLoggedIn}
+		<li>
+			<a href="/dashboard/add-new-beverage">
+				{$translate('navigation.addNewBeverage')}
+			</a>
+		</li>
+	{/if}
 </ul>
 <ul class="languages">
 	<li><a href="/">PL</a></li>

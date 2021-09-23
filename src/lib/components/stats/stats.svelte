@@ -17,10 +17,6 @@
 </article>
 
 <style>
-	article {
-		padding: 2rem;
-	}
-
 	:global(line) {
 		stroke: var(--color-black);
 	}
