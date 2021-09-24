@@ -6,7 +6,7 @@
 	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
 	import ErrorMessage from './errorMessage.svelte';
-	import LoginForm from './loginForm.svelte';
+	import LoginForm from './loginForm/loginForm.svelte';
 	import SuccessMessage from './successMessage.svelte';
 
 	translations.update(loginbarDictionary);

@@ -1,29 +1,32 @@
 <script lang="ts">
 	import StatusIndicator from './statusIndicator.svelte';
 
-	export let formStore: any, fieldName: string;
-	let { hasInvertedColors, id, type } = $formStore.fields[fieldName];
-	$: errorMessage = $formStore.fields[fieldName].errorMessage;
-	$: isValid = $formStore.fields[fieldName].isValid;
-	$: isTouched = $formStore.fields[fieldName].isTouched;
+	export let errors: string;
+	export let handleChange: () => void;
+	export let hasInvertedColors: boolean = false;
+	export let id: string;
+	export let isTouched: boolean;
+	export let name: string;
+	export let type: 'email' | 'number' | 'password' | 'text' = 'text';
+	export let value: string;
 
 	function typeAction(node: any) {
 		node.type = type;
 	}
 </script>
 
-<StatusIndicator {isTouched} {isValid}>
+<StatusIndicator {isTouched} isValid={!errors}>
 	<input
 		class:hasInvertedColors
 		class:isTouched
 		{id}
+		{name}
 		use:typeAction
-		data-name={fieldName}
-		bind:value={$formStore.fields[fieldName].value}
-		on:blur={formStore.onBlur}
+		on:change={handleChange}
+		bind:value
 	/>
-	{#if errorMessage}
-		<span>{errorMessage}</span>
+	{#if errors}
+		<span>{errors}</span>
 	{/if}
 </StatusIndicator>
 

@@ -1,10 +1,10 @@
 <script lang="ts">
-	export let formStore: any, fieldName: string;
-	let { id, isRequired, label } = $formStore.fields[fieldName];
+	export let id: string;
+	export let isRequired: boolean = false;
 </script>
 
 <label for={id}>
-	{label}
+	<slot />
 	{#if isRequired}
 		<span>*</span>
 	{/if}
