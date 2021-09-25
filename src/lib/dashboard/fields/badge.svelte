@@ -1,19 +1,24 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-
-	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import Label from '$lib/elements/form/label.svelte';
 	import TextInput from '$lib/elements/form/textInput.svelte';
+	import Grid from '$lib/dashboard/elements/grid.svelte'
 
-	export let form: 'label' | 'producer';
-	let fieldName = 'badge';
-	let id = `${form}-${fieldName}`;
-	let value = '';
+	export let formName: string;
+	export let formData: any;
+	let { errors, form, handleChange, touched } = formData;
+	let name = 'badge';
+	let id = `${formName}-${name}`;
 </script>
 
 <Grid>
 	<Label {id} isRequired>{$translate('dashboard.label.badge')}</Label>
-	<!-- <TextInput {id} {fieldName} bind:value /> -->
+	<TextInput
+		errors={$errors.badge}
+		{handleChange}
+		{id}
+		isTouched={$touched.badge}
+		{name}
+		bind:value={$form.badge}
+	/>
 </Grid>
-
-{value}

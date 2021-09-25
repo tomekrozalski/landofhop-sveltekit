@@ -35,16 +35,13 @@
 				.catch(() => navigation.setLoginStatus(Status.rejected));
 		}
 	});
-
-	let { isValid } = formData;
-	$: console.log('isValid', $isValid);
 </script>
 
 <form on:submit={formData.handleSubmit} novalidate>
 	<Email {formName} {formData} />
 	<Password {formName} {formData} />
 	<div class="button-wrapper">
-		<Button type="submit" disabled={false}>
+		<Button type="submit">
 			{$translate('login.submit')}
 		</Button>
 	</div>
