@@ -7,16 +7,14 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, handleChange, touched, updateField } = formData;
+	let { errors, form, handleChange, touched, updateValidateField } = formData;
 	let name = 'name';
 	let id = `${formName}-${name}`;
-
-	$: console.log('->', $form.name);
 </script>
 
 <Grid columns={2}>
 	<Label {id} isRequired>{$translate('dashboard.label.name')}</Label>
-	{#each $form.name as name, i}
+	{#each $form.name as _, i}
 		<TextInput
 			errors={$errors.name[i].value}
 			{handleChange}
@@ -25,6 +23,11 @@
 			name={`name[${i}].value`}
 			bind:value={$form.name[i].value}
 		/>
-		<LanguageSelect name="name[0].language" {updateField} value={$form.name[i].language} />
+		<LanguageSelect
+			errors={$errors.name[i].language}
+			name="name[0].language"
+			{updateValidateField}
+			value={$form.name[i].language}
+		/>
 	{/each}
 </Grid>

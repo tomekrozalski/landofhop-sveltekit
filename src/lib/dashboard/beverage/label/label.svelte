@@ -12,23 +12,20 @@
 	const formData = createForm({
 		initialValues: {
 			badge: '',
-			name: [{ language: null, value: '' }]
+			name: [{ language: '', value: '' }]
 		},
 		validationSchema: yup.object().shape({
 			badge: yup
 				.string()
 				.min(3, 'minimum trzy znaki')
-				.matches(/^[a-z\d-]+$/, 'tylko małe litery i ?')
-				.required('required'),
+				.matches(/^[a-z\d-]+$/, $translate('form.validation.badge'))
+				.required($translate('form.validation.required')),
 			name: yup
 				.array()
 				.of(
 					yup.object().shape({
-						language: yup.object().shape({
-							label: yup.string().required('required'),
-							value: yup.string().required('required')
-						}),
-						value: yup.string().min(1).required()
+						language: yup.string().required($translate('form.validation.required')),
+						value: yup.string().required($translate('form.validation.required'))
 					})
 				)
 				.required()

@@ -2,19 +2,27 @@
 	"en": {
 		"dashboard.beverage.addNewBeverage": "Add new beverage",
 		"dashboard.beverage.brandInfo": "Informations connected with branding",
-    "dashboard.beverage.brewingInfo": "Informations connected with brewing",
+		"dashboard.beverage.brewingInfo": "Informations connected with brewing",
 		"dashboard.beverage.labelInfo.description": "Data which could be taken just from the container",
 		"dashboard.beverage.labelInfo.title": "Label",
 		"dashboard.label.badge": "Badge",
-		"dashboard.label.name": "Nazwa"
+		"dashboard.label.name": "Nazwa",
+		"dashboard.language.mostPopular": "most popular",
+		"dashboard.language.notApplicable": "not applicable",
+		"dashboard.language.rest": "rest",
+		"form.validation.badge": "Only alphanumeric characters and a pause are allowed"
 	},
 	"pl": {
 		"dashboard.beverage.addNewBeverage": "Dodaj nowe piwo",
 		"dashboard.beverage.brandInfo": "Informacje dotyczące marki",
-    "dashboard.beverage.brewingInfo": "Informacje dotyczące warzenia",
+		"dashboard.beverage.brewingInfo": "Informacje dotyczące warzenia",
 		"dashboard.beverage.labelInfo.description": "Dane, które można wyciągnąć tylko na podstawie opakowania",
 		"dashboard.beverage.labelInfo.title": "Etykieta",
 		"dashboard.label.badge": "Identyfikator",
-		"dashboard.label.name": "Nazwa"
+		"dashboard.label.name": "Nazwa",
+		"dashboard.language.mostPopular": "najczęściej wybierane",
+		"dashboard.language.notApplicable": "nie dotyczy",
+		"dashboard.language.rest": "pozostałe",
+		"form.validation.badge": "Dozwolone tylko znaki alfanumeryczne i pauza"
 	}
 }
