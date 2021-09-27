@@ -8,6 +8,7 @@
 	export let id: string;
 	export let isTouched: boolean;
 	export let name: string;
+	export let style: string = '';
 	export let type: 'email' | 'number' | 'password' | 'text' = 'text';
 	export let value: string;
 
@@ -16,7 +17,7 @@
 	}
 </script>
 
-<StatusIndicator {isTouched} isValid={!errors}>
+<StatusIndicator {isTouched} isValid={!errors} {style}>
 	<input
 		class:hasInvertedColors
 		class:isTouched

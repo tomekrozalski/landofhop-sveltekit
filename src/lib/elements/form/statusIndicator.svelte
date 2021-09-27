@@ -3,9 +3,10 @@
 	import WarningIcon from '$lib/elements/vectors/warning.svelte';
 
 	export let isTouched: boolean, isValid: boolean;
+	export let style: string = '';
 </script>
 
-<span>
+<span {style}>
 	{#if isTouched && isValid}
 		<SuccessIcon style="right: 0.6rem" />
 	{:else if isTouched && !isValid}

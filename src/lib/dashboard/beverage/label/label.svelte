@@ -2,17 +2,19 @@
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
+	import cloneDeep from 'lodash/cloneDeep';
 
 	import Button from '$lib/elements/form/button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
+	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 
 	const formName = 'label';
 
 	const formData = createForm({
 		initialValues: {
 			badge: '',
-			name: [{ language: '', value: '' }]
+			name: [cloneDeep(emptyLanguageValue)]
 		},
 		validationSchema: yup.object().shape({
 			badge: yup

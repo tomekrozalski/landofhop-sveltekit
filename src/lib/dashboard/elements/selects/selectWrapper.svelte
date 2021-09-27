@@ -9,11 +9,7 @@
 	export let updateValidateField: (name: string, value: string) => void;
 	export let value: SelectType;
 
-	$: console.log('errors', errors);
-	$: console.log('errors', errors);
-
 	function handleClear() {
-		console.log('handleClear!');
 		updateValidateField(name, '');
 	}
 </script>
