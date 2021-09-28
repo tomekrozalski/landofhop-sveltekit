@@ -10,29 +10,29 @@
 	export let formName: string;
 	export let formData: any;
 	let { errors, form, handleChange, touched, updateValidateField } = formData;
-	let name = 'name';
-	let id = `${formName}-${name}`;
+	let fieldName = 'name';
+	let id = `${formName}-${fieldName}`;
 </script>
 
 <Grid columns={2}>
 	<Label {id} isRequired>{$translate('dashboard.label.name')}</Label>
-	{#each $form.name as _, i}
+	{#each $form[fieldName] as _, i}
 		<TextInput
-			errors={$errors.name[i]?.value ?? ''}
+			errors={$errors[fieldName][i]?.value ?? ''}
 			{handleChange}
 			id={i === 0 ? id : null}
-			isTouched={$touched.name[i].value}
-			name={`name[${i}].value`}
+			isTouched={$touched[fieldName][i].value}
+			name={`${fieldName}[${i}].value`}
 			style="grid-column: 2/3"
-			bind:value={$form.name[i].value}
+			bind:value={$form[fieldName][i].value}
 		/>
 		<LanguageSelect
-			errors={$errors.name[i]?.language ?? ''}
-			name={`name[${i}].language`}
+			errors={$errors[fieldName][i]?.language ?? ''}
+			name={`${fieldName}[${i}].language`}
 			{updateValidateField}
-			bind:value={$form.name[i].language}
+			bind:value={$form[fieldName][i].language}
 		/>
-		{#if i > 0}<RemoveButton fieldName="name" {formData} {i} />{/if}
+		{#if i > 0}<RemoveButton {fieldName} {formData} {i} />{/if}
 	{/each}
-	<AddButton {formData} />
+	<AddButton {fieldName} {formData} />
 </Grid>
