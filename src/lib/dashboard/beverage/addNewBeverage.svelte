@@ -18,7 +18,6 @@
 </article>
 
 <style>
-
 	article :global(header) {
 		margin-bottom: 2.5rem;
 	}

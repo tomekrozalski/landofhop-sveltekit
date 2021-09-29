@@ -20,6 +20,7 @@
 		containerClasses="select"
 		{items}
 		on:select={(event) => updateValidateField(name, event.detail.value)}
+		showChevron={true}
 		{value}
 		{...$$restProps}
 	/>
@@ -37,17 +38,19 @@
 		--padding: 0 1rem;
 		--background: var(--color-grey-4);
 		--height: var(--size-input-height);
-		--inputPadding: 0 3.5rem 0 4rem;
-		--selectedItemPadding: 0 1rem;
-		--clearSelectTop: 0.3rem;
-		--clearSelectRight: 0.8rem;
-		--clearSelectBottom: 0;
-		--clearSelectWidth: 1.6rem;
+		--inputPadding: 0 1rem;
+		--selectedItemPadding: 0;
 		--listBorderRadius: 0;
 		--itemFirstBorderRadius: 0;
 		--itemIsActiveBG: var(--color-black);
 		--itemHoverBG: var(--color-grey-4);
 		--itemPadding: 0 1rem;
+
+		/* clear selector */
+		--clearSelectTop: 0.6rem;
+		--clearSelectRight: 0.8rem;
+		--clearSelectBottom: 0;
+		--clearSelectWidth: 1.6rem;
 		--clearSelectColor: var(--color-grey-1);
 		--clearSelectHoverColor: var(--color-black);
 		/* indicator */
@@ -69,6 +72,7 @@
 	}
 
 	div :global(.selectContainer.select svg) {
+		height: 2rem;
 		fill: var(--color-grey-1);
 	}
 

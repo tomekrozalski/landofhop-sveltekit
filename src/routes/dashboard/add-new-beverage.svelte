@@ -1,19 +1,25 @@
-<!-- <script context="module" lang="ts">
+<script context="module" lang="ts">
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 
 	export async function load({ fetch }) {
-		const test: any = await serverCall(fetch, Endpoints.beverageDetails);
+		const institutions: InstitutionType[] = await serverCall(fetch, Endpoints.institutions);
 
-		return { props: {test} };
+		return { props: { institutions } };
 	}
-</script> -->
+</script>
+
 <script lang="ts">
 	import { translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/dashboard.json';
+	import { institutionStore } from '$lib/dashboard/utils/stores';
 	import AddNewBeverage from '$lib/dashboard/beverage/addNewBeverage.svelte';
 
 	translations.update(dictionary as Translations);
+
+	export let institutions: InstitutionType[];
+	institutionStore.set(institutions);
 </script>
 
 <svelte:head>

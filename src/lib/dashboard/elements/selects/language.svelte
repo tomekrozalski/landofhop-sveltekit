@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import languages, { getAlpha2Codes } from '@cospired/i18n-iso-languages';
+	import languages, { getAlpha2Codes } from '@cospired/i18n-iso-languages/index.js';
 	import en from '@cospired/i18n-iso-languages/langs/en.json';
 	import pl from '@cospired/i18n-iso-languages/langs/pl.json';
-	import Icon from '$lib/elements/vectors/language.svelte';
 	import SelectWrapper from './selectWrapper.svelte';
 
 	languages.registerLocale(en);
@@ -42,11 +41,9 @@
 	{errors}
 	{getGroupHeaderLabel}
 	{groupBy}
-	{Icon}
 	{items}
 	{name}
 	{updateValidateField}
-	placeholder="wybierz język"
-	showChevron={true}
+	placeholder={$translate('dashboard.select.placeholder.language')}
 	value={items.find((item) => item.value === value)}
 />

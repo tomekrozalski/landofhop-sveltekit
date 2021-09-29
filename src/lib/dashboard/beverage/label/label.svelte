@@ -2,10 +2,11 @@
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
-	import cloneDeep from 'lodash/cloneDeep';
+	import cloneDeep from 'lodash/cloneDeep.js';
 
 	import Button from '$lib/elements/form/button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
+	import Brand from '$lib/dashboard/fields/brand.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
 	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
@@ -16,7 +17,8 @@
 		initialValues: {
 			badge: '',
 			name: [cloneDeep(emptyLanguageValue)],
-			series: []
+			series: [],
+			brand: ''
 		},
 		validationSchema: yup.object().shape({
 			badge: yup
@@ -39,7 +41,8 @@
 					language: yup.string().required($translate('form.validation.required')),
 					value: yup.string().required($translate('form.validation.required'))
 				})
-			)
+			),
+			brand: yup.string().required($translate('form.validation.required'))
 		}),
 		onSubmit: (values) => {
 			console.log({ values });
@@ -56,6 +59,7 @@
 	<h3><span>{$translate('dashboard.beverage.brandInfo')}</span></h3>
 	<Name {formName} {formData} />
 	<Series {formName} {formData} />
+	<Brand {formName} {formData} />
 	<Button type="submit">
 		{$translate('login.submit')}
 	</Button>
