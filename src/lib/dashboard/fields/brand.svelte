@@ -3,6 +3,7 @@
 	import Label from '$lib/elements/form/label.svelte';
 	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import InstitutionSelect from '$lib/dashboard/elements/selects/institution.svelte';
+	import AddNewInstitution from '$lib/dashboard/modals/addNewInstitution.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -19,4 +20,5 @@
 		{updateValidateField}
 		bind:value={$form[fieldName]}
 	/>
+	<AddNewInstitution />
 </Grid>
