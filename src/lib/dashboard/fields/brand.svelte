@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
-	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import InstitutionSelect from '$lib/dashboard/elements/selects/institution.svelte';
 	import AddNewInstitution from '$lib/dashboard/modals/addNewInstitution.svelte';
 
@@ -12,13 +11,11 @@
 	let id = `${formName}-${fieldName}`;
 </script>
 
-<Grid>
-	<Label {id}>{$translate('dashboard.label.brand')}</Label>
-	<InstitutionSelect
-		errors={$errors[fieldName]}
-		name={fieldName}
-		{updateValidateField}
-		bind:value={$form[fieldName]}
-	/>
-	<AddNewInstitution />
-</Grid>
+<Label {id}>{$translate('dashboard.label.brand')}</Label>
+<InstitutionSelect
+	errors={$errors[fieldName]}
+	name={fieldName}
+	{updateValidateField}
+	bind:value={$form[fieldName]}
+/>
+<AddNewInstitution />

@@ -10,7 +10,7 @@
 		<SearchInput />
 	{/if}
 	{#if $navigation.isSearchbarActive}
-		<button on:click={navigation.closeSearchBar}><Close /></button>
+		<button on:click={navigation.closeSearchBar} class="close-btn"><Close /></button>
 	{:else}
 		<button on:click={navigation.openSearchBar}><Magnifier /></button>
 	{/if}
@@ -50,6 +50,10 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+	}
+
+	button.close-btn :global(svg) {
+		fill: var(--color-danger);
 	}
 
 	button:hover :global(svg) {

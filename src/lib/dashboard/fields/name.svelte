@@ -2,7 +2,6 @@
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
 	import TextInput from '$lib/elements/form/textInput.svelte';
-	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import LanguageSelect from '$lib/dashboard/elements/selects/language.svelte';
 	import AddButton from '$lib/dashboard/elements/addButton.svelte';
 	import RemoveButton from '$lib/dashboard/elements/removeButton.svelte';
@@ -14,25 +13,23 @@
 	let id = `${formName}-${fieldName}`;
 </script>
 
-<Grid columns={2}>
-	<Label {id} isRequired>{$translate('dashboard.label.name')}</Label>
-	{#each $form[fieldName] as _, i}
-		<TextInput
-			errors={$errors[fieldName][i]?.value ?? ''}
-			{handleChange}
-			id={i === 0 ? id : null}
-			isTouched={$touched[fieldName][i].value}
-			name={`${fieldName}[${i}].value`}
-			style="grid-column: 2/3"
-			bind:value={$form[fieldName][i].value}
-		/>
-		<LanguageSelect
-			errors={$errors[fieldName][i]?.language ?? ''}
-			name={`${fieldName}[${i}].language`}
-			{updateValidateField}
-			bind:value={$form[fieldName][i].language}
-		/>
-		{#if i > 0}<RemoveButton {fieldName} {formData} {i} />{/if}
-	{/each}
-	<AddButton {fieldName} {formData} />
-</Grid>
+<Label {id} isRequired>{$translate('dashboard.label.name')}</Label>
+{#each $form[fieldName] as _, i}
+	<TextInput
+		errors={$errors[fieldName][i]?.value ?? ''}
+		{handleChange}
+		id={i === 0 ? id : null}
+		isTouched={$touched[fieldName][i].value}
+		name={`${fieldName}[${i}].value`}
+		style="grid-column: 2/3"
+		bind:value={$form[fieldName][i].value}
+	/>
+	<LanguageSelect
+		errors={$errors[fieldName][i]?.language ?? ''}
+		name={`${fieldName}[${i}].language`}
+		{updateValidateField}
+		bind:value={$form[fieldName][i].language}
+	/>
+	{#if i > 0}<RemoveButton {fieldName} {formData} {i} />{/if}
+{/each}
+<AddButton {fieldName} {formData} />

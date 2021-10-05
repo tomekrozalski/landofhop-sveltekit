@@ -11,6 +11,7 @@
 		right: 0;
 		transform: translateY(100%);
 		background-color: var(--color-brand-5-light);
+		z-index: 1;
 	}
 
 	@media (--lg) {

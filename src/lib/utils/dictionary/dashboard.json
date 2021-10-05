@@ -1,5 +1,6 @@
 {
 	"en": {
+		"dashboard.addNewInstitution": "Add new institution",
 		"dashboard.append": "Append",
 		"dashboard.beverage.addNewBeverage": "Add new beverage",
 		"dashboard.beverage.brandInfo": "Informations connected with branding",
@@ -13,11 +14,14 @@
 		"dashboard.language.mostPopular": "most popular",
 		"dashboard.language.notApplicable": "not applicable",
 		"dashboard.language.rest": "rest",
+		"dashboard.button.moveOn": "move on",
+		"dashboard.button.save": "save",
 		"dashboard.select.placeholder.institution": "select brand",
 		"dashboard.select.placeholder.language": "select language",
 		"form.validation.badge": "Only alphanumeric characters and a pause are allowed"
 	},
 	"pl": {
+		"dashboard.addNewInstitution": "Dodaj nową instytucję",
 		"dashboard.append": "Dodaj",
 		"dashboard.beverage.addNewBeverage": "Dodaj nowe piwo",
 		"dashboard.beverage.brandInfo": "Informacje dotyczące marki",
@@ -31,6 +35,8 @@
 		"dashboard.language.mostPopular": "najczęściej wybierane",
 		"dashboard.language.notApplicable": "nie dotyczy",
 		"dashboard.language.rest": "pozostałe",
+		"dashboard.button.moveOn": "przejdź dalej",
+		"dashboard.button.save": "zapisz",
 		"dashboard.select.placeholder.institution": "wybierz markę",
 		"dashboard.select.placeholder.language": "wybierz język",
 		"form.validation.badge": "Dozwolone tylko znaki alfanumeryczne i pauza"

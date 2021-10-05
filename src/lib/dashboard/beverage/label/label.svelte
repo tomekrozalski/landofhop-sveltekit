@@ -4,6 +4,8 @@
 	import * as yup from 'yup';
 	import cloneDeep from 'lodash/cloneDeep.js';
 
+	import Grid from '$lib/dashboard/elements/grid.svelte';
+	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Brand from '$lib/dashboard/fields/brand.svelte';
@@ -55,12 +57,22 @@
 		<h2>{$translate('dashboard.beverage.labelInfo.title')}</h2>
 		<p>{$translate('dashboard.beverage.labelInfo.description')}</p>
 	</header>
-	<Badge {formName} {formData} />
+	<Grid>
+		<Badge {formName} {formData} />
+	</Grid>
 	<h3><span>{$translate('dashboard.beverage.brandInfo')}</span></h3>
-	<Name {formName} {formData} />
-	<Series {formName} {formData} />
-	<Brand {formName} {formData} />
-	<Button type="submit">
-		{$translate('login.submit')}
-	</Button>
+	<Grid columns={2}>
+		<Name {formName} {formData} />
+	</Grid>
+	<Grid columns={2}>
+		<Series {formName} {formData} />
+	</Grid>
+	<Grid>
+		<Brand {formName} {formData} />
+	</Grid>
+	<ButtonWrapper>
+		<Button type="submit">
+			{$translate('dashboard.button.moveOn')}
+		</Button>
+	</ButtonWrapper>
 </form>
