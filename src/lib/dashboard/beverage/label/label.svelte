@@ -9,6 +9,7 @@
 	import Button from '$lib/elements/form/button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Brand from '$lib/dashboard/fields/brand.svelte';
+	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
 	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
@@ -20,7 +21,8 @@
 			badge: '',
 			name: [cloneDeep(emptyLanguageValue)],
 			series: [],
-			brand: ''
+			brand: '',
+			cooperation: null
 		},
 		validationSchema: yup.object().shape({
 			badge: yup
@@ -44,7 +46,8 @@
 					value: yup.string().required($translate('form.validation.required'))
 				})
 			),
-			brand: yup.string().required($translate('form.validation.required'))
+			brand: yup.string().required($translate('form.validation.required')),
+			cooperation: yup.array().min(1).nullable(true)
 		}),
 		onSubmit: (values) => {
 			console.log({ values });
@@ -69,6 +72,9 @@
 	</Grid>
 	<Grid>
 		<Brand {formName} {formData} />
+	</Grid>
+	<Grid isOptional>
+		<Cooperation {formName} {formData} />
 	</Grid>
 	<ButtonWrapper>
 		<Button type="submit">

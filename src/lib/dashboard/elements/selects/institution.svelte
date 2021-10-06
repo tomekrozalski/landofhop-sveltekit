@@ -4,10 +4,10 @@
 	import { institutionStore } from '$lib/dashboard/utils/stores';
 	import SelectWrapper from './selectWrapper.svelte';
 
-	export let errors: string;
+	export let errors: string | string[];
 	export let name: string;
 	export let updateValidateField: (string, any) => void;
-	export let value: string;
+	export let value: string | null;
 
 	let items = $institutionStore
 		.map(({ name, shortId }) => ({
@@ -23,5 +23,5 @@
 	{name}
 	{updateValidateField}
 	placeholder={$translate('dashboard.select.placeholder.institution')}
-	value={items.find((item) => item.value === value)}
+	value={value === null ? null : items.find((item) => item.value === value)}
 />

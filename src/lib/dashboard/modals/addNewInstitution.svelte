@@ -9,6 +9,7 @@
 	import Button from '$lib/elements/form/button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
+	import Owner from '$lib/dashboard/fields/owner.svelte';
 	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 	import ModalWrapper from './modalWrapper.svelte';
 
@@ -58,6 +59,10 @@
 			<ModalGrid columns={2}>
 				<Name {formName} {formData} />
 			</ModalGrid>
+			<ModalGrid>
+				<Owner {formName} {formData} />
+			</ModalGrid>
+
 			<ButtonWrapper modal>
 				<Button type="submit">
 					{$translate('dashboard.button.save')}

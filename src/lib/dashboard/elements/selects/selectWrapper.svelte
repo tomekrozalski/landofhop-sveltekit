@@ -3,11 +3,11 @@
 	import Error from '$lib/elements/form/error.svelte';
 
 	type SelectType = { value: string; label: string };
-	export let errors: string;
+	export let errors: string | string[];
 	export let items: SelectType[];
 	export let name: string;
 	export let updateValidateField: (name: string, value: string) => void;
-	export let value: SelectType;
+	export let value: SelectType | null;
 
 	function handleClear() {
 		updateValidateField(name, '');
@@ -18,13 +18,14 @@
 	<Select
 		on:clear={handleClear}
 		containerClasses="select"
+		isDisabled={value === null}
 		{items}
 		on:select={(event) => updateValidateField(name, event.detail.value)}
 		showChevron={true}
 		{value}
 		{...$$restProps}
 	/>
-	{#if errors}
+	{#if errors.length}
 		<Error>{errors}</Error>
 	{/if}
 </div>
@@ -56,6 +57,7 @@
 		/* indicator */
 		--indicatorTop: 0.7rem;
 		--indicatorRight: 0.6rem;
+		--indicatorHeight: 2rem;
 		--indicatorColor: var(--color-grey-1);
 		/* group */
 		--groupTitleColor: var(--color-grey-1);
@@ -63,17 +65,19 @@
 		--groupTitleFontWeight: 500;
 		--groupTitlePadding: 0 1rem;
 		--groupItemPaddingLeft: 2rem;
+		/* disabled */
+		--disabledBackground: var(--color-grey-5);
+		--disabledBorderColor: var(--color-grey-5);
 
 		position: relative;
 	}
 
-	div :global(.selectContainer.select) {
-		border-bottom: 1px solid var(--color-grey-2);
+	div :global(.selectContainer.disabled) {
+		--indicatorColor: var(--color-grey-5);
 	}
 
-	div :global(.selectContainer.select svg) {
-		height: 2rem;
-		fill: var(--color-grey-1);
+	div :global(.selectContainer.select) {
+		border-bottom: 1px solid var(--color-grey-2);
 	}
 
 	div :global(.selectContainer.select .indicator),
@@ -88,6 +92,11 @@
 
 	div :global(.selectContainer.select input) {
 		font: var(--font-weight-light) 1.8rem / 1 var(--font-primary);
+		cursor: text;
+	}
+
+	div :global(.selectContainer.select.disabled input) {
+		cursor: not-allowed;
 	}
 
 	div :global(.selectContainer.select .listContainer) {
