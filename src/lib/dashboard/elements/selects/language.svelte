@@ -10,7 +10,8 @@
 
 	export let errors: string;
 	export let name: string;
-	export let updateValidateField: (string, any) => void;
+	export let updateField: (fieldName: string, value: any) => void;
+	export let validateField: (fieldName: string) => void;
 	export let value: string;
 
 	const languageList = Object.keys(getAlpha2Codes()).map((value) => ({
@@ -37,11 +38,12 @@
 	};
 
 	function handleClear() {
-		updateValidateField(name, '');
+		updateField(name, '');
 	}
 
 	function setValue(event) {
-		updateValidateField(name, event.detail.value);
+		updateField(name, event.detail.value);
+		validateField(name);
 	}
 </script>
 

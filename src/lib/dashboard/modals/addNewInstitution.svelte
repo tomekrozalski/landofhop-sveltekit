@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
@@ -13,14 +13,14 @@
 	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 	import ModalWrapper from './modalWrapper.svelte';
 
-	let isModalOpen = false;
-
+	export let close: () => void;
 	const formName = 'institution';
 
 	const formData = createForm({
 		initialValues: {
 			badge: '',
-			name: [cloneDeep(emptyLanguageValue)]
+			name: [cloneDeep(emptyLanguageValue)],
+			owner: null
 		},
 		validationSchema: yup.object().shape({
 			badge: yup
@@ -37,7 +37,8 @@
 					})
 				)
 				.required()
-				.min(1)
+				.min(1),
+			owner: yup.string().required($translate('form.validation.required')).nullable(true)
 		}),
 		onSubmit: (values) => {
 			console.log({ values });
@@ -45,49 +46,24 @@
 	});
 </script>
 
-<button type="button" on:click={() => (isModalOpen = true)}>dodaj</button>
-
-{#if isModalOpen}
-	<ModalWrapper close={() => (isModalOpen = false)}>
-		<form on:submit={formData.handleSubmit} novalidate>
-			<header>
-				<h2>{$translate('dashboard.addNewInstitution')}</h2>
-			</header>
-			<ModalGrid>
-				<Badge {formName} {formData} />
-			</ModalGrid>
-			<ModalGrid columns={2}>
-				<Name {formName} {formData} />
-			</ModalGrid>
-			<ModalGrid>
-				<Owner {formName} {formData} />
-			</ModalGrid>
-
-			<ButtonWrapper modal>
-				<Button type="submit">
-					{$translate('dashboard.button.save')}
-				</Button>
-			</ButtonWrapper>
-		</form>
-	</ModalWrapper>
-{/if}
-
-<style>
-	button {
-		grid-column: span 2;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		height: var(--size-input-height);
-		background-color: var(--color-grey-4);
-		font-size: 1.5rem;
-		color: var(--color-grey-2);
-		transition: color var(--transition-default), background-color var(--transition-default);
-	}
-
-	button:hover {
-		background-color: var(--color-black);
-		color: var(--color-grey-3);
-	}
-</style>
+<ModalWrapper {close}>
+	<form on:submit={formData.handleSubmit} novalidate>
+		<header>
+			<h2>{$translate('dashboard.addNewInstitution')}</h2>
+		</header>
+		<ModalGrid>
+			<Badge {formName} {formData} />
+		</ModalGrid>
+		<ModalGrid columns={2}>
+			<Name {formName} {formData} />
+		</ModalGrid>
+		<ModalGrid isOptional>
+			<Owner {formName} {formData} />
+		</ModalGrid>
+		<ButtonWrapper modal>
+			<Button type="submit">
+				{$translate('dashboard.button.save')}
+			</Button>
+		</ButtonWrapper>
+	</form>
+</ModalWrapper>

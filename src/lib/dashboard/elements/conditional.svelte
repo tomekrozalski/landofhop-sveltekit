@@ -1,11 +1,13 @@
 <script lang="ts">
 	import CheckmarkIcon from '$lib/elements/vectors/success.svelte';
 
-	export let initialValue: string[];
+	type ValueType = string | string[];
+
+	export let initialValue: ValueType = '';
 	export let fieldName: string;
-	export let updateField: (name: string, value: string[] | null) => void;
+	export let updateField: (name: string, value: ValueType | null) => void;
 	export let validateField: (name: string) => void;
-	export let value: string[] | null;
+	export let value: ValueType | null;
 
 	function onInputClick() {
 		if (value) {
@@ -17,9 +19,9 @@
 	}
 </script>
 
-<div on:click={onInputClick} class:on={value}>
+<div on:click={onInputClick} class:on={value !== null}>
 	<input type="checkbox" readonly />
-	{#if value}
+	{#if value !== null}
 		<CheckmarkIcon />
 	{/if}
 </div>

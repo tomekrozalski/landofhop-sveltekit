@@ -8,7 +8,7 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, handleChange, touched, updateValidateField } = formData;
+	let { errors, form, handleChange, touched, updateField } = formData;
 	let name = 'badge';
 	let id = `${formName}-${name}`;
 
@@ -17,7 +17,7 @@
 	beforeUpdate(() => {
 		const value = $form.name[0].value;
 		if (value !== firstNameValue) {
-			updateValidateField(name, slugify(value, { lower: true, strict: true }));
+			updateField(name, slugify(value, { lower: true, strict: true }));
 			firstNameValue = value;
 		}
 	});

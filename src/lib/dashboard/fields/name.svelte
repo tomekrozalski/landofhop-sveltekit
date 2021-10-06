@@ -8,7 +8,7 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, handleChange, touched, updateValidateField } = formData;
+	let { errors, form, handleChange, touched, updateField, validateField } = formData;
 	let fieldName = 'name';
 	let id = `${formName}-${fieldName}`;
 </script>
@@ -27,7 +27,8 @@
 	<LanguageSelect
 		errors={$errors[fieldName][i]?.language ?? ''}
 		name={`${fieldName}[${i}].language`}
-		{updateValidateField}
+		{updateField}
+		{validateField}
 		bind:value={$form[fieldName][i].language}
 	/>
 	{#if i > 0}<RemoveButton {fieldName} {formData} {i} />{/if}

@@ -46,7 +46,7 @@
 		--itemPadding: 0 1rem;
 
 		/* clear selector */
-		--clearSelectTop: 0.6rem;
+		--clearSelectTop: 0.5rem;
 		--clearSelectRight: 0.8rem;
 		--clearSelectBottom: none;
 		--clearSelectWidth: 1.6rem;

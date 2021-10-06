@@ -25,6 +25,15 @@
 			1fr;
 	}
 
+	.columns-1.isOptional {
+		grid-template-columns:
+			17.6rem
+			var(--size-input-height)
+			35rem
+			repeat(2, var(--size-input-height))
+			1fr;
+	}
+
 	.columns-2:not(.isOptional) {
 		grid-template-columns:
 			22rem
