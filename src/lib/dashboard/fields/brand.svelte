@@ -6,16 +6,25 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, updateValidateField } = formData;
+	let { errors, form, updateField, validateField } = formData;
 	let fieldName = 'brand';
 	let id = `${formName}-${fieldName}`;
+
+	function handleClear() {
+		updateField(fieldName, '');
+	}
+
+	function setValue(event) {
+		updateField(fieldName, event.detail.value);
+		validateField(fieldName);
+	}
 </script>
 
 <Label {id}>{$translate('dashboard.label.brand')}</Label>
 <InstitutionSelect
 	errors={$errors[fieldName]}
-	name={fieldName}
-	{updateValidateField}
+	{handleClear}
+	{setValue}
 	bind:value={$form[fieldName]}
 />
 <AddNewInstitution />

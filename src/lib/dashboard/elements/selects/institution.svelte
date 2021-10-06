@@ -5,8 +5,9 @@
 	import SelectWrapper from './selectWrapper.svelte';
 
 	export let errors: string | string[];
-	export let name: string;
-	export let updateValidateField: (string, any) => void;
+	export let handleClear: () => void;
+	export let isMulti: boolean = false;
+	export let setValue: (event: any) => void;
 	export let value: string | null;
 
 	let items = $institutionStore
@@ -19,9 +20,10 @@
 
 <SelectWrapper
 	{errors}
+	{handleClear}
+	{isMulti}
 	{items}
-	{name}
-	{updateValidateField}
 	placeholder={$translate('dashboard.select.placeholder.institution')}
+	{setValue}
 	value={value === null ? null : items.find((item) => item.value === value)}
 />

@@ -35,15 +35,24 @@
 	export let getGroupHeaderLabel = (option) => {
 		return $translate(`dashboard.language.${option.label}`);
 	};
+
+	function handleClear() {
+		updateValidateField(name, '');
+	}
+
+	function setValue(event) {
+		updateValidateField(name, event.detail.value);
+	}
 </script>
 
 <SelectWrapper
 	{errors}
 	{getGroupHeaderLabel}
 	{groupBy}
+	{handleClear}
 	{items}
 	{name}
-	{updateValidateField}
 	placeholder={$translate('dashboard.select.placeholder.language')}
+	{setValue}
 	value={items.find((item) => item.value === value)}
 />

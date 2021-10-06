@@ -20,7 +20,8 @@
 		"dashboard.button.save": "save",
 		"dashboard.select.placeholder.institution": "select brand",
 		"dashboard.select.placeholder.language": "select language",
-		"form.validation.badge": "Only alphanumeric characters and a pause are allowed"
+		"form.validation.badge": "Only alphanumeric characters and a pause are allowed",
+		"form.validation.brandSelectionRequired": "At least one brand required"
 	},
 	"pl": {
 		"dashboard.addNewInstitution": "Dodaj nową instytucję",
@@ -43,6 +44,7 @@
 		"dashboard.button.save": "zapisz",
 		"dashboard.select.placeholder.institution": "wybierz markę",
 		"dashboard.select.placeholder.language": "wybierz język",
-		"form.validation.badge": "Dozwolone tylko znaki alfanumeryczne i pauza"
+		"form.validation.badge": "Dozwolone tylko znaki alfanumeryczne i pauza",
+		"form.validation.brandSelectionRequired": "Wymagana przynajmniej jedna marka"
 	}
 }

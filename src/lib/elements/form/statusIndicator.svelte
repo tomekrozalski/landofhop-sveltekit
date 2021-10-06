@@ -28,4 +28,16 @@
 		top: calc(var(--size-input-height) / 2);
 		transform: translateY(-50%);
 	}
+
+	span :global(svg.icon-success) {
+		width: 1.4rem;
+		height: 1.1rem;
+		fill: var(--color-success);
+	}
+
+	span :global(svg.icon-warning) {
+		width: 1.4rem;
+		height: 1.3rem;
+		fill: var(--color-warning);
+	}
 </style>

@@ -47,7 +47,10 @@
 				})
 			),
 			brand: yup.string().required($translate('form.validation.required')),
-			cooperation: yup.array().min(1).nullable(true)
+			cooperation: yup
+				.array()
+				.min(1, $translate('form.validation.brandSelectionRequired'))
+				.nullable(true)
 		}),
 		onSubmit: (values) => {
 			console.log({ values });

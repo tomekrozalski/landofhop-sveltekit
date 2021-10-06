@@ -3,11 +3,17 @@
 
 	export let initialValue: string[];
 	export let fieldName: string;
-	export let updateField: (string, any) => void;
+	export let updateField: (name: string, value: string[] | null) => void;
+	export let validateField: (name: string) => void;
 	export let value: string[] | null;
 
 	function onInputClick() {
-		updateField(fieldName, value ? null : initialValue);
+		if (value) {
+			updateField(fieldName, null);
+			validateField(fieldName);
+		} else {
+			updateField(fieldName, initialValue);
+		}
 	}
 </script>
 
@@ -38,15 +44,12 @@
 		display: none;
 	}
 
-	div :global(svg) {
+	div :global(svg.icon-success) {
 		width: 2rem;
+		fill: var(--color-black);
 		position: absolute;
-		top: 1.3rem;
+		top: 1.1rem;
 		left: 0.8rem;
 		pointer-events: none;
-	}
-
-	div :global(svg path) {
-		fill: var(--color-black);
 	}
 </style>

@@ -6,16 +6,30 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, updateField, updateValidateField } = formData;
+	let { errors, form, updateField, updateValidateField, validateField } = formData;
 	let fieldName = 'cooperation';
 	let id = `${formName}-${fieldName}`;
+
+	function handleClear() {
+		updateField(fieldName, []);
+	}
+
+	function setValue(event) {
+		if (event?.detail) {
+			updateValidateField(
+				fieldName,
+				event.detail.map(({ value }) => value)
+			);
+		}
+	}
 </script>
 
 <Label {id}>{$translate('dashboard.label.cooperation')}</Label>
-<Conditional {fieldName} initialValue={[]} {updateField} value={$form[fieldName]} />
+<Conditional {fieldName} initialValue={[]} {updateField} {validateField} value={$form[fieldName]} />
 <InstitutionSelect
 	errors={$errors[fieldName]}
-	name={fieldName}
-	{updateValidateField}
+	{handleClear}
+	isMulti
+	{setValue}
 	bind:value={$form[fieldName]}
 />

@@ -4,14 +4,11 @@
 
 	type SelectType = { value: string; label: string };
 	export let errors: string | string[];
+	export let handleClear: () => void;
+	export let isMulti: boolean = false;
 	export let items: SelectType[];
-	export let name: string;
-	export let updateValidateField: (name: string, value: string) => void;
+	export let setValue: (event: any) => void;
 	export let value: SelectType | null;
-
-	function handleClear() {
-		updateValidateField(name, '');
-	}
 </script>
 
 <div>
@@ -19,8 +16,9 @@
 		on:clear={handleClear}
 		containerClasses="select"
 		isDisabled={value === null}
+		{isMulti}
 		{items}
-		on:select={(event) => updateValidateField(name, event.detail.value)}
+		on:select={setValue}
 		showChevron={true}
 		{value}
 		{...$$restProps}
@@ -50,7 +48,7 @@
 		/* clear selector */
 		--clearSelectTop: 0.6rem;
 		--clearSelectRight: 0.8rem;
-		--clearSelectBottom: 0;
+		--clearSelectBottom: none;
 		--clearSelectWidth: 1.6rem;
 		--clearSelectColor: var(--color-grey-1);
 		--clearSelectHoverColor: var(--color-black);
@@ -68,6 +66,23 @@
 		/* disabled */
 		--disabledBackground: var(--color-grey-5);
 		--disabledBorderColor: var(--color-grey-5);
+		/* multiselect */
+		--multiSelectPadding: 0 1rem;
+		--multiItemMargin: 0.4rem 0.8rem 0 0;
+		--multiItemBorderRadius: 0;
+		--multiItemPadding: 0 0 0 1rem;
+		--multiItemHeight: calc(var(--size-input-height) - 0.8rem);
+		--multiItemBG: var(--color-brand-10-light);
+		--multiClearBG: var(--color-brand-10-light);
+		--multiItemActiveBG: var(--color-brand-10-light);
+		--multiItemActiveColor: var(--color-black);
+		--multiClearHoverFill: var(--color-white);
+		--multiClearHoverBG: var(--color-black);
+		--multiClearRadius: 0;
+		--multiClearTop: 0;
+		--multiClearHeight: 100%;
+		--multiClearWidth: 2rem;
+		--multiClearPadding: 0.4rem 0.2rem 0.2rem 0.2rem;
 
 		position: relative;
 	}
@@ -82,8 +97,21 @@
 
 	div :global(.selectContainer.select .indicator),
 	div :global(.selectContainer.select .item),
-	div :global(.selectContainer.select .clearSelect) {
+	div :global(.selectContainer.select .clearSelect),
+	div :global(.selectContainer.select .multiSelectItem_clear) {
 		cursor: pointer;
+	}
+
+	div :global(.selectContainer.select .multiSelectItem) {
+		cursor: text;
+	}
+
+	div :global(.selectContainer.select .multiSelectItem_label) {
+		font-size: 1.5rem;
+	}
+
+	div :global(.selectContainer.select .multiSelectItem .multiSelectItem_clear) {
+		transition: background-color var(--transition-default);
 	}
 
 	div :global(.selectContainer.select .clearSelect) {
@@ -97,10 +125,6 @@
 
 	div :global(.selectContainer.select.disabled input) {
 		cursor: not-allowed;
-	}
-
-	div :global(.selectContainer.select .listContainer) {
-		padding-bottom: 2rem;
 	}
 
 	div :global(.selectContainer.select .listGroupTitle:not(:first-of-type)) {
