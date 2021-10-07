@@ -10,6 +10,7 @@
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Owner from '$lib/dashboard/fields/owner.svelte';
+	import Website from '$lib/dashboard/fields/website.svelte';
 	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 	import ModalWrapper from './modalWrapper.svelte';
 
@@ -20,7 +21,8 @@
 		initialValues: {
 			badge: '',
 			name: [cloneDeep(emptyLanguageValue)],
-			owner: null
+			owner: null,
+			website: null
 		},
 		validationSchema: yup.object().shape({
 			badge: yup
@@ -38,12 +40,26 @@
 				)
 				.required()
 				.min(1),
-			owner: yup.string().required($translate('form.validation.required')).nullable(true)
+			owner: yup
+				.string()
+				.transform((v) => (v === null ? 'test' : v))
+				.required($translate('form.validation.required')),
+			website: yup
+				.string()
+				.transform((v) => (v === null ? 'http://www.test.com' : v))
+				.url('url')
+				.required($translate('form.validation.required'))
 		}),
-		onSubmit: (values) => {
+		onSubmit: async (values) => {
+			const data = await new Promise((resolve) => {
+				setTimeout(resolve, 50000);
+			});
+
 			console.log({ values });
 		}
 	});
+
+	const { isSubmitting } = formData;
 </script>
 
 <ModalWrapper {close}>
@@ -60,8 +76,11 @@
 		<ModalGrid isOptional>
 			<Owner {formName} {formData} />
 		</ModalGrid>
+		<ModalGrid isOptional>
+			<Website {formName} {formData} />
+		</ModalGrid>
 		<ButtonWrapper modal>
-			<Button type="submit">
+			<Button isSubmitting={$isSubmitting} type="submit">
 				{$translate('dashboard.button.save')}
 			</Button>
 		</ButtonWrapper>

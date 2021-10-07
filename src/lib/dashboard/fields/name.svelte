@@ -20,7 +20,7 @@
 		{handleChange}
 		id={i === 0 ? id : null}
 		isTouched={$touched[fieldName][i].value}
-		name={`${fieldName}[${i}].value`}
+		fieldName={`${fieldName}[${i}].value`}
 		style="grid-column: 2/3"
 		bind:value={$form[fieldName][i].value}
 	/>

@@ -13,6 +13,7 @@
 		"dashboard.label.name": "Nazwa",
 		"dashboard.label.owner": "Owned by",
 		"dashboard.label.series": "Series",
+		"dashboard.label.website": "Website",
 		"dashboard.language.mostPopular": "most popular",
 		"dashboard.language.notApplicable": "not applicable",
 		"dashboard.language.rest": "rest",
@@ -21,6 +22,7 @@
 		"dashboard.modal.open": "add new",
 		"dashboard.select.placeholder.institution": "select brand",
 		"dashboard.select.placeholder.language": "select language",
+		"form.validation.atLeastThreeSignsRequired": "At least three signs required",
 		"form.validation.badge": "Only alphanumeric characters and a pause are allowed",
 		"form.validation.brandSelectionRequired": "At least one brand required"
 	},
@@ -38,6 +40,7 @@
 		"dashboard.label.name": "Nazwa",
 		"dashboard.label.owner": "Należący do",
 		"dashboard.label.series": "Seria",
+		"dashboard.label.website": "Strona internetowa",
 		"dashboard.language.mostPopular": "najczęściej wybierane",
 		"dashboard.language.notApplicable": "nie dotyczy",
 		"dashboard.language.rest": "pozostałe",
@@ -46,6 +49,7 @@
 		"dashboard.modal.open": "dodaj",
 		"dashboard.select.placeholder.institution": "wybierz markę",
 		"dashboard.select.placeholder.language": "wybierz język",
+		"form.validation.atLeastThreeSignsRequired": "Wymagane co najmniej trzy znaki",
 		"form.validation.badge": "Dozwolone tylko znaki alfanumeryczne i pauza",
 		"form.validation.brandSelectionRequired": "Wymagana przynajmniej jedna marka"
 	}

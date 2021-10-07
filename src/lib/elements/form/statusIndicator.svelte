@@ -2,18 +2,23 @@
 	import SuccessIcon from '$lib/elements/vectors/success.svelte';
 	import WarningIcon from '$lib/elements/vectors/warning.svelte';
 
+	export let disabled: boolean = false;
 	export let isTouched: boolean, isValid: boolean;
 	export let style: string = '';
 </script>
 
-<span {style}>
-	{#if isTouched && isValid}
-		<SuccessIcon style="right: 0.6rem" />
-	{:else if isTouched && !isValid}
-		<WarningIcon style="right: 0.8rem" />
-	{/if}
+{#if disabled}
 	<slot />
-</span>
+{:else}
+	<span {style}>
+		{#if isTouched && isValid}
+			<SuccessIcon style="right: 0.6rem" />
+		{:else if isTouched && !isValid}
+			<WarningIcon style="right: 0.8rem" />
+		{/if}
+		<slot />
+	</span>
+{/if}
 
 <style>
 	span {

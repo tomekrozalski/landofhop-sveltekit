@@ -8,9 +8,10 @@
 	export let updateField: (name: string, value: ValueType | null) => void;
 	export let validateField: (name: string) => void;
 	export let value: ValueType | null;
+	$: isDisabled = value === null;
 
 	function onInputClick() {
-		if (value) {
+		if (!isDisabled) {
 			updateField(fieldName, null);
 			validateField(fieldName);
 		} else {
@@ -19,9 +20,9 @@
 	}
 </script>
 
-<div on:click={onInputClick} class:on={value !== null}>
+<div on:click={onInputClick} class:on={!isDisabled}>
 	<input type="checkbox" readonly />
-	{#if value !== null}
+	{#if !isDisabled}
 		<CheckmarkIcon />
 	{/if}
 </div>

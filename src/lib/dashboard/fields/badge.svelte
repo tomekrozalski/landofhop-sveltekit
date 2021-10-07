@@ -8,16 +8,16 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, handleChange, touched, updateField } = formData;
-	let name = 'badge';
-	let id = `${formName}-${name}`;
+	let { errors, form, handleChange, touched, updateValidateField } = formData;
+	let fieldName = 'badge';
+	let id = `${formName}-${fieldName}`;
 
 	let firstNameValue = $form.name[0].value;
 
 	beforeUpdate(() => {
 		const value = $form.name[0].value;
 		if (value !== firstNameValue) {
-			updateField(name, slugify(value, { lower: true, strict: true }));
+			updateValidateField(fieldName, slugify(value, { lower: true, strict: true }));
 			firstNameValue = value;
 		}
 	});
@@ -25,10 +25,10 @@
 
 <Label {id} isRequired>{$translate('dashboard.label.badge')}</Label>
 <TextInput
-	errors={$errors.badge}
+	errors={$errors[fieldName]}
 	{handleChange}
 	{id}
-	isTouched={$touched.badge}
-	{name}
-	bind:value={$form.badge}
+	isTouched={$touched[fieldName]}
+	{fieldName}
+	bind:value={$form[fieldName]}
 />

@@ -19,26 +19,21 @@
 	}
 
 	.columns-1:not(.isOptional) {
-		grid-template-columns:
-			22rem 35rem
-			repeat(2, var(--size-input-height))
-			1fr;
+		grid-template-columns: 1fr 35rem var(--size-input-height);
 	}
 
 	.columns-1.isOptional {
 		grid-template-columns:
-			17.6rem
+			1fr
 			var(--size-input-height)
 			35rem
-			repeat(2, var(--size-input-height))
-			1fr;
+			var(--size-input-height);
 	}
 
 	.columns-2:not(.isOptional) {
 		grid-template-columns:
-			22rem
+			1fr
 			repeat(2, 17rem)
-			repeat(2, var(--size-input-height))
-			1fr;
+			var(--size-input-height);
 	}
 </style>

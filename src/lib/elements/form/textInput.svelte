@@ -7,22 +7,24 @@
 	export let hasInvertedColors: boolean = false;
 	export let id: string;
 	export let isTouched: boolean;
-	export let name: string;
+	export let fieldName: string;
 	export let style: string = '';
 	export let type: 'email' | 'number' | 'password' | 'text' = 'text';
 	export let value: string;
+	$: disabled = value === null;
 
 	function typeAction(node: any) {
 		node.type = type;
 	}
 </script>
 
-<StatusIndicator {isTouched} isValid={!errors} {style}>
+<StatusIndicator {disabled} {isTouched} isValid={!errors} {style}>
 	<input
 		class:hasInvertedColors
 		class:isTouched
+		{disabled}
 		{id}
-		{name}
+		name={fieldName}
 		use:typeAction
 		on:change={handleChange}
 		bind:value
@@ -43,6 +45,12 @@
 		background-color: var(--color-grey-4);
 		font: var(--font-weight-light) 1.8rem / 1 var(--font-primary);
 		color: var(--color-black);
+	}
+
+	input:disabled {
+		border-bottom: none;
+		background-color: var(--color-grey-5);
+		cursor: not-allowed;
 	}
 
 	input.isTouched {

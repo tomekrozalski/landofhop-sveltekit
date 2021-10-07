@@ -27,7 +27,7 @@
 		validationSchema: yup.object().shape({
 			badge: yup
 				.string()
-				.min(3, 'minimum trzy znaki')
+				.min(3, $translate('form.validation.atLeastThreeSignsRequired'))
 				.matches(/^[a-z\d-]+$/, $translate('form.validation.badge'))
 				.required($translate('form.validation.required')),
 			name: yup
