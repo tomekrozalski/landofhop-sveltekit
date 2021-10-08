@@ -3,7 +3,7 @@
 	import Label from '$lib/elements/form/label.svelte';
 	import OpenModal from '$lib/dashboard/elements/openModal.svelte';
 	import InstitutionSelect from '$lib/dashboard/elements/selects/institution.svelte';
-	import AddNewInstitution from '$lib/dashboard/modals/addNewInstitution.svelte';
+	import AddNewInstitution from '$lib/dashboard/modals/addNewInstitutions/addNewInstitution.svelte';
 
 	export let formName: string;
 	export let formData: any;

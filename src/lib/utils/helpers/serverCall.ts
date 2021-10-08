@@ -1,4 +1,5 @@
 export enum Endpoints {
+	addInstitution = 'admin/institution',
 	authorize = 'authorize',
 	beverageAdminNotes = 'admin/beverage/notes',
 	beverageBasics = 'basics',
@@ -27,7 +28,9 @@ function serverCall(fetch, endpoint: Endpoints, props?: Props) {
 		Endpoints.authorize,
 		Endpoints.beverageAdminNotes,
 		Endpoints.unauthorize,
-		Endpoints.verifyToken
+		Endpoints.verifyToken,
+		Endpoints.institutions,
+		Endpoints.addInstitution
 	].includes(endpoint);
 
 	return fetch(completeUrl, {

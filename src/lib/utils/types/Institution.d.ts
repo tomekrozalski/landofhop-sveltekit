@@ -1,11 +1,12 @@
 import { LanguageValue } from '/api/models/common/LanguageValue.d.ts';
 
-type InstitutionEssence = {
+export type InstitutionRaw = {
 	badge: string;
 	name: LanguageValue[];
 	owner?: InstitutionEssence;
-	shortId: string;
 	website?: string;
 };
+
+export type InstitutionEssence = InstitutionRaw & { shortId: string };
 
 export type Institution = InstitutionEssence & { _id: string };

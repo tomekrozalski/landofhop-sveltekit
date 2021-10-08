@@ -7,7 +7,6 @@
 
 	export let formName: string;
 	export let formData: any;
-	console.log('formData', formData);
 	let { errors, form, handleChange, touched, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'website';
 	let id = `${formName}-${fieldName}`;

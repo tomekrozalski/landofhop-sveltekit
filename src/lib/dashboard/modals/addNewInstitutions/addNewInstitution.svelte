@@ -4,6 +4,8 @@
 	import * as yup from 'yup';
 	import cloneDeep from 'lodash/cloneDeep.js';
 
+	import { institutionStore } from '$lib/dashboard/utils/stores';
+	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import ModalGrid from '$lib/dashboard/elements/modalGrid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
@@ -12,7 +14,8 @@
 	import Owner from '$lib/dashboard/fields/owner.svelte';
 	import Website from '$lib/dashboard/fields/website.svelte';
 	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
-	import ModalWrapper from './modalWrapper.svelte';
+	import ModalWrapper from '../modalWrapper.svelte';
+	import formatValues from './formatValues';
 
 	export let close: () => void;
 	const formName = 'institution';
@@ -51,11 +54,15 @@
 				.required($translate('form.validation.required'))
 		}),
 		onSubmit: async (values) => {
-			const data = await new Promise((resolve) => {
-				setTimeout(resolve, 50000);
+			const formattedValues = formatValues(values, $institutionStore);
+
+			const updatedInstitutions = await serverCall(fetch, Endpoints.addInstitution, {
+				method: 'POST',
+				body: JSON.stringify(formattedValues)
 			});
 
-			console.log({ values });
+			institutionStore.set(updatedInstitutions);
+			close();
 		}
 	});
 

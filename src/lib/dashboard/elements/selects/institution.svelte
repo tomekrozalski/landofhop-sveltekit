@@ -10,7 +10,7 @@
 	export let setValue: (event: any) => void;
 	export let value: string | null;
 
-	let items = $institutionStore
+	$: items = $institutionStore
 		.map(({ name, shortId }) => ({
 			label: getFromArray(name, 'pl').value,
 			value: shortId
