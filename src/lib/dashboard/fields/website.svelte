@@ -7,7 +7,8 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, handleChange, touched, updateField, validateField } = formData;
+	console.log('formData', formData);
+	let { errors, form, handleChange, touched, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'website';
 	let id = `${formName}-${fieldName}`;
 </script>
@@ -17,6 +18,7 @@
 	{fieldName}
 	initialValue="https://"
 	{updateField}
+	{updateTouched}
 	{validateField}
 	value={$form[fieldName]}
 />

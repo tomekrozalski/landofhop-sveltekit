@@ -6,6 +6,7 @@
 	export let initialValue: ValueType = '';
 	export let fieldName: string;
 	export let updateField: (name: string, value: ValueType | null) => void;
+	export let updateTouched: (name: string, value: boolean) => void;
 	export let validateField: (name: string) => void;
 	export let value: ValueType | null;
 	$: isDisabled = value === null;
@@ -16,6 +17,7 @@
 			validateField(fieldName);
 		} else {
 			updateField(fieldName, initialValue);
+			updateTouched(fieldName, false);
 		}
 	}
 </script>

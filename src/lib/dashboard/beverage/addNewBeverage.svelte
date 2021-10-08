@@ -1,21 +1,35 @@
 <script lang="ts">
+	import { beforeUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
+
+	import Spinner from '$lib/elements/spinner.svelte';
+	import navigation from '$lib/utils/stores/navigation';
 	import ProgressList from '$lib/dashboard/elements/progressList/progressList.svelte';
 	import Label from './label/label.svelte';
 
 	let page = 'label';
+
+	beforeUpdate(() => {
+		if (!$navigation.isLoggedIn) {
+			window.location.href = import.meta.env.VITE_APP_URL as string;
+		}
+	});
 </script>
 
-<article>
-	<h1>{$translate('dashboard.beverage.addNewBeverage')}</h1>
-	<ProgressList />
-	{#if page === 'label'}
-		<Label />
-	{/if}
-	<!-- {page === 'producer' && <Producer />} -->
-	<!-- {page === 'editorial' && <Editorial />} -->
-	<!-- <EditModal /> -->
-</article>
+{#if $navigation.isLoggedIn}
+	<article>
+		<h1>{$translate('dashboard.beverage.addNewBeverage')}</h1>
+		<ProgressList />
+		{#if page === 'label'}
+			<Label />
+		{/if}
+		<!-- {page === 'producer' && <Producer />} -->
+		<!-- {page === 'editorial' && <Editorial />} -->
+		<!-- <EditModal /> -->
+	</article>
+{:else}
+	<Spinner />
+{/if}
 
 <style>
 	article :global(header) {

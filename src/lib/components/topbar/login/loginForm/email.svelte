@@ -6,8 +6,8 @@
 	export let formName: string;
 	export let formData: any;
 	let { errors, form, handleChange, touched } = formData;
-	let name = 'email';
-	let id = `${formName}-${name}`;
+	let fieldName = 'email';
+	let id = `${formName}-${fieldName}`;
 </script>
 
 <div class="input-group">
@@ -18,7 +18,7 @@
 		hasInvertedColors
 		{id}
 		isTouched={$touched.email}
-		{name}
+		{fieldName}
 		type="email"
 		bind:value={$form.email}
 	/>

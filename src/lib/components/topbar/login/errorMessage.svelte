@@ -34,6 +34,7 @@
 		div :global(svg) {
 			width: auto;
 			height: var(--size-loginbar-height);
+			fill: var(--color-warning);
 			position: absolute;
 			top: -25%;
 			left: 2rem;

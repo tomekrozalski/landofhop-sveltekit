@@ -24,7 +24,8 @@
 		"dashboard.select.placeholder.language": "select language",
 		"form.validation.atLeastThreeSignsRequired": "At least three signs required",
 		"form.validation.badge": "Only alphanumeric characters and a pause are allowed",
-		"form.validation.brandSelectionRequired": "At least one brand required"
+		"form.validation.brandSelectionRequired": "At least one brand required",
+		"form.validation.invalidUrl": "Valid URL address required"
 	},
 	"pl": {
 		"dashboard.addNewInstitution": "Dodaj nową instytucję",
@@ -51,6 +52,7 @@
 		"dashboard.select.placeholder.language": "wybierz język",
 		"form.validation.atLeastThreeSignsRequired": "Wymagane co najmniej trzy znaki",
 		"form.validation.badge": "Dozwolone tylko znaki alfanumeryczne i pauza",
-		"form.validation.brandSelectionRequired": "Wymagana przynajmniej jedna marka"
+		"form.validation.brandSelectionRequired": "Wymagana przynajmniej jedna marka",
+		"form.validation.invalidUrl": "Wymagany poprawny adres URL"
 	}
 }

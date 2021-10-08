@@ -6,7 +6,7 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, updateField, validateField } = formData;
+	let { errors, form, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'owner';
 	let id = `${formName}-${fieldName}`;
 
@@ -21,7 +21,7 @@
 </script>
 
 <Label {id}>{$translate('dashboard.label.owner')}</Label>
-<Conditional {fieldName} {updateField} {validateField} value={$form[fieldName]} />
+<Conditional {fieldName} {updateField} {updateTouched} {validateField} value={$form[fieldName]} />
 <InstitutionSelect
 	errors={$errors[fieldName]}
 	{handleClear}
