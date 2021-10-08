@@ -4,19 +4,20 @@
 
 	import Spinner from '$lib/elements/spinner.svelte';
 	import navigation from '$lib/utils/stores/navigation';
+	import Status from '$lib/utils/enums/Status.enum';
 	import ProgressList from '$lib/dashboard/elements/progressList/progressList.svelte';
 	import Label from './label/label.svelte';
 
 	let page = 'label';
 
 	beforeUpdate(() => {
-		if (!$navigation.isLoggedIn) {
+		if ([Status.idle, Status.rejected].includes($navigation.loginStatus)) {
 			window.location.href = import.meta.env.VITE_APP_URL as string;
 		}
 	});
 </script>
 
-{#if $navigation.isLoggedIn}
+{#if $navigation.loginStatus === Status.fulfilled}
 	<article>
 		<h1>{$translate('dashboard.beverage.addNewBeverage')}</h1>
 		<ProgressList />

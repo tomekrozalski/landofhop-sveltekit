@@ -9,6 +9,7 @@
 	import Button from '$lib/elements/form/button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Brand from '$lib/dashboard/fields/brand.svelte';
+	import Container from '$lib/dashboard/fields/container.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
@@ -22,7 +23,16 @@
 			name: [cloneDeep(emptyLanguageValue)],
 			series: [],
 			brand: '',
-			cooperation: null
+			cooperation: null,
+			container: {
+				color: '',
+				hasCapWireFlip: false,
+				hasCork: false,
+				material: '',
+				type: '',
+				unit: '',
+				value: 0
+			}
 		},
 		validationSchema: yup.object().shape({
 			badge: yup
@@ -50,7 +60,16 @@
 			cooperation: yup
 				.array()
 				.min(1, $translate('form.validation.brandSelectionRequired'))
-				.nullable(true)
+				.nullable(true),
+			container: yup.object().shape({
+				color: yup.string().required($translate('form.validation.required')),
+				hasCapWireFlip: yup.boolean(),
+				hasCork: yup.boolean(),
+				material: yup.string().required($translate('form.validation.required')),
+				type: yup.string().required($translate('form.validation.required')),
+				unit: yup.string().required($translate('form.validation.required')),
+				value: yup.number().min(1).max(5000).required()
+			})
 		}),
 		onSubmit: (values) => {
 			console.log({ values });
@@ -78,6 +97,9 @@
 	</Grid>
 	<Grid isOptional>
 		<Cooperation {formName} {formData} />
+	</Grid>
+	<Grid columns={3}>
+		<Container {formName} {formData} />
 	</Grid>
 	<ButtonWrapper>
 		<Button type="submit">

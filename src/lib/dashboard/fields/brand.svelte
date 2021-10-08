@@ -23,7 +23,7 @@
 	let isModalOpen = false;
 </script>
 
-<Label {id}>{$translate('dashboard.label.brand')}</Label>
+<Label {id} isRequired>{$translate('dashboard.label.brand')}</Label>
 <InstitutionSelect
 	errors={$errors[fieldName]}
 	{handleClear}

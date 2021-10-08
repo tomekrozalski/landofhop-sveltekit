@@ -3,9 +3,12 @@
 	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 
 	export async function load({ fetch }) {
-		const institutions: InstitutionType[] = await serverCall(fetch, Endpoints.institutions);
-
-		return { props: { institutions } };
+		try {
+			const institutions: InstitutionType[] = await serverCall(fetch, Endpoints.institutions);
+			return { props: { institutions } };
+		} catch {
+			return { props: { institutions: [] } };
+		}
 	}
 </script>
 

@@ -1,0 +1,40 @@
+<script lang="ts">
+	import { translate } from 'svelte-intl';
+	import {
+		ContainerMaterialBottle,
+		ContainerMaterialCan,
+		ContainerType
+	} from '$lib/utils/enums/Beverage.enum';
+	import SelectWrapper from '../selectWrapper.svelte';
+
+	export let errors: string | string[];
+	export let handleClear: () => void;
+	export let setValue: (event: any) => void;
+	export let type: ContainerType;
+	export let value: string | null;
+
+	let items = [];
+
+	$: if (type === ContainerType.bottle) {
+		items = Object.keys(ContainerMaterialBottle).map((value) => ({
+			label: $translate(`dashboard.container.material.${value}`),
+			value
+		}));
+	} else if (type === ContainerType.can) {
+		items = Object.keys(ContainerMaterialCan).map((value) => ({
+			label: $translate(`dashboard.container.material.${value}`),
+			value
+		}));
+	} else {
+		items = [];
+	}
+</script>
+
+<SelectWrapper
+	{errors}
+	{handleClear}
+	{items}
+	placeholder={$translate('dashboard.select.placeholder.containerMaterial')}
+	{setValue}
+	value={items.find((item) => item.value === value)}
+/>

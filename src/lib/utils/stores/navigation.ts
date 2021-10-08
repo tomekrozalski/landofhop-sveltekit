@@ -18,7 +18,7 @@ const {
 	isLoginOpened: false,
 	isLoggedIn: false,
 	isSearchbarActive: false,
-	loginStatus: Status.idle,
+	loginStatus: Status.pending,
 	searchPhrase: ''
 });
 
