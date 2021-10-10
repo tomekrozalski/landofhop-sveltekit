@@ -17,6 +17,7 @@
 		"dashboard.container.material.glass": "glass",
 		"dashboard.container.type.bottle": "bottle",
 		"dashboard.container.type.can": "can",
+		"dashboard.container.unit.ml": "ml",
 		"dashboard.label.badge": "Badge",
 		"dashboard.label.brand": "Brand",
 		"dashboard.label.container": "Container",
@@ -34,12 +35,16 @@
 		"dashboard.select.placeholder.containerColor": "color",
 		"dashboard.select.placeholder.containerType": "type",
 		"dashboard.select.placeholder.containerMaterial": "material",
+		"dashboard.select.placeholder.containerUnit": "unit",
 		"dashboard.select.placeholder.institution": "select brand",
 		"dashboard.select.placeholder.language": "select language",
 		"form.validation.atLeastThreeSignsRequired": "At least three signs required",
 		"form.validation.badge": "Only alphanumeric characters and a pause are allowed",
 		"form.validation.brandSelectionRequired": "At least one brand required",
-		"form.validation.invalidUrl": "Valid URL address required"
+		"form.validation.invalidUrl": "Valid URL address required",
+		"form.validation.min": "Minimum value: {value}",
+		"form.validation.max": "Maximum value: {value}",
+		"form.validation.typeErrorNumber": "Number required"
 	},
 	"pl": {
 		"dashboard.addNewInstitution": "Dodaj nową instytucję",
@@ -59,6 +64,7 @@
 		"dashboard.container.material.glass": "szklana",
 		"dashboard.container.type.bottle": "butelka",
 		"dashboard.container.type.can": "puszka",
+		"dashboard.container.unit.ml": "ml",
 		"dashboard.label.badge": "Identyfikator",
 		"dashboard.label.brand": "Marka",
 		"dashboard.label.container": "Opakowanie",
@@ -76,11 +82,15 @@
 		"dashboard.select.placeholder.containerColor": "kolor",
 		"dashboard.select.placeholder.containerType": "typ",
 		"dashboard.select.placeholder.containerMaterial": "materiał",
+		"dashboard.select.placeholder.containerUnit": "jednostka",
 		"dashboard.select.placeholder.institution": "wybierz markę",
 		"dashboard.select.placeholder.language": "wybierz język",
 		"form.validation.atLeastThreeSignsRequired": "Wymagane co najmniej trzy znaki",
 		"form.validation.badge": "Dozwolone tylko znaki alfanumeryczne i pauza",
 		"form.validation.brandSelectionRequired": "Wymagana przynajmniej jedna marka",
-		"form.validation.invalidUrl": "Wymagany poprawny adres URL"
+		"form.validation.invalidUrl": "Wymagany poprawny adres URL",
+		"form.validation.min": "Minimalna wartość: {value}",
+		"form.validation.max": "Maksymalna wartość: {value}",
+		"form.validation.typeErrorNumber": "Wymagana cyfra"
 	}
 }

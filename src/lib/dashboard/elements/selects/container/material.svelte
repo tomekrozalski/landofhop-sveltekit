@@ -11,7 +11,7 @@
 	export let handleClear: () => void;
 	export let setValue: (event: any) => void;
 	export let type: ContainerType;
-	export let value: string | null;
+	export let value: ContainerMaterialBottle | ContainerMaterialCan | string;
 
 	let items = [];
 

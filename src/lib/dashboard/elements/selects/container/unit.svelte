@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { ContainerType } from '$lib/utils/enums/Beverage.enum';
+	import { ContainerUnit } from '$lib/utils/enums/Beverage.enum';
 	import SelectWrapper from '../selectWrapper.svelte';
 
 	export let errors: string | string[];
 	export let handleClear: () => void;
 	export let setValue: (event: any) => void;
-	export let value: ContainerType | string;
+	export let value: ContainerUnit | string;
 
-	const items = Object.keys(ContainerType).map((value) => ({
-		label: $translate(`dashboard.container.type.${value}`),
+	const items = Object.keys(ContainerUnit).map((value) => ({
+		label: $translate(`dashboard.container.unit.${value}`),
 		value
 	}));
 </script>
@@ -18,7 +18,7 @@
 	{errors}
 	{handleClear}
 	{items}
-	placeholder={$translate('dashboard.select.placeholder.containerType')}
+	placeholder={$translate('dashboard.select.placeholder.containerUnit')}
 	{setValue}
 	value={items.find((item) => item.value === value)}
 />

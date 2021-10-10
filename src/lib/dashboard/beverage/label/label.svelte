@@ -4,6 +4,7 @@
 	import * as yup from 'yup';
 	import cloneDeep from 'lodash/cloneDeep.js';
 
+	import { ContainerUnit } from '$lib/utils/enums/Beverage.enum';
 	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
@@ -30,7 +31,7 @@
 				hasCork: false,
 				material: '',
 				type: '',
-				unit: '',
+				unit: ContainerUnit.ml,
 				value: 0
 			}
 		},
@@ -68,7 +69,12 @@
 				material: yup.string().required($translate('form.validation.required')),
 				type: yup.string().required($translate('form.validation.required')),
 				unit: yup.string().required($translate('form.validation.required')),
-				value: yup.number().min(1).max(5000).required()
+				value: yup
+					.number()
+					.typeError($translate('form.validation.typeErrorNumber'))
+					.min(1, $translate('form.validation.min', { value: 1 }))
+					.max(5000, $translate('form.validation.max', { value: 5000 }))
+					.required($translate('form.validation.required'))
 			})
 		}),
 		onSubmit: (values) => {

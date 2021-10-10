@@ -1,13 +1,21 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+
+	import {
+		ContainerMaterialBottle,
+		ContainerMaterialCan,
+		ContainerType
+	} from '$lib/utils/enums/Beverage.enum';
 	import Label from '$lib/elements/form/label.svelte';
+	import TextInput from '$lib/elements/form/textInput.svelte';
 	import ContainerTypeSelect from '$lib/dashboard/elements/selects/container/type.svelte';
 	import ContainerMaterialSelect from '$lib/dashboard/elements/selects/container/material.svelte';
 	import ContainerColorSelect from '$lib/dashboard/elements/selects/container/color.svelte';
+	import ContainerUnitSelect from '$lib/dashboard/elements/selects/container/unit.svelte';
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, updateField, updateTouched, updateValidateField, validateField } = formData;
+	let { errors, form, handleChange, updateField, touched, validateField } = formData;
 	let fieldName = 'container';
 	let id = `${formName}-${fieldName}`;
 
@@ -23,9 +31,24 @@
 		updateField('container.color', '');
 	}
 
+	function clearUnit() {
+		updateField('container.unit', '');
+	}
+
+	function getDefaultMaterial(value: ContainerType | string) {
+		switch (value) {
+			case ContainerType.bottle:
+				return Object.keys(ContainerMaterialBottle)[0];
+			case ContainerType.can:
+				return Object.keys(ContainerMaterialCan)[0];
+			default:
+				return '';
+		}
+	}
+
 	function setType(event) {
 		updateField('container.type', event.detail.value);
-		updateField('container.material', '');
+		updateField('container.material', getDefaultMaterial(event.detail.value));
 		updateField('container.color', '');
 		validateField('container.type');
 	}
@@ -38,6 +61,11 @@
 	function setColor(event) {
 		updateField('container.color', event.detail.value);
 		validateField('container.color');
+	}
+
+	function setUnit(event) {
+		updateField('container.unit', event.detail.value);
+		validateField('container.unit');
 	}
 </script>
 
@@ -61,4 +89,20 @@
 	setValue={setColor}
 	type={$form[fieldName].type}
 	bind:value={$form[fieldName].color}
+/>
+<TextInput
+	errors={$errors[fieldName].value}
+	fieldName={`${fieldName}.value`}
+	{handleChange}
+	{id}
+	isTouched={$touched[fieldName].value}
+	style="grid-column: 2/3"
+	type="number"
+	bind:value={$form[fieldName].value}
+/>
+<ContainerUnitSelect
+	errors={$errors[fieldName].unit}
+	handleClear={clearUnit}
+	setValue={setUnit}
+	bind:value={$form[fieldName].unit}
 />
