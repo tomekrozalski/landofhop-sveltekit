@@ -14,6 +14,10 @@
 		width: 45rem;
 	}
 
+	div :global(button) {
+		margin-left: 1rem;
+	}
+
 	.modal {
 		margin: 0;
 		padding: 2rem calc(var(--size-input-height) + 1rem) 0 0;

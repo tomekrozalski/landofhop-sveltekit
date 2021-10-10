@@ -6,9 +6,9 @@
 	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
 	import ProgressList from '$lib/dashboard/elements/progressList/progressList.svelte';
+	import { page } from '$lib/dashboard/utils/stores';
 	import Label from './label/label.svelte';
-
-	let page = 'label';
+	import Producer from './producer/producer.svelte';
 
 	beforeUpdate(() => {
 		if ([Status.idle, Status.rejected].includes($navigation.loginStatus)) {
@@ -21,12 +21,9 @@
 	<article>
 		<h1>{$translate('dashboard.beverage.addNewBeverage')}</h1>
 		<ProgressList />
-		{#if page === 'label'}
-			<Label />
-		{/if}
-		<!-- {page === 'producer' && <Producer />} -->
-		<!-- {page === 'editorial' && <Editorial />} -->
-		<!-- <EditModal /> -->
+		<Label isActive={$page === 'label'} />
+		<Producer isActive={$page === 'producer'} />
+		<!-- <Editorial isActive={$page === 'editorial'} /> -->
 	</article>
 {:else}
 	<Spinner />

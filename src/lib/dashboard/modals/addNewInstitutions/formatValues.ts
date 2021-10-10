@@ -14,8 +14,6 @@ export default function formatValues(
 	{ badge, name, owner, website }: Input,
 	institutions: InstitutionEssence[]
 ): InstitutionRaw {
-	console.log({ institutions });
-
 	return {
 		badge: badge.trim(),
 		name: name.map(({ language, value }) => ({

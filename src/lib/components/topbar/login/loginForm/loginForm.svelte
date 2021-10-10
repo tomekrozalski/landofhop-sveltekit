@@ -35,13 +35,15 @@
 				.catch(() => navigation.setLoginStatus(Status.rejected));
 		}
 	});
+
+	const { isSubmitting } = formData;
 </script>
 
 <form on:submit={formData.handleSubmit} novalidate>
 	<Email {formName} {formData} />
 	<Password {formName} {formData} />
 	<div class="button-wrapper">
-		<Button type="submit">
+		<Button isSubmitting={$isSubmitting} type="submit">
 			{$translate('login.submit')}
 		</Button>
 	</div>

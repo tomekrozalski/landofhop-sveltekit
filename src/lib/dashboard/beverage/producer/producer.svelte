@@ -2,6 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 
+	import { page } from '$lib/dashboard/utils/stores';
 	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
@@ -16,7 +17,7 @@
 	import { getValidationSchema } from './validationSchema';
 
 	export let isActive: boolean;
-	const formName = 'label';
+	const formName = 'producer';
 	const formData = createForm({
 		initialValues,
 		validationSchema: getValidationSchema($translate),
@@ -27,29 +28,14 @@
 {#if isActive}
 	<form on:submit={formData.handleSubmit} novalidate>
 		<header>
-			<h2>{$translate('dashboard.beverage.labelInfo.title')}</h2>
-			<p>{$translate('dashboard.beverage.labelInfo.description')}</p>
+			<h2>{$translate('dashboard.beverage.producerInfo.title')}</h2>
+			<p>{$translate('dashboard.beverage.producerInfo.description')}</p>
 		</header>
-		<Grid>
-			<Badge {formName} {formData} />
-		</Grid>
-		<h3><span>{$translate('dashboard.beverage.brandInfo')}</span></h3>
-		<Grid columns={2}>
-			<Name {formName} {formData} />
-		</Grid>
-		<Grid columns={2}>
-			<Series {formName} {formData} />
-		</Grid>
-		<Grid>
-			<Brand {formName} {formData} />
-		</Grid>
-		<Grid isOptional>
-			<Cooperation {formName} {formData} />
-		</Grid>
-		<Grid columns={3}>
-			<Container {formName} {formData} />
-		</Grid>
+		<Grid>test</Grid>
 		<ButtonWrapper>
+			<Button handleClick={() => page.set('label')} isSecondary>
+				{$translate('dashboard.button.moveBack')}
+			</Button>
 			<Button type="submit">
 				{$translate('dashboard.button.moveOn')}
 			</Button>

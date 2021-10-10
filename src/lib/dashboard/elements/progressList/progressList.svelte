@@ -1,13 +1,14 @@
 <script>
+	import { page } from '$lib/dashboard/utils/stores';
 	import EditorialIcon from './editorialIcon.svelte';
 	import LabelIcon from './labelIcon.svelte';
 	import ProducerIcon from './producerIcon.svelte';
 </script>
 
 <ul>
-	<li class="active"><LabelIcon /></li>
-	<li><ProducerIcon /></li>
-	<li><EditorialIcon /></li>
+	<li class:active={$page === 'label'}><LabelIcon /></li>
+	<li class:active={$page === 'producer'}><ProducerIcon /></li>
+	<li class:active={$page === 'editorial'}><EditorialIcon /></li>
 </ul>
 
 <style>

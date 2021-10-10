@@ -1,11 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
-	import * as yup from 'yup';
-	import cloneDeep from 'lodash/cloneDeep.js';
 
-	import { institutionStore } from '$lib/dashboard/utils/stores';
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import ModalGrid from '$lib/dashboard/elements/modalGrid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
@@ -13,57 +9,18 @@
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Owner from '$lib/dashboard/fields/owner.svelte';
 	import Website from '$lib/dashboard/fields/website.svelte';
-	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 	import ModalWrapper from '../modalWrapper.svelte';
-	import formatValues from './formatValues';
+	import { getValidationSchema } from './validationSchema';
+	import { initialValues } from './initialValues';
+	import { onSubmit } from './onSubmit';
 
 	export let close: () => void;
 	const formName = 'institution';
 
 	const formData = createForm({
-		initialValues: {
-			badge: '',
-			name: [cloneDeep(emptyLanguageValue)],
-			owner: null,
-			website: null
-		},
-		validationSchema: yup.object().shape({
-			badge: yup
-				.string()
-				.min(3, $translate('form.validation.atLeastThreeSignsRequired'))
-				.matches(/^[a-z\d-]+$/, $translate('form.validation.badge'))
-				.required($translate('form.validation.required')),
-			name: yup
-				.array()
-				.of(
-					yup.object().shape({
-						language: yup.string().required($translate('form.validation.required')),
-						value: yup.string().required($translate('form.validation.required'))
-					})
-				)
-				.required()
-				.min(1),
-			owner: yup
-				.string()
-				.transform((v) => (v === null ? 'test' : v))
-				.required($translate('form.validation.required')),
-			website: yup
-				.string()
-				.transform((v) => (v === null ? 'http://www.test.com' : v))
-				.url($translate('form.validation.invalidUrl'))
-				.required($translate('form.validation.required'))
-		}),
-		onSubmit: async (values) => {
-			const formattedValues = formatValues(values, $institutionStore);
-
-			const updatedInstitutions = await serverCall(fetch, Endpoints.addInstitution, {
-				method: 'POST',
-				body: JSON.stringify(formattedValues)
-			});
-
-			institutionStore.set(updatedInstitutions);
-			close();
-		}
+		initialValues,
+		validationSchema: getValidationSchema($translate),
+		onSubmit: onSubmit(close)
 	});
 
 	const { isSubmitting } = formData;

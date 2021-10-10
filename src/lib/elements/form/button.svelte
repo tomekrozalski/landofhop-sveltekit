@@ -2,12 +2,13 @@
 	import InlineSpinner from './inlineSpinner.svelte';
 
 	export let handleClick: () => void = () => {};
+	export let isSecondary: boolean = false;
 	export let isSubmitting: boolean = false;
 	export let type: string = 'button';
 	export let disabled: boolean = false;
 </script>
 
-<button class:isSubmitting {disabled} on:click={handleClick} {type}>
+<button class:isSecondary class:isSubmitting {disabled} on:click={handleClick} {type}>
 	<span><slot /></span>
 	{#if isSubmitting}
 		<InlineSpinner />
@@ -33,14 +34,23 @@
 		cursor: not-allowed;
 	}
 
+	button.isSecondary {
+		background-color: var(--color-brand-10);
+	}
+
 	button.isSubmitting {
 		padding: 0 1rem 0 1.5rem;
 		background-color: var(--color-grey-2);
 		cursor: not-allowed;
 	}
 
-	button:hover:not(:disabled):not(.isSubmitting) {
+	button:hover:not(:disabled):not(.isSubmitting):not(.isSecondary) {
 		background-color: var(--color-grey-2);
+		color: var(--color-black);
+	}
+
+	button.isSecondary:hover {
+		background-color: var(--color-brand-10-light);
 		color: var(--color-black);
 	}
 
