@@ -1,4 +1,8 @@
-import type { InstitutionRaw, InstitutionEssence } from '$lib/utils/types/Institution';
+import type { InstitutionRaw } from '$lib/utils/types/Institution';
+import {
+	formatInstitutionByShortId,
+	formatLanguageValueArray
+} from '$lib/dashboard/utils/dataNormalizers';
 
 type Input = {
 	badge: string;
@@ -10,17 +14,11 @@ type Input = {
 	website: string | null;
 };
 
-export default function formatValues(
-	{ badge, name, owner, website }: Input,
-	institutions: InstitutionEssence[]
-): InstitutionRaw {
+export default function formatValues({ badge, name, owner, website }: Input): InstitutionRaw {
 	return {
 		badge: badge.trim(),
-		name: name.map(({ language, value }) => ({
-			language,
-			value: value.trim()
-		})),
-		...(owner && { owner: institutions.find(({ shortId }) => shortId === owner) }),
+		name: formatLanguageValueArray(name),
+		...(owner && { owner: formatInstitutionByShortId(owner) }),
 		...(website && { website: website.replace(/http(s)?:\/\//, '') })
 	};
 }

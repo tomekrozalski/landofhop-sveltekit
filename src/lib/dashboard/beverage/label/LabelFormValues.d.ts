@@ -1,0 +1,29 @@
+import {
+	ContainerColor,
+	ContainerMaterial,
+	ContainerType,
+	ContainerUnit
+} from '$lib/utils/enums/Beverage.enum';
+
+export type LabelFormValues = {
+	badge: string;
+	name: {
+		language: string;
+		value: string;
+	}[];
+	series: {
+		language: string;
+		value: string;
+	}[];
+	brand: string;
+	cooperation: string[] | null;
+	container: {
+		color: ContainerColor;
+		hasCapWireFlip: boolean;
+		hasCork: boolean;
+		material: ContainerMaterial;
+		type: ContainerType;
+		unit: ContainerUnit;
+		value: number;
+	};
+};

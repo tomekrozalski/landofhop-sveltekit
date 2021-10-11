@@ -9,7 +9,7 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, handleChange, touched, updateValidateField } = formData;
+	let { errors, form, handleChange, touched, updateField, validateField } = formData;
 	let fieldName = 'series';
 	let id = `${formName}-${fieldName}`;
 </script>
@@ -19,17 +19,18 @@
 	{#each $form[fieldName] as _, i}
 		<TextInput
 			errors={$errors[fieldName][i]?.value ?? ''}
+			fieldName={`${fieldName}[${i}].value`}
 			{handleChange}
 			id={i === 0 ? id : null}
 			isTouched={$touched[fieldName][i].value}
-			name={`${fieldName}[${i}].value`}
 			style="grid-column: 2/3"
 			bind:value={$form[fieldName][i].value}
 		/>
 		<LanguageSelect
 			errors={$errors[fieldName][i]?.language ?? ''}
 			name={`${fieldName}[${i}].language`}
-			{updateValidateField}
+			{updateField}
+			{validateField}
 			bind:value={$form[fieldName][i].language}
 		/>
 		<RemoveButton {fieldName} {formData} {i} />
