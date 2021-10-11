@@ -7,6 +7,7 @@
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
+	import Notes from '$lib/dashboard/fields/notes.svelte';
 	import { initialValues } from './initialValues';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
@@ -28,6 +29,9 @@
 		</header>
 		<Grid isOptional>
 			<Cooperation {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Notes {formName} {formData} />
 		</Grid>
 		<ButtonWrapper>
 			<Button handleClick={() => page.set('producer')} isSecondary>

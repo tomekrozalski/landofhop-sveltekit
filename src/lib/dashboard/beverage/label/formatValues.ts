@@ -4,12 +4,15 @@ import {
 } from '$lib/dashboard/utils/dataNormalizers';
 import type { LabelFormValues, LabelFormOutput } from './LabelFormValues';
 
-export default function formatValues(props: LabelFormValues): LabelFormOutput {
-	console.log('LabelFormValues', props);
-
-	const { badge, brand, container, cooperation, name, series } = props;
-
-	const data = {
+export default function formatValues({
+	badge,
+	brand,
+	container,
+	cooperation,
+	name,
+	series
+}: LabelFormValues): LabelFormOutput {
+	return {
 		badge: badge.trim(),
 		name: formatLanguageValueArray(name),
 		...(series.length && { series: formatLanguageValueArray(series) }),
@@ -25,8 +28,4 @@ export default function formatValues(props: LabelFormValues): LabelFormOutput {
 			value: +container.value
 		}
 	};
-
-	console.log('output', data);
-
-	return data;
 }

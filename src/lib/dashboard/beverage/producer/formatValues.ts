@@ -4,17 +4,12 @@ import {
 } from '$lib/dashboard/utils/dataNormalizers';
 import type { ProducerFormValues, ProducerFormOutput } from './ProducerFormValues';
 
-export default function formatValues(props: ProducerFormValues): ProducerFormOutput {
-	console.log('ProducerFormValues', props);
-
-	const { cooperation, series } = props;
-
-	const data = {
+export default function formatValues({
+	cooperation,
+	series
+}: ProducerFormValues): ProducerFormOutput {
+	return {
 		...(series.length && { series: formatLanguageValueArray(series) }),
 		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) })
 	};
-
-	console.log('output', data);
-
-	return data;
 }

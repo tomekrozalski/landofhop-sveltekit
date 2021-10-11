@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { beforeUpdate } from 'svelte';
+	import { beforeUpdate, onDestroy } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { goto } from '$app/navigation';
 
@@ -16,6 +16,10 @@
 		if ([Status.idle, Status.rejected].includes($navigation.loginStatus)) {
 			goto('/', { replaceState: true });
 		}
+	});
+
+	onDestroy(() => {
+		page.set('label');
 	});
 </script>
 

@@ -6,6 +6,7 @@
 	export let handleChange: () => void;
 	export let hasInvertedColors: boolean = false;
 	export let id: string;
+	export let isTextarea: boolean = false;
 	export let isTouched: boolean;
 	export let fieldName: string;
 	export let style: string = '';
@@ -19,23 +20,35 @@
 </script>
 
 <StatusIndicator {disabled} {isTouched} isValid={!errors} {style}>
-	<input
-		class:hasInvertedColors
-		class:isTouched
-		{disabled}
-		{id}
-		name={fieldName}
-		use:typeAction
-		on:change={handleChange}
-		bind:value
-	/>
+	{#if isTextarea}
+		<textarea
+			class:isTouched
+			{disabled}
+			{id}
+			name={fieldName}
+			on:change={handleChange}
+			bind:value
+		/>
+	{:else}
+		<input
+			class:hasInvertedColors
+			class:isTouched
+			{disabled}
+			{id}
+			name={fieldName}
+			use:typeAction
+			on:change={handleChange}
+			bind:value
+		/>
+	{/if}
 	{#if errors}
 		<Error>{errors}</Error>
 	{/if}
 </StatusIndicator>
 
 <style>
-	input {
+	input,
+	textarea {
 		display: block;
 		width: 100%;
 		height: var(--size-input-height);
@@ -47,17 +60,29 @@
 		color: var(--color-black);
 	}
 
-	input:disabled {
+	textarea {
+		height: 12rem;
+		padding: 1rem;
+	}
+
+	input:disabled,
+	textarea:disabled {
 		border-bottom: none;
 		background-color: var(--color-grey-5);
 		cursor: not-allowed;
 	}
 
-	input.isTouched {
+	textarea:disabled {
+		resize: none;
+	}
+
+	input.isTouched,
+	textarea.isTouched {
 		padding-right: 2.6rem;
 	}
 
-	input:focus {
+	input:focus,
+	textarea:focus {
 		outline: none;
 		border-bottom-color: var(--color-black);
 	}

@@ -1,16 +1,12 @@
 import { formatInstitutionByShortId } from '$lib/dashboard/utils/dataNormalizers';
 import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormValues';
 
-export default function formatValues(props: EditorialFormValues): EditorialFormOutput {
-	console.log('EditorialFormValues', props);
-
-	const { cooperation } = props;
-
-	const data = {
-		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) })
+export default function formatValues({
+	cooperation,
+	notes
+}: EditorialFormValues): EditorialFormOutput {
+	return {
+		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
+		...(notes && { notes })
 	};
-
-	console.log('output', data);
-
-	return data;
 }

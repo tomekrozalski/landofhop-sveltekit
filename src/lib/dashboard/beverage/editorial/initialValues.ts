@@ -3,5 +3,6 @@
 // import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 
 export const initialValues = {
-	cooperation: null
+	cooperation: null,
+	notes: null
 };

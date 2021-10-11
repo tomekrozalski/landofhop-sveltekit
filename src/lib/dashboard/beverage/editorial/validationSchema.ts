@@ -5,6 +5,10 @@ export function getValidationSchema(translate) {
 		cooperation: yup
 			.array()
 			.min(1, translate('form.validation.brandSelectionRequired'))
+			.nullable(true),
+		notes: yup
+			.string()
+			.min(3, translate('form.validation.atLeastThreeSignsRequired'))
 			.nullable(true)
 	});
 }

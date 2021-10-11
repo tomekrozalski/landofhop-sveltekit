@@ -21,7 +21,14 @@
 </script>
 
 <Label {id}>{$translate('dashboard.label.owner')}</Label>
-<Conditional {fieldName} {updateField} {updateTouched} {validateField} value={$form[fieldName]} />
+<Conditional
+	{fieldName}
+	{id}
+	{updateField}
+	{updateTouched}
+	{validateField}
+	value={$form[fieldName]}
+/>
 <InstitutionSelect
 	errors={$errors[fieldName]}
 	{handleClear}
