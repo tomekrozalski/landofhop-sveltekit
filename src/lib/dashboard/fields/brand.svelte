@@ -27,6 +27,7 @@
 <InstitutionSelect
 	errors={$errors[fieldName]}
 	{handleClear}
+	{id}
 	{setValue}
 	bind:value={$form[fieldName]}
 />

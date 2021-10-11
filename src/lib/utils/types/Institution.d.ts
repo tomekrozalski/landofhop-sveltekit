@@ -1,5 +1,12 @@
 import { LanguageValue } from '/api/models/common/LanguageValue.d.ts';
 
+export type InstitutionInsideBeverage = {
+	badge: string;
+	name: LanguageValue[];
+	owner?: InstitutionInsideBeverage;
+	shortId: string;
+};
+
 export type InstitutionRaw = {
 	badge: string;
 	name: LanguageValue[];

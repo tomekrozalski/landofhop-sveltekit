@@ -5,16 +5,18 @@
 	type SelectType = { value: string; label: string };
 	export let errors: string | string[];
 	export let handleClear: () => void;
+	export let id: string = null;
 	export let isMulti: boolean = false;
 	export let items: SelectType[];
 	export let setValue: (event: any) => void;
-	export let value: SelectType | null;
+	export let value: SelectType | SelectType[] | null;
 </script>
 
 <div>
 	<Select
 		on:clear={handleClear}
 		containerClasses="select"
+		{id}
 		isDisabled={value === null}
 		{isMulti}
 		{items}

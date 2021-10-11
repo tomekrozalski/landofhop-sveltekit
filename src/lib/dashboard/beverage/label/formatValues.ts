@@ -2,9 +2,9 @@ import {
 	formatInstitutionByShortId,
 	formatLanguageValueArray
 } from '$lib/dashboard/utils/dataNormalizers';
-import type { LabelFormValues } from './LabelFormValues';
+import type { LabelFormValues, LabelFormOutput } from './LabelFormValues';
 
-export default function formatValues(props: LabelFormValues) {
+export default function formatValues(props: LabelFormValues): LabelFormOutput {
 	console.log('LabelFormValues', props);
 
 	const { badge, brand, container, cooperation, name, series } = props;

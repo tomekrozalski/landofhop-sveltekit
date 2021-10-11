@@ -6,7 +6,7 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, updateField, updateTouched, updateValidateField, validateField } = formData;
+	let { errors, form, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'cooperation';
 	let id = `${formName}-${fieldName}`;
 
@@ -16,7 +16,7 @@
 
 	function setValue(event) {
 		if (event?.detail) {
-			updateValidateField(
+			updateField(
 				fieldName,
 				event.detail.map(({ value }) => value)
 			);
@@ -27,6 +27,7 @@
 <Label {id}>{$translate('dashboard.label.cooperation')}</Label>
 <Conditional
 	{fieldName}
+	{id}
 	initialValue={[]}
 	{updateField}
 	{updateTouched}
@@ -36,6 +37,7 @@
 <InstitutionSelect
 	errors={$errors[fieldName]}
 	{handleClear}
+	id={$form[fieldName] !== null && id}
 	isMulti
 	{setValue}
 	bind:value={$form[fieldName]}

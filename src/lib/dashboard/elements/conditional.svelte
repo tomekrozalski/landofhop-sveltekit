@@ -3,8 +3,9 @@
 
 	type ValueType = string | string[];
 
-	export let initialValue: ValueType = '';
 	export let fieldName: string;
+	export let id: string;
+	export let initialValue: ValueType = '';
 	export let updateField: (name: string, value: ValueType | null) => void;
 	export let updateTouched: (name: string, value: boolean) => void;
 	export let validateField: (name: string) => void;
@@ -23,7 +24,7 @@
 </script>
 
 <div on:click={onInputClick} class:on={!isDisabled}>
-	<input type="checkbox" readonly />
+	<input id={isDisabled ? id : null} type="checkbox" readonly />
 	{#if !isDisabled}
 		<CheckmarkIcon />
 	{/if}
