@@ -44,7 +44,7 @@
 			<Website {formName} {formData} />
 		</ModalGrid>
 		<ButtonWrapper modal>
-			<Button isSubmitting={$isSubmitting} type="submit">
+			<Button isIrreversible isSubmitting={$isSubmitting} type="submit">
 				{$translate('dashboard.button.save')}
 			</Button>
 		</ButtonWrapper>

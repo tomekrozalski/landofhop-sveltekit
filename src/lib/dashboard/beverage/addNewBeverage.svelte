@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { beforeUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
+	import { goto } from '$app/navigation';
 
 	import Spinner from '$lib/elements/spinner.svelte';
 	import navigation from '$lib/utils/stores/navigation';
@@ -9,10 +10,11 @@
 	import { page } from '$lib/dashboard/utils/stores';
 	import Label from './label/label.svelte';
 	import Producer from './producer/producer.svelte';
+	import Editorial from './editorial/editorial.svelte';
 
 	beforeUpdate(() => {
 		if ([Status.idle, Status.rejected].includes($navigation.loginStatus)) {
-			window.location.href = import.meta.env.VITE_APP_URL as string;
+			goto('/', { replaceState: true });
 		}
 	});
 </script>
@@ -23,7 +25,7 @@
 		<ProgressList />
 		<Label isActive={$page === 'label'} />
 		<Producer isActive={$page === 'producer'} />
-		<!-- <Editorial isActive={$page === 'editorial'} /> -->
+		<Editorial isActive={$page === 'editorial'} />
 	</article>
 {:else}
 	<Spinner />

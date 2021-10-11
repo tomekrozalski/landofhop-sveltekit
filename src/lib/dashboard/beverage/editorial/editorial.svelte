@@ -7,13 +7,12 @@
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
-	import Series from '$lib/dashboard/fields/series.svelte';
 	import { initialValues } from './initialValues';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
 	export let isActive: boolean;
-	const formName = 'producer';
+	const formName = 'editorial';
 	const formData = createForm({
 		initialValues,
 		validationSchema: getValidationSchema($translate),
@@ -24,21 +23,18 @@
 {#if isActive}
 	<form on:submit={formData.handleSubmit} novalidate>
 		<header>
-			<h2>{$translate('dashboard.beverage.producerInfo.title')}</h2>
-			<p>{$translate('dashboard.beverage.producerInfo.description')}</p>
+			<h2>{$translate('dashboard.beverage.editorialInfo.title')}</h2>
+			<p>{$translate('dashboard.beverage.editorialInfo.description')}</p>
 		</header>
-		<Grid columns={2}>
-			<Series {formName} {formData} />
-		</Grid>
 		<Grid isOptional>
 			<Cooperation {formName} {formData} />
 		</Grid>
 		<ButtonWrapper>
-			<Button handleClick={() => page.set('label')} isSecondary>
+			<Button handleClick={() => page.set('producer')} isSecondary>
 				{$translate('dashboard.button.moveBack')}
 			</Button>
-			<Button type="submit">
-				{$translate('dashboard.button.moveOn')}
+			<Button isIrreversible type="submit">
+				{$translate('dashboard.button.save')}
 			</Button>
 		</ButtonWrapper>
 	</form>
