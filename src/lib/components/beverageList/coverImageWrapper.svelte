@@ -21,11 +21,8 @@
 
 <div style="padding-bottom: {(coverImage?.height / coverImage?.width) * 100}%">
 	{#if !loaded && coverImage?.outline}
-		<span transition:toggleVisibility>
-			{@html coverImage.outline.replace(
-				'<svg',
-				`<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; transition: var(--transition-default);"`
-			)}
+		<span class="outline-wrapper" transition:toggleVisibility>
+			{@html coverImage.outline}
 		</span>
 	{/if}
 	<IntersectionObserver once={true} let:intersecting>
@@ -49,5 +46,13 @@
 		width: 100%;
 		position: relative;
 		overflow: hidden;
+	}
+
+	.outline-wrapper :global(svg) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 </style>

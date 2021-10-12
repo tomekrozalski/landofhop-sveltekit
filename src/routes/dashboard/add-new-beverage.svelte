@@ -13,7 +13,7 @@
 </script>
 
 <script lang="ts">
-	import { translations } from 'svelte-intl';
+	import { translate, translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/dashboard.json';
 	import { institutionStore } from '$lib/dashboard/utils/stores';
@@ -26,7 +26,7 @@
 </script>
 
 <svelte:head>
-	<title>Land of Hop 🔒 Dashboard, add new beverage</title>
+	<title>Land of Hop 🔒 Dashboard, {$translate('dashboard.title.addNewBeverage')}</title>
 </svelte:head>
 
 <AddNewBeverage />

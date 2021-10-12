@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
+	import { goto } from '$app/navigation';
 
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
@@ -35,18 +36,12 @@
 	});
 
 	function updateBeverage() {
-		// push({
-		//     pathname: '/update-beverage',
-		//     query: { id: details.id },
-		//   })
-		//
 		console.log('updateBeverage');
 	}
 
 	function updateBeverageImages() {
-		// () => push('/update-beverage-images')
-
-		console.log('updateBeverageImages');
+		const params = `${details.shortId}/${details.brand.badge}/${details.badge}`;
+		goto(`/dashboard/update-beverage-photos/${params}`);
 	}
 </script>
 
