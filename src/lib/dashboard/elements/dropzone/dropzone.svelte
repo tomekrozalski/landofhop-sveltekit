@@ -2,17 +2,33 @@
 	import Dropzone from 'svelte-file-dropzone';
 	import DropzoneIcon from './icon.svelte';
 
+	export let save: (images: File[]) => void;
+	let error = '';
+
 	function handleFilesSelect(e) {
 		const { acceptedFiles, fileRejections } = e.detail;
 
-		console.log('!', e.detail);
-		// files.accepted = [...files.accepted, ...acceptedFiles];
-		// files.rejected = [...files.rejected, ...fileRejections];
+		if (fileRejections.length) {
+			error = `Upload failed. ${fileRejections[0].errors[0].message} (${fileRejections[0].file.name})`;
+		} else {
+			error = '';
+			save(acceptedFiles);
+		}
 	}
 </script>
 
-<Dropzone on:drop={handleFilesSelect} disableDefaultStyles containerClasses="dropzone-wrapper">
+<Dropzone
+	accept="image/jpeg"
+	on:drop={handleFilesSelect}
+	disableDefaultStyles
+	containerClasses="dropzone-wrapper"
+	minSize={5000}
+	maxSize={2000000}
+>
 	<DropzoneIcon />
+	{#if error}
+		<div>{error}</div>
+	{/if}
 </Dropzone>
 
 <style>
@@ -26,6 +42,7 @@
 		line-height: 0;
 		background-color: var(--color-grey-5);
 		cursor: pointer;
+		position: relative;
 	}
 
 	:global(.dropzone-wrapper:hover) {
@@ -38,5 +55,16 @@
 
 	:global(.dropzone-wrapper:hover .movable) {
 		transform: translate(224px, -104px);
+	}
+
+	div {
+		width: 100%;
+		padding: 1rem 2rem;
+		background-color: var(--color-danger);
+		font: var(--font-weight-regular) 1.5rem / 2rem var(--font-primary);
+		color: var(--color-white);
+		position: absolute;
+		bottom: 0;
+		left: 0;
 	}
 </style>

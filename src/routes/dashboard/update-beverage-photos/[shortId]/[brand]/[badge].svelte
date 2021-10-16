@@ -8,9 +8,9 @@
 			const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.beveragePhotos, {
 				pathParams: [shortId, brand, badge]
 			});
-			return { props: { params: page.params, photosData } };
+			return { props: { photosData } };
 		} catch {
-			return { props: { params: page.params, photosData: {} } };
+			return { props: { photosData: {} } };
 		}
 	}
 </script>
@@ -24,8 +24,7 @@
 
 	translations.update(dictionary as Translations);
 
-	export let params: { shortId: string; brand: string; badge: string };
-	export let photosData: PhotosDataTypes;
+	export let photosData: PhotosDataTypes | null;
 	beveragePhotosStore.set(photosData);
 </script>
 
@@ -33,4 +32,4 @@
 	<title>Land of Hop 🔒 Dashboard, {$translate('dashboard.title.updateBeveragePhotos')}</title>
 </svelte:head>
 
-<UpdateBeveragePhotos {params} />
+<UpdateBeveragePhotos />

@@ -12,9 +12,9 @@
 {:else}
 	<span {style}>
 		{#if isTouched && isValid}
-			<SuccessIcon style="right: 0.6rem" />
+			<SuccessIcon />
 		{:else if isTouched && !isValid}
-			<WarningIcon style="right: 0.8rem" />
+			<WarningIcon />
 		{/if}
 		<slot />
 	</span>
@@ -38,11 +38,13 @@
 		width: 1.4rem;
 		height: 1.1rem;
 		fill: var(--color-success);
+		right: 0.6rem;
 	}
 
 	span :global(svg.icon-warning) {
 		width: 1.4rem;
 		height: 1.3rem;
 		fill: var(--color-warning);
+		right: 0.8rem;
 	}
 </style>
