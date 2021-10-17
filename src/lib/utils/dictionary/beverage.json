@@ -1,7 +1,9 @@
 {
 	"en": {
+		"beverage.adminBar.areYouSure": "Are you sure?",
 		"beverage.adminBar.notes": "notes",
 		"beverage.adminBar.lastTimeUpdated": "last time updated",
+		"beverage.adminBar.removeBeverage": "Remove beverage",
 		"beverage.adminBar.updateContent": "Update data",
 		"beverage.adminBar.updateImages": "Update photos",
 		"beverage.aside.next": "Next beverage",
@@ -89,8 +91,10 @@
 		"time.year": "{value} {value, plural, one {year} other {years}}"
 	},
 	"pl": {
+		"beverage.adminBar.areYouSure": "Na pewno usunąć?",
 		"beverage.adminBar.notes": "notatki",
 		"beverage.adminBar.lastTimeUpdated": "ostatnio poprawiono",
+		"beverage.adminBar.removeBeverage": "Usuń piwo",
 		"beverage.adminBar.updateContent": "Popraw informacje",
 		"beverage.adminBar.updateImages": "Popraw zdjęcia",
 		"beverage.aside.next": "Następne piwo",

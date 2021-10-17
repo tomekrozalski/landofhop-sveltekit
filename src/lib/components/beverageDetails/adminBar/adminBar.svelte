@@ -9,6 +9,7 @@
 	import InlineSpinner from '$lib/elements/inlineSpinner.svelte';
 	import Notes from './notes.svelte';
 	import Updated from './updated.svelte';
+	import RemoveBeverage from './removeButton.svelte';
 
 	export let details: Details;
 	let isLoading = true;
@@ -48,7 +49,7 @@
 <div class="buttons">
 	<Button handleClick={updateBeverage}>{$translate('beverage.adminBar.updateContent')}</Button>
 	<Button handleClick={updateBeverageImages}>{$translate('beverage.adminBar.updateImages')}</Button>
-	<!-- <RemoveBeverage details={details} /> -->
+	<RemoveBeverage {details} />
 </div>
 
 <div class="adminNotes">

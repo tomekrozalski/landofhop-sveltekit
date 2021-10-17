@@ -6,6 +6,7 @@
 	export let isIrreversible: boolean = false;
 	export let isSecondary: boolean = false;
 	export let isSubmitting: boolean = false;
+	export let isWarning: boolean = false;
 	export let type: string = 'button';
 	export let disabled: boolean = false;
 </script>
@@ -14,6 +15,7 @@
 	class:isIrreversible
 	class:isSecondary
 	class:isSubmitting
+	class:isWarning
 	{disabled}
 	on:click={handleClick}
 	{type}
@@ -69,6 +71,10 @@
 		padding: 0 1rem 0 1.5rem;
 		background-color: var(--color-grey-2);
 		cursor: not-allowed;
+	}
+
+	button.isWarning {
+		background-color: var(--color-danger);
 	}
 
 	button:hover:not(:disabled):not(.isSubmitting):not(.isSecondary):not(.isIrreversible) {
