@@ -5,26 +5,26 @@
 	import type { PhotosData as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import InlineSpinner from '$lib/elements/form/inlineSpinner.svelte';
 	import WarningIcon from '$lib/elements/vectors/warning.svelte';
 	import Dropzone from './elements/dropzone/dropzone.svelte';
 	import ContentWrapper from './elements/contentWrapper.svelte';
 	import SavedItem from './elements/savedItem.svelte';
 	import NoImage from './elements/noImage.svelte';
+	import GalleryThumbs from './elements/galleryThumbs.svelte';
 
 	const { badge, brand, shortId } = $page.params;
-	let version: number | null = Date.now();
+	let version: number = Date.now();
 
-	async function saveCover(images: File[]) {
-		version = null;
-
+	async function saveGallery(images: File[]) {
 		const formData = new FormData();
 		formData.append('badge', badge);
 		formData.append('brand', brand);
-		formData.append('image', images[0]);
+		images.forEach((image) => {
+			formData.append('images', image);
+		});
 		formData.append('shortId', shortId);
 
-		const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.addBeverageCover, {
+		const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.addBeverageGallery, {
 			method: 'POST',
 			body: formData,
 			formData: true
@@ -36,29 +36,28 @@
 </script>
 
 <section>
-	<h2>{$translate('dashboard.beveragePhotos.cover')}</h2>
-	<ContentWrapper isEmpty={!$beveragePhotosStore.cover?.height}>
+	<h2>{$translate('dashboard.beveragePhotos.gallery')}</h2>
+	<ContentWrapper isEmpty={!$beveragePhotosStore.gallery}>
 		<SavedItem>
-			{#if $beveragePhotosStore.outlines?.cover}
-				{@html $beveragePhotosStore.outlines.cover}
+			{#if $beveragePhotosStore.outlines?.gallery}
+				{@html $beveragePhotosStore.outlines.gallery}
 			{:else}
 				<WarningIcon />
 			{/if}
 		</SavedItem>
 		<SavedItem>
-			{#if version}
-				{#if $beveragePhotosStore.cover}
-					<img
-						alt=""
-						src="{PHOTO_SERVER}/{brand}/{badge}/{shortId}/cover/webp/2x.webp?v={version}"
-					/>
-				{:else}
-					<NoImage />
-				{/if}
+			{#if $beveragePhotosStore.gallery}
+				<img
+					alt=""
+					src="{PHOTO_SERVER}/{brand}/{badge}/{shortId}/container/webp/2x/01.webp?v={version}"
+				/>
 			{:else}
-				<InlineSpinner isGrey />
+				<NoImage />
 			{/if}
 		</SavedItem>
-		<Dropzone save={saveCover} />
+		<Dropzone isMultiple save={saveGallery} />
+		{#if $beveragePhotosStore.gallery}
+			<GalleryThumbs {version} />
+		{/if}
 	</ContentWrapper>
 </section>

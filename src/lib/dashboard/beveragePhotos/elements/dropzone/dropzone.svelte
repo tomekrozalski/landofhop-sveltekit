@@ -2,6 +2,7 @@
 	import Dropzone from 'svelte-file-dropzone';
 	import DropzoneIcon from './icon.svelte';
 
+	export let isMultiple: boolean = false;
 	export let save: (images: File[]) => void;
 	let error = '';
 
@@ -24,6 +25,7 @@
 	containerClasses="dropzone-wrapper"
 	minSize={5000}
 	maxSize={2000000}
+	multiple={isMultiple}
 >
 	<DropzoneIcon />
 	{#if error}

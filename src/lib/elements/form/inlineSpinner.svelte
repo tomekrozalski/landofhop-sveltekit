@@ -1,4 +1,8 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<script lang="ts">
+	export let isGrey: boolean = false;
+</script>
+
+<svg class:isGrey viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 	<circle cx="50" cy="50" r="45" />
 </svg>
 
@@ -49,5 +53,9 @@
 		stroke-dashoffset: 280;
 		stroke-width: 1rem;
 		transform-origin: 50% 50%;
+	}
+
+	svg.isGrey circle {
+		stroke: var(--color-grey-2);
 	}
 </style>
