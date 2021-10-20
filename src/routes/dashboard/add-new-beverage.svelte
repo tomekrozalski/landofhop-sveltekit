@@ -17,7 +17,7 @@
 	import type { Translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/dashboard.json';
 	import { institutionStore } from '$lib/dashboard/utils/stores';
-	import AddNewBeverage from '$lib/dashboard/beverage/addNewBeverage.svelte';
+	import Beverage from '$lib/dashboard/beverage/beverage.svelte';
 
 	translations.update(dictionary as Translations);
 
@@ -29,4 +29,4 @@
 	<title>Land of Hop 🔒 Dashboard, {$translate('dashboard.title.addNewBeverage')}</title>
 </svelte:head>
 
-<AddNewBeverage />
+<Beverage type="add" />

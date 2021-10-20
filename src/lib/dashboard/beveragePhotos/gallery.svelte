@@ -4,18 +4,21 @@
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { PhotosData as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
-	import { PHOTO_SERVER } from '$lib/utils/constants';
+	import InlineSpinner from '$lib/elements/form/inlineSpinner.svelte';
 	import WarningIcon from '$lib/elements/vectors/warning.svelte';
 	import Dropzone from './elements/dropzone/dropzone.svelte';
 	import ContentWrapper from './elements/contentWrapper.svelte';
 	import SavedItem from './elements/savedItem.svelte';
 	import NoImage from './elements/noImage.svelte';
 	import GalleryThumbs from './elements/galleryThumbs.svelte';
+	import Image from './elements/image.svelte';
 
 	const { badge, brand, shortId } = $page.params;
 	let version: number = Date.now();
 
 	async function saveGallery(images: File[]) {
+		version = null;
+
 		const formData = new FormData();
 		formData.append('badge', badge);
 		formData.append('brand', brand);
@@ -31,7 +34,10 @@
 		});
 
 		beveragePhotosStore.set(photosData);
-		version = Date.now();
+
+		setTimeout(() => {
+			version = Date.now();
+		}, 3000);
 	}
 </script>
 
@@ -46,17 +52,18 @@
 			{/if}
 		</SavedItem>
 		<SavedItem>
-			{#if $beveragePhotosStore.gallery}
-				<img
-					alt=""
-					src="{PHOTO_SERVER}/{brand}/{badge}/{shortId}/container/webp/2x/01.webp?v={version}"
-				/>
+			{#if version}
+				{#if $beveragePhotosStore.gallery}
+					<Image {badge} {brand} {shortId} type="gallery" {version} />
+				{:else}
+					<NoImage />
+				{/if}
 			{:else}
-				<NoImage />
+				<InlineSpinner isGrey />
 			{/if}
 		</SavedItem>
 		<Dropzone isMultiple save={saveGallery} />
-		{#if $beveragePhotosStore.gallery}
+		{#if version && $beveragePhotosStore.gallery}
 			<GalleryThumbs {version} />
 		{/if}
 	</ContentWrapper>

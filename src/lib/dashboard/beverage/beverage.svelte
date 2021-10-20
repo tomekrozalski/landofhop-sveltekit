@@ -12,6 +12,8 @@
 	import Producer from './producer/producer.svelte';
 	import Editorial from './editorial/editorial.svelte';
 
+	export let type: 'add' | 'update';
+
 	beforeUpdate(() => {
 		if ([Status.idle, Status.rejected].includes($navigation.loginStatus)) {
 			goto('/', { replaceState: true });
@@ -25,7 +27,12 @@
 
 {#if $navigation.loginStatus === Status.fulfilled}
 	<article>
-		<h1>{$translate('dashboard.beverage.addNewBeverage')}</h1>
+		{#if type === 'add'}
+			<h1>{$translate('dashboard.beverage.addNewBeverage')}</h1>
+		{/if}
+		{#if type === 'update'}
+			<h1>{$translate('dashboard.beverage.updateBeverage')}</h1>
+		{/if}
 		<ProgressList />
 		<Label isActive={$page === 'label'} />
 		<Producer isActive={$page === 'producer'} />

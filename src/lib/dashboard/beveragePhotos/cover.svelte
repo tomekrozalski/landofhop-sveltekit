@@ -4,13 +4,13 @@
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { PhotosData as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
-	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import InlineSpinner from '$lib/elements/form/inlineSpinner.svelte';
 	import WarningIcon from '$lib/elements/vectors/warning.svelte';
 	import Dropzone from './elements/dropzone/dropzone.svelte';
 	import ContentWrapper from './elements/contentWrapper.svelte';
 	import SavedItem from './elements/savedItem.svelte';
 	import NoImage from './elements/noImage.svelte';
+	import Image from './elements/image.svelte';
 
 	const { badge, brand, shortId } = $page.params;
 	let version: number | null = Date.now();
@@ -48,10 +48,7 @@
 		<SavedItem>
 			{#if version}
 				{#if $beveragePhotosStore.cover}
-					<img
-						alt=""
-						src="{PHOTO_SERVER}/{brand}/{badge}/{shortId}/cover/webp/2x.webp?v={version}"
-					/>
+					<Image {badge} {brand} {shortId} type="cover" {version} />
 				{:else}
 					<NoImage />
 				{/if}

@@ -12,6 +12,7 @@
 	import RemoveBeverage from './removeButton.svelte';
 
 	export let details: Details;
+	const params = `${details.shortId}/${details.brand.badge}/${details.badge}`;
 	let isLoading = true;
 	let notes = '';
 	let updated = '';
@@ -37,11 +38,10 @@
 	});
 
 	function updateBeverage() {
-		console.log('updateBeverage');
+		goto(`/dashboard/update-beverage/${params}`);
 	}
 
 	function updateBeverageImages() {
-		const params = `${details.shortId}/${details.brand.badge}/${details.badge}`;
 		goto(`/dashboard/update-beverage-photos/${params}`);
 	}
 </script>
