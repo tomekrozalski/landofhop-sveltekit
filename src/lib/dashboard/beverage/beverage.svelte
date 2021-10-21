@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import { beforeUpdate, onDestroy } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { goto } from '$app/navigation';
@@ -12,7 +13,7 @@
 	import Producer from './producer/producer.svelte';
 	import Editorial from './editorial/editorial.svelte';
 
-	export let type: 'add' | 'update';
+	const type = getContext('formType');
 
 	beforeUpdate(() => {
 		if ([Status.idle, Status.rejected].includes($navigation.loginStatus)) {

@@ -19,12 +19,12 @@ export type LabelFormValues = {
 	brand: string;
 	cooperation: string[] | null;
 	container: {
-		color: ContainerColor;
+		color: ContainerColor | string;
 		hasCapWireFlip: boolean;
 		hasCork: boolean;
-		material: ContainerMaterial;
-		type: ContainerType;
-		unit: ContainerUnit;
+		material: ContainerMaterial | string;
+		type: ContainerType | string;
+		unit: ContainerUnit | string;
 		value: number;
 	};
 };

@@ -20,6 +20,7 @@
 				fieldName,
 				event.detail.map(({ value }) => value)
 			);
+			validateField(fieldName);
 		}
 	}
 </script>

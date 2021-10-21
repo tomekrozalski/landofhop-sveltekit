@@ -10,6 +10,7 @@
 	export let errors: string | string[];
 	export let handleClear: () => void;
 	export let id: string = null;
+	export let isDisabled: boolean = false;
 	export let isMulti: boolean = false;
 	export let setValue: (event: any) => void;
 	export let value: string | string[] | null;
@@ -19,7 +20,7 @@
 			return value.map((id) => items.find((item) => item.value === id));
 		}
 
-		if (isString(value)) {
+		if (isString(value) && value) {
 			return items.find((item) => item.value === value);
 		}
 
@@ -38,6 +39,7 @@
 	{errors}
 	{handleClear}
 	{id}
+	{isDisabled}
 	{isMulti}
 	{items}
 	placeholder={$translate('dashboard.select.placeholder.institution')}

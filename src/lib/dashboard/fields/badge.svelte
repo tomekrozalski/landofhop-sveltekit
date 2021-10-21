@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import { beforeUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import slugify from 'slugify';
@@ -13,6 +14,7 @@
 	let id = `${formName}-${fieldName}`;
 
 	let firstNameValue = $form.name[0].value;
+	const type = getContext('formType');
 
 	beforeUpdate(() => {
 		const value = $form.name[0].value;
@@ -28,6 +30,7 @@
 	errors={$errors[fieldName]}
 	{handleChange}
 	{id}
+	isDisabled={formName === 'label' && type === 'update'}
 	isTouched={$touched[fieldName]}
 	{fieldName}
 	bind:value={$form[fieldName]}

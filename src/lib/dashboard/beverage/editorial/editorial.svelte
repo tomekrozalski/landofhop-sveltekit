@@ -2,20 +2,20 @@
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 
+	import { editorialStore } from '$lib/dashboard/utils/stores';
 	import { page } from '$lib/dashboard/utils/stores';
 	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Notes from '$lib/dashboard/fields/notes.svelte';
-	import { initialValues } from './initialValues';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
 	export let isActive: boolean;
 	const formName = 'editorial';
 	const formData = createForm({
-		initialValues,
+		initialValues: $editorialStore,
 		validationSchema: getValidationSchema($translate),
 		onSubmit
 	});

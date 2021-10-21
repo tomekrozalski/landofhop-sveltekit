@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
 	import OpenModal from '$lib/dashboard/elements/openModal.svelte';
@@ -10,6 +11,7 @@
 	let { errors, form, updateField, validateField } = formData;
 	let fieldName = 'brand';
 	let id = `${formName}-${fieldName}`;
+	const type = getContext('formType');
 
 	function handleClear() {
 		updateField(fieldName, '');
@@ -28,6 +30,7 @@
 	errors={$errors[fieldName]}
 	{handleClear}
 	{id}
+	isDisabled={formName === 'label' && type === 'update'}
 	{setValue}
 	bind:value={$form[fieldName]}
 />

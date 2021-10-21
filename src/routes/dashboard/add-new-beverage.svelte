@@ -13,6 +13,7 @@
 </script>
 
 <script lang="ts">
+	import { setContext } from 'svelte';
 	import { translate, translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/dashboard.json';
@@ -23,10 +24,12 @@
 
 	export let institutions: InstitutionType[];
 	institutionStore.set(institutions);
+
+	setContext('formType', 'add');
 </script>
 
 <svelte:head>
 	<title>Land of Hop 🔒 Dashboard, {$translate('dashboard.title.addNewBeverage')}</title>
 </svelte:head>
 
-<Beverage type="add" />
+<Beverage />

@@ -26,6 +26,7 @@ export function getValidationSchema(translate) {
 		brand: yup.string().required(translate('form.validation.required')),
 		cooperation: yup
 			.array()
+			.of(yup.string())
 			.min(1, translate('form.validation.brandSelectionRequired'))
 			.nullable(true),
 		container: yup.object().shape({

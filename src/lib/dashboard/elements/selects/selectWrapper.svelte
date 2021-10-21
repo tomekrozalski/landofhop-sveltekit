@@ -1,15 +1,20 @@
 <script lang="ts">
 	import Select from 'svelte-select';
+	import isArray from 'lodash/isArray';
+	import isEmpty from 'lodash/isEmpty';
 	import Error from '$lib/elements/form/error.svelte';
 
 	type SelectType = { value: string; label: string };
 	export let errors: string | string[];
 	export let handleClear: () => void;
 	export let id: string = null;
+	export let isDisabled: boolean = false;
 	export let isMulti: boolean = false;
 	export let items: SelectType[];
 	export let setValue: (event: any) => void;
 	export let value: SelectType | SelectType[] | null;
+
+	$: formattedErrors = isArray(errors) ? errors.filter(Boolean).join(', ') : errors;
 </script>
 
 <div>
@@ -17,16 +22,16 @@
 		on:clear={handleClear}
 		containerClasses="select"
 		{id}
-		isDisabled={value === null}
+		isDisabled={isDisabled || value === null}
 		{isMulti}
 		{items}
 		on:select={setValue}
 		showChevron={true}
-		{value}
+		value={isEmpty(value) ? '' : value}
 		{...$$restProps}
 	/>
-	{#if errors.length}
-		<Error>{errors}</Error>
+	{#if formattedErrors}
+		<Error>{formattedErrors}</Error>
 	{/if}
 </div>
 
@@ -40,6 +45,7 @@
 		--background: var(--color-grey-4);
 		--height: var(--size-input-height);
 		--inputPadding: 0 1rem;
+		--inputColor: var(--color-black);
 		--selectedItemPadding: 0;
 		--listBorderRadius: 0;
 		--itemFirstBorderRadius: 0;

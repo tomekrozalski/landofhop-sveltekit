@@ -27,10 +27,16 @@
 </script>
 
 <script lang="ts">
+	import { setContext } from 'svelte';
 	import { translate, translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/dashboard.json';
-	import { institutionStore } from '$lib/dashboard/utils/stores';
+	import {
+		editorialStore,
+		institutionStore,
+		labelStore,
+		producerStore
+	} from '$lib/dashboard/utils/stores';
 	import Beverage from '$lib/dashboard/beverage/beverage.svelte';
 
 	translations.update(dictionary as Translations);
@@ -38,19 +44,19 @@
 	export let beverage: DetailsAdmin | null;
 	export let institutions: InstitutionType[];
 
-	console.log({ beverage });
-
-	/* ToDo update:
-	 * labelStore
-	 * producerStore
-	 * editorialStore
-	 */
-
 	institutionStore.set(institutions);
+
+	if (beverage) {
+		labelStore.set(beverage.label);
+		producerStore.set(beverage.producer);
+		editorialStore.set(beverage.editorial);
+	}
+
+	setContext('formType', 'update');
 </script>
 
 <svelte:head>
 	<title>Land of Hop 🔒 Dashboard, {$translate('dashboard.title.updateBeverage')}</title>
 </svelte:head>
 
-<Beverage type="update" />
+<Beverage />

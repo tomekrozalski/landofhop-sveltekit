@@ -6,13 +6,14 @@
 	export let handleChange: () => void;
 	export let hasInvertedColors: boolean = false;
 	export let id: string;
+	export let isDisabled: boolean = false;
 	export let isTextarea: boolean = false;
 	export let isTouched: boolean;
 	export let fieldName: string;
 	export let style: string = '';
 	export let type: 'email' | 'number' | 'password' | 'text' = 'text';
 	export let value: string;
-	$: disabled = value === null;
+	$: disabled = isDisabled || value === null;
 
 	function typeAction(node: any) {
 		node.type = type;
@@ -69,6 +70,7 @@
 	textarea:disabled {
 		border-bottom: none;
 		background-color: var(--color-grey-5);
+		color: var(--color-grey-2);
 		cursor: not-allowed;
 	}
 

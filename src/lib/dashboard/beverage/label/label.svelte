@@ -2,6 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 
+	import { labelStore } from '$lib/dashboard/utils/stores';
 	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
@@ -11,14 +12,13 @@
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
-	import { initialValues } from './initialValues';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
 	export let isActive: boolean;
 	const formName = 'label';
 	const formData = createForm({
-		initialValues,
+		initialValues: $labelStore,
 		validationSchema: getValidationSchema($translate),
 		onSubmit
 	});
