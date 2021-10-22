@@ -9,6 +9,7 @@ export const initialValues = {
 	series: [],
 	brand: '',
 	cooperation: null,
+	barcode: null,
 	container: {
 		color: '',
 		hasCapWireFlip: false,

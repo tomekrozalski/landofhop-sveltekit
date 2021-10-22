@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
+	import { page as pageProps } from '$app/stores';
 
 	import { editorialStore } from '$lib/dashboard/utils/stores';
 	import { page } from '$lib/dashboard/utils/stores';
@@ -13,11 +15,12 @@
 	import { getValidationSchema } from './validationSchema';
 
 	export let isActive: boolean;
+	const params: any = $pageProps.params;
 	const formName = 'editorial';
 	const formData = createForm({
 		initialValues: $editorialStore,
 		validationSchema: getValidationSchema($translate),
-		onSubmit
+		onSubmit: onSubmit(getContext('formType'), params)
 	});
 </script>
 

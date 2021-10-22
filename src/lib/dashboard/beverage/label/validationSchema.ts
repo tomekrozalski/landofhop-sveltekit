@@ -29,6 +29,13 @@ export function getValidationSchema(translate) {
 			.of(yup.string())
 			.min(1, translate('form.validation.brandSelectionRequired'))
 			.nullable(true),
+		barcode: yup
+			.mixed()
+			.test(
+				'is-barcode',
+				translate('form.validation.incorrectBarcode'),
+				(value) => value === null || value.length
+			),
 		container: yup.object().shape({
 			color: yup.string().required(translate('form.validation.required')),
 			hasCapWireFlip: yup.boolean(),

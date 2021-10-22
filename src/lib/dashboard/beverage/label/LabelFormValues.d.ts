@@ -18,6 +18,7 @@ export type LabelFormValues = {
 	}[];
 	brand: string;
 	cooperation: string[] | null;
+	barcode: string | null;
 	container: {
 		color: ContainerColor | string;
 		hasCapWireFlip: boolean;
@@ -41,6 +42,7 @@ export type LabelFormOutput = {
 	}[];
 	brand: InstitutionInsideBeverage;
 	cooperation?: InstitutionInsideBeverage[];
+	barcode?: string;
 	container: {
 		color: ContainerColor;
 		hasCapWireFlip?: boolean;

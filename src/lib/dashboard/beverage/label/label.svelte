@@ -7,6 +7,7 @@
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
+	import Barcode from '$lib/dashboard/fields/barcode.svelte';
 	import Brand from '$lib/dashboard/fields/brand.svelte';
 	import Container from '$lib/dashboard/fields/container.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
@@ -46,6 +47,16 @@
 		<Grid isOptional>
 			<Cooperation {formName} {formData} />
 		</Grid>
+		<!-- <Grid isOptional>
+			<Contract {formName} {formData} />
+		</Grid> -->
+		<!-- <Grid isOptional>
+			<Tale {formName} {formData} />
+		</Grid> -->
+		<Grid isOptional>
+			<Barcode {formName} {formData} />
+		</Grid>
+		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>
 			<Container {formName} {formData} />
 		</Grid>

@@ -20,7 +20,7 @@
 			return value.map((id) => items.find((item) => item.value === id));
 		}
 
-		if (isString(value) && value) {
+		if (isString(value)) {
 			return items.find((item) => item.value === value);
 		}
 
