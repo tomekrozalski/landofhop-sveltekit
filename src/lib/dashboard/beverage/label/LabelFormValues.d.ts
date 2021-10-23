@@ -1,4 +1,5 @@
 import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
+import type { Tale } from '$lib/utils/types/Beverage/fragments/Tale';
 import {
 	ContainerColor,
 	ContainerMaterial,
@@ -8,6 +9,7 @@ import {
 
 export type LabelFormValues = {
 	badge: string;
+	// -----------
 	name: {
 		language: string;
 		value: string;
@@ -18,7 +20,16 @@ export type LabelFormValues = {
 	}[];
 	brand: string;
 	cooperation: string[] | null;
+	tale: {
+		article: string;
+		language: string;
+		lead: string;
+	}[];
 	barcode: string | null;
+	// -----------
+	filtration: boolean | null;
+	pasteurization: boolean | null;
+	// -----------
 	container: {
 		color: ContainerColor | string;
 		hasCapWireFlip: boolean;
@@ -32,6 +43,7 @@ export type LabelFormValues = {
 
 export type LabelFormOutput = {
 	badge: string;
+	// -----------
 	name: {
 		language?: string;
 		value: string;
@@ -42,7 +54,12 @@ export type LabelFormOutput = {
 	}[];
 	brand: InstitutionInsideBeverage;
 	cooperation?: InstitutionInsideBeverage[];
+	tale?: Tale[];
 	barcode?: string;
+	// -----------
+	filtration?: boolean;
+	pasteurization?: boolean;
+	// -----------
 	container: {
 		color: ContainerColor;
 		hasCapWireFlip?: boolean;

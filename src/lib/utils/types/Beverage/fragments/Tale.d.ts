@@ -1,5 +1,5 @@
 export type Tale = {
-  language?: string;
-  lead: string;
-  article?: string;
+	article?: string;
+	language?: string;
+	lead: string;
 };

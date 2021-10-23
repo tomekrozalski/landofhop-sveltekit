@@ -5,11 +5,17 @@ import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 
 export const initialValues = {
 	badge: '',
+	// -----------
 	name: [cloneDeep(emptyLanguageValue)],
 	series: [],
 	brand: '',
 	cooperation: null,
+	tale: [],
 	barcode: null,
+	// -----------
+	filtration: null,
+	pasteurization: null,
+	// -----------
 	container: {
 		color: '',
 		hasCapWireFlip: false,

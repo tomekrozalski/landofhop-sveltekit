@@ -9,6 +9,7 @@
 	languages.registerLocale(pl);
 
 	export let errors: string;
+	export let isWide: boolean = false;
 	export let name: string;
 	export let updateField: (fieldName: string, value: any) => void;
 	export let validateField: (fieldName: string) => void;
@@ -52,6 +53,7 @@
 	{getGroupHeaderLabel}
 	{groupBy}
 	{handleClear}
+	{isWide}
 	{items}
 	{name}
 	placeholder={$translate('dashboard.select.placeholder.language')}

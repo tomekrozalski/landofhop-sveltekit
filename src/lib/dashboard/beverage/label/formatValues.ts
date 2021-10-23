@@ -1,6 +1,8 @@
+import isBoolean from 'lodash/isBoolean';
 import {
 	formatInstitutionByShortId,
-	formatLanguageValueArray
+	formatLanguageValueArray,
+	formatTaleArray
 } from '$lib/dashboard/utils/dataNormalizers';
 import type {
 	ContainerColor,
@@ -16,16 +18,25 @@ export default function formatValues({
 	brand,
 	container,
 	cooperation,
+	filtration,
 	name,
-	series
+	pasteurization,
+	series,
+	tale
 }: LabelFormValues): LabelFormOutput {
 	return {
 		badge: badge.trim(),
+		// -----------
 		name: formatLanguageValueArray(name),
 		...(series.length && { series: formatLanguageValueArray(series) }),
 		brand: formatInstitutionByShortId(brand),
 		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
+		...(tale.length && { tale: tale.map(formatTaleArray) }),
 		...(barcode && { barcode: barcode.trim() }),
+		// -----------
+		...(isBoolean(filtration) && { filtration }),
+		...(isBoolean(pasteurization) && { pasteurization }),
+		// -----------
 		container: {
 			color: container.color as ContainerColor,
 			...(container.hasCapWireFlip && { hasCapWireFlip: container.hasCapWireFlip }),

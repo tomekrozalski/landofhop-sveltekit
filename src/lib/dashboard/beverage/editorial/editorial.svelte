@@ -10,7 +10,9 @@
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
+	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Notes from '$lib/dashboard/fields/notes.svelte';
+	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
@@ -30,9 +32,18 @@
 			<h2>{$translate('dashboard.beverage.editorialInfo.title')}</h2>
 			<p>{$translate('dashboard.beverage.editorialInfo.description')}</p>
 		</header>
+		<h3><span>{$translate('dashboard.beverage.brandInfo')}</span></h3>
 		<Grid isOptional>
 			<Cooperation {formName} {formData} />
 		</Grid>
+		<h3><span>{$translate('dashboard.beverage.brewingInfo')}</span></h3>
+		<Grid isOptional>
+			<Filtration {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Pasteurization {formName} {formData} />
+		</Grid>
+		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid isOptional>
 			<Notes {formName} {formData} />
 		</Grid>

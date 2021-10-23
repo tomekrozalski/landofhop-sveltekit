@@ -4,5 +4,9 @@
 
 export const initialValues = {
 	series: [],
-	cooperation: null
+	cooperation: null,
+	tale: [],
+	// -----------
+	filtration: null,
+	pasteurization: null
 };

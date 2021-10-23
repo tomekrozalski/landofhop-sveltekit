@@ -1,7 +1,7 @@
 <script lang="ts">
-	import marked from 'marked';
+	import Markdown from '$lib/elements/markdown.svelte';
 
 	export let notes: string;
 </script>
 
-{@html marked(notes)}
+<Markdown value={notes} />

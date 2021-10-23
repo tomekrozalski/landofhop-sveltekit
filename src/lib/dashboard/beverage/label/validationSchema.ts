@@ -4,9 +4,10 @@ export function getValidationSchema(translate) {
 	return yup.object().shape({
 		badge: yup
 			.string()
-			.min(3, translate('form.validation.atLeastThreeSignsRequired'))
+			.min(3, translate('form.validation.minChars', { value: 3 }))
 			.matches(/^[a-z\d-]+$/, translate('form.validation.badge'))
 			.required(translate('form.validation.required')),
+		// -----------
 		name: yup
 			.array()
 			.of(
@@ -29,6 +30,16 @@ export function getValidationSchema(translate) {
 			.of(yup.string())
 			.min(1, translate('form.validation.brandSelectionRequired'))
 			.nullable(true),
+		tale: yup.array().of(
+			yup.object().shape({
+				article: yup.string(),
+				language: yup.string().required(translate('form.validation.required')),
+				lead: yup
+					.string()
+					.min(12, translate('form.validation.minChars', { value: 12 }))
+					.required(translate('form.validation.required'))
+			})
+		),
 		barcode: yup
 			.mixed()
 			.test(
@@ -36,6 +47,10 @@ export function getValidationSchema(translate) {
 				translate('form.validation.incorrectBarcode'),
 				(value) => value === null || value.length
 			),
+		// -----------
+		filtration: yup.boolean().nullable(true),
+		pasteurization: yup.boolean().nullable(true),
+		// -----------
 		container: yup.object().shape({
 			color: yup.string().required(translate('form.validation.required')),
 			hasCapWireFlip: yup.boolean(),

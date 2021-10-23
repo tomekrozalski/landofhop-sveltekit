@@ -4,5 +4,9 @@
 
 export const initialValues = {
 	cooperation: null,
+	// -----------
+	filtration: null,
+	pasteurization: null,
+	// -----------
 	notes: null
 };

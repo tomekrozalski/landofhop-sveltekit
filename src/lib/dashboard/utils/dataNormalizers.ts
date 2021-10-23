@@ -25,3 +25,19 @@ export function formatLanguageValueArray(
 		value: value.trim()
 	}));
 }
+
+export function formatTaleArray({
+	article,
+	language,
+	lead
+}: {
+	article: string;
+	language: string;
+	lead: string;
+}) {
+	return {
+		...(article && { article: article.trim() }),
+		...(language !== '--' && { language }),
+		lead: lead.trim()
+	};
+}

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import marked from 'marked';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
+	import Markdown from '$lib/elements/markdown.svelte';
 	import Article from './article.svelte';
 
 	export let details: Details;
@@ -11,9 +11,11 @@
 	{#if tale?.label?.length}
 		{#each tale?.label as singleTale}
 			<section lang={singleTale.language !== 'pl' ? singleTale.language : null}>
-				{@html marked(singleTale.lead)}
+				<Markdown value={singleTale.lead} />
 				{#if singleTale.article}
-					<Article>{@html marked(singleTale.article)}</Article>
+					<Article>
+						<Markdown value={singleTale.article} />
+					</Article>
 				{/if}
 			</section>
 		{/each}
@@ -23,9 +25,11 @@
 			class="tale-producer"
 			lang={tale.producer.language !== 'pl' ? tale.producer.language : null}
 		>
-			{@html marked(tale.producer.lead)}
+			<Markdown value={tale.producer.lead} />
 			{#if tale.producer.article}
-				<Article>{@html marked(tale.producer.article)}</Article>
+				<Article>
+					<Markdown value={tale.producer.article} />
+				</Article>
 			{/if}
 		</section>
 	{/if}
@@ -35,9 +39,5 @@
 	.tale-producer {
 		border-left: 1rem solid var(--color-producer);
 		padding-left: 2rem;
-	}
-
-	section :global(p) {
-		margin: 1.8rem 0;
 	}
 </style>

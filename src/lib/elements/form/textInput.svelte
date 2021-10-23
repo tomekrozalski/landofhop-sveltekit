@@ -63,7 +63,8 @@
 
 	textarea {
 		height: 12rem;
-		padding: 1rem;
+		padding: 0.6rem 1rem;
+		line-height: 2.6rem;
 	}
 
 	input:disabled,

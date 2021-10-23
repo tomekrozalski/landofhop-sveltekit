@@ -10,6 +10,7 @@
 	export let id: string = null;
 	export let isDisabled: boolean = false;
 	export let isMulti: boolean = false;
+	export let isWide: boolean = false;
 	export let items: SelectType[];
 	export let setValue: (event: any) => void;
 	export let value: SelectType | SelectType[] | null;
@@ -17,7 +18,7 @@
 	$: formattedErrors = isArray(errors) ? errors.filter(Boolean).join(', ') : errors;
 </script>
 
-<div>
+<div class:isWide>
 	<Select
 		on:clear={handleClear}
 		containerClasses="select"
@@ -93,6 +94,10 @@
 		--multiClearPadding: 0.4rem 0.2rem 0.2rem 0.2rem;
 
 		position: relative;
+	}
+
+	div.isWide {
+		grid-column: 2 / 3;
 	}
 
 	div :global(.selectContainer.disabled) {

@@ -11,8 +11,11 @@
 	import Brand from '$lib/dashboard/fields/brand.svelte';
 	import Container from '$lib/dashboard/fields/container.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
+	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
+	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
+	import Tale from '$lib/dashboard/fields/tale.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
@@ -50,11 +53,18 @@
 		<!-- <Grid isOptional>
 			<Contract {formName} {formData} />
 		</Grid> -->
-		<!-- <Grid isOptional>
+		<Grid>
 			<Tale {formName} {formData} />
-		</Grid> -->
+		</Grid>
 		<Grid isOptional>
 			<Barcode {formName} {formData} />
+		</Grid>
+		<h3><span>{$translate('dashboard.beverage.brewingInfo')}</span></h3>
+		<Grid isOptional>
+			<Filtration {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Pasteurization {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>

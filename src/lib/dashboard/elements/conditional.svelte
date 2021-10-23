@@ -1,7 +1,7 @@
 <script lang="ts">
 	import CheckmarkIcon from '$lib/elements/vectors/success.svelte';
 
-	type ValueType = string | string[];
+	type ValueType = boolean | string | string[];
 
 	export let fieldName: string;
 	export let id: string;
