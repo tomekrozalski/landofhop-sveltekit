@@ -9,10 +9,12 @@
 	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
+	import AlcoholScope from '$lib/dashboard/fields/alcoholScope.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Notes from '$lib/dashboard/fields/notes.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
+	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
@@ -37,6 +39,12 @@
 			<Cooperation {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.brewingInfo')}</span></h3>
+		<Grid columns={2}>
+			<StyleBeverage {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<AlcoholScope {formName} {formData} />
+		</Grid>
 		<Grid isOptional>
 			<Filtration {formName} {formData} />
 		</Grid>

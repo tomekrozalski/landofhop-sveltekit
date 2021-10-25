@@ -7,6 +7,19 @@ export function getValidationSchema(translate) {
 			.min(1, translate('form.validation.brandSelectionRequired'))
 			.nullable(true),
 		// -----------
+		style: yup.array().of(
+			yup.object().shape({
+				language: yup.string().required(translate('form.validation.required')),
+				value: yup.string().min(3).required()
+			})
+		),
+		alcoholScope: yup
+			.mixed()
+			.test(
+				'is-valid',
+				translate('form.validation.required'),
+				(value) => value === null || value.length
+			),
 		filtration: yup.boolean().nullable(true),
 		pasteurization: yup.boolean().nullable(true),
 		// -----------

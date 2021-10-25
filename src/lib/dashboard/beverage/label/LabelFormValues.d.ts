@@ -74,6 +74,18 @@ export type LabelFormOutput = {
 	tale?: Tale[];
 	barcode?: string;
 	// -----------
+	style?: LanguageValue[];
+	extract?: {
+		value: number;
+		unit: ExtractUnit;
+		relate: ExtractRelate;
+	};
+	alcohol?: {
+		value: number;
+		unit: AlcoholUnit;
+		relate: AlcoholRelate;
+		scope?: AlcoholScope;
+	};
 	filtration?: boolean;
 	pasteurization?: boolean;
 	// -----------

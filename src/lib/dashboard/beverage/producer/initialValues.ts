@@ -7,6 +7,18 @@ export const initialValues = {
 	cooperation: null,
 	tale: [],
 	// -----------
+	style: [],
+	extract: {
+		value: null,
+		unit: null,
+		relate: null
+	},
+	alcohol: {
+		value: null,
+		unit: null,
+		relate: null,
+		scope: null
+	},
 	filtration: null,
 	pasteurization: null
 };

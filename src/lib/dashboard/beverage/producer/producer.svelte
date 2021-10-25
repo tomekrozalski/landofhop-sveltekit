@@ -7,10 +7,13 @@
 	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
+	import Alcohol from '$lib/dashboard/fields/alcohol.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
+	import Extract from '$lib/dashboard/fields/extract.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
+	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
 	import Tale from '$lib/dashboard/fields/tale.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
@@ -41,6 +44,15 @@
 			<Tale {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.brewingInfo')}</span></h3>
+		<Grid columns={2}>
+			<StyleBeverage {formName} {formData} />
+		</Grid>
+		<Grid columns={3} isOptional>
+			<Extract {formName} {formData} />
+		</Grid>
+		<Grid columns={3} isOptional>
+			<Alcohol {formName} {formData} />
+		</Grid>
 		<Grid isOptional>
 			<Filtration {formName} {formData} />
 		</Grid>

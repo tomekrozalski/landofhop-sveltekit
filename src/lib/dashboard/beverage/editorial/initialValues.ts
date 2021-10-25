@@ -5,6 +5,8 @@
 export const initialValues = {
 	cooperation: null,
 	// -----------
+	style: [],
+	alcoholScope: null,
 	filtration: null,
 	pasteurization: null,
 	// -----------

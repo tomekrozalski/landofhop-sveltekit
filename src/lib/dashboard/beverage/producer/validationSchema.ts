@@ -23,6 +23,63 @@ export function getValidationSchema(translate) {
 			})
 		),
 		// -----------
+		style: yup.array().of(
+			yup.object().shape({
+				language: yup.string().required(translate('form.validation.required')),
+				value: yup.string().min(3).required()
+			})
+		),
+		extract: yup.object().shape({
+			value: yup
+				.number()
+				.typeError(translate('form.validation.typeErrorNumber'))
+				.min(0, translate('form.validation.min', { value: 1 }))
+				.max(100, translate('form.validation.max', { value: 100 }))
+				.nullable(true),
+			unit: yup
+				.mixed()
+				.test(
+					'is-valid',
+					translate('form.validation.required'),
+					(value) => value === null || value.length
+				),
+			relate: yup
+				.mixed()
+				.test(
+					'is-valid',
+					translate('form.validation.required'),
+					(value) => value === null || value.length
+				)
+		}),
+		alcohol: yup.object().shape({
+			value: yup
+				.number()
+				.typeError(translate('form.validation.typeErrorNumber'))
+				.min(0, translate('form.validation.min', { value: 1 }))
+				.max(100, translate('form.validation.max', { value: 100 }))
+				.nullable(true),
+			unit: yup
+				.mixed()
+				.test(
+					'is-valid',
+					translate('form.validation.required'),
+					(value) => value === null || value.length
+				),
+			relate: yup
+				.mixed()
+				.test(
+					'is-valid',
+					translate('form.validation.required'),
+					(value) => value === null || value.length
+				),
+			scope: yup
+				.mixed()
+				.test(
+					'is-valid',
+					translate('form.validation.required'),
+					(value) => value === null || value.length
+				)
+		}),
 		filtration: yup.boolean().nullable(true),
 		pasteurization: yup.boolean().nullable(true)
 	});

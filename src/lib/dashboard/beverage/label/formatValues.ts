@@ -13,15 +13,18 @@ import type {
 import type { LabelFormValues, LabelFormOutput } from './LabelFormValues';
 
 export default function formatValues({
+	alcohol,
 	badge,
 	barcode,
 	brand,
 	container,
 	cooperation,
+	extract,
 	filtration,
 	name,
 	pasteurization,
 	series,
+	style,
 	tale
 }: LabelFormValues): LabelFormOutput {
 	return {
@@ -34,6 +37,16 @@ export default function formatValues({
 		...(tale.length && { tale: tale.map(formatTaleArray) }),
 		...(barcode && { barcode: barcode.trim() }),
 		// -----------
+		...(style.length && { style: formatLanguageValueArray(style) }),
+		...(!Object.values(extract).every((prop) => prop === null) && { extract }),
+		...(!Object.values(alcohol).every((prop) => prop === null) && {
+			alcohol: {
+				value: alcohol.value,
+				unit: alcohol.unit,
+				relate: alcohol.relate,
+				...(alcohol.scope !== '--' && { scope: alcohol.scope })
+			}
+		}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
 		// -----------

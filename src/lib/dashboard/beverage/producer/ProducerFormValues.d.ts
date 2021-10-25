@@ -13,6 +13,18 @@ export type ProducerFormValues = {
 		lead: string;
 	}[];
 	// -----------
+	style: LanguageValue[];
+	extract: {
+		value: number | null;
+		unit: ExtractUnit | null;
+		relate: ExtractRelate | null;
+	};
+	alcohol: {
+		value: number | null;
+		unit: AlcoholUnit | null;
+		relate: AlcoholRelate | null;
+		scope: AlcoholScope | '--' | null;
+	};
 	filtration: boolean | null;
 	pasteurization: boolean | null;
 };
@@ -25,6 +37,18 @@ export type ProducerFormOutput = {
 	cooperation?: InstitutionInsideBeverage[];
 	tale?: Tale[];
 	// -----------
+	style?: LanguageValue[];
+	extract?: {
+		value: number;
+		unit: ExtractUnit;
+		relate: ExtractRelate;
+	};
+	alcohol?: {
+		value: number;
+		unit: AlcoholUnit;
+		relate: AlcoholRelate;
+		scope?: AlcoholScope;
+	};
 	filtration?: boolean;
 	pasteurization?: boolean;
 };

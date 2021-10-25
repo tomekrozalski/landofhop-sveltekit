@@ -91,5 +91,6 @@
 	handleClear={clearScope}
 	setValue={setScope}
 	style="grid-column: 3/4"
+	withEmpty
 	bind:value={$form[fieldName].scope}
 />
