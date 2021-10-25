@@ -73,6 +73,7 @@
 		background-color: var(--color-grey-5);
 		color: var(--color-grey-2);
 		cursor: not-allowed;
+		-moz-appearance: textfield;
 	}
 
 	textarea:disabled {

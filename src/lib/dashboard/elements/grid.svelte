@@ -68,12 +68,4 @@
 			repeat(3, 14.333rem)
 			1fr;
 	}
-
-	.columns-4:not(.isOptional) {
-		grid-template-columns:
-			var(--wide-cell-optional)
-			var(--size-input-height)
-			repeat(4, 10.5rem)
-			1fr;
-	}
 </style>

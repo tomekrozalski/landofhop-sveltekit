@@ -1,23 +1,28 @@
 <script lang="ts">
+	import cloneDeep from 'lodash/cloneDeep.js';
+	import isObject from 'lodash/isObject';
 	import CheckmarkIcon from '$lib/elements/vectors/success.svelte';
-
-	type ValueType = boolean | string | string[];
 
 	export let fieldName: string;
 	export let id: string;
-	export let initialValue: ValueType = '';
-	export let updateField: (name: string, value: ValueType | null) => void;
+	export let initialValue: any = '';
+	export let nullishValue: any = null;
+	export let updateField: (name: string, value: any) => void;
 	export let updateTouched: (name: string, value: boolean) => void;
 	export let validateField: (name: string) => void;
-	export let value: ValueType | null;
-	$: isDisabled = value === null;
+	export let value: any;
+
+	$: isDisabled = isObject(value)
+		? Object.values(value).every((item) => item === null)
+		: value === null;
 
 	function onInputClick() {
 		if (!isDisabled) {
-			updateField(fieldName, null);
+			updateField(fieldName, nullishValue);
 			validateField(fieldName);
 		} else {
-			updateField(fieldName, initialValue);
+			const newInitialValue = cloneDeep(initialValue);
+			updateField(fieldName, newInitialValue);
 			updateTouched(fieldName, false);
 		}
 	}

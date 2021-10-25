@@ -13,6 +13,19 @@ export const initialValues = {
 	tale: [],
 	barcode: null,
 	// -----------
+	// fermentation: null,
+	style: [],
+	extract: {
+		value: null,
+		unit: null,
+		relate: null
+	},
+	alcohol: {
+		value: null,
+		unit: null,
+		relate: null,
+		scope: null
+	},
 	filtration: null,
 	pasteurization: null,
 	// -----------

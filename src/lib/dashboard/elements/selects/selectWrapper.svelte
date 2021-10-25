@@ -13,12 +13,13 @@
 	export let isWide: boolean = false;
 	export let items: SelectType[];
 	export let setValue: (event: any) => void;
+	export let style: string = '';
 	export let value: SelectType | SelectType[] | null;
 
 	$: formattedErrors = isArray(errors) ? errors.filter(Boolean).join(', ') : errors;
 </script>
 
-<div class:isWide>
+<div class:isWide {style}>
 	<Select
 		on:clear={handleClear}
 		containerClasses="select"

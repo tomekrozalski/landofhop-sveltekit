@@ -6,15 +6,18 @@
 	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
+	import Alcohol from '$lib/dashboard/fields/alcohol.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Barcode from '$lib/dashboard/fields/barcode.svelte';
 	import Brand from '$lib/dashboard/fields/brand.svelte';
 	import Container from '$lib/dashboard/fields/container.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
+	import Extract from '$lib/dashboard/fields/extract.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
+	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
 	import Tale from '$lib/dashboard/fields/tale.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
@@ -60,6 +63,16 @@
 			<Barcode {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.brewingInfo')}</span></h3>
+		<!-- <Fermentation form="label" /> -->
+		<Grid columns={2}>
+			<StyleBeverage {formName} {formData} />
+		</Grid>
+		<Grid columns={3} isOptional>
+			<Extract {formName} {formData} />
+		</Grid>
+		<Grid columns={3} isOptional>
+			<Alcohol {formName} {formData} />
+		</Grid>
 		<Grid isOptional>
 			<Filtration {formName} {formData} />
 		</Grid>
