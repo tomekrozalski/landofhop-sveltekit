@@ -28,6 +28,7 @@ article {
 	max-width: var(--size-container-max-width);
 	margin: 0 auto 8rem auto;
 	padding: 1rem;
+	position: relative;
 }
 
 h1 {

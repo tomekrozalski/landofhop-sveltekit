@@ -13,7 +13,10 @@
 	<dd>
 		{#if alcohol.label}
 			<em class="label">
-				{$translate('beverage.testimonial.alcohol.value', alcohol.label)}
+				{$translate('beverage.testimonial.alcohol.value', {
+					...alcohol.label,
+					value: new Intl.NumberFormat('pl').format(alcohol.label.value)
+				})}
 				{#if alcohol.label.scope}
 					{$translate(`beverage.testimonial.alcoholScope.${alcohol.label.scope}`)}
 				{/if}
@@ -21,7 +24,10 @@
 		{/if}
 		{#if alcohol.producer}
 			<em class="producer">
-				{$translate('beverage.testimonial.alcohol.value', alcohol.producer)}
+				{$translate('beverage.testimonial.alcohol.value', {
+					...alcohol.producer,
+					value: new Intl.NumberFormat('pl').format(alcohol.producer.value)
+				})}
 				{#if alcohol.producer.scope}
 					{$translate(`beverage.testimonial.alcoholScope.${alcohol.producer.scope}`)}
 				{/if}

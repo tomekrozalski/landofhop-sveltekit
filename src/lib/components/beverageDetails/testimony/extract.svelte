@@ -13,12 +13,18 @@
 	<dd>
 		{#if extract.label}
 			<em class="label">
-				{$translate('beverage.testimonial.extract.value', extract.label)}
+				{$translate('beverage.testimonial.extract.value', {
+					...extract.label,
+					value: new Intl.NumberFormat('pl').format(extract.label.value)
+				})}
 			</em>
 		{/if}
 		{#if extract.producer}
 			<em class="producer">
-				{$translate('beverage.testimonial.extract.value', extract.producer)}
+				{$translate('beverage.testimonial.extract.value', {
+					...extract.producer,
+					value: new Intl.NumberFormat('pl').format(extract.producer.value)
+				})}
 			</em>
 		{/if}
 	</dd>

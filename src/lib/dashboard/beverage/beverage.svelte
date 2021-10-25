@@ -8,6 +8,7 @@
 	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
 	import ProgressList from '$lib/dashboard/elements/progressList/progressList.svelte';
+	import Navigation from '$lib/dashboard/elements/navigation.svelte';
 	import { page } from '$lib/dashboard/utils/stores';
 	import Label from './label/label.svelte';
 	import Producer from './producer/producer.svelte';
@@ -33,6 +34,7 @@
 		{/if}
 		{#if type === 'update'}
 			<h1>{$translate('dashboard.beverage.updateBeverage')}</h1>
+			<Navigation />
 		{/if}
 		<ProgressList />
 		<Label isActive={$page === 'label'} />
