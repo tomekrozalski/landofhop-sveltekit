@@ -34,7 +34,7 @@
 
 	const groupBy = (item) => item.group;
 
-	export let getGroupHeaderLabel = (option) => {
+	let getGroupHeaderLabel = (option) => {
 		return $translate(`dashboard.language.${option.label}`);
 	};
 

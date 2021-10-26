@@ -7,6 +7,7 @@ import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormVa
 
 export default function formatValues({
 	alcoholScope,
+	contract,
 	cooperation,
 	filtration,
 	notes,
@@ -15,6 +16,8 @@ export default function formatValues({
 }: EditorialFormValues): EditorialFormOutput {
 	return {
 		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
+		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
+		...(contract === '--' && { isContract: true }),
 		// -----------
 		...(style.length && { style: formatLanguageValueArray(style) }),
 		...(alcoholScope && { alcoholScope }),

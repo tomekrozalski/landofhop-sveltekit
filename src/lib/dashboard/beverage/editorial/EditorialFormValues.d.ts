@@ -2,6 +2,7 @@ import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
 
 export type EditorialFormValues = {
 	cooperation: string[] | null;
+	contract: string | null;
 	// -----------
 	style: LanguageValue[];
 	alcoholScope: AlcoholScope | null;
@@ -13,6 +14,8 @@ export type EditorialFormValues = {
 
 export type EditorialFormOutput = {
 	cooperation?: InstitutionInsideBeverage[];
+	contract?: string;
+	isContract?: true;
 	// -----------
 	style?: LanguageValue[];
 	alcoholScope?: AlcoholScope;

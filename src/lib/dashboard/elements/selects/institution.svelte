@@ -13,6 +13,7 @@
 	export let isDisabled: boolean = false;
 	export let isMulti: boolean = false;
 	export let setValue: (event: any) => void;
+	export let withUnknown: boolean = false;
 	export let value: string | string[] | null;
 
 	function getSelectValue(value) {
@@ -27,12 +28,34 @@
 		return null;
 	}
 
-	$: items = $institutionStore
-		.map(({ name, shortId }) => ({
-			label: getFromArray(name, 'pl').value,
-			value: shortId
-		}))
-		.sort((a, b) => (a.label < b.label ? -1 : 1));
+	let items = [];
+	let groupBy;
+	let getGroupHeaderLabel;
+
+	$: if (withUnknown) {
+		items = $institutionStore
+			.map(({ name, shortId }) => ({
+				label: getFromArray(name, 'pl').value,
+				value: shortId,
+				group: 'brands'
+			}))
+			.sort((a, b) => (a.label < b.label ? -1 : 1));
+
+		items.unshift({ label: $translate('dashboard.institutions.unknownContract'), value: '--' });
+
+		groupBy = (item) => item.group;
+
+		getGroupHeaderLabel = (option) => {
+			return $translate(`dashboard.institutions.${option.label}`);
+		};
+	} else {
+		items = $institutionStore
+			.map(({ name, shortId }) => ({
+				label: getFromArray(name, 'pl').value,
+				value: shortId
+			}))
+			.sort((a, b) => (a.label < b.label ? -1 : 1));
+	}
 </script>
 
 <SelectWrapper
@@ -45,4 +68,6 @@
 	placeholder={$translate('dashboard.select.placeholder.institution')}
 	{setValue}
 	value={getSelectValue(value)}
+	{groupBy}
+	{getGroupHeaderLabel}
 />

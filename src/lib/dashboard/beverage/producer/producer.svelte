@@ -8,6 +8,7 @@
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Alcohol from '$lib/dashboard/fields/alcohol.svelte';
+	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Extract from '$lib/dashboard/fields/extract.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
@@ -39,6 +40,9 @@
 		</Grid>
 		<Grid isOptional>
 			<Cooperation {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Contract {formName} {formData} />
 		</Grid>
 		<Grid>
 			<Tale {formName} {formData} />

@@ -5,6 +5,7 @@
 export const initialValues = {
 	series: [],
 	cooperation: null,
+	contract: null,
 	tale: [],
 	// -----------
 	style: [],

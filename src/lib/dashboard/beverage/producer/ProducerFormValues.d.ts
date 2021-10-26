@@ -7,6 +7,7 @@ export type ProducerFormValues = {
 		value: string;
 	}[];
 	cooperation: string[] | null;
+	contract: string | null;
 	tale: {
 		article: string;
 		language: string;
@@ -15,12 +16,12 @@ export type ProducerFormValues = {
 	// -----------
 	style: LanguageValue[];
 	extract: {
-		value: number | null;
+		value: string | null;
 		unit: ExtractUnit | null;
 		relate: ExtractRelate | null;
 	};
 	alcohol: {
-		value: number | null;
+		value: string | null;
 		unit: AlcoholUnit | null;
 		relate: AlcoholRelate | null;
 		scope: AlcoholScope | '--' | null;
@@ -35,6 +36,8 @@ export type ProducerFormOutput = {
 		value: string;
 	}[];
 	cooperation?: InstitutionInsideBeverage[];
+	contract?: string;
+	isContract?: true;
 	tale?: Tale[];
 	// -----------
 	style?: LanguageValue[];

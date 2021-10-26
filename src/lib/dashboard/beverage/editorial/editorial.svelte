@@ -10,6 +10,7 @@
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import AlcoholScope from '$lib/dashboard/fields/alcoholScope.svelte';
+	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Notes from '$lib/dashboard/fields/notes.svelte';
@@ -37,6 +38,9 @@
 		<h3><span>{$translate('dashboard.beverage.brandInfo')}</span></h3>
 		<Grid isOptional>
 			<Cooperation {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Contract {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.brewingInfo')}</span></h3>
 		<Grid columns={2}>

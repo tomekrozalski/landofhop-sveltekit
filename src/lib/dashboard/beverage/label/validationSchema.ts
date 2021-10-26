@@ -30,6 +30,13 @@ export function getValidationSchema(translate) {
 			.of(yup.string())
 			.min(1, translate('form.validation.brandSelectionRequired'))
 			.nullable(true),
+		contract: yup
+			.mixed()
+			.test(
+				'is-valid',
+				translate('form.validation.required'),
+				(value) => value === null || value.length
+			),
 		tale: yup.array().of(
 			yup.object().shape({
 				article: yup.string(),
@@ -43,8 +50,8 @@ export function getValidationSchema(translate) {
 		barcode: yup
 			.mixed()
 			.test(
-				'is-barcode',
-				translate('form.validation.incorrectBarcode'),
+				'is-valid',
+				translate('form.validation.required'),
 				(value) => value === null || value.length
 			),
 		// -----------

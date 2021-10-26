@@ -11,6 +11,7 @@
 	import Barcode from '$lib/dashboard/fields/barcode.svelte';
 	import Brand from '$lib/dashboard/fields/brand.svelte';
 	import Container from '$lib/dashboard/fields/container.svelte';
+	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Extract from '$lib/dashboard/fields/extract.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
@@ -53,9 +54,12 @@
 		<Grid isOptional>
 			<Cooperation {formName} {formData} />
 		</Grid>
-		<!-- <Grid isOptional>
+		<Grid isOptional>
 			<Contract {formName} {formData} />
-		</Grid> -->
+		</Grid>
+		<!-- <Contract {formName} {formData} /> -->
+		<!-- <Place {formName} {formData} /> -->
+		<!-- <Remark {formName} {formData} /> -->
 		<Grid>
 			<Tale {formName} {formData} />
 		</Grid>
@@ -79,10 +83,28 @@
 		<Grid isOptional>
 			<Pasteurization {formName} {formData} />
 		</Grid>
+		<!-- <Aged {formName} {formData} /> -->
+		<!-- <DryHopped {formName} {formData} /> -->
+		<!-- <HopRate {formName} {formData} /> -->
+		<!-- <IsNitro {formName} {formData} /> -->
+		<!-- <ExpirationDate {formName} {formData} /> -->
+
+		<!-- <IngredientsDescription {formName} {formData} /> -->
+		<!-- <IngredientsSelect {formName} {formData} /> -->
+		<!-- <SmokedMalt {formName} {formData} /> -->
+
+		<!-- <Bitterness {formName} {formData} /> -->
+		<!-- <Sweetness {formName} {formData} /> -->
+		<!-- <Fullness {formName} {formData} /> -->
+		<!-- <Power {formName} {formData} /> -->
+		<!-- <Hoppyness {formName} {formData} /> -->
+		<!-- <Temperature {formName} {formData} /> -->
+
 		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>
 			<Container {formName} {formData} />
 		</Grid>
+		<!-- <Price {formName} {formData} /> -->
 		<ButtonWrapper>
 			<Button type="submit">
 				{$translate('dashboard.button.moveOn')}

@@ -6,6 +6,13 @@ export function getValidationSchema(translate) {
 			.array()
 			.min(1, translate('form.validation.brandSelectionRequired'))
 			.nullable(true),
+		contract: yup
+			.mixed()
+			.test(
+				'is-valid',
+				translate('form.validation.required'),
+				(value) => value === null || value.length
+			),
 		// -----------
 		style: yup.array().of(
 			yup.object().shape({

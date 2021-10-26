@@ -10,6 +10,7 @@ export const initialValues = {
 	series: [],
 	brand: '',
 	cooperation: null,
+	contract: null,
 	tale: [],
 	barcode: null,
 	// -----------

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import cloneDeep from 'lodash/cloneDeep.js';
-	import isObject from 'lodash/isObject';
+	import isPlainObject from 'lodash/isPlainObject';
 	import CheckmarkIcon from '$lib/elements/vectors/success.svelte';
 
 	export let fieldName: string;
@@ -12,7 +12,7 @@
 	export let validateField: (name: string) => void;
 	export let value: any;
 
-	$: isDisabled = isObject(value)
+	$: isDisabled = isPlainObject(value)
 		? Object.values(value).every((item) => item === null)
 		: value === null;
 

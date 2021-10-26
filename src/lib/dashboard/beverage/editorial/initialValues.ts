@@ -4,6 +4,7 @@
 
 export const initialValues = {
 	cooperation: null,
+	contract: null,
 	// -----------
 	style: [],
 	alcoholScope: null,
