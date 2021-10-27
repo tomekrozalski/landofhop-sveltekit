@@ -1,7 +1,8 @@
 import { Currency } from 'utils/enums/Beverage';
 
 export type Price = {
-  date: Date;
-  value: number;
-  currency: Currency;
+	currency: Currency;
+	date: Date;
+	shop?: string;
+	value: number;
 };

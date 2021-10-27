@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 
+import { isValidDate } from '$lib/dashboard/utils/isValidDate';
+
 export function getValidationSchema(translate) {
 	return yup.object().shape({
 		cooperation: yup
@@ -30,6 +32,22 @@ export function getValidationSchema(translate) {
 		filtration: yup.boolean().nullable(true),
 		pasteurization: yup.boolean().nullable(true),
 		// -----------
+		price: yup.array().of(
+			yup.object().shape({
+				currency: yup.string().required(translate('form.validation.required')),
+				date: yup
+					.mixed()
+					.test('isCorrectDate', translate('form.validation.wrongDate'), (value) =>
+						isValidDate(value)
+					),
+				shop: yup.string().nullable(true),
+				value: yup
+					.number()
+					.typeError(translate('form.validation.typeErrorNumber'))
+					.min(0.1, translate('form.validation.min', { value: 0.1 }))
+					.required(translate('form.validation.required'))
+			})
+		),
 		notes: yup
 			.string()
 			.min(3, translate('form.validation.atLeastThreeSignsRequired'))

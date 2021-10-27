@@ -1,3 +1,4 @@
+import format from 'date-fns/format';
 import {
 	AlcoholRelate,
 	AlcoholUnit,
@@ -21,3 +22,9 @@ export const emptyAlcohol = {
 export function getNullishObject(obj) {
 	return Object.entries(obj).reduce((acc, [key]) => ({ ...acc, [key]: null }), {});
 }
+export const emptyPrice = {
+	currency: 'PLN',
+	date: format(new Date(), 'dd.MM.yyyy'),
+	shop: null,
+	value: 0
+};

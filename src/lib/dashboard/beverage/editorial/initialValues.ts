@@ -11,5 +11,6 @@ export const initialValues = {
 	filtration: null,
 	pasteurization: null,
 	// -----------
+	price: [],
 	notes: null
 };

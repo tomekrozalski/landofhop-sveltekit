@@ -78,6 +78,7 @@
 		"dashboard.select.placeholder.containerUnit": "unit",
 		"dashboard.select.placeholder.institution": "select brand",
 		"dashboard.select.placeholder.language": "select language",
+		"dashboard.select.placeholder.shop": "select shop",
 		"dashboard.title.addNewBeverage": "add new beverage",
 		"dashboard.title.updateBeveragePhotos": "update beverage photos",
 		"dashboard.title.updateBeverage": "update beverage",
@@ -87,7 +88,8 @@
 		"form.validation.min": "Minimum value: {value}",
 		"form.validation.minChars": "Minimum allowed chars are {value}",
 		"form.validation.max": "Maximum value: {value}",
-		"form.validation.typeErrorNumber": "Number required"
+		"form.validation.typeErrorNumber": "Number required",
+		"form.validation.wrongDate": "Wrong date value"
 	},
 	"pl": {
 		"dashboard.addNewInstitution": "Dodaj nową instytucję",
@@ -168,6 +170,7 @@
 		"dashboard.select.placeholder.containerUnit": "jednostka",
 		"dashboard.select.placeholder.institution": "wybierz markę",
 		"dashboard.select.placeholder.language": "wybierz język",
+		"dashboard.select.placeholder.shop": "wybierz miejsce zakupu",
 		"dashboard.title.addNewBeverage": "dodaj piwo",
 		"dashboard.title.updateBeveragePhotos": "popraw zdjęcia",
 		"dashboard.title.updateBeverage": "popraw piwo",
@@ -177,6 +180,7 @@
 		"form.validation.min": "Minimalna wartość: {value}",
 		"form.validation.minChars": "Wymagane minimum {value} znaków",
 		"form.validation.max": "Maksymalna wartość: {value}",
-		"form.validation.typeErrorNumber": "Wymagana cyfra"
+		"form.validation.typeErrorNumber": "Wymagana cyfra",
+		"form.validation.wrongDate": "Błędny format daty"
 	}
 }

@@ -1,4 +1,5 @@
 import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
+import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
 import type { Tale } from '$lib/utils/types/Beverage/fragments/Tale';
 import {
 	AlcoholRelate,
@@ -57,6 +58,12 @@ export type LabelFormValues = {
 		unit: ContainerUnit | string;
 		value: string;
 	};
+	price: {
+		currency: string;
+		date: string;
+		shop: string | null;
+		value: string;
+	}[];
 };
 
 export type LabelFormOutput = {
@@ -101,4 +108,5 @@ export type LabelFormOutput = {
 		unit: ContainerUnit;
 		value: number;
 	};
+	price?: Price[];
 };

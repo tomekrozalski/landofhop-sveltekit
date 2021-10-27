@@ -17,6 +17,7 @@
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
+	import Price from '$lib/dashboard/fields/price.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
 	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
 	import Tale from '$lib/dashboard/fields/tale.svelte';
@@ -104,7 +105,9 @@
 		<Grid columns={3}>
 			<Container {formName} {formData} />
 		</Grid>
-		<!-- <Price {formName} {formData} /> -->
+		<Grid columns={3}>
+			<Price {formName} {formData} />
+		</Grid>
 		<ButtonWrapper>
 			<Button type="submit">
 				{$translate('dashboard.button.moveOn')}

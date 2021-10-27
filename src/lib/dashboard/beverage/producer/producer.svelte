@@ -13,6 +13,7 @@
 	import Extract from '$lib/dashboard/fields/extract.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
+	import Price from '$lib/dashboard/fields/price.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
 	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
 	import Tale from '$lib/dashboard/fields/tale.svelte';
@@ -62,6 +63,10 @@
 		</Grid>
 		<Grid isOptional>
 			<Pasteurization {formName} {formData} />
+		</Grid>
+		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
+		<Grid columns={3}>
+			<Price {formName} {formData} />
 		</Grid>
 		<ButtonWrapper>
 			<Button handleClick={() => page.set('label')} isSecondary>

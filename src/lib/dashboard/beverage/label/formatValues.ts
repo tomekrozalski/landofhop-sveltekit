@@ -1,10 +1,11 @@
 import isBoolean from 'lodash/isBoolean';
 import {
+	formatDateFromString,
 	formatInstitutionByShortId,
 	formatLanguageValueArray,
-	formatTaleArray
+	formatTaleArray,
+	parseFieldNumber
 } from '$lib/dashboard/utils/dataNormalizers';
-import { parseFieldNumber } from '$lib/dashboard/utils/parseFieldNumber';
 import type {
 	ContainerColor,
 	ContainerMaterial,
@@ -25,6 +26,7 @@ export default function formatValues({
 	filtration,
 	name,
 	pasteurization,
+	price,
 	series,
 	style,
 	tale
@@ -68,6 +70,14 @@ export default function formatValues({
 			type: container.type as ContainerType,
 			unit: container.unit as ContainerUnit,
 			value: parseFieldNumber(container.value)
-		}
+		},
+		...(price.length && {
+			price: price.map(({ currency, date, shop, value }) => ({
+				currency,
+				date: formatDateFromString(date),
+				...(shop && { shop }),
+				value: parseFieldNumber(value)
+			}))
+		})
 	};
 }

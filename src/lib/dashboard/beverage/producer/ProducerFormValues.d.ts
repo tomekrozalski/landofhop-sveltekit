@@ -1,4 +1,5 @@
 import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
+import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
 import type { Tale } from '$lib/utils/types/Beverage/fragments/Tale';
 
 export type ProducerFormValues = {
@@ -28,6 +29,13 @@ export type ProducerFormValues = {
 	};
 	filtration: boolean | null;
 	pasteurization: boolean | null;
+	// -----------
+	price: {
+		currency: string;
+		date: string;
+		shop: string | null;
+		value: string;
+	}[];
 };
 
 export type ProducerFormOutput = {
@@ -54,4 +62,5 @@ export type ProducerFormOutput = {
 	};
 	filtration?: boolean;
 	pasteurization?: boolean;
+	price?: Price[];
 };

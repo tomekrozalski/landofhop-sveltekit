@@ -21,5 +21,7 @@ export const initialValues = {
 		scope: null
 	},
 	filtration: null,
-	pasteurization: null
+	pasteurization: null,
+	// -----------
+	price: []
 };

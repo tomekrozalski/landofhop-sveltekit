@@ -41,3 +41,13 @@ export function formatTaleArray({
 		lead: lead.trim()
 	};
 }
+
+export function parseFieldNumber(value: string): number {
+	return +value.toString().replace(',', '.');
+}
+
+export function formatDateFromString(value: string): Date {
+	const [day, month, year] = value.split('.');
+
+	return new Date(`${year}-${month}-${day}`);
+}

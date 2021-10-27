@@ -90,7 +90,7 @@
 	errors={$errors[fieldName].scope}
 	handleClear={clearScope}
 	setValue={setScope}
-	style="grid-column: 3/4"
+	style="grid-column: 5/6"
 	withEmpty
 	bind:value={$form[fieldName].scope}
 />

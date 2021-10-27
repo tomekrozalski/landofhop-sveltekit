@@ -1,7 +1,9 @@
 import isBoolean from 'lodash/isBoolean';
 import {
+	formatDateFromString,
 	formatInstitutionByShortId,
-	formatLanguageValueArray
+	formatLanguageValueArray,
+	parseFieldNumber
 } from '$lib/dashboard/utils/dataNormalizers';
 import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormValues';
 
@@ -12,6 +14,7 @@ export default function formatValues({
 	filtration,
 	notes,
 	pasteurization,
+	price,
 	style
 }: EditorialFormValues): EditorialFormOutput {
 	return {
@@ -24,6 +27,14 @@ export default function formatValues({
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
 		// -----------
+		...(price.length && {
+			price: price.map(({ currency, date, shop, value }) => ({
+				currency,
+				date: formatDateFromString(date),
+				...(shop && { shop }),
+				value: parseFieldNumber(value)
+			}))
+		}),
 		...(notes && { notes })
 	};
 }

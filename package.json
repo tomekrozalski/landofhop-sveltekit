@@ -24,6 +24,7 @@
 		"cookie": "^0.4.1",
 		"cssnano": "^5.0.6",
 		"d3": "^7.0.0",
+		"date-fns": "^2.25.0",
 		"eslint": "^7.22.0",
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-svelte3": "^3.2.0",

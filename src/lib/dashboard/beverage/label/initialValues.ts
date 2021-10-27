@@ -38,5 +38,6 @@ export const initialValues = {
 		type: '',
 		unit: ContainerUnit.ml,
 		value: 0
-	}
+	},
+	price: []
 };

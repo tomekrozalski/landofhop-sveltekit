@@ -1,10 +1,11 @@
 import isBoolean from 'lodash/isBoolean';
 import {
+	formatDateFromString,
 	formatInstitutionByShortId,
 	formatLanguageValueArray,
-	formatTaleArray
+	formatTaleArray,
+	parseFieldNumber
 } from '$lib/dashboard/utils/dataNormalizers';
-import { parseFieldNumber } from '$lib/dashboard/utils/parseFieldNumber';
 import type { ProducerFormValues, ProducerFormOutput } from './ProducerFormValues';
 
 export default function formatValues({
@@ -14,6 +15,7 @@ export default function formatValues({
 	extract,
 	filtration,
 	pasteurization,
+	price,
 	series,
 	style,
 	tale
@@ -42,6 +44,14 @@ export default function formatValues({
 			}
 		}),
 		...(isBoolean(filtration) && { filtration }),
-		...(isBoolean(pasteurization) && { pasteurization })
+		...(isBoolean(pasteurization) && { pasteurization }),
+		...(price.length && {
+			price: price.map(({ currency, date, shop, value }) => ({
+				currency,
+				date: formatDateFromString(date),
+				...(shop && { shop }),
+				value: parseFieldNumber(value)
+			}))
+		})
 	};
 }
