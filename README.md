@@ -1,5 +1,9 @@
 # Land of Hop, SvelteKit edition
 
+🗓️ 27.10.2021
+
+I have created most basic pages: list of beverages, beverage details, about, simple statistics and dashboard where I can add and update beverages data. It went very smoothly. I had it done previously in React, so it was just rewrite ready solutions, but I am so impressed that it was so easy and the code is much more readable in Svelte. It is also much more performant.
+
 🗓️ 25.07.2021
 
 I do not love [Next](https://nextjs.org/) anymore, Svelte is the best! Simplicity in which I created first form and header animations are incredible. And the app has amazing performance so far with zero effort. I am discovering new, better world.
