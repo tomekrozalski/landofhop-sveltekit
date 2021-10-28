@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+import { Fermentation } from '$lib/utils/enums/Beverage.enum';
 import { isValidDate } from '$lib/dashboard/utils/isValidDate';
 
 export function getValidationSchema(translate) {
@@ -32,6 +33,11 @@ export function getValidationSchema(translate) {
 			})
 		),
 		// -----------
+		fermentation: yup
+			.array()
+			.of(yup.mixed().oneOf(Object.values(Fermentation)))
+			.min(1)
+			.nullable(true),
 		style: yup.array().of(
 			yup.object().shape({
 				language: yup.string().required(translate('form.validation.required')),

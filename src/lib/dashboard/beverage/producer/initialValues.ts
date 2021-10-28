@@ -8,6 +8,7 @@ export const initialValues = {
 	contract: null,
 	tale: [],
 	// -----------
+	fermentation: null,
 	style: [],
 	extract: {
 		value: null,

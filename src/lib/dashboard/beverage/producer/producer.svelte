@@ -11,6 +11,7 @@
 	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Extract from '$lib/dashboard/fields/extract.svelte';
+	import Fermentation from '$lib/dashboard/fields/fermentation.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Price from '$lib/dashboard/fields/price.svelte';
@@ -49,6 +50,9 @@
 			<Tale {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.brewingInfo')}</span></h3>
+		<Grid isOptional>
+			<Fermentation {formName} {formData} />
+		</Grid>
 		<Grid columns={2}>
 			<StyleBeverage {formName} {formData} />
 		</Grid>

@@ -10,7 +10,8 @@ import {
 	ContainerType,
 	ContainerUnit,
 	ExtractRelate,
-	ExtractUnit
+	ExtractUnit,
+	Fermentation
 } from '$lib/utils/enums/Beverage.enum';
 
 type LanguageValue = {
@@ -33,7 +34,7 @@ export type LabelFormValues = {
 	}[];
 	barcode: string | null;
 	// -----------
-	// fermentation: null,
+	fermentation: Fermentation[] | null;
 	style: LanguageValue[];
 	extract: {
 		value: string | null;
@@ -84,6 +85,7 @@ export type LabelFormOutput = {
 	tale?: Tale[];
 	barcode?: string;
 	// -----------
+	fermentation?: Fermentation[];
 	style?: LanguageValue[];
 	extract?: {
 		value: number;

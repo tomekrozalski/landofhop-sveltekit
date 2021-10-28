@@ -23,6 +23,7 @@ export default function formatValues({
 	contract,
 	cooperation,
 	extract,
+	fermentation,
 	filtration,
 	name,
 	pasteurization,
@@ -43,6 +44,7 @@ export default function formatValues({
 		...(tale.length && { tale: tale.map(formatTaleArray) }),
 		...(barcode && { barcode: barcode.trim() }),
 		// -----------
+		...(fermentation && fermentation.length && { fermentation }),
 		...(style.length && { style: formatLanguageValueArray(style) }),
 		...(!Object.values(extract).every((prop) => prop === null) && {
 			extract: {

@@ -14,7 +14,7 @@ export const initialValues = {
 	tale: [],
 	barcode: null,
 	// -----------
-	// fermentation: null,
+	fermentation: null,
 	style: [],
 	extract: {
 		value: null,
@@ -37,7 +37,7 @@ export const initialValues = {
 		material: '',
 		type: '',
 		unit: ContainerUnit.ml,
-		value: 0
+		value: '0'
 	},
 	price: []
 };

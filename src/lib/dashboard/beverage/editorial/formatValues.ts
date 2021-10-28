@@ -11,6 +11,7 @@ export default function formatValues({
 	alcoholScope,
 	contract,
 	cooperation,
+	fermentation,
 	filtration,
 	notes,
 	pasteurization,
@@ -22,6 +23,7 @@ export default function formatValues({
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
 		// -----------
+		...(fermentation && fermentation.length && { fermentation }),
 		...(style.length && { style: formatLanguageValueArray(style) }),
 		...(alcoholScope && { alcoholScope }),
 		...(isBoolean(filtration) && { filtration }),

@@ -1,10 +1,12 @@
 import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
 import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
+import { Fermentation } from '$lib/utils/enums/Beverage.enum';
 
 export type EditorialFormValues = {
 	cooperation: string[] | null;
 	contract: string | null;
 	// -----------
+	fermentation: Fermentation[] | null;
 	style: LanguageValue[];
 	alcoholScope: AlcoholScope | null;
 	filtration: boolean | null;
@@ -24,6 +26,7 @@ export type EditorialFormOutput = {
 	contract?: string;
 	isContract?: true;
 	// -----------
+	fermentation?: Fermentation[];
 	style?: LanguageValue[];
 	alcoholScope?: AlcoholScope;
 	filtration?: boolean;

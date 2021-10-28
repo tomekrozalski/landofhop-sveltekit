@@ -1,6 +1,7 @@
 import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
 import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
 import type { Tale } from '$lib/utils/types/Beverage/fragments/Tale';
+import { Fermentation } from '$lib/utils/enums/Beverage.enum';
 
 export type ProducerFormValues = {
 	series: {
@@ -15,6 +16,7 @@ export type ProducerFormValues = {
 		lead: string;
 	}[];
 	// -----------
+	fermentation: Fermentation[] | null;
 	style: LanguageValue[];
 	extract: {
 		value: string | null;
@@ -48,6 +50,7 @@ export type ProducerFormOutput = {
 	isContract?: true;
 	tale?: Tale[];
 	// -----------
+	fermentation?: Fermentation[];
 	style?: LanguageValue[];
 	extract?: {
 		value: number;
