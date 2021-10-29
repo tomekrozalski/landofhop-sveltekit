@@ -1,13 +1,18 @@
 <script context="module" lang="ts">
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
+	import type { Place as PlaceType } from '$lib/utils/types/Place';
 
 	export async function load({ fetch }) {
 		try {
-			const institutions: InstitutionType[] = await serverCall(fetch, Endpoints.institutions);
-			return { props: { institutions } };
+			const [institutions, places]: [InstitutionType[], PlaceType[]] = await Promise.all([
+				serverCall(fetch, Endpoints.institutions),
+				serverCall(fetch, Endpoints.places)
+			]);
+
+			return { props: { institutions, places } };
 		} catch {
-			return { props: { institutions: [] } };
+			return { props: { institutions: [], places: [] } };
 		}
 	}
 </script>
@@ -21,6 +26,7 @@
 		editorialStore,
 		institutionStore,
 		labelStore,
+		placeStore,
 		producerStore
 	} from '$lib/dashboard/utils/stores';
 	import { initialValues as initialLabelValues } from '$lib/dashboard/beverage/label/initialValues';
@@ -31,7 +37,10 @@
 	translations.update(dictionary as Translations);
 
 	export let institutions: InstitutionType[];
+	export let places: PlaceType[];
+
 	institutionStore.set(institutions);
+	placeStore.set(places);
 	labelStore.set(initialLabelValues);
 	producerStore.set(initialProducerValues);
 	editorialStore.set(initialEditorialValues);

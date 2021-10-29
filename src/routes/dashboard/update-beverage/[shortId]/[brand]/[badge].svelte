@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
+	import type { Place as PlaceType } from '$lib/utils/types/Place';
 	import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
 	import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
 	import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
@@ -14,14 +15,22 @@
 	export async function load({ fetch, page }) {
 		try {
 			const { shortId, brand, badge } = page.params;
-			const beverage: DetailsAdmin = await serverCall(fetch, Endpoints.beverageDetailsAdmin, {
-				pathParams: [shortId, brand, badge]
-			});
 
-			const institutions: InstitutionType[] = await serverCall(fetch, Endpoints.institutions);
-			return { props: { beverage, institutions } };
+			const [beverage, institutions, places]: [
+				DetailsAdmin,
+				InstitutionType[],
+				PlaceType[]
+			] = await Promise.all([
+				await serverCall(fetch, Endpoints.beverageDetailsAdmin, {
+					pathParams: [shortId, brand, badge]
+				}),
+				serverCall(fetch, Endpoints.institutions),
+				serverCall(fetch, Endpoints.places)
+			]);
+
+			return { props: { beverage, institutions, places } };
 		} catch {
-			return { props: { beverage: null, institutions: [] } };
+			return { props: { beverage: null, institutions: [], places: [] } };
 		}
 	}
 </script>
@@ -35,6 +44,7 @@
 		editorialStore,
 		institutionStore,
 		labelStore,
+		placeStore,
 		producerStore
 	} from '$lib/dashboard/utils/stores';
 	import Beverage from '$lib/dashboard/beverage/beverage.svelte';
@@ -43,8 +53,10 @@
 
 	export let beverage: DetailsAdmin | null;
 	export let institutions: InstitutionType[];
+	export let places: PlaceType[];
 
 	institutionStore.set(institutions);
+	placeStore.set(places);
 
 	if (beverage) {
 		labelStore.set(beverage.label);

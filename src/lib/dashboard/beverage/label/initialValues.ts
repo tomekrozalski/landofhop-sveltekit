@@ -11,6 +11,7 @@ export const initialValues = {
 	brand: '',
 	cooperation: null,
 	contract: null,
+	place: null,
 	tale: [],
 	barcode: null,
 	// -----------

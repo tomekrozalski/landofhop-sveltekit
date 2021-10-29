@@ -27,6 +27,7 @@ export type LabelFormValues = {
 	brand: string;
 	cooperation: string[] | null;
 	contract: string | null;
+	place: string | null;
 	tale: {
 		article: string;
 		language: string;
@@ -82,6 +83,7 @@ export type LabelFormOutput = {
 	cooperation?: InstitutionInsideBeverage[];
 	contract?: string;
 	isContract?: true;
+	place?: string;
 	tale?: Tale[];
 	barcode?: string;
 	// -----------

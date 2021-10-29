@@ -18,6 +18,7 @@
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
+	import Place from '$lib/dashboard/fields/place.svelte';
 	import Price from '$lib/dashboard/fields/price.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
 	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
@@ -59,7 +60,9 @@
 		<Grid isOptional>
 			<Contract {formName} {formData} />
 		</Grid>
-		<!-- <Place {formName} {formData} /> -->
+		<Grid isOptional>
+			<Place {formName} {formData} />
+		</Grid>
 		<!-- <Remark {formName} {formData} /> -->
 		<Grid>
 			<Tale {formName} {formData} />

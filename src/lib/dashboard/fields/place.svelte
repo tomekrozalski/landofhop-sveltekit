@@ -1,17 +1,16 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
 	import OpenModal from '$lib/dashboard/elements/openModal.svelte';
-	import InstitutionSelect from '$lib/dashboard/elements/selects/institution.svelte';
-	import AddNewInstitution from '$lib/dashboard/modals/addNewInstitution/addNewInstitution.svelte';
+	import PlaceSelect from '$lib/dashboard/elements/selects/place.svelte';
+	import Conditional from '$lib/dashboard/elements/conditional.svelte';
+	import AddNewPlace from '$lib/dashboard/modals/addNewPlace/addNewPlace.svelte';
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, updateField, validateField } = formData;
-	let fieldName = 'brand';
+	let { errors, form, updateField, updateTouched, validateField } = formData;
+	let fieldName = 'place';
 	let id = `${formName}-${fieldName}`;
-	const type = getContext('formType');
 
 	function handleClear() {
 		updateField(fieldName, '');
@@ -25,16 +24,23 @@
 	let isModalOpen = false;
 </script>
 
-<Label {id} isRequired>{$translate('dashboard.label.brand')}</Label>
-<InstitutionSelect
+<Label {id}>{$translate('dashboard.label.place')}</Label>
+<Conditional
+	{fieldName}
+	{id}
+	{updateField}
+	{updateTouched}
+	{validateField}
+	value={$form[fieldName]}
+/>
+<PlaceSelect
 	errors={$errors[fieldName]}
 	{handleClear}
 	{id}
-	isDisabled={formName === 'label' && type === 'update'}
 	{setValue}
 	bind:value={$form[fieldName]}
 />
 <OpenModal open={() => (isModalOpen = true)} />
 {#if isModalOpen}
-	<AddNewInstitution close={() => (isModalOpen = false)} />
+	<AddNewPlace close={() => (isModalOpen = false)} />
 {/if}

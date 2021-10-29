@@ -5,7 +5,7 @@
 	export let errors: string;
 	export let handleChange: () => void;
 	export let hasInvertedColors: boolean = false;
-	export let id: string;
+	export let id: string = '';
 	export let isDisabled: boolean = false;
 	export let isTextarea: boolean = false;
 	export let isTouched: boolean;

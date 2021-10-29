@@ -20,7 +20,7 @@
 
 	.modal {
 		margin: 0;
-		padding: 2rem calc(var(--size-input-height) + 1rem) 0 0;
+		padding: 2rem calc(var(--size-input-height) + var(--size-input-height) + 2rem) 0 0;
 		width: 100%;
 	}
 </style>

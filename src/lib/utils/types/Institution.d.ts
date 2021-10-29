@@ -1,4 +1,4 @@
-import { LanguageValue } from '/api/models/common/LanguageValue.d.ts';
+import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
 
 export type InstitutionInsideBeverage = {
 	badge: string;

@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 import type { PhotosData as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
+import type { Place as PlaceType } from '$lib/utils/types/Place';
 import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
 import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
 import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
@@ -13,4 +14,5 @@ export const editorialStore = writable<EditorialFormValues>(initialEditorialValu
 export const institutionStore = writable<InstitutionType[]>([]);
 export const labelStore = writable<LabelFormValues>(initialLabelValues);
 export const page = writable<'label' | 'producer' | 'editorial'>('label');
+export const placeStore = writable<PlaceType[]>([]);
 export const producerStore = writable<ProducerFormValues>(initialProducerValues);

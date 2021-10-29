@@ -3,6 +3,7 @@ export enum Endpoints {
 	addBeverageCover = 'admin/beverage/cover',
 	addBeverageGallery = 'admin/beverage/gallery',
 	addInstitution = 'admin/institution',
+	addPlace = 'admin/place',
 	authorize = 'authorize',
 	beverageAdminNotes = 'admin/beverage/notes',
 	beverageBasics = 'basics',
@@ -14,6 +15,7 @@ export enum Endpoints {
 	beverageStats = 'beverage/stats',
 	beverageTotal = 'beverage/total',
 	institutions = 'admin/institutions',
+	places = 'admin/places',
 	unauthorize = 'unauthorize',
 	updateBeverage = 'admin/beverage',
 	verifyToken = 'verifyToken'
@@ -44,7 +46,9 @@ function serverCall(fetch, endpoint: Endpoints, props?: Props) {
 		Endpoints.beverageRemove,
 		Endpoints.addBeverageGallery,
 		Endpoints.beverageDetailsAdmin,
-		Endpoints.updateBeverage
+		Endpoints.updateBeverage,
+		Endpoints.places,
+		Endpoints.addPlace
 	].includes(endpoint);
 
 	return fetch(completeUrl, {
