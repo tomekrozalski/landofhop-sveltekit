@@ -9,6 +9,7 @@
 	import Alcohol from '$lib/dashboard/fields/alcohol.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Barcode from '$lib/dashboard/fields/barcode.svelte';
+	import Bitterness from '$lib/dashboard/fields/bitterness.svelte';
 	import Brand from '$lib/dashboard/fields/brand.svelte';
 	import Container from '$lib/dashboard/fields/container.svelte';
 	import Contract from '$lib/dashboard/fields/contract.svelte';
@@ -16,13 +17,17 @@
 	import Extract from '$lib/dashboard/fields/extract.svelte';
 	import Fermentation from '$lib/dashboard/fields/fermentation.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
+	import Fullness from '$lib/dashboard/fields/fullness.svelte';
+	import Hoppyness from '$lib/dashboard/fields/hoppyness.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
+	import Power from '$lib/dashboard/fields/power.svelte';
 	import Price from '$lib/dashboard/fields/price.svelte';
 	import Remark from '$lib/dashboard/fields/remark.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
 	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
+	import Sweetness from '$lib/dashboard/fields/sweetness.svelte';
 	import Tale from '$lib/dashboard/fields/tale.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
@@ -102,13 +107,23 @@
 		<!-- <IngredientsSelect {formName} {formData} /> -->
 		<!-- <SmokedMalt {formName} {formData} /> -->
 
-		<!-- <Bitterness {formName} {formData} /> -->
-		<!-- <Sweetness {formName} {formData} /> -->
-		<!-- <Fullness {formName} {formData} /> -->
-		<!-- <Power {formName} {formData} /> -->
-		<!-- <Hoppyness {formName} {formData} /> -->
+		<h3><span>{$translate('dashboard.beverage.impressionsInfo')}</span></h3>
+		<Grid isOptional>
+			<Bitterness {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Sweetness {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Fullness {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Power {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Hoppyness {formName} {formData} />
+		</Grid>
 		<!-- <Temperature {formName} {formData} /> -->
-
 		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>
 			<Container {formName} {formData} />

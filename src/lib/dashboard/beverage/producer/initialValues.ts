@@ -26,5 +26,16 @@ export const initialValues = {
 	filtration: null,
 	pasteurization: null,
 	// -----------
+	bitterness: null,
+	sweetness: null,
+	fullness: null,
+	power: null,
+	hoppyness: null,
+	// temperature: {
+	// 	from: null,
+	// 	to: null,
+	// 	unit: null
+	// },
+	// -----------
 	price: []
 };

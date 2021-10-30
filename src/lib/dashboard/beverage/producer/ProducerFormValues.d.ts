@@ -41,6 +41,12 @@ export type ProducerFormValues = {
 	filtration: boolean | null;
 	pasteurization: boolean | null;
 	// -----------
+	bitterness: string | null;
+	sweetness: string | null;
+	fullness: string | null;
+	power: string | null;
+	hoppyness: string | null;
+	// -----------
 	price: {
 		currency: string;
 		date: string;
@@ -77,5 +83,12 @@ export type ProducerFormOutput = {
 	};
 	filtration?: boolean;
 	pasteurization?: boolean;
+	// -----------
+	bitterness?: number;
+	sweetness?: number;
+	fullness?: number;
+	power?: number;
+	hoppyness?: number;
+	// -----------
 	price?: Price[];
 };

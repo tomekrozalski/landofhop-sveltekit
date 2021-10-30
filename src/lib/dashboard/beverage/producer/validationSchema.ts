@@ -111,6 +111,56 @@ export function getValidationSchema(translate) {
 		filtration: yup.boolean().nullable(true),
 		pasteurization: yup.boolean().nullable(true),
 		// -----------
+		bitterness: yup
+			.number()
+			.typeError(translate('form.validation.typeErrorNumber'))
+			.min(0, translate('form.validation.min', { value: 0 }))
+			.max(100, translate('form.validation.max', { value: 100 }))
+			.integer(translate('form.validation.integer'))
+			.nullable(true),
+		sweetness: yup
+			.number()
+			.typeError(translate('form.validation.typeErrorNumber'))
+			.min(0, translate('form.validation.min', { value: 0 }))
+			.max(100, translate('form.validation.max', { value: 100 }))
+			.integer(translate('form.validation.integer'))
+			.nullable(true),
+		fullness: yup
+			.number()
+			.typeError(translate('form.validation.typeErrorNumber'))
+			.min(0, translate('form.validation.min', { value: 0 }))
+			.max(100, translate('form.validation.max', { value: 100 }))
+			.integer(translate('form.validation.integer'))
+			.nullable(true),
+		power: yup
+			.number()
+			.typeError(translate('form.validation.typeErrorNumber'))
+			.min(0, translate('form.validation.min', { value: 0 }))
+			.max(100, translate('form.validation.max', { value: 100 }))
+			.integer(translate('form.validation.integer'))
+			.nullable(true),
+		hoppyness: yup
+			.number()
+			.typeError(translate('form.validation.typeErrorNumber'))
+			.min(0, translate('form.validation.min', { value: 0 }))
+			.max(100, translate('form.validation.max', { value: 100 }))
+			.integer(translate('form.validation.integer'))
+			.nullable(true),
+		// temperature: yup
+		// 	.object()
+		// 	.shape({
+		// 		from: yup.number().min(0).max(yup.ref('to')).nullable(true),
+		// 		to: yup.number().min(yup.ref('from')).max(100).nullable(true),
+		// 		unit: yup
+		// 			.object()
+		// 			.shape({
+		// 				label: yup.string().required(),
+		// 				value: yup.string().required()
+		// 			})
+		// 			.nullable(true)
+		// 	})
+		// 	.required(),
+		// -----------
 		price: yup.array().of(
 			yup.object().shape({
 				currency: yup.string().required(translate('form.validation.required')),

@@ -11,16 +11,21 @@ import type { ProducerFormValues, ProducerFormOutput } from './ProducerFormValue
 
 export default function formatValues({
 	alcohol,
+	bitterness,
 	contract,
 	cooperation,
 	extract,
 	fermentation,
 	filtration,
+	fullness,
+	hoppyness,
 	pasteurization,
 	place,
+	power,
 	price,
 	series,
 	style,
+	sweetness,
 	remark,
 	tale
 }: ProducerFormValues): ProducerFormOutput {
@@ -52,6 +57,13 @@ export default function formatValues({
 		}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
+		// -----------
+		...(bitterness && { bitterness: +bitterness }),
+		...(sweetness && { sweetness: +sweetness }),
+		...(fullness && { fullness: +fullness }),
+		...(power && { power: +power }),
+		...(hoppyness && { hoppyness: +hoppyness }),
+		// -----------
 		...(price.length && {
 			price: price.map(({ currency, date, shop, value }) => ({
 				currency,

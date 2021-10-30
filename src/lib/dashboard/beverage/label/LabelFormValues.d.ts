@@ -60,6 +60,12 @@ export type LabelFormValues = {
 	filtration: boolean | null;
 	pasteurization: boolean | null;
 	// -----------
+	bitterness: string | null;
+	sweetness: string | null;
+	fullness: string | null;
+	power: string | null;
+	hoppyness: string | null;
+	// -----------
 	container: {
 		color: ContainerColor | string;
 		hasCapWireFlip: boolean;
@@ -110,6 +116,12 @@ export type LabelFormOutput = {
 	};
 	filtration?: boolean;
 	pasteurization?: boolean;
+	// -----------
+	bitterness?: number;
+	sweetness?: number;
+	fullness?: number;
+	power?: number;
+	hoppyness?: number;
 	// -----------
 	container: {
 		color: ContainerColor;

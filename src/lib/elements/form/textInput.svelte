@@ -12,7 +12,7 @@
 	export let fieldName: string;
 	export let style: string = '';
 	export let type: 'email' | 'number' | 'password' | 'text' = 'text';
-	export let value: string;
+	export let value: string | null;
 	$: disabled = isDisabled || value === null;
 
 	function typeAction(node: any) {
@@ -22,14 +22,7 @@
 
 <StatusIndicator {disabled} {isTouched} isValid={!errors} {style}>
 	{#if isTextarea}
-		<textarea
-			class:isTouched
-			{disabled}
-			{id}
-			name={fieldName}
-			on:change={handleChange}
-			bind:value
-		/>
+		<textarea class:isTouched {disabled} {id} name={fieldName} on:change={handleChange} {value} />
 	{:else}
 		<input
 			class:hasInvertedColors
@@ -39,7 +32,7 @@
 			name={fieldName}
 			use:typeAction
 			on:change={handleChange}
-			bind:value
+			{value}
 		/>
 	{/if}
 	{#if errors}

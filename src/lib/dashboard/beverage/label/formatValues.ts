@@ -1,4 +1,5 @@
 import isBoolean from 'lodash/isBoolean';
+import isNumber from 'lodash/isNumber';
 import {
 	formatDateFromString,
 	formatInstitutionByShortId,
@@ -19,6 +20,7 @@ export default function formatValues({
 	alcohol,
 	badge,
 	barcode,
+	bitterness,
 	brand,
 	container,
 	contract,
@@ -26,13 +28,17 @@ export default function formatValues({
 	extract,
 	fermentation,
 	filtration,
+	fullness,
+	hoppyness,
 	name,
 	pasteurization,
 	place,
+	power,
 	price,
 	remark,
 	series,
 	style,
+	sweetness,
 	tale
 }: LabelFormValues): LabelFormOutput {
 	return {
@@ -68,6 +74,12 @@ export default function formatValues({
 		}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
+		// -----------
+		...(bitterness && { bitterness: +bitterness }),
+		...(sweetness && { sweetness: +sweetness }),
+		...(fullness && { fullness: +fullness }),
+		...(power && { power: +power }),
+		...(hoppyness && { hoppyness: +hoppyness }),
 		// -----------
 		container: {
 			color: container.color as ContainerColor,
