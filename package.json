@@ -45,7 +45,7 @@
 		"prettier": "~2.2.1",
 		"prettier-plugin-svelte": "^2.2.0",
 		"slugify": "^1.6.0",
-		"svelte": "^3.34.0",
+		"svelte": "^3.44.0",
 		"svelte-file-dropzone": "0.0.15",
 		"svelte-forms-lib": "^1.10.7",
 		"svelte-intl": "^1.1.3",
