@@ -3,6 +3,7 @@ import {
 	formatDateFromString,
 	formatInstitutionByShortId,
 	formatLanguageValueArray,
+	formatPlaceByShortId,
 	formatTaleArray,
 	parseFieldNumber
 } from '$lib/dashboard/utils/dataNormalizers';
@@ -16,6 +17,7 @@ export default function formatValues({
 	fermentation,
 	filtration,
 	pasteurization,
+	place,
 	price,
 	series,
 	style,
@@ -26,6 +28,7 @@ export default function formatValues({
 		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
+		...(place && { place: formatPlaceByShortId(place) }),
 		...(tale.length && { tale: tale.map(formatTaleArray) }),
 		// -----------
 		...(fermentation && fermentation.length && { fermentation }),

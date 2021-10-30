@@ -3,6 +3,7 @@ import {
 	formatDateFromString,
 	formatInstitutionByShortId,
 	formatLanguageValueArray,
+	formatPlaceByShortId,
 	parseFieldNumber
 } from '$lib/dashboard/utils/dataNormalizers';
 import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormValues';
@@ -15,6 +16,7 @@ export default function formatValues({
 	filtration,
 	notes,
 	pasteurization,
+	place,
 	price,
 	style
 }: EditorialFormValues): EditorialFormOutput {
@@ -22,6 +24,7 @@ export default function formatValues({
 		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
+		...(place && { place: formatPlaceByShortId(place) }),
 		// -----------
 		...(fermentation && fermentation.length && { fermentation }),
 		...(style.length && { style: formatLanguageValueArray(style) }),

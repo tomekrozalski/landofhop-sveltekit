@@ -1,5 +1,6 @@
 import { get } from 'svelte/store';
-import { institutionStore } from '$lib/dashboard/utils/stores';
+import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
+import { institutionStore, placeStore } from '$lib/dashboard/utils/stores';
 
 export function formatInstitutionByShortId(value: string) {
 	const selectedInstitution = get(institutionStore).find(({ shortId }) => shortId === value);
@@ -50,4 +51,16 @@ export function formatDateFromString(value: string): Date {
 	const [day, month, year] = value.split('.');
 
 	return new Date(`${year}-${month}-${day}`);
+}
+
+export function formatPlaceByShortId(
+	value: string
+): {
+	city: LanguageValue[];
+	country: string;
+	shortId: string;
+} {
+	const { city, country, shortId } = get(placeStore).find(({ shortId }) => shortId === value);
+
+	return { city, country, shortId };
 }

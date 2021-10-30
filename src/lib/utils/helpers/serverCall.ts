@@ -14,8 +14,8 @@ export enum Endpoints {
 	beverageSearch = 'beverage/search',
 	beverageStats = 'beverage/stats',
 	beverageTotal = 'beverage/total',
-	institutions = 'admin/institutions',
-	places = 'admin/places',
+	institutions = 'admin/institution',
+	places = 'admin/place',
 	unauthorize = 'unauthorize',
 	updateBeverage = 'admin/beverage',
 	verifyToken = 'verifyToken'

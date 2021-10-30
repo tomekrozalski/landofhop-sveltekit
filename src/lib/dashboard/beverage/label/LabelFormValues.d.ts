@@ -1,6 +1,7 @@
 import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
 import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
 import type { Tale } from '$lib/utils/types/Beverage/fragments/Tale';
+import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
 import {
 	AlcoholRelate,
 	AlcoholScope,
@@ -14,16 +15,17 @@ import {
 	Fermentation
 } from '$lib/utils/enums/Beverage.enum';
 
-type LanguageValue = {
-	language: string;
-	value: string;
-};
-
 export type LabelFormValues = {
 	badge: string;
 	// -----------
-	name: LanguageValue[];
-	series: LanguageValue[];
+	name: {
+		language: string;
+		value: string;
+	}[];
+	series: {
+		language: string;
+		value: string;
+	}[];
 	brand: string;
 	cooperation: string[] | null;
 	contract: string | null;
@@ -36,7 +38,10 @@ export type LabelFormValues = {
 	barcode: string | null;
 	// -----------
 	fermentation: Fermentation[] | null;
-	style: LanguageValue[];
+	style: {
+		language: string;
+		value: string;
+	}[];
 	extract: {
 		value: string | null;
 		unit: ExtractUnit | null;
@@ -71,19 +76,17 @@ export type LabelFormValues = {
 export type LabelFormOutput = {
 	badge: string;
 	// -----------
-	name: {
-		language?: string;
-		value: string;
-	}[];
-	series?: {
-		language?: string;
-		value: string;
-	}[];
+	name: LanguageValue[];
+	series?: LanguageValue[];
 	brand: InstitutionInsideBeverage;
 	cooperation?: InstitutionInsideBeverage[];
 	contract?: string;
 	isContract?: true;
-	place?: string;
+	place?: {
+		city: LanguageValue[];
+		country: string;
+		shortId: string;
+	};
 	tale?: Tale[];
 	barcode?: string;
 	// -----------

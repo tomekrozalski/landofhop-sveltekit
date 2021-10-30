@@ -22,6 +22,13 @@ export function getValidationSchema(translate) {
 				translate('form.validation.required'),
 				(value) => value === null || value.length
 			),
+		place: yup
+			.mixed()
+			.test(
+				'is-valid',
+				translate('form.validation.required'),
+				(value) => value === null || value.length
+			),
 		tale: yup.array().of(
 			yup.object().shape({
 				article: yup.string(),

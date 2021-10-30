@@ -1,6 +1,7 @@
 import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
 import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
 import type { Tale } from '$lib/utils/types/Beverage/fragments/Tale';
+import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
 import { Fermentation } from '$lib/utils/enums/Beverage.enum';
 
 export type ProducerFormValues = {
@@ -10,6 +11,7 @@ export type ProducerFormValues = {
 	}[];
 	cooperation: string[] | null;
 	contract: string | null;
+	place: string | null;
 	tale: {
 		article: string;
 		language: string;
@@ -17,7 +19,10 @@ export type ProducerFormValues = {
 	}[];
 	// -----------
 	fermentation: Fermentation[] | null;
-	style: LanguageValue[];
+	style: {
+		language: string;
+		value: string;
+	}[];
 	extract: {
 		value: string | null;
 		unit: ExtractUnit | null;
@@ -41,13 +46,15 @@ export type ProducerFormValues = {
 };
 
 export type ProducerFormOutput = {
-	series?: {
-		language?: string;
-		value: string;
-	}[];
+	series?: LanguageValue[];
 	cooperation?: InstitutionInsideBeverage[];
 	contract?: string;
 	isContract?: true;
+	place?: {
+		city: LanguageValue[];
+		country: string;
+		shortId: string;
+	};
 	tale?: Tale[];
 	// -----------
 	fermentation?: Fermentation[];
