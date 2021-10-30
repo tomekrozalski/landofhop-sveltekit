@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Select from 'svelte-select';
-	import isArray from 'lodash/isArray';
-	import isEmpty from 'lodash/isEmpty';
+	import isArray from 'lodash.isarray';
+	import isEmpty from 'lodash.isempty';
 	import Error from '$lib/elements/form/error.svelte';
 
 	type SelectType = { value: string; label: string };

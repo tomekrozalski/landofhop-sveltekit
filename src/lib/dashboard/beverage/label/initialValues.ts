@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep.js';
+import cloneDeep from 'lodash.clonedeep';
 
 import { ContainerUnit } from '$lib/utils/enums/Beverage.enum';
 import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';

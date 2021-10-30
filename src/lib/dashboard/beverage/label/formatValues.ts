@@ -1,5 +1,4 @@
-import isBoolean from 'lodash/isBoolean';
-import isNumber from 'lodash/isNumber';
+import isBoolean from 'lodash.isboolean';
 import {
 	formatDateFromString,
 	formatInstitutionByShortId,

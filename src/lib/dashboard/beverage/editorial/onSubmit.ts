@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import isEmpty from 'lodash/isEmpty.js';
+import isEmpty from 'lodash.isempty';
 
 import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';

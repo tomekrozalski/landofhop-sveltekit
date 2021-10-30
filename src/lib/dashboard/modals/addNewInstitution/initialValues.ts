@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep.js';
+import cloneDeep from 'lodash.clonedeep';
 import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 
 export const initialValues = {
