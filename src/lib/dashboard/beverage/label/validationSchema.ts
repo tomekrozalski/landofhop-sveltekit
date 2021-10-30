@@ -47,6 +47,12 @@ export function getValidationSchema(translate) {
 				translate('form.validation.required'),
 				(value) => value === null || value.length
 			),
+		remark: yup.array().of(
+			yup.object().shape({
+				language: yup.string().required(translate('form.validation.required')),
+				value: yup.string().required(translate('form.validation.required'))
+			})
+		),
 		tale: yup.array().of(
 			yup.object().shape({
 				article: yup.string(),

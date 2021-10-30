@@ -7,6 +7,7 @@ export const initialValues = {
 	cooperation: null,
 	contract: null,
 	place: null,
+	remark: [],
 	tale: [],
 	// -----------
 	fermentation: null,

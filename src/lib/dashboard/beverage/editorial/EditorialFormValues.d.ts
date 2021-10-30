@@ -7,6 +7,10 @@ export type EditorialFormValues = {
 	cooperation: string[] | null;
 	contract: string | null;
 	place: string | null;
+	remark: {
+		language: string;
+		value: string;
+	}[];
 	// -----------
 	fermentation: Fermentation[] | null;
 	style: {
@@ -35,6 +39,7 @@ export type EditorialFormOutput = {
 		country: string;
 		shortId: string;
 	};
+	remark?: LanguageValue[];
 	// -----------
 	fermentation?: Fermentation[];
 	style?: LanguageValue[];

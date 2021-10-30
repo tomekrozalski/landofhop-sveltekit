@@ -18,6 +18,7 @@
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
 	import Price from '$lib/dashboard/fields/price.svelte';
+	import Remark from '$lib/dashboard/fields/remark.svelte';
 	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
@@ -47,6 +48,9 @@
 		</Grid>
 		<Grid isOptional>
 			<Place {formName} {formData} />
+		</Grid>
+		<Grid columns={2}>
+			<Remark {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.brewingInfo')}</span></h3>
 		<Grid isOptional>

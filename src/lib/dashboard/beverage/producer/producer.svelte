@@ -16,6 +16,7 @@
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
 	import Price from '$lib/dashboard/fields/price.svelte';
+	import Remark from '$lib/dashboard/fields/remark.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
 	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
 	import Tale from '$lib/dashboard/fields/tale.svelte';
@@ -49,6 +50,9 @@
 		</Grid>
 		<Grid isOptional>
 			<Place {formName} {formData} />
+		</Grid>
+		<Grid columns={2}>
+			<Remark {formName} {formData} />
 		</Grid>
 		<Grid>
 			<Tale {formName} {formData} />

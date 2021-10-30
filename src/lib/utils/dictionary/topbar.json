@@ -1,6 +1,5 @@
 {
 	"en": {
-		"country.pl": "Poland",
 		"global.404.title": "404 Not Found",
 		"global.confirmation": "yes",
 		"global.denial": "no",
@@ -17,7 +16,6 @@
 		"navigation.stats": "Stats"
 	},
 	"pl": {
-		"country.pl": "Polska",
 		"global.404.title": "404 Nie znaleziono",
 		"global.confirmation": "tak",
 		"global.denial": "nie",

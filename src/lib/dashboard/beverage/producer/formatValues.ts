@@ -21,6 +21,7 @@ export default function formatValues({
 	price,
 	series,
 	style,
+	remark,
 	tale
 }: ProducerFormValues): ProducerFormOutput {
 	return {
@@ -29,6 +30,7 @@ export default function formatValues({
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
 		...(place && { place: formatPlaceByShortId(place) }),
+		...(remark.length && { remark: formatLanguageValueArray(remark) }),
 		...(tale.length && { tale: tale.map(formatTaleArray) }),
 		// -----------
 		...(fermentation && fermentation.length && { fermentation }),

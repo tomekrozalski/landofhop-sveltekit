@@ -18,6 +18,7 @@ export default function formatValues({
 	pasteurization,
 	place,
 	price,
+	remark,
 	style
 }: EditorialFormValues): EditorialFormOutput {
 	return {
@@ -25,6 +26,7 @@ export default function formatValues({
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
 		...(place && { place: formatPlaceByShortId(place) }),
+		...(remark.length && { remark: formatLanguageValueArray(remark) }),
 		// -----------
 		...(fermentation && fermentation.length && { fermentation }),
 		...(style.length && { style: formatLanguageValueArray(style) }),

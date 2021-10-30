@@ -30,6 +30,7 @@ export default function formatValues({
 	pasteurization,
 	place,
 	price,
+	remark,
 	series,
 	style,
 	tale
@@ -44,6 +45,7 @@ export default function formatValues({
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
 		...(place && { place: formatPlaceByShortId(place) }),
+		...(remark.length && { remark: formatLanguageValueArray(remark) }),
 		...(tale.length && { tale: tale.map(formatTaleArray) }),
 		...(barcode && { barcode: barcode.trim() }),
 		// -----------

@@ -55,6 +55,7 @@ export type Details = {
 	remark?: {
 		label?: LanguageValue;
 		producer?: LanguageValue;
+		editorial?: LanguageValue;
 	};
 	tale?: {
 		label?: Tale[];

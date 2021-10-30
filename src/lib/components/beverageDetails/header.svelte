@@ -17,7 +17,10 @@
 			<MarkLanguage label tag="em" name={remark.label} />
 		{/if}
 		{#if remark?.producer}
-			<MarkLanguage tag="em" name={remark.producer} />
+			<MarkLanguage producer tag="em" name={remark.producer} />
+		{/if}
+		{#if remark?.editorial}
+			<MarkLanguage editorial tag="em" name={remark.editorial} />
 		{/if}
 		<!-- contract -->
 		{#if contract}

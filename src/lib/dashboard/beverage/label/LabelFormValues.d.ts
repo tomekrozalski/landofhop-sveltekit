@@ -30,6 +30,10 @@ export type LabelFormValues = {
 	cooperation: string[] | null;
 	contract: string | null;
 	place: string | null;
+	remark: {
+		language: string;
+		value: string;
+	}[];
 	tale: {
 		article: string;
 		language: string;
@@ -87,6 +91,7 @@ export type LabelFormOutput = {
 		country: string;
 		shortId: string;
 	};
+	remark?: LanguageValue[];
 	tale?: Tale[];
 	barcode?: string;
 	// -----------

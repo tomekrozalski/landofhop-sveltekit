@@ -12,6 +12,10 @@ export type ProducerFormValues = {
 	cooperation: string[] | null;
 	contract: string | null;
 	place: string | null;
+	remark: {
+		language: string;
+		value: string;
+	}[];
 	tale: {
 		article: string;
 		language: string;
@@ -55,6 +59,7 @@ export type ProducerFormOutput = {
 		country: string;
 		shortId: string;
 	};
+	remark?: LanguageValue[];
 	tale?: Tale[];
 	// -----------
 	fermentation?: Fermentation[];
