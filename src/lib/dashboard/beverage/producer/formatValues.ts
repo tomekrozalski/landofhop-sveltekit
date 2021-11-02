@@ -28,7 +28,8 @@ export default function formatValues({
 	style,
 	sweetness,
 	remark,
-	tale
+	tale,
+	temperature
 }: ProducerFormValues): ProducerFormOutput {
 	return {
 		...(series.length && { series: formatLanguageValueArray(series) }),
@@ -71,6 +72,15 @@ export default function formatValues({
 		...(fullness && { fullness: +fullness }),
 		...(power && { power: +power }),
 		...(hoppyness && { hoppyness: +hoppyness }),
+		...(temperature.from &&
+			temperature.to &&
+			temperature.unit && {
+				temperature: {
+					from: +temperature.from,
+					to: +temperature.to,
+					unit: temperature.unit
+				}
+			}),
 		// -----------
 		...(price.length && {
 			price: price.map(({ currency, date, shop, value }) => ({

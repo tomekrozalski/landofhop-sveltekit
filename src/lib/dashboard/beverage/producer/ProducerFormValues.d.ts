@@ -50,6 +50,11 @@ export type ProducerFormValues = {
 	fullness: string | null;
 	power: string | null;
 	hoppyness: string | null;
+	temperature: {
+		from: string | null;
+		to: string | null;
+		unit: string | null;
+	};
 	// -----------
 	price: {
 		currency: string;
@@ -97,6 +102,11 @@ export type ProducerFormOutput = {
 	fullness?: number;
 	power?: number;
 	hoppyness?: number;
+	temperature?: {
+		from: number;
+		to: number;
+		unit: string;
+	};
 	// -----------
 	price?: Price[];
 };

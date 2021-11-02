@@ -69,6 +69,11 @@ export type LabelFormValues = {
 	fullness: string | null;
 	power: string | null;
 	hoppyness: string | null;
+	temperature: {
+		from: string | null;
+		to: string | null;
+		unit: string | null;
+	};
 	// -----------
 	container: {
 		color: ContainerColor | string;
@@ -130,6 +135,11 @@ export type LabelFormOutput = {
 	fullness?: number;
 	power?: number;
 	hoppyness?: number;
+	temperature?: {
+		from: number;
+		to: number;
+		unit: string;
+	};
 	// -----------
 	container: {
 		color: ContainerColor;

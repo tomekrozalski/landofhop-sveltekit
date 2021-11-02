@@ -30,6 +30,7 @@
 	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
 	import Sweetness from '$lib/dashboard/fields/sweetness.svelte';
 	import Tale from '$lib/dashboard/fields/tale.svelte';
+	import Temperature from '$lib/dashboard/fields/temperature.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
@@ -109,7 +110,6 @@
 		<!-- <IngredientsDescription {formName} {formData} /> -->
 		<!-- <IngredientsSelect {formName} {formData} /> -->
 		<!-- <SmokedMalt {formName} {formData} /> -->
-
 		<h3><span>{$translate('dashboard.beverage.impressionsInfo')}</span></h3>
 		<Grid isOptional>
 			<Bitterness {formName} {formData} />
@@ -126,7 +126,9 @@
 		<Grid isOptional>
 			<Hoppyness {formName} {formData} />
 		</Grid>
-		<!-- <Temperature {formName} {formData} /> -->
+		<Grid columns={3} isOptional>
+			<Temperature {formName} {formData} />
+		</Grid>
 		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>
 			<Container {formName} {formData} />

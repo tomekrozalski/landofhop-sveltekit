@@ -39,7 +39,8 @@ export default function formatValues({
 	series,
 	style,
 	sweetness,
-	tale
+	tale,
+	temperature
 }: LabelFormValues): LabelFormOutput {
 	return {
 		badge: badge.trim(),
@@ -87,6 +88,15 @@ export default function formatValues({
 		...(fullness && { fullness: +fullness }),
 		...(power && { power: +power }),
 		...(hoppyness && { hoppyness: +hoppyness }),
+		...(temperature.from &&
+			temperature.to &&
+			temperature.unit && {
+				temperature: {
+					from: +temperature.from,
+					to: +temperature.to,
+					unit: temperature.unit
+				}
+			}),
 		// -----------
 		container: {
 			color: container.color as ContainerColor,

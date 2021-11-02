@@ -183,20 +183,24 @@ export function getValidationSchema(translate) {
 			.max(100, translate('form.validation.max', { value: 100 }))
 			.integer(translate('form.validation.integer'))
 			.nullable(true),
-		// temperature: yup
-		// 	.object()
-		// 	.shape({
-		// 		from: yup.number().min(0).max(yup.ref('to')).nullable(true),
-		// 		to: yup.number().min(yup.ref('from')).max(100).nullable(true),
-		// 		unit: yup
-		// 			.object()
-		// 			.shape({
-		// 				label: yup.string().required(),
-		// 				value: yup.string().required()
-		// 			})
-		// 			.nullable(true)
-		// 	})
-		// 	.required(),
+		temperature: yup
+			.object()
+			.shape({
+				from: yup
+					.number()
+					.typeError(translate('form.validation.typeErrorNumber'))
+					.min(0, translate('form.validation.min', { value: 0 }))
+					.max(yup.ref('to'), (v) => translate('form.validation.max', { value: v.max }))
+					.nullable(true),
+				to: yup
+					.number()
+					.typeError(translate('form.validation.typeErrorNumber'))
+					.min(yup.ref('from'), (v) => translate('form.validation.min', { value: v.min }))
+					.max(100, translate('form.validation.max', { value: 100 }))
+					.nullable(true),
+				unit: yup.string().min(1, translate('form.validation.required')).nullable(true)
+			})
+			.required(),
 		// -----------
 		container: yup.object().shape({
 			color: yup.string().required(translate('form.validation.required')),

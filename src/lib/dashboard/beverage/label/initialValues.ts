@@ -41,11 +41,11 @@ export const initialValues = {
 	fullness: null,
 	power: null,
 	hoppyness: null,
-	// temperature: {
-	// 	from: null,
-	// 	to: null,
-	// 	unit: null
-	// },
+	temperature: {
+		from: null,
+		to: null,
+		unit: null
+	},
 	// -----------
 	container: {
 		color: '',

@@ -3,7 +3,7 @@
 	import Error from './error.svelte';
 
 	export let errors: string;
-	export let handleChange: () => void;
+	export let handleChange: (e: any) => void;
 	export let hasInvertedColors: boolean = false;
 	export let id: string = '';
 	export let isDisabled: boolean = false;

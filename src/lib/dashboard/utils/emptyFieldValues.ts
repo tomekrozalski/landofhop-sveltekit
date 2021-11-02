@@ -4,7 +4,8 @@ import {
 	AlcoholUnit,
 	ExtractRelate,
 	ExtractUnit,
-	HopRateUnit
+	HopRateUnit,
+	TemperatureUnit
 } from '$lib/utils/enums/Beverage.enum';
 
 export const emptyLanguageValue = { language: '', value: '' };
@@ -30,3 +31,4 @@ export const emptyPrice = {
 	value: '0'
 };
 export const emptyHopRate = { value: '0', unit: HopRateUnit.gl };
+export const emptyTemperature = { from: '0', to: '0', unit: TemperatureUnit.celcius };
