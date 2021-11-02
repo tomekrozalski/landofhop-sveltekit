@@ -29,6 +29,7 @@ export default function formatValues({
 	filtration,
 	fullness,
 	hoppyness,
+	hopRate,
 	name,
 	pasteurization,
 	place,
@@ -73,6 +74,13 @@ export default function formatValues({
 		}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
+		...(hopRate.value &&
+			hopRate.unit && {
+				hopRate: {
+					value: +hopRate.value,
+					unit: hopRate.unit
+				}
+			}),
 		// -----------
 		...(bitterness && { bitterness: +bitterness }),
 		...(sweetness && { sweetness: +sweetness }),

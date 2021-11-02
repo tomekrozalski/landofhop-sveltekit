@@ -16,6 +16,7 @@
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Fullness from '$lib/dashboard/fields/fullness.svelte';
 	import Hoppyness from '$lib/dashboard/fields/hoppyness.svelte';
+	import HopRate from '$lib/dashboard/fields/hopRate.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
 	import Power from '$lib/dashboard/fields/power.svelte';
@@ -80,6 +81,9 @@
 		</Grid>
 		<Grid isOptional>
 			<Pasteurization {formName} {formData} />
+		</Grid>
+		<Grid columns={2} isOptional>
+			<HopRate {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.impressionsInfo')}</span></h3>
 		<Grid isOptional>

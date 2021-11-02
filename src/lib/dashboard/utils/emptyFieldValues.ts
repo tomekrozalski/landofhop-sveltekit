@@ -3,13 +3,14 @@ import {
 	AlcoholRelate,
 	AlcoholUnit,
 	ExtractRelate,
-	ExtractUnit
+	ExtractUnit,
+	HopRateUnit
 } from '$lib/utils/enums/Beverage.enum';
 
 export const emptyLanguageValue = { language: '', value: '' };
 export const emptyTale = { article: '', language: '', lead: '' };
 export const emptyExtract = {
-	value: 0,
+	value: '0',
 	unit: ExtractUnit.percent,
 	relate: ExtractRelate.weight
 };
@@ -26,5 +27,6 @@ export const emptyPrice = {
 	currency: 'PLN',
 	date: format(new Date(), 'dd.MM.yyyy'),
 	shop: null,
-	value: 0
+	value: '0'
 };
+export const emptyHopRate = { value: '0', unit: HopRateUnit.gl };

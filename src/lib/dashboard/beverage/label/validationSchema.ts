@@ -135,6 +135,18 @@ export function getValidationSchema(translate) {
 		}),
 		filtration: yup.boolean().nullable(true),
 		pasteurization: yup.boolean().nullable(true),
+		hopRate: yup
+			.object()
+			.shape({
+				value: yup
+					.number()
+					.typeError(translate('form.validation.typeErrorNumber'))
+					.min(1, translate('form.validation.min', { value: 1 }))
+					.max(100, translate('form.validation.max', { value: 100 }))
+					.nullable(true),
+				unit: yup.string().min(1, translate('form.validation.required')).nullable(true)
+			})
+			.required(),
 		// -----------
 		bitterness: yup
 			.number()

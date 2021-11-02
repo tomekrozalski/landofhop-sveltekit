@@ -59,6 +59,10 @@ export type LabelFormValues = {
 	};
 	filtration: boolean | null;
 	pasteurization: boolean | null;
+	hopRate: {
+		value: string | null;
+		unit: string | null;
+	};
 	// -----------
 	bitterness: string | null;
 	sweetness: string | null;
@@ -116,6 +120,10 @@ export type LabelFormOutput = {
 	};
 	filtration?: boolean;
 	pasteurization?: boolean;
+	hopRate?: {
+		value: number;
+		unit: string;
+	};
 	// -----------
 	bitterness?: number;
 	sweetness?: number;

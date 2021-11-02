@@ -19,6 +19,7 @@
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Fullness from '$lib/dashboard/fields/fullness.svelte';
 	import Hoppyness from '$lib/dashboard/fields/hoppyness.svelte';
+	import HopRate from '$lib/dashboard/fields/hopRate.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
@@ -99,7 +100,9 @@
 		</Grid>
 		<!-- <Aged {formName} {formData} /> -->
 		<!-- <DryHopped {formName} {formData} /> -->
-		<!-- <HopRate {formName} {formData} /> -->
+		<Grid columns={2} isOptional>
+			<HopRate {formName} {formData} />
+		</Grid>
 		<!-- <IsNitro {formName} {formData} /> -->
 		<!-- <ExpirationDate {formName} {formData} /> -->
 

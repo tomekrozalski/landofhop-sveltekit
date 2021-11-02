@@ -21,6 +21,10 @@ export const initialValues = {
 	},
 	filtration: null,
 	pasteurization: null,
+	hopRate: {
+		value: null,
+		unit: null
+	},
 	// -----------
 	bitterness: null,
 	sweetness: null,
