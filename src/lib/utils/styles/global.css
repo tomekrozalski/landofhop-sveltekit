@@ -26,8 +26,8 @@ main {
 
 article {
 	max-width: var(--size-container-max-width);
-	margin: 0 auto 8rem auto;
-	padding: 1rem;
+	margin: 0 auto;
+	padding: 1rem 1rem 8rem 1rem;
 	position: relative;
 }
 

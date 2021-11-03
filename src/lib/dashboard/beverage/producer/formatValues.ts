@@ -14,6 +14,7 @@ export default function formatValues({
 	bitterness,
 	contract,
 	cooperation,
+	expirationDate,
 	extract,
 	fermentation,
 	filtration,
@@ -64,6 +65,13 @@ export default function formatValues({
 				hopRate: {
 					value: +hopRate.value,
 					unit: hopRate.unit
+				}
+			}),
+		...(expirationDate.value &&
+			expirationDate.unit && {
+				expirationDate: {
+					value: +expirationDate.value,
+					unit: expirationDate.unit
 				}
 			}),
 		// -----------

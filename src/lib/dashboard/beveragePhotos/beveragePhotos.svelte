@@ -12,9 +12,3 @@
 	<Cover />
 	<Gallery />
 </article>
-
-<style>
-	article {
-		margin-bottom: 12rem;
-	}
-</style>

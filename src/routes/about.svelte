@@ -18,6 +18,6 @@
 <style>
 	article {
 		max-width: 54rem;
-		padding: 2rem;
+		padding: 2rem 2rem 8rem 2rem;
 	}
 </style>

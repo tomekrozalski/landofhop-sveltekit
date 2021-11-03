@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import {
 	AlcoholRelate,
 	AlcoholUnit,
+	ExpirationDateUnit,
 	ExtractRelate,
 	ExtractUnit,
 	HopRateUnit,
@@ -32,3 +33,4 @@ export const emptyPrice = {
 };
 export const emptyHopRate = { value: '0', unit: HopRateUnit.gl };
 export const emptyTemperature = { from: '0', to: '0', unit: TemperatureUnit.celcius };
+export const emptyExpirationDate = { value: '0', unit: ExpirationDateUnit.month };

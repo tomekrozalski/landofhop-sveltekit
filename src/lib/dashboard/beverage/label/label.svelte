@@ -14,6 +14,7 @@
 	import Container from '$lib/dashboard/fields/container.svelte';
 	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
+	import ExpirationDate from '$lib/dashboard/fields/expirationDate.svelte';
 	import Extract from '$lib/dashboard/fields/extract.svelte';
 	import Fermentation from '$lib/dashboard/fields/fermentation.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
@@ -105,8 +106,9 @@
 			<HopRate {formName} {formData} />
 		</Grid>
 		<!-- <IsNitro {formName} {formData} /> -->
-		<!-- <ExpirationDate {formName} {formData} /> -->
-
+		<Grid columns={2} isOptional>
+			<ExpirationDate {formName} {formData} />
+		</Grid>
 		<!-- <IngredientsDescription {formName} {formData} /> -->
 		<!-- <IngredientsSelect {formName} {formData} /> -->
 		<!-- <SmokedMalt {formName} {formData} /> -->

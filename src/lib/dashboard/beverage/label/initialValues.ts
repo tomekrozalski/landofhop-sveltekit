@@ -35,6 +35,10 @@ export const initialValues = {
 		value: null,
 		unit: null
 	},
+	expirationDate: {
+		value: null,
+		unit: null
+	},
 	// -----------
 	bitterness: null,
 	sweetness: null,

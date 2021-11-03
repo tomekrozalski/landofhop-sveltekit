@@ -63,6 +63,10 @@ export type LabelFormValues = {
 		value: string | null;
 		unit: string | null;
 	};
+	expirationDate: {
+		value: string | null;
+		unit: string | null;
+	};
 	// -----------
 	bitterness: string | null;
 	sweetness: string | null;
@@ -126,6 +130,10 @@ export type LabelFormOutput = {
 	filtration?: boolean;
 	pasteurization?: boolean;
 	hopRate?: {
+		value: number;
+		unit: string;
+	};
+	expirationDate?: {
 		value: number;
 		unit: string;
 	};

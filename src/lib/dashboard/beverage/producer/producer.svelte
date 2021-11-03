@@ -11,6 +11,7 @@
 	import Bitterness from '$lib/dashboard/fields/bitterness.svelte';
 	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
+	import ExpirationDate from '$lib/dashboard/fields/expirationDate.svelte';
 	import Extract from '$lib/dashboard/fields/extract.svelte';
 	import Fermentation from '$lib/dashboard/fields/fermentation.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
@@ -85,6 +86,9 @@
 		</Grid>
 		<Grid columns={2} isOptional>
 			<HopRate {formName} {formData} />
+		</Grid>
+		<Grid columns={2} isOptional>
+			<ExpirationDate {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.impressionsInfo')}</span></h3>
 		<Grid isOptional>
