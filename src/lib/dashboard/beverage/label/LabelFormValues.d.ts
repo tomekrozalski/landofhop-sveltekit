@@ -76,6 +76,7 @@ export type LabelFormValues = {
 		value: string | null;
 		unit: string | null;
 	};
+	nitrogen: boolean | null;
 	expirationDate: {
 		value: string | null;
 		unit: string | null;
@@ -155,6 +156,7 @@ export type LabelFormOutput = {
 		value: number;
 		unit: string;
 	};
+	nitrogen?: boolean;
 	expirationDate?: {
 		value: number;
 		unit: string;

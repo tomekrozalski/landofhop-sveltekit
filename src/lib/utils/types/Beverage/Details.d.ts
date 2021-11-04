@@ -153,6 +153,11 @@ export type Details = {
 			value: number;
 		};
 	};
+	nitrogen?: {
+		label?: boolean;
+		producer?: boolean;
+		editorial?: boolean;
+	};
 	expirationDate?: {
 		label?: {
 			value: number;

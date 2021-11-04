@@ -15,6 +15,7 @@
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import Fermentation from '$lib/dashboard/fields/fermentation.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
+	import Nitrogen from '$lib/dashboard/fields/nitrogen.svelte';
 	import Notes from '$lib/dashboard/fields/notes.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
@@ -71,6 +72,9 @@
 		</Grid>
 		<Grid>
 			<Aged {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Nitrogen {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>

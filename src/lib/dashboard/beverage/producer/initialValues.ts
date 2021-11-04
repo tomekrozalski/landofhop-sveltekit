@@ -26,6 +26,7 @@ export const initialValues = {
 		value: null,
 		unit: null
 	},
+	nitrogen: null,
 	expirationDate: {
 		value: null,
 		unit: null

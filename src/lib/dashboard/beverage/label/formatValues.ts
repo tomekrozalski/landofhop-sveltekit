@@ -33,6 +33,7 @@ export default function formatValues({
 	hoppyness,
 	hopRate,
 	name,
+	nitrogen,
 	pasteurization,
 	place,
 	power,
@@ -97,6 +98,7 @@ export default function formatValues({
 					unit: hopRate.unit
 				}
 			}),
+		...(isBoolean(nitrogen) && { nitrogen }),
 		...(expirationDate.value &&
 			expirationDate.unit && {
 				expirationDate: {

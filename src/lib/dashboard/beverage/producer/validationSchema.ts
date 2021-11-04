@@ -142,6 +142,7 @@ export function getValidationSchema(translate) {
 				unit: yup.string().min(1, translate('form.validation.required')).nullable(true)
 			})
 			.required(),
+		nitrogen: yup.boolean().nullable(true),
 		expirationDate: yup
 			.object()
 			.shape({

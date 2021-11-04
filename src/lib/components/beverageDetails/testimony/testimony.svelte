@@ -14,6 +14,7 @@
 	import HopRate from './hopRate.svelte';
 	import ExpirationTime from './expirationTime.svelte';
 	import Ingredients from './ingredients.svelte';
+	import Nitrogen from './nitrogen.svelte';
 	import SmokedMalt from './smokedMalt.svelte';
 	import Temperature from './temperature.svelte';
 	import Container from './container.svelte';
@@ -35,6 +36,7 @@
 	<BeverageStyle {details} />
 	<DryHopped {details} />
 	<HopRate {details} />
+	<Nitrogen {details} />
 	<ExpirationTime {details} />
 	<Ingredients {details} />
 	<SmokedMalt {details} />

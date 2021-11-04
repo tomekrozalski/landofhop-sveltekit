@@ -10,6 +10,7 @@ export const initialValues = {
 	filtration: null,
 	pasteurization: null,
 	aged: [],
+	nitrogen: null,
 	// -----------
 	price: [],
 	notes: null

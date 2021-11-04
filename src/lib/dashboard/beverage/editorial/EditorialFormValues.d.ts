@@ -36,6 +36,7 @@ export type EditorialFormValues = {
 		type: AgedType | null;
 		wood: AgedWood | null;
 	}[];
+	nitrogen: boolean | null;
 	// -----------
 	price: {
 		currency: string;
@@ -71,6 +72,7 @@ export type EditorialFormOutput = {
 		type?: AgedType;
 		wood?: AgedWood;
 	}[];
+	nitrogen?: boolean;
 	// -----------
 	price?: Price[];
 	notes?: string;

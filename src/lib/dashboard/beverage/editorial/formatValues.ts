@@ -15,6 +15,7 @@ export default function formatValues({
 	cooperation,
 	fermentation,
 	filtration,
+	nitrogen,
 	notes,
 	pasteurization,
 	place,
@@ -47,6 +48,7 @@ export default function formatValues({
 				...(props.previousContent.length && { previousContent: props.previousContent })
 			}))
 		}),
+		...(isBoolean(nitrogen) && { nitrogen }),
 		// -----------
 		...(price.length && {
 			price: price.map(({ currency, date, shop, value }) => ({

@@ -23,6 +23,7 @@
 	import Hoppyness from '$lib/dashboard/fields/hoppyness.svelte';
 	import HopRate from '$lib/dashboard/fields/hopRate.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
+	import Nitrogen from '$lib/dashboard/fields/nitrogen.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
 	import Power from '$lib/dashboard/fields/power.svelte';
@@ -108,7 +109,9 @@
 		<Grid columns={2} isOptional>
 			<HopRate {formName} {formData} />
 		</Grid>
-		<!-- <IsNitro {formName} {formData} /> -->
+		<Grid isOptional>
+			<Nitrogen {formName} {formData} />
+		</Grid>
 		<Grid columns={2} isOptional>
 			<ExpirationDate {formName} {formData} />
 		</Grid>

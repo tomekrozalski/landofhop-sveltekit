@@ -70,6 +70,7 @@ export function getValidationSchema(translate) {
 				previousContent: yup.array().of(yup.string())
 			})
 		),
+		nitrogen: yup.boolean().nullable(true),
 		// -----------
 		price: yup.array().of(
 			yup.object().shape({
