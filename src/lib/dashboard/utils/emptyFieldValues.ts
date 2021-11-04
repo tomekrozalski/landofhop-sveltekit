@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import {
+	AgedTimeUnit,
 	AlcoholRelate,
 	AlcoholUnit,
 	ExpirationDateUnit,
@@ -34,3 +35,12 @@ export const emptyPrice = {
 export const emptyHopRate = { value: '0', unit: HopRateUnit.gl };
 export const emptyTemperature = { from: '0', to: '0', unit: TemperatureUnit.celcius };
 export const emptyExpirationDate = { value: '0', unit: ExpirationDateUnit.month };
+export const emptyAged = {
+	previousContent: [],
+	time: {
+		value: '0',
+		unit: AgedTimeUnit.month
+	},
+	type: null,
+	wood: null
+};

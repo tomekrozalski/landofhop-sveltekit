@@ -9,6 +9,7 @@ export const initialValues = {
 	alcoholScope: null,
 	filtration: null,
 	pasteurization: null,
+	aged: [],
 	// -----------
 	price: [],
 	notes: null

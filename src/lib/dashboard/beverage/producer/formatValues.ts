@@ -10,6 +10,7 @@ import {
 import type { ProducerFormValues, ProducerFormOutput } from './ProducerFormValues';
 
 export default function formatValues({
+	aged,
 	alcohol,
 	bitterness,
 	contract,
@@ -60,6 +61,19 @@ export default function formatValues({
 		}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
+		...(aged.length && {
+			aged: aged.map((props) => ({
+				...(props.type && { type: props.type }),
+				...(props.wood && { wood: props.wood }),
+				...(props.time.value !== '0' && {
+					time: {
+						value: +props.time.value,
+						unit: props.time.unit
+					}
+				}),
+				...(props.previousContent.length && { previousContent: props.previousContent })
+			}))
+		}),
 		...(hopRate.value &&
 			hopRate.unit && {
 				hopRate: {

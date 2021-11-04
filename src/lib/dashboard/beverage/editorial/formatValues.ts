@@ -9,6 +9,7 @@ import {
 import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormValues';
 
 export default function formatValues({
+	aged,
 	alcoholScope,
 	contract,
 	cooperation,
@@ -33,6 +34,19 @@ export default function formatValues({
 		...(alcoholScope && { alcoholScope }),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
+		...(aged.length && {
+			aged: aged.map((props) => ({
+				...(props.type && { type: props.type }),
+				...(props.wood && { wood: props.wood }),
+				...(props.time.value !== '0' && {
+					time: {
+						value: +props.time.value,
+						unit: props.time.unit
+					}
+				}),
+				...(props.previousContent.length && { previousContent: props.previousContent })
+			}))
+		}),
 		// -----------
 		...(price.length && {
 			price: price.map(({ currency, date, shop, value }) => ({

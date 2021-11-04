@@ -2,7 +2,18 @@ import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
 import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
 import type { Tale } from '$lib/utils/types/Beverage/fragments/Tale';
 import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
-import { Fermentation } from '$lib/utils/enums/Beverage.enum';
+import {
+	AgedPreviousContent,
+	AgedTimeUnit,
+	AgedType,
+	AgedWood,
+	AlcoholRelate,
+	AlcoholScope,
+	AlcoholUnit,
+	ExtractRelate,
+	ExtractUnit,
+	Fermentation
+} from '$lib/utils/enums/Beverage.enum';
 
 export type ProducerFormValues = {
 	series: {
@@ -40,6 +51,15 @@ export type ProducerFormValues = {
 	};
 	filtration: boolean | null;
 	pasteurization: boolean | null;
+	aged: {
+		previousContent: AgedPreviousContent[];
+		time: {
+			value: string;
+			unit: AgedTimeUnit;
+		};
+		type: AgedType | null;
+		wood: AgedWood | null;
+	}[];
 	hopRate: {
 		value: string | null;
 		unit: string | null;
@@ -96,6 +116,15 @@ export type ProducerFormOutput = {
 	};
 	filtration?: boolean;
 	pasteurization?: boolean;
+	aged?: {
+		previousContent?: AgedPreviousContent[];
+		time?: {
+			value: number;
+			unit: AgedTimeUnit;
+		};
+		type?: AgedType;
+		wood?: AgedWood;
+	}[];
 	hopRate?: {
 		value: number;
 		unit: string;

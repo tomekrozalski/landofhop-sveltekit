@@ -1,7 +1,14 @@
 import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
 import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
 import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
-import { Fermentation } from '$lib/utils/enums/Beverage.enum';
+import {
+	AgedPreviousContent,
+	AgedTimeUnit,
+	AgedType,
+	AgedWood,
+	AlcoholScope,
+	Fermentation
+} from '$lib/utils/enums/Beverage.enum';
 
 export type EditorialFormValues = {
 	cooperation: string[] | null;
@@ -20,6 +27,15 @@ export type EditorialFormValues = {
 	alcoholScope: AlcoholScope | null;
 	filtration: boolean | null;
 	pasteurization: boolean | null;
+	aged: {
+		previousContent: AgedPreviousContent[];
+		time: {
+			value: string;
+			unit: AgedTimeUnit;
+		};
+		type: AgedType | null;
+		wood: AgedWood | null;
+	}[];
 	// -----------
 	price: {
 		currency: string;
@@ -46,6 +62,15 @@ export type EditorialFormOutput = {
 	alcoholScope?: AlcoholScope;
 	filtration?: boolean;
 	pasteurization?: boolean;
+	aged?: {
+		previousContent?: AgedPreviousContent[];
+		time?: {
+			value: number;
+			unit: AgedTimeUnit;
+		};
+		type?: AgedType;
+		wood?: AgedWood;
+	}[];
 	// -----------
 	price?: Price[];
 	notes?: string;

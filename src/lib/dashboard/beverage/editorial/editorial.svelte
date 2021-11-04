@@ -9,6 +9,7 @@
 	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
+	import Aged from '$lib/dashboard/fields/aged/aged.svelte';
 	import AlcoholScope from '$lib/dashboard/fields/alcoholScope.svelte';
 	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
@@ -67,6 +68,9 @@
 		</Grid>
 		<Grid isOptional>
 			<Pasteurization {formName} {formData} />
+		</Grid>
+		<Grid>
+			<Aged {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>

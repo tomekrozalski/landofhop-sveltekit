@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { Fermentation } from '$lib/utils/enums/Beverage.enum';
+import { AgedType, AgedWood, AgedTimeUnit, Fermentation } from '$lib/utils/enums/Beverage.enum';
 import { isValidDate } from '$lib/dashboard/utils/isValidDate';
 
 export function getValidationSchema(translate) {
@@ -135,6 +135,26 @@ export function getValidationSchema(translate) {
 		}),
 		filtration: yup.boolean().nullable(true),
 		pasteurization: yup.boolean().nullable(true),
+		aged: yup.array().of(
+			yup.object().shape({
+				type: yup
+					.mixed()
+					.oneOf([...Object.values(AgedType), null])
+					.nullable(true),
+				wood: yup
+					.mixed()
+					.oneOf([...Object.values(AgedWood), null])
+					.nullable(true),
+				time: yup
+					.object()
+					.shape({
+						unit: yup.mixed().oneOf([...Object.values(AgedTimeUnit), null]),
+						value: yup.number().typeError(translate('form.validation.typeErrorNumber'))
+					})
+					.required(),
+				previousContent: yup.array().of(yup.string())
+			})
+		),
 		hopRate: yup
 			.object()
 			.shape({
