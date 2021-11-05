@@ -42,6 +42,10 @@ export const initialValues = {
 		unit: null
 	},
 	// -----------
+	ingredients: [],
+	ingredientTags: null,
+	smokedMalt: null,
+	// -----------
 	bitterness: null,
 	sweetness: null,
 	fullness: null,

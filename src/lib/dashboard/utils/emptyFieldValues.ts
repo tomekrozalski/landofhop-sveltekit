@@ -44,3 +44,8 @@ export const emptyAged = {
 	type: null,
 	wood: null
 };
+export const emptyIngredients = {
+	complete: true,
+	language: null,
+	list: ['']
+};

@@ -20,7 +20,7 @@
 	button {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: baseline;
 		width: 100%;
 		height: var(--size-input-height);
 		padding-bottom: 0.6rem;

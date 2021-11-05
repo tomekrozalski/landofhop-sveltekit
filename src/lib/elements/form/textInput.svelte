@@ -3,6 +3,7 @@
 	import Error from './error.svelte';
 
 	export let errors: string;
+	export let focusOnMount: boolean = false;
 	export let handleChange: (e: any) => void;
 	export let hasInvertedColors: boolean = false;
 	export let id: string = '';
@@ -10,19 +11,52 @@
 	export let isTextarea: boolean = false;
 	export let isTouched: boolean;
 	export let fieldName: string;
+	export let onEnter: () => void | null = null;
 	export let style: string = '';
 	export let type: 'email' | 'number' | 'password' | 'text' = 'text';
 	export let value: string | null;
 	$: disabled = isDisabled || value === null;
 
+	function dispatchKeydown(e) {
+		if (onEnter && e.key === 'Enter') {
+			e.preventDefault();
+			onEnter();
+		}
+	}
+
+	function listenOnKeydown(node: any) {
+		node.addEventListener('keydown', dispatchKeydown);
+
+		return {
+			destroy() {
+				node.removeEventListener('keydown', dispatchKeydown);
+			}
+		};
+	}
+
 	function typeAction(node: any) {
 		node.type = type;
+	}
+
+	function focus(node: any) {
+		if (focusOnMount) {
+			node.focus();
+		}
 	}
 </script>
 
 <StatusIndicator {disabled} {isTouched} isValid={!errors} {style}>
 	{#if isTextarea}
-		<textarea class:isTouched {disabled} {id} name={fieldName} on:change={handleChange} {value} />
+		<textarea
+			class:isTouched
+			{disabled}
+			{id}
+			name={fieldName}
+			on:change={handleChange}
+			use:focus
+			use:listenOnKeydown
+			{value}
+		/>
 	{:else}
 		<input
 			class:hasInvertedColors
@@ -30,6 +64,8 @@
 			{disabled}
 			{id}
 			name={fieldName}
+			use:focus
+			use:listenOnKeydown
 			use:typeAction
 			on:change={handleChange}
 			{value}

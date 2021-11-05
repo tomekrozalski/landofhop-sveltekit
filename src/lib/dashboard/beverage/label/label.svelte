@@ -22,6 +22,7 @@
 	import Fullness from '$lib/dashboard/fields/fullness.svelte';
 	import Hoppyness from '$lib/dashboard/fields/hoppyness.svelte';
 	import HopRate from '$lib/dashboard/fields/hopRate.svelte';
+	import Ingredients from '$lib/dashboard/fields/ingredients/ingredients.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Nitrogen from '$lib/dashboard/fields/nitrogen.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
@@ -115,9 +116,12 @@
 		<Grid columns={2} isOptional>
 			<ExpirationDate {formName} {formData} />
 		</Grid>
-		<!-- <IngredientsDescription {formName} {formData} /> -->
-		<!-- <IngredientsSelect {formName} {formData} /> -->
-		<!-- <SmokedMalt {formName} {formData} /> -->
+		<h3><span>{$translate('dashboard.beverage.ingredientsInfo')}</span></h3>
+		<Grid>
+			<Ingredients {formName} {formData} />
+		</Grid>
+		<!-- <IngredientTags form="label" /> -->
+		<!-- <SmokedMalt form="label" /> -->
 		<h3><span>{$translate('dashboard.beverage.impressionsInfo')}</span></h3>
 		<Grid isOptional>
 			<Bitterness {formName} {formData} />

@@ -23,7 +23,7 @@
 
 <style>
 	button {
-		grid-column: span 1;
+		grid-column: 2/3;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -35,10 +35,10 @@
 	}
 
 	button.wide {
-		grid-column: span 2;
+		grid-column: 2/4;
 	}
 
 	button.wider {
-		grid-column: span 3;
+		grid-column: 2/5;
 	}
 </style>

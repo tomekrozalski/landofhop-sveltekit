@@ -12,6 +12,7 @@
 
 <style>
 	label {
+		grid-column: 1 / 2;
 		line-height: var(--size-input-height);
 		height: var(--size-input-height);
 		text-align: right;
