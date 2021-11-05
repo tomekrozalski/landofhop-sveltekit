@@ -38,7 +38,7 @@ export function formatTaleArray({
 }) {
 	return {
 		...(article && { article: article.trim() }),
-		...(language !== '--' && { language }),
+		language,
 		lead: lead.trim()
 	};
 }

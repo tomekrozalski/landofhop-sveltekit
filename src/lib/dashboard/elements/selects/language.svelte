@@ -12,6 +12,7 @@
 	export let isWide: boolean = false;
 	export let name: string;
 	export let updateField: (fieldName: string, value: any) => void;
+	export let withBlank: boolean = false;
 	export let validateField: (fieldName: string) => void;
 	export let value: string;
 
@@ -21,11 +22,13 @@
 		group: ['pl', 'en'].includes(value) ? 'mostPopular' : 'rest'
 	}));
 
-	languageList.unshift({
-		value: '--',
-		label: $translate('dashboard.language.notApplicable'),
-		group: 'mostPopular'
-	});
+	if (withBlank) {
+		languageList.unshift({
+			value: '--',
+			label: $translate('dashboard.language.notApplicable'),
+			group: 'mostPopular'
+		});
+	}
 
 	const items = [
 		...languageList.filter(({ group }) => group === 'mostPopular').reverse(),

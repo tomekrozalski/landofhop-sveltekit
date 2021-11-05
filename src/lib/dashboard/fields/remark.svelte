@@ -30,6 +30,7 @@
 			errors={$errors[fieldName][i]?.language ?? ''}
 			name={`${fieldName}[${i}].language`}
 			{updateField}
+			withBlank
 			{validateField}
 			bind:value={$form[fieldName][i].language}
 		/>

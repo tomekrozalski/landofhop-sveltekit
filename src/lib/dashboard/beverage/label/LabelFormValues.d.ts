@@ -82,6 +82,14 @@ export type LabelFormValues = {
 		unit: string | null;
 	};
 	// -----------
+	ingredients: {
+		complete: boolean;
+		language: string;
+		list: string[];
+	}[];
+	// ingredientTags: null,
+	// smokedMalt: null,
+	// -----------
 	bitterness: string | null;
 	sweetness: string | null;
 	fullness: string | null;
@@ -161,6 +169,14 @@ export type LabelFormOutput = {
 		value: number;
 		unit: string;
 	};
+	// -----------
+	ingredients?: {
+		complete: boolean;
+		language: string;
+		list: string[];
+	}[];
+	// ingredientTags: null,
+	// smokedMalt: null,
 	// -----------
 	bitterness?: number;
 	sweetness?: number;

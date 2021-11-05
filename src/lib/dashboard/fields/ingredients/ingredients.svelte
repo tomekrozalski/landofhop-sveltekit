@@ -7,6 +7,7 @@
 	import { emptyIngredients } from '$lib/dashboard/utils/emptyFieldValues';
 	import Item from './ingredientsItem.svelte';
 	import Complete from './complete.svelte';
+	import Preview from './preview.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -39,6 +40,7 @@
 				value={$form.ingredients[i].complete}
 			/>
 		{/if}
+		<Preview ingredients={$form.ingredients[i].list} />
 	{/each}
 {/if}
 <Plug emptyValue={emptyIngredients} {fieldName} {formData} />

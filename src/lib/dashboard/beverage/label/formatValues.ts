@@ -32,6 +32,7 @@ export default function formatValues({
 	fullness,
 	hoppyness,
 	hopRate,
+	ingredients,
 	name,
 	nitrogen,
 	pasteurization,
@@ -106,6 +107,14 @@ export default function formatValues({
 					unit: expirationDate.unit
 				}
 			}),
+		// -----------
+		...(ingredients.length && {
+			ingredients: ingredients.map(({ complete, language, list }) => ({
+				complete,
+				language,
+				list: list.map((value) => value.trim())
+			}))
+		}),
 		// -----------
 		...(bitterness && { bitterness: +bitterness }),
 		...(sweetness && { sweetness: +sweetness }),

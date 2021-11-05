@@ -184,7 +184,10 @@ export function getValidationSchema(translate) {
 		ingredients: yup.array().of(
 			yup.object().shape({
 				complete: yup.boolean().required(),
-				language: yup.string().required(translate('form.validation.required')),
+				language: yup
+					.string()
+					.typeError(translate('form.validation.required'))
+					.required(translate('form.validation.required')),
 				list: yup
 					.array()
 					.min(1, translate('form.validation.min', { value: 1 }))
