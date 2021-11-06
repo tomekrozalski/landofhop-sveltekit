@@ -28,6 +28,7 @@
 	import Price from '$lib/dashboard/fields/price.svelte';
 	import Remark from '$lib/dashboard/fields/remark.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
+	import SmokedMalt from '$lib/dashboard/fields/smokedMalt.svelte';
 	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
 	import Sweetness from '$lib/dashboard/fields/sweetness.svelte';
 	import Tale from '$lib/dashboard/fields/tale.svelte';
@@ -107,7 +108,9 @@
 		<Grid isOptional>
 			<IngredientTags {formName} {formData} />
 		</Grid>
-		<!-- <SmokedMalt form="label" /> -->
+		<Grid isOptional>
+			<SmokedMalt {formName} {formData} />
+		</Grid>
 		<h3><span>{$translate('dashboard.beverage.impressionsInfo')}</span></h3>
 		<Grid isOptional>
 			<Bitterness {formName} {formData} />

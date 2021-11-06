@@ -31,6 +31,7 @@ export default function formatValues({
 	power,
 	price,
 	series,
+	smokedMalt,
 	style,
 	sweetness,
 	remark,
@@ -102,6 +103,7 @@ export default function formatValues({
 			}))
 		}),
 		...(ingredientTags && { ingredientTags: ingredientTags.map(formatIngredientByBadge) }),
+		...(isBoolean(smokedMalt) && { smokedMalt }),
 		// -----------
 		...(bitterness && { bitterness: +bitterness }),
 		...(sweetness && { sweetness: +sweetness }),

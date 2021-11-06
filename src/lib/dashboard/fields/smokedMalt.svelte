@@ -1,0 +1,24 @@
+<script lang="ts">
+	import { translate } from 'svelte-intl';
+	import Label from '$lib/elements/form/label.svelte';
+	import Toggle from '$lib/elements/form/toggle.svelte';
+	import Conditional from '$lib/dashboard/elements/conditional.svelte';
+
+	export let formName: string;
+	export let formData: any;
+	let { form, updateField, updateTouched, validateField } = formData;
+	let fieldName = 'smokedMalt';
+	let id = `${formName}-${fieldName}`;
+</script>
+
+<Label {id}>{$translate('dashboard.label.smokedMalt')}</Label>
+<Conditional
+	{fieldName}
+	{id}
+	initialValue={false}
+	{updateField}
+	{updateTouched}
+	{validateField}
+	value={$form[fieldName]}
+/>
+<Toggle {fieldName} {id} {updateField} value={$form[fieldName]} />

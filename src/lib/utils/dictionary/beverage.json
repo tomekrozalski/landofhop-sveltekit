@@ -175,7 +175,7 @@
 		"beverage.testimonial.nitrogen": "nasycane azotem",
 		"beverage.testimonial.pasteurization": "pasteryzacja",
 		"beverage.testimonial.price": "cena",
-		"beverage.testimonial.smokedMalt": "zawiera słód suszony dymem",
+		"beverage.testimonial.smokedMalt": "zawiera słód wędzony",
 		"beverage.testimonial.temperature": "temperatura podawania",
 		"beverage.testimonial.temperatureUnit": "{unit, select, celcius {°C} other {}}",
 		"beverage.testimonial.style": "styl",

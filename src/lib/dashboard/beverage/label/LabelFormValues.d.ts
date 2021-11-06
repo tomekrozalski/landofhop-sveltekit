@@ -89,7 +89,7 @@ export type LabelFormValues = {
 		list: string[];
 	}[];
 	ingredientTags: string[] | null;
-	// smokedMalt: null,
+	smokedMalt: boolean | null;
 	// -----------
 	bitterness: string | null;
 	sweetness: string | null;
@@ -181,7 +181,7 @@ export type LabelFormOutput = {
 		name: LanguageValue[];
 		type: IngredientType;
 	}[];
-	// smokedMalt: null,
+	smokedMalt?: boolean;
 	// -----------
 	bitterness?: number;
 	sweetness?: number;

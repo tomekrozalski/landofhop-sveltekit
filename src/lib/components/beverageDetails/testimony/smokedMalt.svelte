@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import isBoolean from 'lodash.isboolean';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
 	export let details: Details;
@@ -11,14 +12,14 @@
 		{$translate('beverage.testimonial.smokedMalt')}
 	</dt>
 	<dd>
-		{#if smokedMalt.label}
+		{#if isBoolean(smokedMalt.label)}
 			<em class="label">
-				{$translate('global.confirmation')}
+				{$translate(smokedMalt.label ? 'global.confirmation' : 'global.denial')}
 			</em>
 		{/if}
-		{#if smokedMalt.producer}
+		{#if isBoolean(smokedMalt.producer)}
 			<em class="producer">
-				{$translate('global.confirmation')}
+				{$translate(smokedMalt.producer ? 'global.confirmation' : 'global.denial')}
 			</em>
 		{/if}
 	</dd>

@@ -199,6 +199,7 @@ export function getValidationSchema(translate) {
 			.of(yup.string())
 			.min(1, translate('form.validation.ingredientSelectionRequired'))
 			.nullable(true),
+		smokedMalt: yup.boolean().nullable(true),
 		// -----------
 		bitterness: yup
 			.number()
