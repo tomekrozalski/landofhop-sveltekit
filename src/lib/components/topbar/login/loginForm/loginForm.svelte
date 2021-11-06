@@ -39,7 +39,7 @@
 	const { isSubmitting } = formData;
 </script>
 
-<form on:submit={formData.handleSubmit} novalidate>
+<form on:submit={formData.handleSubmit} autocomplete="off" novalidate>
 	<Email {formName} {formData} />
 	<Password {formName} {formData} />
 	<div class="button-wrapper">

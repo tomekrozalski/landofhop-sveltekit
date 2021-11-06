@@ -14,6 +14,7 @@
 	<Label {id} isRequired>{$translate('login.email')}</Label>
 	<TextInput
 		errors={$errors.email}
+		focusOnMount
 		{handleChange}
 		hasInvertedColors
 		{id}
