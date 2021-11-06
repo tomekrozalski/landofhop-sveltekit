@@ -75,7 +75,7 @@ export type ProducerFormValues = {
 		language: string;
 		list: string[];
 	}[];
-	// ingredientTags: null,
+	ingredientTags: string[] | null;
 	// smokedMalt: null,
 	// -----------
 	bitterness: string | null;
@@ -149,7 +149,11 @@ export type ProducerFormOutput = {
 		language: string;
 		list: string[];
 	}[];
-	// ingredientTags: null,
+	ingredientTags?: {
+		badge: string;
+		name: LanguageValue[];
+		type: IngredientType;
+	}[];
 	// smokedMalt: null,
 	// -----------
 	bitterness?: number;

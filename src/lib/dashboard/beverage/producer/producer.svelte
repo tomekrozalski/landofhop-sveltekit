@@ -20,6 +20,7 @@
 	import Hoppyness from '$lib/dashboard/fields/hoppyness.svelte';
 	import HopRate from '$lib/dashboard/fields/hopRate.svelte';
 	import Ingredients from '$lib/dashboard/fields/ingredients/ingredients.svelte';
+	import IngredientTags from '$lib/dashboard/fields/ingredientTags.svelte';
 	import Nitrogen from '$lib/dashboard/fields/nitrogen.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
@@ -103,7 +104,9 @@
 		<Grid>
 			<Ingredients {formName} {formData} />
 		</Grid>
-		<!-- <IngredientTags form="label" /> -->
+		<Grid isOptional>
+			<IngredientTags {formName} {formData} />
+		</Grid>
 		<!-- <SmokedMalt form="label" /> -->
 		<h3><span>{$translate('dashboard.beverage.impressionsInfo')}</span></h3>
 		<Grid isOptional>

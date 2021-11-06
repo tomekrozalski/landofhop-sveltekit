@@ -31,6 +31,11 @@
 	--color-editorial: var(--color-brand-10);
 	--color-editorial-light: var(--color-brand-10-light);
 
+	--color-ingredients-hop: #2a9d8f;
+	--color-ingredients-malt: #264653;
+	--color-ingredients-yeast: #e9c46a;
+	--color-ingredients-appendix: #f4a261;
+
 	--font-primary: bilo, sans-serif;
 	--font-weight-light: 300;
 	--font-weight-regular: 400;

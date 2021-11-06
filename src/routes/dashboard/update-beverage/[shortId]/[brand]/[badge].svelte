@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
 	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 	import type { Place as PlaceType } from '$lib/utils/types/Place';
 	import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
@@ -16,21 +17,23 @@
 		try {
 			const { shortId, brand, badge } = page.params;
 
-			const [beverage, institutions, places]: [
+			const [beverage, ingredients, institutions, places]: [
 				DetailsAdmin,
+				IngredientType[],
 				InstitutionType[],
 				PlaceType[]
 			] = await Promise.all([
 				await serverCall(fetch, Endpoints.beverageDetailsAdmin, {
 					pathParams: [shortId, brand, badge]
 				}),
+				serverCall(fetch, Endpoints.ingredients),
 				serverCall(fetch, Endpoints.institutions),
 				serverCall(fetch, Endpoints.places)
 			]);
 
-			return { props: { beverage, institutions, places } };
+			return { props: { beverage, ingredients, institutions, places } };
 		} catch {
-			return { props: { beverage: null, institutions: [], places: [] } };
+			return { props: { beverage: null, ingredients: [], institutions: [], places: [] } };
 		}
 	}
 </script>
@@ -42,6 +45,7 @@
 	import dictionary from '$lib/utils/dictionary/dashboard.json';
 	import {
 		editorialStore,
+		ingredientsStore,
 		institutionStore,
 		labelStore,
 		placeStore,
@@ -52,9 +56,11 @@
 	translations.update(dictionary as Translations);
 
 	export let beverage: DetailsAdmin | null;
+	export let ingredients: IngredientType[];
 	export let institutions: InstitutionType[];
 	export let places: PlaceType[];
 
+	ingredientsStore.set(ingredients);
 	institutionStore.set(institutions);
 	placeStore.set(places);
 

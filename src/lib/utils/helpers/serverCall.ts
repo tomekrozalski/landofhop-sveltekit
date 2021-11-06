@@ -14,6 +14,7 @@ export enum Endpoints {
 	beverageSearch = 'beverage/search',
 	beverageStats = 'beverage/stats',
 	beverageTotal = 'beverage/total',
+	ingredients = 'admin/ingredient',
 	institutions = 'admin/institution',
 	places = 'admin/place',
 	unauthorize = 'unauthorize',
@@ -48,7 +49,8 @@ function serverCall(fetch, endpoint: Endpoints, props?: Props) {
 		Endpoints.beverageDetailsAdmin,
 		Endpoints.updateBeverage,
 		Endpoints.places,
-		Endpoints.addPlace
+		Endpoints.addPlace,
+		Endpoints.ingredients
 	].includes(endpoint);
 
 	return fetch(completeUrl, {

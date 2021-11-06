@@ -1,6 +1,7 @@
 import isBoolean from 'lodash.isboolean';
 import {
 	formatDateFromString,
+	formatIngredientByBadge,
 	formatInstitutionByShortId,
 	formatLanguageValueArray,
 	formatPlaceByShortId,
@@ -23,6 +24,7 @@ export default function formatValues({
 	hoppyness,
 	hopRate,
 	ingredients,
+	ingredientTags,
 	nitrogen,
 	pasteurization,
 	place,
@@ -99,6 +101,7 @@ export default function formatValues({
 				list: list.map((value) => value.trim())
 			}))
 		}),
+		...(ingredientTags && { ingredientTags: ingredientTags.map(formatIngredientByBadge) }),
 		// -----------
 		...(bitterness && { bitterness: +bitterness }),
 		...(sweetness && { sweetness: +sweetness }),

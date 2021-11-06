@@ -1,18 +1,24 @@
 <script context="module" lang="ts">
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
 	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 	import type { Place as PlaceType } from '$lib/utils/types/Place';
 
 	export async function load({ fetch }) {
 		try {
-			const [institutions, places]: [InstitutionType[], PlaceType[]] = await Promise.all([
+			const [ingredients, institutions, places]: [
+				IngredientType[],
+				InstitutionType[],
+				PlaceType[]
+			] = await Promise.all([
+				serverCall(fetch, Endpoints.ingredients),
 				serverCall(fetch, Endpoints.institutions),
 				serverCall(fetch, Endpoints.places)
 			]);
 
-			return { props: { institutions, places } };
+			return { props: { ingredients, institutions, places } };
 		} catch {
-			return { props: { institutions: [], places: [] } };
+			return { props: { ingredients: [], institutions: [], places: [] } };
 		}
 	}
 </script>
@@ -24,6 +30,7 @@
 	import dictionary from '$lib/utils/dictionary/dashboard.json';
 	import {
 		editorialStore,
+		ingredientsStore,
 		institutionStore,
 		labelStore,
 		placeStore,
@@ -36,9 +43,11 @@
 
 	translations.update(dictionary as Translations);
 
+	export let ingredients: IngredientType[];
 	export let institutions: InstitutionType[];
 	export let places: PlaceType[];
 
+	ingredientsStore.set(ingredients);
 	institutionStore.set(institutions);
 	placeStore.set(places);
 	labelStore.set(initialLabelValues);

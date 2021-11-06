@@ -3,6 +3,8 @@
 	import isArray from 'lodash.isarray';
 	import isEmpty from 'lodash.isempty';
 	import Error from '$lib/elements/form/error.svelte';
+	import Item from './elements/item.svelte';
+	import MultiSelection from './elements/multiSelection.svelte';
 
 	type SelectType = { value: string; label: string };
 	export let errors: string | string[];
@@ -26,7 +28,9 @@
 		{id}
 		isDisabled={isDisabled || value === null}
 		{isMulti}
+		{Item}
 		{items}
+		{MultiSelection}
 		on:select={setValue}
 		showChevron={true}
 		value={isEmpty(value) ? '' : value}
@@ -83,7 +87,7 @@
 		--multiItemPadding: 0 0 0 1rem;
 		--multiItemHeight: calc(var(--size-input-height) - 0.8rem);
 		--multiItemBG: var(--color-brand-10-light);
-		--multiClearBG: var(--color-brand-10-light);
+		--multiClearBG: none;
 		--multiItemActiveBG: var(--color-brand-10-light);
 		--multiItemActiveColor: var(--color-black);
 		--multiClearHoverFill: var(--color-white);

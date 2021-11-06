@@ -16,7 +16,8 @@ import {
 	ContainerUnit,
 	ExtractRelate,
 	ExtractUnit,
-	Fermentation
+	Fermentation,
+	IngredientType
 } from '$lib/utils/enums/Beverage.enum';
 
 export type LabelFormValues = {
@@ -87,7 +88,7 @@ export type LabelFormValues = {
 		language: string;
 		list: string[];
 	}[];
-	// ingredientTags: null,
+	ingredientTags: string[] | null;
 	// smokedMalt: null,
 	// -----------
 	bitterness: string | null;
@@ -175,7 +176,11 @@ export type LabelFormOutput = {
 		language: string;
 		list: string[];
 	}[];
-	// ingredientTags: null,
+	ingredientTags?: {
+		badge: string;
+		name: LanguageValue[];
+		type: IngredientType;
+	}[];
 	// smokedMalt: null,
 	// -----------
 	bitterness?: number;

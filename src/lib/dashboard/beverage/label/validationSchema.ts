@@ -194,6 +194,11 @@ export function getValidationSchema(translate) {
 					.of(yup.string().min(3, translate('form.validation.minChars', { value: 3 })))
 			})
 		),
+		ingredientTags: yup
+			.array()
+			.of(yup.string())
+			.min(1, translate('form.validation.ingredientSelectionRequired'))
+			.nullable(true),
 		// -----------
 		bitterness: yup
 			.number()
