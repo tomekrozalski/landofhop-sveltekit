@@ -3,6 +3,7 @@
 	import isArray from 'lodash.isarray';
 	import isString from 'lodash.isstring';
 
+	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
 	import { getFromArray } from '$lib/dashboard/utils/getFromArray';
 	import { ingredientsStore } from '$lib/dashboard/utils/stores';
 	import SelectWrapper from './selectWrapper.svelte';
@@ -13,6 +14,7 @@
 	export let isDisabled: boolean = false;
 	export let isMulti: boolean = false;
 	export let setValue: (event: any) => void;
+	export let filter: IngredientType = null;
 	export let value: string | string[] | null;
 
 	function getSelectValue(value) {
@@ -28,6 +30,7 @@
 	}
 
 	$: items = $ingredientsStore
+		.filter(({ type }) => (filter ? type === filter : true))
 		.map(({ badge, name, type }) => ({
 			label: getFromArray(name, 'pl').value,
 			value: badge,

@@ -1,39 +1,29 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
-	import OpenModal from '$lib/dashboard/elements/openModal.svelte';
 	import IngredientSelect from '$lib/dashboard/elements/selects/ingredient.svelte';
 	import Conditional from '$lib/dashboard/elements/conditional.svelte';
-	import AddNewIngredient from '$lib/dashboard/modals/addNewIngredient/addNewIngredient.svelte';
 
 	export let formName: string;
 	export let formData: any;
 	let { errors, form, updateField, updateTouched, validateField } = formData;
-	let fieldName = 'ingredientTags';
+	let fieldName = 'parent';
 	let id = `${formName}-${fieldName}`;
 
 	function handleClear() {
-		updateField(fieldName, []);
+		updateField(fieldName, '');
 	}
 
 	function setValue(event) {
-		if (event?.detail) {
-			updateField(
-				fieldName,
-				event.detail.map(({ value }) => value)
-			);
-			validateField(fieldName);
-		}
+		updateField(fieldName, event.detail.value);
+		validateField(fieldName);
 	}
-
-	let isModalOpen = false;
 </script>
 
-<Label {id}>{$translate('dashboard.label.ingredientTags')}</Label>
+<Label {id}>{$translate('dashboard.label.parentIngredient')}</Label>
 <Conditional
 	{fieldName}
 	{id}
-	initialValue={[]}
 	{updateField}
 	{updateTouched}
 	{validateField}
@@ -41,13 +31,10 @@
 />
 <IngredientSelect
 	errors={$errors[fieldName]}
+	filter={$form.type}
 	{handleClear}
 	id={$form[fieldName] !== null && id}
-	isMulti
+	isDisabled={!$form.type}
 	{setValue}
 	bind:value={$form[fieldName]}
 />
-<OpenModal open={() => (isModalOpen = true)} />
-{#if isModalOpen}
-	<AddNewIngredient close={() => (isModalOpen = false)} />
-{/if}
