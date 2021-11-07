@@ -1,6 +1,7 @@
 import isBoolean from 'lodash.isboolean';
 import {
 	formatDateFromString,
+	formatIngredientByBadge,
 	formatInstitutionByShortId,
 	formatLanguageValueArray,
 	formatPlaceByShortId,
@@ -13,6 +14,7 @@ export default function formatValues({
 	alcoholScope,
 	contract,
 	cooperation,
+	dryHopped,
 	fermentation,
 	filtration,
 	nitrogen,
@@ -48,6 +50,8 @@ export default function formatValues({
 				...(props.previousContent.length && { previousContent: props.previousContent })
 			}))
 		}),
+		...(dryHopped && !dryHopped.length && { isDryHopped: true }),
+		...(dryHopped && dryHopped.length && { dryHopped: dryHopped.map(formatIngredientByBadge) }),
 		...(isBoolean(nitrogen) && { nitrogen }),
 		// -----------
 		...(price.length && {

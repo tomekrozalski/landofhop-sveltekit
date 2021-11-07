@@ -12,6 +12,7 @@
 	import Bitterness from '$lib/dashboard/fields/bitterness.svelte';
 	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
+	import DryHopped from '$lib/dashboard/fields/dryHopped.svelte';
 	import ExpirationDate from '$lib/dashboard/fields/expirationDate.svelte';
 	import Extract from '$lib/dashboard/fields/extract.svelte';
 	import Fermentation from '$lib/dashboard/fields/fermentation.svelte';
@@ -91,6 +92,9 @@
 		</Grid>
 		<Grid>
 			<Aged {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<DryHopped {formName} {formData} />
 		</Grid>
 		<Grid columns={2} isOptional>
 			<HopRate {formName} {formData} />

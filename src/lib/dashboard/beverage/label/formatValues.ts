@@ -26,6 +26,7 @@ export default function formatValues({
 	container,
 	contract,
 	cooperation,
+	dryHopped,
 	expirationDate,
 	extract,
 	fermentation,
@@ -95,6 +96,8 @@ export default function formatValues({
 				...(props.previousContent.length && { previousContent: props.previousContent })
 			}))
 		}),
+		...(dryHopped && !dryHopped.length && { isDryHopped: true }),
+		...(dryHopped && dryHopped.length && { dryHopped: dryHopped.map(formatIngredientByBadge) }),
 		...(hopRate.value &&
 			hopRate.unit && {
 				hopRate: {

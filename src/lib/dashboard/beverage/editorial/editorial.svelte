@@ -13,6 +13,7 @@
 	import AlcoholScope from '$lib/dashboard/fields/alcoholScope.svelte';
 	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
+	import DryHopped from '$lib/dashboard/fields/dryHopped.svelte';
 	import Fermentation from '$lib/dashboard/fields/fermentation.svelte';
 	import Filtration from '$lib/dashboard/fields/filtration.svelte';
 	import Nitrogen from '$lib/dashboard/fields/nitrogen.svelte';
@@ -72,6 +73,9 @@
 		</Grid>
 		<Grid>
 			<Aged {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<DryHopped {formName} {formData} />
 		</Grid>
 		<Grid isOptional>
 			<Nitrogen {formName} {formData} />

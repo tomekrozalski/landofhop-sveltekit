@@ -36,6 +36,7 @@ export type EditorialFormValues = {
 		type: AgedType | null;
 		wood: AgedWood | null;
 	}[];
+	dryHopped: string[] | null;
 	nitrogen: boolean | null;
 	// -----------
 	price: {
@@ -71,6 +72,12 @@ export type EditorialFormOutput = {
 		};
 		type?: AgedType;
 		wood?: AgedWood;
+	}[];
+	isDryHopped?: boolean;
+	dryHopped?: {
+		badge: string;
+		name: LanguageValue[];
+		type: IngredientType;
 	}[];
 	nitrogen?: boolean;
 	// -----------

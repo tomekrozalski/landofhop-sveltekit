@@ -73,6 +73,7 @@ export type LabelFormValues = {
 		type: AgedType | null;
 		wood: AgedWood | null;
 	}[];
+	dryHopped: string[] | null;
 	hopRate: {
 		value: string | null;
 		unit: string | null;
@@ -160,6 +161,12 @@ export type LabelFormOutput = {
 		};
 		type?: AgedType;
 		wood?: AgedWood;
+	}[];
+	isDryHopped?: boolean;
+	dryHopped?: {
+		badge: string;
+		name: LanguageValue[];
+		type: IngredientType;
 	}[];
 	hopRate?: {
 		value: number;

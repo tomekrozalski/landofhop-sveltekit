@@ -32,6 +32,7 @@ export const initialValues = {
 	filtration: null,
 	pasteurization: null,
 	aged: [],
+	dryHopped: null,
 	hopRate: {
 		value: null,
 		unit: null

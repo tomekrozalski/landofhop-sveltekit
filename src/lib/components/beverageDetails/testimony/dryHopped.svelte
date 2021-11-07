@@ -37,5 +37,17 @@
 				</FormattedList>
 			</span>
 		{/if}
+		{#if isDryHopped?.editorial}
+			<span class="editorial">
+				<em>{$translate('global.confirmation')}</em>
+			</span>
+		{/if}
+		{#if dryHopped?.editorial}
+			<span class="editorial">
+				<FormattedList mode="short" let:item data={dryHopped.editorial}>
+					<MarkLanguage editorial tag="em" name={item.name} />
+				</FormattedList>
+			</span>
+		{/if}
 	</dd>
 {/if}

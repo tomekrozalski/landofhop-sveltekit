@@ -130,6 +130,7 @@ export function getValidationSchema(translate) {
 				previousContent: yup.array().of(yup.string())
 			})
 		),
+		dryHopped: yup.array().of(yup.string()).nullable(true),
 		hopRate: yup
 			.object()
 			.shape({
