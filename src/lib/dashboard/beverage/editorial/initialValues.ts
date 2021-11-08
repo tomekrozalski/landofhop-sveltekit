@@ -13,6 +13,9 @@ export const initialValues = {
 	dryHopped: null,
 	nitrogen: null,
 	// -----------
+	color: null,
+	clarity: null,
+	// -----------
 	price: [],
 	notes: null
 };

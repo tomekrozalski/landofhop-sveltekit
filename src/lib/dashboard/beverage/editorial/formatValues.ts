@@ -12,6 +12,8 @@ import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormVa
 export default function formatValues({
 	aged,
 	alcoholScope,
+	clarity,
+	color,
 	contract,
 	cooperation,
 	dryHopped,
@@ -53,6 +55,9 @@ export default function formatValues({
 		...(dryHopped && !dryHopped.length && { isDryHopped: true }),
 		...(dryHopped && dryHopped.length && { dryHopped: dryHopped.map(formatIngredientByBadge) }),
 		...(isBoolean(nitrogen) && { nitrogen }),
+		// -----------
+		...(color && { color }),
+		...(clarity && { clarity }),
 		// -----------
 		...(price.length && {
 			price: price.map(({ currency, date, shop, value }) => ({

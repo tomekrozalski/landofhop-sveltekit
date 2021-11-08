@@ -7,6 +7,7 @@ import {
 	AgedType,
 	AgedWood,
 	AlcoholScope,
+	Clarity,
 	Fermentation
 } from '$lib/utils/enums/Beverage.enum';
 
@@ -38,6 +39,9 @@ export type EditorialFormValues = {
 	}[];
 	dryHopped: string[] | null;
 	nitrogen: boolean | null;
+	// -----------
+	color: string | null;
+	clarity: Clarity | null;
 	// -----------
 	price: {
 		currency: string;
@@ -80,6 +84,9 @@ export type EditorialFormOutput = {
 		type: IngredientType;
 	}[];
 	nitrogen?: boolean;
+	// -----------
+	color?: string;
+	clarity?: Clarity;
 	// -----------
 	price?: Price[];
 	notes?: string;

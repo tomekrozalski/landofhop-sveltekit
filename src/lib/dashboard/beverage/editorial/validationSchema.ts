@@ -1,6 +1,12 @@
 import * as yup from 'yup';
 
-import { AgedTimeUnit, AgedType, AgedWood, Fermentation } from '$lib/utils/enums/Beverage.enum';
+import {
+	AgedTimeUnit,
+	AgedType,
+	AgedWood,
+	Clarity,
+	Fermentation
+} from '$lib/utils/enums/Beverage.enum';
 import { isValidDate } from '$lib/dashboard/utils/isValidDate';
 
 export function getValidationSchema(translate) {
@@ -72,6 +78,21 @@ export function getValidationSchema(translate) {
 		),
 		dryHopped: yup.array().of(yup.string()).nullable(true),
 		nitrogen: yup.boolean().nullable(true),
+		// -----------
+		color: yup
+			.mixed()
+			.test(
+				'is-color',
+				translate('form.validation.incorrectColorFormat'),
+				(value) => value === null || value.match(/^#[0-9abcdef]{6}$/)
+			),
+		clarity: yup
+			.mixed()
+			.test(
+				'is-clarity',
+				translate('form.validation.required'),
+				(value) => value === null || Object.values(Clarity).includes(value)
+			),
 		// -----------
 		price: yup.array().of(
 			yup.object().shape({

@@ -5,9 +5,11 @@
 
 	export let details: Details;
 	const { bitterness, clarity, color, fullness, hoppyness, power, sweetness } = details;
+
+	console.log('details', details);
 </script>
 
-{#if bitterness || fullness || hoppyness || power || sweetness}
+{#if bitterness || clarity || color || fullness || hoppyness || power || sweetness}
 	<div>
 		{#if bitterness || fullness || hoppyness || power || sweetness}
 			<dl>
@@ -101,22 +103,12 @@
 		{#if clarity || color}
 			<dl>
 				{#if color}
-					<dt>
-						{$translate('beverage.impressions.color')}
-					</dt>
-					<dd>{color.editorial}</dd>
+					<dt>{$translate('beverage.impressions.color')}</dt>
+					<dd><div class="color-sample" style="background-color: {color.editorial}" /></dd>
 				{/if}
 				{#if clarity}
-					<dt>
-						{$translate('beverage.impressions.clarity')}
-					</dt>
-					<dd>
-						{#if isNumber(clarity.editorial)}
-							<progress max="100" value={clarity.editorial}>
-								{clarity.editorial}%
-							</progress>
-						{/if}
-					</dd>
+					<dt>{$translate('beverage.impressions.clarity')}</dt>
+					<dd>{$translate(`beverage.clarity.${clarity.editorial}`)}</dd>
 				{/if}
 			</dl>
 		{/if}
@@ -189,6 +181,13 @@
 
 	progress::-webkit-progress-bar {
 		background-color: var(--color-grey-4);
+	}
+
+	.color-sample {
+		display: inline-block;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 50%;
 	}
 
 	@media (--lg) {

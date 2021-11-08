@@ -11,6 +11,8 @@
 	import Button from '$lib/elements/form/button.svelte';
 	import Aged from '$lib/dashboard/fields/aged/aged.svelte';
 	import AlcoholScope from '$lib/dashboard/fields/alcoholScope.svelte';
+	import Clarity from '$lib/dashboard/fields/clarity.svelte';
+	import Color from '$lib/dashboard/fields/color.svelte';
 	import Contract from '$lib/dashboard/fields/contract.svelte';
 	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
 	import DryHopped from '$lib/dashboard/fields/dryHopped.svelte';
@@ -80,12 +82,17 @@
 		<Grid isOptional>
 			<Nitrogen {formName} {formData} />
 		</Grid>
+		<h3><span>{$translate('dashboard.beverage.impressionsInfo')}</span></h3>
+		<Grid isOptional>
+			<Color {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Clarity {formName} {formData} />
+		</Grid>
 		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>
 			<Price {formName} {formData} />
 		</Grid>
-		<!-- <Added form="editorial" /> -->
-		<!-- <Updated form="editorial" /> -->
 		<Grid isOptional>
 			<Notes {formName} {formData} />
 		</Grid>
