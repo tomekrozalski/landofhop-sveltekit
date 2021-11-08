@@ -24,7 +24,7 @@
 	import Place from '$lib/dashboard/fields/place.svelte';
 	import Price from '$lib/dashboard/fields/price.svelte';
 	import Remark from '$lib/dashboard/fields/remark.svelte';
-	import StyleBeverage from '$lib/dashboard/fields/style.svelte';
+	import StyleTags from '$lib/dashboard/fields/styleTags.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
@@ -61,8 +61,8 @@
 		<Grid isOptional>
 			<Fermentation {formName} {formData} />
 		</Grid>
-		<Grid columns={2}>
-			<StyleBeverage {formName} {formData} />
+		<Grid isOptional>
+			<StyleTags {formName} {formData} />
 		</Grid>
 		<Grid isOptional>
 			<AlcoholScope {formName} {formData} />

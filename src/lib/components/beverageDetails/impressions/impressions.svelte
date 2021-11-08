@@ -5,8 +5,6 @@
 
 	export let details: Details;
 	const { bitterness, clarity, color, fullness, hoppyness, power, sweetness } = details;
-
-	console.log('details', details);
 </script>
 
 {#if bitterness || clarity || color || fullness || hoppyness || power || sweetness}

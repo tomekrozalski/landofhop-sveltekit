@@ -3,6 +3,7 @@
 		"dashboard.addNewIngredient": "Add new ingredient",
 		"dashboard.addNewInstitution": "Add new institution",
 		"dashboard.addNewPlace": "Add new place",
+		"dashboard.addNewStyle": "Add new style",
 		"dashboard.aged.method": "Method {value]",
 		"dashboard.aged.previousContent.bourbon": "bourbon",
 		"dashboard.aged.previousContent.cognac": "koniak",
@@ -118,6 +119,8 @@
 		"dashboard.label.series": "Series",
 		"dashboard.label.smokedMalt": "Contains malt dried with smoke",
 		"dashboard.label.style": "Style",
+		"dashboard.label.styleTag": "Tagi stylu",
+		"dashboard.label.styleTags": "Style tags",
 		"dashboard.label.sweetness": "Sweetness",
 		"dashboard.label.tale": "Description",
 		"dashboard.label.temperature": "Recommended serving temperature",
@@ -157,6 +160,7 @@
 		"form.validation.min": "Minimum value: {value}",
 		"form.validation.minChars": "Minimum allowed chars are {value}",
 		"form.validation.max": "Maximum value: {value}",
+		"form.validation.tagSelectionRequired": "At least one tag required",
 		"form.validation.typeErrorNumber": "Number required",
 		"form.validation.wrongDate": "Wrong date value"
 	},
@@ -164,6 +168,7 @@
 		"dashboard.addNewIngredient": "Dodaj nowy składnik",
 		"dashboard.addNewInstitution": "Dodaj nową instytucję",
 		"dashboard.addNewPlace": "Dodaj nowe miejsce",
+		"dashboard.addNewStyle": "Dodaj nowy styl",
 		"dashboard.aged.method": "Sposób {value}",
 		"dashboard.aged.previousContent.bourbon": "bourbon",
 		"dashboard.aged.previousContent.cognac": "koniak",
@@ -279,6 +284,7 @@
 		"dashboard.label.series": "Seria",
 		"dashboard.label.smokedMalt": "Zawiera słód suszony dymem",
 		"dashboard.label.style": "Styl",
+		"dashboard.label.styleTags": "Tagi stylu",
 		"dashboard.label.sweetness": "Słodycz",
 		"dashboard.label.tale": "Opis",
 		"dashboard.label.temperature": "Zalecana temperatura podawania",
@@ -318,6 +324,7 @@
 		"form.validation.min": "Minimalna wartość: {value}",
 		"form.validation.minChars": "Wymagane minimum {value} znaków",
 		"form.validation.max": "Maksymalna wartość: {value}",
+		"form.validation.tagSelectionRequired": "Wymagany przynajmniej jeden tag",
 		"form.validation.typeErrorNumber": "Wymagana cyfra",
 		"form.validation.wrongDate": "Błędny format daty"
 	}

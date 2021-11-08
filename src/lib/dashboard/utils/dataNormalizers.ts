@@ -1,6 +1,11 @@
 import { get } from 'svelte/store';
 import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
-import { ingredientsStore, institutionStore, placeStore } from '$lib/dashboard/utils/stores';
+import {
+	ingredientsStore,
+	institutionStore,
+	placeStore,
+	styleStore
+} from '$lib/dashboard/utils/stores';
 
 export function formatInstitutionByShortId(value: string) {
 	const selectedInstitution = get(institutionStore).find(({ shortId }) => shortId === value);
@@ -69,4 +74,10 @@ export function formatIngredientByBadge(value: string) {
 	const { badge, name, type } = get(ingredientsStore).find(({ badge }) => badge === value);
 
 	return { badge, name, type };
+}
+
+export function formatStyleByBadge(value: string) {
+	const { badge, name } = get(styleStore).find(({ badge }) => badge === value);
+
+	return { badge, name };
 }

@@ -5,32 +5,32 @@
 	import MarkLanguage from '$lib/elements/markLanguage.svelte';
 
 	export let details: Details;
-	const { style } = details;
+	const { style, styleTags } = details;
 </script>
 
-{#if style}
+{#if style || styleTags}
 	<dt>
 		{$translate('beverage.testimonial.style')}
 	</dt>
 	<dd>
-		{#if style.label}
+		{#if style?.label}
 			<span>
 				<FormattedList mode="narrow" let:item data={style.label}>
 					<MarkLanguage label tag="em" name={item} />
 				</FormattedList>
 			</span>
 		{/if}
-		{#if style.producer}
+		{#if style?.producer}
 			<span>
 				<FormattedList mode="narrow" let:item data={style.producer}>
 					<MarkLanguage producer tag="em" name={item} />
 				</FormattedList>
 			</span>
 		{/if}
-		{#if style.editorial}
+		{#if styleTags?.editorial}
 			<span>
-				<FormattedList mode="narrow" let:item data={style.editorial}>
-					<MarkLanguage editorial tag="em" name={item} />
+				<FormattedList mode="narrow" let:item data={styleTags.editorial}>
+					<MarkLanguage editorial tag="em" name={item.name} />
 				</FormattedList>
 			</span>
 		{/if}

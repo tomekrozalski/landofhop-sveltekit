@@ -5,7 +5,7 @@ export const initialValues = {
 	remark: [],
 	// -----------
 	fermentation: null,
-	style: [],
+	styleTags: null,
 	alcoholScope: null,
 	filtration: null,
 	pasteurization: null,

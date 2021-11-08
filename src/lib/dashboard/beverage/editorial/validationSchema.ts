@@ -41,12 +41,11 @@ export function getValidationSchema(translate) {
 			.of(yup.mixed().oneOf(Object.values(Fermentation)))
 			.min(1)
 			.nullable(true),
-		style: yup.array().of(
-			yup.object().shape({
-				language: yup.string().required(translate('form.validation.required')),
-				value: yup.string().min(3).required()
-			})
-		),
+		styleTags: yup
+			.array()
+			.of(yup.string())
+			.min(1, translate('form.validation.tagSelectionRequired'))
+			.nullable(true),
 		alcoholScope: yup
 			.mixed()
 			.test(

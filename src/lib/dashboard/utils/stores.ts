@@ -3,6 +3,7 @@ import type { PhotosData as PhotosDataTypes } from '$lib/utils/types/Beverage/Ph
 import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
 import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 import type { Place as PlaceType } from '$lib/utils/types/Place';
+import type { Style as StyleType } from '$lib/utils/types/Style';
 import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
 import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
 import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
@@ -18,3 +19,4 @@ export const labelStore = writable<LabelFormValues>(initialLabelValues);
 export const page = writable<'label' | 'producer' | 'editorial'>('label');
 export const placeStore = writable<PlaceType[]>([]);
 export const producerStore = writable<ProducerFormValues>(initialProducerValues);
+export const styleStore = writable<StyleType[]>([]);

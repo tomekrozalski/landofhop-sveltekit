@@ -5,6 +5,7 @@ import {
 	formatInstitutionByShortId,
 	formatLanguageValueArray,
 	formatPlaceByShortId,
+	formatStyleByBadge,
 	parseFieldNumber
 } from '$lib/dashboard/utils/dataNormalizers';
 import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormValues';
@@ -25,7 +26,7 @@ export default function formatValues({
 	place,
 	price,
 	remark,
-	style
+	styleTags
 }: EditorialFormValues): EditorialFormOutput {
 	return {
 		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
@@ -35,7 +36,7 @@ export default function formatValues({
 		...(remark.length && { remark: formatLanguageValueArray(remark) }),
 		// -----------
 		...(fermentation && fermentation.length && { fermentation }),
-		...(style.length && { style: formatLanguageValueArray(style) }),
+		...(styleTags && { styleTags: styleTags.map(formatStyleByBadge) }),
 		...(alcoholScope && { alcoholScope }),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),

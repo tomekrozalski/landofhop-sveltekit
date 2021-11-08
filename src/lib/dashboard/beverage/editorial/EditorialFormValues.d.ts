@@ -21,10 +21,7 @@ export type EditorialFormValues = {
 	}[];
 	// -----------
 	fermentation: Fermentation[] | null;
-	style: {
-		language: string;
-		value: string;
-	}[];
+	styleTags: string[] | null;
 	alcoholScope: AlcoholScope | null;
 	filtration: boolean | null;
 	pasteurization: boolean | null;
@@ -64,7 +61,10 @@ export type EditorialFormOutput = {
 	remark?: LanguageValue[];
 	// -----------
 	fermentation?: Fermentation[];
-	style?: LanguageValue[];
+	styleTags?: {
+		badge: string;
+		name: LanguageValue[];
+	}[];
 	alcoholScope?: AlcoholScope;
 	filtration?: boolean;
 	pasteurization?: boolean;
