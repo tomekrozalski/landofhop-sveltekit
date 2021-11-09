@@ -7,11 +7,13 @@ type Input = {
 		value: string;
 		language: string;
 	}[];
+	group: string;
 };
 
-export default function formatValues({ badge, name }: Input): Style {
+export default function formatValues({ badge, name, group }: Input): Style {
 	return {
 		badge: badge.trim(),
-		name: formatLanguageValueArray(name)
+		name: formatLanguageValueArray(name),
+		group
 	};
 }

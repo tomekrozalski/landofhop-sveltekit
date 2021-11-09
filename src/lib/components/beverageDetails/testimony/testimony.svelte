@@ -16,6 +16,7 @@
 	import Ingredients from './ingredients.svelte';
 	import Nitrogen from './nitrogen.svelte';
 	import SmokedMalt from './smokedMalt.svelte';
+	import StyleTags from './styleTags.svelte';
 	import Temperature from './temperature.svelte';
 	import Container from './container.svelte';
 	import Price from './price.svelte';
@@ -34,6 +35,7 @@
 	<Pasteurization {details} />
 	<Aged {details} />
 	<BeverageStyle {details} />
+	<StyleTags {details} />
 	<DryHopped {details} />
 	<HopRate {details} />
 	<Nitrogen {details} />

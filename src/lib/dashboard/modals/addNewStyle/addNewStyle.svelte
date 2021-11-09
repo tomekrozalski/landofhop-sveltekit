@@ -7,6 +7,7 @@
 	import Button from '$lib/elements/form/button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
+	import StyleGroup from '$lib/dashboard/fields/styleGroup.svelte';
 	import ModalWrapper from '../modalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
 	import { initialValues } from './initialValues';
@@ -34,6 +35,9 @@
 		</ModalGrid>
 		<ModalGrid columns={2}>
 			<Name {formName} {formData} />
+		</ModalGrid>
+		<ModalGrid>
+			<StyleGroup {formName} {formData} />
 		</ModalGrid>
 		<ButtonWrapper modal>
 			<Button isIrreversible isSubmitting={$isSubmitting} type="submit">
