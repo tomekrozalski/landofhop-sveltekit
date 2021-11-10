@@ -2,6 +2,7 @@
 	import { translate } from 'svelte-intl';
 
 	import Navigation from '$lib/dashboard/elements/navigation.svelte';
+	import Cap from './cap.svelte';
 	import Cover from './cover.svelte';
 	import Gallery from './gallery.svelte';
 </script>
@@ -11,4 +12,5 @@
 	<Navigation />
 	<Cover />
 	<Gallery />
+	<Cap />
 </article>

@@ -1,3 +1,5 @@
+import type { ContainerType } from '$lib/utils/enums/Beverage.enum';
+
 export type PhotosData = {
 	cap?: boolean;
 	cover?: {
@@ -10,3 +12,6 @@ export type PhotosData = {
 		gallery?: string;
 	};
 };
+
+// Type for dashboard update beverage photos
+export type PhotosDataWithContainerType = PhotosData & { type: ContainerType };

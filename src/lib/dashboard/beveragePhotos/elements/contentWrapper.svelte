@@ -1,8 +1,9 @@
 <script lang="ts">
-	export let isEmpty: boolean;
+	export let isEmpty: boolean = false;
+	export let isCap: boolean = false;
 </script>
 
-<div class:isEmpty>
+<div class:isEmpty class:isCap>
 	<slot />
 </div>
 
@@ -15,6 +16,10 @@
 
 	div.isEmpty {
 		height: 54rem;
+	}
+
+	div.isCap {
+		height: 26.4rem;
 	}
 
 	div :global(.icon-warning) {

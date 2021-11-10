@@ -3,7 +3,7 @@ import {
 	ContainerMaterial,
 	ContainerType,
 	ContainerUnit
-} from 'utils/enums/Beverage';
+} from '$lib/utils/enums/Beverage.enum';
 
 export type Container = {
 	color: ContainerColor;

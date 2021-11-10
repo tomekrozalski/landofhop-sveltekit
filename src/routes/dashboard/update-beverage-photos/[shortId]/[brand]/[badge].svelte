@@ -1,12 +1,12 @@
 <script context="module" lang="ts">
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
-	import type { PhotosData as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
+	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 
 	export async function load({ fetch, page }) {
 		try {
-			const { shortId, brand, badge } = page.params;
+			const { shortId } = page.params;
 			const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.beveragePhotos, {
-				pathParams: [shortId, brand, badge]
+				pathParams: [shortId]
 			});
 			return { props: { photosData } };
 		} catch {

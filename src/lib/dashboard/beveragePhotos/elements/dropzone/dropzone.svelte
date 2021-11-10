@@ -45,6 +45,7 @@
 		background-color: var(--color-grey-5);
 		cursor: pointer;
 		position: relative;
+		overflow: hidden;
 	}
 
 	:global(.dropzone-wrapper:hover) {

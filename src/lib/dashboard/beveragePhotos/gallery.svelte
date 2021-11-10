@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
-	import type { PhotosData as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
+	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
 	import InlineSpinner from '$lib/elements/form/inlineSpinner.svelte';
 	import WarningIcon from '$lib/elements/vectors/warning.svelte';

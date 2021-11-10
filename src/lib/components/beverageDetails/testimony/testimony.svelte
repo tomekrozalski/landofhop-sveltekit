@@ -58,6 +58,7 @@
 
 	dl :global(dt) {
 		text-align: right;
+		white-space: nowrap;
 	}
 
 	dl :global(dt::after) {
