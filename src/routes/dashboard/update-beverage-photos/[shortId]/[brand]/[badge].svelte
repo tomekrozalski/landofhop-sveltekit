@@ -4,9 +4,8 @@
 
 	export async function load({ fetch, page }) {
 		try {
-			const { shortId } = page.params;
 			const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.beveragePhotos, {
-				pathParams: [shortId]
+				pathParams: [page.params.shortId]
 			});
 			return { props: { photosData } };
 		} catch {

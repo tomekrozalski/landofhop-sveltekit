@@ -18,12 +18,10 @@
 	let updated = '';
 
 	onMount(async () => {
-		const { badge, brand, shortId } = details;
-
 		const adminData: { notes?: string; updated?: string } = await serverCall(
 			fetch,
 			Endpoints.beverageAdminNotes,
-			{ pathParams: ['pl', shortId, brand.badge, badge] }
+			{ pathParams: ['pl', details.shortId] }
 		);
 
 		if (adminData.notes) {

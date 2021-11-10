@@ -3,14 +3,10 @@
 	import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
 
 	export async function load({ fetch, page }) {
-		const { brand, name, shortId } = page.params;
-
 		const augmentedBeverageDetails: AugmentedDetails = await serverCall(
 			fetch,
 			Endpoints.beverageDetails,
-			{
-				pathParams: ['pl', shortId, brand, name]
-			}
+			{ pathParams: ['pl', page.params.shortId] }
 		);
 
 		return { props: augmentedBeverageDetails };

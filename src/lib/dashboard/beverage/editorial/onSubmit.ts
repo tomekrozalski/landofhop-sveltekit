@@ -42,7 +42,7 @@ export function onSubmit(
 			await serverCall(fetch, Endpoints.updateBeverage, {
 				method: 'PUT',
 				body: JSON.stringify(completeData),
-				pathParams: [shortId, brand, badge]
+				pathParams: [shortId]
 			});
 
 			goto(`/details/${shortId}/${brand}/${badge}`);

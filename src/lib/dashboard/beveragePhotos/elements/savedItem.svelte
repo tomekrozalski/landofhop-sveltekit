@@ -18,6 +18,7 @@
 		padding: 2rem;
 		line-height: 0;
 		cursor: no-drop;
+		position: relative;
 	}
 
 	div.isCap {

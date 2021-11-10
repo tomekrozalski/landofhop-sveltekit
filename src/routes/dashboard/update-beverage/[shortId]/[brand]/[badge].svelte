@@ -16,8 +16,6 @@
 
 	export async function load({ fetch, page }) {
 		try {
-			const { shortId, brand, badge } = page.params;
-
 			const [beverage, ingredients, institutions, places, styles]: [
 				DetailsAdmin,
 				IngredientType[],
@@ -26,7 +24,7 @@
 				StyleType[]
 			] = await Promise.all([
 				await serverCall(fetch, Endpoints.beverageDetailsAdmin, {
-					pathParams: [shortId, brand, badge]
+					pathParams: [page.params.shortId]
 				}),
 				serverCall(fetch, Endpoints.ingredients),
 				serverCall(fetch, Endpoints.institutions),

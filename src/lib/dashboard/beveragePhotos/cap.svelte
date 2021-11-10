@@ -11,6 +11,7 @@
 	import SavedItem from './elements/savedItem.svelte';
 	import NoCap from './elements/noCap.svelte';
 	import Image from './elements/image.svelte';
+	import RemoveButton from './elements/removeButton.svelte';
 
 	const { badge, brand, shortId } = $page.params;
 	let version: number | null = Date.now();
@@ -33,6 +34,15 @@
 		beveragePhotosStore.set(photosData);
 		version = Date.now();
 	}
+
+	async function removeCap() {
+		const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.removeBeverageCap, {
+			method: 'DELETE',
+			pathParams: [shortId]
+		});
+
+		beveragePhotosStore.set(photosData);
+	}
 </script>
 
 {#if $beveragePhotosStore.type === ContainerType.bottle}
@@ -42,6 +52,7 @@
 			<SavedItem isCap>
 				{#if version}
 					{#if $beveragePhotosStore.cap}
+						<RemoveButton {removeCap} />
 						<Image {badge} {brand} {shortId} type="cap" {version} />
 					{:else}
 						<NoCap />

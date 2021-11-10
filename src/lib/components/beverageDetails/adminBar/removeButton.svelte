@@ -21,12 +21,11 @@
 
 	async function confirm() {
 		isSubmitting = true;
-		const { badge, brand, shortId } = details;
 
 		try {
 			await serverCall(fetch, Endpoints.beverageRemove, {
 				method: 'DELETE',
-				pathParams: [shortId, brand.badge, badge]
+				pathParams: [details.shortId]
 			});
 
 			goto('/');
