@@ -1,8 +1,10 @@
 # Land of Hop, SvelteKit edition
 
-🗓️ 27.10.2021
+🗓️ 11.11.2021
 
-I have created most basic pages: list of beverages, beverage details, about, simple statistics and dashboard where I can add and update beverages data. It went very smoothly. I had it done previously in React, so it was just rewrite ready solutions, but I am so impressed that it was so easy and the code is much more readable in Svelte. It is also much more performant.
+I have created MVP: list of beverages, beverage details, about, simple statistics and dashboard where I can add and update beverages data and photos. It went very smoothly. I had it done previously in React, so it was just rewrite ready solutions with some minor additions, but anyway I am so impressed that it was so easy and the code is much more readable in Svelte. It is also much more performant.
+
+Now I plan to create some pages to show statistics about beverages styles, ingredients and brands. It will take me a couple enjoyable months for sure.
 
 🗓️ 25.07.2021
 
