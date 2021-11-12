@@ -4,7 +4,7 @@
 	import { max } from 'd3-array';
 	import type { AddTimelineBar } from '$lib/utils/types/Beverage/Stats';
 	import IntersectionObserver from '$lib/utils/helpers/intersectionObserver.svelte';
-	import type { Sizes } from '$lib/components/stats/utils/Sizes';
+	import type { Sizes } from '$lib/components/stats/general/utils/Sizes';
 	import Xaxis from './xAxis.svelte';
 	import Yaxis from './yAxis.svelte';
 	import Bars from './bars.svelte';

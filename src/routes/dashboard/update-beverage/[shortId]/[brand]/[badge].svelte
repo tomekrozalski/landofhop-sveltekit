@@ -8,6 +8,8 @@
 	import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
 	import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
 
+	export const ssr = false;
+
 	type DetailsAdmin = {
 		label: LabelFormValues;
 		producer: ProducerFormValues;

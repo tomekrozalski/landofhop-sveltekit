@@ -2,6 +2,8 @@
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 
+	export const ssr = false;
+
 	export async function load({ fetch, page }) {
 		try {
 			const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.beveragePhotos, {

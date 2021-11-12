@@ -3,7 +3,7 @@
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
 	import type { AlcoholChartBar } from '$lib/utils/types/Beverage/Stats';
-	import type { Sizes } from '$lib/components/stats/utils/Sizes';
+	import type { Sizes } from '$lib/components/stats/general/utils/Sizes';
 	import Xaxis from './xAxis.svelte';
 	import Yaxis from './yAxis.svelte';
 	import Bars from './bars.svelte';

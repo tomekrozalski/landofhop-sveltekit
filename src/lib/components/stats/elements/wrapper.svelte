@@ -1,19 +1,27 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Stats as StatsTypes } from '$lib/utils/types/Beverage/Stats';
-	import AlcoholChart from './alcoholChart/alcoholChart.svelte';
-	import AddTimeline from './addTimeline/addTimeline.svelte';
+	import Navigation from './navigation.svelte';
 
-	export let statsData: StatsTypes;
-	const { addTimelineData, alcoholChartData } = statsData;
+	const navItems = [
+		{
+			link: '/stats',
+			name: 'Ogólne'
+		},
+		{
+			link: '/stats/styles',
+			name: 'Dotyczące stylów piwa'
+		}
+		// {
+		// 	link: '/stats/ingredients',
+		// 	name: 'Dotyczące składników'
+		// }
+	];
 </script>
 
 <article>
 	<h1>{$translate('stats.name')}</h1>
-	<AlcoholChart {alcoholChartData} />
-	<AddTimeline {addTimelineData} />
-	<!-- <FermentationTimeline data={fermentationTimelineData} /> -->
-	<!-- <TopBrandsTimeline data={topBrandsTimelineData} /> -->
+	<Navigation {navItems} />
+	<slot />
 </article>
 
 <style>

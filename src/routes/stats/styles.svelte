@@ -14,15 +14,20 @@
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/stats.json';
-	import Stats from '$lib/components/stats/stats.svelte';
+	import StatsWrapper from '$lib/components/stats/elements/wrapper.svelte';
+	import StylesStats from '$lib/components/stats/styles/styles.svelte';
 
 	translations.update(dictionary);
 
 	export let statsData: StatsTypes;
+
+	console.log('statsData', statsData);
 </script>
 
 <svelte:head>
 	<title>{$translate('stats.title')}</title>
 </svelte:head>
 
-<Stats {statsData} />
+<StatsWrapper>
+	<StylesStats />
+</StatsWrapper>
