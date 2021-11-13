@@ -7,6 +7,7 @@
 	};
 	export let producer: boolean = false;
 	export let tag: string;
+	export let target: string = '';
 
 	// @ToDo: in a future it should be easier to code that with <svelte:element>
 	//   For not it is not implemented yet
@@ -39,6 +40,16 @@
 	>
 		{name.value}
 	</span>
+{:else if tag === 'a'}
+	<a
+		class:editorial
+		class:label
+		class:producer
+		href={target}
+		lang={name.language !== 'pl' ? name.language : null}
+	>
+		{name.value}
+	</a>
 {:else}
 	<span>Something went wrong</span>
 {/if}

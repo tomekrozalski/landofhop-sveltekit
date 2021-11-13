@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { Stats as StatsTypes } from '$lib/utils/types/Beverage/Stats';
+	import type { GeneralStats as GeneralStatsTypes } from '$lib/utils/types/stats/General';
 	import AlcoholChart from './alcoholChart/alcoholChart.svelte';
 	import AddTimeline from './addTimeline/addTimeline.svelte';
 
-	export let statsData: StatsTypes;
+	export let statsData: GeneralStatsTypes;
 	const { addTimelineData, alcoholChartData } = statsData;
 </script>
 

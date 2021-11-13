@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { translate } from 'svelte-intl';
+	import { translations, translate } from 'svelte-intl';
+	import styleGroupsDictionary from '$lib/utils/dictionary/styleGroups.json';
+	import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
 	import SelectWrapper from './selectWrapper.svelte';
 
 	export let errors: string;
@@ -8,32 +10,12 @@
 	export let validateField: (fieldName: string) => void;
 	export let value: string;
 
-	const items = [
-		{
-			label: 'British and Irish Ales',
-			value: 'british-and-irish-ales'
-		},
-		{
-			label: 'The Lager Family',
-			value: 'the-lager-family'
-		},
-		{
-			label: 'Continental Ales, Weissbiers and Ale-Lager Hybrids',
-			value: 'continental-ales-weissbiers-and-ale-lager-hybrids'
-		},
-		{
-			label: 'The Beers of Belgium',
-			value: 'the-beers-of-belgium'
-		},
-		{
-			label: 'Craft Beer in America and Beyond',
-			value: 'craft-beer-in-america-and-beyond'
-		},
-		{
-			label: 'A Sip Beyond',
-			value: 'a-sip-beyond'
-		}
-	];
+	translations.update(styleGroupsDictionary);
+
+	const items = Object.values(StyleGroup).map((value) => ({
+		label: $translate(`styleGroups.${value}`),
+		value
+	}));
 
 	function handleClear() {
 		updateField(name, '');

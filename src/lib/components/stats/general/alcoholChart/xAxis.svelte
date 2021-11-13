@@ -10,7 +10,7 @@
 
 <g>
 	<text x={innerWidth} y={innerHeight + 65} text-anchor="end" class="label">
-		{$translate('stats.alcohol.alcohol')}
+		{$translate('statsGeneral.alcohol.alcohol')}
 	</text>
 	{#each xScaleTicks as tick}
 		<g style="transform: translate({xScale(tick)}px, {innerHeight}px)">

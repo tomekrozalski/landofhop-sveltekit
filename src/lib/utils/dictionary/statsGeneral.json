@@ -1,0 +1,32 @@
+{
+	"en": {
+		"statsGeneral.addTimeline.bottles": "bottles",
+		"statsGeneral.addTimeline.cans": "cans",
+		"statsGeneral.addTimeline.depiction": "{date}: {bottle, plural, one {# bottle} other {# bottles}} and {can, plural, one {# can} other {# cans}}",
+		"statsGeneral.addTimeline.name": "Amount of beers added to the database in the following months",
+		"statsGeneral.addTimeline.numberOfBeverages": "Number of beverages",
+		"statsGeneral.addTimeline.total": "total",
+		"statsGeneral.alcohol.alcohol": "Alcohol",
+		"statsGeneral.alcohol.barLabel": "{value}% alcohol, {beverages} beverages",
+		"statsGeneral.alcohol.isAverage": "average amount of alcohol of all beverages",
+		"statsGeneral.alcohol.isAverageWithoutNonAlcoholicBeverages": "average amount of alcohol of all beverages excluding non-alcoholic beverages",
+		"statsGeneral.alcohol.name": "Graph of alcohol quantity in beverages",
+		"statsGeneral.alcohol.numberOfBeverages": "Number of beverages",
+		"statsGeneral.title": "📈 Statistics"
+	},
+	"pl": {
+		"statsGeneral.addTimeline.bottles": "butelki",
+		"statsGeneral.addTimeline.cans": "puszki",
+		"statsGeneral.addTimeline.depiction": "{date}: {bottle, plural, one {# butelka} few {# butelki} other {# butelek}} i {can, plural, one {# puszka} few {# puszki} other {# puszek}}",
+		"statsGeneral.addTimeline.name": "Ilość dodawanych piw do bazy w kolejnych miesiącach",
+		"statsGeneral.addTimeline.numberOfBeverages": "Ilość piw",
+		"statsGeneral.addTimeline.total": "razem",
+		"statsGeneral.alcohol.alcohol": "Alkohol",
+		"statsGeneral.alcohol.barLabel": "{value}% alkoholu, {beverages, plural, one {# piwo} few {# piwa} other {# piw}}",
+		"statsGeneral.alcohol.isAverage": "średnia ilość alkoholu wszystkich piw",
+		"statsGeneral.alcohol.isAverageWithoutNonAlcoholicBeverages": "średnia ilość alkoholu wszystkich piw wyłączając bezalkoholowe",
+		"statsGeneral.alcohol.name": "Wykres ilości alkoholu w piwach",
+		"statsGeneral.alcohol.numberOfBeverages": "Ilość piw",
+		"statsGeneral.title": "📈 Statystyki"
+	}
+}

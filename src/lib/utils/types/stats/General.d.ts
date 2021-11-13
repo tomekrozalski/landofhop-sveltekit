@@ -29,7 +29,7 @@ export type TopBrandsTimelineBar = {
 	}[];
 };
 
-export type Stats = {
+export type GeneralStats = {
 	addTimelineData: AddTimelineBar[];
 	alcoholChartData: AlcoholChartBar[];
 	fermentationTimelineData: FermentationTimelineBar[];

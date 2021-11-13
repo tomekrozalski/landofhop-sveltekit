@@ -1,34 +1,12 @@
 {
 	"en": {
-		"stats.addTimeline.bottles": "bottles",
-		"stats.addTimeline.cans": "cans",
-		"stats.addTimeline.depiction": "{date}: {bottle, plural, one {# bottle} other {# bottles}} and {can, plural, one {# can} other {# cans}}",
-		"stats.addTimeline.name": "Amount of beers added to the database in the following months",
-		"stats.addTimeline.numberOfBeverages": "Number of beverages",
-		"stats.addTimeline.total": "total",
-		"stats.alcohol.alcohol": "Alcohol",
-		"stats.alcohol.barLabel": "{value}% alcohol, {beverages} beverages",
-		"stats.alcohol.isAverage": "average amount of alcohol of all beverages",
-		"stats.alcohol.isAverageWithoutNonAlcoholicBeverages": "average amount of alcohol of all beverages excluding non-alcoholic beverages",
-		"stats.alcohol.name": "Graph of alcohol quantity in beverages",
-		"stats.alcohol.numberOfBeverages": "Number of beverages",
 		"stats.name": "Statistics",
-		"stats.title": "📈 Statistics"
+		"stats.navigation.general": "General",
+		"stats.navigation.styles": "About beer styles"
 	},
 	"pl": {
-		"stats.addTimeline.bottles": "butelki",
-		"stats.addTimeline.cans": "puszki",
-		"stats.addTimeline.depiction": "{date}: {bottle, plural, one {# butelka} few {# butelki} other {# butelek}} i {can, plural, one {# puszka} few {# puszki} other {# puszek}}",
-		"stats.addTimeline.name": "Ilość dodawanych piw do bazy w kolejnych miesiącach",
-		"stats.addTimeline.numberOfBeverages": "Ilość piw",
-		"stats.addTimeline.total": "razem",
-		"stats.alcohol.alcohol": "Alkohol",
-		"stats.alcohol.barLabel": "{value}% alkoholu, {beverages, plural, one {# piwo} few {# piwa} other {# piw}}",
-		"stats.alcohol.isAverage": "średnia ilość alkoholu wszystkich piw",
-		"stats.alcohol.isAverageWithoutNonAlcoholicBeverages": "średnia ilość alkoholu wszystkich piw wyłączając bezalkoholowe",
-		"stats.alcohol.name": "Wykres ilości alkoholu w piwach",
-		"stats.alcohol.numberOfBeverages": "Ilość piw",
 		"stats.name": "Statystyki",
-		"stats.title": "📈 Statystyki"
+		"stats.navigation.general": "Ogólne",
+		"stats.navigation.styles": "Dotyczące stylów piwa"
 	}
 }

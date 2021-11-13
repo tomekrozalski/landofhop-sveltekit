@@ -5,11 +5,11 @@
 	const navItems = [
 		{
 			link: '/stats',
-			name: 'Ogólne'
+			name: $translate('stats.navigation.general')
 		},
 		{
 			link: '/stats/styles',
-			name: 'Dotyczące stylów piwa'
+			name: $translate('stats.navigation.styles')
 		}
 		// {
 		// 	link: '/stats/ingredients',

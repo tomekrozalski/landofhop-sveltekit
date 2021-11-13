@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
-	import type { AddTimelineBar } from '$lib/utils/types/Beverage/Stats';
+	import type { AddTimelineBar } from '$lib/utils/types/stats/General';
 	import IntersectionObserver from '$lib/utils/helpers/intersectionObserver.svelte';
 	import type { Sizes } from '$lib/components/stats/general/utils/Sizes';
 	import Xaxis from './xAxis.svelte';
@@ -61,7 +61,7 @@
 	let selectedLine = null;
 </script>
 
-<h2>{$translate('stats.addTimeline.name')}</h2>
+<h2>{$translate('statsGeneral.addTimeline.name')}</h2>
 
 <IntersectionObserver once={true} let:intersecting threshold={1}>
 	<svg viewBox="0 0 {sizes.chart.width} {sizes.chart.height + sizes.legend.height}">

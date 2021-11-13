@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
-	import type { Stats as StatsTypes } from '$lib/utils/types/Beverage/Stats';
+	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
 
 	export async function load({ fetch }) {
-		const statsData: StatsTypes = await serverCall(fetch, Endpoints.beverageStats, {
+		const statsData: StylesStatsTypes[] = await serverCall(fetch, Endpoints.statsStyles, {
 			pathParams: ['pl']
 		});
 
@@ -13,21 +13,23 @@
 
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
-	import dictionary from '$lib/utils/dictionary/stats.json';
+	import statsDictionary from '$lib/utils/dictionary/stats.json';
+	import stylesStatsDictionary from '$lib/utils/dictionary/statsStyles.json';
+	import styleGroupsDictionary from '$lib/utils/dictionary/styleGroups.json';
 	import StatsWrapper from '$lib/components/stats/elements/wrapper.svelte';
 	import StylesStats from '$lib/components/stats/styles/styles.svelte';
 
-	translations.update(dictionary);
+	translations.update(statsDictionary);
+	translations.update(stylesStatsDictionary);
+	translations.update(styleGroupsDictionary);
 
-	export let statsData: StatsTypes;
-
-	console.log('statsData', statsData);
+	export let statsData: StylesStatsTypes[];
 </script>
 
 <svelte:head>
-	<title>{$translate('stats.title')}</title>
+	<title>{$translate('statsStyles.title')}</title>
 </svelte:head>
 
 <StatsWrapper>
-	<StylesStats />
+	<StylesStats {statsData} />
 </StatsWrapper>

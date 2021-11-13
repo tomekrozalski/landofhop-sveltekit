@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { AddTimelineBar } from '$lib/utils/types/Beverage/Stats';
+	import type { AddTimelineBar } from '$lib/utils/types/stats/General';
 
 	export let addTimelineData: AddTimelineBar[];
 	export let isBarSelected: boolean = false;
@@ -47,7 +47,7 @@
 	{/each}
 	{#if info}
 		<text class="label" x={innerWidth / 2} y="30" text-anchor="middle">
-			{$translate('stats.addTimeline.depiction', info)}
+			{$translate('statsGeneral.addTimeline.depiction', info)}
 		</text>
 	{/if}
 </g>

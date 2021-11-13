@@ -1,0 +1,10 @@
+{
+	"en": {
+		"statsStyles.itemsInDatabase": "items in database:",
+		"statsStyles.title": "📈 Beverage styles statistics"
+	},
+	"pl": {
+		"statsStyles.itemsInDatabase": "zarejestrowana ilość w bazie:",
+		"statsStyles.title": "📈 Statystyki dotyczące stylów piwa"
+	}
+}

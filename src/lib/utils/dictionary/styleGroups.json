@@ -1,0 +1,18 @@
+{
+	"en": {
+		"styleGroups.british-and-irish-ales": "British and Irish Ales",
+		"styleGroups.the-lager-family": "The Lager Family",
+		"styleGroups.continental-ales-weissbiers-and-ale-lager-hybrids": "Continental Ales, Weissbiers and Ale-Lager Hybrids",
+		"styleGroups.the-beers-of-belgium": "The Beers of Belgium",
+		"styleGroups.craft-beer-in-america-and-beyond": "Craft Beer in America and Beyond",
+		"styleGroups.a-sip-beyond": "A Sip Beyond"
+	},
+	"pl": {
+		"styleGroups.british-and-irish-ales": "Brytyjskie i irlandzkie ales",
+		"styleGroups.the-lager-family": "Lagery",
+		"styleGroups.continental-ales-weissbiers-and-ale-lager-hybrids": "Kontynentalne Ale, Weissbiery i Ale-Lager hybrydy",
+		"styleGroups.the-beers-of-belgium": "Piwa belgijskie",
+		"styleGroups.craft-beer-in-america-and-beyond": "Amerykańskie i światowe piwa kraftowe",
+		"styleGroups.a-sip-beyond": "Inne"
+	}
+}

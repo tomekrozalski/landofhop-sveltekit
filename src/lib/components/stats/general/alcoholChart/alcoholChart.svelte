@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
-	import type { AlcoholChartBar } from '$lib/utils/types/Beverage/Stats';
+	import type { AlcoholChartBar } from '$lib/utils/types/stats/General';
 	import type { Sizes } from '$lib/components/stats/general/utils/Sizes';
 	import Xaxis from './xAxis.svelte';
 	import Yaxis from './yAxis.svelte';
@@ -45,7 +45,7 @@
 		.range([innerHeight, 0]);
 </script>
 
-<h2>{$translate('stats.alcohol.name')}</h2>
+<h2>{$translate('statsGeneral.alcohol.name')}</h2>
 <svg viewBox="0 0 {sizes.chart.width} {sizes.chart.height}">
 	<g style="transform: translate({sizes.chart.margin.left}px, {sizes.chart.margin.top}px)">
 		<Xaxis {innerHeight} {innerWidth} {xScale} />

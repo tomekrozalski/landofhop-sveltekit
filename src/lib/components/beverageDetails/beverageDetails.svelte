@@ -57,6 +57,16 @@
 	article :global(.editorial) {
 		background-position: 0px 0.8em;
 		background-repeat: repeat-x;
+		font-weight: initial;
+		color: inherit;
+	}
+
+	article :global(a.editorial) {
+		transition: background-position var(--transition-default);
+	}
+
+	article :global(a.editorial:hover) {
+		background-position: 0px 0.2em;
 	}
 
 	article :global(.label) {

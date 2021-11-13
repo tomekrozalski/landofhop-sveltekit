@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
-	import type { AlcoholChartBar } from '$lib/utils/types/Beverage/Stats';
+	import type { AlcoholChartBar } from '$lib/utils/types/stats/General';
 
 	export let average: boolean;
 	export let averageWithoutNonAlcoholicBeverages: boolean;
@@ -32,17 +32,17 @@
 <g use:calculatePosition in:fade>
 	<rect use:calculateWidth height="20" />
 	<text id="alcohol-chart-bar-label" x="10" y="15">
-		{$translate('stats.alcohol.barLabel', {
+		{$translate('statsGeneral.alcohol.barLabel', {
 			beverages: bar.beverages,
 			value: Intl.NumberFormat('pl').format(bar.value)
 		})}
 		{#if average}
 			{' - '}
-			{$translate('stats.alcohol.isAverage')}
+			{$translate('statsGeneral.alcohol.isAverage')}
 		{/if}
 		{#if averageWithoutNonAlcoholicBeverages}
 			{' - '}
-			{$translate('stats.alcohol.isAverageWithoutNonAlcoholicBeverages')}
+			{$translate('statsGeneral.alcohol.isAverageWithoutNonAlcoholicBeverages')}
 		{/if}
 	</text>
 </g>
