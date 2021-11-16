@@ -5,11 +5,11 @@
 	const navItems = [
 		{
 			link: '/stats',
-			name: $translate('stats.navigation.general')
+			name: $translate('stats.common.navigation.general')
 		},
 		{
 			link: '/stats/styles',
-			name: $translate('stats.navigation.styles')
+			name: $translate('stats.common.navigation.styles')
 		}
 		// {
 		// 	link: '/stats/ingredients',
@@ -19,7 +19,7 @@
 </script>
 
 <article>
-	<h1>{$translate('stats.name')}</h1>
+	<h1>{$translate('stats.common.name')}</h1>
 	<Navigation {navItems} />
 	<slot />
 </article>

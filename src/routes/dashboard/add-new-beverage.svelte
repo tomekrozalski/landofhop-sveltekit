@@ -32,7 +32,7 @@
 	import { setContext } from 'svelte';
 	import { translate, translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
-	import dictionary from '$lib/utils/dictionary/dashboard.json';
+	import dictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import {
 		editorialStore,
 		ingredientsStore,

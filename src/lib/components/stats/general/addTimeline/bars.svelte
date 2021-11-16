@@ -47,7 +47,7 @@
 	{/each}
 	{#if info}
 		<text class="label" x={innerWidth / 2} y="30" text-anchor="middle">
-			{$translate('statsGeneral.addTimeline.depiction', info)}
+			{$translate('stats.general.addTimeline.depiction', info)}
 		</text>
 	{/if}
 </g>

@@ -15,7 +15,7 @@
 
 <script lang="ts">
 	import { translations } from 'svelte-intl';
-	import dictionary from '$lib/utils/dictionary/beverage.json';
+	import dictionary from '$lib/utils/dictionary/screens/beverage.json';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
 	import { PHOTO_SERVER } from '$lib/utils/constants';

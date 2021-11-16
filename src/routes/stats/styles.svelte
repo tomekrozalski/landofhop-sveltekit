@@ -13,9 +13,9 @@
 
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
-	import statsDictionary from '$lib/utils/dictionary/stats.json';
-	import stylesStatsDictionary from '$lib/utils/dictionary/statsStyles.json';
-	import styleGroupsDictionary from '$lib/utils/dictionary/styleGroups.json';
+	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
+	import stylesStatsDictionary from '$lib/utils/dictionary/screens/stats/styles.json';
+	import styleGroupsDictionary from '$lib/utils/dictionary/lists/styleGroup.json';
 	import StatsWrapper from '$lib/components/stats/elements/wrapper.svelte';
 	import StylesStats from '$lib/components/stats/styles/styles.svelte';
 
@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<title>{$translate('statsStyles.title')}</title>
+	<title>{$translate('stats.styles.title')}</title>
 </svelte:head>
 
 <StatsWrapper>

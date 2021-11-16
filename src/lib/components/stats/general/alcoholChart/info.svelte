@@ -32,17 +32,17 @@
 <g use:calculatePosition in:fade>
 	<rect use:calculateWidth height="20" />
 	<text id="alcohol-chart-bar-label" x="10" y="15">
-		{$translate('statsGeneral.alcohol.barLabel', {
+		{$translate('stats.general.alcohol.barLabel', {
 			beverages: bar.beverages,
 			value: Intl.NumberFormat('pl').format(bar.value)
 		})}
 		{#if average}
 			{' - '}
-			{$translate('statsGeneral.alcohol.isAverage')}
+			{$translate('stats.general.alcohol.isAverage')}
 		{/if}
 		{#if averageWithoutNonAlcoholicBeverages}
 			{' - '}
-			{$translate('statsGeneral.alcohol.isAverageWithoutNonAlcoholicBeverages')}
+			{$translate('stats.general.alcohol.isAverageWithoutNonAlcoholicBeverages')}
 		{/if}
 	</text>
 </g>

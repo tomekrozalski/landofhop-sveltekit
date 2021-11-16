@@ -4,17 +4,20 @@
 	import navigation from '$lib/utils/stores/navigation';
 
 	export let item: StylesStatsTypes;
+	export let onUpdateClick: () => void;
 </script>
 
 <li>
 	<em lang={item.name.language}>{item.name.value}</em>,
-	<span>{$translate('statsStyles.itemsInDatabase')}</span>
+	<span>{$translate('stats.styles.itemsInDatabase')}</span>
 	{item.amount}<br />
 	<a href="/stats/styles?search=style%3a{item.badge}">
-		{$translate('statsStyles.findAll')}
+		{$translate('stats.styles.findAll')}
 	</a>
 	{#if $navigation.isLoggedIn}
-		<button type="button">{$translate('statsStyles.update')}</button>
+		<button on:click={onUpdateClick} type="button">
+			{$translate('stats.styles.update')}
+		</button>
 	{/if}
 </li>
 

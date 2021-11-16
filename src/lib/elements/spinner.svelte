@@ -1,3 +1,11 @@
+<svelte:head>
+	<style>
+		body {
+			overflow: hidden;
+		}
+	</style>
+</svelte:head>
+
 <div>
 	<ul>
 		<li />
@@ -11,7 +19,7 @@
 	div {
 		display: block;
 		width: 100%;
-		height: 100%;
+		height: 100vh;
 		background-color: var(--color-white);
 		position: absolute;
 		top: 0;

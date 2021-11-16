@@ -53,7 +53,7 @@
 	>
 		<rect width={innerHeight} height={innerHeight} class="total" />
 		<g style="transform: translate({innerHeight + 10}px, 0)">
-			<text class="label" y="12">{$translate('statsGeneral.addTimeline.total')}</text>
+			<text class="label" y="12">{$translate('stats.general.addTimeline.total')}</text>
 			<text class="amount" y="28">
 				{addTimelineData.reduce((acc, { bottle, can }) => acc + bottle + can, 0)}
 			</text>
@@ -67,7 +67,7 @@
 	>
 		<rect width={innerHeight} height={innerHeight} class="bottles" />
 		<g style="transform: translate({innerHeight + 10}px, 0)">
-			<text class="label" y="12">{$translate('statsGeneral.addTimeline.bottles')}</text>
+			<text class="label" y="12">{$translate('stats.general.addTimeline.bottles')}</text>
 			<text class="amount" y="28">
 				{addTimelineData.reduce((acc, { bottle }) => acc + bottle, 0)}
 			</text>
@@ -81,7 +81,7 @@
 	>
 		<rect width={innerHeight} height={innerHeight} class="cans" />
 		<g style="transform: translate({innerHeight + 10}px, 0)">
-			<text class="label" y="12">{$translate('statsGeneral.addTimeline.cans')}</text>
+			<text class="label" y="12">{$translate('stats.general.addTimeline.cans')}</text>
 			<text class="amount" y="28">{addTimelineData.reduce((acc, { can }) => acc + can, 0)}</text>
 		</g>
 	</g>

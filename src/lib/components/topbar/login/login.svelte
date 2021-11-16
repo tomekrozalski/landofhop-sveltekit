@@ -2,14 +2,14 @@
 	import { slide } from 'svelte/transition';
 	import { translations } from 'svelte-intl';
 	import { cubicInOut } from 'svelte/easing';
-	import loginbarDictionary from '$lib/utils/dictionary/loginbar.json';
+	import dictionary from '$lib/utils/dictionary/header/loginbar.json';
 	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
 	import ErrorMessage from './errorMessage.svelte';
 	import LoginForm from './loginForm/loginForm.svelte';
 	import SuccessMessage from './successMessage.svelte';
 
-	translations.update(loginbarDictionary);
+	translations.update(dictionary);
 </script>
 
 {#if $navigation.isLoginOpened}

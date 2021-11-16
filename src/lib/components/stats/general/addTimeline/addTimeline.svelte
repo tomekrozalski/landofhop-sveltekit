@@ -61,7 +61,7 @@
 	let selectedLine = null;
 </script>
 
-<h2>{$translate('statsGeneral.addTimeline.name')}</h2>
+<h2>{$translate('stats.general.addTimeline.name')}</h2>
 
 <IntersectionObserver once={true} let:intersecting threshold={1}>
 	<svg viewBox="0 0 {sizes.chart.width} {sizes.chart.height + sizes.legend.height}">

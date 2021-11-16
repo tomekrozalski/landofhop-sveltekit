@@ -7,7 +7,7 @@
 
 <g>
 	<text x="0" y="-60" style="transform: rotate(-90deg)" text-anchor="end" class="label">
-		{$translate('statsGeneral.alcohol.numberOfBeverages')}
+		{$translate('stats.general.alcohol.numberOfBeverages')}
 	</text>
 	{#each yScale.ticks() as tick, index}
 		<g style="transform: translate(0, {yScale(tick)}px)">

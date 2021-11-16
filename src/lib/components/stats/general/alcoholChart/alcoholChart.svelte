@@ -45,7 +45,7 @@
 		.range([innerHeight, 0]);
 </script>
 
-<h2>{$translate('statsGeneral.alcohol.name')}</h2>
+<h2>{$translate('stats.general.alcohol.name')}</h2>
 <svg viewBox="0 0 {sizes.chart.width} {sizes.chart.height}">
 	<g style="transform: translate({sizes.chart.margin.left}px, {sizes.chart.margin.top}px)">
 		<Xaxis {innerHeight} {innerWidth} {xScale} />

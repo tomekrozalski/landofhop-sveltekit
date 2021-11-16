@@ -1,0 +1,14 @@
+{
+	"en": {
+		"stats.styles.findAll": "Find all",
+		"stats.styles.itemsInDatabase": "items in database:",
+		"stats.styles.title": "📈 Beverage styles statistics",
+		"stats.styles.update": "Update"
+	},
+	"pl": {
+		"stats.styles.findAll": "Zobacz wszystkie",
+		"stats.styles.itemsInDatabase": "zarejestrowana ilość w bazie:",
+		"stats.styles.title": "📈 Statystyki dotyczące stylów piwa",
+		"stats.styles.update": "Popraw"
+	}
+}

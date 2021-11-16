@@ -13,8 +13,8 @@
 
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
-	import statsDictionary from '$lib/utils/dictionary/stats.json';
-	import generalStatsDictionary from '$lib/utils/dictionary/statsGeneral.json';
+	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
+	import generalStatsDictionary from '$lib/utils/dictionary/screens/stats/general.json';
 	import StatsWrapper from '$lib/components/stats/elements/wrapper.svelte';
 	import GeneralStats from '$lib/components/stats/general/general.svelte';
 
@@ -25,7 +25,7 @@
 </script>
 
 <svelte:head>
-	<title>{$translate('statsGeneral.title')}</title>
+	<title>{$translate('stats.general.title')}</title>
 </svelte:head>
 
 <StatsWrapper>
