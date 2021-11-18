@@ -4,7 +4,7 @@
 	import navigation from '$lib/utils/stores/navigation';
 
 	export let item: StylesStatsTypes;
-	export let onUpdateClick: () => void;
+	export let onUpdateClick: (badge: string) => void;
 </script>
 
 <li>
@@ -15,7 +15,7 @@
 		{$translate('stats.styles.findAll')}
 	</a>
 	{#if $navigation.isLoggedIn}
-		<button on:click={onUpdateClick} type="button">
+		<button on:click={() => onUpdateClick(item.badge)} type="button">
 			{$translate('stats.styles.update')}
 		</button>
 	{/if}

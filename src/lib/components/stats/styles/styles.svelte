@@ -2,49 +2,34 @@
 	import { translate } from 'svelte-intl';
 
 	import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
+	import { styleStore } from '$lib/dashboard/utils/stores';
+	import type { Style } from '$lib/utils/types/Style';
 	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
-	import Spinner from '$lib/elements/spinner.svelte';
 	import UpdateStyle from '$lib/dashboard/modals/updateStyle/updateStyle.svelte';
 	import Item from './item.svelte';
 
 	export let statsData: StylesStatsTypes[];
-
 	let isModalOpen = false;
-	let isModalLoading = false;
-	let modalData = null;
+	let modalData: Style | null = null;
 
-	function onUpdateClick() {
-		isModalLoading = true;
-
-		setTimeout(() => {
-			modalData = {
-				badge: '',
-				name: [{ value: 's', language: 'pl' }],
-				group: ''
-			};
-
-			isModalOpen = true;
-			isModalLoading = false;
-		}, 2000);
+	async function onUpdateClick(badge: string) {
+		modalData = $styleStore.find((props) => props.badge === badge);
+		isModalOpen = true;
 	}
 </script>
 
-{#if isModalLoading}
-	<Spinner />
-{:else}
-	<ul class="mainList">
-		{#each Object.values(StyleGroup) as group}
-			<li>
-				<h3>{$translate(`styleGroup.${group}`)}</h3>
-				<ul>
-					{#each statsData.filter((props) => props.group === group) as item}
-						<Item {item} {onUpdateClick} />
-					{/each}
-				</ul>
-			</li>
-		{/each}
-	</ul>
-{/if}
+<ul class="mainList">
+	{#each Object.values(StyleGroup) as group}
+		<li>
+			<h3>{$translate(`styleGroup.${group}`)}</h3>
+			<ul>
+				{#each statsData.filter((props) => props.group === group) as item}
+					<Item {item} {onUpdateClick} />
+				{/each}
+			</ul>
+		</li>
+	{/each}
+</ul>
 {#if isModalOpen}
 	<UpdateStyle initialValues={modalData} close={() => (isModalOpen = false)} />
 {/if}

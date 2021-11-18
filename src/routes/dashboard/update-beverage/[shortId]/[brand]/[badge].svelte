@@ -25,7 +25,7 @@
 				PlaceType[],
 				StyleType[]
 			] = await Promise.all([
-				await serverCall(fetch, Endpoints.beverageDetailsAdmin, {
+				serverCall(fetch, Endpoints.beverageDetailsAdmin, {
 					pathParams: [page.params.shortId]
 				}),
 				serverCall(fetch, Endpoints.ingredients),

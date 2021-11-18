@@ -23,7 +23,7 @@
 	const formData = createForm({
 		initialValues,
 		validationSchema: getValidationSchema($translate),
-		onSubmit: onSubmit(close)
+		onSubmit: onSubmit(close, initialValues.badge)
 	});
 
 	const { isSubmitting } = formData;
@@ -32,7 +32,7 @@
 <ModalWrapper {close}>
 	<form on:submit={formData.handleSubmit} novalidate>
 		<header>
-			<h2>{$translate('dashboard.addNewStyle')}</h2>
+			<h2>{$translate('dashboard.updateStyle')}</h2>
 		</header>
 		<ModalGrid>
 			<Badge {formName} {formData} />

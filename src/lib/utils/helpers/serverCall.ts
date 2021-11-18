@@ -25,6 +25,7 @@ export enum Endpoints {
 	styles = 'admin/style',
 	unauthorize = 'unauthorize',
 	updateBeverage = 'admin/beverage',
+	updateStyle = 'admin/style',
 	verifyToken = 'verifyToken'
 }
 
@@ -60,7 +61,8 @@ function serverCall(fetch, endpoint: Endpoints, props?: Props) {
 		Endpoints.addIngredient,
 		Endpoints.styles,
 		Endpoints.addBeverageCap,
-		Endpoints.removeBeverageCap
+		Endpoints.removeBeverageCap,
+		Endpoints.updateStyle
 	].includes(endpoint);
 
 	return fetch(completeUrl, {

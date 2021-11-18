@@ -2,13 +2,14 @@ import { styleStore } from '$lib/dashboard/utils/stores';
 import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 import formatValues from './formatValues';
 
-export function onSubmit(close) {
+export function onSubmit(close, badge) {
 	return async function (values) {
 		const formattedValues = formatValues(values);
 
-		const updatedStyles = await serverCall(fetch, Endpoints.addStyle, {
-			method: 'POST',
-			body: JSON.stringify(formattedValues)
+		const updatedStyles = await serverCall(fetch, Endpoints.updateStyle, {
+			method: 'PUT',
+			body: JSON.stringify(formattedValues),
+			pathParams: [badge]
 		});
 
 		styleStore.set(updatedStyles);
