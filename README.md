@@ -33,4 +33,4 @@ npm run dev -- --open
 
 ## Live preview
 
-`develop` branch: [land-of-hop.onrender.com](https://land-of-hop.onrender.com)
+`main` branch: [hop.land](https://hop.land)
