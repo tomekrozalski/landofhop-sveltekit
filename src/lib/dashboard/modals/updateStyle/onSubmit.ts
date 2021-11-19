@@ -1,4 +1,4 @@
-import { styleStore } from '$lib/dashboard/utils/stores';
+import { statsStyle, styleStore } from '$lib/dashboard/utils/stores';
 import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 import formatValues from './formatValues';
 
@@ -12,6 +12,9 @@ export function onSubmit(close, badge) {
 			pathParams: [badge]
 		});
 
+		const updatedStatsData = await serverCall(fetch, Endpoints.statsStyles, { pathParams: ['pl'] });
+
+		statsStyle.set(updatedStatsData);
 		styleStore.set(updatedStyles);
 		close();
 	};

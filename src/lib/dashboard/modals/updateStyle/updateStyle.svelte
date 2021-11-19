@@ -22,7 +22,7 @@
 
 	const formData = createForm({
 		initialValues,
-		validationSchema: getValidationSchema($translate),
+		validationSchema: getValidationSchema($translate, initialValues.badge),
 		onSubmit: onSubmit(close, initialValues.badge)
 	});
 

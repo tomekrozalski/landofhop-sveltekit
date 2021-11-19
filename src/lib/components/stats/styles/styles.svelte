@@ -2,13 +2,11 @@
 	import { translate } from 'svelte-intl';
 
 	import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
-	import { styleStore } from '$lib/dashboard/utils/stores';
+	import { statsStyle, styleStore } from '$lib/dashboard/utils/stores';
 	import type { Style } from '$lib/utils/types/Style';
-	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
 	import UpdateStyle from '$lib/dashboard/modals/updateStyle/updateStyle.svelte';
 	import Item from './item.svelte';
 
-	export let statsData: StylesStatsTypes[];
 	let isModalOpen = false;
 	let modalData: Style | null = null;
 
@@ -23,7 +21,7 @@
 		<li>
 			<h3>{$translate(`styleGroup.${group}`)}</h3>
 			<ul>
-				{#each statsData.filter((props) => props.group === group) as item}
+				{#each $statsStyle.filter((props) => props.group === group) as item}
 					<Item {item} {onUpdateClick} />
 				{/each}
 			</ul>

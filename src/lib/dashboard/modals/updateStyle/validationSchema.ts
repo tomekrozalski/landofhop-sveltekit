@@ -3,7 +3,7 @@ import * as yup from 'yup';
 
 import { styleStore } from '$lib/dashboard/utils/stores';
 
-export function getValidationSchema(translate) {
+export function getValidationSchema(translate, badge) {
 	return yup.object().shape({
 		badge: yup
 			.string()
@@ -12,7 +12,7 @@ export function getValidationSchema(translate) {
 			.test(
 				'is-available',
 				translate('form.validation.badgeAlreadyExists'),
-				(value) => !get(styleStore).find(({ badge }) => badge === value)
+				(value) => !get(styleStore).find((props) => props.badge === value && props.badge !== badge)
 			)
 			.required(translate('form.validation.required')),
 		name: yup
