@@ -62,7 +62,6 @@ function setLoginStatus(status: Status) {
 }
 
 function openSearchBar() {
-	console.log('openSearchBar');
 	update((store) => {
 		store.isSearchbarActive = true;
 		store.isNavigationOpened = false;
