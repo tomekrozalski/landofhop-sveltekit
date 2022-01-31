@@ -9,6 +9,15 @@
 	export let beverage: Basics;
 	const { badge, brand, name, coverImage, shortId } = beverage;
 
+	// @ToDo: loaded should be initially true when image is in cache
+	// 	function isCached(src) {
+	// 		var image = new Image();
+	// 		image.src = src;
+	//
+	// 		return image.complete;
+	// 	}
+
+	// let loaded = isCached(`${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}/cover/jpg/1x.jpg`);
 	let loaded = false;
 	let nativeLoading = false;
 
@@ -19,7 +28,7 @@
 	});
 </script>
 
-<div style="padding-bottom: {(coverImage?.height / coverImage?.width) * 100}%">
+<div style:aspect-ratio="{coverImage?.width} / {coverImage?.height}">
 	{#if !loaded && coverImage?.outline}
 		<span class="outline-wrapper" transition:toggleVisibility>
 			{@html coverImage.outline}
