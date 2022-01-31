@@ -10,7 +10,7 @@
 <nav>
 	<ul style="grid-template-columns: repeat({navItems.length}, 1fr)">
 		{#each navItems as { link, name }}
-			<li><a class:active={$page.path === link} href={link}>{name}</a></li>
+			<li><a class:active={$page.url.pathname === link} href={link}>{name}</a></li>
 		{/each}
 	</ul>
 </nav>

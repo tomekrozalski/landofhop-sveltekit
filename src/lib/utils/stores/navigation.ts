@@ -1,19 +1,15 @@
-import { writable, Writable } from 'svelte/store';
+import { writable } from 'svelte/store';
 import Status from '$lib/utils/enums/Status.enum';
 import setSearchParam from '$lib/utils/helpers/setSearchParam';
 
-const {
-	subscribe,
-	update,
-	set
-}: Writable<{
+const { subscribe, update, set } = writable<{
 	isNavigationOpened: boolean;
 	isLoginOpened: boolean;
 	isLoggedIn: boolean;
 	isSearchbarActive: boolean;
 	loginStatus: Status;
 	searchPhrase: string;
-}> = writable({
+}>({
 	isNavigationOpened: false,
 	isLoginOpened: false,
 	isLoggedIn: false,

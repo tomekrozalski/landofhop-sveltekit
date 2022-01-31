@@ -2,8 +2,8 @@
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-	export async function load({ fetch, page }) {
-		const order = +page.params.order;
+	export async function load({ fetch, params }) {
+		const order = +params.order;
 		const skip = order * 60 - 60;
 
 		if (!order || order === 1) {

@@ -5,8 +5,6 @@
 	import type { Place as PlaceType } from '$lib/utils/types/Place';
 	import type { Style as StyleType } from '$lib/utils/types/Style';
 
-	export const ssr = false;
-
 	export async function load({ fetch }) {
 		try {
 			const [ingredients, institutions, places, styles]: [

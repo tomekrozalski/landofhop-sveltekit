@@ -8,15 +8,13 @@
 	import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
 	import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
 
-	export const ssr = false;
-
 	type DetailsAdmin = {
 		label: LabelFormValues;
 		producer: ProducerFormValues;
 		editorial: EditorialFormValues;
 	};
 
-	export async function load({ fetch, page }) {
+	export async function load({ fetch, params }) {
 		try {
 			const [beverage, ingredients, institutions, places, styles]: [
 				DetailsAdmin,
@@ -26,7 +24,7 @@
 				StyleType[]
 			] = await Promise.all([
 				serverCall(fetch, Endpoints.beverageDetailsAdmin, {
-					pathParams: [page.params.shortId]
+					pathParams: [params.shortId]
 				}),
 				serverCall(fetch, Endpoints.ingredients),
 				serverCall(fetch, Endpoints.institutions),
