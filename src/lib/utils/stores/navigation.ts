@@ -4,6 +4,7 @@ import setSearchParam from '$lib/utils/helpers/setSearchParam';
 
 const { subscribe, update, set } = writable<{
 	isNavigationOpened: boolean;
+	isLoading: boolean;
 	isLoginOpened: boolean;
 	isLoggedIn: boolean;
 	isSearchbarActive: boolean;
@@ -11,6 +12,7 @@ const { subscribe, update, set } = writable<{
 	searchPhrase: string;
 }>({
 	isNavigationOpened: false,
+	isLoading: false,
 	isLoginOpened: false,
 	isLoggedIn: false,
 	isSearchbarActive: false,

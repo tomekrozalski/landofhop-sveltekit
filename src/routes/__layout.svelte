@@ -1,5 +1,6 @@
 <script>
 	import { afterNavigate } from '$app/navigation';
+	import { navigating } from '$app/stores';
 	import { locale, translations } from 'svelte-intl';
 	import topbarDictionary from '$lib/utils/dictionary/header/topbar.json';
 	import navigation from '$lib/utils/stores/navigation';
@@ -17,6 +18,8 @@
 		// when path change, close navigation
 		navigation.close();
 	});
+
+	$: $navigation.isLoading = !!$navigating;
 </script>
 
 <svelte:head>

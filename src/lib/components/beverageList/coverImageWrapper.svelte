@@ -9,19 +9,19 @@
 	export let beverage: Basics;
 	const { badge, brand, name, coverImage, shortId } = beverage;
 
-	// @ToDo: loaded should be initially true when image is in cache
-	// 	function isCached(src) {
-	// 		var image = new Image();
-	// 		image.src = src;
-	//
-	// 		return image.complete;
-	// 	}
+	function isCached(src) {
+		const image = new window.Image();
+		image.src = src;
 
-	// let loaded = isCached(`${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}/cover/jpg/1x.jpg`);
+		return image.complete;
+	}
+
 	let loaded = false;
 	let nativeLoading = false;
 
 	onMount(() => {
+		loaded = isCached(`${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}/cover/jpg/1x.jpg`);
+
 		if ('loading' in HTMLImageElement.prototype) {
 			nativeLoading = true;
 		}
