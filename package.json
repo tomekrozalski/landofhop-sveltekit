@@ -29,6 +29,7 @@
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-svelte3": "^3.2.0",
 		"format-message": "^6.2.3",
+		"html-minifier": "^4.0.0",
 		"i18n-iso-countries": "^6.8.0",
 		"lodash.debounce": "^4.0.8",
 		"lodash.isarray": "^4.0.0",

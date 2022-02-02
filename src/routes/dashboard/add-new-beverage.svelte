@@ -5,13 +5,6 @@
 	import type { Place as PlaceType } from '$lib/utils/types/Place';
 	import type { Style as StyleType } from '$lib/utils/types/Style';
 
-	// @ToDo: does it work? I mean it should not render spinner on SSR
-	// 	export async function handle({ request, resolve }) {
-	// 		const response = await resolve(request, { ssr: false });
-	//
-	// 		return response;
-	// 	}
-
 	export async function load({ fetch }) {
 		try {
 			const [ingredients, institutions, places, styles]: [

@@ -12,17 +12,15 @@
 	translations.update(dictionary);
 </script>
 
-{#if $navigation.isLoginOpened}
-	<section transition:slide={{ duration: 200, easing: cubicInOut }}>
-		{#if $navigation.loginStatus === Status.fulfilled}
-			<SuccessMessage />
-		{:else if $navigation.loginStatus === Status.rejected}
-			<ErrorMessage />
-		{:else}
-			<LoginForm />
-		{/if}
-	</section>
-{/if}
+<section transition:slide={{ duration: 200, easing: cubicInOut }}>
+	{#if $navigation.loginStatus === Status.fulfilled}
+		<SuccessMessage />
+	{:else if $navigation.loginStatus === Status.rejected}
+		<ErrorMessage />
+	{:else}
+		<LoginForm />
+	{/if}
+</section>
 
 <style>
 	section {

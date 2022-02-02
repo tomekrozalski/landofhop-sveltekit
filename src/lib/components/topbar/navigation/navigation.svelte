@@ -1,17 +1,14 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import navigation from '$lib/utils/stores/navigation';
 	import Menus from './menus.svelte';
 </script>
 
-{#if $navigation.isNavigationOpened}
-	<nav transition:slide={{ duration: 200, easing: cubicInOut }}>
-		<div>
-			<Menus />
-		</div>
-	</nav>
-{/if}
+<nav transition:slide={{ duration: 200, easing: cubicInOut }}>
+	<div>
+		<Menus />
+	</div>
+</nav>
 
 <style>
 	nav {
