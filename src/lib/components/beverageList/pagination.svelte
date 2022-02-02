@@ -25,18 +25,13 @@
 		{#if order === 1}
 			<span class="inactive">←</span>
 		{:else}
-			<a
-				sveltekit:prefetch
-				sveltekit:noscroll
-				class="active"
-				href={order > 2 ? `/list/${order - 1}` : '/'}>←</a
-			>
+			<a sveltekit:prefetch class="active" href={order > 2 ? `/list/${order - 1}` : '/'}>←</a>
 		{/if}
 	</li>
 
 	{#if order > 5}
 		<li>
-			<a sveltekit:prefetch sveltekit:noscroll class="active" href="/">1</a>
+			<a sveltekit:prefetch class="active" href="/">1</a>
 		</li>
 		<li>
 			<span class="inactive">…</span>
@@ -47,7 +42,6 @@
 		<li>
 			<a
 				sveltekit:prefetch
-				sveltekit:noscroll
 				class="active"
 				class:current={page === order}
 				href={page === 1 ? '/' : `/list/${page}`}
@@ -65,7 +59,7 @@
 
 	{#if pagesCount > order + 2}
 		<li>
-			<a sveltekit:prefetch sveltekit:noscroll class="active" href="/list/{pagesCount}">
+			<a sveltekit:prefetch class="active" href="/list/{pagesCount}">
 				{pagesCount}
 			</a>
 		</li>
@@ -75,7 +69,7 @@
 		{#if pagesCount === order}
 			<span class="inactive">→</span>
 		{:else}
-			<a sveltekit:prefetch sveltekit:noscroll class="active" href="/list/{order + 1}">→</a>
+			<a sveltekit:prefetch class="active" href="/list/{order + 1}">→</a>
 		{/if}
 	</li>
 </ul>

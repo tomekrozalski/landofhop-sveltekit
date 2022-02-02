@@ -7,21 +7,13 @@
 	import CoverImage from './coverImage.svelte';
 
 	export let beverage: Basics;
+	export let eager: boolean;
 	const { badge, brand, name, coverImage, shortId } = beverage;
-
-	function isCached(src) {
-		const image = new window.Image();
-		image.src = src;
-
-		return image.complete;
-	}
 
 	let loaded = false;
 	let nativeLoading = false;
 
 	onMount(() => {
-		loaded = isCached(`${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}/cover/jpg/1x.jpg`);
-
 		if ('loading' in HTMLImageElement.prototype) {
 			nativeLoading = true;
 		}
@@ -34,20 +26,24 @@
 			{@html coverImage.outline}
 		</span>
 	{/if}
-	<IntersectionObserver once={true} let:intersecting>
-		{#if intersecting || nativeLoading}
-			<CoverImage {beverage} bind:loaded />
-		{/if}
-	</IntersectionObserver>
-	<noscript>
-		<picture>
-			<img
-				src="{PHOTO_SERVER}/{brand.badge}/{badge}/{shortId}/cover/jpg/1x.jpg"
-				alt="{name.value}, {brand.name.value}"
-				style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center;"
-			/>
-		</picture>
-	</noscript>
+	{#if eager || nativeLoading}
+		<CoverImage {beverage} {eager} bind:loaded />
+	{:else}
+		<IntersectionObserver once={true} let:intersecting>
+			{#if intersecting}
+				<CoverImage {beverage} {eager}  bind:loaded />
+			{/if}
+		</IntersectionObserver>
+		<noscript>
+			<picture>
+				<img
+					src="{PHOTO_SERVER}/{brand.badge}/{badge}/{shortId}/cover/jpg/1x.jpg"
+					alt="{name.value}, {brand.name.value}"
+					style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center;"
+				/>
+			</picture>
+		</noscript>
+	{/if}
 </div>
 
 <style>

@@ -3,11 +3,12 @@
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export let beverage: Basics;
+	export let eager: boolean;
 	export let loaded: boolean;
 
-	$: getPath = (format: 'webp' | 'jpg', size: 1 | 2) => {
+	$: getPath = (size: 1 | 2) => {
 		const basicPath = `${PHOTO_SERVER}/${beverage.brand.badge}/${beverage.badge}/${beverage.shortId}`;
-		return `${basicPath}/cover/${format}/${size}x.${format}`;
+		return `${basicPath}/cover/webp/${size}x.webp`;
 	};
 
 	function loadListener(image) {
@@ -17,18 +18,14 @@
 	}
 </script>
 
-<picture>
-	<source type="image/webp" srcSet="{getPath('webp', 1)} 1x, {getPath('webp', 2)} 2x" />
-	<source srcSet="{getPath('jpg', 1)} 1x, {getPath('jpg', 2)} 2x" />
-	<img
-		alt={loaded ? `${beverage.name.value}, ${beverage.brand.name.value}` : ''}
-		srcset="{getPath('jpg', 1)} 1x, ${getPath('jpg', 2)} 2x"
-		src={getPath('jpg', 1)}
-		class:loaded
-		use:loadListener
-		loading="lazy"
-	/>
-</picture>
+<img
+	alt={loaded ? `${beverage.name.value}, ${beverage.brand.name.value}` : ''}
+	srcset="{getPath(1)} 1x, {getPath(2)} 2x"
+	src={getPath(1)}
+	class:loaded
+	use:loadListener
+	loading={eager ? 'eager' : 'lazy'}
+/>
 
 <style>
 	img {
@@ -39,11 +36,5 @@
 		height: 100%;
 		object-fit: cover;
 		object-position: center center;
-		opacity: 0;
-	}
-
-	.loaded {
-		opacity: 1;
-		transition: opacity var(--transition-default);
 	}
 </style>

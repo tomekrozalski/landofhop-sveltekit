@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
 	import CoverImage from './coverImage.svelte';
 	import Rotable from './rotable/rotable.svelte';
@@ -9,38 +7,21 @@
 	import Cap from './cap.svelte';
 
 	export let details: Details;
-	const { badge, brand, name, photos, shortId } = details;
 
 	let loaded = false;
-	let mounted = false;
-
-	onMount(() => {
-		mounted = true;
-	});
 </script>
 
 <div>
 	<section>
-		{#if photos?.gallery}
-			{#if !loaded && photos.outline}
+		{#if details.photos?.gallery}
+			{#if !loaded && details.photos.outline}
 				<span class="outline-wrapper" transition:toggleVisibility>
-					{@html photos.outline}
+					{@html details.photos.outline}
 				</span>
 			{:else}
 				<Rotable {details} />
 			{/if}
-			{#if mounted}
-				<CoverImage {details} bind:loaded />
-			{/if}
-			<noscript>
-				<picture>
-					<img
-						src="{PHOTO_SERVER}/{brand.badge}/{badge}/{shortId}/container/jpg/1x/01.jpg"
-						alt="{name.value}, {brand.name.value}"
-						style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center;"
-					/>
-				</picture>
-			</noscript>
+			<CoverImage {details} bind:loaded />
 		{:else}
 			<BrokenContainer {details} />
 		{/if}

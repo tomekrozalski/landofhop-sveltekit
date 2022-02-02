@@ -11,12 +11,12 @@
 </script>
 
 <ul>
-	{#each beverages as beverage}
+	{#each beverages as beverage, index}
 		<li>
 			<a href="/details/{beverage.shortId}/{beverage.brand.badge}/{beverage.badge}">
 				{#if beverage.coverImage}
 					{#key beverages}
-						<CoverImageWrapper {beverage} />
+						<CoverImageWrapper {beverage} eager={index < 5} />
 					{/key}
 				{:else}
 					<BrokenCoverImage type={beverage.containerType} />
