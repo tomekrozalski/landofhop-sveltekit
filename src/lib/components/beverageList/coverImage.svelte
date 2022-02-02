@@ -19,7 +19,7 @@
 </script>
 
 <img
-	alt={loaded ? `${beverage.name.value}, ${beverage.brand.name.value}` : ''}
+	alt={loaded || eager ? `${beverage.name.value}, ${beverage.brand.name.value}` : ''}
 	srcset="{getPath(1)} 1x, {getPath(2)} 2x"
 	src={getPath(1)}
 	class:loaded

@@ -1,8 +1,10 @@
 {
 	"en": {
+		"landingPage.description": "Database of beers that I drunk last years",
 		"landingPage.imageNotFound": "image not found"
 	},
 	"pl": {
+		"landingPage.description": "Baza piw, które wypiłem w przeciągu ostatnich lat",
 		"landingPage.imageNotFound": "Nie znaleziono zdjęcia"
 	}
 }

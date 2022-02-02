@@ -31,7 +31,7 @@
 	{:else}
 		<IntersectionObserver once={true} let:intersecting>
 			{#if intersecting}
-				<CoverImage {beverage} {eager}  bind:loaded />
+				<CoverImage {beverage} {eager} bind:loaded />
 			{/if}
 		</IntersectionObserver>
 		<noscript>

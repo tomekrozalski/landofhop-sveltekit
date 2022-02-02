@@ -18,16 +18,21 @@
 </script>
 
 <script lang="ts">
+	import { translate, translations } from 'svelte-intl';
+	import dictionary from '$lib/utils/dictionary/screens/landingPage.json';
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
 	import Pagination from '$lib/components/beverageList/pagination.svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export let beverages: Basics[];
 	export let total: number;
+
+	translations.update(dictionary);
 </script>
 
 <svelte:head>
 	<title>Land of Hop</title>
+	<meta name="description" content={$translate('landingPage.description')} />
 	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
