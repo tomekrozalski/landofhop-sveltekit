@@ -32,10 +32,17 @@
 				serverCall(fetch, Endpoints.styles)
 			]);
 
-			return { props: { beverage, ingredients, institutions, places, styles } };
-		} catch {
+			return { props: { beverage, forbidden: false, ingredients, institutions, places, styles } };
+		} catch (err) {
 			return {
-				props: { beverage: null, ingredients: [], institutions: [], places: [], styles: [] }
+				props: {
+					beverage: null,
+					forbidden: err.message === 'Forbidden',
+					ingredients: [],
+					institutions: [],
+					places: [],
+					styles: []
+				}
 			};
 		}
 	}
@@ -45,6 +52,7 @@
 	import { setContext } from 'svelte';
 	import { translate, translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
+	import { session } from '$app/stores';
 	import dictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import {
 		editorialStore,
@@ -60,10 +68,15 @@
 	translations.update(dictionary as Translations);
 
 	export let beverage: DetailsAdmin | null;
+	export let forbidden: boolean;
 	export let ingredients: IngredientType[];
 	export let institutions: InstitutionType[];
 	export let places: PlaceType[];
 	export let styles: StyleType[];
+
+	if (forbidden) {
+		$session.isLoggedIn = false;
+	}
 
 	ingredientsStore.set(ingredients);
 	institutionStore.set(institutions);

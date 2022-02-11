@@ -3,6 +3,7 @@
 	import { translate } from 'svelte-intl';
 	import { goto } from '$app/navigation';
 
+	import { session } from '$app/stores';
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import Button from '$lib/elements/form/button.svelte';
@@ -18,18 +19,24 @@
 	let updated = '';
 
 	onMount(async () => {
-		const adminData: { notes?: string; updated?: string } = await serverCall(
-			fetch,
-			Endpoints.beverageAdminNotes,
-			{ pathParams: ['pl', details.shortId] }
-		);
+		try {
+			const adminData: { notes?: string; updated?: string } = await serverCall(
+				fetch,
+				Endpoints.beverageAdminNotes,
+				{ pathParams: ['pl', details.shortId] }
+			);
 
-		if (adminData.notes) {
-			notes = adminData.notes;
-		}
+			if (adminData.notes) {
+				notes = adminData.notes;
+			}
 
-		if (adminData.updated) {
-			updated = adminData.updated;
+			if (adminData.updated) {
+				updated = adminData.updated;
+			}
+		} catch (err) {
+			if (err.message === 'Forbidden') {
+				$session.isLoggedIn = false;
+			}
 		}
 
 		isLoading = false;

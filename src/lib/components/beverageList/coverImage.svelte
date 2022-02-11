@@ -36,5 +36,6 @@
 		height: 100%;
 		object-fit: cover;
 		object-position: center center;
+		color: transparent;
 	}
 </style>

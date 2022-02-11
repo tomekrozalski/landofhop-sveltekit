@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import { beforeUpdate, onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { goto } from '$app/navigation';
+	import { session } from '$app/stores';
 
 	import Spinner from '$lib/elements/spinner.svelte';
-	import navigation from '$lib/utils/stores/navigation';
-	import Status from '$lib/utils/enums/Status.enum';
 	import ProgressList from '$lib/dashboard/elements/progressList/progressList.svelte';
 	import Navigation from '$lib/dashboard/elements/navigation.svelte';
 	import { page } from '$lib/dashboard/utils/stores';
@@ -16,8 +15,8 @@
 
 	const type = getContext('formType');
 
-	beforeUpdate(() => {
-		if ([Status.idle, Status.rejected].includes($navigation.loginStatus)) {
+	onMount(() => {
+		if (!$session.isLoggedIn) {
 			goto('/', { replaceState: true });
 		}
 	});
@@ -27,7 +26,7 @@
 	});
 </script>
 
-{#if $navigation.loginStatus === Status.fulfilled}
+{#if $session.isLoggedIn}
 	<article>
 		{#if type === 'add'}
 			<h1>{$translate('dashboard.beverage.addNewBeverage')}</h1>

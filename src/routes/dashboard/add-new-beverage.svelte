@@ -19,9 +19,17 @@
 				serverCall(fetch, Endpoints.styles)
 			]);
 
-			return { props: { ingredients, institutions, places, styles } };
-		} catch {
-			return { props: { ingredients: [], institutions: [], places: [], styles: [] } };
+			return { props: { forbidden: false, ingredients, institutions, places, styles } };
+		} catch (err) {
+			return {
+				props: {
+					forbidden: err.message === 'Forbidden',
+					ingredients: [],
+					institutions: [],
+					places: [],
+					styles: []
+				}
+			};
 		}
 	}
 </script>
@@ -30,6 +38,7 @@
 	import { setContext } from 'svelte';
 	import { translate, translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
+	import { session } from '$app/stores';
 	import dictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import {
 		editorialStore,
@@ -47,10 +56,15 @@
 
 	translations.update(dictionary as Translations);
 
+	export let forbidden: boolean;
 	export let ingredients: IngredientType[];
 	export let institutions: InstitutionType[];
 	export let places: PlaceType[];
 	export let styles: StyleType[];
+
+	if (forbidden) {
+		$session.isLoggedIn = false;
+	}
 
 	ingredientsStore.set(ingredients);
 	institutionStore.set(institutions);

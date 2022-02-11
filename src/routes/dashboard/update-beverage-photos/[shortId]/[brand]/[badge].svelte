@@ -7,9 +7,9 @@
 			const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.beveragePhotos, {
 				pathParams: [params.shortId]
 			});
-			return { props: { photosData } };
-		} catch {
-			return { props: { photosData: {} } };
+			return { props: { forbidden: false, photosData } };
+		} catch (err) {
+			return { props: { forbidden: err.message === 'Forbidden', photosData: {} } };
 		}
 	}
 </script>
@@ -17,13 +17,20 @@
 <script lang="ts">
 	import { translate, translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
+	import { session } from '$app/stores';
 	import dictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
 	import UpdateBeveragePhotos from '$lib/dashboard/beveragePhotos/beveragePhotos.svelte';
 
 	translations.update(dictionary as Translations);
 
+	export let forbidden: boolean;
 	export let photosData: PhotosDataTypes | null;
+
+	if (forbidden) {
+		$session.isLoggedIn = false;
+	}
+
 	beveragePhotosStore.set(photosData);
 </script>
 

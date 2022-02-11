@@ -9,7 +9,10 @@
 
 	function logOut() {
 		serverCall(fetch, Endpoints.unauthorize)
-			.then(() => navigation.setLoginStatus(Status.idle))
+			.then(() => {
+				$session.isLoggedIn = false;
+				navigation.setLoginStatus(Status.idle);
+			})
 			.catch(() => console.warn('Unauthorization failed'));
 	}
 </script>
