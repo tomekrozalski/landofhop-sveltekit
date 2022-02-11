@@ -1,3 +1,4 @@
+import cookie from 'cookie';
 import { minify } from 'html-minifier';
 import { prerendering } from '$app/env';
 
@@ -19,6 +20,14 @@ const minification_options = {
 	sortAttributes: true,
 	sortClassName: true
 };
+
+export function getSession({ request }) {
+	const cookies = cookie.parse(request.headers.get('cookie') ?? '');
+
+	return {
+		isLoggedIn: !!cookies.accessToken
+	};
+}
 
 export async function handle({ event, resolve }) {
 	const response = await resolve(event, {

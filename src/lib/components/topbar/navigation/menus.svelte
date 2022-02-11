@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import { session } from '$app/stores';
 	import Status from '$lib/utils/enums/Status.enum';
 	import navigation from '$lib/utils/stores/navigation';
 	import LockIcon from '$lib/elements/vectors/lock.svelte';
@@ -15,7 +16,7 @@
 
 <ul>
 	<li>
-		{#if $navigation.isLoggedIn}
+		{#if $session.isLoggedIn}
 			<button class="unlock-button" on:click={logOut}>
 				<UnlockIcon />
 				{$translate('navigation.logout')}
@@ -29,7 +30,7 @@
 	</li>
 	<li><a href="/about">{$translate('navigation.about')}</a></li>
 	<li><a href="/stats">{$translate('navigation.stats')}</a></li>
-	{#if $navigation.isLoggedIn}
+	{#if $session.isLoggedIn}
 		<li>
 			<a href="/dashboard/add-new-beverage">
 				{$translate('navigation.addNewBeverage')}

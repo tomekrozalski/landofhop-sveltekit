@@ -6,7 +6,6 @@ const { subscribe, update, set } = writable<{
 	isNavigationOpened: boolean;
 	isLoading: boolean;
 	isLoginOpened: boolean;
-	isLoggedIn: boolean;
 	isSearchbarActive: boolean;
 	loginStatus: Status;
 	searchPhrase: string;
@@ -14,9 +13,8 @@ const { subscribe, update, set } = writable<{
 	isNavigationOpened: false,
 	isLoading: false,
 	isLoginOpened: false,
-	isLoggedIn: false,
 	isSearchbarActive: false,
-	loginStatus: Status.pending,
+	loginStatus: Status.idle,
 	searchPhrase: ''
 });
 
@@ -57,7 +55,6 @@ function closeLoginbar() {
 function setLoginStatus(status: Status) {
 	update((store) => {
 		store.loginStatus = status;
-		store.isLoggedIn = status === Status.fulfilled;
 
 		return store;
 	});

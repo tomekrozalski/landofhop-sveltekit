@@ -25,8 +25,7 @@ export enum Endpoints {
 	styles = 'admin/style',
 	unauthorize = 'unauthorize',
 	updateBeverage = 'admin/beverage',
-	updateStyle = 'admin/style',
-	verifyToken = 'verifyToken'
+	updateStyle = 'admin/style'
 }
 
 type Props = {
@@ -45,7 +44,6 @@ function serverCall(fetch, endpoint: Endpoints, props?: Props) {
 		Endpoints.authorize,
 		Endpoints.beverageAdminNotes,
 		Endpoints.unauthorize,
-		Endpoints.verifyToken,
 		Endpoints.institutions,
 		Endpoints.addInstitution,
 		Endpoints.addBeverage,

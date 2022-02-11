@@ -1,13 +1,13 @@
 <script context="module" lang="ts">
 	import { get } from 'svelte/store';
+	import { session } from '$app/stores';
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
-	import navigation from '$lib/utils/stores/navigation';
 	import type { Style as StyleType } from '$lib/utils/types/Style';
 	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
 
 	export async function load({ fetch }) {
 		try {
-			if (get(navigation).isLoggedIn) {
+			if (get(session).isLoggedIn) {
 				const [statsData, styles]: [StylesStatsTypes[], StyleType[]] = await Promise.all([
 					serverCall(fetch, Endpoints.statsStyles, { pathParams: ['pl'] }),
 					serverCall(fetch, Endpoints.styles)

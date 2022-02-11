@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { session } from '$app/stores';
 	import { translate } from 'svelte-intl';
 	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
-	import navigation from '$lib/utils/stores/navigation';
 
 	export let item: StylesStatsTypes;
 	export let onUpdateClick: (badge: string) => void;
@@ -14,7 +14,7 @@
 	<a href="/stats/styles?search=style%3a{item.badge}">
 		{$translate('stats.styles.findAll')}
 	</a>
-	{#if $navigation.isLoggedIn}
+	{#if $session.isLoggedIn}
 		<button on:click={() => onUpdateClick(item.badge)} type="button">
 			{$translate('stats.styles.update')}
 		</button>

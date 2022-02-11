@@ -1,4 +1,12 @@
-<script>
+<script context="module" lang="ts">
+	export async function load({ session }) {
+		return {
+			props: { session }
+		};
+	}
+</script>
+
+<script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import { navigating } from '$app/stores';
 	import { locale, translations } from 'svelte-intl';

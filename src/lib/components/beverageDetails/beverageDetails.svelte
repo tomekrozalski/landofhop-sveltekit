@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { session } from '$app/stores';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
-	import navigation from '$lib/utils/stores/navigation';
 	import Navigation from './navigation.svelte';
 	import Gallery from './gallery/gallery.svelte';
 	import Header from './header.svelte';
@@ -24,7 +24,7 @@
 		<Testimony {details} />
 		<Impressions {details} />
 		<FootNotes {details} />
-		{#if $navigation.isLoggedIn}
+		{#if $session.isLoggedIn}
 			<AdminBar {details} />
 		{/if}
 	</div>
