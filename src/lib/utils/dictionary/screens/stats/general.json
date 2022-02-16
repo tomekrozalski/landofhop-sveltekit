@@ -18,15 +18,15 @@
 		"stats.general.addTimeline.bottles": "butelki",
 		"stats.general.addTimeline.cans": "puszki",
 		"stats.general.addTimeline.depiction": "{date}: {bottle, plural, one {# butelka} few {# butelki} other {# butelek}} i {can, plural, one {# puszka} few {# puszki} other {# puszek}}",
-		"stats.general.addTimeline.name": "Ilość dodawanych piw do bazy w kolejnych miesiącach",
-		"stats.general.addTimeline.numberOfBeverages": "Ilość piw",
+		"stats.general.addTimeline.name": "Liczba dodawanych piw do bazy w kolejnych miesiącach",
+		"stats.general.addTimeline.numberOfBeverages": "Liczba piw",
 		"stats.general.addTimeline.total": "razem",
 		"stats.general.alcohol.alcohol": "Alkohol",
 		"stats.general.alcohol.barLabel": "{value}% alkoholu, {beverages, plural, one {# piwo} few {# piwa} other {# piw}}",
 		"stats.general.alcohol.isAverage": "średnia ilość alkoholu wszystkich piw",
 		"stats.general.alcohol.isAverageWithoutNonAlcoholicBeverages": "średnia ilość alkoholu wszystkich piw wyłączając bezalkoholowe",
 		"stats.general.alcohol.name": "Wykres ilości alkoholu w piwach",
-		"stats.general.alcohol.numberOfBeverages": "Ilość piw",
+		"stats.general.alcohol.numberOfBeverages": "Liczba piw",
 		"stats.general.title": "📈 Statystyki"
 	}
 }
