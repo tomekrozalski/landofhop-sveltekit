@@ -1,5 +1,9 @@
 # Land of Hop, SvelteKit edition
 
+🗓️ 17.02.2022
+
+After small break I am back to SvelteKit world. I started to work with SvelteKit Endpoints. I realized that I do not need middleware API to connect my database with frontend. I built it using Oak / Deno and Fastify / Node servers. That is unnecessarly complex. In SvelteKit I can work with front- and the back-end side of the app very comfortable.
+
 🗓️ 11.11.2021
 
 I have created MVP: list of beverages, beverage details, about, simple statistics and dashboard where I can add and update beverages data and photos. It went very smoothly. I had it done previously in React, so it was just rewrite ready solutions with some minor additions, but anyway I am so impressed that it was so easy and the code is much more readable in Svelte. It is also much more performant.
