@@ -1,6 +1,11 @@
 <script context="module" lang="ts">
+	// import { browser, dev } from '$app/env';
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+
+	// export const hydrate = dev;
+	// export const router = browser;
+	// export const prerender = true;
 
 	export async function load({ fetch }) {
 		const total: number = await serverCall(fetch, Endpoints.beverageTotal);
@@ -8,7 +13,8 @@
 			pathParams: ['pl', 0, 60]
 		});
 
-		const totalCopy: number = await fetch('/api').then((value) => value.json());
+		// const totalCopy: number = await fetch('/api/beverages/total').then((value) => value.json());
+		// console.log('totalCopy', totalCopy);
 
 		return {
 			props: {
