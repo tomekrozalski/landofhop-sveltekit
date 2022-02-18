@@ -1,31 +1,26 @@
-import { MongoClient, MongoClientOptions } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 const uri = import.meta.env.VITE_MONGODB_URI as string;
-
-const options: MongoClientOptions = {};
-
-let client;
-let clientPromise;
 
 if (!uri) {
 	throw new Error('Please add your Mongo URI to .env');
 }
 
-if (process.env.NODE_ENV === 'development') {
-	if (!global._mongoClientPromise) {
-		client = new MongoClient(uri, options);
-		global._mongoClientPromise = client.connect();
-	}
+async function main() {
+	const client = new MongoClient(uri);
+	const dbConnection = await client.connect();
+	const db = dbConnection.db('landofhop');
 
-	clientPromise = global._mongoClientPromise;
-} else {
-	// In production mode, it's best to
-	// not use a global variable.
-	client = new MongoClient(uri, options);
-	clientPromise = client.connect();
+	return {
+		basics: db.collection('basics'),
+		beverages: db.collection('beverages'),
+		ingredients: db.collection('ingredients'),
+		institutions: db.collection('institutions'),
+		places: db.collection('places'),
+		sessions: db.collection('sessions'),
+		styles: db.collection('styles'),
+		users: db.collection('users')
+	};
 }
 
-// Export a module-scoped MongoClient promise.
-// By doing this in a separate module,
-// the client can be shared across functions.
-export default clientPromise;
+export default main;

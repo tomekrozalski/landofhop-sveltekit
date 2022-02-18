@@ -1,15 +1,15 @@
-import clientPromise from '$lib/utils/db';
+import db from '$lib/utils/db';
 
 export async function get(request) {
-	const dbConnection = await clientPromise;
-	const db = dbConnection.db('landofhop');
-	const collection = db.collection('basics');
-	const basics = await collection.count();
+	const { basics } = await db();
+	const num = await basics.count();
+
+	console.log('num', num);
 
 	return {
 		status: 200,
 		body: {
-			basics
+			numb: num
 		}
 	};
 }

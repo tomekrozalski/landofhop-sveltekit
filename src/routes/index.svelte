@@ -8,6 +8,8 @@
 			pathParams: ['pl', 0, 60]
 		});
 
+		const totalCopy: number = await fetch('/api').then((value) => value.json());
+
 		return {
 			props: {
 				beverages,
