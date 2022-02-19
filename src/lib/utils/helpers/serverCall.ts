@@ -15,7 +15,7 @@ export enum Endpoints {
 	beveragePhotos = 'admin/beverage/photos',
 	beverageRemove = 'admin/beverage',
 	beverageSearch = 'beverage/search',
-	beverageTotal = 'beverage/total',
+	// beverageTotal = 'beverage/total',
 	ingredients = 'admin/ingredient',
 	institutions = 'admin/institution',
 	places = 'admin/place',

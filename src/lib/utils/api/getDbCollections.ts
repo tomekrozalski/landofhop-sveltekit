@@ -6,7 +6,7 @@ if (!uri) {
 	throw new Error('Please add your Mongo URI to .env');
 }
 
-async function main() {
+async function getDb() {
 	const client = new MongoClient(uri);
 	const dbConnection = await client.connect();
 	const db = dbConnection.db('landofhop');
@@ -23,4 +23,4 @@ async function main() {
 	};
 }
 
-export default main;
+export default getDb;
