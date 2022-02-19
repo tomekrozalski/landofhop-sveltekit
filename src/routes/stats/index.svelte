@@ -2,6 +2,8 @@
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { GeneralStats as GeneralStatsTypes } from '$lib/utils/types/stats/General';
 
+	export const prerender = true;
+
 	export async function load({ fetch }) {
 		const statsData: GeneralStatsTypes = await serverCall(fetch, Endpoints.statsGeneral, {
 			pathParams: ['pl']

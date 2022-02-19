@@ -1,10 +1,7 @@
 <script context="module" lang="ts">
-	import { browser, dev } from '$app/env';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-	export const hydrate = dev;
-	export const router = browser;
 	export const prerender = true;
 
 	export async function load({ fetch }) {

@@ -40,8 +40,6 @@ function call(fetch, endpoint: Endpoints, props?: Props) {
 
 	const completeUrl = pathParams?.length ? `${endpoint}/${pathParams.join('/')}` : endpoint;
 
-	console.log('completeUrl', completeUrl);
-
 	const isProtectedRoute = [
 		// Endpoints.authorize,
 		// Endpoints.beverageAdminNotes,

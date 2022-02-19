@@ -2,6 +2,8 @@
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
 
+	export const prerender = true;
+
 	export async function load({ fetch, params }) {
 		const augmentedBeverageDetails: AugmentedDetails = await serverCall(
 			fetch,
