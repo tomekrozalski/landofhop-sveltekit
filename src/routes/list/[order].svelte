@@ -1,6 +1,8 @@
 <script context="module" lang="ts">
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+
+	export const prerender = true;
 
 	export async function load({ fetch, params }) {
 		const order = +params.order;
@@ -13,14 +15,7 @@
 			};
 		}
 
-		const total: number = await serverCall(fetch, Endpoints.beverageTotal);
-
-		/*
-			@ToDo:
-				it should be moved to API, when we will try
-				to get beverages which are out of scope, we
-				should response with error
-		*/
+		const total: number = await apiCall(fetch, Endpoints.beverageTotal);
 
 		if (skip > total) {
 			return {
@@ -29,7 +24,7 @@
 			};
 		}
 
-		const beverages: Basics[] = await serverCall(fetch, Endpoints.beverageBasics, {
+		const beverages: any = await apiCall(fetch, Endpoints.beverageBasics, {
 			pathParams: ['pl', skip, 60]
 		});
 
