@@ -6,12 +6,12 @@
 		const order = +params.order;
 		const skip = order * 60 - 60;
 
-		// if (!order || order === 1) {
-		// 	return {
-		// 		status: 301,
-		// 		redirect: '/'
-		// 	};
-		// }
+		if (!order || order === 1) {
+			return {
+				status: 301,
+				redirect: '/'
+			};
+		}
 
 		const total: number = await serverCall(fetch, Endpoints.beverageTotal);
 
