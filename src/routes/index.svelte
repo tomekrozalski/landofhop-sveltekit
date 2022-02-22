@@ -6,7 +6,7 @@
 
 	export async function load({ fetch }) {
 		const total: number = await apiCall(fetch, Endpoints.beverageTotal);
-		const beverages: any = await apiCall(fetch, Endpoints.beverageBasics, {
+		const beverages: Basics[] = await apiCall(fetch, Endpoints.beverageBasics, {
 			pathParams: ['pl', 0, 60]
 		});
 

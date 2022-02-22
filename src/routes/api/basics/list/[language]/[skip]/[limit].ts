@@ -2,6 +2,7 @@
 import { format } from 'date-fns';
 import { getDbCollections, translate } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
+import type { RawBasics } from '$lib/utils/types/api/RawBasics';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
 export async function get({ params }) {
@@ -10,11 +11,11 @@ export async function get({ params }) {
 	const translatedValues: Basics[] = [];
 
 	await basics
-		.find({}, { noCursorTimeout: false })
+		.find()
 		.sort({ added: -1 })
 		.skip(+skip)
 		.limit(+limit)
-		.forEach(({ added, badge, brand, containerType, coverImage, name, shortId }) => {
+		.forEach(({ added, badge, brand, containerType, coverImage, name, shortId }: RawBasics) => {
 			translatedValues.push({
 				shortId,
 				badge,

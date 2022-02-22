@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import isArray from 'lodash.isarray';
-	import isString from 'lodash.isstring';
+	import isArray from 'lodash/isArray';
+	import isString from 'lodash/isString';
 
 	import { getFromArray } from '$lib/dashboard/utils/getFromArray';
 	import { institutionStore } from '$lib/dashboard/utils/stores';

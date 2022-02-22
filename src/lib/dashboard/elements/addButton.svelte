@@ -1,5 +1,5 @@
 <script lang="ts">
-	import cloneDeep from 'lodash.clonedeep';
+	import cloneDeep from 'lodash/cloneDeep';
 	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 
 	export let formData: any;

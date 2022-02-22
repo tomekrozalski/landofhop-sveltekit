@@ -164,6 +164,7 @@
 		"form.validation.min": "Minimum value: {value}",
 		"form.validation.minChars": "Minimum allowed chars are {value}",
 		"form.validation.max": "Maximum value: {value}",
+		"form.validation.required": "Field required",
 		"form.validation.tagSelectionRequired": "At least one tag required",
 		"form.validation.typeErrorNumber": "Number required",
 		"form.validation.wrongDate": "Wrong date value"
@@ -332,6 +333,7 @@
 		"form.validation.min": "Minimalna wartość: {value}",
 		"form.validation.minChars": "Wymagane minimum {value} znaków",
 		"form.validation.max": "Maksymalna wartość: {value}",
+		"form.validation.required": "Pole wymagane",
 		"form.validation.tagSelectionRequired": "Wymagany przynajmniej jeden tag",
 		"form.validation.typeErrorNumber": "Wymagana cyfra",
 		"form.validation.wrongDate": "Błędny format daty"

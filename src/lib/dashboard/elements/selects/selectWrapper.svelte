@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Select from 'svelte-select';
-	import isArray from 'lodash.isarray';
-	import isEmpty from 'lodash.isempty';
+	import isArray from 'lodash/isArray';
+	import isEmpty from 'lodash/isEmpty';
 	import Error from '$lib/elements/form/error.svelte';
 	import Item from './elements/item.svelte';
 	import MultiSelection from './elements/multiSelection.svelte';

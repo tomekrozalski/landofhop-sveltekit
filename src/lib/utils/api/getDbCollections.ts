@@ -1,4 +1,6 @@
 import { MongoClient } from 'mongodb';
+import type { RawBasics } from '$lib/utils/types/api/RawBasics';
+import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage';
 
 const uri = import.meta.env.VITE_MONGODB_URI as string;
 
@@ -12,8 +14,8 @@ async function getDb() {
 	const db = dbConnection.db('landofhop');
 
 	return {
-		basics: db.collection('basics'),
-		beverages: db.collection('beverages'),
+		basics: db.collection<RawBasics>('basics'),
+		beverages: db.collection<RawBeverage>('beverages'),
 		ingredients: db.collection('ingredients'),
 		institutions: db.collection('institutions'),
 		places: db.collection('places'),

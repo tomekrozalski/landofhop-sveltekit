@@ -10,7 +10,7 @@ export enum Endpoints {
 	// authorize = 'authorize',
 	// beverageAdminNotes = 'admin/beverage/notes',
 	beverageBasics = '/api/basics/list',
-	// beverageDetails = 'details',
+	beverageDetails = '/api/beverages/details',
 	// beverageDetailsAdmin = 'admin/details',
 	// beveragePhotos = 'admin/beverage/photos',
 	// beverageRemove = 'admin/beverage',

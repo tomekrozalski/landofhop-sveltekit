@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import cloneDeep from 'lodash.clonedeep';
+	import cloneDeep from 'lodash/cloneDeep';
 	import { emptyLanguageValue } from '$lib/dashboard/utils/emptyFieldValues';
 
 	export let formData: any;

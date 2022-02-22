@@ -12,6 +12,7 @@ import {
 	IngredientType,
 	TemperatureUnit
 } from 'utils/enums/Beverage';
+import { InsitutionOutput } from '../Institution';
 import { Aged, Container, Price, Tale } from './fragments';
 
 export type Details = {

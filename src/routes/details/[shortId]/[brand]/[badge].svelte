@@ -1,17 +1,26 @@
 <script context="module" lang="ts">
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
 
 	export const prerender = true;
 
 	export async function load({ fetch, params }) {
-		const augmentedBeverageDetails: AugmentedDetails = await serverCall(
-			fetch,
-			Endpoints.beverageDetails,
-			{ pathParams: ['pl', params.shortId] }
-		);
+		try {
+			const augmentedBeverageDetails: AugmentedDetails = await apiCall(
+				fetch,
+				Endpoints.beverageDetails,
+				{
+					pathParams: ['pl', params.shortId]
+				}
+			);
 
-		return { props: augmentedBeverageDetails };
+			return { props: augmentedBeverageDetails };
+		} catch (e) {
+			return {
+				status: 404,
+				error: e.message
+			};
+		}
 	}
 </script>
 
@@ -35,6 +44,8 @@
 	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
-{#key details.shortId}
-	<BeverageDetails {details} {next} {previous} />
-{/key}
+{#if details}
+	{#key details.shortId}
+		<BeverageDetails {details} {next} {previous} />
+	{/key}
+{/if}

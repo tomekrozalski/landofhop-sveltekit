@@ -1,4 +1,4 @@
-import type { InstitutionInsideBeverage } from '$lib/utils/types/Institution';
+import type { Institution } from '$lib/utils/types/Beverage/fragments/Institution';
 import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
 import type { Tale } from '$lib/utils/types/Beverage/fragments/Tale';
 import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
@@ -125,8 +125,8 @@ export type LabelFormOutput = {
 	// -----------
 	name: LanguageValue[];
 	series?: LanguageValue[];
-	brand: InstitutionInsideBeverage;
-	cooperation?: InstitutionInsideBeverage[];
+	brand: Institution;
+	cooperation?: Institution[];
 	contract?: string;
 	isContract?: true;
 	place?: {

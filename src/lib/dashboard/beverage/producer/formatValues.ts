@@ -1,4 +1,4 @@
-import isBoolean from 'lodash.isboolean';
+import isBoolean from 'lodash/isBoolean';
 import {
 	formatDateFromString,
 	formatIngredientByBadge,
