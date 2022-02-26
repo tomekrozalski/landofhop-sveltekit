@@ -1,5 +1,5 @@
-import { isBoolean, isEmpty, isNumber } from 'lodash';
-import format from 'date-fns/format';
+import { isBoolean, isEmpty, isNumber } from 'lodash-es';
+import { format } from 'date-fns';
 
 import { deleteIfEmpty, translate } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';

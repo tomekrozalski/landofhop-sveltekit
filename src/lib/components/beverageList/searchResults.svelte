@@ -1,5 +1,5 @@
 <script lang="ts">
-	import debounce from 'lodash/debounce';
+	import { debounce } from 'lodash-es';
 	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import navigation from '$lib/utils/stores/navigation';

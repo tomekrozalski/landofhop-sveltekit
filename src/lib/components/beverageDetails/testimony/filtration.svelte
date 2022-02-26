@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import isBoolean from 'lodash/isBoolean';
+	import { isBoolean } from 'lodash-es';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
 	export let details: Details;

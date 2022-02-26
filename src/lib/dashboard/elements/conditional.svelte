@@ -1,6 +1,5 @@
 <script lang="ts">
-	import cloneDeep from 'lodash/cloneDeep';
-	import isPlainObject from 'lodash/isPlainObject';
+	import { cloneDeep, isPlainObject } from 'lodash-es';
 	import CheckmarkIcon from '$lib/elements/vectors/success.svelte';
 
 	export let fieldName: string;
