@@ -2,7 +2,7 @@
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
 
-	export const prerender = true;
+	// export const prerender = true;
 
 	export async function load({ fetch, params }) {
 		try {
