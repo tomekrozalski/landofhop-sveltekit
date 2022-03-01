@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Style as StyleType } from '$lib/utils/types/Style';
 	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
 
@@ -7,14 +7,15 @@
 		try {
 			if (session.isLoggedIn) {
 				const [statsData, styles]: [StylesStatsTypes[], StyleType[]] = await Promise.all([
-					serverCall(fetch, Endpoints.statsStyles, { pathParams: ['pl'] }),
-					serverCall(fetch, Endpoints.styles)
+					apiCall(fetch, Endpoints.statsStyles, { pathParams: ['pl'] }),
+					apiCall(fetch, Endpoints.styles)
 				]);
 
 				return { props: { statsData, styles } };
 			}
 
-			const statsData = await serverCall(fetch, Endpoints.statsStyles, { pathParams: ['pl'] });
+			const statsData = await apiCall(fetch, Endpoints.statsStyles, { pathParams: ['pl'] });
+
 			return { props: { statsData, styles: [] } };
 		} catch {
 			return {
