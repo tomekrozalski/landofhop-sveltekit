@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
 	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 	import type { Place as PlaceType } from '$lib/utils/types/Place';
@@ -13,10 +13,10 @@
 				PlaceType[],
 				StyleType[]
 			] = await Promise.all([
-				serverCall(fetch, Endpoints.ingredients),
-				serverCall(fetch, Endpoints.institutions),
-				serverCall(fetch, Endpoints.places),
-				serverCall(fetch, Endpoints.styles)
+				apiCall(fetch, Endpoints.ingredients),
+				apiCall(fetch, Endpoints.institutions),
+				apiCall(fetch, Endpoints.places),
+				apiCall(fetch, Endpoints.styles)
 			]);
 
 			return { props: { forbidden: false, ingredients, institutions, places, styles } };

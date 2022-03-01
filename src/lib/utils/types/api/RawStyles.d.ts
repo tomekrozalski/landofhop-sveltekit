@@ -1,9 +1,13 @@
 import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
 import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
 
-export type RawStyles = {
+export type RawStylesWithoutId = {
 	_id: string;
 	badge: string;
 	name: LanguageValue[];
 	group: StyleGroup;
+};
+
+export type RawStyles = RawStylesWithoutId & {
+	_id: string;
 };

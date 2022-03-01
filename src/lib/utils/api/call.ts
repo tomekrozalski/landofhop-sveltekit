@@ -11,14 +11,14 @@ export enum Endpoints {
 	// beverageAdminNotes = 'admin/beverage/notes',
 	beverageBasics = '/api/basics/list',
 	beverageDetails = '/api/beverages/details',
-	// beverageDetailsAdmin = 'admin/details',
+	beverageDetailsAdmin = '/api/admin/details',
 	// beveragePhotos = 'admin/beverage/photos',
 	// beverageRemove = 'admin/beverage',
 	// beverageSearch = 'beverage/search',
 	beverageTotal = '/api/basics/total',
-	// ingredients = 'admin/ingredient',
-	// institutions = 'admin/institution',
-	// places = 'admin/place',
+	ingredients = '/api/ingredients',
+	institutions = '/api/institutions',
+	places = '/api/places',
 	// removeBeverageCap = 'admin/beverage/cap',
 	statsGeneral = '/api/stats/general',
 	statsStyles = '/api/stats/styles',
@@ -37,35 +37,10 @@ type Props = {
 
 function call(fetch, endpoint: Endpoints, props?: Props) {
 	const { formData = false, method = 'GET', pathParams, ...rest } = props || {};
-
 	const completeUrl = pathParams?.length ? `${endpoint}/${pathParams.join('/')}` : endpoint;
-
-	const isProtectedRoute = [
-		// Endpoints.authorize,
-		// Endpoints.beverageAdminNotes,
-		// Endpoints.unauthorize,
-		// Endpoints.institutions,
-		// Endpoints.addInstitution,
-		// Endpoints.addBeverage,
-		// Endpoints.beveragePhotos,
-		// Endpoints.addBeverageCover,
-		// Endpoints.beverageRemove,
-		// Endpoints.addBeverageGallery,
-		// Endpoints.beverageDetailsAdmin,
-		// Endpoints.updateBeverage,
-		// Endpoints.places,
-		// Endpoints.addPlace,
-		// Endpoints.ingredients,
-		// Endpoints.addIngredient,
-		// Endpoints.styles,
-		// Endpoints.addBeverageCap,
-		// Endpoints.removeBeverageCap,
-		// Endpoints.updateStyle
-	].includes(endpoint);
 
 	return fetch(completeUrl, {
 		method,
-		...(isProtectedRoute && { credentials: 'include' }),
 		headers: {
 			...(!formData && { 'Content-Type': 'application/json' })
 		},

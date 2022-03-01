@@ -1,6 +1,9 @@
 import { MongoClient } from 'mongodb';
 import type { RawBasics } from '$lib/utils/types/api/RawBasics';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage';
+import type { RawIngredient } from '$lib/utils/types/api/RawIngredient';
+import type { RawInstitution } from '$lib/utils/types/api/RawInstitution';
+import type { RawPlace } from '$lib/utils/types/api/RawPlace';
 import type { RawStyles } from '$lib/utils/types/api/RawStyles';
 
 const uri = import.meta.env.VITE_MONGODB_URI as string;
@@ -17,9 +20,9 @@ async function getDb() {
 	return {
 		basics: db.collection<RawBasics>('basics'),
 		beverages: db.collection<RawBeverage>('beverages'),
-		ingredients: db.collection('ingredients'),
-		institutions: db.collection('institutions'),
-		places: db.collection('places'),
+		ingredients: db.collection<RawIngredient>('ingredients'),
+		institutions: db.collection<RawInstitution>('institutions'),
+		places: db.collection<RawPlace>('places'),
 		sessions: db.collection('sessions'),
 		styles: db.collection<RawStyles>('styles'),
 		users: db.collection('users')

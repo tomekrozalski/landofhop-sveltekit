@@ -1,17 +1,13 @@
-import { getDbCollections } from '$lib/utils/api';
-import type { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
-import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
+import { authenticate, getDbCollections } from '$lib/utils/api';
+import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles';
 
-export type Styles = {
-	badge: string;
-	name: LanguageValue[];
-	group: StyleGroup;
-};
-
-export async function get() {
+export async function get({ request }) {
 	const { styles } = await getDbCollections();
+	const isAuthenticated = await authenticate(request);
 
-	const data: Styles[] = await styles
+	console.log('isAuthenticated', isAuthenticated);
+
+	const data: RawStylesWithoutId[] = await styles
 		.find(
 			{},
 			{
