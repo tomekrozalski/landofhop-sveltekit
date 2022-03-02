@@ -1,11 +1,11 @@
-import { authenticate, getDbCollections } from '$lib/utils/api';
+import { getDbCollections } from '$lib/utils/api';
 import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles';
 
 export async function get({ request }) {
 	const { styles } = await getDbCollections();
-	const isAuthenticated = await authenticate(request);
+	// const isAuthenticated = await authenticate(request);
 
-	console.log('isAuthenticated', isAuthenticated);
+	// console.log('isAuthenticated', isAuthenticated);
 
 	const data: RawStylesWithoutId[] = await styles
 		.find(

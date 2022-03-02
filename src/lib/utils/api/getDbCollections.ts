@@ -1,4 +1,6 @@
 import { MongoClient } from 'mongodb';
+import { mode } from '$app/env';
+
 import type { RawBasics } from '$lib/utils/types/api/RawBasics';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage';
 import type { RawIngredient } from '$lib/utils/types/api/RawIngredient';
@@ -12,9 +14,27 @@ if (!uri) {
 	throw new Error('Please add your Mongo URI to .env');
 }
 
+function getDbConnection() {
+	let client;
+	let clientPromise;
+
+	if (mode === 'development') {
+		if (!globalThis._mongoClientPromise) {
+			client = new MongoClient(uri);
+			globalThis._mongoClientPromise = client.connect();
+		}
+
+		clientPromise = globalThis._mongoClientPromise;
+	} else if (mode === 'production') {
+		client = new MongoClient(uri);
+		clientPromise = client.connect();
+	}
+
+	return clientPromise;
+}
+
 async function getDb() {
-	const client = new MongoClient(uri);
-	const dbConnection = await client.connect();
+	const dbConnection = (await getDbConnection()) as MongoClient;
 	const db = dbConnection.db('landofhop');
 
 	return {

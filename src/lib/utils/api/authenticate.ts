@@ -4,7 +4,7 @@ import * as jwt from 'jsonwebtoken';
 // import { getDbCollections } from '$lib/utils/api';
 
 async function authenticate(request): Promise<boolean> {
-	const { accessToken, refreshToken } = cookie.parse(request.headers.get('cookie') ?? {});
+	const { accessToken, refreshToken } = cookie.parse(request.headers.get('cookie') ?? '');
 	// const { sessions } = await getDbCollections();
 
 	if (accessToken) {
