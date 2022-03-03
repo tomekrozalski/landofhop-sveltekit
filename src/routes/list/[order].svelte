@@ -2,7 +2,7 @@
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-	export const prerender = true;
+	// export const prerender = true;
 
 	export async function load({ fetch, params }) {
 		const order = +params.order;
