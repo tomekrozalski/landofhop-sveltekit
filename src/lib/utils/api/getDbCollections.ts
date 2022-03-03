@@ -4,6 +4,7 @@ import type { RawIngredient } from '$lib/utils/types/api/RawIngredient';
 import type { RawInstitution } from '$lib/utils/types/api/RawInstitution';
 import type { RawPlace } from '$lib/utils/types/api/RawPlace';
 import type { RawStyles } from '$lib/utils/types/api/RawStyles';
+
 import getDbConnection from './getDbConnection';
 
 async function getDb() {
