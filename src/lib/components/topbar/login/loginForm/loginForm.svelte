@@ -7,7 +7,7 @@
 	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
 	import Button from '$lib/elements/form/button.svelte';
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import Email from './email.svelte';
 	import Password from './password.svelte';
 
@@ -28,7 +28,7 @@
 		onSubmit: (values) => {
 			navigation.setLoginStatus(Status.pending);
 
-			serverCall(fetch, Endpoints.authorize, {
+			apiCall(fetch, Endpoints.logIn, {
 				method: 'POST',
 				body: JSON.stringify(values)
 			})
