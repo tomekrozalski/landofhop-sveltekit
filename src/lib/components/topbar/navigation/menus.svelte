@@ -5,15 +5,15 @@
 	import navigation from '$lib/utils/stores/navigation';
 	import LockIcon from '$lib/elements/vectors/lock.svelte';
 	import UnlockIcon from '$lib/elements/vectors/unlock.svelte';
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 
 	function logOut() {
-		serverCall(fetch, Endpoints.unauthorize)
+		apiCall(fetch, Endpoints.logOut)
 			.then(() => {
 				$session.isLoggedIn = false;
 				navigation.setLoginStatus(Status.idle);
 			})
-			.catch(() => console.warn('Unauthorization failed'));
+			.catch(() => console.warn('Log out failed'));
 	}
 </script>
 

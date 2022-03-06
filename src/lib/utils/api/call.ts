@@ -18,6 +18,7 @@ export enum Endpoints {
 	ingredients = '/api/ingredients',
 	institutions = '/api/institutions',
 	logIn = '/api/user/login',
+	logOut = '/api/user/logout',
 	places = '/api/places',
 	// removeBeverageCap = 'admin/beverage/cap',
 	statsGeneral = '/api/stats/general',

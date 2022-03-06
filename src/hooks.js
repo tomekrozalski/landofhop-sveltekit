@@ -25,7 +25,7 @@ export function getSession({ request }) {
 	const cookies = cookie.parse(request.headers.get('cookie') ?? '');
 
 	return {
-		isLoggedIn: !!cookies.accessToken
+		isLoggedIn: !!cookies.refreshToken
 	};
 }
 
