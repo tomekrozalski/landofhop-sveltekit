@@ -1,8 +1,16 @@
-import { getDbCollections } from '$lib/utils/api';
+import { authenticate, getDbCollections } from '$lib/utils/api';
 import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
 
-export async function get() {
+export async function get(request) {
 	const { institutions } = await getDbCollections();
+	const [isAuthenticated, headers] = await authenticate(request);
+
+	if (!isAuthenticated) {
+		return {
+			status: 401,
+			body: 'Unauthorized. List of institutions cannot be sent'
+		};
+	}
 
 	const data: RawInstitutionWithoutId[] = await institutions
 		.find(
@@ -21,6 +29,7 @@ export async function get() {
 		.toArray();
 
 	return {
+		headers,
 		body: data
 	};
 }

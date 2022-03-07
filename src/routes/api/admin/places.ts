@@ -1,8 +1,16 @@
-import { getDbCollections } from '$lib/utils/api';
+import { authenticate, getDbCollections } from '$lib/utils/api';
 import type { RawPlaceWithoutId } from '$lib/utils/types/api/RawPlace';
 
-export async function get() {
+export async function get(request) {
 	const { places } = await getDbCollections();
+	const [isAuthenticated, headers] = await authenticate(request);
+
+	if (!isAuthenticated) {
+		return {
+			status: 401,
+			body: 'Unauthorized. List of places cannot be sent'
+		};
+	}
 
 	const data: RawPlaceWithoutId[] = [];
 
@@ -22,6 +30,7 @@ export async function get() {
 	});
 
 	return {
+		headers,
 		body: data
 	};
 }

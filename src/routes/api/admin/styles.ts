@@ -1,11 +1,16 @@
-import { getDbCollections } from '$lib/utils/api';
+import { authenticate, getDbCollections } from '$lib/utils/api';
 import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles';
 
 export async function get({ request }) {
 	const { styles } = await getDbCollections();
-	// const isAuthenticated = await authenticate(request);
+	const [isAuthenticated, headers] = await authenticate(request);
 
-	// console.log('isAuthenticated', isAuthenticated);
+	if (!isAuthenticated) {
+		return {
+			status: 401,
+			body: 'Unauthorized. List of styles cannot be sent'
+		};
+	}
 
 	const data: RawStylesWithoutId[] = await styles
 		.find(
@@ -22,6 +27,7 @@ export async function get({ request }) {
 		.toArray();
 
 	return {
+		headers,
 		body: data
 	};
 }

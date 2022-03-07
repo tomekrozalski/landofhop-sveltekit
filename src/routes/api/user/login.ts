@@ -1,9 +1,6 @@
 import bcrypt from 'bcryptjs';
-import cookie from 'cookie';
-import { add } from 'date-fns';
-import jwt from 'jsonwebtoken';
 
-import { createSession, getDbCollections } from '$lib/utils/api';
+import { createSession, createTokens, getDbCollections } from '$lib/utils/api';
 
 export async function post({ request }) {
 	const { email, password } = await request.json();
@@ -37,32 +34,9 @@ export async function post({ request }) {
 			};
 		}
 
-		const accessToken = jwt.sign(
-			{ sessionToken, userId: user._id.toString() },
-			import.meta.env.VITE_JWT_SECRET
-		);
+		const headers = createTokens(sessionToken, user._id.toString());
 
-		const refreshToken = jwt.sign({ sessionToken }, import.meta.env.VITE_JWT_SECRET);
-
-		return {
-			headers: {
-				'Set-Cookie': [
-					cookie.serialize('accessToken', accessToken, {
-						httpOnly: true,
-						path: '/',
-						sameSite: 'strict',
-						secure: true
-					}),
-					cookie.serialize('refreshToken', refreshToken, {
-						expires: add(new Date(), { weeks: 3 }),
-						httpOnly: true,
-						path: '/',
-						sameSite: 'strict',
-						secure: true
-					})
-				]
-			}
-		};
+		return { headers };
 	} catch {
 		return {
 			status: 500,
