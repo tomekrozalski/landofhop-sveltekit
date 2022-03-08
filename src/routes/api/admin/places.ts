@@ -1,7 +1,7 @@
 import { authenticate, getDbCollections } from '$lib/utils/api';
 import type { RawPlaceWithoutId } from '$lib/utils/types/api/RawPlace';
 
-export async function get(request) {
+export async function get({ request }) {
 	const { places } = await getDbCollections();
 	const [isAuthenticated, headers] = await authenticate(request);
 

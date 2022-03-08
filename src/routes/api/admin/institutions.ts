@@ -1,7 +1,7 @@
 import { authenticate, getDbCollections } from '$lib/utils/api';
 import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
 
-export async function get(request) {
+export async function get({ request }) {
 	const { institutions } = await getDbCollections();
 	const [isAuthenticated, headers] = await authenticate(request);
 

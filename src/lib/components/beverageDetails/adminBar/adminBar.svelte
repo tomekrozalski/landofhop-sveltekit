@@ -4,7 +4,7 @@
 	import { goto } from '$app/navigation';
 
 	import { session } from '$app/stores';
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import Button from '$lib/elements/form/button.svelte';
 	import InlineSpinner from '$lib/elements/inlineSpinner.svelte';
@@ -20,7 +20,7 @@
 
 	onMount(async () => {
 		try {
-			const adminData: { notes?: string; updated?: string } = await serverCall(
+			const adminData: { notes?: string; updated?: string } = await apiCall(
 				fetch,
 				Endpoints.beverageAdminNotes,
 				{ pathParams: ['pl', details.shortId] }

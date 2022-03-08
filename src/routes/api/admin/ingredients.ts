@@ -1,7 +1,7 @@
 import { authenticate, getDbCollections } from '$lib/utils/api';
 import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
 
-export async function get(request) {
+export async function get({ request }) {
 	const { ingredients } = await getDbCollections();
 	const [isAuthenticated, headers] = await authenticate(request);
 

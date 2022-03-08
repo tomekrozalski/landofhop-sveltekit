@@ -7,7 +7,7 @@ export enum Endpoints {
 	// addInstitution = 'admin/institution',
 	// addPlace = 'admin/place',
 	// addStyle = 'admin/style',
-	// beverageAdminNotes = 'admin/beverage/notes',
+	beverageAdminNotes = '/api/admin/beverage/notes',
 	beverageBasics = '/api/basics/list',
 	beverageDetails = '/api/beverages/details',
 	beverageDetailsAdmin = '/api/admin/details',
