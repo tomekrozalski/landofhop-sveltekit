@@ -1,8 +1,7 @@
-import { getDbCollections } from '$lib/utils/api';
+import { detailsNormalizer, getDbCollections } from '$lib/utils/api';
 import type { LinkData } from '$lib/utils/types/Beverage/LinkData.d';
 import type { Details } from '$lib/utils/types/Beverage/Details';
 import countryList from '$lib/utils/api/countryList';
-import detailsNormalizer from '$lib/utils/api/beverages/detailsNormalizer';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 
 export async function get({ params }) {

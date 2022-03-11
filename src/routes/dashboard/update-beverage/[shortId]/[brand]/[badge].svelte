@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import serverCall, { Endpoints as ServerEndpoints } from '$lib/utils/helpers/serverCall';
 	import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
 	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 	import type { Place as PlaceType } from '$lib/utils/types/Place';
@@ -24,10 +23,9 @@
 				PlaceType[],
 				StyleType[]
 			] = await Promise.all([
-				serverCall(fetch, ServerEndpoints.beverageDetailsAdmin, {
+				apiCall(fetch, Endpoints.beverageDetailsAdmin, {
 					pathParams: [params.shortId]
 				}),
-
 				apiCall(fetch, Endpoints.ingredients),
 				apiCall(fetch, Endpoints.institutions),
 				apiCall(fetch, Endpoints.places),
