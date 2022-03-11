@@ -13,7 +13,6 @@ export enum Endpoints {
 	beverageDetailsAdmin = '/api/admin/beverages/details',
 	// beveragePhotos = 'admin/beverage/photos',
 	// beverageRemove = 'admin/beverage',
-	// beverageSearch = 'beverage/search',
 	beverageTotal = '/api/basics/total',
 	ingredients = '/api/admin/ingredients',
 	institutions = '/api/admin/institutions',
@@ -21,6 +20,7 @@ export enum Endpoints {
 	logOut = '/api/user/logout',
 	places = '/api/admin/places',
 	// removeBeverageCap = 'admin/beverage/cap',
+	searchByPhrase = 'api/searchByPhrase',
 	statsGeneral = '/api/stats/general',
 	statsStyles = '/api/stats/styles',
 	styles = '/api/admin/styles'

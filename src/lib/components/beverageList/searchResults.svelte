@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { debounce } from 'lodash-es';
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import navigation from '$lib/utils/stores/navigation';
 	import Spinner from '$lib/elements/spinner.svelte';
@@ -10,7 +10,7 @@
 	let value;
 
 	async function callToApi(phrase) {
-		const response: Basics[] = await serverCall(fetch, Endpoints.beverageSearch, {
+		const response: Basics[] = await apiCall(fetch, Endpoints.searchByPhrase, {
 			pathParams: ['pl', phrase.trim()]
 		});
 
