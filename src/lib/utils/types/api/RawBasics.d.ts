@@ -1,8 +1,20 @@
 import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
 import { ContainerType } from '$lib/utils/enums/Beverage.enum';
 
-export type RawBasics = {
-	_id: string;
+export type RawCommonBasicsBeverage = {
+	_id?: string;
+	shortId: string;
+	added: Date;
+	updated?: Date;
+};
+
+export type RawBasicsCoverImage = {
+	height: number;
+	width: number;
+	outlines: string;
+};
+
+export type RawBasicsWithoutId = {
 	shortId: string;
 	badge: string;
 	brand: {
@@ -10,11 +22,11 @@ export type RawBasics = {
 		name: LanguageValue[];
 	};
 	name: LanguageValue[];
-	coverImage?: {
-		height: number;
-		width: number;
-		outlines: string;
-	};
+	coverImage?: RawBasicsCoverImage;
 	containerType: ContainerType;
 	added: Date;
+};
+
+export type RawBasics = RawBasicsWithoutId & {
+	_id: string;
 };

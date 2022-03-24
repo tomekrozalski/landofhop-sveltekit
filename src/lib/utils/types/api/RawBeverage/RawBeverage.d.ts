@@ -2,8 +2,7 @@ import type { RawEditorial } from './RawEditorial';
 import type { RawLabel } from './RawLabel';
 import type { RawProducer } from './RawProducer';
 
-export type RawBeverage = {
-	_id: string;
+export type RawBeverageWithoutId = {
 	shortId: string;
 	badge: string;
 	label: RawLabel;
@@ -11,4 +10,8 @@ export type RawBeverage = {
 	editorial?: RawEditorial;
 	added: Date;
 	updated?: Date;
+};
+
+export type RawBeverage = RawBeverageWithoutId & {
+	_id: string;
 };

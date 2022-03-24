@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { isEmpty } from 'lodash-es';
 
-import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+import apiCall, { Endpoints } from '$lib/utils/api/call';
 import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
 import formatLabelValues from '$lib/dashboard/beverage/label/formatValues';
 import formatProducerValues from '$lib/dashboard/beverage/producer/formatValues';
@@ -28,7 +28,7 @@ export function onSubmit(
 		};
 
 		if (type === 'add') {
-			const { badge, brand, shortId } = await serverCall(fetch, Endpoints.addBeverage, {
+			const { badge, brand, shortId } = await apiCall(fetch, Endpoints.addBeverage, {
 				method: 'POST',
 				body: JSON.stringify(completeData)
 			});
@@ -39,11 +39,11 @@ export function onSubmit(
 		if (type === 'update') {
 			const { shortId, brand, badge } = params;
 
-			await serverCall(fetch, Endpoints.updateBeverage, {
-				method: 'PUT',
-				body: JSON.stringify(completeData),
-				pathParams: [shortId]
-			});
+			// await serverCall(fetch, Endpoints.updateBeverage, {
+			// 	method: 'PUT',
+			// 	body: JSON.stringify(completeData),
+			// 	pathParams: [shortId]
+			// });
 
 			goto(`/details/${shortId}/${brand}/${badge}`);
 		}
