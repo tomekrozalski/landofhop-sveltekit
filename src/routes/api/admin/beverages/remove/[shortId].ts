@@ -28,8 +28,6 @@ export async function del({ params, request }) {
 	const name = beverageToRemove.badge;
 	const brand = beverageToRemove.label.general.brand.badge;
 
-	console.log('!', name, brand);
-
 	try {
 		if (beverageToRemove.editorial?.photos?.cover) {
 			// await fetch(`${Deno.env.get("IMAGES_API")}/beverage/remove/cover`, {

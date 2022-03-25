@@ -23,9 +23,10 @@ export enum Endpoints {
 	searchByPhrase = 'api/searchByPhrase',
 	statsGeneral = '/api/stats/general',
 	statsStyles = '/api/stats/styles',
-	styles = '/api/admin/styles'
+	styles = '/api/admin/styles',
 	// unauthorize = 'unauthorize',
-	// updateBeverage = 'admin/beverage',
+	updateBasics = '/api/admin/basics/update',
+	updateBeverage = '/api/admin/beverages/update'
 	// updateStyle = 'admin/style'
 }
 

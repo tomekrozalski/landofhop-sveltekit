@@ -17,10 +17,12 @@
 	const type = getContext('formType');
 
 	beforeUpdate(() => {
-		const value = $form.name[0].value;
-		if (value !== firstNameValue) {
-			updateValidateField(fieldName, slugify(value, { lower: true, strict: true }));
-			firstNameValue = value;
+		if (type !== 'update') {
+			const value = $form.name[0].value;
+			if (value !== firstNameValue) {
+				updateValidateField(fieldName, slugify(value, { lower: true, strict: true }));
+				firstNameValue = value;
+			}
 		}
 	});
 </script>

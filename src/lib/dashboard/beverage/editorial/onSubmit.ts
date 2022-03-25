@@ -39,11 +39,17 @@ export function onSubmit(
 		if (type === 'update') {
 			const { shortId, brand, badge } = params;
 
-			// await serverCall(fetch, Endpoints.updateBeverage, {
-			// 	method: 'PUT',
-			// 	body: JSON.stringify(completeData),
-			// 	pathParams: [shortId]
-			// });
+			await apiCall(fetch, Endpoints.updateBasics, {
+				method: 'PUT',
+				body: JSON.stringify(completeData),
+				pathParams: [shortId]
+			});
+
+			await apiCall(fetch, Endpoints.updateBeverage, {
+				method: 'PUT',
+				body: JSON.stringify(completeData),
+				pathParams: [shortId]
+			});
 
 			goto(`/details/${shortId}/${brand}/${badge}`);
 		}

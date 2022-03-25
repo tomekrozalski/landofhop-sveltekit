@@ -3,6 +3,7 @@ import { ContainerType } from '$lib/utils/enums/Beverage.enum';
 
 export type RawCommonBasicsBeverage = {
 	_id?: string;
+	badge: string;
 	shortId: string;
 	added: Date;
 	updated?: Date;
