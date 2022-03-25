@@ -9,7 +9,9 @@ export async function get({ request }) {
 	if (!cookies.refreshToken) {
 		return {
 			status: 200,
-			body: 'Already logged out'
+			body: {
+				message: 'Already logged out'
+			}
 		};
 	}
 
@@ -41,7 +43,9 @@ export async function get({ request }) {
 	} catch {
 		return {
 			status: 500,
-			body: 'Log out failed'
+			body: {
+				message: 'Log out failed'
+			}
 		};
 	}
 }

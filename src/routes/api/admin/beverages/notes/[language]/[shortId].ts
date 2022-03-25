@@ -9,7 +9,9 @@ export async function get({ params, request }) {
 	if (!isAuthenticated) {
 		return {
 			status: 401,
-			body: 'Unauthorized. List of ingredients cannot be sent'
+			body: {
+				message: 'Unauthorized. Cannot load admin beverage notes'
+			}
 		};
 	}
 
@@ -29,7 +31,9 @@ export async function get({ params, request }) {
 	if (!data) {
 		return {
 			status: 404,
-			body: 'No beverage found'
+			body: {
+				message: 'No beverage found'
+			}
 		};
 	}
 

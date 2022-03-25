@@ -12,7 +12,7 @@ export enum Endpoints {
 	beverageDetails = '/api/beverages/details',
 	beverageDetailsAdmin = '/api/admin/beverages/details',
 	// beveragePhotos = 'admin/beverage/photos',
-	// beverageRemove = 'admin/beverage',
+	beverageRemove = '/api/admin/beverages/remove',
 	beverageTotal = '/api/basics/total',
 	ingredients = '/api/admin/ingredients',
 	institutions = '/api/admin/institutions',

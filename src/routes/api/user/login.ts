@@ -11,7 +11,9 @@ export async function post({ request }) {
 	if (!user) {
 		return {
 			status: 401,
-			body: 'Authentication failed'
+			body: {
+				message: 'Authentication failed'
+			}
 		};
 	}
 
@@ -21,7 +23,9 @@ export async function post({ request }) {
 		if (!isAuthorized) {
 			return {
 				status: 401,
-				body: 'Authentication failed'
+				body: {
+					message: 'Authentication failed'
+				}
 			};
 		}
 
@@ -30,7 +34,9 @@ export async function post({ request }) {
 		if (!sessionToken) {
 			return {
 				status: 500,
-				body: 'Creating session failed'
+				body: {
+					message: 'Creating session failed'
+				}
 			};
 		}
 
@@ -40,7 +46,9 @@ export async function post({ request }) {
 	} catch {
 		return {
 			status: 500,
-			body: 'Decryption failed'
+			body: {
+				message: 'Decryption failed'
+			}
 		};
 	}
 }

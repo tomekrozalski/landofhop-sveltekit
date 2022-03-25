@@ -8,7 +8,9 @@ export async function get({ request }) {
 	if (!isAuthenticated) {
 		return {
 			status: 401,
-			body: 'Unauthorized. List of institutions cannot be sent'
+			body: {
+				message: 'Unauthorized. List of institutions cannot be sent'
+			}
 		};
 	}
 

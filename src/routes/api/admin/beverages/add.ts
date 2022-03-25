@@ -20,7 +20,9 @@ export async function post({ request }) {
 	if (!isAuthenticated) {
 		return {
 			status: 401,
-			body: 'Unauthorized. List of ingredients cannot be sent'
+			body: {
+				message: 'Unauthorized. Cannot add new beverage'
+			}
 		};
 	}
 

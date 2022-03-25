@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { goto } from '$app/navigation';
 
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import Button from '$lib/elements/form/button.svelte';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
@@ -23,7 +23,7 @@
 		isSubmitting = true;
 
 		try {
-			await serverCall(fetch, Endpoints.beverageRemove, {
+			await apiCall(fetch, Endpoints.beverageRemove, {
 				method: 'DELETE',
 				pathParams: [details.shortId]
 			});
