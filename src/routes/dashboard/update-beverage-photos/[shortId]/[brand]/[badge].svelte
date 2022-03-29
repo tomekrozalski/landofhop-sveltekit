@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 
 	export async function load({ fetch, params }) {
 		try {
-			const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.beveragePhotos, {
+			const photosData: PhotosDataTypes = await apiCall(fetch, Endpoints.beveragePhotos, {
 				pathParams: [params.shortId]
 			});
 			return { props: { forbidden: false, photosData } };
