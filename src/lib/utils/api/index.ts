@@ -13,6 +13,9 @@ import generateShortId from './generateShortId';
 import getDbCollections from './getDbCollections';
 import translate from './translate';
 import updateSession from './sessions/update';
+import { saveCoverJpg, saveCoverWebp } from './photos/saveCover';
+import getTracedSvg from './photos/getTracedSvg';
+import removeCover from './photos/removeCover';
 
 export {
 	adminDetailsNormalizer,
@@ -29,6 +32,10 @@ export {
 	formatBeverage,
 	generateShortId,
 	getDbCollections,
+	getTracedSvg,
+	removeCover,
+	saveCoverJpg,
+	saveCoverWebp,
 	translate,
 	updateSession
 };

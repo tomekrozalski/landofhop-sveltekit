@@ -1,4 +1,4 @@
-import { authenticate, getDbCollections } from '$lib/utils/api';
+import { authenticate, getDbCollections, removeCover } from '$lib/utils/api';
 
 export async function del({ params, request }) {
 	const { shortId } = params;
@@ -30,36 +30,15 @@ export async function del({ params, request }) {
 
 	try {
 		if (beverageToRemove.editorial?.photos?.cover) {
-			// await fetch(`${Deno.env.get("IMAGES_API")}/beverage/remove/cover`, {
-			// 	method: "DELETE",
-			// 	headers: {
-			// 		"Content-Type": "application/json",
-			// 	},
-			// 	body: JSON.stringify({ path: `${brand}/${name}/${shortId}` }),
-			// });
+			await removeCover(`${brand}/${name}/${shortId}`);
 		}
 
 		if (beverageToRemove.editorial?.photos?.gallery) {
-			// await fetch(`${Deno.env.get("IMAGES_API")}/beverage/remove/gallery`, {
-			// 	method: "DELETE",
-			// 	headers: {
-			// 		"Content-Type": "application/json",
-			// 	},
-			// 	body: JSON.stringify({
-			// 		path: `${brand}/${name}/${shortId}`,
-			// 		files: beverageToRemove.editorial.photos.gallery,
-			// 	}),
-			// });
+			console.log('1');
 		}
 
 		if (beverageToRemove.editorial?.photos?.cap) {
-			// await fetch(`${Deno.env.get("IMAGES_API")}/beverage/remove/cap`, {
-			// 	method: "DELETE",
-			// 	headers: {
-			// 		"Content-Type": "application/json",
-			// 	},
-			// 	body: JSON.stringify({ path: `${brand}/${name}/${shortId}` }),
-			// });
+			console.log('2');
 		}
 	} catch (error) {
 		return {
