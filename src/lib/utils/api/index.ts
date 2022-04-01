@@ -14,8 +14,10 @@ import getDbCollections from './getDbCollections';
 import translate from './translate';
 import updateSession from './sessions/update';
 import { saveCoverJpg, saveCoverWebp } from './photos/saveCover';
+import { saveGalleryJpg, saveGalleryWebp } from './photos/saveGallery';
 import getTracedSvg from './photos/getTracedSvg';
 import removeCover from './photos/removeCover';
+import removeGallery from './photos/removeGallery';
 
 export {
 	adminDetailsNormalizer,
@@ -34,8 +36,11 @@ export {
 	getDbCollections,
 	getTracedSvg,
 	removeCover,
+	removeGallery,
 	saveCoverJpg,
 	saveCoverWebp,
+	saveGalleryJpg,
+	saveGalleryWebp,
 	translate,
 	updateSession
 };

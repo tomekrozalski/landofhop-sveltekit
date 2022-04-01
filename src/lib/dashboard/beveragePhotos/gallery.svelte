@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
 	import InlineSpinner from '$lib/elements/form/inlineSpinner.svelte';
@@ -27,7 +27,7 @@
 		});
 		formData.append('shortId', shortId);
 
-		const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.addBeverageGallery, {
+		const photosData: PhotosDataTypes = await apiCall(fetch, Endpoints.addBeverageGallery, {
 			method: 'POST',
 			body: formData,
 			formData: true

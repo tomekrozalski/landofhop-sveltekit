@@ -4,7 +4,7 @@ import { getSize, getWidth } from './getSize';
 
 const s3 = new aws.S3({});
 
-export function saveCoverJpg(coverPath, image, size) {
+export function saveGalleryJpg(containerPath, image, size, fileName) {
 	return new Promise((resolve, reject) => {
 		sharp(image)
 			.jpeg({})
@@ -14,7 +14,7 @@ export function saveCoverJpg(coverPath, image, size) {
 				return s3.upload(
 					{
 						Bucket: 'land-of-hop-images',
-						Key: `${coverPath}/jpg/${getSize(size)}.jpg`,
+						Key: `${containerPath}/container/jpg/${getSize(size)}/${fileName}.jpg`,
 						Body: data,
 						CacheControl: 'max-age=31536000',
 						ACL: 'public-read'
@@ -35,7 +35,7 @@ export function saveCoverJpg(coverPath, image, size) {
 	});
 }
 
-export function saveCoverWebp(coverPath, image, size) {
+export function saveGalleryWebp(containerPath, image, size, fileName) {
 	return new Promise((resolve, reject) => {
 		sharp(image)
 			.webp({})
@@ -45,7 +45,7 @@ export function saveCoverWebp(coverPath, image, size) {
 				s3.upload(
 					{
 						Bucket: 'land-of-hop-images',
-						Key: `${coverPath}/webp/${getSize(size)}.webp`,
+						Key: `${containerPath}/container/webp/${getSize(size)}/${fileName}.webp`,
 						Body: data,
 						CacheControl: 'max-age=31536000',
 						ACL: 'public-read'
