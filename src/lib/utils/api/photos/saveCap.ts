@@ -4,17 +4,17 @@ import { getSize, getWidth } from './getSize';
 
 const s3 = new aws.S3({});
 
-export function saveCoverJpg(coverPath, image, size) {
+export function saveCapJpg(path, image, size) {
 	return new Promise((resolve, reject) => {
 		sharp(image)
 			.jpeg({})
-			.resize(getWidth(size))
+			.resize({ width: getWidth(size), height: getWidth(size) })
 			.toBuffer()
 			.then((data) => {
 				return s3.upload(
 					{
 						Bucket: 'land-of-hop-images',
-						Key: `${coverPath}/cover/jpg/${getSize(size)}.jpg`,
+						Key: `${path}/cap/jpg/${getSize(size)}.jpg`,
 						Body: data,
 						CacheControl: 'max-age=31536000',
 						ACL: 'public-read'
@@ -35,17 +35,17 @@ export function saveCoverJpg(coverPath, image, size) {
 	});
 }
 
-export function saveCoverWebp(coverPath, image, size) {
+export function saveCapWebp(path, image, size) {
 	return new Promise((resolve, reject) => {
 		sharp(image)
 			.webp({})
-			.resize(getWidth(size))
+			.resize({ width: getWidth(size), height: getWidth(size) })
 			.toBuffer()
 			.then((data) => {
 				s3.upload(
 					{
 						Bucket: 'land-of-hop-images',
-						Key: `${coverPath}/cover/webp/${getSize(size)}.webp`,
+						Key: `${path}/cap/webp/${getSize(size)}.webp`,
 						Body: data,
 						CacheControl: 'max-age=31536000',
 						ACL: 'public-read'

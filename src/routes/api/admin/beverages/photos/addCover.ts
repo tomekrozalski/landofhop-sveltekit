@@ -15,7 +15,7 @@ export async function post({ request }) {
 	const images = await imageFiles.arrayBuffer();
 	const image = Buffer.from(images);
 	const shortId = data.get('shortId');
-	const coverPath = `${brand}/${badge}/${shortId}/cover`;
+	const path = `${brand}/${badge}/${shortId}`;
 
 	const [isAuthenticated, headers] = await authenticate(request);
 
@@ -29,12 +29,12 @@ export async function post({ request }) {
 	}
 
 	await Promise.all([
-		saveCoverWebp(coverPath, image, 'large'),
-		saveCoverWebp(coverPath, image, 'big'),
-		saveCoverWebp(coverPath, image, 'small'),
-		saveCoverJpg(coverPath, image, 'large'),
-		saveCoverJpg(coverPath, image, 'big'),
-		saveCoverJpg(coverPath, image, 'small')
+		saveCoverWebp(path, image, 'large'),
+		saveCoverWebp(path, image, 'big'),
+		saveCoverWebp(path, image, 'small'),
+		saveCoverJpg(path, image, 'large'),
+		saveCoverJpg(path, image, 'big'),
+		saveCoverJpg(path, image, 'small')
 	]);
 
 	const outlines = await getTracedSvg(image);

@@ -13,9 +13,11 @@ import generateShortId from './generateShortId';
 import getDbCollections from './getDbCollections';
 import translate from './translate';
 import updateSession from './sessions/update';
+import { saveCapJpg, saveCapWebp } from './photos/saveCap';
 import { saveCoverJpg, saveCoverWebp } from './photos/saveCover';
 import { saveGalleryJpg, saveGalleryWebp } from './photos/saveGallery';
 import getTracedSvg from './photos/getTracedSvg';
+import removeCap from './photos/removeCap';
 import removeCover from './photos/removeCover';
 import removeGallery from './photos/removeGallery';
 
@@ -35,8 +37,11 @@ export {
 	generateShortId,
 	getDbCollections,
 	getTracedSvg,
+	removeCap,
 	removeCover,
 	removeGallery,
+	saveCapJpg,
+	saveCapWebp,
 	saveCoverJpg,
 	saveCoverWebp,
 	saveGalleryJpg,

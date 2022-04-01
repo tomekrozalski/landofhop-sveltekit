@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
-	import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 	import { ContainerType } from '$lib/utils/enums/Beverage.enum';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
@@ -25,7 +25,7 @@
 		formData.append('image', images[0]);
 		formData.append('shortId', shortId);
 
-		const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.addBeverageCap, {
+		const photosData: PhotosDataTypes = await apiCall(fetch, Endpoints.addBeverageCap, {
 			method: 'POST',
 			body: formData,
 			formData: true
@@ -36,11 +36,10 @@
 	}
 
 	async function removeCap() {
-		const photosData: PhotosDataTypes = await serverCall(fetch, Endpoints.removeBeverageCap, {
+		const photosData: PhotosDataTypes = await apiCall(fetch, Endpoints.removeBeverageCap, {
 			method: 'DELETE',
 			pathParams: [shortId]
 		});
-
 		beveragePhotosStore.set(photosData);
 	}
 </script>

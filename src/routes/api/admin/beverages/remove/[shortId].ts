@@ -1,4 +1,10 @@
-import { authenticate, getDbCollections, removeCover } from '$lib/utils/api';
+import {
+	authenticate,
+	getDbCollections,
+	removeCap,
+	removeCover,
+	removeGallery
+} from '$lib/utils/api';
 
 export async function del({ params, request }) {
 	const { shortId } = params;
@@ -27,18 +33,19 @@ export async function del({ params, request }) {
 
 	const name = beverageToRemove.badge;
 	const brand = beverageToRemove.label.general.brand.badge;
+	const path = `${brand}/${name}/${shortId}`;
 
 	try {
 		if (beverageToRemove.editorial?.photos?.cover) {
-			await removeCover(`${brand}/${name}/${shortId}`);
+			await removeCover(path);
 		}
 
 		if (beverageToRemove.editorial?.photos?.gallery) {
-			console.log('1');
+			await removeGallery(path, beverageToRemove.editorial.photos.gallery);
 		}
 
 		if (beverageToRemove.editorial?.photos?.cap) {
-			console.log('2');
+			await removeCap(path);
 		}
 	} catch (error) {
 		return {
