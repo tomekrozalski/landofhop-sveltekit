@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { beforeUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import Label from '$lib/elements/form/label.svelte';
 	import LanguageSelect from '$lib/dashboard/elements/selects/language.svelte';
 	import RemoveButton from '$lib/dashboard/elements/removeButton.svelte';
@@ -11,9 +13,34 @@
 
 	export let formName: string;
 	export let formData: any;
-	let { errors, form, updateField, validateField } = formData;
+	let { errors, form, updateField, updateValidateField, validateField } = formData;
 	let fieldName = 'ingredients';
 	let id = `${formName}-${fieldName}`;
+
+	beforeUpdate(async () => {
+		const ingredientsLength = $form.ingredients?.length ?? 0;
+
+		if (ingredientsLength > 1) {
+			const lastIngredients = $form.ingredients[ingredientsLength - 1];
+
+			if (
+				lastIngredients.language &&
+				lastIngredients.list.length === 1 &&
+				lastIngredients.list[0] === ''
+			) {
+				const translations: string[] = await apiCall(fetch, Endpoints.translate, {
+					method: 'POST',
+					body: JSON.stringify({
+						queries: $form.ingredients[0].list,
+						source: $form.ingredients[0].language,
+						target: lastIngredients.language
+					})
+				});
+
+				updateValidateField(`ingredients[${ingredientsLength - 1}].list`, translations);
+			}
+		}
+	});
 </script>
 
 <Label {id}>{$translate('dashboard.label.ingredients')}</Label>

@@ -24,6 +24,7 @@ export enum Endpoints {
 	statsGeneral = '/api/stats/general',
 	statsStyles = '/api/stats/styles',
 	styles = '/api/admin/styles',
+	translate = '/api/admin/translate',
 	// unauthorize = 'unauthorize',
 	updateBasics = '/api/admin/basics/update',
 	updateBeverage = '/api/admin/beverages/update'
