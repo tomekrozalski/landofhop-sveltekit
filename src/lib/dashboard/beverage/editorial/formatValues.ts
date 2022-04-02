@@ -26,9 +26,11 @@ export default function formatValues({
 	place,
 	price,
 	remark,
+	series,
 	styleTags
 }: EditorialFormValues): EditorialFormOutput {
 	return {
+		...(series.length && { series: formatLanguageValueArray(series) }),
 		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),

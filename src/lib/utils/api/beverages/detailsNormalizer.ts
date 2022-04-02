@@ -35,6 +35,9 @@ function detailsNormalizer(
 			}),
 			...(beverage.producer?.general?.series && {
 				producer: beverage.producer.general.series
+			}),
+			...(beverage.editorial?.general?.series && {
+				editorial: beverage.editorial.general.series
 			})
 		},
 		brand: formatIntitution(beverage.label.general.brand),

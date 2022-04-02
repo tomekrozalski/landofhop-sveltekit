@@ -199,6 +199,7 @@ function adminDetailsNormalizer(
 			price: beverage.producer?.price?.map(normalizePrice) ?? []
 		},
 		editorial: {
+			series: beverage.editorial?.general?.series?.map(normalizeLanguageValue) ?? [],
 			cooperation: beverage.editorial?.general?.cooperation?.map(({ shortId }) => shortId) ?? null,
 			contract:
 				beverage.editorial?.general?.contract?.shortId ??

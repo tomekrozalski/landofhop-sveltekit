@@ -73,6 +73,11 @@
 					<MarkLanguage producer tag="span" name={item} />
 				</FormattedList>
 			{/if}
+			{#if series.editorial?.length}
+				<FormattedList mode="narrow" let:item data={series.editorial}>
+					<MarkLanguage editorial tag="span" name={item} />
+				</FormattedList>
+			{/if}
 		{/if}
 	</p>
 </header>

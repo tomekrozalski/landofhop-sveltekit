@@ -12,6 +12,10 @@ import {
 } from '$lib/utils/enums/Beverage.enum';
 
 export type EditorialFormValues = {
+	series: {
+		language: string;
+		value: string;
+	}[];
 	cooperation: string[] | null;
 	contract: string | null;
 	place: string | null;
@@ -50,6 +54,7 @@ export type EditorialFormValues = {
 };
 
 export type EditorialFormOutput = {
+	series?: LanguageValue[];
 	cooperation?: Institution[];
 	contract?: string;
 	isContract?: true;

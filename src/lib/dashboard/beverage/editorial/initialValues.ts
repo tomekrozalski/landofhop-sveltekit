@@ -1,4 +1,5 @@
 export const initialValues = {
+	series: [],
 	cooperation: null,
 	contract: null,
 	place: null,

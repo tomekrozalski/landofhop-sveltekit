@@ -22,6 +22,7 @@ export type Details = {
 	series?: {
 		label?: LanguageValue[];
 		producer?: LanguageValue[];
+		editorial?: LanguageValue[];
 	};
 	brand: InsitutionOutput;
 	cooperation?: {

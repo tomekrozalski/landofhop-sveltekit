@@ -101,6 +101,7 @@ function formatBeverage(
 		},
 		editorial: {
 			general: {
+				series: editorial?.series,
 				cooperation: editorial?.cooperation,
 				contract: editorial?.contract,
 				isContract: editorial?.isContract,

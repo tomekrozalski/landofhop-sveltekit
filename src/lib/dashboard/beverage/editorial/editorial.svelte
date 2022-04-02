@@ -24,6 +24,7 @@
 	import Place from '$lib/dashboard/fields/place.svelte';
 	import Price from '$lib/dashboard/fields/price.svelte';
 	import Remark from '$lib/dashboard/fields/remark.svelte';
+	import Series from '$lib/dashboard/fields/series.svelte';
 	import StyleTags from '$lib/dashboard/fields/styleTags.svelte';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
@@ -45,6 +46,9 @@
 			<p>{$translate('dashboard.beverage.editorialInfo.description')}</p>
 		</header>
 		<h3><span>{$translate('dashboard.beverage.brandInfo')}</span></h3>
+		<Grid columns={2}>
+			<Series {formName} {formData} />
+		</Grid>
 		<Grid isOptional>
 			<Cooperation {formName} {formData} />
 		</Grid>

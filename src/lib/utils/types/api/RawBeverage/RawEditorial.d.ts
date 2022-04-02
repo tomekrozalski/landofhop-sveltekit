@@ -7,6 +7,7 @@ import { RawPlace } from './RawPlace.d.ts';
 import { RawPrice } from './RawPrice.d.ts';
 
 export type RawEditorialGeneral = {
+	series?: LanguageValue[];
 	cooperation?: RawInstitution[];
 	contract?: RawInstitution;
 	isContract?: boolean;
