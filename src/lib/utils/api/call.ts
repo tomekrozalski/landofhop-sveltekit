@@ -3,7 +3,7 @@ export enum Endpoints {
 	addBeverageCap = '/api/admin/beverages/photos/addCap',
 	addBeverageCover = '/api/admin/beverages/photos/addCover',
 	addBeverageGallery = '/api/admin/beverages/photos/addGallery',
-	// addIngredient = 'admin/ingredient',
+	addIngredient = '/api/admin/ingredients',
 	// addInstitution = 'admin/institution',
 	// addPlace = 'admin/place',
 	// addStyle = 'admin/style',

@@ -1,12 +1,12 @@
 import { ingredientsStore } from '$lib/dashboard/utils/stores';
-import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+import apiCall, { Endpoints } from '$lib/utils/api/call';
 import formatValues from './formatValues';
 
 export function onSubmit(close) {
 	return async function (values) {
 		const formattedValues = formatValues(values);
 
-		const updatedIngredients = await serverCall(fetch, Endpoints.addIngredient, {
+		const updatedIngredients = await apiCall(fetch, Endpoints.addIngredient, {
 			method: 'POST',
 			body: JSON.stringify(formattedValues)
 		});
