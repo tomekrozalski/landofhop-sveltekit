@@ -20,7 +20,7 @@ export enum Endpoints {
 	logOut = '/api/user/logout',
 	places = '/api/admin/places',
 	removeBeverageCap = '/api/admin/beverages/photos/removeCap',
-	searchByPhrase = 'api/searchByPhrase',
+	searchByPhrase = '/api/searchByPhrase',
 	statsGeneral = '/api/stats/general',
 	statsStyles = '/api/stats/styles',
 	styles = '/api/admin/styles',
