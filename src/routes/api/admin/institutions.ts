@@ -1,4 +1,4 @@
-import { authenticate, getDbCollections } from '$lib/utils/api';
+import { authenticate, generateShortId, getDbCollections } from '$lib/utils/api';
 import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
 
 export async function get({ request }) {
@@ -13,6 +13,47 @@ export async function get({ request }) {
 			}
 		};
 	}
+
+	const data: RawInstitutionWithoutId[] = await institutions
+		.find(
+			{},
+			{
+				projection: {
+					_id: 0,
+					badge: 1,
+					name: 1,
+					owner: 1,
+					shortId: 1,
+					website: 1
+				}
+			}
+		)
+		.toArray();
+
+	return {
+		headers,
+		body: data
+	};
+}
+
+export async function post({ request }) {
+	const institutionData = await request.json();
+	const { institutions } = await getDbCollections();
+	const [isAuthenticated, headers] = await authenticate(request);
+
+	if (!isAuthenticated) {
+		return {
+			status: 401,
+			body: {
+				message: 'Unauthorized. Cannot add ingredient'
+			}
+		};
+	}
+
+	await institutions.insertOne({
+		...institutionData,
+		shortId: generateShortId()
+	});
 
 	const data: RawInstitutionWithoutId[] = await institutions
 		.find(

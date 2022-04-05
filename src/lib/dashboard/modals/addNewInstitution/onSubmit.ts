@@ -1,12 +1,12 @@
 import { institutionStore } from '$lib/dashboard/utils/stores';
-import serverCall, { Endpoints } from '$lib/utils/helpers/serverCall';
+import apiCall, { Endpoints } from '$lib/utils/api/call';
 import formatValues from './formatValues';
 
 export function onSubmit(close) {
 	return async function (values) {
 		const formattedValues = formatValues(values);
 
-		const updatedInstitutions = await serverCall(fetch, Endpoints.addInstitution, {
+		const updatedInstitutions = await apiCall(fetch, Endpoints.addInstitution, {
 			method: 'POST',
 			body: JSON.stringify(formattedValues)
 		});

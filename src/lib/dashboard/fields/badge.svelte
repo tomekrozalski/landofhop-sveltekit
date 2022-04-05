@@ -17,7 +17,7 @@
 	const type = getContext('formType');
 
 	beforeUpdate(() => {
-		if (type !== 'update') {
+		if (formName !== 'label' || type !== 'update') {
 			const value = $form.name[0].value;
 			if (value !== firstNameValue) {
 				updateValidateField(fieldName, slugify(value, { lower: true, strict: true }));

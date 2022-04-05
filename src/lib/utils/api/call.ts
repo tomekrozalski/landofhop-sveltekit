@@ -4,9 +4,9 @@ export enum Endpoints {
 	addBeverageCover = '/api/admin/beverages/photos/addCover',
 	addBeverageGallery = '/api/admin/beverages/photos/addGallery',
 	addIngredient = '/api/admin/ingredients',
-	// addInstitution = 'admin/institution',
-	// addPlace = 'admin/place',
-	// addStyle = 'admin/style',
+	addInstitution = '/api/admin/institutions',
+	addPlace = '/api/admin/places',
+	addStyle = '/apid/admin/styles',
 	beverageAdminNotes = '/api/admin/beverages/notes',
 	beverageBasics = '/api/basics/list',
 	beverageDetails = '/api/beverages/details',
@@ -25,10 +25,9 @@ export enum Endpoints {
 	statsStyles = '/api/stats/styles',
 	styles = '/api/admin/styles',
 	translate = '/api/admin/translate',
-	// unauthorize = 'unauthorize',
 	updateBasics = '/api/admin/basics/update',
-	updateBeverage = '/api/admin/beverages/update'
-	// updateStyle = 'admin/style'
+	updateBeverage = '/api/admin/beverages/update',
+	updateStyle = '/api/admin/styles'
 }
 
 type Props = {
