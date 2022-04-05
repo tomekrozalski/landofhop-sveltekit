@@ -19,14 +19,16 @@ export type FermentationTimelineBar = {
 	[Fermentation.spontaneous]: number;
 };
 
+export type Brand = {
+	amount: number;
+	badge: string;
+	id: string;
+	name: LanguageValue;
+};
+
 export type TopBrandsTimelineBar = {
 	date: string;
-	brands: {
-		amount: number;
-		badge: string;
-		id: string;
-		name: LanguageValue;
-	}[];
+	brands: Brand[];
 };
 
 export type GeneralStats = {

@@ -15,7 +15,7 @@
 	const total = (d: AddTimelineBar) => d.bottle + d.can;
 
 	const linePath = (type: any) =>
-		line()
+		line<AddTimelineBar>()
 			.x((d: any) => xScale(xValue(d)) || 0)
 			.y((d: any) => yScale(type(d)))
 			.curve(curveBasis);

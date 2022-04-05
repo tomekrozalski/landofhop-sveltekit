@@ -12,7 +12,8 @@
 		"stats.general.alcohol.isAverageWithoutNonAlcoholicBeverages": "average amount of alcohol of all beverages excluding non-alcoholic beverages",
 		"stats.general.alcohol.name": "Graph of alcohol quantity in beverages",
 		"stats.general.alcohol.numberOfBeverages": "Number of beverages",
-		"stats.general.title": "📈 Statistics"
+		"stats.general.title": "📈 Statistics",
+		"stats.general.topBrandsTimeline.name": "Most popular breweries"
 	},
 	"pl": {
 		"stats.general.addTimeline.bottles": "butelki",
@@ -27,6 +28,7 @@
 		"stats.general.alcohol.isAverageWithoutNonAlcoholicBeverages": "średnia zawartość alkoholu wszystkich piw wyłączając bezalkoholowe",
 		"stats.general.alcohol.name": "Wykres zawartości alkoholu w piwach",
 		"stats.general.alcohol.numberOfBeverages": "Liczba piw",
-		"stats.general.title": "📈 Statystyki"
+		"stats.general.title": "📈 Statystyki",
+		"stats.general.topBrandsTimeline.name": "Najpopularniejsze browary"
 	}
 }
