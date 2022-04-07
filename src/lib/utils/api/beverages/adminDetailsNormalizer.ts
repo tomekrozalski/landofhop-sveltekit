@@ -37,7 +37,7 @@ function adminDetailsNormalizer(
 	} {
 		return {
 			currency,
-			date: format(new Date(date), DateFormat.pl, {}),
+			date: format(new Date(date), DateFormat.pl),
 			shop: shop ?? null,
 			value: value.toString()
 		};

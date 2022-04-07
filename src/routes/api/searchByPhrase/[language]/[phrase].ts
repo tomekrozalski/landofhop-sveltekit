@@ -14,7 +14,7 @@ export async function get({ params }) {
 
 	function formatValues({ added, badge, editorial, label, shortId }: RawBeverage) {
 		foundArr.push({
-			added: format(new Date(added), DateFormat[language], {}),
+			added: format(new Date(added), DateFormat[language]),
 			badge,
 			brand: {
 				badge: label.general.brand.badge,

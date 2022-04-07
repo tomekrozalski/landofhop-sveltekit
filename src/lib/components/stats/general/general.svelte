@@ -6,8 +6,6 @@
 
 	export let statsData: GeneralStatsTypes;
 	const { addTimelineData, alcoholChartData, topBrandsTimelineData } = statsData;
-
-	console.log('statsData', statsData);
 </script>
 
 <AlcoholChart {alcoholChartData} />

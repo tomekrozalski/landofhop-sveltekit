@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import { format } from 'date-fns';
+	import pl from 'date-fns/locale/pl/index.js';
 	import type { AddTimelineBar } from '$lib/utils/types/stats/General';
 
 	export let addTimelineData: AddTimelineBar[];
@@ -18,7 +20,7 @@
 	let info: AddTimelineBar | null = null;
 
 	function showInfo(bar: AddTimelineBar) {
-		info = bar;
+		info = { ...bar, date: format(new Date(bar.date), 'LLLL yyyy', { locale: pl }) };
 		isBarSelected = true;
 	}
 

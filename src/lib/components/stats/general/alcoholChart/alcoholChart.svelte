@@ -11,19 +11,17 @@
 	export let alcoholChartData: AlcoholChartBar[];
 
 	const sizes: Sizes = {
-		chart: {
-			width: 1160,
-			height: 600,
-			margin: {
-				top: 35,
-				right: 20,
-				bottom: 85,
-				left: 100
-			}
+		width: 1160,
+		height: 600,
+		margin: {
+			top: 35,
+			right: 20,
+			bottom: 85,
+			left: 100
 		}
 	};
 
-	const { height, margin, width } = sizes.chart;
+	const { height, margin, width } = sizes;
 	const innerWidth = width - margin.left - margin.right;
 	const innerHeight = height - margin.top - margin.bottom;
 
@@ -46,8 +44,9 @@
 </script>
 
 <h2>{$translate('stats.general.alcohol.name')}</h2>
-<svg viewBox="0 0 {sizes.chart.width} {sizes.chart.height}">
-	<g style="transform: translate({sizes.chart.margin.left}px, {sizes.chart.margin.top}px)">
+
+<svg viewBox="0 0 {width} {height}">
+	<g style="transform: translate({margin.left}px, {margin.top}px)">
 		<Xaxis {innerHeight} {innerWidth} {xScale} />
 		<Yaxis {innerWidth} {yScale} />
 		<Bars {alcoholChartData} {innerHeight} {xScale} {xValue} {yValue} {yScale} />

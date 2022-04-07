@@ -14,29 +14,17 @@
 	export let addTimelineData: AddTimelineBar[];
 
 	const sizes: Sizes = {
-		chart: {
-			width: 1160,
-			height: 600,
-			margin: {
-				top: 40,
-				right: 20,
-				bottom: 60,
-				left: 100
-			}
-		},
-		legend: {
-			width: 1160,
-			height: 70,
-			margin: {
-				top: 20,
-				right: 40,
-				bottom: 20,
-				left: 40
-			}
+		width: 1160,
+		height: 600,
+		margin: {
+			top: 40,
+			right: 20,
+			bottom: 60,
+			left: 100
 		}
 	};
 
-	const { height, margin, width } = sizes.chart;
+	const { height, margin, width } = sizes;
 	const innerWidth = width - margin.left - margin.right;
 	const innerHeight = height - margin.top - margin.bottom;
 
@@ -64,8 +52,8 @@
 <h2>{$translate('stats.general.addTimeline.name')}</h2>
 
 <IntersectionObserver once={true} let:intersecting threshold={1}>
-	<svg viewBox="0 0 {sizes.chart.width} {sizes.chart.height + sizes.legend.height}">
-		<g style="transform: translate({sizes.chart.margin.left}px, {sizes.chart.margin.top}px)">
+	<svg viewBox="0 0 {width} {height}">
+		<g style="transform: translate({margin.left}px, {margin.top}px)">
 			<Xaxis {innerHeight} {xScale} />
 			<Yaxis {innerWidth} {yScale} />
 			<Bars
@@ -82,9 +70,9 @@
 				<Line {addTimelineData} {xScale} {xValue} {yScale} bind:selectedLine {isBarSelected} />
 			{/if}
 		</g>
-		<Legend {addTimelineData} {selectedLine} {sizes} />
 	</svg>
 </IntersectionObserver>
+<Legend {addTimelineData} bind:selectedLine />
 
 <style>
 	svg {

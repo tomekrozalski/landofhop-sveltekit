@@ -435,9 +435,9 @@ function detailsNormalizer(
 				outline: beverage.editorial.photos.outlines.gallery
 			})
 		},
-		added: format(new Date(beverage.added), DateFormat[desiredLanguage], {}),
+		added: format(new Date(beverage.added), DateFormat[desiredLanguage]),
 		...(beverage.updated && {
-			updated: format(new Date(beverage.updated), DateFormat[desiredLanguage], {})
+			updated: format(new Date(beverage.updated), DateFormat[desiredLanguage])
 		})
 	};
 

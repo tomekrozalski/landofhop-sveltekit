@@ -29,11 +29,6 @@
 {/each}
 
 <style>
-	path {
-		/* stroke-width: 3; */
-		stroke: #999;
-	}
-
 	.top-brand-line-1 {
 		stroke: var(--color-brand-1);
 	}

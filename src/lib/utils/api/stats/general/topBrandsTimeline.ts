@@ -59,7 +59,7 @@ export function topBrandsTimeline(values: RawData[]): TopBrandsTimelineBar[] {
 			return false;
 		}
 
-		const index = domain.findIndex(({ date }) => date === format(new Date(added), 'yyyy-MM', {}));
+		const index = domain.findIndex(({ date }) => date === format(new Date(added), 'yyyy-MM'));
 
 		for (let i = index; i < domain.length; i += 1) {
 			const selectedBrand = domain[i].brands.find(({ id }) => id === brand.shortId);
