@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { draw } from 'svelte/transition';
-	import { curveBasis, line } from 'd3-shape';
+	import { curveCardinal, line } from 'd3-shape';
 	import type { TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
 	import sortData from './utils/sortData';
 
@@ -10,25 +10,47 @@
 	export let xValue: (value: any) => string;
 	export let yScale: any;
 
-	const linePath = (id: string) =>
-		line<TopBrandsTimelineBar>()
-			.x((d: TopBrandsTimelineBar) => xScale(xValue(d)) || 0)
-			.y((d: TopBrandsTimelineBar) => yScale(d.brands.find((props) => props.id === id)!.amount))
-			.curve(curveBasis);
+	const linePath = (id: string) => {
+		type DataTypes = {
+			amount: number;
+			date: string;
+		};
+
+		const data: DataTypes[] = topBrandsTimelineData
+			.map(({ brands, date }) => ({ date, amount: brands.find((props) => props.id === id).amount }))
+			.reduce(
+				(acc, { date, amount }) =>
+					amount && acc[acc.length - 1]?.amount === 0
+						? [acc[acc.length - 1], { date, amount }]
+						: [...acc, { date, amount }],
+				[]
+			);
+
+		return line<DataTypes>()
+			.x((d) => xScale(xValue(d)) || 0)
+			.y((d) => yScale(d.amount))
+			.curve(curveCardinal)(data);
+	};
 </script>
 
-{#each sortData(topBrandsTimelineData) as { id }, index}
-	<path
-		class="line top-brand-line-{index + 1}"
-		class:muted={selectedLine && selectedLine !== id}
-		d={linePath(id)(topBrandsTimelineData)}
-		in:draw
-		on:mouseenter={() => (selectedLine = id)}
-		on:mouseleave={() => (selectedLine = null)}
-	/>
-{/each}
+<g style="transform: translate({Math.round(xScale.bandwidth() / 2)}px, 0">
+	{#each sortData(topBrandsTimelineData) as { id }, index}
+		<path
+			class="line top-brand-line-{index + 1}"
+			class:muted={selectedLine && selectedLine !== id}
+			d={linePath(id)}
+			in:draw
+			on:mouseenter={() => (selectedLine = id)}
+			on:mouseleave={() => (selectedLine = null)}
+		/>
+	{/each}
+</g>
 
 <style>
+	path {
+		stroke-width: 3;
+	}
+
 	.top-brand-line-1 {
 		stroke: var(--color-brand-1);
 	}

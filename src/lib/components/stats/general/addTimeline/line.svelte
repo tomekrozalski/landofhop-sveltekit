@@ -21,7 +21,10 @@
 			.curve(curveBasis);
 </script>
 
-<g style="transform: translate({xScale.bandwidth() / 2}px, 0)" class:muted={isBarSelected}>
+<g
+	style="transform: translate({Math.round(xScale.bandwidth() / 2)}px, 0)"
+	class:muted={isBarSelected}
+>
 	<path
 		class="line bottles"
 		class:muted={selectedLine && selectedLine !== 'bottles'}

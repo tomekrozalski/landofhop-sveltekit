@@ -21,8 +21,9 @@
 <style>
 	ol {
 		display: flex;
+		flex-direction: column;
 		gap: 0.4rem;
-		flex-wrap: wrap;
+		padding: 0 1rem;
 		list-style: none;
 		counter-reset: item;
 	}
@@ -115,5 +116,13 @@
 	span {
 		font-size: 1.4rem;
 		font-weight: var(--font-weight-light);
+	}
+
+	@media (--md) {
+		ol {
+			flex-direction: row;
+			flex-wrap: wrap;
+			padding: 0 4rem;
+		}
 	}
 </style>

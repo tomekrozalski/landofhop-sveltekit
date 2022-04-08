@@ -17,8 +17,9 @@
 
 <style>
 	ul {
-		display: grid;
-		grid-column-gap: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 		width: 100%;
 	}
 
@@ -33,5 +34,15 @@
 	a.active {
 		background-color: var(--color-success);
 		color: var(--color-white);
+	}
+
+	@media (--md) {
+		ul {
+			flex-direction: row;
+		}
+
+		li {
+			flex: 0 1 50%;
+		}
 	}
 </style>

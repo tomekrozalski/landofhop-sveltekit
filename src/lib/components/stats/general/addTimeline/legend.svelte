@@ -44,8 +44,8 @@
 	}
 
 	li {
-		height: 3.5rem;
-		padding-left: 4.5rem;
+		height: 2.5rem;
+		padding-left: 3.5rem;
 		font-size: 1.6rem;
 		font-weight: var(--font-weight-regular);
 		line-height: 1;
@@ -54,15 +54,15 @@
 	}
 
 	li + li {
-		margin-left: 3.5rem;
+		margin-left: 1.5rem;
 	}
 
 	li::before {
 		content: '';
 		display: inline-block;
-		width: 3.5rem;
-		height: 3.5rem;
-		border-width: 0.5rem;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-width: 0.4rem;
 		border-style: solid;
 		position: absolute;
 		top: 0;
@@ -97,5 +97,22 @@
 		display: block;
 		margin-top: 0.3rem;
 		font: var(--font-weight-light) 1.2rem / 1 var(--font-primary);
+	}
+
+	@media (--md) {
+		li {
+			height: 3.5rem;
+			padding-left: 4.5rem;
+		}
+
+		li + li {
+			margin-left: 3.5rem;
+		}
+
+		li::before {
+			width: 3.5rem;
+			height: 3.5rem;
+			border-width: 0.5rem;
+		}
 	}
 </style>

@@ -8,6 +8,7 @@
 	import Yaxis from '$lib/components/stats/general/utils/timeline/yAxis.svelte';
 	import Line from './line.svelte';
 	import Legend from './legend.svelte';
+	import Points from './points.svelte';
 
 	export let topBrandsTimelineData: TopBrandsTimelineBar[];
 
@@ -57,6 +58,7 @@
 			<Yaxis {innerWidth} {yScale} />
 			{#if intersecting}
 				<Line {topBrandsTimelineData} {xScale} {xValue} {yScale} bind:selectedLine />
+				<Points {topBrandsTimelineData} {xScale} {xValue} {yScale} bind:selectedLine />
 			{/if}
 		</g>
 	</svg>
