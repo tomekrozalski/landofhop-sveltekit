@@ -4,7 +4,7 @@
 	import type { TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
 	import sortData from './utils/sortData';
 
-	export let selectedLine: string | null;
+	export let selectedBrand: string | null;
 	export let topBrandsTimelineData: TopBrandsTimelineBar[];
 	export let xScale: any;
 	export let xValue: (value: any) => string;
@@ -37,11 +37,11 @@
 	{#each sortData(topBrandsTimelineData) as { id }, index}
 		<path
 			class="line top-brand-line-{index + 1}"
-			class:muted={selectedLine && selectedLine !== id}
+			class:muted={selectedBrand && selectedBrand !== id}
 			d={linePath(id)}
 			in:draw
-			on:mouseenter={() => (selectedLine = id)}
-			on:mouseleave={() => (selectedLine = null)}
+			on:mouseenter={() => (selectedBrand = id)}
+			on:mouseleave={() => (selectedBrand = null)}
 		/>
 	{/each}
 </g>

@@ -1,15 +1,15 @@
 import { add, format, isBefore, max, min } from 'date-fns';
 
 import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
-import type { TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
+import type { Brand, TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
 import type { RawGeneralStats } from '$lib/utils/types/api/RawStats/RawGeneralStats';
 
-export function getTopBrands(values: RawGeneralStats[]) {
+export function getTopBrands(values: RawGeneralStats[], skip = 0, limit = 10): Brand[] {
 	type AccType = {
 		[name: string]: {
 			amount: number;
 			badge: string;
-			shortId: string;
+			id: string;
 			name: LanguageValue;
 		};
 	};
@@ -18,8 +18,10 @@ export function getTopBrands(values: RawGeneralStats[]) {
 		(acc: AccType, { brand }) => ({
 			...acc,
 			[brand.shortId]: {
-				...brand,
-				amount: acc[brand.shortId] ? acc[brand.shortId].amount + 1 : 1
+				amount: acc[brand.shortId] ? acc[brand.shortId].amount + 1 : 1,
+				badge: brand.badge,
+				id: brand.shortId,
+				name: brand.name
 			}
 		}),
 		{}
@@ -27,10 +29,10 @@ export function getTopBrands(values: RawGeneralStats[]) {
 
 	return Object.values(accumulator)
 		.sort((a, b) => (a.amount < b.amount ? 1 : -1))
-		.slice(0, 10);
+		.slice(skip, skip + limit);
 }
 
-export function topBrandsTimeline(values: RawData[]): TopBrandsTimelineBar[] {
+export function topBrandsTimeline(values: RawGeneralStats[]): TopBrandsTimelineBar[] {
 	const domain: TopBrandsTimelineBar[] = [];
 	const dates = values.map(({ added }) => new Date(added));
 	const earliest = min(dates);
@@ -43,10 +45,10 @@ export function topBrandsTimeline(values: RawData[]): TopBrandsTimelineBar[] {
 	do {
 		domain.push({
 			date: format(current, 'yyyy-MM'),
-			brands: topBrands.map(({ badge, name, shortId }) => ({
+			brands: topBrands.map(({ badge, id, name }) => ({
 				amount: 0,
 				badge,
-				id: shortId,
+				id,
 				name
 			}))
 		});
@@ -55,7 +57,7 @@ export function topBrandsTimeline(values: RawData[]): TopBrandsTimelineBar[] {
 	} while (isBefore(current, endpoint));
 
 	values.forEach(({ added, brand }) => {
-		if (!topBrands.map(({ shortId }) => shortId).includes(brand.shortId)) {
+		if (!topBrands.map(({ id }) => id).includes(brand.shortId)) {
 			return false;
 		}
 

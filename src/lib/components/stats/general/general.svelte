@@ -5,10 +5,15 @@
 	import TopBrandsTimeline from './topBrandsTimeline/topBrandsTimeline.svelte';
 
 	export let statsData: GeneralStatsTypes;
-	const { addTimelineData, alcoholChartData, topBrandsTimelineData } = statsData;
+	const {
+		addTimelineData,
+		alcoholChartData,
+		morePopularBrandsData,
+		topBrandsTimelineData
+	} = statsData;
 </script>
 
 <AlcoholChart {alcoholChartData} />
 <AddTimeline {addTimelineData} />
 <!-- <FermentationTimeline data={fermentationTimelineData} /> -->
-<TopBrandsTimeline {topBrandsTimelineData} />
+<TopBrandsTimeline {morePopularBrandsData} {topBrandsTimelineData} />

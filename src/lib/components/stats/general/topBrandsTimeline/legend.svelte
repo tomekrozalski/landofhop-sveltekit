@@ -1,7 +1,9 @@
 <script lang="ts">
-	import type { TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
+	import { translate } from 'svelte-intl';
+	import type { Brand, TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
 
-	export let selectedLine: string | null;
+	export let selectedBrand: string | null;
+	export let morePopularBrandsData: Brand[];
 	export let topBrandsTimelineData: TopBrandsTimelineBar[];
 </script>
 
@@ -9,32 +11,50 @@
 	{#each topBrandsTimelineData[topBrandsTimelineData.length - 1].brands as { amount, id, name }, index}
 		<li
 			class="top-brands-legend-{index + 1}"
-			class:highlighted={id === selectedLine}
-			on:mouseenter={() => (selectedLine = id)}
-			on:mouseleave={() => (selectedLine = null)}
+			class:highlighted={id === selectedBrand}
+			on:mouseenter={() => (selectedBrand = id)}
+			on:mouseleave={() => (selectedBrand = null)}
 		>
 			{name.value} <span>({amount})</span>
 		</li>
 	{/each}
 </ol>
 
+<h3>{$translate('stats.general.topBrandsTimeline.morePopularBrands')}</h3>
+
+<ul>
+	{#each morePopularBrandsData as { amount, name }}
+		<li>{name.value} <span>({amount})</span></li>
+	{/each}
+</ul>
+
 <style>
-	ol {
+	ol,
+	ul {
 		display: flex;
 		flex-direction: column;
 		gap: 0.4rem;
 		padding: 0 1rem;
-		list-style: none;
+		list-style-type: square;
 		counter-reset: item;
 	}
 
-	li {
+	ol li {
 		counter-increment: item;
 		border-radius: 0.8rem;
 		cursor: pointer;
 	}
 
-	li::before {
+	ul li::before {
+		display: inline-block;
+		content: '';
+		width: 0.6rem;
+		height: 0.6rem;
+		margin: 0 0.8rem 0.2rem 0.2rem;
+		background-color: var(--color-black);
+	}
+
+	ol li::before {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
@@ -58,7 +78,7 @@
 		color: transparent;
 	}
 
-	li:last-of-type::after {
+	ol li:last-of-type::after {
 		content: '';
 		padding-right: 0.8rem;
 	}
@@ -118,11 +138,22 @@
 		font-weight: var(--font-weight-light);
 	}
 
+	h3 {
+		margin: 4rem 0 2rem 0;
+		padding-left: 1rem;
+		font-weight: var(--font-weight-regular);
+	}
+
 	@media (--md) {
-		ol {
+		ol,
+		ul {
 			flex-direction: row;
 			flex-wrap: wrap;
 			padding: 0 4rem;
+		}
+
+		h3 {
+			padding-left: 4rem;
 		}
 	}
 </style>

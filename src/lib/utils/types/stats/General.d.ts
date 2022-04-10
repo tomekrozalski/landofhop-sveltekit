@@ -36,4 +36,5 @@ export type GeneralStats = {
 	alcoholChartData: AlcoholChartBar[];
 	fermentationTimelineData: FermentationTimelineBar[];
 	topBrandsTimelineData: TopBrandsTimelineBar[];
+	morePopularBrandsData: Brand[];
 };

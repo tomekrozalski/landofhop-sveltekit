@@ -13,7 +13,9 @@
 		"stats.general.alcohol.name": "Graph of alcohol quantity in beverages",
 		"stats.general.alcohol.numberOfBeverages": "Number of beverages",
 		"stats.general.title": "📈 Statistics",
-		"stats.general.topBrandsTimeline.name": "Most popular breweries"
+		"stats.general.topBrandsTimeline.morePopularBrands": "More pupular brands",
+		"stats.general.topBrandsTimeline.name": "Most popular breweries",
+		"stats.general.topBrandsTimeline.valueLabel": "{date}, value of {value, plural, one {# beverage} other {# beverages}}"
 	},
 	"pl": {
 		"stats.general.addTimeline.bottles": "butelki",
@@ -29,6 +31,8 @@
 		"stats.general.alcohol.name": "Wykres zawartości alkoholu w piwach",
 		"stats.general.alcohol.numberOfBeverages": "Liczba piw",
 		"stats.general.title": "📈 Statystyki",
-		"stats.general.topBrandsTimeline.name": "Najpopularniejsze browary"
+		"stats.general.topBrandsTimeline.morePopularBrands": "Więcej popularnych marek",
+		"stats.general.topBrandsTimeline.name": "Najpopularniejsze browary",
+		"stats.general.topBrandsTimeline.valueLabel": "{date}, wynik {value, plural, one {# piwo} few {# piwa} other {# piw}}"
 	}
 }

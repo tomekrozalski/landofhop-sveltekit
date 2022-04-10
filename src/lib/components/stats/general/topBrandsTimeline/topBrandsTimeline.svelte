@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
-	import type { TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
+	import type { Brand, TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
 	import IntersectionObserver from '$lib/utils/helpers/intersectionObserver.svelte';
 	import type { Sizes } from '$lib/components/stats/general/utils/Sizes';
 	import Xaxis from '$lib/components/stats/general/utils/timeline/xAxis.svelte';
@@ -10,6 +10,7 @@
 	import Legend from './legend.svelte';
 	import Points from './points.svelte';
 
+	export let morePopularBrandsData: Brand[];
 	export let topBrandsTimelineData: TopBrandsTimelineBar[];
 
 	const sizes: Sizes = {
@@ -46,7 +47,7 @@
 		.domain([0, highestValue + 3])
 		.range([innerHeight, 0]);
 
-	let selectedLine = null;
+	let selectedBrand: string | null = null;
 </script>
 
 <h2>{$translate('stats.general.topBrandsTimeline.name')}</h2>
@@ -57,11 +58,11 @@
 			<Xaxis {innerHeight} {xScale} />
 			<Yaxis {innerWidth} {yScale} />
 			{#if intersecting}
-				<Line {topBrandsTimelineData} {xScale} {xValue} {yScale} bind:selectedLine />
-				<Points {topBrandsTimelineData} {xScale} {xValue} {yScale} bind:selectedLine />
+				<Line {topBrandsTimelineData} {xScale} {xValue} {yScale} bind:selectedBrand />
+				<Points {topBrandsTimelineData} {xScale} {yScale} bind:selectedBrand />
 			{/if}
 		</g>
 	</svg>
 </IntersectionObserver>
 
-<Legend {topBrandsTimelineData} bind:selectedLine />
+<Legend {morePopularBrandsData} {topBrandsTimelineData} bind:selectedBrand />
