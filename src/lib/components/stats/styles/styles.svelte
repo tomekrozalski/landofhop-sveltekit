@@ -36,4 +36,8 @@
 	ul.mainList {
 		margin-top: 6rem;
 	}
+
+	h3 {
+		font-weight: var(--font-weight-medium);
+	}
 </style>

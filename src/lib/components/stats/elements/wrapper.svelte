@@ -10,11 +10,11 @@
 		{
 			link: '/stats/styles',
 			name: $translate('stats.common.navigation.styles')
+		},
+		{
+			link: '/stats/ingredients',
+			name: $translate('stats.common.navigation.ingredients')
 		}
-		// {
-		// 	link: '/stats/ingredients',
-		// 	name: 'Dotyczące składników'
-		// }
 	];
 </script>
 
