@@ -8,7 +8,8 @@ import {
 	AgedWood,
 	AlcoholScope,
 	Clarity,
-	Fermentation
+	Fermentation,
+	IngredientType
 } from '$lib/utils/enums/Beverage.enum';
 
 export type EditorialFormValues = {

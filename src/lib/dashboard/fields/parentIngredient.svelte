@@ -20,15 +20,7 @@
 	}
 </script>
 
-<Label {id}>{$translate('dashboard.label.parentIngredient')}</Label>
-<Conditional
-	{fieldName}
-	{id}
-	{updateField}
-	{updateTouched}
-	{validateField}
-	value={$form[fieldName]}
-/>
+<Label {id} isRequired>{$translate('dashboard.label.parentIngredient')}</Label>
 <IngredientSelect
 	errors={$errors[fieldName]}
 	filter={$form.type}

@@ -136,10 +136,11 @@ export enum ImageSize {
 }
 
 export enum IngredientType {
+	water = 'water',
 	malt = 'malt',
 	hop = 'hop',
 	yeast = 'yeast',
-	appendix = 'appendix'
+	addition = 'addition'
 }
 
 export enum TemperatureUnit {

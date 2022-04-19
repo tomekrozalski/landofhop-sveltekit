@@ -26,12 +26,6 @@ export function getValidationSchema(translate) {
 			.required()
 			.min(1),
 		type: yup.string().required(translate('form.validation.required')),
-		parent: yup
-			.mixed()
-			.test(
-				'is-valid',
-				translate('form.validation.required'),
-				(value) => value === null || value.length
-			)
+		parent: yup.string().required(translate('form.validation.required'))
 	});
 }

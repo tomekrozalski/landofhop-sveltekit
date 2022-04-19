@@ -22,6 +22,7 @@ export enum Endpoints {
 	removeBeverageCap = '/api/admin/beverages/photos/removeCap',
 	searchByPhrase = '/api/searchByPhrase',
 	statsGeneral = '/api/stats/general',
+	statsIngredients = '/api/stats/ingredients',
 	statsStyles = '/api/stats/styles',
 	styles = '/api/admin/styles',
 	translate = '/api/admin/translate',

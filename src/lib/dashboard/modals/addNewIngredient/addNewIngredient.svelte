@@ -40,7 +40,7 @@
 		<ModalGrid>
 			<IngredientType {formName} {formData} />
 		</ModalGrid>
-		<ModalGrid isOptional>
+		<ModalGrid>
 			<ParentIngredient {formName} {formData} />
 		</ModalGrid>
 		<ButtonWrapper modal>

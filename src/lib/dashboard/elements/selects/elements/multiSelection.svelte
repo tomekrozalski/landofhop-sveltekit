@@ -22,7 +22,7 @@
 		class:malt={item.type === 'malt'}
 		class:hop={item.type === 'hop'}
 		class:yeast={item.type === 'yeast'}
-		class:appendix={item.type === 'appendix'}
+		class:addition={item.type === 'addition'}
 		on:click={(event) => (multiFullItemClearable ? handleClear(i, event) : {})}
 	>
 		<div class="multiSelectItem_label">
@@ -121,7 +121,7 @@
 		background-color: var(--color-ingredients-yeast);
 	}
 
-	.multiSelectItem.appendix {
-		background-color: var(--color-ingredients-appendix);
+	.multiSelectItem.addition {
+		background-color: var(--color-ingredients-addition);
 	}
 </style>

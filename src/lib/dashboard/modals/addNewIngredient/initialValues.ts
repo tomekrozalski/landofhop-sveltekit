@@ -5,5 +5,5 @@ export const initialValues = {
 	badge: '',
 	name: [cloneDeep(emptyLanguageValue)],
 	type: '',
-	parent: null
+	parent: ''
 };

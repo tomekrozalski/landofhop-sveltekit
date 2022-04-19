@@ -1,38 +1,39 @@
-<ul>
-	<li>
-		<a href="/">Woda <span>(1083)</span></a>
-	</li>
-	<li>
-		<a href="/">Słody</a>
-	</li>
-	<li>
-		<a href="/">Chmiele</a>
-	</li>
-	<li>
-		<a href="/">Drożdże</a>
-	</li>
-	<li>
-		<a href="/">Dodatki</a>
-	</li>
-</ul>
+<script lang="ts">
+	import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
+	import Navigation from './navigation.svelte';
 
-<div>Ingredients</div>
+	export let data: IngredientsStatsTypes;
+</script>
+
+<Navigation navigation={data.navigation} />
+
+<ul>
+	<li>{data.tree.name.value} Słody ({data.tree.occurrences.withSuccessors})</li>
+	<ul>
+		{#each data.tree.successors as item}
+			<li>
+				{item.name.value}
+				{item.occurrences.alone}
+				({item.occurrences.withSuccessors})
+			</li>
+		{/each}
+	</ul>
+</ul>
 
 <style>
 	ul {
-		display: flex;
-		justify-content: space-around;
-		width: 100%;
+		padding: 0 2rem;
 	}
 
-	a {
-		display: block;
-		color: inherit;
-		padding: 2rem;
+	li {
+		list-style-type: circle;
 	}
 
-	span {
-		font-size: 1.4rem;
-		color: #999;
+	ul ul li {
+		list-style-type: square;
+	}
+
+	ul ul ul li {
+		list-style-type: disc;
 	}
 </style>

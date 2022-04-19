@@ -1,5 +1,6 @@
 import LanguageValue from '$lib/utils/types/common/LanguageValue';
 import { Fermentation } from '$lib/utils/enums/Beverage';
+import type { IngredientTree } from '$lib/utils/types/Ingredient';
 
 export type AddTimelineBar = {
 	date: string;
@@ -37,4 +38,32 @@ export type GeneralStats = {
 	fermentationTimelineData: FermentationTimelineBar[];
 	topBrandsTimelineData: TopBrandsTimelineBar[];
 	morePopularBrandsData: Brand[];
+};
+
+export type IngredientsStatsNavigation = {
+	water: {
+		name: string;
+		occurrences: number;
+	};
+	malt: {
+		name: string;
+		occurrences: number;
+	};
+	hop: {
+		name: string;
+		occurrences: number;
+	};
+	yeast: {
+		name: string;
+		occurrences: number;
+	};
+	addition: {
+		name: string;
+		occurrences: number;
+	};
+};
+
+export type IngredientsStats = {
+	navigation: IngredientsStatsNavigation;
+	tree: IngredientTree;
 };

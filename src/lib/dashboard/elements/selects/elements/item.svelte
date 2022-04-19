@@ -42,6 +42,10 @@
 			classes.push('ingredient');
 		}
 
+		if (item.type === IngredientType.water) {
+			classes.push('water');
+		}
+
 		if (item.type === IngredientType.malt) {
 			classes.push('malt');
 		}
@@ -54,8 +58,8 @@
 			classes.push('yeast');
 		}
 
-		if (item.type === IngredientType.appendix) {
-			classes.push('appendix');
+		if (item.type === IngredientType.addition) {
+			classes.push('addition');
 		}
 
 		itemClasses = classes.join(' ');
@@ -124,6 +128,10 @@
 		transform: translateY(-50%);
 	}
 
+	.item.water::after {
+		background-color: var(--color-ingredients-water);
+	}
+
 	.item.malt::after {
 		background-color: var(--color-ingredients-malt);
 	}
@@ -136,7 +144,7 @@
 		background-color: var(--color-ingredients-yeast);
 	}
 
-	.item.appendix::after {
-		background-color: var(--color-ingredients-appendix);
+	.item.addition::after {
+		background-color: var(--color-ingredients-addition);
 	}
 </style>

@@ -1,26 +1,11 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import Navigation from './navigation.svelte';
-
-	const navItems = [
-		{
-			link: '/stats',
-			name: $translate('stats.common.navigation.general')
-		},
-		{
-			link: '/stats/styles',
-			name: $translate('stats.common.navigation.styles')
-		},
-		{
-			link: '/stats/ingredients',
-			name: $translate('stats.common.navigation.ingredients')
-		}
-	];
 </script>
 
 <article>
 	<h1>{$translate('stats.common.name')}</h1>
-	<Navigation {navItems} />
+	<Navigation />
 	<slot />
 </article>
 

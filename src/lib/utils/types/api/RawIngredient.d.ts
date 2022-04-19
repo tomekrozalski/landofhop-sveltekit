@@ -5,7 +5,11 @@ export type RawIngredientWithoutId = {
 	badge: string;
 	name: LanguageValue[];
 	type: IngredientType;
-	parent?: string;
+	parent?: string; // required except: water, malt, hop, yeast, addition
+	occurrences: {
+		alone: number;
+		withSuccessors: number;
+	};
 };
 
 export type RawIngredient = RawIngredientWithoutId & {

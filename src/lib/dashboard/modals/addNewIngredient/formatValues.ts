@@ -9,7 +9,7 @@ type Input = {
 		language: string;
 	}[];
 	type: IngredientType;
-	parent: string | null;
+	parent: string;
 };
 
 export default function formatValues({ badge, name, type, parent }: Input): Ingredient {
@@ -17,6 +17,10 @@ export default function formatValues({ badge, name, type, parent }: Input): Ingr
 		badge: badge.trim(),
 		name: formatLanguageValueArray(name),
 		type,
-		...(parent && { parent })
+		parent,
+		occurrences: {
+			alone: 0,
+			withSuccessors: 0
+		}
 	};
 }
