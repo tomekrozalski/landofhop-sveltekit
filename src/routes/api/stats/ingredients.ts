@@ -15,33 +15,20 @@ export async function post({ request }) {
 
 	/* create navigation data */
 
-	const navigation: IngredientsStatsNavigation = {
-		water: {
-			name: '',
-			occurrences: 0
-		},
-		malt: {
-			name: '',
-			occurrences: 0
-		},
-		hop: {
-			name: '',
-			occurrences: 0
-		},
-		yeast: {
-			name: '',
-			occurrences: 0
-		},
-		addition: {
-			name: '',
-			occurrences: 0
-		}
-	};
+	let navigation: IngredientsStatsNavigation = [];
 
-	await ingredients.find({ parent: { $exists: false } }).forEach(({ badge, name, occurrences }) => {
-		navigation[badge].name = translate(name, language);
-		navigation[badge].occurrences = occurrences.withSuccessors;
-	});
+	await ingredients
+		.find({ parent: { $exists: false } }, { projection: { badge: 1, occurrences: 1 } })
+		.sort({ _id: 1 })
+		.forEach(({ badge, occurrences }) => {
+			navigation.push({
+				badge,
+				occurrences: occurrences.withSuccessors
+			});
+		});
+
+	const { type } = await ingredients.findOne({ badge });
+	navigation = navigation.map((item) => (item.badge === type ? { ...item, active: true } : item));
 
 	/* create three data */
 	/* step 1: generate path, eg. ['addition', 'vanilla', 'vanilla-extract'] */
@@ -73,17 +60,22 @@ export async function post({ request }) {
 	async function createSuccessors(index: number, target: string) {
 		const successorsData: IngredientTree[] = [];
 
-		await ingredients.find({ parent: path[index] }).forEach(({ badge, name, occurrences }) => {
-			successorsData.push({
-				badge,
-				name: translate(name, language),
-				occurrences
+		await ingredients
+			.find({ parent: path[index] })
+			.sort({ 'occurrences.withSuccessors': -1 })
+			.forEach(({ badge, name, occurrences }) => {
+				successorsData.push({
+					badge,
+					name: translate(name, language),
+					occurrences
+				});
 			});
-		});
 
-		set(tree, target, successorsData);
+		if (successorsData.length) {
+			set(tree, target, successorsData);
+		}
 
-		if (path.length > index + 2) {
+		if (path.length > index + 1) {
 			const i = successorsData.findIndex((props) => props.badge === path[index + 1]);
 			await createSuccessors(index + 1, `${target}[${i}].successors`);
 		}

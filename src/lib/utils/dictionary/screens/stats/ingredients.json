@@ -2,17 +2,17 @@
 	"en": {
 		"stats.ingredients.title": "📈 Ingredients statistics",
 		"stats.ingredients.type.water": "Water",
-		"stats.ingredients.type.malts": "Malts",
-		"stats.ingredients.type.hops": "Hops",
+		"stats.ingredients.type.malt": "Malts",
+		"stats.ingredients.type.hop": "Hops",
 		"stats.ingredients.type.yeast": "Yeast",
-		"stats.ingredients.type.additions": "Addition"
+		"stats.ingredients.type.addition": "Addition"
 	},
 	"pl": {
 		"stats.ingredients.title": "📈 Statystyki dotyczące składników",
 		"stats.ingredients.type.water": "Woda",
-		"stats.ingredients.type.malts": "Słody",
-		"stats.ingredients.type.hops": "Chmiele",
+		"stats.ingredients.type.malt": "Słody",
+		"stats.ingredients.type.hop": "Chmiele",
 		"stats.ingredients.type.yeast": "Drożdże",
-		"stats.ingredients.type.additions": "Dodatki"
+		"stats.ingredients.type.addition": "Dodatki"
 	}
 }

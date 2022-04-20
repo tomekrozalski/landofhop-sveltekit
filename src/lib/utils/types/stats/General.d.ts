@@ -41,27 +41,10 @@ export type GeneralStats = {
 };
 
 export type IngredientsStatsNavigation = {
-	water: {
-		name: string;
-		occurrences: number;
-	};
-	malt: {
-		name: string;
-		occurrences: number;
-	};
-	hop: {
-		name: string;
-		occurrences: number;
-	};
-	yeast: {
-		name: string;
-		occurrences: number;
-	};
-	addition: {
-		name: string;
-		occurrences: number;
-	};
-};
+	active?: boolean;
+	badge: string;
+	occurrences: number;
+}[];
 
 export type IngredientsStats = {
 	navigation: IngredientsStatsNavigation;

@@ -1,44 +1,15 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { page } from '$app/stores';
 	import type { IngredientsStatsNavigation } from '$lib/utils/types/stats/General';
-
-	const navItems = [
-		{
-			badge: 'water',
-			link: '/stats/ingredients/water',
-			name: $translate('stats.ingredients.type.water')
-		},
-		{
-			badge: 'malt',
-			link: '/stats/ingredients/malt',
-			name: $translate('stats.ingredients.type.malts')
-		},
-		{
-			badge: 'hop',
-			link: '/stats/ingredients/hop',
-			name: $translate('stats.ingredients.type.hops')
-		},
-		{
-			badge: 'yeast',
-			link: '/stats/ingredients/yeast',
-			name: $translate('stats.ingredients.type.yeast')
-		},
-		{
-			badge: 'addition',
-			link: '/stats/ingredients/addition',
-			name: $translate('stats.ingredients.type.additions')
-		}
-	];
 
 	export let navigation: IngredientsStatsNavigation;
 </script>
 
 <ul>
-	{#each navItems as { badge, link, name }}
+	{#each navigation as { active, badge, occurrences }}
 		<li>
-			<a class={badge} class:active={$page.url.pathname === link} href={link}>
-				{name} <span>({navigation[badge].occurrences})</span>
+			<a class={badge} class:active href="/stats/ingredients/{badge}">
+				{$translate(`stats.ingredients.type.${badge}`)} <span>({occurrences})</span>
 			</a>
 		</li>
 	{/each}

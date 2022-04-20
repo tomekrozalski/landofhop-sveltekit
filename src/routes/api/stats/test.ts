@@ -55,7 +55,7 @@ export async function put() {
 				await ingredients.updateOne(
 					{ badge },
 					{
-						$inc: { 'occurrences.alone': 1 }
+						$inc: { 'occurrences.alone': 1, 'occurrences.withSuccessors': 1 }
 					}
 				);
 			}
