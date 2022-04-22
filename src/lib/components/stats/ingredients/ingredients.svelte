@@ -15,7 +15,10 @@
 
 	async function onUpdateClick(badge: string) {
 		if ($ingredientsStore.length === 0) {
+			console.log('!');
 			const ingredients = await apiCall(fetch, Endpoints.ingredients);
+
+			console.log({ ingredients });
 			ingredientsStore.set(ingredients);
 		}
 

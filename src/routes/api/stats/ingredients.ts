@@ -20,10 +20,10 @@ export async function post({ request }) {
 	await ingredients
 		.find({ parent: { $exists: false } }, { projection: { badge: 1, occurrences: 1 } })
 		.sort({ _id: 1 })
-		.forEach(({ badge, occurrences }) => {
+		.forEach((props) => {
 			navigation.push({
-				badge,
-				occurrences: occurrences.withSuccessors
+				badge: props.badge,
+				occurrences: props.occurrences.withSuccessors
 			});
 		});
 
@@ -35,10 +35,10 @@ export async function post({ request }) {
 
 	const path = [];
 
-	async function generatePath(badge) {
-		path.unshift(badge);
+	async function generatePath(value) {
+		path.unshift(value);
 
-		const ingredientData = await ingredients.findOne({ badge });
+		const ingredientData = await ingredients.findOne({ badge: value });
 
 		if (ingredientData.parent) {
 			await generatePath(ingredientData.parent);
@@ -63,11 +63,11 @@ export async function post({ request }) {
 		await ingredients
 			.find({ parent: path[index] })
 			.sort({ 'occurrences.withSuccessors': -1 })
-			.forEach(({ badge, name, occurrences }) => {
+			.forEach((props) => {
 				successorsData.push({
-					badge,
-					name: translate(name, language),
-					occurrences
+					badge: props.badge,
+					name: translate(props.name, language),
+					occurrences: props.occurrences
 				});
 			});
 
@@ -86,7 +86,8 @@ export async function post({ request }) {
 	return {
 		body: {
 			navigation,
-			tree
+			tree,
+			id: requestData.badge
 		}
 	};
 }

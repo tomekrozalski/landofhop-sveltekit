@@ -35,7 +35,9 @@
 </svelte:head>
 
 <StatsWrapper>
-	{#if data}
-		<IngredientsStats {data} />
-	{/if}
+	{#key data.id}
+		{#if data}
+			<IngredientsStats {data} />
+		{/if}
+	{/key}
 </StatsWrapper>
