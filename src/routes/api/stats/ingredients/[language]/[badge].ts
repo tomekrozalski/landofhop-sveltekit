@@ -6,10 +6,9 @@ import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import type { IngredientTree } from '$lib/utils/types/Ingredient';
 import type { IngredientsStatsNavigation } from '$lib/utils/types/stats/General';
 
-export async function post({ request }) {
-	const requestData = await request.json();
-	const language = requestData.language ?? AppLanguage.en;
-	const badge = requestData.badge;
+export async function get({ params }) {
+	const language = params.language ?? AppLanguage.en;
+	const badge = params.badge;
 
 	const { ingredients } = await getDbCollections();
 
@@ -86,8 +85,7 @@ export async function post({ request }) {
 	return {
 		body: {
 			navigation,
-			tree,
-			id: requestData.badge
+			tree
 		}
 	};
 }

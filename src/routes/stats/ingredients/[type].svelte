@@ -6,11 +6,7 @@
 
 	export async function load({ fetch, params }) {
 		const data: IngredientsStatsTypes = await apiCall(fetch, Endpoints.statsIngredients, {
-			method: 'POST',
-			body: JSON.stringify({
-				language: 'pl',
-				badge: params.type
-			})
+			pathParams: ['pl', params.type]
 		});
 
 		return { props: { data } };
@@ -35,9 +31,7 @@
 </svelte:head>
 
 <StatsWrapper>
-	{#key data.id}
-		{#if data}
-			<IngredientsStats {data} />
-		{/if}
-	{/key}
+	{#if data}
+		<IngredientsStats {data} />
+	{/if}
 </StatsWrapper>

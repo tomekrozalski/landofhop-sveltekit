@@ -49,5 +49,4 @@ export type IngredientsStatsNavigation = {
 export type IngredientsStats = {
 	navigation: IngredientsStatsNavigation;
 	tree: IngredientTree;
-	id: string;
 };
