@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { IngredientsStatsNavigation } from '$lib/utils/types/stats/General';
+	import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
 
-	export let navigation: IngredientsStatsNavigation;
+	export let data: IngredientsStatsTypes;
 </script>
 
 <ul>
-	{#each navigation as { active, badge, occurrences }}
+	{#each data.navigation as { active, badge, occurrences }}
 		<li>
 			<a class={badge} class:active href="/stats/ingredients/{badge}">
 				{$translate(`stats.ingredients.type.${badge}`)} <span>({occurrences})</span>
