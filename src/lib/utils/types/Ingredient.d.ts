@@ -3,13 +3,13 @@ import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
 
 export type IngredientRaw = {
 	badge: string;
-	name: LanguageValue;
-	type: IngredientType;
-	parent?: string;
+	name: LanguageValue[];
 	occurrences: {
 		alone: number;
 		withSuccessors: number;
 	};
+	parent?: string;
+	type: IngredientType;
 };
 
 export type IngredientTree = {
@@ -19,7 +19,6 @@ export type IngredientTree = {
 		alone: number;
 		withSuccessors: number;
 	};
-	hasSuccessors?: boolean;
 	successors?: IngredientTree[];
 };
 

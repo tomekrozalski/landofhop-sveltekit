@@ -2,6 +2,7 @@
 	import { session } from '$app/stores';
 	import { translate } from 'svelte-intl';
 	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
+	import UpdateButton from '$lib/components/stats/elements/updateButton.svelte';
 
 	export let item: StylesStatsTypes;
 	export let onUpdateClick: (badge: string) => void;
@@ -18,9 +19,7 @@
 		</svg>
 	</a>
 	{#if $session.isLoggedIn}
-		<button on:click={() => onUpdateClick(item.badge)} type="button">
-			{$translate('stats.styles.update')}
-		</button>
+		<UpdateButton badge={item.badge} {onUpdateClick} />
 	{/if}
 </li>
 
@@ -40,8 +39,7 @@
 		margin-left: 0.1rem;
 	}
 
-	a,
-	button {
+	a {
 		color: var(--color-success);
 		transition: color var(--transition-default);
 	}
@@ -55,14 +53,5 @@
 
 	a:hover svg {
 		fill: var(--color-black);
-	}
-
-	button {
-		margin: 0 1rem;
-		padding: 0;
-	}
-
-	button:hover {
-		color: var(--color-black);
 	}
 </style>

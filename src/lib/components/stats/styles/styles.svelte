@@ -34,7 +34,7 @@
 
 <style>
 	ul.mainList {
-		margin-top: 6rem;
+		margin-top: 4rem;
 	}
 
 	h3 {

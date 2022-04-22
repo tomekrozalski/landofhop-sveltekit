@@ -28,6 +28,7 @@ export enum Endpoints {
 	translate = '/api/admin/translate',
 	updateBasics = '/api/admin/basics/update',
 	updateBeverage = '/api/admin/beverages/update',
+	updateIngredient = '/api/admin/ingredients',
 	updateStyle = '/api/admin/styles'
 }
 
