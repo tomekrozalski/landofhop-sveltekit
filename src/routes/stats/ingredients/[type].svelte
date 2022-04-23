@@ -18,7 +18,7 @@
 	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
 	import ingredientsStatsDictionary from '$lib/utils/dictionary/screens/stats/ingredients.json';
 	import StatsWrapper from '$lib/components/stats/elements/wrapper.svelte';
-	import IngredientsStats from '$lib/components/stats/ingredients/ingredients.svelte';
+	import Ingredients from '$lib/components/stats/ingredients/ingredients.svelte';
 
 	translations.update(statsDictionary);
 	translations.update(ingredientsStatsDictionary);
@@ -32,6 +32,6 @@
 
 <StatsWrapper>
 	{#if data}
-		<IngredientsStats {data} />
+		<Ingredients {data} />
 	{/if}
 </StatsWrapper>
