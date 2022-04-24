@@ -20,6 +20,7 @@ import getTracedSvg from './photos/getTracedSvg';
 import removeCap from './photos/removeCap';
 import removeCover from './photos/removeCover';
 import removeGallery from './photos/removeGallery';
+import recalculateIngredientsOccurrences from './ingredients/recalculateOccurrences';
 
 export {
 	adminDetailsNormalizer,
@@ -37,6 +38,7 @@ export {
 	generateShortId,
 	getDbCollections,
 	getTracedSvg,
+	recalculateIngredientsOccurrences,
 	removeCap,
 	removeCover,
 	removeGallery,

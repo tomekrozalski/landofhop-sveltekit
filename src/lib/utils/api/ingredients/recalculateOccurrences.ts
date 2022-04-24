@@ -1,6 +1,6 @@
 import { getDbCollections } from '$lib/utils/api';
 
-export async function put() {
+async function recalculateOccurrences() {
 	const { beverages, ingredients } = await getDbCollections();
 
 	/* reset ingredients occurrences */
@@ -67,8 +67,6 @@ export async function put() {
 	}
 
 	ingredientBadges.forEach(updateSelected(false));
-
-	return {
-		body: true
-	};
 }
+
+export default recalculateOccurrences;

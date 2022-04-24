@@ -1,4 +1,4 @@
-import { authenticate, getDbCollections } from '$lib/utils/api';
+import { authenticate, getDbCollections, recalculateIngredientsOccurrences } from '$lib/utils/api';
 import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
 
 export async function get({ request }) {
@@ -86,13 +86,39 @@ export async function put({ request }) {
 		};
 	}
 
-	const { ingredients } = await getDbCollections();
+	const { beverages, ingredients } = await getDbCollections();
 
 	const ingredientData = await request.json();
 	const { initial, ...rest } = ingredientData;
 	await ingredients.updateOne({ badge: initial }, { $set: rest });
 
-	console.log('->', ingredientData);
+	await beverages.updateMany(
+		{ 'label.ingredients.tags': { $elemMatch: { badge: initial } } },
+		{
+			$set: {
+				'label.ingredients.tags.$': {
+					badge: ingredientData.badge,
+					name: ingredientData.name,
+					type: ingredientData.type
+				}
+			}
+		}
+	);
+
+	await beverages.updateMany(
+		{ 'producer.ingredients.tags': { $elemMatch: { badge: initial } } },
+		{
+			$set: {
+				'producer.ingredients.tags.$': {
+					badge: ingredientData.badge,
+					name: ingredientData.name,
+					type: ingredientData.type
+				}
+			}
+		}
+	);
+
+	await recalculateIngredientsOccurrences();
 
 	const data: RawIngredientWithoutId[] = await ingredients
 		.find(
