@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { translate, translations } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
+	import { page } from '$app/stores';
 
 	import dictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import ModalGrid from '$lib/dashboard/elements/modalGrid.svelte';
@@ -24,7 +25,7 @@
 	const formData = createForm({
 		initialValues,
 		validationSchema: getValidationSchema($translate, initialValues.badge),
-		onSubmit: onSubmit(initialValues.badge, close)
+		onSubmit: onSubmit(initialValues.badge, close, $page.params.type)
 	});
 
 	const { isSubmitting } = formData;

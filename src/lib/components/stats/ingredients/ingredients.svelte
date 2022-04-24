@@ -1,5 +1,4 @@
 <script lang="ts">
-	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import { ingredientsStore } from '$lib/dashboard/utils/stores';
 	import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
 	import UpdateIngredient from '$lib/dashboard/modals/updateIngredient/updateIngredient.svelte';
@@ -14,11 +13,6 @@
 	export let data: IngredientsStatsTypes;
 
 	async function onUpdateClick(badge: string) {
-		if ($ingredientsStore.length === 0) {
-			const ingredients = await apiCall(fetch, Endpoints.ingredients);
-			ingredientsStore.set(ingredients);
-		}
-
 		modalData = $ingredientsStore.find((props) => props.badge === badge);
 		isModalOpen = true;
 	}

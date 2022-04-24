@@ -1,5 +1,7 @@
-import { statsStyle, styleStore } from '$lib/dashboard/utils/stores';
-import apiCall, { Endpoints } from '$lib/utils/api/call';
+import { invalidate } from '$app/navigation';
+
+import { styleStore } from '$lib/dashboard/utils/stores';
+import apiCall, { Endpoints, getLink } from '$lib/utils/api/call';
 import formatValues from './formatValues';
 
 export function onSubmit(close, badge) {
@@ -12,10 +14,10 @@ export function onSubmit(close, badge) {
 			pathParams: [badge]
 		});
 
-		const updatedStatsData = await apiCall(fetch, Endpoints.statsStyles, { pathParams: ['pl'] });
-
-		statsStyle.set(updatedStatsData);
 		styleStore.set(updatedStyles);
+
+		await invalidate(getLink(Endpoints.statsStyles, ['pl']));
+
 		close();
 	};
 }

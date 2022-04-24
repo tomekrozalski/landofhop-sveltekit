@@ -39,11 +39,14 @@ type Props = {
 	pathParams?: (string | number)[];
 };
 
-function call(fetch, endpoint: Endpoints, props?: Props) {
-	const { formData = false, method = 'GET', pathParams, ...rest } = props || {};
-	const completeUrl = pathParams?.length ? `${endpoint}/${pathParams.join('/')}` : endpoint;
+export function getLink(endpoint: Endpoints, pathParams?: (string | number)[]) {
+	return pathParams?.length ? `${endpoint}/${pathParams.join('/')}` : endpoint;
+}
 
-	return fetch(completeUrl, {
+export default function call(fetch, endpoint: Endpoints, props?: Props) {
+	const { formData = false, method = 'GET', pathParams, ...rest } = props || {};
+
+	return fetch(getLink(endpoint, pathParams), {
 		method,
 		headers: {
 			...(!formData && { 'Content-Type': 'application/json' })
@@ -57,5 +60,3 @@ function call(fetch, endpoint: Endpoints, props?: Props) {
 		return response.json();
 	});
 }
-
-export default call;

@@ -27,22 +27,21 @@
 
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
-	import { statsStyle, styleStore } from '$lib/dashboard/utils/stores';
+	import { styleStore } from '$lib/dashboard/utils/stores';
 	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
 	import stylesStatsDictionary from '$lib/utils/dictionary/screens/stats/styles.json';
 	import styleGroupsDictionary from '$lib/utils/dictionary/lists/styleGroup.json';
 	import StatsWrapper from '$lib/components/stats/elements/wrapper.svelte';
-	import StylesStats from '$lib/components/stats/styles/styles.svelte';
+	import Styles from '$lib/components/stats/styles/styles.svelte';
 
 	translations.update(statsDictionary);
 	translations.update(stylesStatsDictionary);
 	translations.update(styleGroupsDictionary);
 
-	export let styles: StyleType[];
 	export let statsData: StylesStatsTypes[];
+	export let styles: StyleType[];
 
 	styleStore.set(styles);
-	statsStyle.set(statsData);
 </script>
 
 <svelte:head>
@@ -50,5 +49,5 @@
 </svelte:head>
 
 <StatsWrapper>
-	<StylesStats />
+	<Styles data={statsData} />
 </StatsWrapper>
