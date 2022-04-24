@@ -19,6 +19,7 @@
 	<div
 		class="multiSelectItem {activeValue === i ? 'active' : ''} {isDisabled ? 'disabled' : ''}"
 		class:ingredient={item.type}
+		class:water={item.type === 'water'}
 		class:malt={item.type === 'malt'}
 		class:hop={item.type === 'hop'}
 		class:yeast={item.type === 'yeast'}
@@ -107,6 +108,10 @@
 
 	.multiSelectItem.ingredient {
 		color: var(--color-white);
+	}
+
+	.multiSelectItem.water {
+		background-color: var(--color-ingredients-water);
 	}
 
 	.multiSelectItem.malt {
