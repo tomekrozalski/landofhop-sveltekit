@@ -57,7 +57,7 @@
 		"jsonwebtoken": "^8.5.1",
 		"lodash-es": "^4.17.21",
 		"mongodb": "^4.4.0",
-		"nanoid": "^3.3.1",
+		"nanoid": "^3.3.2",
 		"potrace": "^2.1.8",
 		"sharp": "^0.30.3",
 		"svgo": "^2.8.0"
