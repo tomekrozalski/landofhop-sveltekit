@@ -1,5 +1,6 @@
 {
 	"en": {
+		"stats.common.findAll": "Find all",
 		"stats.common.name": "Statistics",
 		"stats.common.navigation.general": "General",
 		"stats.common.navigation.ingredients": "About ingredients",
@@ -7,6 +8,7 @@
 		"stats.common.update": "Popraw"
 	},
 	"pl": {
+		"stats.common.findAll": "Zobacz wszystkie",
 		"stats.common.name": "Statystyki",
 		"stats.common.navigation.general": "Ogólne",
 		"stats.common.navigation.ingredients": "Dotyczące składników",

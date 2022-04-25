@@ -8,6 +8,7 @@ import type { Basics } from '$lib/utils/types/Beverage/Basics';
 export async function get({ params }) {
 	const { language, phrase } = params;
 	const { beverages } = await getDbCollections();
+	const ingredientSearch = phrase.split('ingredient:')[1] ?? null;
 	const styleSearch = phrase.split('style:')[1] ?? null;
 
 	const foundArr: Basics[] = [];
@@ -34,9 +35,19 @@ export async function get({ params }) {
 		});
 	}
 
-	if (styleSearch) {
+	if (ingredientSearch) {
 		await beverages
-			.find({ 'editorial.brewing.styleTags.badge': styleSearch }, { noCursorTimeout: false })
+			.find({
+				$or: [
+					{ 'label.ingredients.tags.badge': ingredientSearch },
+					{ 'producer.ingredients.tags.badge': ingredientSearch }
+				]
+			})
+			.sort({ _id: -1 })
+			.forEach(formatValues);
+	} else if (styleSearch) {
+		await beverages
+			.find({ 'editorial.brewing.styleTags.badge': styleSearch })
 			.forEach(formatValues);
 	} else {
 		await beverages

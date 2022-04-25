@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { session } from '$app/stores';
 	import type { IngredientTree } from '$lib/utils/types/Ingredient.d';
+	import FindAll from '$lib/components/stats/elements/findAll.svelte';
 	import UpdateButton from '$lib/components/stats/elements/updateButton.svelte';
 
 	import ToggleBox from './toggleBox.svelte';
@@ -15,6 +16,7 @@
 		<li>
 			{name.value}
 			<span>({occurrences.withSuccessors})</span>
+			<FindAll query="ingredient%3a{badge}" />
 			{#if occurrences.alone !== occurrences.withSuccessors}
 				<ToggleBox {badge} />
 			{/if}

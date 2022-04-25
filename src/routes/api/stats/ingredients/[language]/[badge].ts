@@ -19,10 +19,10 @@ export async function get({ params }) {
 	await ingredients
 		.find({ parent: { $exists: false } }, { projection: { badge: 1, occurrences: 1 } })
 		.sort({ _id: 1 })
-		.forEach((props) => {
+		.forEach(({ badge, occurrences }) => {
 			navigation.push({
-				badge: props.badge,
-				occurrences: props.occurrences.withSuccessors
+				badge,
+				occurrences: occurrences.withSuccessors
 			});
 		});
 
@@ -60,13 +60,13 @@ export async function get({ params }) {
 		const successorsData: IngredientTree[] = [];
 
 		await ingredients
-			.find({ parent: path[index] })
+			.find({ parent: path[index] }, { projection: { badge: 1, name: 1, occurrences: 1 } })
 			.sort({ 'occurrences.withSuccessors': -1 })
-			.forEach((props) => {
+			.forEach(({ badge, name, occurrences }) => {
 				successorsData.push({
-					badge: props.badge,
-					name: translate(props.name, language),
-					occurrences: props.occurrences
+					badge,
+					name: translate(name, language),
+					occurrences
 				});
 			});
 
