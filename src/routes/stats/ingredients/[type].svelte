@@ -3,7 +3,7 @@
 	import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
 	import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
 
-	export const prerender = true;
+	// export const prerender = true;
 
 	export async function load({ fetch, params, session }) {
 		try {
