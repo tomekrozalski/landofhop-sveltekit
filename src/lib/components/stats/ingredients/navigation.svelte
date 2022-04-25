@@ -18,12 +18,14 @@
 <style>
 	ul {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 1rem;
 		margin: 1rem 0;
 	}
 
 	li {
-		flex: 1;
+		flex: 0 1 1;
+		width: calc(50% - 0.5rem);
 	}
 
 	a {
@@ -93,5 +95,11 @@
 	a.yeast:hover span,
 	a.yeast.active span {
 		color: var(--color-white);
+	}
+
+	@media (--lg) {
+		ul {
+			flex-wrap: nowrap;
+		}
 	}
 </style>

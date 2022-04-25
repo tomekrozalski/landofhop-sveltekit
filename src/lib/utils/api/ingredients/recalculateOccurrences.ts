@@ -38,35 +38,47 @@ async function recalculateOccurrences() {
 			combined.forEach((value) => ingredientBadges.push(value));
 		});
 
+	/* calculate occurrences */
+
+	const occurrences = ingredientBadges.reduce((acc, curr) => {
+		if (acc[curr]) {
+			acc[curr] += 1;
+		} else {
+			acc[curr] = 1;
+		}
+
+		return acc;
+	}, {});
+
 	/* update ingredients */
 
 	function updateSelected(successor: boolean) {
-		return async function (badge: string) {
+		return async function ([badge, value]: [string, number]) {
 			const ingredientToUpdate = await ingredients.findOne({ badge });
 
 			if (successor) {
 				await ingredients.updateOne(
 					{ badge },
 					{
-						$inc: { 'occurrences.withSuccessors': 1 }
+						$inc: { 'occurrences.withSuccessors': value }
 					}
 				);
 			} else {
 				await ingredients.updateOne(
 					{ badge },
 					{
-						$inc: { 'occurrences.alone': 1, 'occurrences.withSuccessors': 1 }
+						$set: { 'occurrences.alone': value, 'occurrences.withSuccessors': value }
 					}
 				);
 			}
 
 			if (ingredientToUpdate.parent) {
-				updateSelected(true)(ingredientToUpdate.parent);
+				updateSelected(true)([ingredientToUpdate.parent, value]);
 			}
 		};
 	}
 
-	ingredientBadges.forEach(updateSelected(false));
+	Object.entries(occurrences).forEach(updateSelected(false));
 }
 
 export default recalculateOccurrences;
