@@ -20,7 +20,11 @@
 	});
 </script>
 
-<div style:aspect-ratio="{coverImage?.width} / {coverImage?.height}">
+<!--
+	style:padding-top is temporary solution for older Safari
+	<div style:aspect-ratio="{coverImage?.width} / {coverImage?.height}">
+-->
+<div style:padding-top="{(coverImage?.height / coverImage?.width) * 100}%">
 	{#if !loaded && coverImage?.outline}
 		<span class="outline-wrapper" transition:toggleVisibility>
 			{@html coverImage.outline}
@@ -49,6 +53,7 @@
 <style>
 	div {
 		width: 100%;
+		height: 0;
 		position: relative;
 		overflow: hidden;
 	}
