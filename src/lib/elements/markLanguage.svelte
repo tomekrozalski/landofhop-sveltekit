@@ -8,39 +8,9 @@
 	export let producer: boolean = false;
 	export let tag: string;
 	export let target: string = '';
-
-	// @ToDo: in a future it should be easier to code that with <svelte:element>
-	//   For not it is not implemented yet
 </script>
 
-{#if tag === 'h1'}
-	<h1
-		class:editorial
-		class:label
-		class:producer
-		lang={name.language !== 'pl' ? name.language : null}
-	>
-		{name.value}
-	</h1>
-{:else if tag === 'em'}
-	<em
-		class:editorial
-		class:label
-		class:producer
-		lang={name.language !== 'pl' ? name.language : null}
-	>
-		{name.value}
-	</em>
-{:else if tag === 'span'}
-	<span
-		class:editorial
-		class:label
-		class:producer
-		lang={name.language !== 'pl' ? name.language : null}
-	>
-		{name.value}
-	</span>
-{:else if tag === 'a'}
+{#if target}
 	<a
 		class:editorial
 		class:label
@@ -51,5 +21,13 @@
 		{name.value}
 	</a>
 {:else}
-	<span>Something went wrong</span>
+	<svelte:element
+		class:editorial
+		class:label
+		class:producer
+		lang={name.language !== 'pl' ? name.language : null}
+		this={tag}
+	>
+		{name.value}
+	</svelte:element>
 {/if}
