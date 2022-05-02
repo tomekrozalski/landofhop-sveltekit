@@ -13,6 +13,15 @@ export async function get({ params }) {
 
 	const foundArr: Basics[] = [];
 
+	// 	const defer = (time) =>
+	// 		new Promise((resolve) => {
+	// 			setTimeout(() => {
+	// 				resolve(true);
+	// 			}, time);
+	// 		});
+	//
+	// 	await defer(2000);
+
 	function formatValues({ added, badge, editorial, label, shortId }: RawBeverage) {
 		foundArr.push({
 			added: format(new Date(added), DateFormat[language]),

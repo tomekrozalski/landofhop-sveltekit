@@ -6,6 +6,7 @@
 	import Spinner from '$lib/elements/spinner.svelte';
 	import BeverageList from './beverageList.svelte';
 	import NothingFound from './nothingFound.svelte';
+	import AdvancedSearchLink from './advancedSearchLink.svelte';
 
 	let value;
 
@@ -31,4 +32,6 @@
 			<NothingFound />
 		{/if}
 	{/await}
+{:else}
+	<AdvancedSearchLink />
 {/if}
