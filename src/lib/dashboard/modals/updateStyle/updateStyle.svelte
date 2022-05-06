@@ -5,7 +5,7 @@
 	import dictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import type { Style } from '$lib/utils/types/Style';
 	import ModalGrid from '$lib/dashboard/elements/modalGrid.svelte';
-	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
+	import ButtonWrapper from '$lib/elements/form/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';

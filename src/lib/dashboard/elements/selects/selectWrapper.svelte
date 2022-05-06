@@ -1,15 +1,17 @@
 <script lang="ts">
 	import Select from 'svelte-select';
-	import { isArray, isEmpty } from 'lodash-es';
+	import { isEmpty } from 'lodash-es';
 	import Error from '$lib/elements/form/error.svelte';
 	import Item from './elements/item.svelte';
 	import MultiSelection from './elements/multiSelection.svelte';
+	import Loading from './loading.svelte';
 
 	type SelectType = { value: string; label: string };
 	export let errors: string | string[];
 	export let handleClear: () => void;
 	export let id: string = null;
 	export let isDisabled: boolean = false;
+	export let isLoading: boolean = false;
 	export let isMulti: boolean = false;
 	export let isWide: boolean = false;
 	export let items: SelectType[];
@@ -17,26 +19,30 @@
 	export let style: string = '';
 	export let value: SelectType | SelectType[] | null;
 
-	$: formattedErrors = isArray(errors) ? errors.filter(Boolean).join(', ') : errors;
+	$: formattedErrors = Array.isArray(errors) ? errors.filter(Boolean).join(', ') : errors;
 </script>
 
 <div class:isWide {style}>
-	<Select
-		on:clear={handleClear}
-		containerClasses="select"
-		{id}
-		isDisabled={isDisabled || value === null}
-		{isMulti}
-		{Item}
-		{items}
-		{MultiSelection}
-		on:select={setValue}
-		showChevron={true}
-		value={isEmpty(value) ? '' : value}
-		{...$$restProps}
-	/>
-	{#if formattedErrors}
-		<Error>{formattedErrors}</Error>
+	{#if isLoading}
+		<Loading />
+	{:else}
+		<Select
+			on:clear={handleClear}
+			containerClasses="select"
+			{id}
+			isDisabled={isDisabled || value === null}
+			{isMulti}
+			{Item}
+			{items}
+			{MultiSelection}
+			on:select={setValue}
+			showChevron={true}
+			value={isEmpty(value) ? '' : value}
+			{...$$restProps}
+		/>
+		{#if formattedErrors}
+			<Error>{formattedErrors}</Error>
+		{/if}
 	{/if}
 </div>
 

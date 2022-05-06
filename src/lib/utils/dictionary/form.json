@@ -1,0 +1,10 @@
+{
+	"en": {
+		"dashboard.select.placeholder.styleTag": "select beverage style",
+		"form.validation.tagSelectionRequired": "At least one tag required"
+	},
+	"pl": {
+		"dashboard.select.placeholder.styleTag": "wybierz styl piwa",
+		"form.validation.tagSelectionRequired": "Wymagany przynajmniej jeden tag"
+	}
+}

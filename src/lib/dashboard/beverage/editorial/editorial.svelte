@@ -6,13 +6,13 @@
 
 	// Common elements
 	import Button from '$lib/elements/form/button.svelte';
+	import ButtonWrapper from '$lib/elements/form/buttonWrapper.svelte';
 	import Grid from '$lib/elements/form/grid.svelte';
 	import StyleTags from '$lib/elements/form/fields/styleTags.svelte';
 
 	// Dashboard elements
 	import { editorialStore } from '$lib/dashboard/utils/stores';
 	import { page } from '$lib/dashboard/utils/stores';
-	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
 	import Aged from '$lib/dashboard/fields/aged/aged.svelte';
 	import AlcoholScope from '$lib/dashboard/fields/alcoholScope.svelte';
 	import Clarity from '$lib/dashboard/fields/clarity.svelte';

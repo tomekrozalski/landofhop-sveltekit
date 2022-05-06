@@ -1,0 +1,11 @@
+import * as yup from 'yup';
+
+export function getValidationSchema(translate) {
+	return yup.object().shape({
+		styleTags: yup
+			.array()
+			.of(yup.string())
+			.min(1, translate('form.validation.tagSelectionRequired'))
+			.nullable(true)
+	});
+}

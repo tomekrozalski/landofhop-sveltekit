@@ -2,10 +2,13 @@
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 
-	import { labelStore } from '$lib/dashboard/utils/stores';
-	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
-	import Grid from '$lib/elements/form/grid.svelte';
+	// Common elements
 	import Button from '$lib/elements/form/button.svelte';
+	import ButtonWrapper from '$lib/elements/form/buttonWrapper.svelte';
+	import Grid from '$lib/elements/form/grid.svelte';
+
+	// Dashboard elements
+	import { labelStore } from '$lib/dashboard/utils/stores';
 	import Aged from '$lib/dashboard/fields/aged/aged.svelte';
 	import Alcohol from '$lib/dashboard/fields/alcohol.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';

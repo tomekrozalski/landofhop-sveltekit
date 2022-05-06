@@ -5,6 +5,8 @@
 	import Conditional from '$lib/dashboard/elements/conditional.svelte';
 	import OpenModal from '$lib/dashboard/elements/openModal.svelte';
 	import AddNewStyle from '$lib/dashboard/modals/addNewStyle/addNewStyle.svelte';
+	import { styleStore } from '$lib/dashboard/utils/stores';
+	import { updateStyleList } from '$lib/utils/helpers/updateStoreData';
 
 	export let admin: boolean = false;
 	export let formName: string;
@@ -29,6 +31,10 @@
 	}
 
 	let isModalOpen = false;
+
+	$: if ($form[fieldName] !== null) {
+		updateStyleList();
+	}
 </script>
 
 <Label {id}>{$translate(labelId)}</Label>
@@ -45,6 +51,7 @@
 	errors={$errors[fieldName]}
 	{handleClear}
 	id={$form[fieldName] !== null && id}
+	isLoading={$form[fieldName] !== null && $styleStore.length === 0}
 	{setValue}
 	bind:value={$form[fieldName]}
 />
