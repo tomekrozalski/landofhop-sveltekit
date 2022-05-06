@@ -3,8 +3,8 @@
 	import { createForm } from 'svelte-forms-lib';
 
 	import { labelStore } from '$lib/dashboard/utils/stores';
-	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
+	import Grid from '$lib/elements/form/grid.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Aged from '$lib/dashboard/fields/aged/aged.svelte';
 	import Alcohol from '$lib/dashboard/fields/alcohol.svelte';

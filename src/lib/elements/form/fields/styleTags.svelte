@@ -6,8 +6,10 @@
 	import OpenModal from '$lib/dashboard/elements/openModal.svelte';
 	import AddNewStyle from '$lib/dashboard/modals/addNewStyle/addNewStyle.svelte';
 
+	export let admin: boolean = false;
 	export let formName: string;
 	export let formData: any;
+	export let labelId: string;
 	let { errors, form, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'styleTags';
 	let id = `${formName}-${fieldName}`;
@@ -29,7 +31,7 @@
 	let isModalOpen = false;
 </script>
 
-<Label {id}>{$translate('dashboard.label.styleTags')}</Label>
+<Label {id}>{$translate(labelId)}</Label>
 <Conditional
 	{fieldName}
 	{id}
@@ -46,7 +48,9 @@
 	{setValue}
 	bind:value={$form[fieldName]}
 />
-<OpenModal open={() => (isModalOpen = true)} />
-{#if isModalOpen}
-	<AddNewStyle close={() => (isModalOpen = false)} />
+{#if admin}
+	<OpenModal open={() => (isModalOpen = true)} />
+	{#if isModalOpen}
+		<AddNewStyle close={() => (isModalOpen = false)} />
+	{/if}
 {/if}

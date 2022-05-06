@@ -4,11 +4,15 @@
 	import { createForm } from 'svelte-forms-lib';
 	import { page as pageProps } from '$app/stores';
 
+	// Common elements
+	import Button from '$lib/elements/form/button.svelte';
+	import Grid from '$lib/elements/form/grid.svelte';
+	import StyleTags from '$lib/elements/form/fields/styleTags.svelte';
+
+	// Dashboard elements
 	import { editorialStore } from '$lib/dashboard/utils/stores';
 	import { page } from '$lib/dashboard/utils/stores';
-	import Grid from '$lib/dashboard/elements/grid.svelte';
 	import ButtonWrapper from '$lib/dashboard/elements/buttonWrapper.svelte';
-	import Button from '$lib/elements/form/button.svelte';
 	import Aged from '$lib/dashboard/fields/aged/aged.svelte';
 	import AlcoholScope from '$lib/dashboard/fields/alcoholScope.svelte';
 	import Clarity from '$lib/dashboard/fields/clarity.svelte';
@@ -25,7 +29,7 @@
 	import Price from '$lib/dashboard/fields/price.svelte';
 	import Remark from '$lib/dashboard/fields/remark.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
-	import StyleTags from '$lib/dashboard/fields/styleTags.svelte';
+
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
@@ -66,7 +70,7 @@
 			<Fermentation {formName} {formData} />
 		</Grid>
 		<Grid isOptional>
-			<StyleTags {formName} {formData} />
+			<StyleTags {formName} {formData} labelId="dashboard.label.styleTags" admin />
 		</Grid>
 		<Grid isOptional>
 			<AlcoholScope {formName} {formData} />

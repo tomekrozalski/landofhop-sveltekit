@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	export async function load({ session }) {
+	export async function load({ session }: { session: { isLoggedIn: boolean } }) {
 		return {
 			props: { session }
 		};

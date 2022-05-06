@@ -37,7 +37,7 @@
 			return {
 				props: {
 					beverage: null,
-					forbidden: err.message === 'Forbidden',
+					forbidden: err.message === 'Unauthorized',
 					ingredients: [],
 					institutions: [],
 					places: [],

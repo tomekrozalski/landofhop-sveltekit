@@ -9,7 +9,7 @@
 			});
 			return { props: { forbidden: false, photosData } };
 		} catch (err) {
-			return { props: { forbidden: err.message === 'Forbidden', photosData: {} } };
+			return { props: { forbidden: err.message === 'Unauthorized', photosData: {} } };
 		}
 	}
 </script>

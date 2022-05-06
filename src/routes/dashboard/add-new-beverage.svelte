@@ -23,7 +23,7 @@
 		} catch (err) {
 			return {
 				props: {
-					forbidden: err.message === 'Forbidden',
+					forbidden: err.message === 'Unauthorized',
 					ingredients: [],
 					institutions: [],
 					places: [],
