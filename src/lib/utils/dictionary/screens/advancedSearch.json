@@ -1,11 +1,13 @@
 {
 	"en": {
 		"advancedSearch.button.search": "search",
+		"advancedSearch.label.ingredientTag": "Filter by ingredient",
 		"advancedSearch.label.styleTag": "Filter by beverage style",
 		"advancedSearch.title": "Advanced Search"
 	},
 	"pl": {
 		"advancedSearch.button.search": "szukaj",
+		"advancedSearch.label.ingredientTag": "Filtruj po składniku",
 		"advancedSearch.label.styleTag": "Filtruj po stylu piwa",
 		"advancedSearch.title": "Wyszukiwanie zaawansowane"
 	}

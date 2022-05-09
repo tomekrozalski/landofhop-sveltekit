@@ -1,6 +1,6 @@
 import { invalidate } from '$app/navigation';
 
-import { ingredientsStore } from '$lib/dashboard/utils/stores';
+import { ingredientsStore } from '$lib/utils/stores/selects';
 import apiCall, { Endpoints, getLink } from '$lib/utils/api/call';
 import formatValues from './formatValues';
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import SelectWrapper from './selectWrapper.svelte';
+	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 
 	export let errors: string;
 	export let name: string;

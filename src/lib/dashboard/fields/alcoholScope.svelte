@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 
 	import Label from '$lib/elements/form/label.svelte';
-	import Conditional from '$lib/dashboard/elements/conditional.svelte';
+	import Conditional from '$lib/elements/form/conditional.svelte';
 	import AlcoholScopeSelect from '$lib/dashboard/elements/selects/alcohol/scope.svelte';
 
 	export let formName: string;

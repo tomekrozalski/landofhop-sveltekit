@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { getFromArray } from '$lib/dashboard/utils/getFromArray';
-	import { styleStore } from '$lib/dashboard/utils/stores';
-	import SelectWrapper from './selectWrapper.svelte';
+	import { getFromArray } from '$lib/utils/helpers/getFromArray';
+	import { styleStore } from '$lib/utils/stores/selects';
+	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 
 	export let errors: string | string[];
@@ -29,7 +29,7 @@
 	{isLoading}
 	isMulti
 	{items}
-	placeholder={$translate('dashboard.select.placeholder.styleTag')}
+	placeholder={$translate('form.select.placeholder.styleTag')}
 	{setValue}
 	value={value?.map((id) => items.find((item) => item.value === id)) ?? null}
 />

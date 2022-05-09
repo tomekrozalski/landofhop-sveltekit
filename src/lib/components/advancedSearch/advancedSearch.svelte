@@ -4,11 +4,14 @@
 	import Button from '$lib/elements/form/button.svelte';
 	import ButtonWrapper from '$lib/elements/form/buttonWrapper.svelte';
 	import Grid from '$lib/elements/form/grid.svelte';
+	import IngredientTags from '$lib/elements/form/fields/ingredientTags.svelte';
 	import StyleTags from '$lib/elements/form/fields/styleTags.svelte';
 	import { getValidationSchema } from './validationSchema';
 
+	let formName = 'advancedSearch';
+
 	const formData = createForm({
-		initialValues: { styleTags: null },
+		initialValues: { ingredientTags: null, styleTags: null },
 		validationSchema: getValidationSchema($translate),
 		onSubmit: (values) => {
 			console.log('onSubmit', values);
@@ -20,7 +23,10 @@
 	<h1>{$translate('advancedSearch.title')}</h1>
 	<form on:submit={formData.handleSubmit} novalidate>
 		<Grid isOptional>
-			<StyleTags formName="test" {formData} labelId="advancedSearch.label.styleTag" />
+			<StyleTags {formName} {formData} labelId="advancedSearch.label.styleTag" />
+		</Grid>
+		<Grid isOptional>
+			<IngredientTags {formName} {formData} labelId="advancedSearch.label.ingredientTag" />
 		</Grid>
 		<ButtonWrapper>
 			<Button type="submit">

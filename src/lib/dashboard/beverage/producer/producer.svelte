@@ -6,6 +6,7 @@
 	import ButtonWrapper from '$lib/elements/form/buttonWrapper.svelte';
 	import Button from '$lib/elements/form/button.svelte';
 	import Grid from '$lib/elements/form/grid.svelte';
+	import IngredientTags from '$lib/elements/form/fields/ingredientTags.svelte';
 
 	// Dashboard elements
 	import { producerStore } from '$lib/dashboard/utils/stores';
@@ -24,7 +25,6 @@
 	import Hoppyness from '$lib/dashboard/fields/hoppyness.svelte';
 	import HopRate from '$lib/dashboard/fields/hopRate.svelte';
 	import Ingredients from '$lib/dashboard/fields/ingredients/ingredients.svelte';
-	import IngredientTags from '$lib/dashboard/fields/ingredientTags.svelte';
 	import Nitrogen from '$lib/dashboard/fields/nitrogen.svelte';
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
@@ -113,7 +113,7 @@
 			<Ingredients {formName} {formData} />
 		</Grid>
 		<Grid isOptional>
-			<IngredientTags {formName} {formData} />
+			<IngredientTags {formName} {formData} labelId="dashboard.label.ingredientTags" />
 		</Grid>
 		<Grid isOptional>
 			<SmokedMalt {formName} {formData} />

@@ -1,6 +1,7 @@
 import { get } from 'svelte/store';
 import apiCall, { Endpoints } from '$lib/utils/api/call';
-import { styleStore } from '$lib/dashboard/utils/stores';
+import { ingredientsStore, styleStore } from '$lib/utils/stores/selects';
+import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
 import type { Style as StyleType } from '$lib/utils/types/Style';
 
 async function updateStyleList() {
@@ -10,4 +11,11 @@ async function updateStyleList() {
 	}
 }
 
-export { updateStyleList };
+async function updateIngredientList() {
+	if (get(ingredientsStore).length === 0) {
+		const ingredients: IngredientType[] = await apiCall(fetch, Endpoints.ingredients);
+		ingredientsStore.set(ingredients);
+	}
+}
+
+export { updateIngredientList, updateStyleList };

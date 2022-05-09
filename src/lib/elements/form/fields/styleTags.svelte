@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
-	import StyleTagSelect from '$lib/dashboard/elements/selects/styleTag.svelte';
-	import Conditional from '$lib/dashboard/elements/conditional.svelte';
-	import OpenModal from '$lib/dashboard/elements/openModal.svelte';
-	import AddNewStyle from '$lib/dashboard/modals/addNewStyle/addNewStyle.svelte';
-	import { styleStore } from '$lib/dashboard/utils/stores';
+	import StyleTagSelect from '$lib/elements/form/selects/styleTag.svelte';
+	import Conditional from '$lib/elements/form/conditional.svelte';
+	import OpenModal from '$lib/elements/form/openModal.svelte';
+	import { styleStore } from '$lib/utils/stores/selects';
 	import { updateStyleList } from '$lib/utils/helpers/updateStoreData';
+	import AddNewStyle from '$lib/dashboard/modals/addNewStyle/addNewStyle.svelte';
 
 	export let admin: boolean = false;
 	export let formName: string;

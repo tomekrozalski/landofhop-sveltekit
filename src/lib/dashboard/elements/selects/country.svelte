@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import countries from 'i18n-iso-countries';
 	import pl from 'i18n-iso-countries/langs/pl.json';
-	import SelectWrapper from './selectWrapper.svelte';
+	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 
 	export let errors: string;
 	export let name: string;

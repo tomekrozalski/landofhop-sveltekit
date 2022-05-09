@@ -3,8 +3,8 @@
 	import { isArray, isString } from 'lodash-es';
 
 	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
-	import { getFromArray } from '$lib/dashboard/utils/getFromArray';
-	import { ingredientsStore } from '$lib/dashboard/utils/stores';
+	import { getFromArray } from '$lib/utils/helpers/getFromArray';
+	import { ingredientsStore } from '$lib/utils/stores/selects';
 	import SelectWrapper from './selectWrapper.svelte';
 
 	export let errors: string | string[];
@@ -45,7 +45,7 @@
 	{isDisabled}
 	{isMulti}
 	{items}
-	placeholder={$translate('dashboard.select.placeholder.ingredient')}
+	placeholder={$translate('form.select.placeholder.ingredient')}
 	{setValue}
 	value={getSelectValue(value)}
 />

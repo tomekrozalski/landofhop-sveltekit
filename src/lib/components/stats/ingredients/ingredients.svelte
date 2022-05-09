@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { ingredientsStore } from '$lib/dashboard/utils/stores';
+	import { ingredientsStore } from '$lib/utils/stores/selects';
 	import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
-	import UpdateIngredient from '$lib/dashboard/modals/updateIngredient/updateIngredient.svelte';
 	import type { Ingredient } from '$lib/utils/types/Ingredient';
+	import UpdateIngredient from '$lib/dashboard/modals/updateIngredient/updateIngredient.svelte';
 
 	import Content from './content.svelte';
 	import Navigation from './navigation.svelte';

@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 
 	import Label from '$lib/elements/form/label.svelte';
-	import Conditional from '$lib/dashboard/elements/conditional.svelte';
+	import Conditional from '$lib/elements/form/conditional.svelte';
 	import TextInput from '$lib/elements/form/textInput.svelte';
 	import ExpirationDateUnitSelect from '$lib/dashboard/elements/selects/expirationDate.svelte';
 	import { emptyExpirationDate, getNullishObject } from '$lib/dashboard/utils/emptyFieldValues';

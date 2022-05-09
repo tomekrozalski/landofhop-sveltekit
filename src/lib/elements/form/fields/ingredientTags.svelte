@@ -1,13 +1,16 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
-	import OpenModal from '$lib/dashboard/elements/openModal.svelte';
-	import IngredientSelect from '$lib/dashboard/elements/selects/ingredient.svelte';
-	import Conditional from '$lib/dashboard/elements/conditional.svelte';
+	import OpenModal from '$lib/elements/form/openModal.svelte';
+	import IngredientSelect from '$lib/elements/form/selects/ingredient.svelte';
+	import Conditional from '$lib/elements/form/conditional.svelte';
+	import { updateIngredientList } from '$lib/utils/helpers/updateStoreData';
 	import AddNewIngredient from '$lib/dashboard/modals/addNewIngredient/addNewIngredient.svelte';
 
+	export let admin: boolean = false;
 	export let formName: string;
 	export let formData: any;
+	export let labelId: string;
 	let { errors, form, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'ingredientTags';
 	let id = `${formName}-${fieldName}`;
@@ -27,9 +30,13 @@
 	}
 
 	let isModalOpen = false;
+
+	$: if ($form[fieldName] !== null) {
+		updateIngredientList();
+	}
 </script>
 
-<Label {id}>{$translate('dashboard.label.ingredientTags')}</Label>
+<Label {id}>{$translate(labelId)}</Label>
 <Conditional
 	{fieldName}
 	{id}
@@ -47,7 +54,9 @@
 	{setValue}
 	bind:value={$form[fieldName]}
 />
-<OpenModal open={() => (isModalOpen = true)} />
-{#if isModalOpen}
-	<AddNewIngredient close={() => (isModalOpen = false)} />
+{#if admin}
+	<OpenModal open={() => (isModalOpen = true)} />
+	{#if isModalOpen}
+		<AddNewIngredient close={() => (isModalOpen = false)} />
+	{/if}
 {/if}

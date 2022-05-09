@@ -2,7 +2,7 @@
 	import { translations, translate } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/lists/styleGroup.json';
 	import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
-	import SelectWrapper from './selectWrapper.svelte';
+	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 
 	export let errors: string;
 	export let name: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SelectWrapper from './selectWrapper.svelte';
+	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 
 	export let errors: string;
 	export let name: string;

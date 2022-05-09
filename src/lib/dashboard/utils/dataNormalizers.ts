@@ -5,7 +5,7 @@ import {
 	institutionStore,
 	placeStore,
 	styleStore
-} from '$lib/dashboard/utils/stores';
+} from '$lib/utils/stores/selects';
 
 export function formatInstitutionByShortId(value: string) {
 	const selectedInstitution = get(institutionStore).find(({ shortId }) => shortId === value);

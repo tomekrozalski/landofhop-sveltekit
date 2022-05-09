@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import * as yup from 'yup';
 
-import { ingredientsStore } from '$lib/dashboard/utils/stores';
+import { ingredientsStore } from '$lib/utils/stores/selects';
 
 export function getValidationSchema(translate) {
 	return yup.object().shape({

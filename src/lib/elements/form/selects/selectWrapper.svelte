@@ -2,9 +2,9 @@
 	import Select from 'svelte-select';
 	import { isEmpty } from 'lodash-es';
 	import Error from '$lib/elements/form/error.svelte';
-	import Item from './elements/item.svelte';
-	import MultiSelection from './elements/multiSelection.svelte';
-	import Loading from './loading.svelte';
+	import Item from '$lib/elements/form/selects/elements/item.svelte';
+	import MultiSelection from '$lib/elements/form/selects/elements/multiSelection.svelte';
+	import Loading from '$lib/elements/form/selects/elements/loading.svelte';
 
 	type SelectType = { value: string; label: string };
 	export let errors: string | string[];

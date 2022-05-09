@@ -1,27 +1,21 @@
 <script context="module" lang="ts">
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
 	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 	import type { Place as PlaceType } from '$lib/utils/types/Place';
 
 	export async function load({ fetch }) {
 		try {
-			const [ingredients, institutions, places]: [
-				IngredientType[],
-				InstitutionType[],
-				PlaceType[]
-			] = await Promise.all([
-				apiCall(fetch, Endpoints.ingredients),
+			const [institutions, places]: [InstitutionType[], PlaceType[]] = await Promise.all([
 				apiCall(fetch, Endpoints.institutions),
 				apiCall(fetch, Endpoints.places)
 			]);
 
-			return { props: { forbidden: false, ingredients, institutions, places } };
+			return { props: { forbidden: false, institutions, places } };
 		} catch (err) {
 			return {
 				props: {
 					forbidden: err.message === 'Unauthorized',
-					ingredients: [],
+
 					institutions: [],
 					places: []
 				}
@@ -36,14 +30,8 @@
 	import { session } from '$app/stores';
 	import dashboardDictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
-	import {
-		editorialStore,
-		ingredientsStore,
-		institutionStore,
-		labelStore,
-		placeStore,
-		producerStore
-	} from '$lib/dashboard/utils/stores';
+	import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
+	import { institutionStore, placeStore } from '$lib/utils/stores/selects';
 	import { initialValues as initialLabelValues } from '$lib/dashboard/beverage/label/initialValues';
 	import { initialValues as initialProducerValues } from '$lib/dashboard/beverage/producer/initialValues';
 	import { initialValues as initialEditorialValues } from '$lib/dashboard/beverage/editorial/initialValues';
@@ -53,7 +41,6 @@
 	translations.update(commonFormsDictionary);
 
 	export let forbidden: boolean;
-	export let ingredients: IngredientType[];
 	export let institutions: InstitutionType[];
 	export let places: PlaceType[];
 
@@ -61,7 +48,6 @@
 		$session.isLoggedIn = false;
 	}
 
-	ingredientsStore.set(ingredients);
 	institutionStore.set(institutions);
 	placeStore.set(places);
 	labelStore.set(initialLabelValues);

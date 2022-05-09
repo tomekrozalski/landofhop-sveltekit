@@ -1,4 +1,4 @@
-import { institutionStore } from '$lib/dashboard/utils/stores';
+import { institutionStore } from '$lib/utils/stores/selects';
 import apiCall, { Endpoints } from '$lib/utils/api/call';
 import formatValues from './formatValues';
 

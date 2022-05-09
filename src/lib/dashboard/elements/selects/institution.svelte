@@ -2,9 +2,9 @@
 	import { translate } from 'svelte-intl';
 	import { isArray, isString } from 'lodash-es';
 
-	import { getFromArray } from '$lib/dashboard/utils/getFromArray';
-	import { institutionStore } from '$lib/dashboard/utils/stores';
-	import SelectWrapper from './selectWrapper.svelte';
+	import { getFromArray } from '$lib/utils/helpers/getFromArray';
+	import { institutionStore } from '$lib/utils/stores/selects';
+	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 
 	export let errors: string | string[];
 	export let handleClear: () => void;

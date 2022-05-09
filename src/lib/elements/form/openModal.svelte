@@ -3,7 +3,7 @@
 	export let open: () => void;
 </script>
 
-<button type="button" on:click={open}>{$translate('dashboard.modal.open')}</button>
+<button type="button" on:click={open}>{$translate('form.modal.open')}</button>
 
 <style>
 	button {

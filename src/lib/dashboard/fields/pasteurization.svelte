@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
 	import Toggle from '$lib/elements/form/toggle.svelte';
-	import Conditional from '$lib/dashboard/elements/conditional.svelte';
+	import Conditional from '$lib/elements/form/conditional.svelte';
 
 	export let formName: string;
 	export let formData: any;

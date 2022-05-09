@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { Clarity } from '$lib/utils/enums/Beverage.enum';
-	import SelectWrapper from './selectWrapper.svelte';
+	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 
 	export let errors: string | string[];
 	export let handleClear: () => void;

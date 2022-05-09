@@ -34,7 +34,7 @@
 
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
-	import { ingredientsStore } from '$lib/dashboard/utils/stores';
+	import { ingredientsStore } from '$lib/utils/stores/selects';
 	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
 	import ingredientsStatsDictionary from '$lib/utils/dictionary/screens/stats/ingredients.json';
 	import StatsWrapper from '$lib/components/stats/elements/wrapper.svelte';

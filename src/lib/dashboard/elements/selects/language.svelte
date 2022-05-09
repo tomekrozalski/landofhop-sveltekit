@@ -3,7 +3,7 @@
 	import languages, { getAlpha2Codes } from '@cospired/i18n-iso-languages/index.js';
 	import en from '@cospired/i18n-iso-languages/langs/en.json';
 	import pl from '@cospired/i18n-iso-languages/langs/pl.json';
-	import SelectWrapper from './selectWrapper.svelte';
+	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 
 	languages.registerLocale(en);
 	languages.registerLocale(pl);

@@ -27,7 +27,7 @@
 
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
-	import { styleStore } from '$lib/dashboard/utils/stores';
+	import { styleStore } from '$lib/utils/stores/selects';
 	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
 	import stylesStatsDictionary from '$lib/utils/dictionary/screens/stats/styles.json';
 	import styleGroupsDictionary from '$lib/utils/dictionary/lists/styleGroup.json';
