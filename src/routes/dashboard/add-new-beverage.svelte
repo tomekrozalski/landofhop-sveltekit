@@ -1,22 +1,16 @@
 <script context="module" lang="ts">
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 	import type { Place as PlaceType } from '$lib/utils/types/Place';
 
 	export async function load({ fetch }) {
 		try {
-			const [institutions, places]: [InstitutionType[], PlaceType[]] = await Promise.all([
-				apiCall(fetch, Endpoints.institutions),
-				apiCall(fetch, Endpoints.places)
-			]);
+			const [places]: [PlaceType[]] = await Promise.all([apiCall(fetch, Endpoints.places)]);
 
-			return { props: { forbidden: false, institutions, places } };
+			return { props: { forbidden: false, places } };
 		} catch (err) {
 			return {
 				props: {
 					forbidden: err.message === 'Unauthorized',
-
-					institutions: [],
 					places: []
 				}
 			};
@@ -31,7 +25,7 @@
 	import dashboardDictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 	import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
-	import { institutionStore, placeStore } from '$lib/utils/stores/selects';
+	import { placeStore } from '$lib/utils/stores/selects';
 	import { initialValues as initialLabelValues } from '$lib/dashboard/beverage/label/initialValues';
 	import { initialValues as initialProducerValues } from '$lib/dashboard/beverage/producer/initialValues';
 	import { initialValues as initialEditorialValues } from '$lib/dashboard/beverage/editorial/initialValues';
@@ -41,14 +35,12 @@
 	translations.update(commonFormsDictionary);
 
 	export let forbidden: boolean;
-	export let institutions: InstitutionType[];
 	export let places: PlaceType[];
 
 	if (forbidden) {
 		$session.isLoggedIn = false;
 	}
 
-	institutionStore.set(institutions);
 	placeStore.set(places);
 	labelStore.set(initialLabelValues);
 	producerStore.set(initialProducerValues);

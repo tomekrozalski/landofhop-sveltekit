@@ -11,6 +11,7 @@ export function getValidationSchema(translate) {
 			.array()
 			.of(yup.string())
 			.min(1, translate('form.validation.tagSelectionRequired'))
-			.nullable(true)
+			.nullable(true),
+		brand: yup.array().of(yup.string()).min(1, translate('form.validation.BRAND')).nullable(true)
 	});
 }

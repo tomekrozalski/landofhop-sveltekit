@@ -1,13 +1,19 @@
 {
 	"en": {
+		"form.institutions.brands": "Brands",
+		"form.institutions.unknownContract": "Yes, but unknown",
 		"form.modal.open": "add new",
 		"form.select.placeholder.ingredient": "select ingredient",
+		"form.select.placeholder.institution": "select brand",
 		"form.select.placeholder.styleTag": "select beverage style",
 		"form.validation.tagSelectionRequired": "At least one tag required"
 	},
 	"pl": {
+		"form.institutions.brands": "Marki",
+		"form.institutions.unknownContract": "Tak, lecz nieznany",
 		"form.modal.open": "dodaj",
 		"form.select.placeholder.ingredient": "wybierz składnik",
+		"form.select.placeholder.institution": "wybierz markę",
 		"form.select.placeholder.styleTag": "wybierz styl piwa",
 		"form.validation.tagSelectionRequired": "Wymagany przynajmniej jeden tag"
 	}

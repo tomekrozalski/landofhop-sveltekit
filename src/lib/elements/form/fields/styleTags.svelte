@@ -5,7 +5,6 @@
 	import Conditional from '$lib/elements/form/conditional.svelte';
 	import OpenModal from '$lib/elements/form/openModal.svelte';
 	import { styleStore } from '$lib/utils/stores/selects';
-	import { updateStyleList } from '$lib/utils/helpers/updateStoreData';
 	import AddNewStyle from '$lib/dashboard/modals/addNewStyle/addNewStyle.svelte';
 
 	export let admin: boolean = false;
@@ -31,10 +30,6 @@
 	}
 
 	let isModalOpen = false;
-
-	$: if ($form[fieldName] !== null) {
-		updateStyleList();
-	}
 </script>
 
 <Label {id}>{$translate(labelId)}</Label>

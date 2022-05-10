@@ -5,6 +5,8 @@
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { institutionStore } from '$lib/utils/stores/selects';
 	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
+	import { updateInstitutionList } from '$lib/utils/helpers/updateStoreData';
+	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 
 	export let errors: string | string[];
 	export let handleClear: () => void;
@@ -31,26 +33,30 @@
 	let groupBy;
 	let getGroupHeaderLabel;
 
+	$: if (value !== null) {
+		updateInstitutionList();
+	}
+
 	$: if (withUnknown) {
 		items = $institutionStore
 			.map(({ name, shortId }) => ({
-				label: getFromArray(name, 'pl').value,
+				label: getFromArray(name, 'pl' as AppLanguage).value,
 				value: shortId,
 				group: 'brands'
 			}))
 			.sort((a, b) => (a.label < b.label ? -1 : 1));
 
-		items.unshift({ label: $translate('dashboard.institutions.unknownContract'), value: '--' });
+		items.unshift({ label: $translate('form.institutions.unknownContract'), value: '--' });
 
 		groupBy = (item) => item.group;
 
 		getGroupHeaderLabel = (option) => {
-			return $translate(`dashboard.institutions.${option.label}`);
+			return $translate(`form.institutions.${option.label}`);
 		};
 	} else {
 		items = $institutionStore
 			.map(({ name, shortId }) => ({
-				label: getFromArray(name, 'pl').value,
+				label: getFromArray(name, 'pl' as AppLanguage).value,
 				value: shortId
 			}))
 			.sort((a, b) => (a.label < b.label ? -1 : 1));
@@ -64,7 +70,7 @@
 	{isDisabled}
 	{isMulti}
 	{items}
-	placeholder={$translate('dashboard.select.placeholder.institution')}
+	placeholder={$translate('form.select.placeholder.institution')}
 	{setValue}
 	value={getSelectValue(value)}
 	{groupBy}

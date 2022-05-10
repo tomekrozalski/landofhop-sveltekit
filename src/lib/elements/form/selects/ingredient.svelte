@@ -5,6 +5,7 @@
 	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { ingredientsStore } from '$lib/utils/stores/selects';
+	import { updateIngredientList } from '$lib/utils/helpers/updateStoreData';
 	import SelectWrapper from './selectWrapper.svelte';
 
 	export let errors: string | string[];
@@ -26,6 +27,10 @@
 		}
 
 		return null;
+	}
+
+	$: if (value !== null) {
+		updateIngredientList();
 	}
 
 	$: items = $ingredientsStore

@@ -1,17 +1,14 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
-	import OpenModal from '$lib/elements/form/openModal.svelte';
-	import IngredientSelect from '$lib/elements/form/selects/ingredient.svelte';
+	import InstitutionSelect from '$lib/elements/form/selects/institution.svelte';
 	import Conditional from '$lib/elements/form/conditional.svelte';
-	import AddNewIngredient from '$lib/dashboard/modals/addNewIngredient/addNewIngredient.svelte';
 
-	export let admin: boolean = false;
 	export let formName: string;
 	export let formData: any;
 	export let labelId: string;
 	let { errors, form, updateField, updateTouched, validateField } = formData;
-	let fieldName = 'ingredientTags';
+	let fieldName = 'brands';
 	let id = `${formName}-${fieldName}`;
 
 	function handleClear() {
@@ -27,8 +24,6 @@
 			validateField(fieldName);
 		}
 	}
-
-	let isModalOpen = false;
 </script>
 
 <Label {id}>{$translate(labelId)}</Label>
@@ -41,7 +36,7 @@
 	{validateField}
 	value={$form[fieldName]}
 />
-<IngredientSelect
+<InstitutionSelect
 	errors={$errors[fieldName]}
 	{handleClear}
 	id={$form[fieldName] !== null && id}
@@ -49,9 +44,3 @@
 	{setValue}
 	bind:value={$form[fieldName]}
 />
-{#if admin}
-	<OpenModal open={() => (isModalOpen = true)} />
-	{#if isModalOpen}
-		<AddNewIngredient close={() => (isModalOpen = false)} />
-	{/if}
-{/if}

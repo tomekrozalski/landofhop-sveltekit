@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/label.svelte';
-	import InstitutionSelect from '$lib/dashboard/elements/selects/institution.svelte';
+	import InstitutionSelect from '$lib/elements/form/selects/institution.svelte';
 	import Conditional from '$lib/elements/form/conditional.svelte';
 
 	export let formName: string;

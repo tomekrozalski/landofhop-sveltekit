@@ -2,6 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { styleStore } from '$lib/utils/stores/selects';
+	import { updateStyleList } from '$lib/utils/helpers/updateStoreData';
 	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 
@@ -12,6 +13,10 @@
 	export let isLoading: boolean = false;
 	export let setValue: (event: any) => void;
 	export let value: string[] | null;
+
+	$: if (value !== null) {
+		updateStyleList();
+	}
 
 	$: items = $styleStore
 		.map(({ badge, name }) => ({

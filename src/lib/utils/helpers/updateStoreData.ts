@@ -1,7 +1,8 @@
 import { get } from 'svelte/store';
 import apiCall, { Endpoints } from '$lib/utils/api/call';
-import { ingredientsStore, styleStore } from '$lib/utils/stores/selects';
+import { ingredientsStore, institutionStore, styleStore } from '$lib/utils/stores/selects';
 import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
+import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
 import type { Style as StyleType } from '$lib/utils/types/Style';
 
 async function updateStyleList() {
@@ -18,4 +19,11 @@ async function updateIngredientList() {
 	}
 }
 
-export { updateIngredientList, updateStyleList };
+async function updateInstitutionList() {
+	if (get(institutionStore).length === 0) {
+		const institutions: InstitutionType[] = await apiCall(fetch, Endpoints.institutions);
+		institutionStore.set(institutions);
+	}
+}
+
+export { updateIngredientList, updateInstitutionList, updateStyleList };
