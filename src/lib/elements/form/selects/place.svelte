@@ -2,7 +2,9 @@
 	import { translate } from 'svelte-intl';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { placeStore } from '$lib/utils/stores/selects';
+	import { updatePlaceList } from '$lib/utils/helpers/updateStoreData';
 	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
+	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 
 	export let errors: string;
 	export let handleClear: () => void;
@@ -10,9 +12,15 @@
 	export let setValue: (event: any) => void;
 	export let value: string | null;
 
+	$: if (value !== null) {
+		updatePlaceList();
+	}
+
 	$: items = $placeStore
 		.map(({ city, institution, shortId }) => ({
-			label: `${getFromArray(city, 'pl').value} (${getFromArray(institution.name, 'pl').value})`,
+			label: `${getFromArray(city, 'pl' as AppLanguage).value} (${
+				getFromArray(institution.name, 'pl' as AppLanguage).value
+			})`,
 			value: shortId
 		}))
 		.sort((a, b) => (a.label < b.label ? -1 : 1));

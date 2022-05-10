@@ -54,7 +54,7 @@
 		--borderFocusColor: var(--color-black);
 		--padding: 0 1rem;
 		--background: var(--color-grey-4);
-		--height: var(--size-input-height);
+		--height: calc(var(--size-input-height) - 0.1rem);
 		--inputPadding: 0 1rem;
 		--inputColor: var(--color-black);
 		--selectedItemPadding: 0;

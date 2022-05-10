@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import type { Place as PlaceType } from '$lib/utils/types/Place';
 	import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
 	import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
 	import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
@@ -13,21 +12,14 @@
 
 	export async function load({ fetch, params }) {
 		try {
-			const [beverage, places]: [DetailsAdmin, PlaceType[]] = await Promise.all([
-				apiCall(fetch, Endpoints.beverageDetailsAdmin, {
-					pathParams: [params.shortId]
-				}),
-				apiCall(fetch, Endpoints.places)
-			]);
+			const beverage: DetailsAdmin = await apiCall(fetch, Endpoints.beverageDetailsAdmin, {
+				pathParams: [params.shortId]
+			});
 
-			return { props: { beverage, forbidden: false, places } };
+			return { props: { beverage } };
 		} catch (err) {
 			return {
-				props: {
-					beverage: null,
-					forbidden: err.message === 'Unauthorized',
-					places: []
-				}
+				props: { beverage: null }
 			};
 		}
 	}
@@ -40,21 +32,16 @@
 	import dashboardDictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 	import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
-	import { placeStore } from '$lib/utils/stores/selects';
 	import Beverage from '$lib/dashboard/beverage/beverage.svelte';
 
 	translations.update(dashboardDictionary);
 	translations.update(commonFormsDictionary);
 
 	export let beverage: DetailsAdmin | null;
-	export let forbidden: boolean;
-	export let places: PlaceType[];
 
-	if (forbidden) {
+	if (!beverage) {
 		$session.isLoggedIn = false;
 	}
-
-	placeStore.set(places);
 
 	if (beverage) {
 		labelStore.set(beverage.label);
