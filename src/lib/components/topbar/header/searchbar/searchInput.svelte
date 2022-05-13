@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
+	import pushState from '$lib/utils/helpers/pushState';
 	import navigation from '$lib/utils/stores/navigation';
-	import setSearchParam from '$lib/utils/helpers/setSearchParam';
 
 	function focusOnMount(input: HTMLInputElement) {
 		input.focus();
@@ -10,7 +10,11 @@
 </script>
 
 <input
-	on:input={(e) => setSearchParam(e.currentTarget.value)}
+	on:input={(e) => {
+		const params = new URLSearchParams(location.search);
+		params.set('search', e.currentTarget.value);
+		pushState(params);
+	}}
 	type="text"
 	use:focusOnMount
 	bind:value={$navigation.searchPhrase}

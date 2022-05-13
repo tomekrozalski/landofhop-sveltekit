@@ -4,14 +4,12 @@
 	import Error from '$lib/elements/form/error.svelte';
 	import Item from '$lib/elements/form/selects/elements/item.svelte';
 	import MultiSelection from '$lib/elements/form/selects/elements/multiSelection.svelte';
-	import Loading from '$lib/elements/form/selects/elements/loading.svelte';
 
 	type SelectType = { value: string; label: string };
 	export let errors: string | string[];
 	export let handleClear: () => void;
 	export let id: string = null;
 	export let isDisabled: boolean = false;
-	export let isLoading: boolean = false;
 	export let isMulti: boolean = false;
 	export let isWide: boolean = false;
 	export let items: SelectType[];
@@ -23,26 +21,22 @@
 </script>
 
 <div class:isWide {style}>
-	{#if isLoading}
-		<Loading />
-	{:else}
-		<Select
-			on:clear={handleClear}
-			containerClasses="select"
-			{id}
-			isDisabled={isDisabled || value === null}
-			{isMulti}
-			{Item}
-			{items}
-			{MultiSelection}
-			on:select={setValue}
-			showChevron={true}
-			value={isEmpty(value) ? '' : value}
-			{...$$restProps}
-		/>
-		{#if formattedErrors}
-			<Error>{formattedErrors}</Error>
-		{/if}
+	<Select
+		on:clear={handleClear}
+		containerClasses="select"
+		{id}
+		isDisabled={isDisabled || value === null}
+		{isMulti}
+		{Item}
+		{items}
+		{MultiSelection}
+		on:select={setValue}
+		showChevron={true}
+		value={isEmpty(value) ? '' : value}
+		{...$$restProps}
+	/>
+	{#if formattedErrors}
+		<Error>{formattedErrors}</Error>
 	{/if}
 </div>
 

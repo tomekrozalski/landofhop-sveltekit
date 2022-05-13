@@ -3,8 +3,10 @@
 	import { isArray, isString } from 'lodash-es';
 
 	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
+	import Loading from '$lib/elements/form/selects/elements/loading.svelte';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { ingredientsStore } from '$lib/utils/stores/selects';
+	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 	import { updateIngredientList } from '$lib/utils/helpers/updateStoreData';
 	import SelectWrapper from './selectWrapper.svelte';
 
@@ -36,21 +38,25 @@
 	$: items = $ingredientsStore
 		.filter(({ type }) => (filter ? type === filter : true))
 		.map(({ badge, name, type }) => ({
-			label: getFromArray(name, 'pl').value,
+			label: getFromArray(name, 'pl' as AppLanguage).value,
 			value: badge,
 			type
 		}))
 		.sort((a, b) => (a.label < b.label ? -1 : 1));
 </script>
 
-<SelectWrapper
-	{errors}
-	{handleClear}
-	{id}
-	{isDisabled}
-	{isMulti}
-	{items}
-	placeholder={$translate('form.select.placeholder.ingredient')}
-	{setValue}
-	value={getSelectValue(value)}
-/>
+{#if value !== null && !items.length}
+	<Loading />
+{:else}
+	<SelectWrapper
+		{errors}
+		{handleClear}
+		{id}
+		{isDisabled}
+		{isMulti}
+		{items}
+		placeholder={$translate('form.select.placeholder.ingredient')}
+		{setValue}
+		value={getSelectValue(value)}
+	/>
+{/if}

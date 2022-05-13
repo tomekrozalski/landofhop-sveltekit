@@ -4,6 +4,7 @@
 
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { institutionStore } from '$lib/utils/stores/selects';
+	import Loading from '$lib/elements/form/selects/elements/loading.svelte';
 	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 	import { updateInstitutionList } from '$lib/utils/helpers/updateStoreData';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
@@ -63,16 +64,20 @@
 	}
 </script>
 
-<SelectWrapper
-	{errors}
-	{handleClear}
-	{id}
-	{isDisabled}
-	{isMulti}
-	{items}
-	placeholder={$translate('form.select.placeholder.institution')}
-	{setValue}
-	value={getSelectValue(value)}
-	{groupBy}
-	{getGroupHeaderLabel}
-/>
+{#if value !== null && !items.length}
+	<Loading />
+{:else}
+	<SelectWrapper
+		{errors}
+		{handleClear}
+		{id}
+		{isDisabled}
+		{isMulti}
+		{items}
+		placeholder={$translate('form.select.placeholder.institution')}
+		{setValue}
+		value={getSelectValue(value)}
+		{groupBy}
+		{getGroupHeaderLabel}
+	/>
+{/if}

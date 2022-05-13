@@ -46,7 +46,6 @@
 	errors={$errors[fieldName]}
 	{handleClear}
 	id={$form[fieldName] !== null && id}
-	isLoading={$form[fieldName] !== null && $styleStore.length === 0}
 	{setValue}
 	bind:value={$form[fieldName]}
 />

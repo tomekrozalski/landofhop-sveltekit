@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
+import pushState from '$lib/utils/helpers/pushState';
 import Status from '$lib/utils/enums/Status.enum';
-import setSearchParam from '$lib/utils/helpers/setSearchParam';
 
 const { subscribe, update, set } = writable<{
 	isNavigationOpened: boolean;
@@ -71,7 +71,9 @@ function openSearchBar() {
 }
 
 function closeSearchBar() {
-	setSearchParam('');
+	const params = new URLSearchParams(location.search);
+	params.delete('search');
+	pushState(params);
 
 	update((store) => {
 		store.isSearchbarActive = false;

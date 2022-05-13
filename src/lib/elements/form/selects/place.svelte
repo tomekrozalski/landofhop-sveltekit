@@ -3,6 +3,7 @@
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { placeStore } from '$lib/utils/stores/selects';
 	import { updatePlaceList } from '$lib/utils/helpers/updateStoreData';
+	import Loading from '$lib/elements/form/selects/elements/loading.svelte';
 	import SelectWrapper from '$lib/elements/form/selects/selectWrapper.svelte';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 
@@ -26,12 +27,16 @@
 		.sort((a, b) => (a.label < b.label ? -1 : 1));
 </script>
 
-<SelectWrapper
-	{errors}
-	{handleClear}
-	{id}
-	{items}
-	placeholder={$translate('dashboard.select.placeholder.place')}
-	{setValue}
-	value={value === null ? null : items.find((item) => item.value === value)}
-/>
+{#if value !== null && !items.length}
+	<Loading />
+{:else}
+	<SelectWrapper
+		{errors}
+		{handleClear}
+		{id}
+		{items}
+		placeholder={$translate('dashboard.select.placeholder.place')}
+		{setValue}
+		value={value === null ? null : items.find((item) => item.value === value)}
+	/>
+{/if}

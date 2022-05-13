@@ -3,6 +3,7 @@
 		"advancedSearch.button.search": "search",
 		"advancedSearch.label.brand": "Filter by brand",
 		"advancedSearch.label.ingredientTag": "Filter by ingredient",
+		"advancedSearch.label.name": "Filter by beverage name",
 		"advancedSearch.label.styleTag": "Filter by beverage style",
 		"advancedSearch.title": "Advanced Search"
 	},
@@ -10,6 +11,7 @@
 		"advancedSearch.button.search": "szukaj",
 		"advancedSearch.label.brand": "Filtruj po marce",
 		"advancedSearch.label.ingredientTag": "Filtruj po składniku",
+		"advancedSearch.label.name": "Filtruj po nazwie piwa",
 		"advancedSearch.label.styleTag": "Filtruj po stylu piwa",
 		"advancedSearch.title": "Wyszukiwanie zaawansowane"
 	}

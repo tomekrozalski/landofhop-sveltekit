@@ -1,41 +1,36 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
-	import { createForm } from 'svelte-forms-lib';
-	import Button from '$lib/elements/form/button.svelte';
-	import ButtonWrapper from '$lib/elements/form/buttonWrapper.svelte';
-	import Grid from '$lib/elements/form/grid.svelte';
-	import IngredientTags from '$lib/elements/form/fields/ingredientTags.svelte';
-	import Brands from '$lib/elements/form/fields/brands.svelte';
-	import StyleTags from '$lib/elements/form/fields/styleTags.svelte';
-	import { getValidationSchema } from './validationSchema';
+	import Spinner from '$lib/elements/spinner.svelte';
+	import type AdvancedSearchData from './AdvancedSearchData.type';
+	import Form from './form.svelte';
+	import Results from './results.svelte';
 
-	let formName = 'advancedSearch';
+	let mounted = false;
+	let initialValues: AdvancedSearchData = {
+		brands: null,
+		ingredientTags: null,
+		name: null,
+		styleTags: null
+	};
 
-	const formData = createForm({
-		initialValues: { brands: null, ingredientTags: null, styleTags: null },
-		validationSchema: getValidationSchema($translate),
-		onSubmit: (values) => {
-			console.log('onSubmit', values);
-		}
+	onMount(async () => {
+		const params = new URLSearchParams(location.search);
+		initialValues.brands = params.get('brands')?.split(',') ?? null;
+		initialValues.ingredientTags = params.get('ingredientTags')?.split(',') ?? null;
+		initialValues.name = params.get('name') ?? null;
+		initialValues.styleTags = params.get('styleTags')?.split(',') ?? null;
+
+		mounted = true;
 	});
 </script>
 
 <article>
 	<h1>{$translate('advancedSearch.title')}</h1>
-	<form on:submit={formData.handleSubmit} novalidate>
-		<Grid isOptional>
-			<StyleTags {formName} {formData} labelId="advancedSearch.label.styleTag" />
-		</Grid>
-		<Grid isOptional>
-			<IngredientTags {formName} {formData} labelId="advancedSearch.label.ingredientTag" />
-		</Grid>
-		<Grid isOptional>
-			<Brands {formName} {formData} labelId="advancedSearch.label.brand" />
-		</Grid>
-		<ButtonWrapper>
-			<Button type="submit">
-				{$translate('advancedSearch.button.search')}
-			</Button>
-		</ButtonWrapper>
-	</form>
+	{#if mounted}
+		<Form {initialValues} />
+		<Results data={initialValues} />
+	{:else}
+		<Spinner />
+	{/if}
 </article>
