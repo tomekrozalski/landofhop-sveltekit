@@ -12,7 +12,7 @@
 		console.log('abc', abc);
 
 		const response: Basics[] = await apiCall(fetch, Endpoints.searchByPhrase, {
-			pathParams: ['pl', 'ipa']
+			pathParams: ['pl', 'crazy']
 		});
 
 		return response;

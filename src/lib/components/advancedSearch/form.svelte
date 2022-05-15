@@ -53,3 +53,11 @@
 		</Button>
 	</ButtonWrapper>
 </form>
+
+<style>
+	form {
+		max-width: var(--size-container-max-width);
+		margin: 0 auto;
+		padding: 1rem;
+	}
+</style>

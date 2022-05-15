@@ -25,12 +25,16 @@
 	});
 </script>
 
-<article>
-	<h1>{$translate('advancedSearch.title')}</h1>
-	{#if mounted}
-		<Form {initialValues} />
-		<Results data={initialValues} />
-	{:else}
-		<Spinner />
-	{/if}
-</article>
+<h1>{$translate('advancedSearch.title')}</h1>
+{#if mounted}
+	<Form {initialValues} />
+	<Results data={initialValues} />
+{:else}
+	<Spinner />
+{/if}
+
+<style>
+	h1 {
+		padding-top: 4rem;
+	}
+</style>
