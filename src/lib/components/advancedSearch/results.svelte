@@ -1,18 +1,18 @@
 <script lang="ts">
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
-	// import Spinner from '$lib/elements/spinner.svelte';
-	import BeverageList from '../beverageList/beverageList.svelte';
+	import Spinner from '$lib/elements/spinners/fullWidth.svelte';
+	import NothingFound from '$lib/components/beverageList/nothingFound.svelte';
+	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
 
 	import type AdvancedSearchData from './AdvancedSearchData.type';
 
 	export let data: AdvancedSearchData;
 
-	async function callToApi(abc) {
-		console.log('abc', abc);
-
-		const response: Basics[] = await apiCall(fetch, Endpoints.searchByPhrase, {
-			pathParams: ['pl', 'crazy']
+	async function callToApi(values) {
+		const response: Basics[] = await apiCall(fetch, Endpoints.advancedSearch, {
+			method: 'POST',
+			body: JSON.stringify({ ...values, language: 'pl' })
 		});
 
 		return response;
@@ -30,12 +30,14 @@
 
 <svelte:window on:popstate={updateData} />
 
-{#await callToApi(data)}
-	loading
-{:then beverages}
-	{#if beverages.length}
-		<BeverageList {beverages} />
-	{:else}
-		NothingFound
-	{/if}
-{/await}
+{#if Object.values(data).find(Boolean)}
+	{#await callToApi(data)}
+		<Spinner />
+	{:then beverages}
+		{#if beverages.length}
+			<BeverageList {beverages} />
+		{:else}
+			<NothingFound />
+		{/if}
+	{/await}
+{/if}

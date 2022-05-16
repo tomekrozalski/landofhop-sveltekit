@@ -7,7 +7,7 @@
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import Button from '$lib/elements/form/button.svelte';
-	import InlineSpinner from '$lib/elements/inlineSpinner.svelte';
+	import InlineSpinner from '$lib/elements/spinners/inline.svelte';
 	import Notes from './notes.svelte';
 	import Updated from './updated.svelte';
 	import RemoveBeverage from './removeButton.svelte';

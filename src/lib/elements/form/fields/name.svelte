@@ -25,7 +25,8 @@
 	errors={$errors[fieldName]}
 	{handleChange}
 	{id}
-	isTouched={$touched[fieldName]}
+	isTouched={$touched[fieldName] === true}
 	{fieldName}
 	bind:value={$form[fieldName]}
+	style="position: relative"
 />

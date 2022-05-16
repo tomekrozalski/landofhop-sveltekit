@@ -1,8 +1,5 @@
-import { format } from 'date-fns';
-
-import { getDbCollections, translate } from '$lib/utils/api';
-import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
-import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
+import { getDbCollections } from '$lib/utils/api';
+import { formatBeverageToBasics } from '$lib/utils/api';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
 export async function get({ params }) {
@@ -13,37 +10,6 @@ export async function get({ params }) {
 
 	const foundArr: Basics[] = [];
 
-	// 	const defer = (time) =>
-	// 		new Promise((resolve) => {
-	// 			setTimeout(() => {
-	// 				resolve(true);
-	// 			}, time);
-	// 		});
-	//
-	// 	await defer(2000);
-
-	function formatValues({ added, badge, editorial, label, shortId }: RawBeverage) {
-		foundArr.push({
-			added: format(new Date(added), DateFormat[language]),
-			badge,
-			brand: {
-				badge: label.general.brand.badge,
-				name: translate(label.general.brand.name, language)
-			},
-			containerType: label.container.type,
-			...(editorial?.photos?.cover &&
-				editorial?.photos?.outlines?.cover && {
-					coverImage: {
-						height: editorial.photos.cover.height,
-						width: editorial.photos.cover.width,
-						outline: editorial.photos.outlines.cover
-					}
-				}),
-			name: translate(label.general.name, language),
-			shortId
-		});
-	}
-
 	if (ingredientSearch) {
 		await beverages
 			.find({
@@ -53,11 +19,11 @@ export async function get({ params }) {
 				]
 			})
 			.sort({ _id: -1 })
-			.forEach(formatValues);
+			.forEach(formatBeverageToBasics(foundArr, language));
 	} else if (styleSearch) {
 		await beverages
 			.find({ 'editorial.brewing.styleTags.badge': styleSearch })
-			.forEach(formatValues);
+			.forEach(formatBeverageToBasics(foundArr, language));
 	} else {
 		await beverages
 			.aggregate([
@@ -128,7 +94,7 @@ export async function get({ params }) {
 					}
 				}
 			])
-			.forEach(formatValues);
+			.forEach(formatBeverageToBasics(foundArr, language));
 	}
 
 	return {

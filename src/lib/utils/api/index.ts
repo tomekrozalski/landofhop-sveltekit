@@ -9,6 +9,7 @@ import createTokens from './sessions/tokens';
 import deleteIfEmpty from './deleteIfEmpty';
 import detailsNormalizer from './beverages/detailsNormalizer';
 import formatBasics from './basics/format';
+import formatBeverageToBasics from './formatBeverageToBasics';
 import generateShortId from './generateShortId';
 import getDbCollections from './getDbCollections';
 import translate from './translate';
@@ -35,6 +36,7 @@ export {
 	Endpoints,
 	formatBasics,
 	formatBeverage,
+	formatBeverageToBasics,
 	generateShortId,
 	getDbCollections,
 	getTracedSvg,

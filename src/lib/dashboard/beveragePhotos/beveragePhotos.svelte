@@ -4,7 +4,7 @@
 	import { session } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import Navigation from '$lib/dashboard/elements/navigation.svelte';
-	import Spinner from '$lib/elements/spinner.svelte';
+	import Spinner from '$lib/elements/spinners/fullScreen.svelte';
 	import Cap from './cap.svelte';
 	import Cover from './cover.svelte';
 	import Gallery from './gallery.svelte';

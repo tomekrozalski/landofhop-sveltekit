@@ -5,7 +5,7 @@
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
 
-	import Spinner from '$lib/elements/spinner.svelte';
+	import Spinner from '$lib/elements/spinners/fullScreen.svelte';
 	import ProgressList from '$lib/dashboard/elements/progressList/progressList.svelte';
 	import Navigation from '$lib/dashboard/elements/navigation.svelte';
 	import { page } from '$lib/dashboard/utils/stores';

@@ -3,7 +3,7 @@
 	import { translate } from 'svelte-intl';
 </script>
 
-<h1 transition:fade={{ duration: 200 }}>{$translate('header.search.nothingFound')}</h1>
+<h1 in:fade={{ duration: 200 }}>{$translate('header.search.nothingFound')}</h1>
 
 <style>
 	h1 {

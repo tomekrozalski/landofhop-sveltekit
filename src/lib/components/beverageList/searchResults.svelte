@@ -3,7 +3,7 @@
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import navigation from '$lib/utils/stores/navigation';
-	import Spinner from '$lib/elements/spinner.svelte';
+	import Spinner from '$lib/elements/spinners/fullScreen.svelte';
 	import BeverageList from './beverageList.svelte';
 	import NothingFound from './nothingFound.svelte';
 	import AdvancedSearchLink from './advancedSearchLink.svelte';
