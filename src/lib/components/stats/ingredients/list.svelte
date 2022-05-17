@@ -16,7 +16,7 @@
 		<li>
 			{name.value}
 			<span>({occurrences.withSuccessors})</span>
-			<FindAll query="ingredient%3a{badge}" />
+			<FindAll query="ingredientTags={badge}" />
 			{#if occurrences.alone !== occurrences.withSuccessors}
 				<ToggleBox {badge} />
 			{/if}

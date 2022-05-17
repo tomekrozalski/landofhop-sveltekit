@@ -11,7 +11,7 @@
 <li>
 	<span lang={item.name.language}>{item.name.value}</span>
 	<span class="amount">{item.amount}</span>
-	<FindAll query="style%3a{item.badge}" />
+	<FindAll query="styleTags={item.badge}" />
 	{#if $session.isLoggedIn}
 		<UpdateButton badge={item.badge} {onUpdateClick} />
 	{/if}
