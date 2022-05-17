@@ -3,16 +3,14 @@ import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
 export async function post({ request }) {
 	const advancedSearchData = await request.json();
-	const { brands, language, name } = advancedSearchData;
+	const { brands, ingredientTags, language, name, styleTags } = advancedSearchData;
 
-	if (!language || (!name && !brands?.length)) {
+	if (!language || (!brands?.length && !ingredientTags?.length && !name && !styleTags?.length)) {
 		return { status: 400 };
 	}
 
 	const foundArr: Basics[] = [];
 	const { beverages } = await getDbCollections();
-
-	console.log('advancedSearchData', advancedSearchData);
 
 	async function wait() {
 		return new Promise((resolve) => {
@@ -30,8 +28,6 @@ export async function post({ request }) {
 			{
 				$match: {
 					$and: [
-						// FIND BY:
-						// Name
 						...(name
 							? [
 									{
@@ -45,30 +41,28 @@ export async function post({ request }) {
 										'label.general.brand.shortId': { $in: brands }
 									}
 							  ]
+							: []),
+						...(ingredientTags && ingredientTags.length
+							? [
+									{
+										$or: [
+											{
+												'label.ingredients.tags.badge': { $in: ingredientTags }
+											},
+											{
+												'producer.ingredients.tags.badge': { $in: ingredientTags }
+											}
+										]
+									}
+							  ]
+							: []),
+						...(styleTags && styleTags.length
+							? [
+									{
+										'editorial.brewing.styleTags.badge': { $in: styleTags }
+									}
+							  ]
 							: [])
-
-						// Brand name
-						// {
-						// 	'label.general.brand.name.value': {
-						// 		$regex: new RegExp(phrase, 'i')
-						// 	}
-						// },
-						// Style (label / producer / editorial)
-						// {
-						// 	'label.brewing.style.value': {
-						// 		$regex: new RegExp(phrase, 'i')
-						// 	}
-						// },
-						// {
-						// 	'producer.brewing.style.value': {
-						// 		$regex: new RegExp(phrase, 'i')
-						// 	}
-						// },
-						// {
-						// 	'editorial.brewing.style.value': {
-						// 		$regex: new RegExp(phrase, 'i')
-						// 	}
-						// }
 					]
 				}
 			}
