@@ -13,6 +13,9 @@ async function recalculateOccurrences() {
 					alone: 0,
 					withSuccessors: 0
 				}
+			},
+			$unset: {
+				successorsList: ''
 			}
 		}
 	);
@@ -52,7 +55,7 @@ async function recalculateOccurrences() {
 
 	/* update ingredients */
 
-	function updateSelected(successor: boolean) {
+	function updateSelected(successor: boolean, child: string | null) {
 		return async function ([badge, value]: [string, number]) {
 			const ingredientToUpdate = await ingredients.findOne({ badge });
 
@@ -60,7 +63,8 @@ async function recalculateOccurrences() {
 				await ingredients.updateOne(
 					{ badge },
 					{
-						$inc: { 'occurrences.withSuccessors': value }
+						$inc: { 'occurrences.withSuccessors': value },
+						$push: { successorsList: child }
 					}
 				);
 			} else {
@@ -73,12 +77,12 @@ async function recalculateOccurrences() {
 			}
 
 			if (ingredientToUpdate.parent) {
-				updateSelected(true)([ingredientToUpdate.parent, value]);
+				updateSelected(true, badge)([ingredientToUpdate.parent, value]);
 			}
 		};
 	}
 
-	Object.entries(occurrences).forEach(updateSelected(false));
+	Object.entries(occurrences).forEach(updateSelected(false, null));
 }
 
 export default recalculateOccurrences;

@@ -10,6 +10,7 @@ export type RawIngredientWithoutId = {
 		alone: number;
 		withSuccessors: number;
 	};
+	successorsList?: string[];
 };
 
 export type RawIngredient = RawIngredientWithoutId & {

@@ -60,13 +60,17 @@ export async function get({ params }) {
 		const successorsData: IngredientTree[] = [];
 
 		await ingredients
-			.find({ parent: path[index] }, { projection: { badge: 1, name: 1, occurrences: 1 } })
+			.find(
+				{ parent: path[index] },
+				{ projection: { badge: 1, name: 1, occurrences: 1, successorsList: 1 } }
+			)
 			.sort({ 'occurrences.withSuccessors': -1 })
-			.forEach(({ badge, name, occurrences }) => {
+			.forEach(({ badge, name, occurrences, successorsList }) => {
 				successorsData.push({
 					badge,
 					name: translate(name, language),
-					occurrences
+					occurrences,
+					successorsList
 				});
 			});
 

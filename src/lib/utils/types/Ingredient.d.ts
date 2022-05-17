@@ -20,6 +20,7 @@ export type IngredientTree = {
 		withSuccessors: number;
 	};
 	successors?: IngredientTree[];
+	successorsList?: string[];
 };
 
 export type Ingredient = IngredientRaw & { _id: string };

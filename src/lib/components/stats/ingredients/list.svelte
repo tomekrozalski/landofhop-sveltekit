@@ -12,11 +12,11 @@
 </script>
 
 <ul class="level-{level % 2 ? 1 : 2}">
-	{#each data as { badge, name, occurrences, successors }}
+	{#each data as { badge, name, occurrences, successors, successorsList }}
 		<li>
 			{name.value}
 			<span>({occurrences.withSuccessors})</span>
-			<FindAll query="ingredientTags={badge}" />
+			<FindAll query="ingredientTags={[badge, ...(successorsList || [])]}" />
 			{#if occurrences.alone !== occurrences.withSuccessors}
 				<ToggleBox {badge} />
 			{/if}
