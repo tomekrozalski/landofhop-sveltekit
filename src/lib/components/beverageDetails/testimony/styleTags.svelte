@@ -18,7 +18,7 @@
 				<MarkLanguage
 					editorial
 					tag="a"
-					target="/advanced-search?styleTags={item.badge}"
+					href="/advanced-search?styleTags={item.badge}"
 					name={item.name}
 				/>
 			</FormattedList>

@@ -32,15 +32,15 @@
 	--color-editorial-light: var(--color-brand-10-light);
 
 	--color-ingredients-water: #264653;
-	/* --color-ingredients-water-light: #9fb3bc; */
+	--color-ingredients-water-light: #9fb3bc;
 	--color-ingredients-malt: #e9c46a;
-	/* --color-ingredients-malt-light: #eae1cd; */
+	--color-ingredients-malt-light: #eae1cd;
 	--color-ingredients-hop: #2a9d8f;
-	/* --color-ingredients-hop-light: #a7d4cf; */
+	--color-ingredients-hop-light: #a7d4cf;
 	--color-ingredients-yeast: #f4a261;
-	/* --color-ingredients-yeast-light: #ddccbe; */
+	--color-ingredients-yeast-light: #ddccbe;
 	--color-ingredients-addition: #e76f51;
-	/* --color-ingredients-addition-light: #e0c5bf; */
+	--color-ingredients-addition-light: #e0c5bf;
 
 	--font-primary: bilo, sans-serif;
 	--font-weight-light: 300;

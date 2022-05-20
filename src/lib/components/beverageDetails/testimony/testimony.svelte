@@ -14,6 +14,7 @@
 	import HopRate from './hopRate.svelte';
 	import ExpirationTime from './expirationTime.svelte';
 	import Ingredients from './ingredients.svelte';
+	import IngredientTags from './ingredientTags.svelte';
 	import Nitrogen from './nitrogen.svelte';
 	import SmokedMalt from './smokedMalt.svelte';
 	import StyleTags from './styleTags.svelte';
@@ -41,6 +42,7 @@
 	<Nitrogen {details} />
 	<ExpirationTime {details} />
 	<Ingredients {details} />
+	<IngredientTags {details} />
 	<SmokedMalt {details} />
 	<Temperature {details} />
 	<Container {details} />
