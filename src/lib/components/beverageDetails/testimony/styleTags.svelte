@@ -15,7 +15,12 @@
 	<dd>
 		<span>
 			<FormattedList mode="narrow" let:item data={styleTags.editorial}>
-				<MarkLanguage editorial tag="a" target="/stats/styles" name={item.name} />
+				<MarkLanguage
+					editorial
+					tag="a"
+					target="/advanced-search?styleTags={item.badge}"
+					name={item.name}
+				/>
 			</FormattedList>
 		</span>
 	</dd>
