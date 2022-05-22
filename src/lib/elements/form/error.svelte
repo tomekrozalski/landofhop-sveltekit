@@ -6,9 +6,7 @@
 		font-size: 1rem;
 		line-height: 1.2rem;
 		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
+		inset: 0;
 		transform: translateY(100%);
 		background-color: var(--color-brand-5-light);
 		z-index: 1;

@@ -5,9 +5,10 @@
 	export let disabled: boolean = false;
 	export let isTouched: boolean, isValid: boolean;
 	export let style: string = '';
+	export let withStatusIndicator: boolean = false;
 </script>
 
-{#if disabled}
+{#if disabled && !withStatusIndicator}
 	<slot />
 {:else}
 	<span {style}>

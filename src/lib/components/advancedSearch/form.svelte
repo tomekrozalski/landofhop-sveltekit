@@ -45,7 +45,7 @@
 		<Brands {formName} {formData} labelId="advancedSearch.label.brand" />
 	</Grid>
 	<Grid isOptional>
-		<Name {formName} {formData} labelId="advancedSearch.label.name" />
+		<Name {formName} {formData} labelId="advancedSearch.label.name" withStatusIndicator />
 	</Grid>
 	<ButtonWrapper>
 		<Button type="submit">

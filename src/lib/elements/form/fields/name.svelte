@@ -7,6 +7,7 @@
 	export let formName: string;
 	export let formData: any;
 	export let labelId: string;
+	export let withStatusIndicator: boolean = false;
 	let { errors, form, handleChange, touched, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'name';
 	let id = `${formName}-${fieldName}`;
@@ -28,5 +29,5 @@
 	isTouched={$touched[fieldName] === true}
 	{fieldName}
 	bind:value={$form[fieldName]}
-	style="position: relative"
+	{withStatusIndicator}
 />

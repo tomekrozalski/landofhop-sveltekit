@@ -14,6 +14,7 @@
 	export let onEnter: () => void | null = null;
 	export let style: string = '';
 	export let type: 'email' | 'number' | 'password' | 'text' = 'text';
+	export let withStatusIndicator: boolean = false;
 	export let value: string | null;
 	$: disabled = isDisabled || value === null;
 
@@ -45,7 +46,7 @@
 	}
 </script>
 
-<StatusIndicator {disabled} {isTouched} isValid={!errors} {style}>
+<StatusIndicator {disabled} {isTouched} isValid={!errors} {style} {withStatusIndicator}>
 	{#if isTextarea}
 		<textarea
 			class:isTouched
