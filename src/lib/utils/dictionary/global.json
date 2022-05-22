@@ -1,0 +1,14 @@
+{
+	"en": {
+		"global.404.title": "404 Not Found",
+		"global.confirmation": "yes",
+		"global.denial": "no",
+		"global.loading": "loading"
+	},
+	"pl": {
+		"global.404.title": "404 Nie znaleziono",
+		"global.confirmation": "tak",
+		"global.denial": "nie",
+		"global.loading": "ładuję"
+	}
+}

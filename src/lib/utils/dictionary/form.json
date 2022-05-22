@@ -8,6 +8,7 @@
 		"form.select.placeholder.styleTag": "select beverage style",
 		"form.validation.atLeastOneBrandRequired": "At least one brand required",
 		"form.validation.atLeastOneFilterRequired": "At least one filter required",
+		"form.validation.required": "Field is required",
 		"form.validation.tagSelectionRequired": "At least one tag required"
 	},
 	"pl": {
@@ -19,6 +20,7 @@
 		"form.select.placeholder.styleTag": "wybierz styl piwa",
 		"form.validation.atLeastOneBrandRequired": "Wymagana przynajmniej jedna marka",
 		"form.validation.atLeastOneFilterRequired": "Wymagany przynajmniej jeden rodzaj filtra",
+		"form.validation.required": "Pole jest wymagane",
 		"form.validation.tagSelectionRequired": "Wymagany przynajmniej jeden tag"
 	}
 }

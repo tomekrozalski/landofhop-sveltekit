@@ -12,7 +12,7 @@
 	);
 </script>
 
-{#if label}
+{#if ingredients.length}
 	<dt>
 		{$translate('beverage.testimonial.ingredientsByTag')}
 	</dt>

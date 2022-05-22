@@ -86,7 +86,7 @@ export function getValidationSchema(translate) {
 			value: yup
 				.number()
 				.typeError(translate('form.validation.typeErrorNumber'))
-				.min(0, translate('form.validation.min', { value: 1 }))
+				.min(0, translate('form.validation.min', { value: 0 }))
 				.max(100, translate('form.validation.max', { value: 100 }))
 				.nullable(true),
 			unit: yup

@@ -7,7 +7,7 @@
 	export let style: string = '';
 </script>
 
-{#if disabled && !style}
+{#if disabled}
 	<slot />
 {:else}
 	<span {style}>

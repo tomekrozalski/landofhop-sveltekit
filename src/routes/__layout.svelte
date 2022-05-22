@@ -10,6 +10,7 @@
 	import { afterNavigate } from '$app/navigation';
 	import { navigating } from '$app/stores';
 	import { locale, translations } from 'svelte-intl';
+	import globalDictionary from '$lib/utils/dictionary/global.json';
 	import topbarDictionary from '$lib/utils/dictionary/header/topbar.json';
 	import navigation from '$lib/utils/stores/navigation';
 	import '$lib/utils/styles/app.postcss';
@@ -19,6 +20,7 @@
 	import Topbar from '$lib/components/topbar/topbar.svelte';
 	import Main from '$lib/components/main.svelte';
 
+	translations.update(globalDictionary);
 	translations.update(topbarDictionary);
 	locale.set('pl');
 

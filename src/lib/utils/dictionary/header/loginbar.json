@@ -1,7 +1,6 @@
 {
 	"en": {
 		"form.validation.email": "The field should be valid e-mail address",
-		"form.validation.required": "Field is required",
 		"login.email": "E-mail",
 		"login.failed": "Login failed",
 		"login.password": "Password",
@@ -11,7 +10,6 @@
 	},
 	"pl": {
 		"form.validation.email": "Wymagany prawidłowy adres e-mail",
-		"form.validation.required": "Pole jest wymagane",
 		"login.email": "E-mail",
 		"login.failed": "Logowanie zakończyło się niepowowdzeniem",
 		"login.password": "Hasło",

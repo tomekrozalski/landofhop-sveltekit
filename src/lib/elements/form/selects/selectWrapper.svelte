@@ -110,6 +110,7 @@
 
 	div :global(.selectContainer.select) {
 		border-bottom: 1px solid var(--color-grey-2);
+		height: 100%;
 	}
 
 	div :global(.selectContainer.select .indicator),
