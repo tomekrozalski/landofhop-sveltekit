@@ -1,10 +1,10 @@
 <script lang="ts">
 	import CloseIcon from '$lib/elements/vectors/close.svelte';
 
-	export let removeCap: () => {};
+	export let removeImage: () => {};
 </script>
 
-<button type="button" on:click={removeCap}><CloseIcon /></button>
+<button type="button" on:click={removeImage}><CloseIcon /></button>
 
 <style>
 	button {

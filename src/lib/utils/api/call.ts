@@ -1,6 +1,6 @@
 export enum Endpoints {
 	addBeverage = '/api/admin/beverages/add',
-	addBeverageCap = '/api/admin/beverages/photos/addCap',
+	addBeverageViewFromAbove = '/api/admin/beverages/photos/addViewFromAbove',
 	addBeverageCover = '/api/admin/beverages/photos/addCover',
 	addBeverageGallery = '/api/admin/beverages/photos/addGallery',
 	addIngredient = '/api/admin/ingredients',
@@ -20,7 +20,7 @@ export enum Endpoints {
 	logIn = '/api/user/login',
 	logOut = '/api/user/logout',
 	places = '/api/places',
-	removeBeverageCap = '/api/admin/beverages/photos/removeCap',
+	removeBeverageViewFromAbove = '/api/admin/beverages/photos/removeViewFromAbove',
 	searchByPhrase = '/api/search/byPhrase',
 	statsGeneral = '/api/stats/general',
 	statsIngredients = '/api/stats/ingredients',

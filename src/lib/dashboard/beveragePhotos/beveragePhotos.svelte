@@ -5,9 +5,9 @@
 	import { goto } from '$app/navigation';
 	import Navigation from '$lib/dashboard/elements/navigation.svelte';
 	import Spinner from '$lib/elements/spinners/fullScreen.svelte';
-	import Cap from './cap.svelte';
 	import Cover from './cover.svelte';
 	import Gallery from './gallery.svelte';
+	import ViewFromAbove from './viewFromAbove.svelte';
 
 	onMount(() => {
 		if (!$session.isLoggedIn) {
@@ -22,7 +22,7 @@
 		<Navigation />
 		<Cover />
 		<Gallery />
-		<Cap />
+		<ViewFromAbove />
 	</article>
 {:else}
 	<Spinner />

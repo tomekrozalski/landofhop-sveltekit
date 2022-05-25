@@ -1,8 +1,8 @@
 <script lang="ts">
-	export let isCap: boolean = false;
+	export let isViewFromAbove: boolean = false;
 </script>
 
-<div class:isCap>
+<div class:isViewFromAbove>
 	<slot />
 </div>
 
@@ -21,7 +21,7 @@
 		position: relative;
 	}
 
-	div.isCap {
+	div.isViewFromAbove {
 		align-items: center;
 	}
 

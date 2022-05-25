@@ -1,9 +1,9 @@
 <script lang="ts">
 	export let isEmpty: boolean = false;
-	export let isCap: boolean = false;
+	export let isViewFromAbove: boolean = false;
 </script>
 
-<div class:isEmpty class:isCap>
+<div class:isEmpty class:isViewFromAbove>
 	<slot />
 </div>
 
@@ -18,7 +18,7 @@
 		height: 54rem;
 	}
 
-	div.isCap {
+	div.isViewFromAbove {
 		height: 26.4rem;
 	}
 

@@ -14,11 +14,11 @@ import generateShortId from './generateShortId';
 import getDbCollections from './getDbCollections';
 import translate from './translate';
 import updateSession from './sessions/update';
-import { saveCapJpg, saveCapWebp } from './photos/saveCap';
+import { saveViewFromAboveJpg, saveViewFromAboveWebp } from './photos/saveViewFromAbove';
 import { saveCoverJpg, saveCoverWebp } from './photos/saveCover';
 import { saveGalleryJpg, saveGalleryWebp } from './photos/saveGallery';
 import getTracedSvg from './photos/getTracedSvg';
-import removeCap from './photos/removeCap';
+import removeViewFromAbove from './photos/removeViewFromAbove';
 import removeCover from './photos/removeCover';
 import removeGallery from './photos/removeGallery';
 import recalculateIngredientsOccurrences from './ingredients/recalculateOccurrences';
@@ -41,15 +41,15 @@ export {
 	getDbCollections,
 	getTracedSvg,
 	recalculateIngredientsOccurrences,
-	removeCap,
 	removeCover,
 	removeGallery,
-	saveCapJpg,
-	saveCapWebp,
+	removeViewFromAbove,
 	saveCoverJpg,
 	saveCoverWebp,
 	saveGalleryJpg,
 	saveGalleryWebp,
+	saveViewFromAboveJpg,
+	saveViewFromAboveWebp,
 	translate,
 	updateSession
 };

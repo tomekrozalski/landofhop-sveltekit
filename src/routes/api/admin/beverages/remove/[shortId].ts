@@ -1,7 +1,7 @@
 import {
 	authenticate,
 	getDbCollections,
-	removeCap,
+	removeViewFromAbove,
 	removeCover,
 	removeGallery
 } from '$lib/utils/api';
@@ -45,7 +45,7 @@ export async function del({ params, request }) {
 		}
 
 		if (beverageToRemove.editorial?.photos?.cap) {
-			await removeCap(path);
+			await removeViewFromAbove(path);
 		}
 	} catch (error) {
 		return {

@@ -11,6 +11,7 @@ export type PhotosData = {
 		cover?: string;
 		gallery?: string;
 	};
+	viewFromAbove?: boolean;
 };
 
 // Type for dashboard update beverage photos

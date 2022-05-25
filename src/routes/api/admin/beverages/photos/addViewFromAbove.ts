@@ -1,4 +1,9 @@
-import { authenticate, getDbCollections, saveCapJpg, saveCapWebp } from '$lib/utils/api';
+import {
+	authenticate,
+	getDbCollections,
+	saveViewFromAboveJpg,
+	saveViewFromAboveWebp
+} from '$lib/utils/api';
 
 export async function post({ request }) {
 	const data = await request.formData();
@@ -22,16 +27,16 @@ export async function post({ request }) {
 	}
 
 	await Promise.all([
-		saveCapWebp(path, image, 'large'),
-		saveCapWebp(path, image, 'big'),
-		saveCapWebp(path, image, 'small'),
-		saveCapJpg(path, image, 'large'),
-		saveCapJpg(path, image, 'big'),
-		saveCapJpg(path, image, 'small')
+		saveViewFromAboveWebp(path, image, 'large'),
+		saveViewFromAboveWebp(path, image, 'big'),
+		saveViewFromAboveWebp(path, image, 'small'),
+		saveViewFromAboveJpg(path, image, 'large'),
+		saveViewFromAboveJpg(path, image, 'big'),
+		saveViewFromAboveJpg(path, image, 'small')
 	]);
 
 	const { beverages } = await getDbCollections();
-	await beverages.updateOne({ shortId }, { $set: { 'editorial.photos.cap': true } });
+	await beverages.updateOne({ shortId }, { $set: { 'editorial.photos.viewFromAbove': true } });
 	const updatedData = await beverages.findOne({ shortId });
 
 	const formattedData = {

@@ -1,4 +1,4 @@
-import { authenticate, getDbCollections, removeCap } from '$lib/utils/api';
+import { authenticate, getDbCollections, removeViewFromAbove } from '$lib/utils/api';
 
 export async function del({ params, request }) {
 	const { shortId } = params;
@@ -28,9 +28,9 @@ export async function del({ params, request }) {
 	const name = beverageToRemove.badge;
 	const brand = beverageToRemove.label.general.brand.badge;
 
-	await removeCap(`${brand}/${name}/${shortId}`);
+	await removeViewFromAbove(`${brand}/${name}/${shortId}`);
 
-	await beverages.updateOne({ shortId }, { $unset: { 'editorial.photos.cap': '' } });
+	await beverages.updateOne({ shortId }, { $unset: { 'editorial.photos.viewFromAbove': '' } });
 	const updatedBeverage = await beverages.findOne({ shortId });
 
 	return {
