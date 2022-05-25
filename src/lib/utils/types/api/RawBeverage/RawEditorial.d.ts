@@ -50,6 +50,7 @@ export type RawEditorialPhotos = {
 		cover?: string;
 		gallery?: string;
 	};
+	viewFromAbove?: boolean;
 };
 
 export type RawEditorial = {

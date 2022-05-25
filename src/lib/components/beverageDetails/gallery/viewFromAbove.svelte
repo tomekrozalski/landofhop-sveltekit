@@ -10,18 +10,18 @@
 	const basicPath = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}`;
 </script>
 
-{#if photos?.cap}
+{#if photos?.viewFromAbove}
 	{#if isOpened}
-		<button on:click={() => (isOpened = false)}>{$translate('beverage.cap.hide')}</button>
+		<button on:click={() => (isOpened = false)}>{$translate('beverage.viewFromAbove.hide')}</button>
 		<img
-			alt={$translate('beverage.cap', { name: brand.name.value })}
+			alt={$translate('beverage.viewFromAbove', { name: brand.name.value })}
 			in:fade
-			srcset="{basicPath}/cap/webp/1x.webp 1x, {basicPath}/cap/webp/2x.webp 2x"
-			src="{basicPath}/cap/jpg/1x.jpg"
+			srcset="{basicPath}/view-from-above/webp/1x.webp 1x, {basicPath}/view-from-above/webp/2x.webp 2x"
+			src="{basicPath}/view-from-above/jpg/1x.jpg"
 			loading="lazy"
 		/>
 	{:else}
-		<button on:click={() => (isOpened = true)}>{$translate('beverage.cap.show')}</button>
+		<button on:click={() => (isOpened = true)}>{$translate('beverage.viewFromAbove.show')}</button>
 	{/if}
 {/if}
 

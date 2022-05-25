@@ -100,7 +100,10 @@
 		"beverage.testimonial.temperatureUnit": "{unit, select, celcius {°C} other {}}",
 		"time.day": "{value} {value, plural, one {day} other {days}}",
 		"time.month": "{value} {value, plural, one {month} other {months}}",
-		"time.year": "{value} {value, plural, one {year} other {years}}"
+		"time.year": "{value} {value, plural, one {year} other {years}}",
+		"beverage.viewFromAbove": "{name}, view from above",
+		"beverage.viewFromAbove.hide": "hide view from above",
+		"beverage.viewFromAbove.show": "show view from above"
 	},
 	"pl": {
 		"beverage.adminBar.areYouSure": "Na pewno usunąć?",
@@ -203,6 +206,9 @@
 		"beverage.testimonial.style": "styl",
 		"beverage.time.day": "{value} {value, plural, one {dzień} other {dni}}",
 		"beverage.time.month": "{value} {value, plural, one {miesiąc} few {miesiące} other {miesięcy}}",
-		"beverage.time.year": "{value} {value, plural, one {rok} few {lata} other {lat}}"
+		"beverage.time.year": "{value} {value, plural, one {rok} few {lata} other {lat}}",
+		"beverage.viewFromAbove": "{name}, widok z góry",
+		"beverage.viewFromAbove.hide": "schowaj widok z góry",
+		"beverage.viewFromAbove.show": "pokaż widok z góry"
 	}
 }

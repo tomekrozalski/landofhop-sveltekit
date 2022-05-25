@@ -5,6 +5,7 @@
 	import Rotable from './rotable/rotable.svelte';
 	import BrokenContainer from './brokenContainer.svelte';
 	import Cap from './cap.svelte';
+	import ViewFromAbove from './viewFromAbove.svelte';
 
 	export let details: Details;
 
@@ -26,6 +27,7 @@
 			<BrokenContainer {details} />
 		{/if}
 	</section>
+	<ViewFromAbove {details} />
 	<Cap {details} />
 </div>
 

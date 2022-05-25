@@ -251,6 +251,7 @@ export type Details = {
 		cap?: boolean;
 		gallery?: number;
 		outline?: string;
+		viewFromAbove?: boolean;
 	};
 	added: string;
 	updated?: string;

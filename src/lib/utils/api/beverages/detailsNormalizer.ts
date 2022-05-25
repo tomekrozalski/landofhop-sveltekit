@@ -433,7 +433,8 @@ function detailsNormalizer(
 			}),
 			...(beverage.editorial?.photos?.outlines?.gallery && {
 				outline: beverage.editorial.photos.outlines.gallery
-			})
+			}),
+			...(beverage.editorial?.photos?.viewFromAbove && { viewFromAbove: true })
 		},
 		added: format(new Date(beverage.added), DateFormat[desiredLanguage]),
 		...(beverage.updated && {
