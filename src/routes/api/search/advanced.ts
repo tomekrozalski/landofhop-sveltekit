@@ -1,3 +1,4 @@
+import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import { formatBeverageToBasics, getDbCollections } from '$lib/utils/api';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
@@ -9,6 +10,7 @@ export async function post({ request }) {
 		return { status: 400 };
 	}
 
+	let count = 0;
 	const foundArr: Basics[] = [];
 	const { beverages } = await getDbCollections();
 
@@ -22,54 +24,44 @@ export async function post({ request }) {
 
 	await wait();
 
+	const query = {
+		$and: [
+			...(name ? [{ 'label.general.name.value': { $regex: new RegExp(name, 'i') } }] : []),
+			...(brands && brands.length ? [{ 'label.general.brand.shortId': { $in: brands } }] : []),
+			...(ingredientTags && ingredientTags.length
+				? [
+						{
+							$or: [
+								{ 'label.ingredients.tags.badge': { $in: ingredientTags } },
+								{ 'producer.ingredients.tags.badge': { $in: ingredientTags } }
+							]
+						}
+				  ]
+				: []),
+			...(styleTags && styleTags.length
+				? [{ 'editorial.brewing.styleTags.badge': { $in: styleTags } }]
+				: [])
+		]
+	};
+
 	await beverages
 		.aggregate([
-			{ $sort: { added: -1 } },
 			{
-				$match: {
-					$and: [
-						...(name
-							? [
-									{
-										'label.general.name.value': { $regex: new RegExp(name, 'i') }
-									}
-							  ]
-							: []),
-						...(brands && brands.length
-							? [
-									{
-										'label.general.brand.shortId': { $in: brands }
-									}
-							  ]
-							: []),
-						...(ingredientTags && ingredientTags.length
-							? [
-									{
-										$or: [
-											{
-												'label.ingredients.tags.badge': { $in: ingredientTags }
-											},
-											{
-												'producer.ingredients.tags.badge': { $in: ingredientTags }
-											}
-										]
-									}
-							  ]
-							: []),
-						...(styleTags && styleTags.length
-							? [
-									{
-										'editorial.brewing.styleTags.badge': { $in: styleTags }
-									}
-							  ]
-							: [])
-					]
+				$facet: {
+					count: [{ $match: query }, { $count: 'count' }],
+					values: [{ $sort: { added: -1 } }, { $match: query }, { $limit: BEVERAGES_ON_PAGE }]
 				}
 			}
 		])
-		.forEach(formatBeverageToBasics(foundArr, language));
+		.forEach((data) => {
+			count = data.count[0]?.count ?? 0;
+			return data.values.forEach(formatBeverageToBasics(foundArr, language));
+		});
 
 	return {
-		body: foundArr
+		body: {
+			beverages: foundArr,
+			count
+		}
 	};
 }

@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
+
 	export let order: number;
 	export let total: number;
-	let pagesCount = Math.ceil(total / 60);
+	let pagesCount = Math.ceil(total / BEVERAGES_ON_PAGE);
 
 	const getStartingPoint = () => {
 		if (order <= 5) {

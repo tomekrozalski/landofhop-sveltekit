@@ -1,6 +1,7 @@
 {
 	"en": {
 		"advancedSearch.button.search": "search",
+		"advancedSearch.foundCount": "found",
 		"advancedSearch.label.brand": "Filter by brand",
 		"advancedSearch.label.ingredientTag": "Filter by ingredient",
 		"advancedSearch.label.name": "Filter by beverage name",
@@ -9,6 +10,7 @@
 	},
 	"pl": {
 		"advancedSearch.button.search": "szukaj",
+		"advancedSearch.foundCount": "znaleziono",
 		"advancedSearch.label.brand": "Filtruj po marce",
 		"advancedSearch.label.ingredientTag": "Filtruj po składniku",
 		"advancedSearch.label.name": "Filtruj po nazwie piwa",

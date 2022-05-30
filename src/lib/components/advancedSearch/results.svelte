@@ -6,11 +6,15 @@
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
 
 	import type AdvancedSearchData from './AdvancedSearchData.type';
+	import Count from './count.svelte';
 
 	export let data: AdvancedSearchData;
 
 	async function callToApi(values) {
-		const response: Basics[] = await apiCall(fetch, Endpoints.advancedSearch, {
+		const response: {
+			count: number;
+			beverages: Basics[];
+		} = await apiCall(fetch, Endpoints.advancedSearch, {
 			method: 'POST',
 			body: JSON.stringify({ ...values, language: 'pl' })
 		});
@@ -33,7 +37,8 @@
 {#if Object.values(data).find(Boolean)}
 	{#await callToApi(data)}
 		<Spinner />
-	{:then beverages}
+	{:then { beverages, count }}
+		<Count {count} />
 		{#if beverages.length}
 			<BeverageList {beverages} />
 		{:else}

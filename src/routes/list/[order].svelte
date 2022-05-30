@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
@@ -6,7 +7,7 @@
 
 	export async function load({ fetch, params }) {
 		const order = +params.order;
-		const skip = order * 60 - 60;
+		const skip = order * BEVERAGES_ON_PAGE - BEVERAGES_ON_PAGE;
 
 		if (!order || order === 1) {
 			return {
@@ -25,7 +26,7 @@
 		}
 
 		const beverages: any = await apiCall(fetch, Endpoints.beverageBasics, {
-			pathParams: ['pl', skip, 60]
+			pathParams: ['pl', skip, BEVERAGES_ON_PAGE]
 		});
 
 		return {
