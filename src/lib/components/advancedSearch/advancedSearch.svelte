@@ -11,6 +11,7 @@
 		brands: null,
 		ingredientTags: null,
 		name: null,
+		page: null,
 		styleTags: null
 	};
 
@@ -19,6 +20,7 @@
 		initialValues.brands = params.get('brands')?.split(',') ?? null;
 		initialValues.ingredientTags = params.get('ingredientTags')?.split(',') ?? null;
 		initialValues.name = params.get('name') ?? null;
+		initialValues.page = params.get('page') ? Number(params.get('page')) : null;
 		initialValues.styleTags = params.get('styleTags')?.split(',') ?? null;
 
 		mounted = true;

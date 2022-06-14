@@ -10,7 +10,7 @@ export async function post({ request }) {
 		return { status: 400 };
 	}
 
-	let count = 0;
+	let total = 0;
 	const foundArr: Basics[] = [];
 	const { beverages } = await getDbCollections();
 
@@ -54,14 +54,14 @@ export async function post({ request }) {
 			}
 		])
 		.forEach((data) => {
-			count = data.count[0]?.count ?? 0;
+			total = data.count[0]?.count ?? 0;
 			return data.values.forEach(formatBeverageToBasics(foundArr, language));
 		});
 
 	return {
 		body: {
 			beverages: foundArr,
-			count
+			total
 		}
 	};
 }

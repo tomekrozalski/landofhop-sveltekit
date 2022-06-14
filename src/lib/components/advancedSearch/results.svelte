@@ -1,19 +1,22 @@
 <script lang="ts">
+	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import Spinner from '$lib/elements/spinners/fullWidth.svelte';
 	import NothingFound from '$lib/components/beverageList/nothingFound.svelte';
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
 
+	import Pagination from '$lib/components/beverageList/pagination.svelte';
+
 	import type AdvancedSearchData from './AdvancedSearchData.type';
-	import Count from './count.svelte';
+	import Total from './total.svelte';
 
 	export let data: AdvancedSearchData;
 
 	async function callToApi(values) {
 		const response: {
-			count: number;
 			beverages: Basics[];
+			total: number;
 		} = await apiCall(fetch, Endpoints.advancedSearch, {
 			method: 'POST',
 			body: JSON.stringify({ ...values, language: 'pl' })
@@ -28,6 +31,7 @@
 		data.brands = params.get('brands')?.split(',') ?? null;
 		data.ingredientTags = params.get('ingredientTags')?.split(',') ?? null;
 		data.name = params.get('name') ?? null;
+		data.page = params.get('page') ? Number(params.get('page')) : null;
 		data.styleTags = params.get('styleTags')?.split(',') ?? null;
 	}
 </script>
@@ -37,10 +41,13 @@
 {#if Object.values(data).find(Boolean)}
 	{#await callToApi(data)}
 		<Spinner />
-	{:then { beverages, count }}
-		<Count {count} />
+	{:then { beverages, total }}
 		{#if beverages.length}
+			<Total {total} />
 			<BeverageList {beverages} />
+			{#if total > BEVERAGES_ON_PAGE}
+				<Pagination order={data.page ?? 1} {total} />
+			{/if}
 		{:else}
 			<NothingFound />
 		{/if}

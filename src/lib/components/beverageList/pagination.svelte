@@ -4,6 +4,7 @@
 	export let order: number;
 	export let total: number;
 	let pagesCount = Math.ceil(total / BEVERAGES_ON_PAGE);
+	let max = pagesCount > 5 ? 4 : 1;
 
 	const getStartingPoint = () => {
 		if (order <= 5) {
@@ -17,7 +18,7 @@
 		return order - 2;
 	};
 
-	$: pages = new Array(order === 5 || order === pagesCount - 4 ? 5 : 4)
+	$: pages = new Array(order === 5 || order === pagesCount - 4 ? 5 : max)
 		.fill('')
 		.reduce((acc) => [...acc, acc.pop() + 1], [getStartingPoint()]);
 </script>
