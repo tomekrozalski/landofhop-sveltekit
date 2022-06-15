@@ -1,12 +1,10 @@
 import { format } from 'date-fns';
 
-import { authenticate, getDbCollections } from '$lib/utils/api';
+import { getDbCollections } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
 
-export async function get({ params, request }) {
-	const [isAuthenticated, headers] = await authenticate(request);
-
-	if (!isAuthenticated) {
+export async function get({ locals, params }) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
@@ -47,8 +45,5 @@ export async function get({ params, request }) {
 		})
 	};
 
-	return {
-		headers,
-		body: formattedData
-	};
+	return { body: formattedData };
 }

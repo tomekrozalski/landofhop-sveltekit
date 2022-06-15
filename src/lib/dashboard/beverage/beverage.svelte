@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
 	import { translate } from 'svelte-intl';
-	import { goto } from '$app/navigation';
-	import { session } from '$app/stores';
 
 	import Spinner from '$lib/elements/spinners/fullScreen.svelte';
 	import ProgressList from '$lib/dashboard/elements/progressList/progressList.svelte';
@@ -15,34 +13,24 @@
 
 	const type = getContext('formType');
 
-	onMount(() => {
-		if (!$session.isLoggedIn) {
-			goto('/', { replaceState: true });
-		}
-	});
-
 	onDestroy(() => {
 		page.set('label');
 	});
 </script>
 
-{#if $session.isLoggedIn}
-	<article>
-		{#if type === 'add'}
-			<h1>{$translate('dashboard.beverage.addNewBeverage')}</h1>
-		{/if}
-		{#if type === 'update'}
-			<h1>{$translate('dashboard.beverage.updateBeverage')}</h1>
-			<Navigation />
-		{/if}
-		<ProgressList />
-		<Label isActive={$page === 'label'} />
-		<Producer isActive={$page === 'producer'} />
-		<Editorial isActive={$page === 'editorial'} />
-	</article>
-{:else}
-	<Spinner />
-{/if}
+<article>
+	{#if type === 'add'}
+		<h1>{$translate('dashboard.beverage.addNewBeverage')}</h1>
+	{/if}
+	{#if type === 'update'}
+		<h1>{$translate('dashboard.beverage.updateBeverage')}</h1>
+		<Navigation />
+	{/if}
+	<ProgressList />
+	<Label isActive={$page === 'label'} />
+	<Producer isActive={$page === 'producer'} />
+	<Editorial isActive={$page === 'editorial'} />
+</article>
 
 <style>
 	article :global(header) {

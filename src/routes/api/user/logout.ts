@@ -42,7 +42,7 @@ export async function get({ request }) {
 		};
 	} catch {
 		return {
-			status: 500,
+			status: 401,
 			body: {
 				message: 'Log out failed'
 			}

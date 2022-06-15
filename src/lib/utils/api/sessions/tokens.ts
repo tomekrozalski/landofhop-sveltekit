@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken';
 
 function createTokens(sessionToken: string, userId: string): { 'Set-Cookie': string[] } {
 	const accessToken = jwt.sign({ sessionToken, userId }, import.meta.env.VITE_JWT_SECRET);
-
 	const refreshToken = jwt.sign({ sessionToken }, import.meta.env.VITE_JWT_SECRET);
 
 	return {
