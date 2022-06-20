@@ -1,16 +1,15 @@
-import { authenticate, getDbCollections } from '$lib/utils/api';
+import { getDbCollections } from '$lib/utils/api';
 import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles';
 
-export async function post({ request }) {
+export async function post({ locals, request }) {
 	const styleData = await request.json();
 	const { styles } = await getDbCollections();
-	const [isAuthenticated, headers] = await authenticate(request);
 
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
-				message: 'Unauthorized. Cannot add ingredient'
+				message: 'Unauthorized. Cannot add style'
 			}
 		};
 	}
@@ -31,8 +30,5 @@ export async function post({ request }) {
 		)
 		.toArray();
 
-	return {
-		headers,
-		body: data
-	};
+	return { body: data };
 }

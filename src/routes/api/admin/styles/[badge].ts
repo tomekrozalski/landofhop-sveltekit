@@ -1,14 +1,12 @@
-import { authenticate, getDbCollections } from '$lib/utils/api';
+import { getDbCollections } from '$lib/utils/api';
 import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles.d';
 import type { RawIngredientTag } from '$lib/utils/types/api/RawBeverage/RawIngredientTag.d';
 
-export async function put({ params, request }) {
+export async function put({ locals, params, request }) {
 	const { badge } = params;
 	const styleData = await request.json();
 
-	const [isAuthenticated, headers] = await authenticate(request);
-
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
@@ -49,8 +47,5 @@ export async function put({ params, request }) {
 		)
 		.toArray();
 
-	return {
-		headers,
-		body: data
-	};
+	return { body: data };
 }

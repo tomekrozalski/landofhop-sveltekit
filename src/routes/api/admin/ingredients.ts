@@ -1,12 +1,11 @@
-import { authenticate, getDbCollections, recalculateIngredientsOccurrences } from '$lib/utils/api';
+import { getDbCollections, recalculateIngredientsOccurrences } from '$lib/utils/api';
 import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
 
-export async function post({ request }) {
+export async function post({ locals, request }) {
 	const ingredientData = await request.json();
 	const { ingredients } = await getDbCollections();
-	const [isAuthenticated, headers] = await authenticate(request);
 
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
@@ -33,20 +32,15 @@ export async function post({ request }) {
 		)
 		.toArray();
 
-	return {
-		headers,
-		body: data
-	};
+	return { body: data };
 }
 
-export async function put({ request }) {
-	const [isAuthenticated, headers] = await authenticate(request);
-
-	if (!isAuthenticated) {
+export async function put({ locals, request }) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
-				message: 'Unauthorized. Cannot add ingredient'
+				message: 'Unauthorized. Cannot update ingredient'
 			}
 		};
 	}
@@ -101,8 +95,5 @@ export async function put({ request }) {
 		)
 		.toArray();
 
-	return {
-		headers,
-		body: data
-	};
+	return { body: data };
 }

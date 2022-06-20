@@ -1,13 +1,11 @@
-import { adminDetailsNormalizer, authenticate, getDbCollections } from '$lib/utils/api';
+import { adminDetailsNormalizer, getDbCollections } from '$lib/utils/api';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
 import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
 import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
 
-export async function get({ params, request }) {
-	const [isAuthenticated, headers] = await authenticate(request);
-
-	if (!isAuthenticated) {
+export async function get({ locals, params }) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
@@ -31,8 +29,5 @@ export async function get({ params, request }) {
 		editorial: EditorialFormValues;
 	} = adminDetailsNormalizer(beverage);
 
-	return {
-		headers,
-		body: formattedDetails
-	};
+	return { body: formattedDetails };
 }

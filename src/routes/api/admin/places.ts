@@ -1,16 +1,15 @@
-import { authenticate, generateShortId, getDbCollections } from '$lib/utils/api';
+import { generateShortId, getDbCollections } from '$lib/utils/api';
 import type { RawPlaceWithoutId } from '$lib/utils/types/api/RawPlace';
 
-export async function post({ request }) {
+export async function post({ locals, request }) {
 	const placeData = await request.json();
 	const { places } = await getDbCollections();
-	const [isAuthenticated, headers] = await authenticate(request);
 
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
-				message: 'Unauthorized. Cannot add ingredient'
+				message: 'Unauthorized. Cannot add place'
 			}
 		};
 	}
@@ -37,8 +36,5 @@ export async function post({ request }) {
 		});
 	});
 
-	return {
-		headers,
-		body: data
-	};
+	return { body: data };
 }

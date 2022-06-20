@@ -1,13 +1,7 @@
 import sizeOf from 'buffer-image-size';
-import {
-	authenticate,
-	getDbCollections,
-	getTracedSvg,
-	saveCoverJpg,
-	saveCoverWebp
-} from '$lib/utils/api';
+import { getDbCollections, getTracedSvg, saveCoverJpg, saveCoverWebp } from '$lib/utils/api';
 
-export async function post({ request }) {
+export async function post({ locals, request }) {
 	const data = await request.formData();
 	const badge = data.get('badge');
 	const brand = data.get('brand');
@@ -17,13 +11,11 @@ export async function post({ request }) {
 	const shortId = data.get('shortId');
 	const path = `${brand}/${badge}/${shortId}`;
 
-	const [isAuthenticated, headers] = await authenticate(request);
-
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
-				message: 'Unauthorized. Cannot add new beverage'
+				message: 'Unauthorized. Cannot add beverage cover'
 			}
 		};
 	}
@@ -73,8 +65,5 @@ export async function post({ request }) {
 		type: updatedData.label.container.type
 	};
 
-	return {
-		headers,
-		body: formattedData
-	};
+	return { body: formattedData };
 }

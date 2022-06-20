@@ -1,9 +1,5 @@
-import { authenticate } from '$lib/utils/api';
-
-export async function post({ request }) {
-	const [isAuthenticated, headers] = await authenticate(request);
-
-	if (!isAuthenticated) {
+export async function post({ locals, request }) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
@@ -27,7 +23,6 @@ export async function post({ request }) {
 	const data = await response.json();
 
 	return {
-		headers,
 		body: data.data.translations.map(({ translatedText }) => translatedText)
 	};
 }

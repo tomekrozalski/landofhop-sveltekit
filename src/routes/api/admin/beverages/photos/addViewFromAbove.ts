@@ -1,11 +1,6 @@
-import {
-	authenticate,
-	getDbCollections,
-	saveViewFromAboveJpg,
-	saveViewFromAboveWebp
-} from '$lib/utils/api';
+import { getDbCollections, saveViewFromAboveJpg, saveViewFromAboveWebp } from '$lib/utils/api';
 
-export async function post({ request }) {
+export async function post({ locals, request }) {
 	const data = await request.formData();
 	const badge = data.get('badge');
 	const brand = data.get('brand');
@@ -15,13 +10,11 @@ export async function post({ request }) {
 	const shortId = data.get('shortId');
 	const path = `${brand}/${badge}/${shortId}`;
 
-	const [isAuthenticated, headers] = await authenticate(request);
-
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
-				message: 'Unauthorized. Cannot add new beverage'
+				message: 'Unauthorized. Cannot add beverage view from above photo'
 			}
 		};
 	}
@@ -44,8 +37,5 @@ export async function post({ request }) {
 		type: updatedData.label.container.type
 	};
 
-	return {
-		headers,
-		body: formattedData
-	};
+	return { body: formattedData };
 }

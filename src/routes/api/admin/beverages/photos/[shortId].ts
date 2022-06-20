@@ -1,13 +1,11 @@
-import { authenticate, getDbCollections } from '$lib/utils/api';
+import { getDbCollections } from '$lib/utils/api';
 
-export async function get({ params, request }) {
-	const [isAuthenticated, headers] = await authenticate(request);
-
-	if (!isAuthenticated) {
+export async function get({ locals, params }) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
-				message: 'Unauthorized. Cannot load admin beverage notes'
+				message: 'Unauthorized. Cannot get admin beverage photos'
 			}
 		};
 	}
@@ -31,8 +29,5 @@ export async function get({ params, request }) {
 		type: data.label.container.type
 	};
 
-	return {
-		headers,
-		body: formattedData
-	};
+	return { body: formattedData };
 }

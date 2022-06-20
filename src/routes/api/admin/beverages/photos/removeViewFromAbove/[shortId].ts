@@ -1,11 +1,10 @@
-import { authenticate, getDbCollections, removeViewFromAbove } from '$lib/utils/api';
+import { getDbCollections, removeViewFromAbove } from '$lib/utils/api';
 
-export async function del({ params, request }) {
+export async function del({ locals, params }) {
 	const { shortId } = params;
 	const { beverages } = await getDbCollections();
-	const [isAuthenticated, headers] = await authenticate(request);
 
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
@@ -34,7 +33,6 @@ export async function del({ params, request }) {
 	const updatedBeverage = await beverages.findOne({ shortId });
 
 	return {
-		headers,
 		body: {
 			...(updatedBeverage.editorial?.photos && { ...updatedBeverage.editorial.photos }),
 			type: updatedBeverage.label.container.type

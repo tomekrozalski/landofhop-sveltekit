@@ -1,14 +1,13 @@
-import { authenticate, formatBasics, getDbCollections } from '$lib/utils/api';
+import { formatBasics, getDbCollections } from '$lib/utils/api';
 import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
 
-export async function put({ params, request }) {
+export async function put({ locals, params, request }) {
 	const { shortId } = params;
 	const beverageData = await request.json();
 
 	const { basics } = await getDbCollections();
-	const [isAuthenticated, headers] = await authenticate(request);
 
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
@@ -54,7 +53,6 @@ export async function put({ params, request }) {
 	}
 
 	return {
-		headers,
 		body: {
 			message: 'Beverage basics updated successfully'
 		}

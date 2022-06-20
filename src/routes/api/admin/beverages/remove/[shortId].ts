@@ -1,17 +1,10 @@
-import {
-	authenticate,
-	getDbCollections,
-	removeViewFromAbove,
-	removeCover,
-	removeGallery
-} from '$lib/utils/api';
+import { getDbCollections, removeViewFromAbove, removeCover, removeGallery } from '$lib/utils/api';
 
-export async function del({ params, request }) {
+export async function del({ locals, params }) {
 	const { shortId } = params;
 	const { basics, beverages } = await getDbCollections();
-	const [isAuthenticated, headers] = await authenticate(request);
 
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
@@ -49,7 +42,6 @@ export async function del({ params, request }) {
 		}
 	} catch (error) {
 		return {
-			headers,
 			status: 500,
 			body: {
 				message: 'Removing images failed'
@@ -70,7 +62,6 @@ export async function del({ params, request }) {
 	});
 
 	return {
-		headers,
 		body: {
 			message: 'Beverage successfully removed'
 		}

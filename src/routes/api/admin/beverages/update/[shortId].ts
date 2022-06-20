@@ -1,22 +1,20 @@
-import { authenticate, formatBeverage, getDbCollections } from '$lib/utils/api';
+import { formatBeverage, getDbCollections } from '$lib/utils/api';
 import type {
 	RawBeverage,
 	RawBeverageWithoutId
 } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 import type { RawEditorialPhotos } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 
-export async function put({ params, request }) {
+export async function put({ locals, params, request }) {
 	const { shortId } = params;
 	const beverageData = await request.json();
-
 	const { beverages } = await getDbCollections();
-	const [isAuthenticated, headers] = await authenticate(request);
 
-	if (!isAuthenticated) {
+	if (!locals.authenticated) {
 		return {
 			status: 401,
 			body: {
-				message: 'Unauthorized. Cannot add new beverage'
+				message: 'Unauthorized. Cannot add update beverage'
 			}
 		};
 	}
@@ -68,7 +66,6 @@ export async function put({ params, request }) {
 	}
 
 	return {
-		headers,
 		body: {
 			message: 'Beverage updated successfully'
 		}
