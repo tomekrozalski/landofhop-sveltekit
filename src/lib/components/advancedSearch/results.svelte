@@ -6,9 +6,8 @@
 	import NothingFound from '$lib/components/beverageList/nothingFound.svelte';
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
 
-	import Pagination from '$lib/components/beverageList/pagination.svelte';
-
 	import type AdvancedSearchData from './AdvancedSearchData.type';
+	import Pagination from './pagination.svelte';
 	import Total from './total.svelte';
 
 	export let data: AdvancedSearchData;

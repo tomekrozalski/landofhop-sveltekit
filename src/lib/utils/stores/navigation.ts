@@ -72,6 +72,7 @@ function openSearchBar() {
 
 function closeSearchBar() {
 	const params = new URLSearchParams(location.search);
+	params.delete('page');
 	params.delete('search');
 	pushState(params);
 

@@ -4,7 +4,7 @@ import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
 export async function post({ request }) {
 	const advancedSearchData = await request.json();
-	const { brands, ingredientTags, language, name, styleTags } = advancedSearchData;
+	const { brands, ingredientTags, language, name, page, styleTags } = advancedSearchData;
 
 	if (!language || (!brands?.length && !ingredientTags?.length && !name && !styleTags?.length)) {
 		return { status: 400 };
@@ -49,7 +49,12 @@ export async function post({ request }) {
 			{
 				$facet: {
 					count: [{ $match: query }, { $count: 'count' }],
-					values: [{ $sort: { added: -1 } }, { $match: query }, { $limit: BEVERAGES_ON_PAGE }]
+					values: [
+						{ $sort: { added: -1 } },
+						{ $match: query },
+						...(page ? [{ $skip: page * BEVERAGES_ON_PAGE - BEVERAGES_ON_PAGE }] : []),
+						{ $limit: BEVERAGES_ON_PAGE }
+					]
 				}
 			}
 		])

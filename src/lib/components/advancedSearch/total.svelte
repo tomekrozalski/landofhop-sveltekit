@@ -4,7 +4,7 @@
 	export let total: number;
 </script>
 
-<p>{$translate('advancedSearch.foundCount')} <strong>{total}</strong></p>
+<p>{$translate('global.foundCount')} <strong>{total}</strong></p>
 
 <style>
 	p {
