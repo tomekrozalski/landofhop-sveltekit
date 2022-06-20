@@ -51,7 +51,7 @@
 		<Spinner />
 	{:then { beverages, total }}
 		{#if beverages.length}
-			<Total {total} />
+			<Total currentPage={order} {total} withLink />
 			<BeverageList {beverages} />
 			{#if total > BEVERAGES_ON_PAGE}
 				<Pagination {order} {total} />

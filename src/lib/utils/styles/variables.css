@@ -48,11 +48,12 @@
 	--font-weight-medium: 500;
 
 	--index-spinner: 10;
-	--index-main: 11;
-	--index-loginbar: 12;
-	--index-navbar: 13;
-	--index-header: 14;
-	--index-overlay: 15;
+	--index-advanced-search: 11;
+	--index-main: 12;
+	--index-loginbar: 13;
+	--index-navbar: 14;
+	--index-header: 15;
+	--index-overlay: 16;
 
 	--size-container-max-width: 100%;
 	--size-header-height: 6rem;

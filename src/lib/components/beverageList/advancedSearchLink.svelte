@@ -1,18 +1,30 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import navigation from '$lib/utils/stores/navigation';
+
+	export let type: 'block' | 'inline' = 'block';
 </script>
 
-<div>
-	<a href="/advanced-search">
+<div class:block={type === 'block'} class:inline={type === 'inline'}>
+	<a href="/advanced-search" on:click={navigation.closeSearchBar}>
 		{$translate('header.advancedSearch.link')}
 	</a>
 </div>
 
 <style>
 	div {
+		text-align: right;
+		position: relative;
+		z-index: var(--index-advanced-search);
+	}
+
+	div.block {
 		max-width: var(--size-container-max-width);
 		margin: 0 auto;
-		text-align: right;
+	}
+
+	div.inline {
+		flex-grow: 1;
 	}
 
 	a {

@@ -1,17 +1,41 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
+	import AdvancedSearchLink from '$lib/components/beverageList/advancedSearchLink.svelte';
 
+	export let currentPage: number;
 	export let total: number;
+	export let withLink: boolean = false;
+	let pages = Math.ceil(total / BEVERAGES_ON_PAGE);
 </script>
 
-<p>{$translate('global.foundCount')} <strong>{total}</strong></p>
+<section>
+	<div>
+		{$translate('global.foundCount')}
+		<strong>{total}</strong>
+	</div>
+	{#if pages > 1}
+		<div>
+			strona z wynikami: <strong>{currentPage} / {pages}</strong>
+		</div>
+	{/if}
+	{#if withLink}
+		<AdvancedSearchLink type="inline" />
+	{/if}
+</section>
 
 <style>
-	p {
+	section {
+		display: flex;
+		gap: 2rem;
+		justify-content: space-between;
 		max-width: var(--size-container-max-width);
-		padding: 2rem 1rem;
+		padding: 0 1rem;
 		margin: 0 auto;
-		text-align: right;
+	}
+
+	div {
+		padding: 2rem 0;
 	}
 
 	strong {
