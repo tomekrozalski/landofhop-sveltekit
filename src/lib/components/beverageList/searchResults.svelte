@@ -9,9 +9,9 @@
 	import Pagination from '$lib/components/advancedSearch/pagination.svelte';
 	import Total from '$lib/components/advancedSearch/total.svelte';
 
+	import AdvancedSearchLink from './advancedSearchLink.svelte';
 	import BeverageList from './beverageList.svelte';
 	import NothingFound from './nothingFound.svelte';
-	import AdvancedSearchLink from './advancedSearchLink.svelte';
 
 	let order = 1;
 	let value;
@@ -46,12 +46,13 @@
 
 <svelte:window on:popstate={updateOrder} />
 
+<AdvancedSearchLink />
 {#if value}
 	{#await callToApi(value, order)}
 		<Spinner />
 	{:then { beverages, total }}
 		{#if beverages.length}
-			<Total currentPage={order} {total} withLink />
+			<Total currentPage={order} {total} inline />
 			<BeverageList {beverages} />
 			{#if total > BEVERAGES_ON_PAGE}
 				<Pagination {order} {total} />
@@ -60,6 +61,4 @@
 			<NothingFound />
 		{/if}
 	{/await}
-{:else}
-	<AdvancedSearchLink />
 {/if}
