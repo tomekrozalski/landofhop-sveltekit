@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import Spinner from '$lib/elements/spinners/fullScreen.svelte';
+	import navigation from '$lib/utils/stores/navigation';
 	import type AdvancedSearchData from './AdvancedSearchData.type';
 	import Form from './form.svelte';
 	import Results from './results.svelte';
@@ -16,6 +17,8 @@
 	};
 
 	onMount(async () => {
+		navigation.closeSearchBar();
+
 		const params = new URLSearchParams(location.search);
 		initialValues.brands = params.get('brands')?.split(',') ?? null;
 		initialValues.ingredientTags = params.get('ingredientTags')?.split(',') ?? null;

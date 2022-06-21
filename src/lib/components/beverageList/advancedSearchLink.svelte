@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import navigation from '$lib/utils/stores/navigation';
 </script>
 
 <div>
-	<a href="/advanced-search" on:click={navigation.closeSearchBar}>
+	<a href="/advanced-search">
 		{$translate('header.advancedSearch.link')}
 	</a>
 </div>

@@ -24,7 +24,7 @@
 	import { translate, translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/screens/landingPage.json';
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
-	import Pagination from '$lib/components/beverageList/pagination.svelte';
+	import Pagination from '$lib/components/beverageList/pagination/pagination.svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export let beverages: Basics[];

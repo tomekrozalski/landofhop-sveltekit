@@ -45,7 +45,7 @@
 	export let total: number;
 
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
-	import Pagination from '$lib/components/beverageList/pagination.svelte';
+	import Pagination from '$lib/components/beverageList/pagination/pagination.svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 </script>
 
