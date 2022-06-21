@@ -9,15 +9,15 @@
 <ul>
 	{#each beverages as beverage, index}
 		<li>
-			<a href="/details/{beverage.shortId}/{beverage.brand.badge}/{beverage.badge}">
-				{#if beverage.coverImage}
-					{#key beverages}
-						<CoverImageWrapper {beverage} eager={index < 5} />
-					{/key}
-				{:else}
+			{#if beverage.coverImage}
+				{#key beverages}
+					<CoverImageWrapper {beverage} eager={index < 5} />
+				{/key}
+			{:else}
+				<a href="/details/{beverage.shortId}/{beverage.brand.badge}/{beverage.badge}">
 					<BrokenCoverImage type={beverage.containerType} />
-				{/if}
-			</a>
+				</a>
+			{/if}
 		</li>
 	{/each}
 </ul>

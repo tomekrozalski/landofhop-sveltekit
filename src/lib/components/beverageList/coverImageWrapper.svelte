@@ -24,7 +24,10 @@
 	style:padding-top is temporary solution for older Safari
 	<div style:aspect-ratio="{coverImage?.width} / {coverImage?.height}">
 -->
-<div style:padding-top="{(coverImage?.height / coverImage?.width) * 100}%">
+<a
+	href="/details/{beverage.shortId}/{beverage.brand.badge}/{beverage.badge}"
+	style:padding-top="{(coverImage?.height / coverImage?.width) * 100}%"
+>
 	{#if !loaded && coverImage?.outline}
 		<span class="outline-wrapper" transition:toggleVisibility>
 			{@html coverImage.outline}
@@ -48,14 +51,29 @@
 			</picture>
 		</noscript>
 	{/if}
-</div>
+</a>
 
 <style>
-	div {
+	a {
 		width: 100%;
 		height: 0;
 		position: relative;
-		overflow: hidden;
+		transform: scale(1);
+		transition: transform var(--transition-default);
+	}
+
+	a:hover,
+	a:focus {
+		transform: scale(0.9);
+		outline: none;
+	}
+
+	a:focus::before {
+		display: block;
+		content: '';
+		position: absolute;
+		inset: 0;
+		outline: 1rem solid var(--color-grey-3);
 	}
 
 	.outline-wrapper :global(svg) {

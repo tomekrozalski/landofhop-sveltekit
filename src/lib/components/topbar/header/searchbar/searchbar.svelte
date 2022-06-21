@@ -41,19 +41,30 @@
 		right: 0;
 	}
 
+	button:focus {
+		background-color: var(--color-white);
+	}
+
 	button :global(svg) {
 		width: 1.8rem;
 		height: 1.8rem;
-		fill: var(--color-white);
-		transition: fill var(--transition-default);
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
 
-	button:hover :global(svg) {
+	button :global(svg path) {
+		fill: var(--color-white);
+		transition: fill var(--transition-default);
+	}
+
+	button:hover :global(svg path) {
 		fill: var(--color-grey-1);
+	}
+
+	button:focus :global(svg path) {
+		fill: var(--color-black);
 	}
 
 	@media (--md) {

@@ -26,6 +26,10 @@
 		align-items: center;
 	}
 
+	button:focus {
+		background-color: var(--color-white);
+	}
+
 	svg {
 		display: block;
 		width: 2rem;
@@ -39,6 +43,10 @@
 
 	button:hover svg circle {
 		fill: var(--color-grey-1);
+	}
+
+	button:focus svg circle {
+		fill: var(--color-black);
 	}
 
 	@media (--md) {

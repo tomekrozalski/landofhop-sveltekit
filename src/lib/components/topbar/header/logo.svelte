@@ -32,6 +32,10 @@
 		justify-content: center;
 	}
 
+	a:focus {
+		outline: none;
+	}
+
 	h1 {
 		display: flex;
 		align-items: center;
@@ -50,7 +54,9 @@
 	}
 
 	a:hover .letter-h,
-	a:hover .letter-p {
+	a:hover .letter-p,
+	a:focus .letter-h,
+	a:focus .letter-p {
 		fill: var(--color-white);
 	}
 

@@ -38,14 +38,20 @@
 		cursor: pointer;
 	}
 
-	.pagination-element:hover:not(.inactive) {
+	.pagination-element:hover:not(.inactive),
+	.pagination-element:focus:not(.inactive) {
 		background-color: var(--color-white);
 		color: var(--color-black);
 	}
 
+	.pagination-element:focus:not(.inactive) {
+		outline: 0.2rem solid var(--color-black);
+	}
+
 	.active {
+		border-color: var(--color-grey-1);
 		background-color: var(--color-grey-4);
-		color: var(--color-grey-1);
+		color: var(--color-black);
 		transition: background-color var(--transition-default), color var(--transition-default);
 	}
 

@@ -31,7 +31,7 @@
 			href={page === 1 ? '/' : `/list/${page}`}
 			label={page.toString()}
 			sveltekit:prefetch
-			tag="a"
+			tag={page === '…' ? 'span' : 'a'}
 		/>
 	{/each}
 	{#if pagesCount === order}
