@@ -17,7 +17,6 @@
 	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
 	import '$lib/utils/styles/global.css';
-	import Analytics from '$lib/utils/analytics.svelte';
 	import Topbar from '$lib/components/topbar/topbar.svelte';
 	import Main from '$lib/components/main.svelte';
 
@@ -57,4 +56,3 @@
 <Main>
 	<slot />
 </Main>
-<Analytics />

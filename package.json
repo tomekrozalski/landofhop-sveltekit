@@ -17,7 +17,6 @@
 		"@types/d3-array": "^3.0.1",
 		"@types/d3-scale": "^4.0.1",
 		"@types/d3-shape": "^3.0.2",
-		"@types/gtag.js": "^0.0.10",
 		"@types/marked": "^3.0.1",
 		"@typescript-eslint/eslint-plugin": "^4.19.0",
 		"@typescript-eslint/parser": "^4.19.0",
