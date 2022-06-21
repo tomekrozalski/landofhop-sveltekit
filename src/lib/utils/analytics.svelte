@@ -13,7 +13,7 @@
 
 <svelte:head>
   <script
-    defer
+    async
     src="https://www.googletagmanager.com/gtag/js?id=G-BH592T585W">
   </script>
   <script>
