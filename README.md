@@ -1,5 +1,11 @@
 # Land of Hop, SvelteKit edition
 
+🗓️ 22.06.2022
+
+Version 1.0.0 of the application is officially ready 😃 I finished work with SvelteKit Endpoints. I also added pages with ingredient statistics, advanced search. Did some work on better authentication, performance and accessibility. I tried to implement some third party scripts like Google Analytics, they have a big impact on performance though, which is for me the most essential right now.
+
+My plan for the near future is to connect the app with RateBeer and Untappd somehow. To create brewery pages. To improve statistics pages and overall to improve UI and reliability of the data.
+
 🗓️ 17.02.2022
 
 After small break I am back to SvelteKit world. I started to work with SvelteKit Endpoints. I realized that I do not need middleware API to connect my database with frontend. I built it using Oak / Deno and Fastify / Node servers. That is unnecessarly complex. In SvelteKit I can work with front- and the back-end side of the app very comfortable.
