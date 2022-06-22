@@ -7,8 +7,6 @@
 </script>
 
 <script lang="ts">
-	import PartytownSnippet from 'partytown-sveltekit/PartytownSnippet.svelte';
-	import Analytics from '$lib/utils/analytics.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { navigating } from '$app/stores';
 	import { locale, translations } from 'svelte-intl';
@@ -58,6 +56,3 @@
 <Main>
 	<slot />
 </Main>
-
-<PartytownSnippet />
-<Analytics />
