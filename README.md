@@ -2,7 +2,7 @@
 
 🗓️ 22.06.2022
 
-Version 1.0.0 of the application is officially ready 😃 I finished work with SvelteKit Endpoints. I also added pages with ingredient statistics, advanced search. Did some work on better authentication, performance and accessibility. I tried to implement some third party scripts like Google Analytics, they have a big impact on performance though, which is for me the most essential right now.
+Version 1.0.0 of the application is officially ready 😃 I finished work with SvelteKit Endpoints. I also added pages with ingredient statistics, advanced search. Did some work on better authentication, performance and accessibility. I tried to implement some third party scripts like Google Analytics. I found out that there is a great way to load them without performance drop via WebWorkers ([Partytown](https://partytown.builder.io/)). Finally I decided that I do not need any third party scripts, I am the only user of the application so far 😆 so I removed them.
 
 My plan for the near future is to connect the app with RateBeer and Untappd somehow. To create brewery pages. To improve statistics pages and overall to improve UI and reliability of the data.
 
