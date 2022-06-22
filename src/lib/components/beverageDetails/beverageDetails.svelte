@@ -10,6 +10,7 @@
 	import FootNotes from './footNotes.svelte';
 	import Impressions from './impressions/impressions.svelte';
 	import AdminBar from './adminBar/adminBar.svelte';
+	import Score from './score/score.svelte';
 
 	export let details: Details;
 	export let next: LinkData | null;
@@ -28,7 +29,10 @@
 			<AdminBar {details} />
 		{/if}
 	</div>
-	<Navigation {next} {previous} />
+	<aside>
+		<Navigation {next} {previous} />
+		<Score />
+	</aside>
 </article>
 
 <style>
