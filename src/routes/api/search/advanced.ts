@@ -12,28 +12,40 @@ export async function post({ request }) {
 
 	let total = 0;
 	const foundArr: Basics[] = [];
-	const { beverages } = await getDbCollections();
+	const { beverages, ingredients } = await getDbCollections();
 
-	async function wait() {
-		return new Promise((resolve) => {
-			setTimeout(() => {
-				resolve(true);
-			}, 2000);
-		});
+	async function getCompleteIngredientTags() {
+		const ingredientsDescendants = [];
+
+		async function getDescendants(parent) {
+			const descendants = await ingredients.find({ parent }).toArray();
+
+			for await (const { badge } of descendants) {
+				ingredientsDescendants.push(badge);
+				await getDescendants(badge);
+			}
+		}
+
+		for await (const parent of ingredientTags) {
+			await getDescendants(parent);
+		}
+
+		return ingredientsDescendants;
 	}
 
-	await wait();
+	const completeIngredientTags =
+		ingredientTags && ingredientTags.length ? await getCompleteIngredientTags() : null;
 
 	const query = {
 		$and: [
 			...(name ? [{ 'label.general.name.value': { $regex: new RegExp(name, 'i') } }] : []),
 			...(brands && brands.length ? [{ 'label.general.brand.shortId': { $in: brands } }] : []),
-			...(ingredientTags && ingredientTags.length
+			...(completeIngredientTags
 				? [
 						{
 							$or: [
-								{ 'label.ingredients.tags.badge': { $in: ingredientTags } },
-								{ 'producer.ingredients.tags.badge': { $in: ingredientTags } }
+								{ 'label.ingredients.tags.badge': { $in: completeIngredientTags } },
+								{ 'producer.ingredients.tags.badge': { $in: completeIngredientTags } }
 							]
 						}
 				  ]
