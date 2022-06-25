@@ -4,10 +4,7 @@
 	import RatingDetails from './ratingDetails.svelte';
 
 	export let details: Details;
-
 	let isDetailsOpened = false;
-
-	// $: console.log('details', details);
 </script>
 
 <section>
@@ -22,7 +19,7 @@
 		</ul>
 	</header>
 	{#if isDetailsOpened}
-		<RatingDetails />
+		<RatingDetails {details} />
 	{/if}
 	<button
 		class:isDetailsOpened

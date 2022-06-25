@@ -44,15 +44,18 @@ export type RawRatings = {
 		beverageId: number;
 		quantity?: number;
 		value?: number;
+		date?: Date;
 	};
 	untappd: {
 		beverageSlug: string;
 		quantity?: number;
 		value?: number;
+		date?: Date;
 	};
 	total?: {
 		quantity: number;
 		value: number;
+		date?: Date;
 	};
 };
 

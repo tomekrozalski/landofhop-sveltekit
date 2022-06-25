@@ -32,7 +32,8 @@ async function updateUntappdRating(untappBeerSlug: string, beverageShortId: stri
 		{
 			$set: {
 				'editorial.ratings.untappd.quantity': rating.quantity,
-				'editorial.ratings.untappd.value': rating.value
+				'editorial.ratings.untappd.value': rating.value,
+				'editorial.ratings.untappd.date': new Date()
 			}
 		}
 	);

@@ -1,11 +1,4 @@
-import {
-	formatBasics,
-	formatBeverage,
-	generateShortId,
-	getDbCollections,
-	updateRateBeerRating,
-	updateUntappdRating
-} from '$lib/utils/api';
+import { formatBasics, formatBeverage, generateShortId, getDbCollections } from '$lib/utils/api';
 import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
 import type { NewBeverageRequest } from '$lib/utils/types/api/requests/Beverage';
 import type {
@@ -37,14 +30,6 @@ export async function post({ locals, request }) {
 
 	await basics.insertOne(formattedBasics as RawBasics);
 	await beverages.insertOne(formattedBeverage as RawBeverage);
-
-	if (beverageData.editorial?.rateBeer) {
-		updateRateBeerRating(beverageData.editorial.rateBeer, commonProps.shortId);
-	}
-
-	if (beverageData.editorial?.untappd) {
-		updateUntappdRating(beverageData.editorial.untappd, commonProps.shortId);
-	}
 
 	return {
 		body: {

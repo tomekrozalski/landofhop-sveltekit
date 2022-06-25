@@ -2,6 +2,8 @@ import { format } from 'date-fns';
 
 import { getDbCollections } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
+import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
+import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 
 export async function get({ locals, params }) {
 	if (!locals.authenticated) {
@@ -19,11 +21,12 @@ export async function get({ locals, params }) {
 	type RawData = {
 		notes?: string;
 		updated?: Date;
+		ratings?: RawRatings;
 	};
 
 	const data: RawData | undefined = await beverages.findOne(
 		{ shortId },
-		{ projection: { _id: 0, notes: '$editorial.notes', updated: 1 } }
+		{ projection: { _id: 0, notes: '$editorial.notes', ratings: '$editorial.ratings', updated: 1 } }
 	);
 
 	if (!data) {
@@ -35,13 +38,16 @@ export async function get({ locals, params }) {
 		};
 	}
 
-	const formattedData: {
-		notes?: string;
-		updated?: string;
-	} = {
+	const formattedData: AdminNotes = {
 		...(data.notes && { notes: data.notes }),
 		...(data.updated && {
 			updated: format(new Date(data.updated), DateFormat[language])
+		}),
+		...(data.ratings && {
+			ratings: {
+				...(data.ratings.rateBeer?.beverageId && { rateBeer: data.ratings.rateBeer.beverageId }),
+				...(data.ratings.untappd?.beverageSlug && { untappd: data.ratings.untappd.beverageSlug })
+			}
 		})
 	};
 

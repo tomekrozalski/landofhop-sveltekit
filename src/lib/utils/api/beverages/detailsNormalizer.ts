@@ -395,12 +395,14 @@ function detailsNormalizer(
 		},
 		rateBeer: {
 			...(beverage.editorial?.ratings?.rateBeer?.quantity && {
-				editorial: beverage.editorial.ratings.rateBeer
+				quantity: beverage.editorial.ratings.rateBeer.quantity,
+				value: beverage.editorial.ratings.rateBeer.value
 			})
 		},
 		untappd: {
 			...(beverage.editorial?.ratings?.untappd?.quantity && {
-				editorial: beverage.editorial.ratings.untappd
+				quantity: beverage.editorial.ratings.untappd.quantity,
+				value: beverage.editorial.ratings.untappd.value
 			})
 		},
 		container: {

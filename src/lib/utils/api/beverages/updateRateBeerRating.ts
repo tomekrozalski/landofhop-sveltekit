@@ -25,7 +25,8 @@ async function updateRateBeerRating(rateBeerid: string, beverageShortId: string)
 					'editorial.ratings.rateBeer.quantity': data.beer.ratingsCount,
 					'editorial.ratings.rateBeer.value': Number(
 						(Math.round(data.beer.averageQuickRating * 100000) / 100000).toFixed(5)
-					)
+					),
+					'editorial.ratings.rateBeer.date': new Date()
 				}
 			}
 		);

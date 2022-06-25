@@ -241,6 +241,14 @@ export type Details = {
 	clarity?: {
 		editorial?: Clarity;
 	};
+	rateBeer?: {
+		quantity: number;
+		value: number;
+	};
+	untappd?: {
+		quantity: number;
+		value: number;
+	};
 	container: Container;
 	price?: {
 		label?: Price[];
