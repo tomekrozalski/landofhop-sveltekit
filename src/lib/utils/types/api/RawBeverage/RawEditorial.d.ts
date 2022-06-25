@@ -39,6 +39,23 @@ export type RawEditorialImpressions = {
 	clarity?: Clarity;
 };
 
+export type RawRatings = {
+	rateBeer: {
+		beverageId: number;
+		quantity?: number;
+		value?: number;
+	};
+	untappd: {
+		beverageSlug: string;
+		quantity?: number;
+		value?: number;
+	};
+	total?: {
+		quantity: number;
+		value: number;
+	};
+};
+
 export type RawEditorialPhotos = {
 	cap?: boolean;
 	cover?: {
@@ -57,6 +74,7 @@ export type RawEditorial = {
 	general?: RawEditorialGeneral;
 	brewing?: RawEditorialBrewing;
 	impressions?: RawEditorialImpressions;
+	ratings?: RawRatings;
 	price?: RawPrice[];
 	photos?: RawEditorialPhotos;
 	notes?: string;

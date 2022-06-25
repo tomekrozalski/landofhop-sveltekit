@@ -1,12 +1,20 @@
-import { formatBasics, formatBeverage, generateShortId, getDbCollections } from '$lib/utils/api';
+import {
+	formatBasics,
+	formatBeverage,
+	generateShortId,
+	getDbCollections,
+	updateRateBeerRating,
+	updateUntappdRating
+} from '$lib/utils/api';
 import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
+import type { NewBeverageRequest } from '$lib/utils/types/api/requests/Beverage';
 import type {
 	RawBeverage,
 	RawBeverageWithoutId
 } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 
 export async function post({ locals, request }) {
-	const beverageData = await request.json();
+	const beverageData: NewBeverageRequest = await request.json();
 	const { basics, beverages } = await getDbCollections();
 
 	if (!locals.authenticated) {
@@ -19,6 +27,7 @@ export async function post({ locals, request }) {
 	}
 
 	const commonProps = {
+		badge: beverageData.label.badge,
 		shortId: generateShortId(),
 		added: new Date()
 	};
@@ -28,6 +37,14 @@ export async function post({ locals, request }) {
 
 	await basics.insertOne(formattedBasics as RawBasics);
 	await beverages.insertOne(formattedBeverage as RawBeverage);
+
+	if (beverageData.editorial?.rateBeer) {
+		updateRateBeerRating(beverageData.editorial.rateBeer, commonProps.shortId);
+	}
+
+	if (beverageData.editorial?.untappd) {
+		updateUntappdRating(beverageData.editorial.untappd, commonProps.shortId);
+	}
 
 	return {
 		body: {

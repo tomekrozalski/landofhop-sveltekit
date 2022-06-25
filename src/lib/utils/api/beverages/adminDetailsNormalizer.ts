@@ -230,6 +230,9 @@ function adminDetailsNormalizer(
 			color: beverage.editorial?.impressions?.color ?? null,
 			clarity: beverage.editorial?.impressions?.clarity ?? null,
 			// -----------
+			rateBeer: beverage.editorial?.ratings?.rateBeer?.beverageId ?? null,
+			untappd: beverage.editorial?.ratings?.untappd?.beverageSlug ?? null,
+			// -----------
 			price: beverage.editorial?.price?.map(normalizePrice) ?? [],
 			notes: beverage.editorial?.notes ?? null
 		}

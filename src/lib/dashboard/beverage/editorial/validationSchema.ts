@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { isNaN } from 'lodash-es';
 
 import {
 	AgedTimeUnit,
@@ -97,6 +98,22 @@ export function getValidationSchema(translate) {
 				'is-clarity',
 				translate('form.validation.required'),
 				(value) => value === null || Object.values(Clarity).includes(value)
+			),
+		// -----------
+		rateBeer: yup
+			.mixed()
+			.test(
+				'is-valid',
+				translate('form.validation.required'),
+				(value) => value === null || value.toString().length
+			)
+			.test('is-valid', translate('form.validation.numeric'), (value) => !isNaN(+value)),
+		untappd: yup
+			.mixed()
+			.test(
+				'is-valid',
+				translate('form.validation.required'),
+				(value) => value === null || value.length
 			),
 		// -----------
 		price: yup.array().of(

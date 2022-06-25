@@ -1,14 +1,18 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+	import RatingDetails from './ratingDetails.svelte';
 
-	import Details from './details.svelte';
+	export let details: Details;
 
 	let isDetailsOpened = false;
+
+	// $: console.log('details', details);
 </script>
 
 <section>
 	<header>
-		<h3>{$translate('beverage.score')}</h3>
+		<h3>{$translate('beverage.rating')}</h3>
 		<ul>
 			<li>★</li>
 			<li>★</li>
@@ -18,7 +22,7 @@
 		</ul>
 	</header>
 	{#if isDetailsOpened}
-		<Details />
+		<RatingDetails />
 	{/if}
 	<button
 		class:isDetailsOpened
@@ -27,7 +31,7 @@
 		}}
 		type="button"
 	>
-		{$translate(`beverage.score.${isDetailsOpened ? 'hideDetails' : 'showDetails'}`)}
+		{$translate(`beverage.rating.${isDetailsOpened ? 'hideDetails' : 'showDetails'}`)}
 	</button>
 </section>
 

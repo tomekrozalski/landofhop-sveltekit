@@ -393,6 +393,16 @@ function detailsNormalizer(
 				editorial: beverage.editorial.impressions.clarity
 			})
 		},
+		rateBeer: {
+			...(beverage.editorial?.ratings?.rateBeer?.quantity && {
+				editorial: beverage.editorial.ratings.rateBeer
+			})
+		},
+		untappd: {
+			...(beverage.editorial?.ratings?.untappd?.quantity && {
+				editorial: beverage.editorial.ratings.untappd
+			})
+		},
 		container: {
 			color: beverage.label.container.color,
 			material: beverage.label.container.material,
@@ -478,6 +488,8 @@ function detailsNormalizer(
 			'temperature',
 			'color',
 			'clarity',
+			'rateBeer',
+			'untappd',
 			'price',
 			'photos'
 		],

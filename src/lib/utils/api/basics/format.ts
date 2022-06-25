@@ -11,7 +11,6 @@ function formatBasics(
 	coverImage?: RawBasicsCoverImage
 ): RawBasicsWithoutId {
 	return {
-		badge: label.badge,
 		brand: label.brand,
 		name: label.name,
 		...(coverImage && { coverImage }),

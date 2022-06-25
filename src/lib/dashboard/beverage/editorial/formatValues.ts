@@ -25,9 +25,11 @@ export default function formatValues({
 	pasteurization,
 	place,
 	price,
+	rateBeer,
 	remark,
 	series,
-	styleTags
+	styleTags,
+	untappd
 }: EditorialFormValues): EditorialFormOutput {
 	return {
 		...(series.length && { series: formatLanguageValueArray(series) }),
@@ -61,6 +63,9 @@ export default function formatValues({
 		// -----------
 		...(color && { color }),
 		...(clarity && { clarity }),
+		// -----------
+		...(rateBeer && { rateBeer: +rateBeer }),
+		...(untappd && { untappd }),
 		// -----------
 		...(price.length && {
 			price: price.map(({ currency, date, shop, value }) => ({

@@ -1,4 +1,9 @@
-import { formatBeverage, getDbCollections } from '$lib/utils/api';
+import {
+	formatBeverage,
+	getDbCollections,
+	updateRateBeerRating,
+	updateUntappdRating
+} from '$lib/utils/api';
 import type {
 	RawBeverage,
 	RawBeverageWithoutId
@@ -63,6 +68,14 @@ export async function put({ locals, params, request }) {
 				message: 'Updating beverage failed'
 			}
 		};
+	}
+
+	if (beverageData.editorial?.rateBeer) {
+		await updateRateBeerRating(beverageData.editorial.rateBeer, shortId);
+	}
+
+	if (beverageData.editorial?.untappd) {
+		await updateUntappdRating(beverageData.editorial.untappd, shortId);
 	}
 
 	return {

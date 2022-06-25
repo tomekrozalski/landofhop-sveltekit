@@ -22,6 +22,8 @@ import removeViewFromAbove from './photos/removeViewFromAbove';
 import removeCover from './photos/removeCover';
 import removeGallery from './photos/removeGallery';
 import recalculateIngredientsOccurrences from './ingredients/recalculateOccurrences';
+import updateRateBeerRating from './beverages/updateRateBeerRating';
+import updateUntappdRating from './beverages/updateUntappdRating';
 
 export {
 	adminDetailsNormalizer,
@@ -51,5 +53,7 @@ export {
 	saveViewFromAboveJpg,
 	saveViewFromAboveWebp,
 	translate,
-	updateSession
+	updateRateBeerRating,
+	updateSession,
+	updateUntappdRating
 };

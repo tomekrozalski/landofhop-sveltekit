@@ -10,7 +10,6 @@ function formatBeverage(
 	photos?: RawEditorialPhotos
 ) {
 	return cleanDeep({
-		badge: label.badge,
 		label: {
 			general: {
 				name: label.name,
@@ -124,6 +123,14 @@ function formatBeverage(
 			impressions: {
 				color: editorial?.color,
 				clarity: editorial?.clarity
+			},
+			ratings: {
+				rateBeer: {
+					beverageId: editorial?.rateBeer
+				},
+				untappd: {
+					beverageSlug: editorial?.untappd
+				}
 			},
 			price: editorial?.price?.map((props) => ({
 				...props,
