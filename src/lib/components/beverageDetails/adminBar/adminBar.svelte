@@ -1,38 +1,23 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { translate } from 'svelte-intl';
-	import { goto } from '$app/navigation';
-
-	import { session } from '$app/stores';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
+	import { session } from '$app/stores';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import Button from '$lib/elements/form/button.svelte';
+	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 	import InlineSpinner from '$lib/elements/spinners/inline.svelte';
 	import Notes from './notes.svelte';
 	import Updated from './updated.svelte';
-	import RemoveBeverage from './removeButton.svelte';
+	import Buttons from './buttons/buttons.svelte';
 
 	export let details: Details;
-	const params = `${details.shortId}/${details.brand.badge}/${details.badge}`;
 	let isLoading = true;
-	let notes = '';
-	let updated = '';
+	let adminData: AdminNotes;
 
 	onMount(async () => {
 		try {
-			const adminData: { notes?: string; updated?: string } = await apiCall(
-				fetch,
-				Endpoints.beverageAdminNotes,
-				{ pathParams: ['pl', details.shortId] }
-			);
-
-			if (adminData.notes) {
-				notes = adminData.notes;
-			}
-
-			if (adminData.updated) {
-				updated = adminData.updated;
-			}
+			adminData = await apiCall(fetch, Endpoints.beverageAdminNotes, {
+				pathParams: ['pl', details.shortId]
+			});
 		} catch (err) {
 			if (err.message === 'Forbidden') {
 				$session.isLoggedIn = false;
@@ -41,38 +26,19 @@
 
 		isLoading = false;
 	});
-
-	function updateBeverage() {
-		goto(`/dashboard/update-beverage/${params}`);
-	}
-
-	function updateBeverageImages() {
-		goto(`/dashboard/update-beverage-photos/${params}`);
-	}
 </script>
 
-<div class="buttons">
-	<Button handleClick={updateBeverage}>{$translate('beverage.adminBar.updateContent')}</Button>
-	<Button handleClick={updateBeverageImages}>{$translate('beverage.adminBar.updateImages')}</Button>
-	<RemoveBeverage {details} />
-</div>
-
-<div class="adminNotes">
-	{#if isLoading}
-		<InlineSpinner />
-	{:else}
-		{#if notes}<Notes {notes} />{/if}
-		{#if updated}<Updated {updated} />{/if}
-	{/if}
-</div>
+{#if isLoading}
+	<InlineSpinner />
+{:else}
+	<Buttons {adminData} {details} />
+	<div class="adminNotes">
+		{#if adminData.notes}<Notes notes={adminData.notes} />{/if}
+		{#if adminData.updated}<Updated updated={adminData.updated} />{/if}
+	</div>
+{/if}
 
 <style>
-	.buttons {
-		display: flex;
-		gap: 1rem;
-		margin-bottom: 1rem;
-	}
-
 	.adminNotes {
 		margin: 2rem 0;
 	}

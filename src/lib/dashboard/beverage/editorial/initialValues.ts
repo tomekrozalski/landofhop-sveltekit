@@ -17,6 +17,9 @@ export const initialValues = {
 	color: null,
 	clarity: null,
 	// -----------
+	rateBeer: null,
+	untappd: null,
+	// -----------
 	price: [],
 	notes: null
 };

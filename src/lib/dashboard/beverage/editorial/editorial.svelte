@@ -27,7 +27,9 @@
 	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
 	import Place from '$lib/dashboard/fields/place.svelte';
 	import Price from '$lib/dashboard/fields/price.svelte';
+	import RateBeer from '$lib/dashboard/fields/rateBeer.svelte';
 	import Remark from '$lib/dashboard/fields/remark.svelte';
+	import Untappd from '$lib/dashboard/fields/untappd.svelte';
 	import Series from '$lib/dashboard/fields/series.svelte';
 
 	import { onSubmit } from './onSubmit';
@@ -96,6 +98,13 @@
 		</Grid>
 		<Grid isOptional>
 			<Clarity {formName} {formData} />
+		</Grid>
+		<h3><span>{$translate('dashboard.beverage.rating')}</span></h3>
+		<Grid isOptional>
+			<RateBeer {formName} {formData} />
+		</Grid>
+		<Grid isOptional>
+			<Untappd {formName} {formData} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>

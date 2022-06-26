@@ -45,6 +45,9 @@ export type EditorialFormValues = {
 	color: string | null;
 	clarity: Clarity | null;
 	// -----------
+	rateBeer: string | null;
+	untappd: string | null;
+	// -----------
 	price: {
 		currency: string;
 		date: string;
@@ -93,6 +96,9 @@ export type EditorialFormOutput = {
 	// -----------
 	color?: string;
 	clarity?: Clarity;
+	// -----------
+	rateBeer?: string;
+	untappd?: string;
 	// -----------
 	price?: Price[];
 	notes?: string;

@@ -1,12 +1,13 @@
 import { formatBasics, formatBeverage, generateShortId, getDbCollections } from '$lib/utils/api';
 import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
+import type { NewBeverageRequest } from '$lib/utils/types/api/requests/Beverage';
 import type {
 	RawBeverage,
 	RawBeverageWithoutId
 } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 
 export async function post({ locals, request }) {
-	const beverageData = await request.json();
+	const beverageData: NewBeverageRequest = await request.json();
 	const { basics, beverages } = await getDbCollections();
 
 	if (!locals.authenticated) {
@@ -19,6 +20,7 @@ export async function post({ locals, request }) {
 	}
 
 	const commonProps = {
+		badge: beverageData.label.badge,
 		shortId: generateShortId(),
 		added: new Date()
 	};

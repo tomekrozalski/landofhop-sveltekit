@@ -393,6 +393,27 @@ function detailsNormalizer(
 				editorial: beverage.editorial.impressions.clarity
 			})
 		},
+		ratings: {
+			...(beverage.editorial?.ratings?.rateBeer?.quantity && {
+				rateBeer: {
+					quantity: beverage.editorial.ratings.rateBeer.quantity,
+					value: beverage.editorial.ratings.rateBeer.value
+				}
+			}),
+			...(beverage.editorial?.ratings?.untappd?.quantity && {
+				untappd: {
+					quantity: beverage.editorial.ratings.untappd.quantity,
+					value: beverage.editorial.ratings.untappd.value
+				}
+			}),
+			...(beverage.editorial?.ratings?.total?.quantity && {
+				total: {
+					quantity: beverage.editorial.ratings.total.quantity,
+					value: beverage.editorial.ratings.total.value,
+					date: format(new Date(beverage.editorial.ratings.total.date), DateFormat[desiredLanguage])
+				}
+			})
+		},
 		container: {
 			color: beverage.label.container.color,
 			material: beverage.label.container.material,
@@ -478,6 +499,7 @@ function detailsNormalizer(
 			'temperature',
 			'color',
 			'clarity',
+			'ratings',
 			'price',
 			'photos'
 		],

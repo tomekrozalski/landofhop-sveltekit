@@ -1,0 +1,39 @@
+<script lang="ts">
+	import { translate } from 'svelte-intl';
+	import { fade } from 'svelte/transition';
+	import { goto } from '$app/navigation';
+	import type { Details } from '$lib/utils/types/Beverage/Details';
+	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
+	import Button from '$lib/elements/form/button.svelte';
+	import Remove from './remove.svelte';
+	import UpdateRatings from './updateRatings.svelte';
+
+	export let adminData: AdminNotes;
+	export let details: Details;
+	const params = `${details.shortId}/${details.brand.badge}/${details.badge}`;
+
+	function updateBeverage() {
+		goto(`/dashboard/update-beverage/${params}`);
+	}
+
+	function updateBeverageImages() {
+		goto(`/dashboard/update-beverage-photos/${params}`);
+	}
+</script>
+
+<div class="buttons" in:fade>
+	<Button handleClick={updateBeverage}>{$translate('beverage.adminBar.updateContent')}</Button>
+	<Button handleClick={updateBeverageImages}>{$translate('beverage.adminBar.updateImages')}</Button>
+	{#if adminData.ratings}
+		<UpdateRatings {adminData} {details} />
+	{/if}
+	<Remove {details} />
+</div>
+
+<style>
+	.buttons {
+		display: flex;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+</style>
