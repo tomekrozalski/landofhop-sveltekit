@@ -1,24 +1,31 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
+	import { translate } from 'svelte-intl';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
 	export let details: Details;
+
+	const { rateBeer, total, untappd } = details.ratings;
 </script>
 
 <footer transition:slide>
 	<ul>
-		{#if details.rateBeer}
+		{#if rateBeer}
 			<li>
-				RateBeer:<br /><strong>{details.rateBeer.value}</strong> ({details.rateBeer.quantity} głosów)
+				RateBeer:<br />
+				<strong>{rateBeer.value.toLocaleString('pl', { maximumFractionDigits: 2 })}</strong>
+				({$translate('beverage.rating.quantity', { value: rateBeer.quantity })})
 			</li>
 		{/if}
-		{#if details.untappd}
+		{#if untappd}
 			<li>
-				Untappd:<br /><strong>{details.untappd.value}</strong> ({details.untappd.quantity} głosów)
+				Untappd:<br />
+				<strong>{untappd.value.toLocaleString('pl', { maximumFractionDigits: 2 })}</strong>
+				({$translate('beverage.rating.quantity', { value: untappd.quantity })})
 			</li>
 		{/if}
 	</ul>
-	<div>ostatnia aktualizacja 22.06.2022</div>
+	<div>{$translate('beverage.rating.updatedAt', { value: total.date })}</div>
 </footer>
 
 <style>

@@ -18,23 +18,24 @@ async function updateRateBeerRating(rateBeerid: string, beverageShortId: string)
 		const { data } = await response.json();
 		const { beverages } = await getDbCollections();
 
+		const quantity = data.beer.ratingsCount;
+		const value = Number((Math.round(data.beer.averageQuickRating * 100000) / 100000).toFixed(5));
+
 		await beverages.updateOne(
 			{ shortId: beverageShortId },
 			{
 				$set: {
-					'editorial.ratings.rateBeer.quantity': data.beer.ratingsCount,
-					'editorial.ratings.rateBeer.value': Number(
-						(Math.round(data.beer.averageQuickRating * 100000) / 100000).toFixed(5)
-					),
+					'editorial.ratings.rateBeer.quantity': quantity,
+					'editorial.ratings.rateBeer.value': value,
 					'editorial.ratings.rateBeer.date': new Date()
 				}
 			}
 		);
 
-		return true;
+		return { quantity, value };
 	} catch (e) {
 		console.error(e.message);
-		return false;
+		return null;
 	}
 }
 

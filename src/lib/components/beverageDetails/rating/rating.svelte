@@ -2,21 +2,18 @@
 	import { translate } from 'svelte-intl';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import RatingDetails from './ratingDetails.svelte';
+	import Stars from './stars.svelte';
 
 	export let details: Details;
 	let isDetailsOpened = false;
+
+	const { total } = details.ratings;
 </script>
 
 <section>
 	<header>
 		<h3>{$translate('beverage.rating')}</h3>
-		<ul>
-			<li>★</li>
-			<li>★</li>
-			<li>★</li>
-			<li class="nie">★</li>
-			<li class="nie">★</li>
-		</ul>
+		<Stars score={total.value} />
 	</header>
 	{#if isDetailsOpened}
 		<RatingDetails {details} />
@@ -39,26 +36,22 @@
 		background-color: var(--color-brand-6);
 		color: var(--color-white);
 		text-align: center;
+		position: relative;
+		cursor: pointer;
+	}
+
+	header:hover :global(strong) {
+		opacity: 1;
+	}
+
+	header:hover :global(ul) {
+		opacity: 0;
 	}
 
 	h3 {
-		margin: 0 0 0.5rem 0;
+		margin: 0 0 1rem 0;
 		font-size: 1.4rem;
 		font-weight: var(--font-weight-regular);
-	}
-
-	ul {
-		display: flex;
-		justify-content: center;
-	}
-
-	li {
-		font-size: 3rem;
-		color: var(--color-white);
-	}
-
-	li.nie {
-		opacity: 0.3;
 	}
 
 	button {

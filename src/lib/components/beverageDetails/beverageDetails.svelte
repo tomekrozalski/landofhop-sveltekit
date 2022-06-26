@@ -31,7 +31,9 @@
 	</div>
 	<aside>
 		<Navigation {next} {previous} />
-		<Rating {details} />
+		{#if details.ratings}
+			<Rating {details} />
+		{/if}
 	</aside>
 </article>
 
