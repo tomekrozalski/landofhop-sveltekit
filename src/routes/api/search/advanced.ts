@@ -18,6 +18,7 @@ export async function post({ request }) {
 		const ingredientsDescendants = [];
 
 		async function getDescendants(parent) {
+			ingredientsDescendants.push(parent);
 			const descendants = await ingredients.find({ parent }).toArray();
 
 			for await (const { badge } of descendants) {

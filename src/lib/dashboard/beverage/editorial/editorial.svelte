@@ -43,6 +43,7 @@
 		validationSchema: getValidationSchema($translate),
 		onSubmit: onSubmit(getContext('formType'), params)
 	});
+	const { isSubmitting } = formData;
 </script>
 
 {#if isActive}
@@ -117,7 +118,7 @@
 			<Button handleClick={() => page.set('producer')} isSecondary>
 				{$translate('dashboard.button.moveBack')}
 			</Button>
-			<Button isIrreversible type="submit">
+			<Button isIrreversible isSubmitting={$isSubmitting} type="submit">
 				{$translate('dashboard.button.save')}
 			</Button>
 		</ButtonWrapper>

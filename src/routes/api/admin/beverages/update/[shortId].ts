@@ -4,6 +4,7 @@ import type {
 	RawBeverageWithoutId
 } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 import type { RawEditorialPhotos } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
+import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 
 export async function put({ locals, params, request }) {
 	const { shortId } = params;
@@ -26,12 +27,20 @@ export async function put({ locals, params, request }) {
 					added: Date;
 					badge: string;
 					photos?: RawEditorialPhotos;
+					ratings?: RawRatings;
 			  }
 			| undefined;
 
 		const updatingBeverage: UpdatingBeverageTypes = await beverages.findOne(
 			{ shortId },
-			{ projection: { added: 1, badge: 1, photos: '$editorial.photos' } }
+			{
+				projection: {
+					added: 1,
+					badge: 1,
+					photos: '$editorial.photos',
+					ratings: '$editorial.ratings'
+				}
+			}
 		);
 
 		if (!updatingBeverage) {
@@ -52,7 +61,8 @@ export async function put({ locals, params, request }) {
 				added: updatingBeverage.added,
 				updated: new Date()
 			},
-			updatingBeverage.photos
+			updatingBeverage.photos,
+			updatingBeverage.ratings
 		);
 
 		await beverages.replaceOne({ shortId }, formattedBeverage as RawBeverage);

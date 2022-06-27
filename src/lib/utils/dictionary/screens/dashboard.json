@@ -138,6 +138,7 @@
 		"dashboard.navigation.moveToBeveragePhotosUpdate": "Move to beverage photos update form",
 		"dashboard.navigation.moveToBeverageUpdate": "Move to beverage update form",
 		"dashboard.navigation.moveToDetails": "Move to beverage details",
+		"dashboard.ratings.search": "search",
 		"dashboard.select.placeholder.agedPreviousContent": "select previous content of barrel / wood",
 		"dashboard.select.placeholder.containerColor": "color",
 		"dashboard.select.placeholder.containerType": "type",
@@ -165,7 +166,8 @@
 		"form.validation.minChars": "Minimum allowed chars are {value}",
 		"form.validation.max": "Maximum value: {value}",
 		"form.validation.typeErrorNumber": "Number required",
-		"form.validation.wrongDate": "Wrong date value"
+		"form.validation.wrongDate": "Wrong date value",
+		"form.validation.wrongSlugFormat": "Wrong slug format"
 	},
 	"pl": {
 		"dashboard.addNewIngredient": "Dodaj nowy składnik",
@@ -305,6 +307,7 @@
 		"dashboard.navigation.moveToBeveragePhotosUpdate": "Idź do formularza poprawiania zdjęć piwa",
 		"dashboard.navigation.moveToBeverageUpdate": "Idź do formularza poprawiania piwa",
 		"dashboard.navigation.moveToDetails": "Idź do strony detali piwa",
+		"dashboard.ratings.search": "szukaj",
 		"dashboard.select.placeholder.agedPreviousContent": "wybierz poprzednią zawartość beczki / drewna",
 		"dashboard.select.placeholder.containerColor": "kolor",
 		"dashboard.select.placeholder.containerType": "typ",
@@ -332,6 +335,7 @@
 		"form.validation.minChars": "Wymagane minimum {value} znaków",
 		"form.validation.max": "Maksymalna wartość: {value}",
 		"form.validation.typeErrorNumber": "Wymagana cyfra",
-		"form.validation.wrongDate": "Błędny format daty"
+		"form.validation.wrongDate": "Błędny format daty",
+		"form.validation.wrongSlugFormat": "Błędny format"
 	}
 }

@@ -3,11 +3,13 @@ import type { NewBeverageRequest } from '$lib/utils/types/api/requests/Beverage'
 import type { RawCommonBasicsBeverage } from '$lib/utils/types/api/RawBasics.d';
 import type { RawBeverageWithoutId } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 import type { RawEditorialPhotos } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
+import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 
 function formatBeverage(
 	{ editorial, label, producer }: NewBeverageRequest,
 	commonProps: RawCommonBasicsBeverage,
-	photos?: RawEditorialPhotos
+	photos?: RawEditorialPhotos,
+	ratings?: RawRatings
 ) {
 	return cleanDeep({
 		label: {
@@ -126,11 +128,14 @@ function formatBeverage(
 			},
 			ratings: {
 				rateBeer: {
+					...(ratings?.rateBeer ?? {}),
 					beverageId: editorial?.rateBeer
 				},
 				untappd: {
+					...(ratings?.untappd ?? {}),
 					beverageSlug: editorial?.untappd
-				}
+				},
+				...(ratings?.total && { total: ratings.total })
 			},
 			price: editorial?.price?.map((props) => ({
 				...props,

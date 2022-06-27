@@ -107,13 +107,22 @@ export function getValidationSchema(translate) {
 				translate('form.validation.required'),
 				(value) => value === null || value.toString().length
 			)
-			.test('is-valid', translate('form.validation.numeric'), (value) => !isNaN(+value)),
+			.test(
+				'is-valid',
+				translate('form.validation.numeric'),
+				(value) => value === null || !isNaN(+value)
+			),
 		untappd: yup
 			.mixed()
 			.test(
 				'is-valid',
 				translate('form.validation.required'),
 				(value) => value === null || value.length
+			)
+			.test(
+				'is-valid',
+				translate('form.validation.wrongSlugFormat'),
+				(value) => value === null || value.match(/\/[\w-]+\/\d+/)
 			),
 		// -----------
 		price: yup.array().of(

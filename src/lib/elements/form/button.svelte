@@ -16,7 +16,7 @@
 	class:isSecondary
 	class:isSubmitting
 	class:isWarning
-	{disabled}
+	disabled={disabled || isSubmitting}
 	on:click={handleClick}
 	{type}
 >
@@ -82,12 +82,12 @@
 		color: var(--color-black);
 	}
 
-	button.isIrreversible:hover {
+	button.isIrreversible:not(.isSubmitting):hover {
 		background-color: var(--color-grey-4);
 		color: var(--color-black);
 	}
 
-	button.isIrreversible:hover :global(.icon-database) {
+	button.isIrreversible:not(.isSubmitting):hover :global(.icon-database) {
 		fill: var(--color-black);
 	}
 

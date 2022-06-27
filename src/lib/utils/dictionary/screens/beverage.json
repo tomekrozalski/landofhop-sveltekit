@@ -146,7 +146,7 @@
 		"beverage.longConjunction": "oraz",
 		"beverage.rating": "Ocena społeczności",
 		"beverage.rating.hideDetails": "schowaj szczegóły",
-		"beverage.rating.quantity": "{value} głosów",
+		"beverage.rating.quantity": "{value} {value, plural, one {głos} few {głosy} other {głosów}}",
 		"beverage.rating.showDetails": "pokaż szczegóły",
 		"beverage.rating.updatedAt": "ostatnia aktualizacja {value}",
 		"beverage.shortConjunction": "i",
