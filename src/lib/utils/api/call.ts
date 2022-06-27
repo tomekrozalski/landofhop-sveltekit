@@ -6,7 +6,7 @@ export enum Endpoints {
 	addIngredient = '/api/admin/ingredients',
 	addInstitution = '/api/admin/institutions',
 	addPlace = '/api/admin/places',
-	addStyle = '/apid/admin/styles',
+	addStyle = '/api/admin/styles',
 	advancedSearch = '/api/search/advanced',
 	beverageAdminNotes = '/api/admin/beverages/notes',
 	beverageBasics = '/api/basics/list',

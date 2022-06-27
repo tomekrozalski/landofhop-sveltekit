@@ -7,7 +7,7 @@ export function onSubmit(close) {
 		const formattedValues = formatValues(values);
 
 		const updatedStyles = await apiCall(fetch, Endpoints.addStyle, {
-			method: 'PUT',
+			method: 'POST',
 			body: JSON.stringify(formattedValues)
 		});
 

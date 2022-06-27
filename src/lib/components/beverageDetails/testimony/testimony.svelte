@@ -53,17 +53,31 @@
 	dl {
 		grid-area: testimony;
 		display: grid;
-		grid-template-columns: 1fr 2fr;
-		grid-column-gap: 2rem;
+		grid-template-columns: 1fr;
 		margin: 3rem 0 1.8rem 0;
-	}
-
-	dl :global(dt) {
-		text-align: right;
-		white-space: nowrap;
 	}
 
 	dl :global(dt::after) {
 		content: ':';
+	}
+
+	dl :global(dd) {
+		margin-bottom: 1rem;
+	}
+
+	@media (--lg) {
+		dl {
+			grid-template-columns: 1fr 2fr;
+			grid-column-gap: 2rem;
+		}
+
+		dl :global(dt) {
+			white-space: nowrap;
+			text-align: right;
+		}
+
+		dl :global(dd) {
+			margin-bottom: 0;
+		}
 	}
 </style>

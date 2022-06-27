@@ -88,17 +88,8 @@
 	}
 
 	article :global(dd) {
-		margin: 0;
+		margin-left: 0;
 		padding: 0;
-	}
-
-	@media (--md) {
-		article {
-			grid-template-columns: 22rem 1fr 1fr;
-			grid-template-areas:
-				'navigation navigation navigation'
-				'gallery main main';
-		}
 	}
 
 	@media (--lg) {
