@@ -34,6 +34,7 @@
 		grid-area: navigation;
 		display: flex;
 		justify-content: center;
+		margin-top: 2rem;
 		margin-bottom: 2rem;
 	}
 
@@ -82,8 +83,9 @@
 	@media (--lg) {
 		nav {
 			justify-content: center;
+			margin-top: 0;
 			margin-bottom: 0;
-			padding: 1rem;
+			padding: 0 1rem 1rem 1rem;
 		}
 
 		a,

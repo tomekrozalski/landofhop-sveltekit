@@ -2,6 +2,7 @@ import { detailsNormalizer, getDbCollections } from '$lib/utils/api';
 import type { LinkData } from '$lib/utils/types/Beverage/LinkData.d';
 import type { Details } from '$lib/utils/types/Beverage/Details';
 import countryList from '$lib/utils/api/countryList';
+import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 
 export async function get({ params }) {
@@ -22,6 +23,8 @@ export async function get({ params }) {
 
 	const previousBasics: LinkData[] = [];
 	const nextBasics: LinkData[] = [];
+
+	const beveragesBefore = await basics.find({ added: { $gt: beverage.added } }).count();
 
 	await basics
 		.find({ added: { $lt: beverage.added } })
@@ -49,6 +52,7 @@ export async function get({ params }) {
 
 	return {
 		body: {
+			listPage: Math.ceil((beveragesBefore + 1) / BEVERAGES_ON_PAGE),
 			previous: previousBasics.length ? previousBasics[0] : null,
 			details: formattedDetails,
 			next: nextBasics.length ? nextBasics[0] : null

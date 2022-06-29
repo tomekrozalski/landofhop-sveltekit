@@ -25,15 +25,17 @@
 </script>
 
 <script lang="ts">
-	import { translations } from 'svelte-intl';
+	import { translate, translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/screens/beverage.json';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
+	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
 	import BeverageDetails from '$lib/components/beverageDetails/beverageDetails.svelte';
 
 	translations.update(dictionary);
 
+	export let listPage: number;
 	export let details: Details;
 	export let next: LinkData | null;
 	export let previous: LinkData | null;
@@ -46,6 +48,17 @@
 
 {#if details}
 	{#key details.shortId}
+		<Breadcrumbs
+			steps={[
+				{
+					label: $translate('beverage.breadcrumbs.list', { listPage }),
+					link: `/list/${listPage}`
+				},
+				{
+					label: $translate('beverage.breadcrumbs.details')
+				}
+			]}
+		/>
 		<BeverageDetails {details} {next} {previous} />
 	{/key}
 {/if}

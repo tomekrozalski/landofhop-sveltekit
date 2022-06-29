@@ -40,13 +40,19 @@
 </script>
 
 <script lang="ts">
+	import { translate, translations } from 'svelte-intl';
+	import dictionary from '$lib/utils/dictionary/screens/landingPage.json';
+
 	export let order: number;
 	export let beverages: Basics[];
 	export let total: number;
 
+	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
 	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
 	import Pagination from '$lib/components/beverageList/pagination/pagination.svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
+
+	translations.update(dictionary);
 </script>
 
 <svelte:head>
@@ -54,5 +60,6 @@
 	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
+<Breadcrumbs steps={[{ label: $translate('landingPage.breadcrumbs', { order }) }]} />
 <BeverageList {beverages} />
 <Pagination {order} {total} />
