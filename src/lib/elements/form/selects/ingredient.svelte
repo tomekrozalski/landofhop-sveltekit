@@ -37,12 +37,12 @@
 
 	$: items = $ingredientsStore
 		.filter(({ type }) => (filter ? type === filter : true))
+		.sort((a, b) => (a.occurrences.alone > b.occurrences.alone ? -1 : 1))
 		.map(({ badge, name, type }) => ({
 			label: getFromArray(name, 'pl' as AppLanguage).value,
 			value: badge,
 			type
-		}))
-		.sort((a, b) => (a.label < b.label ? -1 : 1));
+		}));
 </script>
 
 {#if value !== null && !items.length}
