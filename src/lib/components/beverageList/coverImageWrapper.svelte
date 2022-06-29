@@ -27,6 +27,7 @@
 <a
 	href="/details/{beverage.shortId}/{beverage.brand.badge}/{beverage.badge}"
 	style:padding-top="{(coverImage?.height / coverImage?.width) * 100}%"
+	aria-label="{name.value}, {brand.name.value}"
 >
 	{#if !loaded && coverImage?.outline}
 		<span class="outline-wrapper" transition:toggleVisibility>

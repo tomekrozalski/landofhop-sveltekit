@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { translate} from 'svelte-intl';
+	import LeftIcon from '$lib/elements/vectors/left.svelte';
+	import RightIcon from '$lib/elements/vectors/right.svelte';
+
 	export let action: (e: Event) => void = () => {};
 	export let active: boolean = false;
 	export let current: boolean = false;
@@ -16,7 +20,13 @@
 		this={tag}
 		{...$$restProps}
 	>
-		{label}
+		{#if label === '←'}
+			<LeftIcon>{$translate('global.pagination.previous')}</LeftIcon>
+		{:else if label === '→'}
+			<RightIcon>{$translate('global.pagination.next')}</RightIcon>
+		{:else}
+			{label}
+		{/if}
 	</svelte:element>
 </li>
 
@@ -38,6 +48,12 @@
 		cursor: pointer;
 	}
 
+	.pagination-element :global(svg) {
+		width: 1.2rem;
+		height: 1.2rem;
+		fill: var(--color-white);
+	}
+
 	.pagination-element:hover:not(.inactive),
 	.pagination-element:focus:not(.inactive) {
 		background-color: var(--color-white);
@@ -53,6 +69,10 @@
 		background-color: var(--color-grey-4);
 		color: var(--color-black);
 		transition: background-color var(--transition-default), color var(--transition-default);
+	}
+
+	.active :global(svg) {
+		fill: var(--color-black);
 	}
 
 	.inactive {
@@ -79,7 +99,6 @@
 
 	@media (--lg) {
 		.pagination-element {
-			display: inline-block;
 			padding: 0.5rem 1rem;
 		}
 	}
