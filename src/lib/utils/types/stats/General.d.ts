@@ -13,6 +13,11 @@ export type AlcoholChartBar = {
 	beverages: number;
 };
 
+export type RatingsChartBar = {
+	value: number;
+	beverages: number;
+};
+
 export type FermentationTimelineBar = {
 	date: string;
 	[Fermentation.top]: number;
@@ -36,6 +41,7 @@ export type GeneralStats = {
 	addTimelineData: AddTimelineBar[];
 	alcoholChartData: AlcoholChartBar[];
 	fermentationTimelineData: FermentationTimelineBar[];
+	ratingsChartData: RatingsChartBar[];
 	topBrandsTimelineData: TopBrandsTimelineBar[];
 	morePopularBrandsData: Brand[];
 };

@@ -16,12 +16,12 @@ export type RawGeneralStats = {
 		shortId: string;
 		name: LanguageValue;
 	};
-	fermentation: {
+	fermentation?: {
 		label?: Fermentation[];
 		producer?: Fermentation[];
 		editorial?: Fermentation[];
 	};
-	extract: {
+	extract?: {
 		label?: {
 			relate: ExtractRelate;
 			unit: ExtractUnit;
@@ -33,7 +33,7 @@ export type RawGeneralStats = {
 			value: number;
 		};
 	};
-	alcohol: {
+	alcohol?: {
 		label?: {
 			relate: AlcoholRelate;
 			unit: AlcoholUnit;
@@ -50,6 +50,7 @@ export type RawGeneralStats = {
 			scope: AlcoholScope;
 		};
 	};
+	ratings?: number;
 	container: {
 		type: ContainerType;
 	};

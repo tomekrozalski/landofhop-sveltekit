@@ -38,6 +38,7 @@ export async function get({ params }) {
 					'producer.brewing.alcohol': 1,
 					'editorial.brewing.alcohol': 1,
 					'label.container.type': 1,
+					'editorial.ratings.total.value': 1,
 					added: 1
 				}
 			}
@@ -64,6 +65,7 @@ export async function get({ params }) {
 					producer: formatValue(producer?.brewing?.alcohol),
 					editorial: editorial?.brewing?.alcohol
 				},
+				ratings: editorial?.ratings?.total?.value,
 				container: {
 					type: label.container.type
 				},
@@ -82,7 +84,8 @@ export async function get({ params }) {
 					'alcohol.label',
 					'alcohol.producer',
 					'alcohol.editorial',
-					'alcohol'
+					'alcohol',
+					'ratings'
 				],
 				data
 			);
