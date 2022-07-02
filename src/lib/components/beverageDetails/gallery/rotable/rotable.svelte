@@ -51,17 +51,15 @@
 	}
 
 	function rotate() {
-		setTimeout(() => {
-			turnRight();
+		turnRight();
 
-			if (currentlyVisibleImageIndex !== 1) {
-				rotate();
-			}
-		}, 15);
+		if (currentlyVisibleImageIndex !== 1) {
+			requestAnimationFrame(rotate);
+		}
 	}
 
 	$: if (areImagesLoaded) {
-		rotate();
+		requestAnimationFrame(rotate);
 	}
 </script>
 
