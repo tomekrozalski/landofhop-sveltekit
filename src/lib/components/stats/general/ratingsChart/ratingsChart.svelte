@@ -52,7 +52,7 @@
 			{innerWidth}
 			label={$translate('stats.general.ratings.ratings')}
 			{xScale}
-			xScaleTicks={xScale.domain().filter((_, i) => !(i % 2))}
+			xScaleTicks={xScale.domain()}
 		/>
 		<Yaxis {innerWidth} {yScale} />
 		<Bars {ratingsChartData} {innerHeight} {xScale} {xValue} {yValue} {yScale} />
