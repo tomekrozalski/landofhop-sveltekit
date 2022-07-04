@@ -17,8 +17,6 @@
 		grid-column: 2/3;
 		display: flex;
 		flex-wrap: wrap;
-		margin-bottom: 2rem;
-		border-bottom: 0.1rem dashed var(--color-grey-1);
 		padding: 2rem 0;
 	}
 

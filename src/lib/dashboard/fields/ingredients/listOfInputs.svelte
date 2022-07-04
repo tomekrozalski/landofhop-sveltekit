@@ -1,7 +1,6 @@
 <script lang="ts">
 	import TextInput from '$lib/elements/form/textInput.svelte';
 	import Button from './actionButton.svelte';
-	import Header from './itemHeader.svelte';
 
 	export let i: number;
 	export let formData: any;
@@ -25,31 +24,28 @@
 	}
 </script>
 
-<div>
-	<Header language={$form.ingredients[i].language} />
-	<ul>
-		{#each $form.ingredients[i].list as _, j}
-			<li>
-				<TextInput
-					errors={$errors.ingredients?.[i]?.list?.[j]}
-					fieldName={`ingredients[${i}].list[${j}]`}
-					focusOnMount={j === $form.ingredients[i].list.length - 1}
-					{handleChange}
-					isTouched={$touched.ingredients?.[i]?.list?.[j]}
-					onEnter={j === $form.ingredients[i].list.length - 1 ? addNewRow : null}
-					value={$form.ingredients[i].list[j]}
-				/>
-				{#if j !== 0}
-					<Button isRemove onClick={removeRow(j)} />
-				{/if}
-			</li>
-		{/each}
-	</ul>
-	<Button isAdd onClick={addNewRow} />
-</div>
+<ul>
+	{#each $form.ingredients[i].list as _, j}
+		<li>
+			<TextInput
+				errors={$errors.ingredients?.[i]?.list?.[j]}
+				fieldName={`ingredients[${i}].list[${j}]`}
+				focusOnMount={j === $form.ingredients[i].list.length - 1}
+				{handleChange}
+				isTouched={$touched.ingredients?.[i]?.list?.[j]}
+				onEnter={j === $form.ingredients[i].list.length - 1 ? addNewRow : null}
+				value={$form.ingredients[i].list[j]}
+			/>
+			{#if j !== 0}
+				<Button isRemove onClick={removeRow(j)} />
+			{/if}
+		</li>
+	{/each}
+</ul>
+<Button isAdd onClick={addNewRow} />
 
 <style>
-	div {
+	ul {
 		grid-column: 2/3;
 	}
 

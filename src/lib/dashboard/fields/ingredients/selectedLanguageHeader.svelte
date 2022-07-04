@@ -7,10 +7,11 @@
 
 <style>
 	h5 {
+		grid-column: 2/3;
 		font-size: 1.8rem;
 		line-height: var(--size-input-height);
 		font-weight: var(--font-weight-light);
-		margin: 0 0 1rem 0;
+		margin: 0;
 		background-color: var(--color-grey-5);
 		padding-right: 2rem;
 		text-align: right;
