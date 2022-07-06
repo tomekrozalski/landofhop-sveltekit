@@ -36,6 +36,7 @@
 		justify-content: center;
 		margin-top: 2rem;
 		margin-bottom: 2rem;
+		gap: 1rem;
 	}
 
 	a,

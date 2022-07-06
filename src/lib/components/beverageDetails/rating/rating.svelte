@@ -11,7 +11,7 @@
 </script>
 
 <section>
-	<header>
+	<header class:isDetailsOpened>
 		<h3>{$translate('beverage.rating')}</h3>
 		<Stars score={total.value} />
 	</header>
@@ -40,10 +40,12 @@
 		cursor: pointer;
 	}
 
+	header.isDetailsOpened :global(strong),
 	header:hover :global(strong) {
 		opacity: 1;
 	}
 
+	header.isDetailsOpened :global(ul),
 	header:hover :global(ul) {
 		opacity: 0;
 	}

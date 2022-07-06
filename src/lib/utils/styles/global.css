@@ -45,9 +45,11 @@ h2 {
 }
 
 button {
+	margin: 0;
 	border: none;
-	font: inherit;
 	background: inherit;
+	font: inherit;
+	color: var(--color-black);
 	cursor: pointer;
 }
 

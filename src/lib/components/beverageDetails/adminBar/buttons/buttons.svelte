@@ -33,7 +33,14 @@
 <style>
 	.buttons {
 		display: flex;
+		flex-direction: column;
 		gap: 1rem;
 		margin-bottom: 1rem;
+	}
+
+	@media (--xl) {
+		.buttons {
+			flex-direction: row;
+		}
 	}
 </style>
