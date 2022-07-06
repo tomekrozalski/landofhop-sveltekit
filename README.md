@@ -40,17 +40,49 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Testing
-
-@ToDo
-
-## Stack details
-
-@ToDo
-
 ## Folder structure
 
-@ToDo
+Let's start from the root folder:
+
+```
+.
+├── 📁 .vscode
+├── 📁 src
+├── 📁 static
+├── .env.sample
+├── .eslintrc.cjs
+├── .gitignore
+├── .npmrc
+├── .prettierignore
+├── .prettierrc
+├── CHANGELOG.md
+├── README.md
+├── package-lock.json
+├── package.json
+├── postcss.config.cjs
+├── svelte.config.js
+└── tsconfig.json
+```
+
+We can see here mostly configuration files for ESLint, Prettier, PostCSS, SvelteKit and TypeScript. Nothing fancy, everything is set as simple as possible. SvelteKit is setup with `@sveltejs/adapter-node`. `.vscode` folder contains settings for my local Visual Studio Code, you can ignore it. `static` folder contains static files for the application: favicons, fonts, `robots.txt` and `manifest.json` files. Again, standards. The fun starts in `src` folder:
+
+```
+📁 src
+├── 📁 lib
+├── 📁 routes
+├── app.d.ts
+├── app.html
+└── hooks.ts
+```
+
+`app.d.ts` is global TypeScript file where I define types for `locals` and `session` properties. `locals` has `authenticated` as `true` or `false`, `session` quite the same, but instead `authenticated` it is `isLoggedIn`. We will get to there. `app.html` is standard root SvelteKit HTML file. I did not change it. `hooks.ts` is the first file I wrote. I do two things inside it:
+
+- set up code minification for production build,
+- check for authentication cookies (with JWT), if they exists I validate them, pass to `getSession` and pass further as `isLoggedIn`
+
+`app.d.ts` is now more understandable, isn't it? `routes` is folder with all routes and `lib` contains everything else, most of the code: components, utils etc. Let's start from `routes` though.
+
+WIP
 
 ## Live preview
 
