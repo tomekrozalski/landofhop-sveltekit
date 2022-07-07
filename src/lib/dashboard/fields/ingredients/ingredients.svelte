@@ -61,7 +61,7 @@
 				<ToggleList bind:hidden {language} type="show" />
 			<!-- the language data is not hidden -->
 			{:else}
-				<div transition:slide>
+				<div transition:slide|local>
 					<ListOfInputs {formData} {i} />
 					<IsListComplete
 						fieldName={`ingredients.${i}.complete`}

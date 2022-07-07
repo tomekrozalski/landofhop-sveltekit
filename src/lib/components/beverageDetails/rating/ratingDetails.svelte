@@ -8,7 +8,7 @@
 	const { rateBeer, total, untappd } = details.ratings;
 </script>
 
-<footer transition:slide>
+<footer transition:slide|local>
 	<ul>
 		{#if rateBeer}
 			<li>
