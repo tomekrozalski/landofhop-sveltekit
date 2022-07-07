@@ -6,10 +6,12 @@
 	export const prerender = true;
 
 	export async function load({ fetch }) {
-		const total: number = await apiCall(fetch, Endpoints.beverageTotal);
-		const beverages: Basics[] = await apiCall(fetch, Endpoints.beverageBasics, {
-			pathParams: ['pl', 0, BEVERAGES_ON_PAGE]
-		});
+		const [total, beverages]: [number, Basics[]] = await Promise.all([
+			apiCall(fetch, Endpoints.beverageTotal),
+			apiCall(fetch, Endpoints.beverageBasics, {
+				pathParams: ['pl', 0, BEVERAGES_ON_PAGE]
+			})
+		]);
 
 		return {
 			props: {

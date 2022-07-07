@@ -1,9 +1,9 @@
 <script lang="ts">
 	import navigation from '$lib/utils/stores/navigation';
 
-	import Header from './header/header.svelte';
-	import Navigation from './navigation/navigation.svelte';
-	import Login from './login/login.svelte';
+	import Header from './Header/Header.svelte';
+	import Navigation from './Navigation/Navigation.svelte';
+	import Login from './Login/Login.svelte';
 </script>
 
 <Header />

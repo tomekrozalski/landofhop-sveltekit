@@ -17,8 +17,8 @@
 	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
 	import '$lib/utils/styles/global.css';
-	import Topbar from '$lib/components/topbar/topbar.svelte';
-	import Main from '$lib/components/main.svelte';
+	import Topbar from '$lib/components/Topbar/Topbar.svelte';
+	import Main from '$lib/components/Main.svelte';
 
 	translations.update(globalDictionary);
 	translations.update(topbarDictionary);

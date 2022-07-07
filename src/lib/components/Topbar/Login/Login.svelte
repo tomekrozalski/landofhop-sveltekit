@@ -6,9 +6,9 @@
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
-	import ErrorMessage from './errorMessage.svelte';
-	import LoginForm from './loginForm/loginForm.svelte';
-	import SuccessMessage from './successMessage.svelte';
+	import ErrorMessage from './ErrorMessage.svelte';
+	import LoginForm from './LoginForm/LoginForm.svelte';
+	import SuccessMessage from './SuccessMessage.svelte';
 
 	translations.update(loginbarDictionary);
 	translations.update(commonFormsDictionary);

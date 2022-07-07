@@ -78,11 +78,47 @@ We can see here mostly configuration files for ESLint, Prettier, PostCSS, Svelte
 `app.d.ts` is global TypeScript file where I define types for `locals` and `session` properties. `locals` has `authenticated` as `true` or `false`, `session` quite the same, but instead `authenticated` it is `isLoggedIn`. We will get to there. `app.html` is standard root SvelteKit HTML file. I did not change it. `hooks.ts` is the first file I wrote. I do two things inside it:
 
 - set up code minification for production build,
-- check for authentication cookies (with JWT), if they exists I validate them, pass to `getSession` and pass further as `isLoggedIn`
+- check for authentication cookies (with JWT), if they exist I validate them, pass to `getSession` and pass further as `isLoggedIn`
 
 `app.d.ts` is now more understandable, isn't it? `routes` is folder with all routes and `lib` contains everything else, most of the code: components, utils etc. Let's start from `routes` though.
 
-WIP
+```
+📁 routes
+├── 📁 api
+├── 📁 dashboard
+├── 📁 details/[shortId]/[brand]
+├── 📁 list
+├── 📁 stats
+├── __error.svelte
+├── __layout.svelte
+├── about.svelte
+├── advanced-search.svelte
+├── index.svelte
+└── sitemap.xml.ts
+```
+
+`__error.svelte` is a basic SvelteKit 404 page. `__layout.svelte` is a layout, wrapper for all pages where I check authentication status, load some global translations, set favicons in metatags, render `Topbar` and wrap content inside `Main` component. The `Topbar` lives in `src/lib/components/Topbar/` and it is divided into three parts: `Header`, `Navigation` and `Login`.
+
+![enter image description here](https://i.ibb.co/W0nVnbx/topbar.jpg)
+
+Inside `Topbar` -> `Header` we also have `Searchbar`.
+
+![enter image description here](https://i.ibb.co/LRG12kv/searchbar.jpg)
+
+The search input here just passes the search parameter to the URL by `window.history.pushState()`. The place where we listen for search parameter change is `Main`. When we are in search mode, we can see `SearchResults`, otherwise it is regular content (`<slot />`). `Main` also wraps HTML in the `<main>` tag which has defined global styling.
+
+We have here `sitemap.xml.ts` which is site for bots with sitemap: https://hop.land/sitemap.xml. We have all public pages:
+
+- `index.svelte` - main page with last 60 beverages (https://hop.land)
+- `list/[order].svelte` - continuation of main page with beverage listing (https://hop.land/list/2 etc.)
+- `details/[shortId]/[brand]/[badge].svelte` - with beverage details (e.g. https://hop.land/details/54ffw5/trzech-kumpli/pan-ipani)
+- `about.svelte` - about page
+- `advanced-search.svelte` - advanced search page
+- `stats` - all pages related to statistics (e.g. https://hop.land/stats/ingredients/yeast)
+
+Finally we have `api` folder with SvelteKit Endpoints and `dashboard` with admin pages.
+
+🚧 WIP 🚧
 
 ## Live preview
 

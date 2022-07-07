@@ -8,8 +8,8 @@
 	import Status from '$lib/utils/enums/Status.enum';
 	import Button from '$lib/elements/form/button.svelte';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import Email from './email.svelte';
-	import Password from './password.svelte';
+	import Email from './Email.svelte';
+	import Password from './Password.svelte';
 
 	const formName = 'login';
 

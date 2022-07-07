@@ -1,8 +1,8 @@
 <script lang="ts">
 	import navigation from '$lib/utils/stores/navigation';
-	import Magnifier from './magnifier.svelte';
-	import Close from './close.svelte';
-	import SearchInput from './searchInput.svelte';
+	import Magnifier from './Magnifier.svelte';
+	import Close from './Close.svelte';
+	import SearchInput from './SearchInput.svelte';
 </script>
 
 <div class:isSearchBarOpen={$navigation.isSearchbarActive}>

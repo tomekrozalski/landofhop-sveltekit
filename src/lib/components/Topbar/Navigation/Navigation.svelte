@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import Menus from './menus.svelte';
+	import Menus from './Menus.svelte';
 </script>
 
 <nav transition:slide={{ duration: 200, easing: cubicInOut }}>

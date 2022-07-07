@@ -1,8 +1,8 @@
 <script lang="ts">
 	import navigation from '$lib/utils/stores/navigation';
-	import Logo from './logo.svelte';
-	import SearchBar from './searchbar/searchbar.svelte';
-	import NavigationSwitcher from './navigation-switcher.svelte';
+	import Logo from './Logo.svelte';
+	import SearchBar from './Searchbar/Searchbar.svelte';
+	import NavigationSwitcher from './NavigationSwitcher.svelte';
 </script>
 
 <header
