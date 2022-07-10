@@ -12,6 +12,8 @@ The database is MongoDB which stands on paid plan on MongoDB Atlas. I do not use
 
 There is also a kind of database for images: AWS S3. I connect the app with it through Amazon CloudFront.
 
+Static texts do not come from any database, I use `svelte-intl` powered with JSON files (they live in `src/lib/utils/dictionary/` folder).
+
 I use pure CSS with CSS variables. PostCSS is needed only for media-queries variables. I use just one utility library, `lodash-es`. Besides that all other dependencies are used to a limited extent, like `d3` for charts on statistics pages. Most of them are used only in the admin pages (dashboard) to generate slugs (`slugify`, `nanoid`), authenticate (`jsonwebtoken`), save an images (`potrace`, `sharp`, `svgo`, `buffer-image-size`), validate form fields (`yup`), transform dates (`date-fns`) or get data from other services (web scraping with `puppeteer`). I hope that with such simple tools the application is truly scalable.
 
 ## Workspace configuration
@@ -117,6 +119,14 @@ We have here `sitemap.xml.ts` which is site for bots with sitemap: https://hop.l
 - `stats` - all pages related to statistics (e.g. https://hop.land/stats/ingredients/yeast)
 
 Finally we have `api` folder with SvelteKit Endpoints and `dashboard` with admin pages.
+
+The `api` is pretty essential. There are endpoints connecting the database with the front-end application. On public pages I use this endpoints in files in the `routes` folder inside `<script context="module">`, e.g. in the `index.svelte` I request for - through `apiCall()` utility method - `beverageTotal` and `beverageBasics`. I pass this data to the front-end. Beverage basics data are necessary to render links and images of the first 60 beverages. Beverage total, so count of all beverages in the database, is necessary to render pagination. In some cases, for example in `advanced-search.svelte` or some dashboard pages, I do not call for data inside `<script context="module">`. I do it on the front-end side only. Inside the `api` directory there is an `admin` folder. There are endpoints for admin purposes. Inside the `api` directory there is an `admin` folder. There are endpoints for admin purposes, for example to create new beverages in the database or to update an ingredient data. To use them, you need to be logged in.
+
+There are only three pages inside the dashboard so far: add new beverage, update beverage and update beverage photos. Add new beverage looks like:
+
+![](https://i.ibb.co/YpWQK57/Screenshot-2022-07-10-at-15-42-46.png)
+
+It is quite a big form to fulfill data about a beer. I add and update data about brands, ingredients or places by additional pop up forms. There is also a `__layout.svelte` file where I check if a user is authenticated, if not I redirect to the main page.
 
 🚧 WIP 🚧
 
