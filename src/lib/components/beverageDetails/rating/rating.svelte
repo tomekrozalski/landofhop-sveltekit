@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import { Confetti } from 'svelte-confetti';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import RatingDetails from './ratingDetails.svelte';
 	import Stars from './stars.svelte';
@@ -13,6 +14,9 @@
 <section>
 	<header class:isDetailsOpened>
 		<h3>{$translate('beverage.rating')}</h3>
+		{#if total.value >= 4}
+			<Confetti />
+		{/if}
 		<Stars score={total.value} />
 	</header>
 	{#if isDetailsOpened}
@@ -54,6 +58,10 @@
 		margin: 0 0 1rem 0;
 		font-size: 1.4rem;
 		font-weight: var(--font-weight-regular);
+	}
+
+	header :global(.confetti-holder) {
+		left: 50%;
 	}
 
 	button {
