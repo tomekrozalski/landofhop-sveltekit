@@ -25,9 +25,9 @@
 <script lang="ts">
 	import { translate, translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/screens/landingPage.json';
-	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
-	import BeverageList from '$lib/components/beverageList/beverageList.svelte';
-	import Pagination from '$lib/components/beverageList/pagination/pagination.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte';
+	import Pagination from '$lib/components/BeverageList/Pagination/pagination.svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export let beverages: Basics[];

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/label.svelte';
-	import TextInput from '$lib/elements/form/textInput.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
+	import TextInput from '$lib/elements/form/TextInput.svelte';
 
 	export let formName: string;
 	export let formData: any;

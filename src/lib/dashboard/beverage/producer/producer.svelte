@@ -3,9 +3,9 @@
 	import { createForm } from 'svelte-forms-lib';
 
 	// Common elements
-	import ButtonWrapper from '$lib/elements/form/buttonWrapper.svelte';
-	import Button from '$lib/elements/form/button.svelte';
-	import Grid from '$lib/elements/form/grid.svelte';
+	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
+	import Button from '$lib/elements/form/Button.svelte';
+	import Grid from '$lib/elements/form/Grid.svelte';
 	import IngredientTags from '$lib/elements/form/fields/ingredientTags.svelte';
 
 	// Dashboard elements

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TextInput from '$lib/elements/form/textInput.svelte';
+	import TextInput from '$lib/elements/form/TextInput.svelte';
 	import TimeUnitSelect from '$lib/dashboard/elements/selects/aged/time.svelte';
 
 	export let formData: any;

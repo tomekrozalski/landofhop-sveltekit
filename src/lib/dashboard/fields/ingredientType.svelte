@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import IngredientTypeSelect from '$lib/dashboard/elements/selects/ingredientType.svelte';
-	import Label from '$lib/elements/form/label.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
 
 	export let formName: string;
 	export let formData: any;

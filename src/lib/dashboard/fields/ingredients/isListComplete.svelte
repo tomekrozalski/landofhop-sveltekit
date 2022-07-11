@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/label.svelte';
-	import Toggle from '$lib/elements/form/toggle.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
+	import Toggle from '$lib/elements/form/Toggle.svelte';
 
 	export let fieldName: string;
 	export let formName: string;

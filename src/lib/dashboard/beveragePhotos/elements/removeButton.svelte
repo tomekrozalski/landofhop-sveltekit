@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CloseIcon from '$lib/elements/vectors/close.svelte';
+	import CloseIcon from '$lib/elements/vectors/Close.svelte';
 
 	export let removeImage: () => {};
 </script>

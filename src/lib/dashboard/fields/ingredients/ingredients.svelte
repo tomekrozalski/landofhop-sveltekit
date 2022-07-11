@@ -3,7 +3,7 @@
 	import { translate } from 'svelte-intl';
 	import { slide } from 'svelte/transition';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import Label from '$lib/elements/form/label.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
 	import LanguageSelect from '$lib/dashboard/elements/selects/language.svelte';
 	import RemoveButton from '$lib/dashboard/elements/removeButton.svelte';
 	import Plug from '$lib/dashboard/elements/plug.svelte';

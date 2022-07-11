@@ -6,8 +6,8 @@
 		ContainerMaterialCan,
 		ContainerType
 	} from '$lib/utils/enums/Beverage.enum';
-	import Label from '$lib/elements/form/label.svelte';
-	import TextInput from '$lib/elements/form/textInput.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
+	import TextInput from '$lib/elements/form/TextInput.svelte';
 	import ContainerTypeSelect from '$lib/dashboard/elements/selects/container/type.svelte';
 	import ContainerMaterialSelect from '$lib/dashboard/elements/selects/container/material.svelte';
 	import ContainerColorSelect from '$lib/dashboard/elements/selects/container/color.svelte';

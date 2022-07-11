@@ -4,8 +4,8 @@
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
-	import InlineSpinner from '$lib/elements/form/inlineSpinner.svelte';
-	import WarningIcon from '$lib/elements/vectors/warning.svelte';
+	import InlineSpinner from '$lib/elements/form/InlineSpinner.svelte';
+	import WarningIcon from '$lib/elements/vectors/Warning.svelte';
 	import Dropzone from './elements/dropzone/dropzone.svelte';
 	import ContentWrapper from './elements/contentWrapper.svelte';
 	import SavedItem from './elements/savedItem.svelte';

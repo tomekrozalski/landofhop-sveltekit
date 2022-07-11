@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/label.svelte';
-	import TextInput from '$lib/elements/form/textInput.svelte';
-	import Conditional from '$lib/elements/form/conditional.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
+	import TextInput from '$lib/elements/form/TextInput.svelte';
+	import Conditional from '$lib/elements/form/Conditional.svelte';
 	import { institutionStore } from '$lib/utils/stores/selects';
 	import { labelStore } from '$lib/dashboard/utils/stores';
 	import SearchLink from '$lib/dashboard/elements/searchLink.svelte';

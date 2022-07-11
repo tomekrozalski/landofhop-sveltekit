@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/label.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
 	import CountrySelect from '$lib/dashboard/elements/selects/country.svelte';
 
 	export let formName: string;

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/label.svelte';
-	import OpenModal from '$lib/elements/form/openModal.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
+	import OpenModal from '$lib/elements/form/OpenModal.svelte';
 	import PlaceSelect from '$lib/elements/form/selects/place.svelte';
-	import Conditional from '$lib/elements/form/conditional.svelte';
+	import Conditional from '$lib/elements/form/Conditional.svelte';
 	import AddNewPlace from '$lib/dashboard/modals/addNewPlace/addNewPlace.svelte';
 
 	export let formName: string;

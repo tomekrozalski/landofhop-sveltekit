@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/label.svelte';
-	import OpenModal from '$lib/elements/form/openModal.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
+	import OpenModal from '$lib/elements/form/OpenModal.svelte';
 	import IngredientSelect from '$lib/elements/form/selects/ingredient.svelte';
-	import Conditional from '$lib/elements/form/conditional.svelte';
+	import Conditional from '$lib/elements/form/Conditional.svelte';
 	import AddNewIngredient from '$lib/dashboard/modals/addNewIngredient/addNewIngredient.svelte';
 
 	export let admin: boolean = false;

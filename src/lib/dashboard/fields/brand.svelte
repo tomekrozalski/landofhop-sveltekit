@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/label.svelte';
-	import OpenModal from '$lib/elements/form/openModal.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
+	import OpenModal from '$lib/elements/form/OpenModal.svelte';
 	import InstitutionSelect from '$lib/elements/form/selects/institution.svelte';
 	import AddNewInstitution from '$lib/dashboard/modals/addNewInstitution/addNewInstitution.svelte';
 

@@ -4,7 +4,7 @@
 
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
-	import Markdown from '$lib/elements/markdown.svelte';
+	import Markdown from '$lib/elements/Markdown.svelte';
 	import dictionary from '$lib/utils/dictionary/screens/about.json';
 
 	translations.update(dictionary);

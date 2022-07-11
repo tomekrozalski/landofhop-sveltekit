@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import navigation from '$lib/utils/stores/navigation';
-	import SuccessIcon from '$lib/elements/vectors/success.svelte';
+	import SuccessIcon from '$lib/elements/vectors/Success.svelte';
 
 	onMount(() => {
 		setTimeout(() => {

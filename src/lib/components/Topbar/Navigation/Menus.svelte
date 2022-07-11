@@ -3,8 +3,8 @@
 	import { session } from '$app/stores';
 	import Status from '$lib/utils/enums/Status.enum';
 	import navigation from '$lib/utils/stores/navigation';
-	import LockIcon from '$lib/elements/vectors/lock.svelte';
-	import UnlockIcon from '$lib/elements/vectors/unlock.svelte';
+	import LockIcon from '$lib/elements/vectors/Lock.svelte';
+	import UnlockIcon from '$lib/elements/vectors/Unlock.svelte';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 
 	function logOut() {

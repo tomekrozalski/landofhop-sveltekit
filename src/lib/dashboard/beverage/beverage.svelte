@@ -3,7 +3,7 @@
 	import { onDestroy } from 'svelte';
 	import { translate } from 'svelte-intl';
 
-	import Spinner from '$lib/elements/spinners/fullScreen.svelte';
+	import Spinner from '$lib/elements/spinners/FullScreen.svelte';
 	import ProgressList from '$lib/dashboard/elements/progressList/progressList.svelte';
 	import Navigation from '$lib/dashboard/elements/navigation.svelte';
 	import { page } from '$lib/dashboard/utils/stores';

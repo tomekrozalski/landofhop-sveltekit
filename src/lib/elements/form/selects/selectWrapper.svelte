@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Select from 'svelte-select';
 	import { isEmpty } from 'lodash-es';
-	import Error from '$lib/elements/form/error.svelte';
+	import Error from '$lib/elements/form/Error.svelte';
 	import Item from '$lib/elements/form/selects/elements/item.svelte';
 	import MultiSelection from '$lib/elements/form/selects/elements/multiSelection.svelte';
 

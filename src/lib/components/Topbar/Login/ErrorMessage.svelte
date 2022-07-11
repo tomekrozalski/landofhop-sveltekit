@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import navigation from '$lib/utils/stores/navigation';
-	import Button from '$lib/elements/form/button.svelte';
-	import WarningIcon from '$lib/elements/vectors/warning.svelte';
+	import Button from '$lib/elements/form/Button.svelte';
+	import WarningIcon from '$lib/elements/vectors/Warning.svelte';
 	import Status from '$lib/utils/enums/Status.enum';
 
 	const handleClick = () => {

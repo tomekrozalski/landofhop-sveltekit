@@ -37,8 +37,8 @@
 	import { ingredientsStore } from '$lib/utils/stores/selects';
 	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
 	import ingredientsStatsDictionary from '$lib/utils/dictionary/screens/stats/ingredients.json';
-	import StatsWrapper from '$lib/components/stats/elements/wrapper.svelte';
-	import Ingredients from '$lib/components/stats/ingredients/ingredients.svelte';
+	import StatsWrapper from '$lib/components/stats/elements/Wrapper.svelte';
+	import Ingredients from '$lib/components/stats/Ingredients/Ingredients.svelte';
 
 	translations.update(statsDictionary);
 	translations.update(ingredientsStatsDictionary);

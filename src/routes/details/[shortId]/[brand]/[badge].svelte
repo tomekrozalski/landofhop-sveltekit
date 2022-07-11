@@ -30,8 +30,8 @@
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import Breadcrumbs from '$lib/components/breadcrumbs.svelte';
-	import BeverageDetails from '$lib/components/beverageDetails/beverageDetails.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import BeverageDetails from '$lib/components/BeverageDetails/BeverageDetails.svelte';
 
 	translations.update(dictionary);
 

@@ -6,7 +6,7 @@
 	import { session } from '$app/stores';
 	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
-	import Button from '$lib/elements/form/button.svelte';
+	import Button from '$lib/elements/form/Button.svelte';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import Email from './Email.svelte';
 	import Password from './Password.svelte';

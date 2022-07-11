@@ -5,9 +5,9 @@
 	import { page as pageProps } from '$app/stores';
 
 	// Common elements
-	import Button from '$lib/elements/form/button.svelte';
-	import ButtonWrapper from '$lib/elements/form/buttonWrapper.svelte';
-	import Grid from '$lib/elements/form/grid.svelte';
+	import Button from '$lib/elements/form/Button.svelte';
+	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
+	import Grid from '$lib/elements/form/Grid.svelte';
 	import StyleTags from '$lib/elements/form/fields/styleTags.svelte';
 
 	// Dashboard elements

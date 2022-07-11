@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/label.svelte';
-	import TextInput from '$lib/elements/form/textInput.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
+	import TextInput from '$lib/elements/form/TextInput.svelte';
 	import CurrencySelect from '$lib/dashboard/elements/selects/currency.svelte';
 	import ShopSelect from '$lib/dashboard/elements/selects/shop.svelte';
 	import AddButton from '$lib/dashboard/elements/addButton.svelte';

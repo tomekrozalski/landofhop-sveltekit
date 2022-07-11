@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { IngredientType } from '$lib/utils/enums/Beverage.enum';
-	import Label from '$lib/elements/form/label.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
 	import IngredientSelect from '$lib/elements/form/selects/ingredient.svelte';
-	import Conditional from '$lib/elements/form/conditional.svelte';
+	import Conditional from '$lib/elements/form/Conditional.svelte';
 
 	export let formName: string;
 	export let formData: any;

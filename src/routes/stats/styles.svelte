@@ -31,8 +31,8 @@
 	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
 	import stylesStatsDictionary from '$lib/utils/dictionary/screens/stats/styles.json';
 	import styleGroupsDictionary from '$lib/utils/dictionary/lists/styleGroup.json';
-	import StatsWrapper from '$lib/components/stats/elements/wrapper.svelte';
-	import Styles from '$lib/components/stats/styles/styles.svelte';
+	import StatsWrapper from '$lib/components/stats/elements/Wrapper.svelte';
+	import Styles from '$lib/components/stats/Styles/Styles.svelte';
 
 	translations.update(statsDictionary);
 	translations.update(stylesStatsDictionary);

@@ -3,8 +3,8 @@
 	import { createForm } from 'svelte-forms-lib';
 
 	import ModalGrid from '$lib/dashboard/elements/modalGrid.svelte';
-	import ButtonWrapper from '$lib/elements/form/buttonWrapper.svelte';
-	import Button from '$lib/elements/form/button.svelte';
+	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
+	import Button from '$lib/elements/form/Button.svelte';
 	import City from '$lib/dashboard/fields/city.svelte';
 	import Country from '$lib/dashboard/fields/country.svelte';
 	import Institutions from '$lib/dashboard/fields/institutions.svelte';

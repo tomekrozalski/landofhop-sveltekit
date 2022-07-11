@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/label.svelte';
-	import Toggle from '$lib/elements/form/toggle.svelte';
-	import Conditional from '$lib/elements/form/conditional.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
+	import Toggle from '$lib/elements/form/Toggle.svelte';
+	import Conditional from '$lib/elements/form/Conditional.svelte';
 
 	export let formName: string;
 	export let formData: any;
