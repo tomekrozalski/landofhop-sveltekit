@@ -4,20 +4,21 @@
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import RatingDetails from './RatingDetails.svelte';
 	import Stars from './Stars.svelte';
+	import ratingStore from './store';
 
 	export let details: Details;
 	let isDetailsOpened = false;
 
-	const { total } = details.ratings;
+	ratingStore.set(details.ratings.total.value);
 </script>
 
 <section>
 	<header class:isDetailsOpened>
 		<h3>{$translate('beverage.rating')}</h3>
-		{#if total.value >= 4}
+		{#if $ratingStore >= 4}
 			<Confetti />
 		{/if}
-		<Stars score={total.value} />
+		<Stars score={$ratingStore} />
 	</header>
 	{#if isDetailsOpened}
 		<RatingDetails {details} />
