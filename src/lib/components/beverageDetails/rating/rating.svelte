@@ -1,10 +1,14 @@
+<script context="module" lang="ts">
+	import { tweened } from 'svelte/motion';
+	export const ratingStore = tweened<number>(0);
+</script>
+
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { Confetti } from 'svelte-confetti';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import RatingDetails from './RatingDetails.svelte';
 	import Stars from './Stars.svelte';
-	import ratingStore from './store';
 
 	export let details: Details;
 	let isDetailsOpened = false;
