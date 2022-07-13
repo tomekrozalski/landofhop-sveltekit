@@ -5,10 +5,10 @@
 	import Button from '$lib/elements/form/Button.svelte';
 	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
 	import Grid from '$lib/elements/form/Grid.svelte';
-	import IngredientTags from '$lib/elements/form/fields/ingredientTags.svelte';
-	import Brands from '$lib/elements/form/fields/brands.svelte';
-	import Name from '$lib/elements/form/fields/name.svelte';
-	import StyleTags from '$lib/elements/form/fields/styleTags.svelte';
+	import IngredientTags from '$lib/elements/form/fields/IngredientTags.svelte';
+	import Brands from '$lib/elements/form/fields/Brands.svelte';
+	import Name from '$lib/elements/form/fields/Name.svelte';
+	import StyleTags from '$lib/elements/form/fields/StyleTags.svelte';
 	import type AdvancedSearchData from './AdvancedSearchData.type';
 	import { getValidationSchema } from './validationSchema';
 
