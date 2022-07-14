@@ -8,7 +8,7 @@
 	import Navigation from '$lib/dashboard/elements/Navigation.svelte';
 	import { page } from '$lib/dashboard/utils/stores';
 	import Label from './label/label.svelte';
-	import Producer from './producer/producer.svelte';
+	import Producer from './Producer/Producer.svelte;
 	import Editorial from './editorial/editorial.svelte';
 
 	const type = getContext('formType');

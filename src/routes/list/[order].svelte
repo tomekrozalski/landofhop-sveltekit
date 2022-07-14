@@ -49,7 +49,7 @@
 
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte';
-	import Pagination from '$lib/components/BeverageList/Pagination/pagination.svelte';
+	import Pagination from '$lib/components/BeverageList/Pagination/Pagination.svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	translations.update(dictionary);

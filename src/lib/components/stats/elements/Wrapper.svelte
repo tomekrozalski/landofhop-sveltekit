@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Navigation from './Navigation.svelte';
+	import Navigation from './2Navigation.svelte';
 </script>
 
 <article>

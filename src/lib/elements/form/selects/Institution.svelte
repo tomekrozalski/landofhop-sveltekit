@@ -4,7 +4,7 @@
 
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { institutionStore } from '$lib/utils/stores/selects';
-	import Loading from '$lib/elements/form/selects/elements/Loading.svelte';
+	import Loading from '$lib/elements/form/selects/elements/2Loading.svelte';
 	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
 	import { updateInstitutionList } from '$lib/utils/helpers/updateStoreData';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';

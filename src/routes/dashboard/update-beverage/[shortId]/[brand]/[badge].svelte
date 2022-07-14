@@ -32,7 +32,7 @@
 	import dashboardDictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 	import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
-	import Beverage from '$lib/dashboard/beverage/beverage.svelte';
+	import Beverage from '$lib/dashboard/beverage/Beverage.svelte';
 
 	translations.update(dashboardDictionary);
 	translations.update(commonFormsDictionary);

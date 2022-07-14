@@ -6,7 +6,7 @@
 	import type { Style } from '$lib/utils/types/Style';
 	import UpdateStyle from '$lib/dashboard/modals/UpdateStyle/UpdateStyle.svelte';
 	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
-	import Item from './Item.svelte';
+	import Item from './2Item.svelte';
 
 	export let data: StylesStatsTypes[];
 	let isModalOpen = false;

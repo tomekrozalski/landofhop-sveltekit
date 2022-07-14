@@ -20,7 +20,7 @@
 	import { session } from '$app/stores';
 	import dictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
-	import UpdateBeveragePhotos from '$lib/dashboard/beveragePhotos/BeveragePhotos.svelte';
+	import UpdateBeveragePhotos from '$lib/dashboard/BeveragePhotos/BeveragePhotos.svelte';
 
 	translations.update(dictionary as Translations);
 

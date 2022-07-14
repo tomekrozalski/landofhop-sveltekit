@@ -3,7 +3,7 @@
 	import { isArray, isString } from 'lodash-es';
 
 	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
-	import Loading from '$lib/elements/form/selects/elements/Loading.svelte';
+	import Loading from '$lib/elements/form/selects/elements/2Loading.svelte';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { ingredientsStore } from '$lib/utils/stores/selects';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';

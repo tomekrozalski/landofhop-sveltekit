@@ -7,7 +7,7 @@
 	import { initialValues as initialLabelValues } from '$lib/dashboard/beverage/label/initialValues';
 	import { initialValues as initialProducerValues } from '$lib/dashboard/beverage/producer/initialValues';
 	import { initialValues as initialEditorialValues } from '$lib/dashboard/beverage/editorial/initialValues';
-	import Beverage from '$lib/dashboard/beverage/beverage.svelte';
+	import Beverage from '$lib/dashboard/beverage/Beverage.svelte';
 
 	translations.update(dashboardDictionary);
 	translations.update(commonFormsDictionary);

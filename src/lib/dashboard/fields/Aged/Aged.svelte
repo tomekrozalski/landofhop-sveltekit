@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
+	import Label from '$lib/elements/form/2Label.svelte';
 	import AddButton from '$lib/dashboard/elements/AddButton.svelte';
 	import RemoveButton from '$lib/dashboard/elements/RemoveButton.svelte';
 	import Plug from '$lib/dashboard/elements/Plug.svelte';
