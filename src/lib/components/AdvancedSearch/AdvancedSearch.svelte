@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
-	import Spinner from '$lib/elements/spinners/2FullScreen.svelte';
+	import Spinner from '$lib/elements/spinners/FullScreen.svelte';
 	import navigation from '$lib/utils/stores/navigation';
 	import type AdvancedSearchData from './AdvancedSearchData.type';
 	import Form from './Form.svelte';

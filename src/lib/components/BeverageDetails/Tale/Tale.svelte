@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import Markdown from '$lib/elements/Markdown.svelte';
-	import Article from './2Article.svelte';
+	import Article from './Article.svelte';
 
 	export let details: Details;
 	const { tale } = details;

@@ -1,15 +1,13 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
-	import { onDestroy } from 'svelte';
+	import { getContext, onDestroy } from 'svelte';
 	import { translate } from 'svelte-intl';
 
-	import Spinner from '$lib/elements/spinners/FullScreen.svelte';
 	import ProgressList from '$lib/dashboard/elements/progressList/ProgressList.svelte';
 	import Navigation from '$lib/dashboard/elements/Navigation.svelte';
 	import { page } from '$lib/dashboard/utils/stores';
-	import Label from './label/label.svelte';
-	import Producer from './Producer/Producer.svelte;
-	import Editorial from './editorial/editorial.svelte';
+	import Label from './Label/Label.svelte';
+	import Producer from './Producer/Producer.svelte';
+	import Editorial from './Editorial/Editorial.svelte';
 
 	const type = getContext('formType');
 
@@ -28,7 +26,7 @@
 	{/if}
 	<ProgressList />
 	<Label isActive={$page === 'label'} />
-	<Producer isActive={$page === 'producer'} />
+	<!-- <Producer isActive={$page === 'producer'} /> -->
 	<Editorial isActive={$page === 'editorial'} />
 </article>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import StatusIndicator from './2StatusIndicator.svelte';
-	import Error from './2Error.svelte';
+	import StatusIndicator from './StatusIndicator.svelte';
+	import Error from './Error.svelte';
 
 	export let errors: string;
 	export let focusOnMount: boolean = false;

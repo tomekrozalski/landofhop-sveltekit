@@ -1,8 +1,8 @@
 <script context="module" lang="ts">
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
-	import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
-	import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
+	import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormValues';
+	import type { ProducerFormValues } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
+	import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
 
 	type DetailsAdmin = {
 		label: LabelFormValues;
@@ -32,7 +32,7 @@
 	import dashboardDictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 	import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
-	import Beverage from '$lib/dashboard/beverage/Beverage.svelte';
+	import Beverage from '$lib/dashboard/Beverage/Beverage.svelte';
 
 	translations.update(dashboardDictionary);
 	translations.update(commonFormsDictionary);

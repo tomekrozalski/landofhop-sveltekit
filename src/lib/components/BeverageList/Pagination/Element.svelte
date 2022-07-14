@@ -17,6 +17,7 @@
 		class:inactive={!active}
 		class:current
 		on:click={action}
+		this={tag}
 		{...$$restProps}
 	>
 		{#if label === '←'}

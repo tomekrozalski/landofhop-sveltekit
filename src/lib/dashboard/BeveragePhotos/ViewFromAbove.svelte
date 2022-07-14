@@ -10,7 +10,7 @@
 	import NoWiewFromAbove from './elements/NoWiewFromAbove.svelte';
 	import SavedItem from './elements/SavedItem.svelte';
 	import Image from './elements/Image.svelte';
-	import RemoveButton from './elements/RemoveButton.svelte';
+	import RemoveButton from './elements/2RemoveButton.svelte';
 
 	const { badge, brand, shortId } = $page.params;
 	let version: number | null = Date.now();

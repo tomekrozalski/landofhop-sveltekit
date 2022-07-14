@@ -4,10 +4,10 @@
 	import dashboardDictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 	import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
-	import { initialValues as initialLabelValues } from '$lib/dashboard/beverage/label/initialValues';
-	import { initialValues as initialProducerValues } from '$lib/dashboard/beverage/producer/initialValues';
-	import { initialValues as initialEditorialValues } from '$lib/dashboard/beverage/editorial/initialValues';
-	import Beverage from '$lib/dashboard/beverage/Beverage.svelte';
+	import { initialValues as initialLabelValues } from '$lib/dashboard/Beverage/Label/initialValues';
+	import { initialValues as initialProducerValues } from '$lib/dashboard/Beverage/Producer/initialValues';
+	import { initialValues as initialEditorialValues } from '$lib/dashboard/Beverage/Editorial/initialValues';
+	import Beverage from '$lib/dashboard/Beverage/Beverage.svelte';
 
 	translations.update(dashboardDictionary);
 	translations.update(commonFormsDictionary);

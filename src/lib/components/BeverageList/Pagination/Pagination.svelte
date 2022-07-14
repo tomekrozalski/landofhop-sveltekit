@@ -2,7 +2,7 @@
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 
 	import Element from './Element.svelte';
-	import Wrapper from './Wrapper.svelte;
+	import Wrapper from './Wrapper.svelte';
 	import getElements from './getElements';
 
 	export let order: number;

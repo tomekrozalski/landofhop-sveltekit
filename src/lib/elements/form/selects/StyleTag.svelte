@@ -3,7 +3,7 @@
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { styleStore } from '$lib/utils/stores/selects';
 	import { updateStyleList } from '$lib/utils/helpers/updateStoreData';
-	import Loading from '$lib/elements/form/selects/elements/2Loading.svelte';
+	import Loading from '$lib/elements/form/selects/elements/Loading.svelte';
 	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 

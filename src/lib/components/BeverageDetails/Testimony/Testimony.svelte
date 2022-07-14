@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import Barcode from './2Barcode.svelte';
+	import Barcode from './Barcode.svelte';
 	import City from './City.svelte';
 	import Country from './Country.svelte';
 	import Fermentation from './Fermentation.svelte';
 	import Extract from './Extract.svelte';
-	import Alcohol from './2Alcohol.svelte';
+	import Alcohol from './Alcohol.svelte';
 	import Filtration from './Filtration.svelte';
 	import Pasteurization from './Pasteurization.svelte';
 	import Aged from './Aged/Aged.svelte';

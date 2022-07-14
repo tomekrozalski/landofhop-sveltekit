@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
-	import CoverImage from './2CoverImage.svelte';
+	import CoverImage from './CoverImage.svelte';
 	import Rotable from './Rotable/Rotable.svelte';
-	import BrokenContainer from './2BrokenContainer.svelte';
-	import Cap from './2Cap.svelte';
+	import BrokenContainer from './BrokenContainer.svelte';
+	import Cap from './Cap.svelte';
 	import ViewFromAbove from './ViewFromAbove.svelte';
 
 	export let details: Details;

@@ -4,7 +4,7 @@
 	import type { Ingredient } from '$lib/utils/types/Ingredient';
 	import UpdateIngredient from '$lib/dashboard/modals/UpdateIngredient/UpdateIngredient.svelte';
 
-	import Content from './2Content.svelte';
+	import Content from './Content.svelte';
 	import Navigation from './Navigation.svelte';
 
 	let isModalOpen = false;

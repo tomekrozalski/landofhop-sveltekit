@@ -5,7 +5,7 @@
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import navigation from '$lib/utils/stores/navigation';
 	import pushState from '$lib/utils/helpers/pushState';
-	import Spinner from '$lib/elements/spinners/2FullScreen.svelte';
+	import Spinner from '$lib/elements/spinners/FullScreen.svelte';
 	import Pagination from '$lib/components/AdvancedSearch/Pagination.svelte';
 	import Total from '$lib/components/AdvancedSearch/Total.svelte';
 

@@ -3,16 +3,16 @@
 	import { translate } from 'svelte-intl';
 	import { slide } from 'svelte/transition';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import Label from '$lib/elements/form/2Label.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
 	import LanguageSelect from '$lib/dashboard/elements/selects/Language.svelte';
 	import RemoveButton from '$lib/dashboard/elements/RemoveButton.svelte';
 	import Plug from '$lib/dashboard/elements/Plug.svelte';
 	import { emptyIngredients } from '$lib/dashboard/utils/emptyFieldValues';
 	import IsListComplete from './isListComplete.svelte';
-	import ListOfInputs from './listOfInputs.svelte';
-	import Preview from './preview.svelte';
-	import SelectedLanguageHeader from './selectedLanguageHeader.svelte';
-	import ToggleList from './toggleList.svelte';
+	import ListOfInputs from './ListOfInputs.svelte';
+	import Preview from './Preview.svelte';
+	import SelectedLanguageHeader from './SelectedLanguageHeader.svelte';
+	import ToggleList from './ToggleList.svelte';
 
 	export let formName: string;
 	export let formData: any;

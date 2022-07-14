@@ -8,7 +8,7 @@
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
 	import Owner from '$lib/dashboard/fields/owner.svelte';
-	import Website from '$lib/dashboard/fields/website.svelte';
+	import Website from '$lib/dashboard/fields/Website.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
 	import { initialValues } from './initialValues';

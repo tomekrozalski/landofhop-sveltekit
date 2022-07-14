@@ -4,7 +4,7 @@
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
-	import CoverImage from './2CoverImage.svelte';
+	import CoverImage from './CoverImage.svelte';
 
 	export let beverage: Basics;
 	export let eager: boolean;

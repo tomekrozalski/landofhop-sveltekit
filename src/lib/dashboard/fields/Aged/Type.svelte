@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { AgedType } from '$lib/utils/enums/Beverage.enum';
-	import List from './list.svelte';
+	import List from './List.svelte';
 
 	export let i: number;
 	export let updateField: (fieldname: string, type: AgedType) => void;

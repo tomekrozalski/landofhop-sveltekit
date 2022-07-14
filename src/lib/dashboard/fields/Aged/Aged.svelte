@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/2Label.svelte';
+	import Label from '$lib/elements/form/Label.svelte';
 	import AddButton from '$lib/dashboard/elements/AddButton.svelte';
 	import RemoveButton from '$lib/dashboard/elements/RemoveButton.svelte';
 	import Plug from '$lib/dashboard/elements/Plug.svelte';
 	import { emptyAged } from '$lib/dashboard/utils/emptyFieldValues';
-	import PreviousContent from './previousContent.svelte';
-	import Time from './time.svelte';
-	import Type from './type.svelte';
-	import Wood from './wood.svelte';
+	import PreviousContent from './PreviousContent.svelte';
+	import Time from './Time.svelte';
+	import Type from './Type.svelte';
+	import Wood from './Wood.svelte';
 	import Wrapper from './itemWrapper.svelte';
 
 	export let formName: string;

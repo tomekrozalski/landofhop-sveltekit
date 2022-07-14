@@ -1,6 +1,6 @@
 <script lang="ts">
 	import TextInput from '$lib/elements/form/TextInput.svelte';
-	import Button from './actionButton.svelte';
+	import Button from './ActionButton.svelte';
 
 	export let i: number;
 	export let formData: any;

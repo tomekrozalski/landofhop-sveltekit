@@ -1,5 +1,5 @@
 <script lang="ts">
-	import StarElement from './2StarElement.svelte';
+	import StarElement from './StarElement.svelte';
 
 	export let score: number;
 

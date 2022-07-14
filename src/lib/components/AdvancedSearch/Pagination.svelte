@@ -2,7 +2,7 @@
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 	import Element from '$lib/components/BeverageList/Pagination/Element.svelte';
 	import Wrapper from '$lib/components/BeverageList/Pagination/Wrapper.svelte';
-	import getElements from '$lib/components/BeverageList/pagination/getElements';
+	import getElements from '$lib/components/BeverageList/Pagination/getElements';
 	import pushState from '$lib/utils/helpers/pushState';
 
 	export let order: number;

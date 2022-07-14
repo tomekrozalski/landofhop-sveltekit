@@ -7,7 +7,7 @@
 	import Button from '$lib/elements/form/Button.svelte';
 	import Badge from '$lib/dashboard/fields/badge.svelte';
 	import Name from '$lib/dashboard/fields/name.svelte';
-	import StyleGroup from '$lib/dashboard/fields/styleGroup.svelte';
+	import StyleGroup from '$lib/dashboard/fields/StyleGroup.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
 	import { initialValues } from './initialValues';
