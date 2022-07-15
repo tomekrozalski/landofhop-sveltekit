@@ -19,7 +19,7 @@
 <section>
 	<header class:isDetailsOpened>
 		<h3>{$translate('beverage.rating')}</h3>
-		{#if $ratingStore >= 4}
+		{#if details.ratings.total.value >= 4}
 			<Confetti />
 		{/if}
 		<Stars score={$ratingStore} />

@@ -26,7 +26,7 @@
 	{/if}
 	<ProgressList />
 	<Label isActive={$page === 'label'} />
-	<!-- <Producer isActive={$page === 'producer'} /> -->
+	<Producer isActive={$page === 'producer'} />
 	<Editorial isActive={$page === 'editorial'} />
 </article>
 
