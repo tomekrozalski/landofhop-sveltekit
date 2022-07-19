@@ -12,7 +12,9 @@
 	});
 </script>
 
-<strong>{score.toLocaleString('pl', { maximumFractionDigits: 2 })}</strong>
+<strong>
+	{Number(score.toString().slice(0, 4)).toLocaleString('pl', { maximumFractionDigits: 2 })}
+</strong>
 <ul>
 	{#each valuesArray as value}
 		<StarElement {value} />

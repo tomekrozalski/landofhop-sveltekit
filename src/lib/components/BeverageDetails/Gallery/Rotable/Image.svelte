@@ -8,7 +8,7 @@
 	export let details: Details;
 	const { badge, brand, shortId } = details;
 
-	const pixelRatio = window.devicePixelRatio && window.devicePixelRatio >= 2 ? '2x' : '1x';
+	const pixelRatio = window.devicePixelRatio && window.devicePixelRatio >= 1.5 ? '2x' : '1x';
 	const imagePathBase = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}/container/webp/${pixelRatio}`;
 </script>
 
