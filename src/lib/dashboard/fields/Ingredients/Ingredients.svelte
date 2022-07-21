@@ -8,7 +8,7 @@
 	import RemoveButton from '$lib/dashboard/elements/RemoveButton.svelte';
 	import Plug from '$lib/dashboard/elements/Plug.svelte';
 	import { emptyIngredients } from '$lib/dashboard/utils/emptyFieldValues';
-	import IsListComplete from './isListComplete.svelte';
+	import IsListComplete from './IsListComplete.svelte';
 	import ListOfInputs from './ListOfInputs.svelte';
 	import Preview from './Preview.svelte';
 	import SelectedLanguageHeader from './SelectedLanguageHeader.svelte';
