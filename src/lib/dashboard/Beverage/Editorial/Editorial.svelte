@@ -13,24 +13,24 @@
 	// Dashboard elements
 	import { editorialStore } from '$lib/dashboard/utils/stores';
 	import { page } from '$lib/dashboard/utils/stores';
-	import Aged from '$lib/dashboard/fields/aged/aged.svelte';
+	import Aged from '$lib/dashboard/fields/Aged/Aged.svelte';
 	import AlcoholScope from '$lib/dashboard/fields/AlcoholScope.svelte';
 	import Clarity from '$lib/dashboard/fields/Clarity.svelte';
 	import Color from '$lib/dashboard/fields/Color.svelte';
 	import Contract from '$lib/dashboard/fields/Contract.svelte';
-	import Cooperation from '$lib/dashboard/fields/cooperation.svelte';
-	import DryHopped from '$lib/dashboard/fields/dryHopped.svelte';
-	import Fermentation from '$lib/dashboard/fields/fermentation.svelte';
-	import Filtration from '$lib/dashboard/fields/filtration.svelte';
-	import Nitrogen from '$lib/dashboard/fields/nitrogen.svelte';
-	import Notes from '$lib/dashboard/fields/notes.svelte';
-	import Pasteurization from '$lib/dashboard/fields/pasteurization.svelte';
-	import Place from '$lib/dashboard/fields/place.svelte';
-	import Price from '$lib/dashboard/fields/price.svelte';
-	import RateBeer from '$lib/dashboard/fields/rateBeer.svelte';
-	import Remark from '$lib/dashboard/fields/remark.svelte';
-	import Untappd from '$lib/dashboard/fields/untappd.svelte';
-	import Series from '$lib/dashboard/fields/series.svelte';
+	import Cooperation from '$lib/dashboard/fields/Cooperation.svelte';
+	import DryHopped from '$lib/dashboard/fields/DryHopped.svelte';
+	import Fermentation from '$lib/dashboard/fields/Fermentation.svelte';
+	import Filtration from '$lib/dashboard/fields/Filtration.svelte';
+	import Nitrogen from '$lib/dashboard/fields/Nitrogen.svelte';
+	import Notes from '$lib/dashboard/fields/Notes.svelte';
+	import Pasteurization from '$lib/dashboard/fields/Pasteurization.svelte';
+	import Place from '$lib/dashboard/fields/Place.svelte';
+	import Price from '$lib/dashboard/fields/Price.svelte';
+	import RateBeer from '$lib/dashboard/fields/RateBeer.svelte';
+	import Remark from '$lib/dashboard/fields/Remark.svelte';
+	import Untappd from '$lib/dashboard/fields/Untappd.svelte';
+	import Series from '$lib/dashboard/fields/Series.svelte';
 
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
