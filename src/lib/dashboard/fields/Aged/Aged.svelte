@@ -9,7 +9,7 @@
 	import Time from './Time.svelte';
 	import Type from './Type.svelte';
 	import Wood from './Wood.svelte';
-	import Wrapper from './itemWrapper.svelte';
+	import Wrapper from './ItemWrapper.svelte';
 
 	export let formName: string;
 	export let formData: any;
