@@ -3,8 +3,8 @@ import { isEmpty } from 'lodash-es';
 
 import apiCall, { Endpoints } from '$lib/utils/api/call';
 import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
-import formatLabelValues from '$lib/dashboard/beverage/Label/formatValues';
-import formatProducerValues from '$lib/dashboard/beverage/Producer/formatValues';
+import formatLabelValues from '$lib/dashboard/Beverage/Label/formatValues';
+import formatProducerValues from '$lib/dashboard/Beverage/Producer/formatValues';
 import formatEditorialValues from './formatValues';
 import { goto } from '$app/navigation';
 
