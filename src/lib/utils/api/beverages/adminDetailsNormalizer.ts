@@ -6,9 +6,9 @@ import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 import type { RawPrice } from '$lib/utils/types/api/RawBeverage/RawPrice';
 import type { RawTale } from '$lib/utils/types/api/RawBeverage/RawTale';
-import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
-import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
-import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
+import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormValues';
+import type { ProducerFormValues } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
+import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
 
 function adminDetailsNormalizer(
 	beverage: RawBeverage

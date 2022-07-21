@@ -1,8 +1,8 @@
 import { adminDetailsNormalizer, getDbCollections } from '$lib/utils/api';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
-import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
-import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
-import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
+import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormValues';
+import type { ProducerFormValues } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
+import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
 
 export async function get({ locals, params }) {
 	if (!locals.authenticated) {

@@ -1,6 +1,6 @@
-import { LabelFormOutput } from '$lib/dashboard/beverage/label/LabelFormValues';
-import { ProducerFormOutput } from '$lib/dashboard/beverage/producer/ProducerFormValues';
-import { EditorialFormOutput } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
+import { LabelFormOutput } from '$lib/dashboard/Beverage/Label/LabelFormValues';
+import { ProducerFormOutput } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
+import { EditorialFormOutput } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
 
 export type NewBeverageRequest = {
 	label: LabelFormOutput;
