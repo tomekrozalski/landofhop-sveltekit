@@ -5,10 +5,10 @@
 	import ModalGrid from '$lib/dashboard/elements/ModalGrid.svelte';
 	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
 	import Button from '$lib/elements/form/Button.svelte';
-	import City from '$lib/dashboard/fields/city.svelte';
-	import Country from '$lib/dashboard/fields/country.svelte';
-	import Institutions from '$lib/dashboard/fields/institutions.svelte';
-	import Coordinates from '$lib/dashboard/fields/coordinates.svelte';
+	import City from '$lib/dashboard/fields/City.svelte';
+	import Country from '$lib/dashboard/fields/Country.svelte';
+	import Institutions from '$lib/dashboard/fields/Institutions.svelte';
+	import Coordinates from '$lib/dashboard/fields/Coordinates.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
 	import { initialValues } from './initialValues';

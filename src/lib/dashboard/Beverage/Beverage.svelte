@@ -2,7 +2,7 @@
 	import { getContext, onDestroy } from 'svelte';
 	import { translate } from 'svelte-intl';
 
-	import ProgressList from '$lib/dashboard/elements/progressList/ProgressList.svelte';
+	import ProgressList from '$lib/dashboard/elements/ProgressList/ProgressList.svelte';
 	import Navigation from '$lib/dashboard/elements/Navigation.svelte';
 	import { page } from '$lib/dashboard/utils/stores';
 	import Label from './Label/Label.svelte';

@@ -1,11 +1,11 @@
 import { writable } from 'svelte/store';
 import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
-import type { LabelFormValues } from '$lib/dashboard/beverage/label/LabelFormValues';
-import type { ProducerFormValues } from '$lib/dashboard/beverage/producer/ProducerFormValues';
-import type { EditorialFormValues } from '$lib/dashboard/beverage/editorial/EditorialFormValues';
-import { initialValues as initialLabelValues } from '$lib/dashboard/beverage/label/initialValues';
-import { initialValues as initialProducerValues } from '$lib/dashboard/beverage/producer/initialValues';
-import { initialValues as initialEditorialValues } from '$lib/dashboard/beverage/editorial/initialValues';
+import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormValues';
+import type { ProducerFormValues } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
+import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
+import { initialValues as initialLabelValues } from '$lib/dashboard/Beverage/Label/initialValues';
+import { initialValues as initialProducerValues } from '$lib/dashboard/Beverage/Producer/initialValues';
+import { initialValues as initialEditorialValues } from '$lib/dashboard/Beverage/Editorial/initialValues';
 
 export const beveragePhotosStore = writable<PhotosDataTypes | null>(null);
 export const editorialStore = writable<EditorialFormValues>(initialEditorialValues);
