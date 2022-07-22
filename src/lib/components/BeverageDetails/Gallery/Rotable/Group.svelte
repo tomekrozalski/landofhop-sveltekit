@@ -16,5 +16,10 @@
 </script>
 
 {#each imageIndexArray as imageIndex}
-	<Image {imageIndex} isVisible={imageIndex === currentlyVisibleImageIndex} {details} bind:loaded />
+	<Image
+		{imageIndex}
+		isVisible={[currentlyVisibleImageIndex, currentlyVisibleImageIndex - 1].includes(imageIndex)}
+		{details}
+		bind:loaded
+	/>
 {/each}
