@@ -9,63 +9,70 @@
 
 <style>
 	div {
-		display: grid;
-		grid-gap: 1rem;
+		display: flex;
+		flex-wrap: wrap;
 		margin-bottom: 1rem;
-
-		--narrow-cell: 22rem;
-		--wide-cell: 45rem;
-		--wide-cell-optional: calc(44rem - var(--size-input-height));
 	}
 
-	div :global(label) {
-		justify-self: end;
-	}
+	@media (--lg) {
+		div {
+			display: grid;
+			grid-gap: 1rem;
 
-	.columns-1:not(.isOptional) {
-		grid-template-columns:
-			repeat(2, var(--wide-cell))
-			repeat(2, var(--size-input-height))
-			1fr;
-	}
+			--narrow-cell: 22rem;
+			--wide-cell: 45rem;
+			--wide-cell-optional: calc(44rem - var(--size-input-height));
+		}
 
-	.columns-1.isOptional {
-		grid-template-columns:
-			var(--wide-cell-optional)
-			var(--size-input-height)
-			var(--wide-cell)
-			repeat(2, var(--size-input-height))
-			1fr;
-	}
+		div :global(label) {
+			justify-self: end;
+		}
 
-	.columns-2:not(.isOptional) {
-		grid-template-columns:
-			var(--wide-cell)
-			repeat(2, var(--narrow-cell))
-			repeat(2, var(--size-input-height))
-			1fr;
-	}
+		.columns-1:not(.isOptional) {
+			grid-template-columns:
+				repeat(2, var(--wide-cell))
+				repeat(2, var(--size-input-height))
+				1fr;
+		}
 
-	.columns-2.isOptional {
-		grid-template-columns:
-			var(--wide-cell-optional)
-			var(--size-input-height)
-			repeat(2, var(--narrow-cell))
-			1fr;
-	}
+		.columns-1.isOptional {
+			grid-template-columns:
+				var(--wide-cell-optional)
+				var(--size-input-height)
+				var(--wide-cell)
+				repeat(2, var(--size-input-height))
+				1fr;
+		}
 
-	.columns-3:not(.isOptional) {
-		grid-template-columns:
-			var(--wide-cell)
-			repeat(3, 14.33rem)
-			repeat(2, var(--size-input-height));
-	}
+		.columns-2:not(.isOptional) {
+			grid-template-columns:
+				var(--wide-cell)
+				repeat(2, var(--narrow-cell))
+				repeat(2, var(--size-input-height))
+				1fr;
+		}
 
-	.columns-3.isOptional {
-		grid-template-columns:
-			var(--wide-cell-optional)
-			var(--size-input-height)
-			repeat(3, 14.333rem)
-			1fr;
+		.columns-2.isOptional {
+			grid-template-columns:
+				var(--wide-cell-optional)
+				var(--size-input-height)
+				repeat(2, var(--narrow-cell))
+				1fr;
+		}
+
+		.columns-3:not(.isOptional) {
+			grid-template-columns:
+				var(--wide-cell)
+				repeat(3, 14.33rem)
+				repeat(2, var(--size-input-height));
+		}
+
+		.columns-3.isOptional {
+			grid-template-columns:
+				var(--wide-cell-optional)
+				var(--size-input-height)
+				repeat(3, 14.333rem)
+				1fr;
+		}
 	}
 </style>

@@ -49,7 +49,6 @@
 <style>
 	ul {
 		display: flex;
-		margin: 0 1rem;
 		padding: 0.5rem 0;
 	}
 

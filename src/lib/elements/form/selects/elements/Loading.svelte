@@ -6,8 +6,8 @@
 
 <style>
 	div {
+		flex-grow: 1;
 		display: block;
-		width: 100%;
 		height: 100%;
 		position: relative;
 	}
@@ -40,5 +40,12 @@
 		left: 0;
 		bottom: 0;
 		right: 0;
+	}
+
+	@media (--lg) {
+		div {
+			flex-grow: unset;
+			width: 100%;
+		}
 	}
 </style>

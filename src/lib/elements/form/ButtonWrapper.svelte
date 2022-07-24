@@ -10,8 +10,8 @@
 	div {
 		display: flex;
 		justify-content: flex-end;
-		margin: 4rem 0 0 46rem;
-		width: 45rem;
+
+		width: 100%;
 	}
 
 	div :global(button) {
@@ -22,5 +22,12 @@
 		margin: 0;
 		padding: 2rem calc(var(--size-input-height) + var(--size-input-height) + 2rem) 0 0;
 		width: 100%;
+	}
+
+	@media (--lg) {
+		div {
+			margin: 4rem 0 0 46rem;
+			width: 45rem;
+		}
 	}
 </style>

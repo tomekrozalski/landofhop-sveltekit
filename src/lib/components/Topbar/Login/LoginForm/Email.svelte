@@ -11,7 +11,7 @@
 </script>
 
 <div class="input-group">
-	<Label {id} isRequired>{$translate('login.email')}</Label>
+	<Label {id} inlined isRequired>{$translate('login.email')}</Label>
 	<TextInput
 		errors={$errors.email}
 		focusOnMount

@@ -38,6 +38,7 @@
 	div {
 		flex-shrink: 0;
 		display: inline-block;
+		margin-right: 1rem;
 		width: var(--size-input-height);
 		height: var(--size-input-height);
 		background-color: var(--color-grey-5);

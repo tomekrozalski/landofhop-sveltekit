@@ -1,9 +1,10 @@
 <script lang="ts">
 	export let id: string;
+	export let inlined: boolean = false;
 	export let isRequired: boolean = false;
 </script>
 
-<label for={id}>
+<label for={id} class:inlined>
 	<slot />
 	{#if isRequired}
 		<span>*</span>
@@ -12,11 +13,15 @@
 
 <style>
 	label {
-		grid-column: 1 / 2;
-		line-height: var(--size-input-height);
+		width: 100%;
 		height: var(--size-input-height);
-		text-align: right;
+		line-height: var(--size-input-height);
+		text-align: left;
 		cursor: pointer;
+	}
+
+	label.inlined {
+		text-align: right;
 	}
 
 	label::after {
@@ -30,5 +35,12 @@
 	span {
 		margin-left: 0.2rem;
 		color: var(--color-danger);
+	}
+
+	@media (--lg) {
+		label {
+			grid-column: 1 / 2;
+			text-align: right;
+		}
 	}
 </style>

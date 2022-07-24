@@ -11,7 +11,7 @@
 </script>
 
 <div class="input-group">
-	<Label {id} isRequired>{$translate('login.password')}</Label>
+	<Label {id} inlined isRequired>{$translate('login.password')}</Label>
 	<TextInput
 		errors={$errors.password}
 		{handleChange}

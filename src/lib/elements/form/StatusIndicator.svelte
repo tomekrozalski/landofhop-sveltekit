@@ -23,8 +23,8 @@
 
 <style>
 	span {
+		flex-grow: 1;
 		display: block;
-		width: 100%;
 		position: relative;
 	}
 
@@ -47,5 +47,12 @@
 		height: 1.3rem;
 		fill: var(--color-warning);
 		right: 0.8rem;
+	}
+
+	@media (--lg) {
+		span {
+			flex-grow: unset;
+			width: 100%;
+		}
 	}
 </style>

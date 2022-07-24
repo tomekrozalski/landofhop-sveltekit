@@ -97,6 +97,8 @@
 		--multiClearWidth: 2rem;
 		--multiClearPadding: 0.4rem 0.2rem 0.2rem 0.2rem;
 
+		flex-grow: 1;
+		width: min-content;
 		position: relative;
 	}
 
@@ -147,5 +149,12 @@
 
 	div :global(.selectContainer.select .listGroupTitle:not(:first-of-type)) {
 		margin-top: 1rem;
+	}
+
+	@media (--lg) {
+		div {
+			flex-grow: unset;
+			width: auto;
+		}
 	}
 </style>
