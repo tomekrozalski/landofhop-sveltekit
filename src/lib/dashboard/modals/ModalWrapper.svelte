@@ -1,6 +1,7 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
 	import CloseIcon from '$lib/elements/vectors/Close.svelte';
+
 	function portal(node) {
 		let target;
 		function update() {
@@ -16,6 +17,7 @@
 		update();
 		return { update, destroy };
 	}
+
 	export let close;
 </script>
 

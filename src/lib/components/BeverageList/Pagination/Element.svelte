@@ -38,6 +38,7 @@
 
 	.pagination-element {
 		display: block;
+		width: 100%;
 		padding: 1rem;
 		border: 1px solid var(--color-grey-2);
 		background-color: var(--color-grey-2);

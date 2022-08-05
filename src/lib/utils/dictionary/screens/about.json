@@ -1,12 +1,12 @@
 {
 	"en": {
 		"about.header": "About the site",
-		"about.body": "**Land of Hop** is a base of ales which I have drunk since 2017. That is it 🙂 I do not have any bussiness expectations about it. You know, it is not new RateBeer or something. I work on it just to practice programming (Svelte, Deno, Fastify, MongoDB). More about it on [repository page on Github](https://github.com/tomekrozalski/landofhop-sveltekit).",
-		"about.title": "O stronie"
+		"about.body": "**Land of Hop** is a base of ales which I have drunk since 2017. That is it 🙂 I do not have any bussiness expectations about it. You know, it is not new RateBeer or something. I work on it just to practice programming (recently Svelte, SvelteKit, TypeScript, AWS S3, MongoDB). More about it on [repository page on Github](https://github.com/tomekrozalski/landofhop-sveltekit).",
+		"about.title": "About the site"
 	},
 	"pl": {
 		"about.header": "O stronie",
-		"about.body": "**Land of Hop** to katalog piw, które wypiłem od października 2017. Tylko tylko i aż tyle 🙂 Nie myślę o niej jako o konkurencji dla RateBeer, ani w ogóle nie mam w stosunku do niej oczekiwań biznesowych. Piszę ją, by ćwiczyć programowanie (Svelte, Deno, Fastify, MongoDB). Więcej na ten temat na [stronie repozytorium na portalu GitHub](https://github.com/tomekrozalski/landofhop-sveltekit).",
+		"about.body": "**Land of Hop** to katalog piw, które wypiłem od października 2017. Tylko tylko i aż tyle 🙂 Nie myślę o niej jako o konkurencji dla RateBeer, ani w ogóle nie mam w stosunku do niej oczekiwań biznesowych. Piszę ją, by ćwiczyć programowanie (aktualnie Svelte, SvelteKit, TypeScript, AWS S3, MongoDB). Więcej na ten temat na [stronie repozytorium na portalu GitHub](https://github.com/tomekrozalski/landofhop-sveltekit).",
 		"about.title": "O stronie"
 	}
 }
