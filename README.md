@@ -128,7 +128,33 @@ There are only three pages inside the dashboard so far: add new beverage, update
 
 It is quite a big form to fulfill data about a beer. I add and update data about brands, ingredients or places by additional pop up forms. There is also a `__layout.svelte` file where I check if a user is authenticated, if not I redirect to the main page.
 
-🚧 WIP 🚧
+Let's move to the last folder, `lib`:
+
+```
+📁 lib
+├── 📁 components
+├── 📁 dashboard
+├── 📁 elements
+└── 📁 utils
+```
+
+Essentially I keep here all Svelte `components` I use in public pages and all components I use in `dashboard` pages. Common components are in `elements`. Inside utils I have:
+
+```
+📁 utils
+├── 📁 api
+├── 📁 dictionary
+├── 📁 enums
+├── 📁 helpers
+├── 📁 stores
+├── 📁 styles
+├── 📁 types
+└── constants.ts
+```
+
+The `api` folder is for helper functions to transform data from the database. The `dictionary` is for JSON files where I keep all translations. The `enums` and `types` are for TypeScript files. The rest does not require any comment.
+
+I should and I will describe the structure in more details, but I expect major changes in SvelteKit v 1.0.0 so most probably I will deeply refactor the files concept.
 
 ## Live preview
 
