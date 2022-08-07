@@ -15,15 +15,27 @@
 		image.onload = () => {
 			loaded = true;
 		};
+
+		image.srcset = image.dataset.srcset;
+		image.src = image.dataset.src;
 	}
 </script>
 
 <img
 	alt={loaded ? `${name.value}, ${brand.name.value}` : ''}
-	srcset="{pathWebpRegular} 1x, {pathWebpLarge} 2x"
-	src={pathWebpRegular}
+	class:hidden={!loaded}
+	data-srcset="{pathWebpRegular} 1x, {pathWebpLarge} 2x"
+	data-src={pathWebpRegular}
 	use:loadListener
 />
+
+<noscript>
+	<img
+		alt={loaded ? `${name.value}, ${brand.name.value}` : ''}
+		srcset="{pathWebpRegular} 1x, {pathWebpLarge} 2x"
+		src={pathWebpRegular}
+	/>
+</noscript>
 
 <style>
 	img {
@@ -32,5 +44,9 @@
 		left: 0px;
 		width: 220px;
 		height: 500px;
+	}
+
+	.hidden {
+		visibility: hidden;
 	}
 </style>

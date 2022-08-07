@@ -4,6 +4,7 @@
 </script>
 
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { Confetti } from 'svelte-confetti';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
@@ -13,7 +14,9 @@
 	export let details: Details;
 	let isDetailsOpened = false;
 
-	ratingStore.set(details.ratings.total.value);
+	onMount(() => {
+		ratingStore.set(details.ratings.total.value, { duration: $ratingStore ? 400 : 0 });
+	});
 </script>
 
 <section>
@@ -22,7 +25,7 @@
 		{#if details.ratings.total.value >= 4}
 			<Confetti />
 		{/if}
-		<Stars score={$ratingStore} />
+		<Stars score={$ratingStore || details.ratings.total.value} />
 	</header>
 	{#if isDetailsOpened}
 		<RatingDetails {details} />
