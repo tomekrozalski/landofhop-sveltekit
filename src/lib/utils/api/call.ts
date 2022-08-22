@@ -16,6 +16,7 @@ export enum Endpoints {
 	beverageRemove = '/api/admin/beverages/remove',
 	beverageTotal = '/api/basics/total',
 	ingredients = '/api/ingredients',
+	institutionDetails = '/api/brands',
 	institutions = '/api/institutions',
 	logIn = '/api/user/login',
 	logOut = '/api/user/logout',
