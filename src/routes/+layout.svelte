@@ -1,11 +1,3 @@
-<script context="module" lang="ts">
-	export async function load({ session }: { session: { isLoggedIn: boolean } }) {
-		return {
-			props: { session }
-		};
-	}
-</script>
-
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import { navigating } from '$app/stores';

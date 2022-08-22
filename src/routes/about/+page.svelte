@@ -1,7 +1,3 @@
-<script context="module" lang="ts">
-	export const prerender = true;
-</script>
-
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
 	import Markdown from '$lib/elements/Markdown.svelte';
