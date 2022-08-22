@@ -12,6 +12,7 @@ import formatBasics from './basics/format';
 import formatBeverageToBasics from './formatBeverageToBasics';
 import generateShortId from './generateShortId';
 import getDbCollections from './getDbCollections';
+import institutionNormalizer from './brands/institutionNormalizer';
 import translate from './translate';
 import updateSession from './sessions/update';
 import { saveViewFromAboveJpg, saveViewFromAboveWebp } from './photos/saveViewFromAbove';
@@ -42,6 +43,7 @@ export {
 	generateShortId,
 	getDbCollections,
 	getTracedSvg,
+	institutionNormalizer,
 	recalculateIngredientsOccurrences,
 	removeCover,
 	removeGallery,
