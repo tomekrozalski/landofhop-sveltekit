@@ -3,7 +3,7 @@ import { translate } from '$lib/utils/api';
 import type { RawStyleTag } from '$lib/utils/types/api/RawBeverage/RawEditorial';
 import type { RawStylesStats } from '$lib/utils/types/api/RawStats/RawStylesStats.d';
 
-export async function get({ params }) {
+export async function GET({ params }) {
 	const { language } = params;
 	const { beverages, styles } = await getDbCollections();
 

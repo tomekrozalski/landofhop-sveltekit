@@ -4,7 +4,7 @@ import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormVal
 import type { ProducerFormValues } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
 import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
 
-export async function get({ locals, params }) {
+export async function GET({ locals, params }) {
 	if (!locals.authenticated) {
 		return {
 			status: 401,

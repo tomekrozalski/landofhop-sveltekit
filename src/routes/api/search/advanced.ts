@@ -2,7 +2,7 @@ import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import { formatBeverageToBasics, getDbCollections } from '$lib/utils/api';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-export async function post({ request }) {
+export async function POST({ request }) {
 	const advancedSearchData = await request.json();
 	const { brands, ingredientTags, language, name, page, styleTags } = advancedSearchData;
 

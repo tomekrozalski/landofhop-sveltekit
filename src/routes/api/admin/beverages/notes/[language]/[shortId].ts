@@ -5,7 +5,7 @@ import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
 import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 
-export async function get({ locals, params }) {
+export async function GET({ locals, params }) {
 	if (!locals.authenticated) {
 		return {
 			status: 401,

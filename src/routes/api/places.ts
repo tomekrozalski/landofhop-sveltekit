@@ -1,7 +1,7 @@
 import { getDbCollections } from '$lib/utils/api';
 import type { RawPlaceWithoutId } from '$lib/utils/types/api/RawPlace';
 
-export async function get() {
+export async function GET() {
 	const { places } = await getDbCollections();
 
 	const data: RawPlaceWithoutId[] = [];

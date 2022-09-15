@@ -1,4 +1,4 @@
-export async function post({ locals, request }) {
+export async function POST({ locals, request }) {
 	if (!locals.authenticated) {
 		return {
 			status: 401,

@@ -5,7 +5,7 @@ import countryList from '$lib/utils/api/countryList';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 
-export async function get({ params }) {
+export async function GET({ params }) {
 	const { language, shortId } = params;
 	const { basics, beverages } = await getDbCollections();
 

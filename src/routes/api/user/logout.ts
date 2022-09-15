@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import { getDbCollections } from '$lib/utils/api';
 
-export async function get({ request }) {
+export async function GET({ request }) {
 	const cookies = cookie.parse(request.headers.get('cookie') ?? '');
 
 	if (!cookies.refreshToken) {

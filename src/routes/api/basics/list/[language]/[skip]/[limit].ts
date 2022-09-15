@@ -5,7 +5,7 @@ import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
 import type { RawBasics } from '$lib/utils/types/api/RawBasics';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-export async function get({ params }) {
+export async function GET({ params }) {
 	const { language, limit, skip } = params;
 	const { basics } = await getDbCollections();
 	const translatedValues: Basics[] = [];

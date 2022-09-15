@@ -1,7 +1,7 @@
 import { generateShortId, getDbCollections } from '$lib/utils/api';
 import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
 
-export async function post({ locals, request }) {
+export async function POST({ locals, request }) {
 	const institutionData = await request.json();
 	const { institutions } = await getDbCollections();
 

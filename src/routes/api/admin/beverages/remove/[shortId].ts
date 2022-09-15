@@ -1,6 +1,6 @@
 import { getDbCollections, removeViewFromAbove, removeCover, removeGallery } from '$lib/utils/api';
 
-export async function del({ locals, params }) {
+export async function DELETE({ locals, params }) {
 	const { shortId } = params;
 	const { basics, beverages } = await getDbCollections();
 

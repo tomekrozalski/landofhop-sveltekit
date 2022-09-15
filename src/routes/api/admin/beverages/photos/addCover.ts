@@ -1,7 +1,7 @@
 import sizeOf from 'buffer-image-size';
 import { getDbCollections, getTracedSvg, saveCoverJpg, saveCoverWebp } from '$lib/utils/api';
 
-export async function post({ locals, request }) {
+export async function POST({ locals, request }) {
 	const data = await request.formData();
 	const badge = data.get('badge');
 	const brand = data.get('brand');

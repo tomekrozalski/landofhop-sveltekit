@@ -1,7 +1,7 @@
 import { getDbCollections, recalculateIngredientsOccurrences } from '$lib/utils/api';
 import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
 
-export async function post({ locals, request }) {
+export async function POST({ locals, request }) {
 	const ingredientData = await request.json();
 	const { ingredients } = await getDbCollections();
 
