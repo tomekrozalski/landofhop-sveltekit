@@ -1,34 +1,30 @@
 <script context="module" lang="ts">
-	throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
+	import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
 
-	// import apiCall, { Endpoints } from '$lib/utils/api/call';
-	// import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
+	// export const prerender = true;
 
-	// // export const prerender = true;
+	export async function load({ fetch, params }) {
+		try {
+			const augmentedBeverageDetails: AugmentedDetails = await apiCall(
+				fetch,
+				Endpoints.beverageDetails,
+				{
+					pathParams: ['pl', params.shortId]
+				}
+			);
 
-	// export async function load({ fetch, params }) {
-	// 	try {
-	// 		const augmentedBeverageDetails: AugmentedDetails = await apiCall(
-	// 			fetch,
-	// 			Endpoints.beverageDetails,
-	// 			{
-	// 				pathParams: ['pl', params.shortId]
-	// 			}
-	// 		);
-
-	// 		return { props: augmentedBeverageDetails };
-	// 	} catch (e) {
-	// 		return {
-	// 			status: 404,
-	// 			error: e.message
-	// 		};
-	// 	}
-	// }
+			return { props: augmentedBeverageDetails };
+		} catch (e) {
+			return {
+				status: 404,
+				error: e.message
+			};
+		}
+	}
 </script>
 
 <script lang="ts">
-	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
-
 	import { translate, translations } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/screens/beverage.json';
 	import type { Details } from '$lib/utils/types/Beverage/Details';

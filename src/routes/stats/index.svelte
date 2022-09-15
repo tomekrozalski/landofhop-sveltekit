@@ -1,23 +1,19 @@
 <script context="module" lang="ts">
-	throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
+	import apiCall, { Endpoints } from '$lib/utils/api/call';
+	import type { GeneralStats as GeneralStatsTypes } from '$lib/utils/types/stats/General';
 
-	// import apiCall, { Endpoints } from '$lib/utils/api/call';
-	// import type { GeneralStats as GeneralStatsTypes } from '$lib/utils/types/stats/General';
+	export const prerender = true;
 
-	// export const prerender = true;
+	export async function load({ fetch }) {
+		const statsData: GeneralStatsTypes = await apiCall(fetch, Endpoints.statsGeneral, {
+			pathParams: ['pl']
+		});
 
-	// export async function load({ fetch }) {
-	// 	const statsData: GeneralStatsTypes = await apiCall(fetch, Endpoints.statsGeneral, {
-	// 		pathParams: ['pl']
-	// 	});
-
-	// 	return { props: { statsData } };
-	// }
+		return { props: { statsData } };
+	}
 </script>
 
 <script lang="ts">
-	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
-
 	import { translations, translate } from 'svelte-intl';
 	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
 	import generalStatsDictionary from '$lib/utils/dictionary/screens/stats/general.json';
