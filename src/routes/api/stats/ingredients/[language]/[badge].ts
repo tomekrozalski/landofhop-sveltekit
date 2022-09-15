@@ -6,7 +6,7 @@ import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import type { IngredientTree } from '$lib/utils/types/Ingredient';
 import type { IngredientsStatsNavigation } from '$lib/utils/types/stats/General';
 
-export async function get({ params }) {
+export async function GET({ params }) {
 	const language = params.language ?? AppLanguage.en;
 	const badge = params.badge;
 

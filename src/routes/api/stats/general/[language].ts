@@ -3,7 +3,7 @@ import { deleteIfEmpty, translate } from '$lib/utils/api';
 import { normalizer } from '$lib/utils/api/stats/general/normalizer';
 import type { RawGeneralStats } from '$lib/utils/types/api/RawStats/RawGeneralStats.d';
 
-export async function get({ params }) {
+export async function GET({ params }) {
 	const { language } = params;
 	const { beverages } = await getDbCollections();
 

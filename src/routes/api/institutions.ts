@@ -1,7 +1,7 @@
 import { getDbCollections } from '$lib/utils/api';
 import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
 
-export async function get() {
+export async function GET() {
 	const { institutions } = await getDbCollections();
 
 	const data: RawInstitutionWithoutId[] = await institutions

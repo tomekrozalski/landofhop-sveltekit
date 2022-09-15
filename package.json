@@ -2,9 +2,9 @@
 	"name": "landofhop-svelte",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
-		"preview": "svelte-kit preview",
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
@@ -13,7 +13,7 @@
 	"devDependencies": {
 		"@cospired/i18n-iso-languages": "^3.1.0",
 		"@sveltejs/adapter-node": "^1.0.0-next.73",
-		"@sveltejs/kit": "^1.0.0-next.321",
+		"@sveltejs/kit": "^1.0.0-next.403",
 		"@types/d3-array": "^3.0.1",
 		"@types/d3-scale": "^4.0.1",
 		"@types/d3-shape": "^3.0.2",
@@ -46,6 +46,7 @@
 		"svelte-select": "^4.4.3",
 		"tslib": "^2.0.0",
 		"typescript": "^4.6.3",
+		"vite": "^3.1.1",
 		"yup": "^0.32.9"
 	},
 	"type": "module",

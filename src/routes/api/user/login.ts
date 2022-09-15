@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 
 import { createSession, createTokens, getDbCollections } from '$lib/utils/api';
 
-export async function post({ request }) {
+export async function POST({ request }) {
 	const { email, password } = await request.json();
 	const { users } = await getDbCollections();
 

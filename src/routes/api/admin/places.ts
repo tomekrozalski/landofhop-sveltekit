@@ -1,7 +1,7 @@
 import { generateShortId, getDbCollections } from '$lib/utils/api';
 import type { RawPlaceWithoutId } from '$lib/utils/types/api/RawPlace';
 
-export async function post({ locals, request }) {
+export async function POST({ locals, request }) {
 	const placeData = await request.json();
 	const { places } = await getDbCollections();
 

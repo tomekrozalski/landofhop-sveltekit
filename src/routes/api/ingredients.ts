@@ -1,7 +1,7 @@
 import { getDbCollections } from '$lib/utils/api';
 import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
 
-export async function get() {
+export async function GET() {
 	const { ingredients } = await getDbCollections();
 
 	const data: RawIngredientWithoutId[] = await ingredients

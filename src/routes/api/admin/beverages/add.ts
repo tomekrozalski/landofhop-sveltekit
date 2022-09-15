@@ -6,7 +6,7 @@ import type {
 	RawBeverageWithoutId
 } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 
-export async function post({ locals, request }) {
+export async function POST({ locals, request }) {
 	const beverageData: NewBeverageRequest = await request.json();
 	const { basics, beverages } = await getDbCollections();
 

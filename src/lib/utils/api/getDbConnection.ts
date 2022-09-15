@@ -1,5 +1,4 @@
 import { MongoClient } from 'mongodb';
-import { mode } from '$app/env';
 
 const uri = import.meta.env.VITE_MONGODB_URI as string;
 
@@ -10,14 +9,14 @@ if (!uri) {
 let client = null;
 let clientPromise = null;
 
-if (mode === 'development') {
+if (process.env.NODE_ENV === 'development') {
 	if (!globalThis._mongoClientPromise) {
 		client = new MongoClient(uri);
 		globalThis._mongoClientPromise = client.connect();
 	}
 
 	clientPromise = globalThis._mongoClientPromise;
-} else if (mode === 'production' && client === null && clientPromise === null) {
+} else if (process.env.NODE_ENV === 'production' && client === null && clientPromise === null) {
 	client = new MongoClient(uri);
 	clientPromise = client.connect();
 }

@@ -1,6 +1,6 @@
 import { getDbCollections } from '$lib/utils/api';
 
-export async function get({ locals, params }) {
+export async function GET({ locals, params }) {
 	if (!locals.authenticated) {
 		return {
 			status: 401,

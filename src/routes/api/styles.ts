@@ -1,7 +1,7 @@
 import { getDbCollections } from '$lib/utils/api';
 import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles';
 
-export async function get() {
+export async function GET() {
 	const { styles } = await getDbCollections();
 
 	const data: RawStylesWithoutId[] = await styles

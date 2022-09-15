@@ -1,7 +1,7 @@
 import { getDbCollections } from '$lib/utils/api';
 import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles';
 
-export async function post({ locals, request }) {
+export async function POST({ locals, request }) {
 	const styleData = await request.json();
 	const { styles } = await getDbCollections();
 

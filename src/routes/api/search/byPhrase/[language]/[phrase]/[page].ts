@@ -2,7 +2,7 @@ import { formatBeverageToBasics, getDbCollections } from '$lib/utils/api';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-export async function get({ params }) {
+export async function GET({ params }) {
 	const { language, page, phrase } = params;
 	const { beverages } = await getDbCollections();
 

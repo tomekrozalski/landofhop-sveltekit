@@ -1,6 +1,6 @@
 import { getDbCollections, saveViewFromAboveJpg, saveViewFromAboveWebp } from '$lib/utils/api';
 
-export async function post({ locals, request }) {
+export async function POST({ locals, request }) {
 	const data = await request.formData();
 	const badge = data.get('badge');
 	const brand = data.get('brand');
