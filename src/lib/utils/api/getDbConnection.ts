@@ -9,7 +9,7 @@ if (!uri) {
 let client = null;
 let clientPromise = null;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
 	if (!globalThis._mongoClientPromise) {
 		client = new MongoClient(uri);
 		globalThis._mongoClientPromise = client.connect();
