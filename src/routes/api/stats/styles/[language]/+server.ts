@@ -1,3 +1,4 @@
+import { json } from '@sveltejs/kit';
 import { getDbCollections } from '$lib/utils/api';
 import { translate } from '$lib/utils/api';
 import type { RawStyleTag } from '$lib/utils/types/api/RawBeverage/RawEditorial';
@@ -37,10 +38,7 @@ export async function GET({ params }) {
 			}
 		});
 
-	throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-	// Suggestion (check for correctness before using):
-	// return new Response(rawData.filter(({ amount }) => amount));
-	return {
-		body: rawData.filter(({ amount }) => amount)
-	};
+	const formattedData = rawData.filter(({ amount }) => amount);
+
+	return json(formattedData);
 }

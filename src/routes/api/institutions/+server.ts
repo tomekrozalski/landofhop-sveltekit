@@ -21,8 +21,5 @@ export async function GET() {
 		)
 		.toArray();
 
-	throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-	// Suggestion (check for correctness before using):
-	// return json(data);
-	return { body: data };
+	return json(data);
 }

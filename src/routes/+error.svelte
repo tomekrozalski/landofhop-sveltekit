@@ -1,5 +1,7 @@
 <script context="module">
-	throw new Error("@migration task: Replace error load function (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3293209)");
+	throw new Error(
+		'@migration task: Replace error load function (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3293209)'
+	);
 
 	// export function load({ error, status }) {
 	// 	return {

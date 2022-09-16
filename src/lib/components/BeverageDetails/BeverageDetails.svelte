@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { session } from '$app/stores';
+	// import { session } from '$app/stores';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
 	import Navigation from './Navigation.svelte';
@@ -25,9 +25,9 @@
 		<Testimony {details} />
 		<Impressions {details} />
 		<FootNotes {details} />
-		{#if $session.isLoggedIn}
-			<AdminBar {details} />
-		{/if}
+		<!-- {#if $session.isLoggedIn} -->
+		<AdminBar {details} />
+		<!-- {/if} -->
 	</div>
 	<aside>
 		<Navigation {next} {previous} />

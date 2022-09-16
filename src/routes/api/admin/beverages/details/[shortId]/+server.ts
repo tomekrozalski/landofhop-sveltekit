@@ -7,11 +7,14 @@ import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/Edit
 
 export async function GET({ locals, params }) {
 	if (!locals.authenticated) {
-		return json({
-			message: 'Unauthorized. Cannot load beverage admin details'
-		}, {
-			status: 401
-		});
+		return json(
+			{
+				message: 'Unauthorized. Cannot load beverage admin details'
+			},
+			{
+				status: 401
+			}
+		);
 	}
 
 	const { shortId } = params;
@@ -29,8 +32,5 @@ export async function GET({ locals, params }) {
 		editorial: EditorialFormValues;
 	} = adminDetailsNormalizer(beverage);
 
-	throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-	// Suggestion (check for correctness before using):
-	// return json(formattedDetails);
-	return { body: formattedDetails };
+	return json(formattedDetails);
 }

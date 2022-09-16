@@ -13,7 +13,7 @@
 	"devDependencies": {
 		"@cospired/i18n-iso-languages": "^3.1.0",
 		"@sveltejs/adapter-node": "^1.0.0-next.91",
-		"@sveltejs/kit": "^1.0.0-next.403",
+		"@sveltejs/kit": "^1.0.0-next.483",
 		"@types/d3-array": "^3.0.1",
 		"@types/d3-scale": "^4.0.1",
 		"@types/d3-shape": "^3.0.2",

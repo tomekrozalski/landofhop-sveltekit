@@ -1,5 +1,4 @@
-throw new Error("@migration task: Update +server.js (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-
+import { json } from '@sveltejs/kit';
 import { formatBeverage, getDbCollections } from '$lib/utils/api';
 import type {
 	RawBeverage,
@@ -8,7 +7,7 @@ import type {
 import type { RawEditorialPhotos } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 
-export async function put({ locals, params, request }) {
+export async function PUT({ locals, params, request }) {
 	const { shortId } = params;
 	const beverageData = await request.json();
 	const { beverages } = await getDbCollections();
@@ -77,9 +76,5 @@ export async function put({ locals, params, request }) {
 		};
 	}
 
-	return {
-		body: {
-			message: 'Beverage updated successfully'
-		}
-	};
+	return json({ message: 'Beverage updated successfully' });
 }

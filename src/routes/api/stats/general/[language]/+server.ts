@@ -1,3 +1,4 @@
+import { json } from '@sveltejs/kit';
 import { getDbCollections } from '$lib/utils/api';
 import { deleteIfEmpty, translate } from '$lib/utils/api';
 import { normalizer } from '$lib/utils/api/stats/general/normalizer';
@@ -93,10 +94,7 @@ export async function GET({ params }) {
 			rawData.push(data);
 		});
 
-	throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-	// Suggestion (check for correctness before using):
-	// return new Response(normalizer(rawData, language));
-	return {
-		body: normalizer(rawData, language)
-	};
+	const formattedData = normalizer(rawData, language);
+
+	return json(formattedData);
 }

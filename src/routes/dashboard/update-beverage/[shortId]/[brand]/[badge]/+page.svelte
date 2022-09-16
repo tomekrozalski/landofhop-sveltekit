@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
-	throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
+	throw new Error(
+		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
+	);
 
 	// import apiCall, { Endpoints } from '$lib/utils/api/call';
 	// import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormValues';
@@ -28,11 +30,13 @@
 </script>
 
 <script lang="ts">
-	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+	throw new Error(
+		'@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)'
+	);
 
 	import { setContext } from 'svelte';
 	import { translate, translations } from 'svelte-intl';
-	import { session } from '$app/stores';
+	// import { session } from '$app/stores';
 	import dashboardDictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 	import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
@@ -44,7 +48,7 @@
 	export let beverage: DetailsAdmin | null;
 
 	if (!beverage) {
-		$session.isLoggedIn = false;
+		// $session.isLoggedIn = false;
 	}
 
 	if (beverage) {

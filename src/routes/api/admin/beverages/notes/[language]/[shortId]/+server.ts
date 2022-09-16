@@ -8,11 +8,14 @@ import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 
 export async function GET({ locals, params }) {
 	if (!locals.authenticated) {
-		return json({
-			message: 'Unauthorized. Cannot load admin beverage notes'
-		}, {
-			status: 401
-		});
+		return json(
+			{
+				message: 'Unauthorized. Cannot load admin beverage notes'
+			},
+			{
+				status: 401
+			}
+		);
 	}
 
 	const { language, shortId } = params;
@@ -30,11 +33,14 @@ export async function GET({ locals, params }) {
 	);
 
 	if (!data) {
-		return json({
-			message: 'No beverage found'
-		}, {
-			status: 404
-		});
+		return json(
+			{
+				message: 'No beverage found'
+			},
+			{
+				status: 404
+			}
+		);
 	}
 
 	const formattedData: AdminNotes = {
@@ -50,8 +56,5 @@ export async function GET({ locals, params }) {
 		})
 	};
 
-	throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-	// Suggestion (check for correctness before using):
-	// return json(formattedData);
-	return { body: formattedData };
+	return json(formattedData);
 }

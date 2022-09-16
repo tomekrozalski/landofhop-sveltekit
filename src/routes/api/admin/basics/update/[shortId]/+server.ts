@@ -1,9 +1,7 @@
-throw new Error("@migration task: Update +server.js (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-
 import { formatBasics, getDbCollections } from '$lib/utils/api';
 import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
 
-export async function put({ locals, params, request }) {
+export async function PUT({ locals, params, request }) {
 	const { shortId } = params;
 	const beverageData = await request.json();
 

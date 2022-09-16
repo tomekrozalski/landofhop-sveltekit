@@ -1,4 +1,4 @@
-import { json as json$1 } from '@sveltejs/kit';
+import { json } from '@sveltejs/kit';
 import { getDbCollections, recalculateIngredientsOccurrences } from '$lib/utils/api';
 import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
 
@@ -7,11 +7,14 @@ export async function POST({ locals, request }) {
 	const { ingredients } = await getDbCollections();
 
 	if (!locals.authenticated) {
-		return json$1({
-			message: 'Unauthorized. Cannot add ingredient'
-		}, {
-			status: 401
-		});
+		return json(
+			{
+				message: 'Unauthorized. Cannot add ingredient'
+			},
+			{
+				status: 401
+			}
+		);
 	}
 
 	await ingredients.insertOne(ingredientData);
@@ -32,13 +35,10 @@ export async function POST({ locals, request }) {
 		)
 		.toArray();
 
-	throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-	// Suggestion (check for correctness before using):
-	// return json$1(data);
-	return { body: data };
+	return json(data);
 }
 
-export async function put({ locals, request }) {
+export async function PUT({ locals, request }) {
 	if (!locals.authenticated) {
 		return {
 			status: 401,
@@ -98,5 +98,5 @@ export async function put({ locals, request }) {
 		)
 		.toArray();
 
-	return { body: data };
+	return json(data);
 }

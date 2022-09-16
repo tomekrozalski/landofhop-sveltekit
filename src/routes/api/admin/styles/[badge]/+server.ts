@@ -1,10 +1,9 @@
-throw new Error("@migration task: Update +server.js (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-
+import { json } from '@sveltejs/kit';
 import { getDbCollections } from '$lib/utils/api';
 import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles.d';
 import type { RawIngredientTag } from '$lib/utils/types/api/RawBeverage/RawIngredientTag.d';
 
-export async function put({ locals, params, request }) {
+export async function PUT({ locals, params, request }) {
 	const { badge } = params;
 	const styleData = await request.json();
 
@@ -49,5 +48,5 @@ export async function put({ locals, params, request }) {
 		)
 		.toArray();
 
-	return { body: data };
+	return json(data);
 }
