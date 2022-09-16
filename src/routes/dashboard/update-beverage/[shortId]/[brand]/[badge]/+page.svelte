@@ -49,6 +49,7 @@
 
 	if (!beverage) {
 		// $session.isLoggedIn = false;
+		// 	import navigation from '$lib/utils/stores/navigation';
 	}
 
 	if (beverage) {

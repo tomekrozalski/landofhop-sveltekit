@@ -1,4 +1,4 @@
-import { json as json$1 } from '@sveltejs/kit';
+import { json } from '@sveltejs/kit';
 import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
 
@@ -8,7 +8,7 @@ export async function GET({ request }) {
 	const cookies = cookie.parse(request.headers.get('cookie') ?? '');
 
 	if (!cookies.refreshToken) {
-		return json$1({
+		return json({
 			message: 'Already logged out'
 		});
 	}
@@ -18,8 +18,7 @@ export async function GET({ request }) {
 		const { sessions } = await getDbCollections();
 		await sessions.deleteOne({ sessionToken });
 
-		throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-		return {
+		return new Response(JSON.stringify({ test: true }), {
 			headers: {
 				'Set-Cookie': [
 					cookie.serialize('accessToken', 'deleted', {
@@ -36,14 +35,17 @@ export async function GET({ request }) {
 						sameSite: 'strict',
 						secure: true
 					})
-				]
+				].join(',')
 			}
-		};
-	} catch {
-		return json$1({
-			message: 'Log out failed'
-		}, {
-			status: 401
 		});
+	} catch {
+		return json(
+			{
+				message: 'Log out failed'
+			},
+			{
+				status: 401
+			}
+		);
 	}
 }

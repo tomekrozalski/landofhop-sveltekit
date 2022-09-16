@@ -2,7 +2,7 @@ import cookie from 'cookie';
 import { add } from 'date-fns';
 import jwt from 'jsonwebtoken';
 
-function createTokens(sessionToken: string, userId: string): { 'Set-Cookie': string[] } {
+function createTokens(sessionToken: string, userId: string): HeadersInit {
 	const accessToken = jwt.sign({ sessionToken, userId }, import.meta.env.VITE_JWT_SECRET);
 	const refreshToken = jwt.sign({ sessionToken }, import.meta.env.VITE_JWT_SECRET);
 
@@ -21,7 +21,7 @@ function createTokens(sessionToken: string, userId: string): { 'Set-Cookie': str
 				sameSite: 'strict',
 				secure: true
 			})
-		]
+		].join(',')
 	};
 }
 

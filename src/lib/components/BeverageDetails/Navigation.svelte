@@ -10,7 +10,7 @@
 
 <nav>
 	{#if next}
-		<a sveltekit:prefetch href="/details/{next.shortId}/{next.brand}/{next.badge}">
+		<a data-sveltekit-prefetch href="/details/{next.shortId}/{next.brand}/{next.badge}">
 			<LeftIcon>{$translate('beverage.aside.next')}</LeftIcon>
 		</a>
 	{:else}
@@ -19,7 +19,7 @@
 		</span>
 	{/if}
 	{#if previous}
-		<a sveltekit:prefetch href="/details/{previous.shortId}/{previous.brand}/{previous.badge}">
+		<a data-sveltekit-prefetch href="/details/{previous.shortId}/{previous.brand}/{previous.badge}">
 			<RightIcon>{$translate('beverage.aside.previous')}</RightIcon>
 		</a>
 	{:else}

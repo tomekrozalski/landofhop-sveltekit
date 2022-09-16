@@ -37,6 +37,7 @@
 
 	if (forbidden) {
 		// $session.isLoggedIn = false;
+		// 	import navigation from '$lib/utils/stores/navigation';
 	}
 
 	beveragePhotosStore.set(photosData);

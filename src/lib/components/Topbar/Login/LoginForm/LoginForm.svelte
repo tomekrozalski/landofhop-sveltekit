@@ -3,7 +3,7 @@
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
 
-	// import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
 	import Button from '$lib/elements/form/Button.svelte';
@@ -33,7 +33,6 @@
 				body: JSON.stringify(values)
 			})
 				.then(() => {
-					// $session.isLoggedIn = true;
 					navigation.setLoginStatus(Status.fulfilled);
 				})
 				.catch(() => navigation.setLoginStatus(Status.rejected));

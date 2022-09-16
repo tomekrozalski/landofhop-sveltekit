@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { session } from '$app/stores';
-	import Status from '$lib/utils/enums/Status.enum';
 	import navigation from '$lib/utils/stores/navigation';
 	import LockIcon from '$lib/elements/vectors/Lock.svelte';
 	import UnlockIcon from '$lib/elements/vectors/Unlock.svelte';
@@ -9,17 +7,14 @@
 
 	function logOut() {
 		apiCall(fetch, Endpoints.logOut)
-			.then(() => {
-				$session.isLoggedIn = false;
-				navigation.setLoginStatus(Status.idle);
-			})
+			.then(navigation.logOut)
 			.catch(() => console.warn('Log out failed'));
 	}
 </script>
 
 <ul>
 	<li>
-		{#if $session.isLoggedIn}
+		{#if $navigation.isLoggedIn}
 			<button class="unlock-button" on:click={logOut}>
 				<UnlockIcon />
 				{$translate('navigation.logout')}
@@ -33,7 +28,7 @@
 	</li>
 	<li><a href="/about">{$translate('navigation.about')}</a></li>
 	<li><a href="/stats">{$translate('navigation.stats')}</a></li>
-	{#if $session.isLoggedIn}
+	{#if $navigation.isLoggedIn}
 		<li>
 			<a href="/dashboard/add-new-beverage">
 				{$translate('navigation.addNewBeverage')}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	// import { session } from '$app/stores';
+	import navigation from '$lib/utils/stores/navigation';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 	import InlineSpinner from '$lib/elements/spinners/Inline.svelte';
@@ -20,7 +20,7 @@
 			});
 		} catch (err) {
 			if (err.message === 'Forbidden') {
-				// $session.isLoggedIn = false;
+				navigation.logOut();
 			}
 		}
 
