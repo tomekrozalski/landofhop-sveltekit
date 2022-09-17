@@ -1,14 +1,15 @@
-import cookie from 'cookie';
 import * as jwt from 'jsonwebtoken';
+import type { Cookies } from '@sveltejs/kit';
+import { generateTokens, getDbCollections, updateSession } from '$lib/utils/api';
 
-import { createTokens, getDbCollections, updateSession } from '$lib/utils/api';
+async function authenticate(cookies: Cookies): Promise<boolean> {
+	const accessToken = cookies.get('accessToken');
+	const refreshToken = cookies.get('refreshToken');
 
-async function authenticate(request): Promise<[boolean, { 'Set-Cookie': string[] } | null]> {
-	const { accessToken, refreshToken } = cookie.parse(request.headers.get('cookie') ?? '');
 	const { sessions } = await getDbCollections();
 
 	if (!accessToken && !refreshToken) {
-		return [false, null];
+		return false;
 	}
 
 	if (accessToken) {
@@ -20,9 +21,9 @@ async function authenticate(request): Promise<[boolean, { 'Set-Cookie': string[]
 				userId: payload.userId
 			});
 
-			return [session?.valid, null];
+			return session?.valid;
 		} catch (e) {
-			return [false, null];
+			return false;
 		}
 	}
 
@@ -35,19 +36,24 @@ async function authenticate(request): Promise<[boolean, { 'Set-Cookie': string[]
 			});
 
 			if (!session?.valid) {
-				return [false, null];
+				return false;
 			}
 
 			const newSessionToken = await updateSession(session.sessionToken);
-			const headers = createTokens(newSessionToken, session._id.toString());
 
-			return [true, headers];
+			generateTokens({
+				cookies,
+				sessionToken: newSessionToken,
+				userId: session.userId.toString()
+			});
+
+			return true;
 		} catch (e) {
-			return [false, null];
+			return false;
 		}
 	}
 
-	return [false, null];
+	return false;
 }
 
 export default authenticate;

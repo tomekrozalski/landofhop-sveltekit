@@ -1,51 +1,25 @@
-import { json } from '@sveltejs/kit';
-import cookie from 'cookie';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import jwt from 'jsonwebtoken';
 
-import { getDbCollections } from '$lib/utils/api';
+import { getDbCollections, removeTokens } from '$lib/utils/api';
 
-export async function GET({ request }) {
-	const cookies = cookie.parse(request.headers.get('cookie') ?? '');
-
-	if (!cookies.refreshToken) {
-		return json({
-			message: 'Already logged out'
-		});
+export const GET: RequestHandler = async function ({ cookies }) {
+	if (!cookies.get('refreshToken')) {
+		throw error(400, 'Already logged out');
 	}
 
 	try {
-		const { sessionToken } = jwt.verify(cookies.refreshToken, import.meta.env.VITE_JWT_SECRET);
+		const { sessionToken } = jwt.verify(
+			cookies.get('refreshToken'),
+			import.meta.env.VITE_JWT_SECRET
+		);
 		const { sessions } = await getDbCollections();
 		await sessions.deleteOne({ sessionToken });
+		removeTokens(cookies);
 
-		return new Response(JSON.stringify({ test: true }), {
-			headers: {
-				'Set-Cookie': [
-					cookie.serialize('accessToken', 'deleted', {
-						expires: new Date(0),
-						httpOnly: true,
-						path: '/',
-						sameSite: 'strict',
-						secure: true
-					}),
-					cookie.serialize('refreshToken', 'deleted', {
-						expires: new Date(0),
-						httpOnly: true,
-						path: '/',
-						sameSite: 'strict',
-						secure: true
-					})
-				].join(',')
-			}
-		});
+		return json({ message: 'Logged out successfully' });
 	} catch {
-		return json(
-			{
-				message: 'Log out failed'
-			},
-			{
-				status: 401
-			}
-		);
+		throw error(401, 'Logged out failed');
 	}
-}
+};

@@ -1,20 +1,8 @@
-import cookie from 'cookie';
 import { authenticate } from '$lib/utils/api';
 
-export async function load({ request }) {
-	const cookies = cookie.parse(request.headers.get('cookie') ?? '');
-
-	if (cookies.accessToken || cookies.refreshToken) {
-		const [authenticated, headers] = await authenticate(request);
-
-		if (authenticated && headers?.['Set-Cookie']) {
-			return new Response(JSON.stringify({ authenticated }), {
-				headers: {
-					'Set-Cookie': headers['Set-Cookie'].join(',')
-				}
-			});
-		}
-
+export async function load({ cookies }) {
+	if (cookies.get('accessToken') || cookies.get('refreshToken')) {
+		const authenticated = await authenticate(cookies);
 		return { authenticated };
 	}
 

@@ -5,7 +5,7 @@ import call, { Endpoints } from './call';
 import cleanDeep from './cleanDeep';
 import countryList from './countryList';
 import createSession from './sessions/create';
-import createTokens from './sessions/tokens';
+import { generateTokens, removeTokens } from './sessions/tokens';
 import deleteIfEmpty from './deleteIfEmpty';
 import detailsNormalizer from './beverages/detailsNormalizer';
 import formatBasics from './basics/format';
@@ -33,7 +33,6 @@ export {
 	cleanDeep,
 	countryList,
 	createSession,
-	createTokens,
 	deleteIfEmpty,
 	detailsNormalizer,
 	Endpoints,
@@ -41,12 +40,14 @@ export {
 	formatBeverage,
 	formatBeverageToBasics,
 	generateShortId,
+	generateTokens,
 	getDbCollections,
 	getTracedSvg,
 	institutionNormalizer,
 	recalculateIngredientsOccurrences,
 	removeCover,
 	removeGallery,
+	removeTokens,
 	removeViewFromAbove,
 	saveCoverJpg,
 	saveCoverWebp,

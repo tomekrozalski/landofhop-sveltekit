@@ -1,9 +1,10 @@
-import { error, json, HeadersInit } from '@sveltejs/kit';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import bcrypt from 'bcryptjs';
 
-import { createSession, createTokens, getDbCollections } from '$lib/utils/api';
+import { createSession, generateTokens, getDbCollections } from '$lib/utils/api';
 
-export async function POST({ request }) {
+export const POST: RequestHandler = async function ({ cookies, request }) {
 	const { email, password } = await request.json();
 	const { users } = await getDbCollections();
 
@@ -26,12 +27,14 @@ export async function POST({ request }) {
 			throw error(500, 'Creating session failed');
 		}
 
-		const headers = createTokens(sessionToken, user._id.toString());
+		generateTokens({
+			cookies,
+			sessionToken,
+			userId: user._id.toString()
+		});
 
-		// console.log('headers', headers);
-
-		return new Response(JSON.stringify({ test: true }), { headers });
+		return json({ message: 'Logged in successfully' });
 	} catch {
 		throw error(500, 'Decryption failed');
 	}
-}
+};

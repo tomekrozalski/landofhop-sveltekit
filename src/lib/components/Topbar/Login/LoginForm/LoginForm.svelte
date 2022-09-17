@@ -3,7 +3,6 @@
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
 
-	import { page } from '$app/stores';
 	import navigation from '$lib/utils/stores/navigation';
 	import Status from '$lib/utils/enums/Status.enum';
 	import Button from '$lib/elements/form/Button.svelte';
