@@ -1,11 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import { page } from '$app/stores';
 
-	// export let status: number;
-	// export let error: { message: string };
-
-	let status = 404;
-	let error = { message: 'Test test' };
+	// @ToDo: verify on production, do we have correct message, should be not found not internal error
 </script>
 
 <svelte:head>
@@ -13,7 +10,7 @@
 </svelte:head>
 
 <div>
-	<h1>{status} {error.message}</h1>
+	<h1>{$page.status} {$page.error.message}</h1>
 </div>
 
 <style>
