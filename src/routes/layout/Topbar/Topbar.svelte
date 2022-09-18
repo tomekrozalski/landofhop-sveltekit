@@ -1,15 +1,14 @@
 <script lang="ts">
-	import navigation from '$lib/utils/stores/navigation';
-
+	import storeLayout from '../store';
 	import Header from './Header/Header.svelte';
 	import Navigation from './Navigation/Navigation.svelte';
 	import Login from './Login/Login.svelte';
 </script>
 
 <Header />
-{#if $navigation.isNavigationOpened}
+{#if $storeLayout.isNavigationOpened}
 	<Navigation />
 {/if}
-{#if $navigation.isLoginOpened}
+{#if $storeLayout.isLoginOpened}
 	<Login />
 {/if}

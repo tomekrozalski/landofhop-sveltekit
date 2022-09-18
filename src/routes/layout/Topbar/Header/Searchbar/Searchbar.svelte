@@ -1,18 +1,18 @@
 <script lang="ts">
-	import navigation from '$lib/utils/stores/navigation';
+	import layoutStore from '../../../store';
 	import Magnifier from './Magnifier.svelte';
 	import Close from './Close.svelte';
 	import SearchInput from './SearchInput.svelte';
 </script>
 
-<div class:isSearchBarOpen={$navigation.isSearchbarActive}>
-	{#if $navigation.isSearchbarActive}
+<div class:isSearchBarOpen={$layoutStore.isSearchbarActive}>
+	{#if $layoutStore.isSearchbarActive}
 		<SearchInput />
 	{/if}
-	{#if $navigation.isSearchbarActive}
-		<button on:click={navigation.closeSearchBar}><Close /></button>
+	{#if $layoutStore.isSearchbarActive}
+		<button on:click={layoutStore.closeSearchBar}><Close /></button>
 	{:else}
-		<button on:click={navigation.openSearchBar}><Magnifier /></button>
+		<button on:click={layoutStore.openSearchBar}><Magnifier /></button>
 	{/if}
 </div>
 

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import navigation from '$lib/utils/stores/navigation';
+	import layoutStore from '../../store';
 	import Logo from './Logo.svelte';
 	import SearchBar from './Searchbar/Searchbar.svelte';
 	import NavigationSwitcher from './NavigationSwitcher.svelte';
 </script>
 
 <header
-	class:isNavigationOpened={$navigation.isNavigationOpened}
-	class:isLoginOpened={$navigation.isLoginOpened}
+	class:isNavigationOpened={$layoutStore.isNavigationOpened}
+	class:isLoginOpened={$layoutStore.isLoginOpened}
 >
 	<div>
 		<Logo />

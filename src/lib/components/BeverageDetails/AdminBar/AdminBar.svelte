@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import navigation from '$lib/utils/stores/navigation';
+	import authentication from '$lib/utils/stores/authentication';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 	import InlineSpinner from '$lib/elements/spinners/Inline.svelte';
@@ -20,7 +20,7 @@
 			});
 		} catch (err) {
 			if (err.message === 'Forbidden') {
-				navigation.logOut();
+				authentication.logOut();
 			}
 		}
 

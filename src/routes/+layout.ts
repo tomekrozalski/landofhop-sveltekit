@@ -1,8 +1,8 @@
-import navigation from '$lib/utils/stores/navigation';
+import authentication from '$lib/utils/stores/authentication';
 import Status from '$lib/utils/enums/Status.enum';
 
 export async function load({ data }) {
 	if (data.authenticated) {
-		navigation.setLoginStatus(Status.fulfilled);
+		authentication.setLoginStatus(Status.fulfilled);
 	}
 }

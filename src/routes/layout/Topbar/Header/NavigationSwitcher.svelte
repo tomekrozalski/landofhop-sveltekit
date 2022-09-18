@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import navigation from '$lib/utils/stores/navigation';
+
+	import layoutStore from '../../store';
 </script>
 
-<button on:click={navigation.toggleNavbar}>
+<button on:click={layoutStore.toggleNavbar}>
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 9">
 		<title>
-			{#if $navigation.isNavigationOpened}
+			{#if $layoutStore.isNavigationOpened}
 				{$translate('header.closeNavigation')}
 			{:else}
 				{$translate('header.openNavigation')}

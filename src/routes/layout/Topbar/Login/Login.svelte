@@ -2,22 +2,24 @@
 	import { slide } from 'svelte/transition';
 	import { translations } from 'svelte-intl';
 	import { cubicInOut } from 'svelte/easing';
-	import loginbarDictionary from '$lib/utils/dictionary/header/loginbar.json';
+
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
-	import navigation from '$lib/utils/stores/navigation';
+	import authentication from '$lib/utils/stores/authentication';
 	import Status from '$lib/utils/enums/Status.enum';
+
 	import ErrorMessage from './ErrorMessage.svelte';
 	import LoginForm from './LoginForm/LoginForm.svelte';
 	import SuccessMessage from './SuccessMessage.svelte';
+	import loginbarDictionary from './dictionary.json';
 
 	translations.update(loginbarDictionary);
 	translations.update(commonFormsDictionary);
 </script>
 
 <section transition:slide={{ duration: 200, easing: cubicInOut }}>
-	{#if $navigation.loginStatus === Status.fulfilled}
+	{#if $authentication.loginStatus === Status.fulfilled}
 		<SuccessMessage />
-	{:else if $navigation.loginStatus === Status.rejected}
+	{:else if $authentication.loginStatus === Status.rejected}
 		<ErrorMessage />
 	{:else}
 		<LoginForm />

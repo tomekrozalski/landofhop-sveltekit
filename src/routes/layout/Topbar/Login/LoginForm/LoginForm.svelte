@@ -3,10 +3,11 @@
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
 
-	import navigation from '$lib/utils/stores/navigation';
+	import authentication from '$lib/utils/stores/authentication';
 	import Status from '$lib/utils/enums/Status.enum';
 	import Button from '$lib/elements/form/Button.svelte';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
+
 	import Email from './Email.svelte';
 	import Password from './Password.svelte';
 
@@ -25,16 +26,16 @@
 			password: yup.string().required($translate('form.validation.required'))
 		}),
 		onSubmit: (values) => {
-			navigation.setLoginStatus(Status.pending);
+			authentication.setLoginStatus(Status.pending);
 
 			apiCall(fetch, Endpoints.logIn, {
 				method: 'POST',
 				body: JSON.stringify(values)
 			})
 				.then(() => {
-					navigation.setLoginStatus(Status.fulfilled);
+					authentication.setLoginStatus(Status.fulfilled);
 				})
-				.catch(() => navigation.setLoginStatus(Status.rejected));
+				.catch(() => authentication.setLoginStatus(Status.rejected));
 		}
 	});
 

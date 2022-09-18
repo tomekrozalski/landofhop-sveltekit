@@ -1,22 +1,17 @@
 import { writable } from 'svelte/store';
 import pushState from '$lib/utils/helpers/pushState';
-import Status from '$lib/utils/enums/Status.enum';
 
 const { subscribe, update, set } = writable<{
 	isNavigationOpened: boolean;
 	isLoading: boolean;
-	isLoggedIn: boolean;
 	isLoginOpened: boolean;
 	isSearchbarActive: boolean;
-	loginStatus: Status;
 	searchPhrase: string;
 }>({
 	isNavigationOpened: false,
 	isLoading: false,
-	isLoggedIn: false,
 	isLoginOpened: false,
 	isSearchbarActive: false,
-	loginStatus: Status.idle,
 	searchPhrase: ''
 });
 
@@ -49,24 +44,6 @@ function toggleLoginbar() {
 function closeLoginbar() {
 	update((store) => {
 		store.isLoginOpened = false;
-
-		return store;
-	});
-}
-
-function logOut() {
-	update((store) => {
-		store.isLoggedIn = false;
-		store.loginStatus = Status.idle;
-
-		return store;
-	});
-}
-
-function setLoginStatus(status: Status) {
-	update((store) => {
-		store.isLoggedIn = status === Status.fulfilled;
-		store.loginStatus = status;
 
 		return store;
 	});
@@ -111,10 +88,8 @@ export default {
 	close,
 	closeLoginbar,
 	closeSearchBar,
-	logOut,
 	openSearchBar,
 	set,
-	setLoginStatus,
 	setSearchPhrase,
 	subscribe,
 	toggleLoginbar,

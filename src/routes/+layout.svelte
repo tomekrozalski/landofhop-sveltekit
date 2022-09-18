@@ -2,26 +2,25 @@
 	import { afterNavigate } from '$app/navigation';
 	import { navigating } from '$app/stores';
 	import { locale, translations } from 'svelte-intl';
-	import globalDictionary from '$lib/utils/dictionary/global.json';
-	import topbarDictionary from '$lib/utils/dictionary/header/topbar.json';
-	import navigation from '$lib/utils/stores/navigation';
 	import '$lib/utils/styles/app.postcss';
 	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
 	import '$lib/utils/styles/global.css';
-	import Topbar from '$lib/components/Topbar/Topbar.svelte';
-	import Main from '$lib/components/Main.svelte';
 
-	translations.update(globalDictionary);
-	translations.update(topbarDictionary);
+	import dictionary from './layout/dictionary.json';
+	import layoutStore from './layout/store';
+	import Topbar from './layout/Topbar/Topbar.svelte';
+	import Main from './layout/Main.svelte';
+
+	translations.update(dictionary);
 	locale.set('pl');
 
 	afterNavigate(() => {
 		// when path change, close navigation
-		navigation.close();
+		layoutStore.close();
 	});
 
-	$: $navigation.isLoading = !!$navigating;
+	$: $layoutStore.isLoading = !!$navigating;
 </script>
 
 <svelte:head>

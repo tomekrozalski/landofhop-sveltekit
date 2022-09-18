@@ -1,5 +1,5 @@
 <script lang="ts">
-	import navigation from '$lib/utils/stores/navigation';
+	import authentication from '$lib/utils/stores/authentication';
 	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
 	import FindAll from '$lib/components/stats/elements/FindAll.svelte';
 	import UpdateButton from '$lib/components/stats/elements/UpdateButton.svelte';
@@ -12,7 +12,7 @@
 	<span lang={item.name.language}>{item.name.value}</span>
 	<span class="amount">{item.amount}</span>
 	<FindAll query="styleTags={item.badge}" />
-	{#if $navigation.isLoggedIn}
+	{#if $authentication.isLoggedIn}
 		<UpdateButton badge={item.badge} {onUpdateClick} />
 	{/if}
 </li>

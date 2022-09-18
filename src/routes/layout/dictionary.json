@@ -1,5 +1,12 @@
 {
 	"en": {
+		"global.404.title": "404 Not Found",
+		"global.confirmation": "yes",
+		"global.denial": "no",
+		"global.foundCount": "found",
+		"global.loading": "loading",
+		"global.pagination.next": "next page",
+		"global.pagination.previous": "previous page",
 		"header.advancedSearch.link": "advanced search",
 		"header.closeNavigation": "Close navigation",
 		"header.closeSearch": "Close search",
@@ -14,6 +21,13 @@
 		"navigation.stats": "Stats"
 	},
 	"pl": {
+		"global.404.title": "404 Nie znaleziono",
+		"global.confirmation": "tak",
+		"global.denial": "nie",
+		"global.foundCount": "znaleziono",
+		"global.loading": "ładuję",
+		"global.pagination.next": "następna strona",
+		"global.pagination.previous": "poprzednia strona",
 		"header.advancedSearch.link": "wyszukiwanie zaawansowane",
 		"header.closeNavigation": "Zamknij nawigację",
 		"header.closeSearch": "Zamknij wyszukiwarkę",

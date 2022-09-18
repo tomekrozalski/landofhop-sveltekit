@@ -1,8 +1,8 @@
 <script lang="ts">
-	import navigation from '$lib/utils/stores/navigation';
+	import layoutStore from '../../store';
 </script>
 
-<a on:click={navigation.close} href="/">
+<a on:click={layoutStore.close} href="/">
 	<h1>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 271.3 127">
 			<title>Land of Hop</title>
@@ -11,7 +11,7 @@
 				fill="#222"
 				d="M49.9 96.35h-9v-28.8h-32v28.8H0v-66.2h8.9v29.2h32v-29.2h9v66.2z"
 			/>
-			{#if $navigation.isLoading}
+			{#if $layoutStore.isLoading}
 				<path class="letter-o-loading" d="M92.35 31.39a55.5 55.5 0 1 0 18.77-16.68" />
 			{:else}
 				<circle cx="137.6" cy="63.5" r="55.5" class="letter-o" />

@@ -1,26 +1,29 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import navigation from '$lib/utils/stores/navigation';
-	import LockIcon from '$lib/elements/vectors/Lock.svelte';
-	import UnlockIcon from '$lib/elements/vectors/Unlock.svelte';
+
+	import authentication from '$lib/utils/stores/authentication';
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
+
+	import LockIcon from './icons/Lock.svelte';
+	import UnlockIcon from './icons/Unlock.svelte';
+	import layoutStore from '../../store';
 
 	function logOut() {
 		apiCall(fetch, Endpoints.logOut)
-			.then(navigation.logOut)
+			.then(authentication.logOut)
 			.catch(() => console.warn('Log out failed'));
 	}
 </script>
 
 <ul>
 	<li>
-		{#if $navigation.isLoggedIn}
+		{#if $authentication.isLoggedIn}
 			<button class="unlock-button" on:click={logOut}>
 				<UnlockIcon />
 				{$translate('navigation.logout')}
 			</button>
 		{:else}
-			<button on:click={navigation.toggleLoginbar}>
+			<button on:click={layoutStore.toggleLoginbar}>
 				<LockIcon />
 				{$translate('navigation.login')}
 			</button>
@@ -28,7 +31,7 @@
 	</li>
 	<li><a href="/about">{$translate('navigation.about')}</a></li>
 	<li><a href="/stats">{$translate('navigation.stats')}</a></li>
-	{#if $navigation.isLoggedIn}
+	{#if $authentication.isLoggedIn}
 		<li>
 			<a href="/dashboard/add-new-beverage">
 				{$translate('navigation.addNewBeverage')}

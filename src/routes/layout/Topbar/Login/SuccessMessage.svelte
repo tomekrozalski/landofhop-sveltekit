@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
-	import navigation from '$lib/utils/stores/navigation';
+
 	import SuccessIcon from '$lib/elements/vectors/Success.svelte';
+
+	import layoutStore from '../../store';
 
 	onMount(() => {
 		setTimeout(() => {
-			navigation.closeLoginbar();
+			layoutStore.closeLoginbar();
 		}, 3000);
 	});
 </script>

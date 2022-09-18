@@ -1,5 +1,5 @@
 <script lang="ts">
-	import navigation from '$lib/utils/stores/navigation';
+	import authentication from '$lib/utils/stores/authentication';
 	import type { IngredientTree } from '$lib/utils/types/Ingredient.d';
 	import FindAll from '$lib/components/stats/elements/FindAll.svelte';
 	import UpdateButton from '$lib/components/stats/elements/UpdateButton.svelte';
@@ -20,7 +20,7 @@
 			{#if occurrences.alone !== occurrences.withSuccessors}
 				<ToggleBox {badge} />
 			{/if}
-			{#if $navigation.isLoggedIn}
+			{#if $authentication.isLoggedIn}
 				<UpdateButton {badge} {onUpdateClick} />
 			{/if}
 			{#if successors}
