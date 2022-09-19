@@ -4,11 +4,11 @@
 	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte';
 	import Pagination from '$lib/components/BeverageList/Pagination/Pagination.svelte';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
-	import dictionary from './page/dictionary.json';
 
-	export let data: { beverages: Basics[]; total: number };
-	const { beverages, total } = data;
+	import dictionary from './page/dictionary.json';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	translations.update(dictionary);
 </script>
@@ -20,5 +20,5 @@
 </svelte:head>
 
 <Breadcrumbs steps={[{ label: $translate('homePage.breadcrumbs', { order: 1 }) }]} />
-<BeverageList {beverages} />
-<Pagination order={1} {total} />
+<BeverageList beverages={data.beverages} />
+<Pagination order={1} total={data.total} />

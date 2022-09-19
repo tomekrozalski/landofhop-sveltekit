@@ -1,12 +1,14 @@
-import { json } from '@sveltejs/kit';
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { json } from '@sveltejs/kit';
 import { format } from 'date-fns';
+import type { RequestHandler } from '@sveltejs/kit';
+
 import { getDbCollections, translate } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
 import type { RawBasics } from '$lib/utils/types/api/RawBasics';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-export async function GET({ params }) {
+export const GET: RequestHandler = async ({ params }) => {
 	const { language, limit, skip } = params;
 	const { basics } = await getDbCollections();
 	const translatedValues: Basics[] = [];
@@ -38,4 +40,4 @@ export async function GET({ params }) {
 		});
 
 	return json(translatedValues);
-}
+};

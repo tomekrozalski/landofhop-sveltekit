@@ -10,7 +10,7 @@
 </svelte:head>
 
 <div>
-	<h1>{$page.status} {$page.error.message}</h1>
+	<h1>{$page.status} {$page.error?.message || 'Not found'}</h1>
 </div>
 
 <style>
