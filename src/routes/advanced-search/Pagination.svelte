@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-	import Element from '$lib/components/BeverageList/Pagination/Element.svelte';
-	import Wrapper from '$lib/components/BeverageList/Pagination/Wrapper.svelte';
-	import getElements from '$lib/components/BeverageList/Pagination/getElements';
 	import pushState from '$lib/utils/helpers/pushState';
+	import Element from '$lib/elements/Pagination/Element.svelte';
+	import Wrapper from '$lib/elements/Pagination/Wrapper.svelte';
+	import getElements from '$lib/elements/Pagination/getElements';
 
 	export let order: number;
 	export let total: number;

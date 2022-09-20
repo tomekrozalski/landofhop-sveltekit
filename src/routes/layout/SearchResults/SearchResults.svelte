@@ -6,9 +6,10 @@
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import pushState from '$lib/utils/helpers/pushState';
 	import Spinner from '$lib/elements/spinners/FullScreen.svelte';
-	import Pagination from '$lib/components/AdvancedSearch/Pagination.svelte';
-	import Total from '$lib/components/AdvancedSearch/Total.svelte';
-	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte'; // @ToDo: will be moved
+	import Pagination from '$lib/elements/Pagination/Pagination.svelte';
+	import Total from '$lib/elements/Pagination/Total.svelte';
+
+	import BeverageList from '../../beverageList/BeverageList.svelte'; // @ToDo: will be moved
 
 	import layoutStore from '../store';
 	import AdvancedSearchLink from './AdvancedSearchLink.svelte';

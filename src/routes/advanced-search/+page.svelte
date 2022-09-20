@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
-	import advancedSearchDictionary from '$lib/utils/dictionary/screens/advancedSearch.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
-	import AdvancedSearch from '$lib/components/AdvancedSearch/AdvancedSearch.svelte';
 
-	translations.update(advancedSearchDictionary);
+	import dictionary from './dictionary.json';
+	import AdvancedSearch from './AdvancedSearch.svelte';
+
+	translations.update(dictionary);
 	translations.update(commonFormsDictionary);
 </script>
 

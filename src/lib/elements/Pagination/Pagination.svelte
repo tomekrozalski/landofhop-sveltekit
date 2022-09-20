@@ -20,7 +20,7 @@
 			active
 			href={order > 2 ? `/list/${order - 1}` : '/'}
 			label="←"
-			data-sveltekit-prefetch
+			data-sveltekit-prefetch=""
 			tag="a"
 		/>
 	{/if}
@@ -30,13 +30,13 @@
 			current={page === order}
 			href={page === 1 ? '/' : `/list/${page}`}
 			label={page.toString()}
-			data-sveltekit-prefetch
+			data-sveltekit-prefetch=""
 			tag={page === '…' ? 'span' : 'a'}
 		/>
 	{/each}
 	{#if pagesCount === order}
 		<Element label="→" tag="span" />
 	{:else}
-		<Element active href="/list/{order + 1}" label="→" data-sveltekit-prefetch tag="a" />
+		<Element active href="/list/{order + 1}" label="→" data-sveltekit-prefetch="" tag="a" />
 	{/if}
 </Wrapper>

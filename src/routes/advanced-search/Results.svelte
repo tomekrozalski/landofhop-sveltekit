@@ -3,16 +3,17 @@
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import Spinner from '$lib/elements/spinners/FullWidth.svelte';
-	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte';
+	import Total from '$lib/elements/Pagination/Total.svelte';
 
-	import NothingFound from '../../../routes/layout/SearchResults/NothingFound.svelte'; // @ToDo
+	import BeverageList from '../../routes/beverageList/BeverageList.svelte';
+
+	import NothingFound from '../layout/SearchResults/NothingFound.svelte'; // @ToDo
 	import type AdvancedSearchData from './AdvancedSearchData.type';
 	import Pagination from './Pagination.svelte';
-	import Total from './Total.svelte';
 
 	export let data: AdvancedSearchData;
 
-	async function callToApi(values) {
+	async function callToApi(values: AdvancedSearchData) {
 		const response: {
 			beverages: Basics[];
 			total: number;

@@ -12,7 +12,7 @@
 		{#each steps as { label, link }}
 			{#if link}
 				<li class="withLink">
-					<a data-sveltekit-prefetch href={link}>{@html marked.parseInline(label)}</a>
+					<a data-sveltekit-prefetch="" href={link}>{@html marked.parseInline(label)}</a>
 				</li>
 			{:else}
 				<li>

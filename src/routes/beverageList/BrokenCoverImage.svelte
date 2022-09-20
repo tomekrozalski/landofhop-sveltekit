@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+
 	import type { ContainerType } from '$lib/utils/enums/Beverage.enum';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 

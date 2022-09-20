@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { translate, translations } from 'svelte-intl';
-	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte';
-	import Pagination from '$lib/components/BeverageList/Pagination/Pagination.svelte';
-	import { PHOTO_SERVER } from '$lib/utils/constants';
 
-	import dictionary from './page/dictionary.json';
+	import { PHOTO_SERVER } from '$lib/utils/constants';
+	import Pagination from '$lib/elements/Pagination/Pagination.svelte';
+
+	import Breadcrumbs from './beverageList/Breadcrumbs.svelte';
+	import BeverageList from './beverageList/BeverageList.svelte';
+	import dictionary from './beverageList/dictionary.json';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

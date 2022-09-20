@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
+
 	import pushState from '$lib/utils/helpers/pushState';
 	import Button from '$lib/elements/form/Button.svelte';
 	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
@@ -9,6 +10,7 @@
 	import Brands from '$lib/elements/form/fields/Brands.svelte';
 	import Name from '$lib/elements/form/fields/Name.svelte';
 	import StyleTags from '$lib/elements/form/fields/StyleTags.svelte';
+
 	import type AdvancedSearchData from './AdvancedSearchData.type';
 	import { getValidationSchema } from './validationSchema';
 

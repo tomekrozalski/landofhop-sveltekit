@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+
 	import CoverImageWrapper from './CoverImageWrapper.svelte';
 	import BrokenCoverImage from './BrokenCoverImage.svelte';
 
