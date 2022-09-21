@@ -11,7 +11,7 @@
 		return `${basicPath}/cover/webp/${size}x.webp`;
 	};
 
-	function loadListener(image) {
+	function loadListener(image: HTMLImageElement) {
 		image.onload = () => {
 			loaded = true;
 		};

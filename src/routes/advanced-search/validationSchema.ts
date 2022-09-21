@@ -1,6 +1,8 @@
 import * as yup from 'yup';
 
-export function getValidationSchema(translate) {
+type translateType = (value: string) => string;
+
+export function getValidationSchema(translate: translateType) {
 	return yup.object().shape({
 		styleTags: yup
 			.array()
@@ -18,7 +20,8 @@ export function getValidationSchema(translate) {
 			.min(1, translate('form.validation.atLeastOneBrandRequired'))
 			.nullable(true),
 		name: yup.mixed().when(['styleTags', 'ingredientTags', 'brands'], {
-			is: (styleTags, ingredientTags, brands) => !styleTags && !ingredientTags && !brands,
+			is: (styleTags: string[] | null, ingredientTags: string[] | null, brands: string[] | null) =>
+				!styleTags && !ingredientTags && !brands,
 			then: yup
 				.mixed()
 				.test(

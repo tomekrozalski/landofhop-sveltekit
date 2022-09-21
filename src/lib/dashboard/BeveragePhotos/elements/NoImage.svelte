@@ -6,7 +6,7 @@
 </script>
 
 <img
-	alt={$translate('homePage.imageNotFound')}
+	alt={$translate('beverageList.imageNotFound')}
 	src="{PHOTO_SERVER}/broken-{$beveragePhotosStore.type ?? ContainerType.bottle}.svg"
 />
 

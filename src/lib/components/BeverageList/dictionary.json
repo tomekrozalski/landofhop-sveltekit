@@ -1,0 +1,10 @@
+{
+	"en": {
+		"beverageList.breadcrumbs": "*list*, page {order}",
+		"beverageList.imageNotFound": "image not found"
+	},
+	"pl": {
+		"beverageList.breadcrumbs": "*lista*, strona {order}",
+		"beverageList.imageNotFound": "Nie znaleziono zdjęcia"
+	}
+}

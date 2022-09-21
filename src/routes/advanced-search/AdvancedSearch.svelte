@@ -19,7 +19,7 @@
 	};
 
 	onMount(async () => {
-		// layoutStore.closeSearchBar();
+		layoutStore.closeSearchBar();
 
 		const params = new URLSearchParams(location.search);
 		initialValues.brands = params.get('brands')?.split(',') ?? null;

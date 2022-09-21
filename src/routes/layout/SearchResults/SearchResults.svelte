@@ -6,19 +6,18 @@
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import pushState from '$lib/utils/helpers/pushState';
 	import Spinner from '$lib/elements/spinners/FullScreen.svelte';
-	import Pagination from '$lib/elements/Pagination/Pagination.svelte';
-	import Total from '$lib/elements/Pagination/Total.svelte';
-
-	import BeverageList from '../../beverageList/BeverageList.svelte'; // @ToDo: will be moved
+	import Total from '$lib/components/Pagination/Total.svelte';
+	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte'; // @ToDo: will be moved
+	import Pagination from '$lib/components/Pagination/Pagination.svelte';
+	import NothingFound from '$lib/components/BeverageList/NothingFound.svelte';
 
 	import layoutStore from '../store';
 	import AdvancedSearchLink from './AdvancedSearchLink.svelte';
-	import NothingFound from './NothingFound.svelte';
 
 	let order = 1;
-	let value;
+	let value: string;
 
-	async function callToApi(phrase, page) {
+	async function callToApi(phrase: string, page: number) {
 		const response: {
 			beverages: Basics[];
 			total: number;

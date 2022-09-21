@@ -1,10 +1,16 @@
 import { json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
+
 import { formatBeverageToBasics, getDbCollections } from '$lib/utils/api';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
+import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
-export async function GET({ params }) {
-	const { language, page, phrase } = params;
+export const GET: RequestHandler = async ({ params }) => {
+	const language = (params.language as AppLanguage) ?? AppLanguage.pl;
+	const page = params.page ?? 1;
+	const phrase = params.phrase ?? '';
+
 	const { beverages } = await getDbCollections();
 
 	let total = 0;
@@ -97,4 +103,4 @@ export async function GET({ params }) {
 		beverages: foundArr,
 		total
 	});
-}
+};

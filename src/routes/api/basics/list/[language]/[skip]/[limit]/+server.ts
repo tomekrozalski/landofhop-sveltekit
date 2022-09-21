@@ -5,11 +5,15 @@ import type { RequestHandler } from '@sveltejs/kit';
 
 import { getDbCollections, translate } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
+import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import type { RawBasics } from '$lib/utils/types/api/RawBasics';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
 export const GET: RequestHandler = async ({ params }) => {
-	const { language, limit, skip } = params;
+	const language = (params.language as AppLanguage) ?? AppLanguage.pl;
+	const limit = params.limit ?? 10;
+	const skip = params.skip ?? 0;
+
 	const { basics } = await getDbCollections();
 	const translatedValues: Basics[] = [];
 

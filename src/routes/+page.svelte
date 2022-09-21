@@ -2,11 +2,11 @@
 	import { translate, translations } from 'svelte-intl';
 
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import Pagination from '$lib/elements/Pagination/Pagination.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte';
+	import Pagination from '$lib/components/Pagination/Pagination.svelte';
 
-	import Breadcrumbs from './beverageList/Breadcrumbs.svelte';
-	import BeverageList from './beverageList/BeverageList.svelte';
-	import dictionary from './beverageList/dictionary.json';
+	import dictionary from './page/dictionary.json';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -20,6 +20,6 @@
 	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
-<Breadcrumbs steps={[{ label: $translate('homePage.breadcrumbs', { order: 1 }) }]} />
+<Breadcrumbs steps={[{ label: $translate('beverageList.breadcrumbs', { order: 1 }) }]} />
 <BeverageList beverages={data.beverages} />
 <Pagination order={1} total={data.total} />

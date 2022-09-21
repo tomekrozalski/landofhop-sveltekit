@@ -3,13 +3,12 @@
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import Spinner from '$lib/elements/spinners/FullWidth.svelte';
-	import Total from '$lib/elements/Pagination/Total.svelte';
+	import Total from '$lib/components/Pagination/Total.svelte';
+	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte';
+	import NothingFound from '$lib/components/BeverageList/NothingFound.svelte'; // @ToDo
 
-	import BeverageList from '../../routes/beverageList/BeverageList.svelte';
-
-	import NothingFound from '../layout/SearchResults/NothingFound.svelte'; // @ToDo
-	import type AdvancedSearchData from './AdvancedSearchData.type';
 	import Pagination from './Pagination.svelte';
+	import type AdvancedSearchData from './AdvancedSearchData.type';
 
 	export let data: AdvancedSearchData;
 
