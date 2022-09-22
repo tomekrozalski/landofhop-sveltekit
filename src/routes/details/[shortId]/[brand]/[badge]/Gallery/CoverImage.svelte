@@ -11,13 +11,13 @@
 
 	export let loaded: boolean;
 
-	function loadListener(image) {
+	function loadListener(image: HTMLImageElement) {
 		image.onload = () => {
 			loaded = true;
 		};
 
-		image.srcset = image.dataset.srcset;
-		image.src = image.dataset.src;
+		image.srcset = image.dataset.srcset as string;
+		image.src = image.dataset.src as string;
 	}
 </script>
 

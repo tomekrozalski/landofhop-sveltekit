@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
+
 	import CoverImage from './CoverImage.svelte';
 	import Rotable from './Rotable/Rotable.svelte';
 	import BrokenContainer from './BrokenContainer.svelte';

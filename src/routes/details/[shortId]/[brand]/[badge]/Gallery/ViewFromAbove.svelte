@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
+
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 

@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+
 	import apiCall, { Endpoints } from '$lib/utils/api/call';
-	import authentication from '$lib/utils/stores/authentication';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 	import InlineSpinner from '$lib/elements/spinners/Inline.svelte';
+
 	import Notes from './Notes.svelte';
 	import Updated from './Updated.svelte';
 	import Buttons from './Buttons/Buttons.svelte';
@@ -19,9 +20,7 @@
 				pathParams: ['pl', details.shortId]
 			});
 		} catch (err) {
-			if (err.message === 'Forbidden') {
-				authentication.logOut();
-			}
+			console.error(err);
 		}
 
 		isLoading = false;

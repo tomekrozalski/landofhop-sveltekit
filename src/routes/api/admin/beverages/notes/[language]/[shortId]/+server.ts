@@ -1,24 +1,23 @@
-import { json } from '@sveltejs/kit';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { format } from 'date-fns';
 
 import { getDbCollections } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
 import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
+import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
+import { authenticate } from '$lib/utils/api';
 
-export async function GET({ locals, params }) {
-	if (!locals.authenticated) {
-		return json(
-			{
-				message: 'Unauthorized. Cannot load admin beverage notes'
-			},
-			{
-				status: 401
-			}
-		);
+export const GET: RequestHandler = async ({ cookies, params }) => {
+	const authenticated = await authenticate(cookies);
+
+	if (!authenticated) {
+		throw error(401, 'Unauthorized. Cannot load admin beverage notes');
 	}
 
-	const { language, shortId } = params;
+	const language = (params.language as AppLanguage) ?? AppLanguage.pl;
+	const shortId = params.shortId ?? '';
 	const { beverages } = await getDbCollections();
 
 	type RawData = {
@@ -27,7 +26,7 @@ export async function GET({ locals, params }) {
 		ratings?: RawRatings;
 	};
 
-	const data: RawData | undefined = await beverages.findOne(
+	const data: RawData | null = await beverages.findOne(
 		{ shortId },
 		{ projection: { _id: 0, notes: '$editorial.notes', ratings: '$editorial.ratings', updated: 1 } }
 	);
@@ -57,4 +56,4 @@ export async function GET({ locals, params }) {
 	};
 
 	return json(formattedData);
-}
+};

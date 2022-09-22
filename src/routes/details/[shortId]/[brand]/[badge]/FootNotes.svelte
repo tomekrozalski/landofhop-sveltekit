@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
 	export let details: Details;

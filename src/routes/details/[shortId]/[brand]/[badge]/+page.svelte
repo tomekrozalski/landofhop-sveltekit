@@ -1,52 +1,17 @@
-<script context="module" lang="ts">
-	throw new Error(
-		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
-	);
-
-	// import apiCall, { Endpoints } from '$lib/utils/api/call';
-	// import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
-
-	// // export const prerender = true;
-
-	// export async function load({ fetch, params }) {
-	// 	try {
-	// 		const augmentedBeverageDetails: AugmentedDetails = await apiCall(
-	// 			fetch,
-	// 			Endpoints.beverageDetails,
-	// 			{
-	// 				pathParams: ['pl', params.shortId]
-	// 			}
-	// 		);
-
-	// 		return { props: augmentedBeverageDetails };
-	// 	} catch (e) {
-	// 		return {
-	// 			status: 404,
-	// 			error: e.message
-	// 		};
-	// 	}
-	// }
-</script>
-
 <script lang="ts">
-	throw new Error(
-		'@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)'
-	);
-
 	import { translate, translations } from 'svelte-intl';
-	import dictionary from '$lib/utils/dictionary/screens/beverage.json';
-	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
+
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import Breadcrumbs from 'src/routes/beverageList/Breadcrumbs.svelte';
-	import BeverageDetails from '$lib/components/BeverageDetails/BeverageDetails.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+
+	import BeverageDetails from './BeverageDetails.svelte';
+	import dictionary from './dictionary.json';
+	import type { PageData } from './$types';
 
 	translations.update(dictionary);
 
-	export let listPage: number;
-	export let details: Details;
-	export let next: LinkData | null;
-	export let previous: LinkData | null;
+	export let data: PageData;
+	const { details, listPage, next, previous } = data;
 </script>
 
 <svelte:head>
@@ -59,7 +24,7 @@
 		<Breadcrumbs
 			steps={[
 				{
-					label: $translate('beverage.breadcrumbs.list', { listPage }),
+					label: $translate('beverage.breadcrumbs.list', { listPage: listPage }),
 					link: `/list/${listPage}`
 				},
 				{
