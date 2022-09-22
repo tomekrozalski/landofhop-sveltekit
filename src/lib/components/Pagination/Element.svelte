@@ -12,12 +12,12 @@
 
 <li>
 	<svelte:element
+		this={tag}
 		class="pagination-element"
 		class:active
 		class:inactive={!active}
 		class:current
 		on:click={action}
-		this={tag}
 		{...$$restProps}
 	>
 		{#if label === '←'}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { translate, translations } from 'svelte-intl';
+	import { page } from '$app/stores';
 
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
@@ -11,27 +12,26 @@
 	translations.update(dictionary);
 
 	export let data: PageData;
-	const { details, listPage, next, previous } = data;
 </script>
 
 <svelte:head>
-	<title>🍻 {details.brand.name.value}, {details.name.value}</title>
+	<title>🍻 {data.details.brand.name.value}, {data.details.name.value}</title>
 	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 
-{#if details}
-	{#key details.shortId}
+{#if data.details}
+	{#key data.details.shortId}
 		<Breadcrumbs
 			steps={[
 				{
-					label: $translate('beverage.breadcrumbs.list', { listPage: listPage }),
-					link: `/list/${listPage}`
+					label: $translate('beverage.breadcrumbs.list', { listPage: data.listPage }),
+					link: `/list/${data.listPage}`
 				},
 				{
 					label: $translate('beverage.breadcrumbs.details')
 				}
 			]}
 		/>
-		<BeverageDetails {details} {next} {previous} />
+		<BeverageDetails details={data.details} next={data.next} previous={data.previous} />
 	{/key}
 {/if}
