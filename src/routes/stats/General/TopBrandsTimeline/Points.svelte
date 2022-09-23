@@ -3,7 +3,8 @@
 	import { translate } from 'svelte-intl';
 	import { format } from 'date-fns';
 	import pl from 'date-fns/locale/pl/index.js';
-	import type { TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
+
+	import type { Brand, TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
 
 	export let selectedBrand: string | null;
 	export let topBrandsTimelineData: TopBrandsTimelineBar[];
@@ -11,6 +12,17 @@
 	export let yScale: any;
 
 	let selectedDate: string | null;
+
+	function getSelectedDateVelue() {
+		const selectedDateData = topBrandsTimelineData.find(
+			({ date }) => date === selectedDate
+		) as TopBrandsTimelineBar;
+		const selectedDateBrand = selectedDateData.brands.find(
+			({ id }) => id === selectedBrand
+		) as Brand;
+
+		return selectedDateBrand.amount;
+	}
 </script>
 
 <g style="transform: translate({Math.round(xScale.bandwidth() / 2)}px, 0">
@@ -39,9 +51,7 @@
 	<text class="label" x="200" y="20" text-anchor="middle">
 		{$translate('stats.general.topBrandsTimeline.valueLabel', {
 			date: format(new Date(selectedDate), 'LLLL yyyy', { locale: pl }),
-			value: topBrandsTimelineData
-				.find(({ date }) => date === selectedDate)
-				.brands.find(({ id }) => id === selectedBrand).amount
+			value: getSelectedDateVelue()
 		})}
 	</text>
 {/if}

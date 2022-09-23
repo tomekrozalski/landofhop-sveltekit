@@ -1,8 +1,13 @@
 import type { Brand, TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
 
-function checkTrend(months: TopBrandsTimelineBar[], a: Brand, b: Brand, monthIndex: number) {
+function checkTrend(
+	months: TopBrandsTimelineBar[],
+	a: Brand,
+	b: Brand,
+	monthIndex: number
+): 1 | -1 {
 	/* Check a and b in previous month */
-	const values = months[monthIndex].brands
+	const values: { [id: string]: { amount: number } } = months[monthIndex].brands
 		.filter(({ id }) => [a.id, b.id].includes(id))
 		.reduce((acc, { id, ...rest }) => ({ ...acc, [id]: rest }), {});
 

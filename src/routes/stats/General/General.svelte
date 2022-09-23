@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { GeneralStats as GeneralStatsTypes } from '$lib/utils/types/stats/General';
+
 	import AlcoholChart from './AlcoholChart/AlcoholChart.svelte';
 	import AddTimeline from './AddTimeline/AddTimeline.svelte';
 	import TopBrandsTimeline from './TopBrandsTimeline/TopBrandsTimeline.svelte';

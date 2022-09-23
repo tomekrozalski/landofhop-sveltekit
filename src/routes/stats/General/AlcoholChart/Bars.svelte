@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { AlcoholChartBar } from '$lib/utils/types/stats/General';
+
 	import Info from './Info.svelte';
 
 	export let alcoholChartData: AlcoholChartBar[];
@@ -9,7 +10,7 @@
 	export let yScale: any;
 	export let yValue: (value: AlcoholChartBar) => number;
 
-	const filteredData = alcoholChartData.filter(({ beverages }) => beverages);
+	const filteredData: AlcoholChartBar[] = alcoholChartData.filter(({ beverages }) => beverages);
 
 	const totalBeverages = filteredData.reduce((acc, { beverages }) => acc + beverages, 0);
 	const alcoholicBeverages = filteredData
@@ -26,22 +27,23 @@
 	).toPrecision(2);
 
 	let isBarLabelVisible = false;
-	let activeBar;
+	let activeBar: AlcoholChartBar;
 
-	function showLabel(e) {
+	function showLabel(e: Event) {
 		isBarLabelVisible = true;
-		activeBar = filteredData[e.target.dataset.index];
+		const index = Number((e.target as SVGElement).dataset.index);
+		activeBar = filteredData[index];
 	}
 
 	function hideLabel() {
 		isBarLabelVisible = false;
 	}
 
-	function setHorintalPosition(bar) {
+	function setHorintalPosition(bar: AlcoholChartBar) {
 		return xScale(xValue(bar) || '') - xScale.bandwidth() / 2;
 	}
 
-	function setVerticalPosition(bar) {
+	function setVerticalPosition(bar: AlcoholChartBar) {
 		return yScale(yValue(bar));
 	}
 </script>

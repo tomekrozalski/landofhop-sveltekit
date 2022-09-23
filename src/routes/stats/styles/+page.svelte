@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
-	throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
+	throw new Error(
+		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
+	);
 
 	// import apiCall, { Endpoints } from '$lib/utils/api/call';
 	// import type { Style as StyleType } from '$lib/utils/types/Style';
@@ -28,14 +30,16 @@
 </script>
 
 <script lang="ts">
-	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+	throw new Error(
+		'@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)'
+	);
 
 	import { translations, translate } from 'svelte-intl';
 	import { styleStore } from '$lib/utils/stores/selects';
-	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
+	import statsDictionary from 'src/routes/stats/commonStatsDictionary.json';
 	import stylesStatsDictionary from '$lib/utils/dictionary/screens/stats/styles.json';
 	import styleGroupsDictionary from '$lib/utils/dictionary/lists/styleGroup.json';
-	import StatsWrapper from '$lib/components/stats/elements/Wrapper.svelte';
+	import StatsWrapper from 'src/routes/stats/elements/Wrapper.svelte';
 	import Styles from '$lib/components/stats/Styles/Styles.svelte';
 
 	translations.update(statsDictionary);

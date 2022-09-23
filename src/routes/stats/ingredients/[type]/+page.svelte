@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
-	throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
+	throw new Error(
+		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
+	);
 
 	// import apiCall, { Endpoints } from '$lib/utils/api/call';
 	// import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
@@ -35,13 +37,15 @@
 </script>
 
 <script lang="ts">
-	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+	throw new Error(
+		'@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)'
+	);
 
 	import { translations, translate } from 'svelte-intl';
 	import { ingredientsStore } from '$lib/utils/stores/selects';
-	import statsDictionary from '$lib/utils/dictionary/screens/stats/common.json';
+	import statsDictionary from 'src/routes/stats/commonStatsDictionary.json';
 	import ingredientsStatsDictionary from '$lib/utils/dictionary/screens/stats/ingredients.json';
-	import StatsWrapper from '$lib/components/stats/elements/Wrapper.svelte';
+	import StatsWrapper from 'src/routes/stats/elements/Wrapper.svelte';
 	import Ingredients from '$lib/components/stats/Ingredients/Ingredients.svelte';
 
 	translations.update(statsDictionary);

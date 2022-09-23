@@ -2,6 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { format } from 'date-fns';
 	import pl from 'date-fns/locale/pl/index.js';
+
 	import type { AddTimelineBar } from '$lib/utils/types/stats/General';
 
 	export let addTimelineData: AddTimelineBar[];

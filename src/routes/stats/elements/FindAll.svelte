@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { page } from '$app/stores';
 
 	export let query: string;
 </script>

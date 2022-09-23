@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { draw } from 'svelte/transition';
 	import { curveCardinal, line } from 'd3-shape';
+
 	import type { TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
+
 	import sortData from './utils/sortData';
 
 	export let selectedBrand: string | null;
@@ -17,14 +19,17 @@
 		};
 
 		const data: DataTypes[] = topBrandsTimelineData
-			.map(({ brands, date }) => ({ date, amount: brands.find((props) => props.id === id).amount }))
-			.reduce(
-				(acc, { date, amount }) =>
-					amount && acc[acc.length - 1]?.amount === 0
-						? [acc[acc.length - 1], { date, amount }]
-						: [...acc, { date, amount }],
-				[]
-			);
+			.map(({ brands, date }) => ({
+				date,
+				amount: brands.find((props) => props.id === id)?.amount ?? 0
+			}))
+			.reduce((acc: DataTypes[], { date, amount }) => {
+				if (amount && acc[acc.length - 1]?.amount === 0) {
+					return [acc[acc.length - 1], { date, amount }];
+				}
+
+				return [...acc, { date, amount }];
+			}, []);
 
 		return line<DataTypes>()
 			.x((d) => xScale(xValue(d)) || 0)

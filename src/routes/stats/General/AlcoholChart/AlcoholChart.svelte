@@ -2,13 +2,15 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
-	import type { RatingsChartBar } from '$lib/utils/types/stats/General';
-	import type { Sizes } from '$lib/components/stats/General/utils/Sizes';
+
+	import type { AlcoholChartBar } from '$lib/utils/types/stats/General';
+
+	import type { Sizes } from '../utils/Sizes';
 	import Xaxis from '../utils/chartBars/XAxis.svelte';
 	import Yaxis from '../utils/chartBars/YAxis.svelte';
 	import Bars from './Bars.svelte';
 
-	export let ratingsChartData: RatingsChartBar[];
+	export let alcoholChartData: AlcoholChartBar[];
 
 	const sizes: Sizes = {
 		width: 1160,
@@ -27,34 +29,35 @@
 
 	// Define horizontal scale
 
-	const xValue = (d: RatingsChartBar) => d.value.toString();
+	const xValue = (d: AlcoholChartBar) => d.value.toString();
 
 	const xScale = scaleBand()
-		.domain(ratingsChartData.map(xValue))
+		.domain(alcoholChartData.map(xValue))
 		.range([0, innerWidth])
 		.padding(0.1);
 
 	// Define vertical scale
 
-	const yValue = (d: RatingsChartBar) => d.beverages;
+	const yValue = (d: AlcoholChartBar) => d.beverages;
 
 	const yScale = scaleLinear()
-		.domain([0, max(ratingsChartData, yValue) || 10 + 3])
+		.domain([0, max(alcoholChartData, yValue) || 10 + 3])
 		.range([innerHeight, 0]);
 </script>
 
-<h2>{$translate('stats.general.ratings.name')}</h2>
+<h2>{$translate('stats.general.alcohol.name')}</h2>
 
 <svg viewBox="0 0 {width} {height}">
 	<g style="transform: translate({margin.left}px, {margin.top}px)">
 		<Xaxis
 			{innerHeight}
 			{innerWidth}
-			label={$translate('stats.general.ratings.ratings')}
+			label={$translate('stats.general.alcohol.alcohol')}
 			{xScale}
-			xScaleTicks={xScale.domain()}
+			xScaleTicks={xScale.domain().filter((d) => !(+d % 1))}
+			unit="%"
 		/>
 		<Yaxis {innerWidth} {yScale} />
-		<Bars {ratingsChartData} {innerHeight} {xScale} {xValue} {yValue} {yScale} />
+		<Bars {alcoholChartData} {innerHeight} {xScale} {xValue} {yValue} {yScale} />
 	</g>
 </svg>
