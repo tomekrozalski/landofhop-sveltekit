@@ -6,6 +6,7 @@
 	import type { Style } from '$lib/utils/types/Style';
 	import UpdateStyle from '$lib/dashboard/modals/UpdateStyle/UpdateStyle.svelte';
 	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
+
 	import Item from './Item.svelte';
 
 	export let data: StylesStatsTypes[];
@@ -13,7 +14,7 @@
 	let modalData: Style | null = null;
 
 	async function onUpdateClick(badge: string) {
-		modalData = $styleStore.find((props) => props.badge === badge);
+		modalData = $styleStore.find((props) => props.badge === badge) as Style;
 		isModalOpen = true;
 	}
 </script>
@@ -30,7 +31,7 @@
 		</li>
 	{/each}
 </ul>
-{#if isModalOpen}
+{#if isModalOpen && modalData}
 	<UpdateStyle initialValues={modalData} close={() => (isModalOpen = false)} />
 {/if}
 
