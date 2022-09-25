@@ -1,60 +1,22 @@
-<script context="module" lang="ts">
-	throw new Error(
-		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
-	);
-
-	// import apiCall, { Endpoints } from '$lib/utils/api/call';
-	// import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
-	// import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
-
-	// // export const prerender = true;
-
-	// export async function load({ fetch, params, session }) {
-	// 	try {
-	// 		if (session.isLoggedIn) {
-	// 			const [statsData, ingredients]: [
-	// 				IngredientsStatsTypes,
-	// 				IngredientType[]
-	// 			] = await Promise.all([
-	// 				apiCall(fetch, Endpoints.statsIngredients, { pathParams: ['pl', params.type] }),
-	// 				apiCall(fetch, Endpoints.ingredients)
-	// 			]);
-
-	// 			return { props: { statsData, ingredients } };
-	// 		}
-
-	// 		const statsData: IngredientsStatsTypes = await apiCall(fetch, Endpoints.statsIngredients, {
-	// 			pathParams: ['pl', params.type]
-	// 		});
-
-	// 		return { props: { statsData, ingredients: [] } };
-	// 	} catch {
-	// 		return {
-	// 			props: { statsData: [], ingredients: [] }
-	// 		};
-	// 	}
-	// }
-</script>
-
 <script lang="ts">
-	throw new Error(
-		'@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)'
-	);
-
 	import { translations, translate } from 'svelte-intl';
+
 	import { ingredientsStore } from '$lib/utils/stores/selects';
-	import statsDictionary from 'src/routes/stats/commonStatsDictionary.json';
-	import ingredientsStatsDictionary from '$lib/utils/dictionary/screens/stats/ingredients.json';
-	import StatsWrapper from 'src/routes/stats/elements/Wrapper.svelte';
-	import Ingredients from '$lib/components/stats/Ingredients/Ingredients.svelte';
 
-	translations.update(statsDictionary);
-	translations.update(ingredientsStatsDictionary);
+	import StatsWrapper from '../../elements/Wrapper.svelte';
+	import commonStatsDictionary from '../../commonStatsDictionary.json';
+	import dictionary from './dictionary.json';
+	import Ingredients from './Ingredients.svelte';
+	import type { PageData } from './$types';
 
-	export let statsData: IngredientsStatsTypes;
-	export let ingredients: IngredientType[];
+	translations.update(commonStatsDictionary);
+	translations.update(dictionary);
 
-	ingredientsStore.set(ingredients);
+	export let data: PageData;
+
+	if (data.ingredients) {
+		ingredientsStore.set(data.ingredients);
+	}
 </script>
 
 <svelte:head>
@@ -62,7 +24,7 @@
 </svelte:head>
 
 <StatsWrapper>
-	{#if statsData}
-		<Ingredients data={statsData} />
+	{#if data.statsData}
+		<Ingredients data={data.statsData} />
 	{/if}
 </StatsWrapper>

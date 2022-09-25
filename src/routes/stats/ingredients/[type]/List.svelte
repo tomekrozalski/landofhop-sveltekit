@@ -1,9 +1,9 @@
 <script lang="ts">
 	import authentication from '$lib/utils/stores/authentication';
 	import type { IngredientTree } from '$lib/utils/types/Ingredient.d';
-	import FindAll from 'src/routes/stats/elements/FindAll.svelte';
-	import UpdateButton from 'src/routes/stats/elements/UpdateButton.svelte';
 
+	import FindAll from '../../elements/FindAll.svelte';
+	import UpdateButton from '../../elements/UpdateButton.svelte';
 	import ToggleBox from './ToggleBox.svelte';
 
 	export let data: IngredientTree[];

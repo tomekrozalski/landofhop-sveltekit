@@ -13,13 +13,13 @@
 	export let data: IngredientsStatsTypes;
 
 	async function onUpdateClick(badge: string) {
-		modalData = $ingredientsStore.find((props) => props.badge === badge);
+		modalData = $ingredientsStore.find((props) => props.badge === badge) as Ingredient;
 		isModalOpen = true;
 	}
 </script>
 
 <Navigation {data} />
 <Content {data} {onUpdateClick} />
-{#if isModalOpen}
+{#if isModalOpen && modalData}
 	<UpdateIngredient initialValues={modalData} close={() => (isModalOpen = false)} />
 {/if}

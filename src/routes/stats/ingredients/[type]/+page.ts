@@ -1,12 +1,14 @@
 import { get } from 'svelte/store';
+
 import apiCall, { Endpoints } from '$lib/utils/api/call';
 import authentication from '$lib/utils/stores/authentication';
 import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
 import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
+import type { PageLoad } from './$types';
 
 // export const prerender = true;
 
-export async function load({ fetch, params }) {
+export const load: PageLoad = async ({ fetch, params }) => {
 	try {
 		if (get(authentication).isLoggedIn) {
 			const [statsData, ingredients]: [IngredientsStatsTypes, IngredientType[]] = await Promise.all(
@@ -23,8 +25,8 @@ export async function load({ fetch, params }) {
 			pathParams: ['pl', params.type]
 		});
 
-		return { statsData, ingredients: [] };
+		return { statsData, ingredients: null };
 	} catch {
-		return { statsData: [], ingredients: [] };
+		return { statsData: null, ingredients: null };
 	}
-}
+};
