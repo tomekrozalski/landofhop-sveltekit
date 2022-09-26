@@ -39,8 +39,8 @@
 	// import { session } from '$app/stores';
 	import dashboardDictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
-	import { editorialStore, labelStore, producerStore } from '$lib/dashboard/utils/stores';
-	import Beverage from '$lib/dashboard/Beverage/Beverage.svelte';
+	import { editorialStore, labelStore, producerStore } from '../../../../utils/stores';
+	import Beverage from 'src/routes/dashboard/Beverage/Beverage.svelte';
 
 	translations.update(dashboardDictionary);
 	translations.update(commonFormsDictionary);

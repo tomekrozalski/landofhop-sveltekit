@@ -2,57 +2,46 @@
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/elements/form/Label.svelte';
 	import OpenModal from '$lib/elements/form/OpenModal.svelte';
-	import IngredientSelect from '$lib/elements/form/selects/Ingredient.svelte';
+	import PlaceSelect from '$lib/elements/form/selects/Place.svelte';
 	import Conditional from '$lib/elements/form/Conditional.svelte';
 
-	import AddNewIngredient from '$lib/components/adminModals/AddNewIngredient/AddNewIngredient.svelte';
+	import AddNewPlace from '$lib/components/adminModals/AddNewPlace/AddNewPlace.svelte';
 
-	export let admin: boolean = false;
 	export let formName: string;
 	export let formData: any;
-	export let labelId: string;
 	let { errors, form, updateField, updateTouched, validateField } = formData;
-	let fieldName = 'ingredientTags';
+	let fieldName = 'place';
 	let id = `${formName}-${fieldName}`;
 
 	function handleClear() {
-		updateField(fieldName, []);
+		updateField(fieldName, '');
 	}
 
 	function setValue(event) {
-		if (event?.detail) {
-			updateField(
-				fieldName,
-				event.detail.map(({ value }) => value)
-			);
-			validateField(fieldName);
-		}
+		updateField(fieldName, event.detail.value);
+		validateField(fieldName);
 	}
 
 	let isModalOpen = false;
 </script>
 
-<Label {id}>{$translate(labelId)}</Label>
+<Label {id}>{$translate('dashboard.label.place')}</Label>
 <Conditional
 	{fieldName}
 	{id}
-	initialValue={[]}
 	{updateField}
 	{updateTouched}
 	{validateField}
 	value={$form[fieldName]}
 />
-<IngredientSelect
+<PlaceSelect
 	errors={$errors[fieldName]}
 	{handleClear}
-	id={$form[fieldName] !== null && id}
-	isMulti
+	{id}
 	{setValue}
 	bind:value={$form[fieldName]}
 />
-{#if admin}
-	<OpenModal open={() => (isModalOpen = true)} />
-	{#if isModalOpen}
-		<AddNewIngredient close={() => (isModalOpen = false)} />
-	{/if}
+<OpenModal open={() => (isModalOpen = true)} />
+{#if isModalOpen}
+	<AddNewPlace close={() => (isModalOpen = false)} />
 {/if}

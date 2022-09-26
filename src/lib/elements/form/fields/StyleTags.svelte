@@ -4,7 +4,8 @@
 	import StyleTagSelect from '$lib/elements/form/selects/StyleTag.svelte';
 	import Conditional from '$lib/elements/form/Conditional.svelte';
 	import OpenModal from '$lib/elements/form/OpenModal.svelte';
-	import AddNewStyle from '$lib/dashboard/modals/AddNewStyle/AddNewStyle.svelte';
+
+	import AddNewStyle from '$lib/components/adminModals/AddNewStyle/AddNewStyle.svelte';
 
 	export let admin: boolean = false;
 	export let formName: string;

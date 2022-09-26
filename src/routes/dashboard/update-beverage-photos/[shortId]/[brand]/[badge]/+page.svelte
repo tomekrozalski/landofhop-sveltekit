@@ -28,7 +28,7 @@
 	// import { session } from '$app/stores';
 	import dictionary from '$lib/utils/dictionary/screens/dashboard.json';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
-	import UpdateBeveragePhotos from '$lib/dashboard/BeveragePhotos/BeveragePhotos.svelte';
+	import UpdateBeveragePhotos from 'src/routes/dashboard/update-beverage/[shortId]/[brand]/[badge]/BeveragePhotos.svelte';
 
 	translations.update(dictionary as Translations);
 

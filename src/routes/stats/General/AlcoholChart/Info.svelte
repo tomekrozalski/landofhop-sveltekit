@@ -16,7 +16,7 @@
 		return textElement.getBBox().width;
 	}
 
-	function calculateWidth(node) {
+	function calculateWidth(node: SVGRectElement) {
 		node.style = `width: ${getTextWidth() + 20}px`;
 	}
 
@@ -25,7 +25,7 @@
 
 	const calculateVerticalPosition = () => (bar.beverages < 3 ? y - 15 : y);
 
-	function calculatePosition(node) {
+	function calculatePosition(node: SVGGElement) {
 		node.style = `transform: translate(${calculateHorizontalPosition()}px, ${calculateVerticalPosition()}px)`;
 	}
 </script>
