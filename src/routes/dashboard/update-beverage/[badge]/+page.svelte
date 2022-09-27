@@ -37,9 +37,9 @@
 	import { setContext } from 'svelte';
 	import { translate, translations } from 'svelte-intl';
 	// import { session } from '$app/stores';
-	import dashboardDictionary from '$lib/utils/dictionary/screens/dashboard.json';
+	import dashboardDictionary from '../../Beverage/dictionary.json';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
-	import { editorialStore, labelStore, producerStore } from '../../../../utils/stores';
+	import { editorialStore, labelStore, producerStore } from '../../../../Beverage/utils/stores';
 	import Beverage from 'src/routes/dashboard/Beverage/Beverage.svelte';
 
 	translations.update(dashboardDictionary);

@@ -4,7 +4,7 @@
 
 	import ProgressList from '../elements/ProgressList/ProgressList.svelte';
 	import Navigation from '../elements/Navigation.svelte';
-	import { page } from '../utils/stores';
+	import { page } from './utils/stores';
 	import Label from './Label/Label.svelte';
 	import Producer from './Producer/Producer.svelte';
 	import Editorial from './Editorial/Editorial.svelte';

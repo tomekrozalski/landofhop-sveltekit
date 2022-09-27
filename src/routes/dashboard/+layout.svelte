@@ -8,3 +8,5 @@
 		throw redirect(403, '/');
 	}
 </script>
+
+<slot />

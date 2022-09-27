@@ -1,6 +1,6 @@
 import { get } from 'svelte/store';
 
-import apiCall, { Endpoints } from '$lib/utils/api/call';
+import { getJsonData } from '$lib/utils/api/getData';
 import authentication from '$lib/utils/stores/authentication';
 import type { Style as StyleType } from '$lib/utils/types/Style';
 import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
@@ -10,14 +10,14 @@ export const load: PageLoad = async ({ fetch }) => {
 	try {
 		if (get(authentication).isLoggedIn) {
 			const [statsData, styles]: [StylesStatsTypes[], StyleType[]] = await Promise.all([
-				apiCall(fetch, Endpoints.statsStyles, { pathParams: ['pl'] }),
-				apiCall(fetch, Endpoints.styles)
+				getJsonData({ fetch, path: '/api/stats/style/pl' }),
+				getJsonData({ fetch, path: '/api/styles' })
 			]);
 
 			return { statsData, styles };
 		}
 
-		const statsData = await apiCall(fetch, Endpoints.statsStyles, { pathParams: ['pl'] });
+		const statsData = await getJsonData({ fetch, path: '/api/stats/style/pl' });
 
 		return { statsData, styles: [] };
 	} catch {

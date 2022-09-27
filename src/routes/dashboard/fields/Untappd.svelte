@@ -5,7 +5,7 @@
 	import Conditional from '$lib/elements/form/Conditional.svelte';
 	import { institutionStore } from '$lib/utils/stores/selects';
 
-	import { labelStore } from '../utils/stores';
+	import { labelStore } from '../Beverage/utils/stores';
 	import SearchLink from '../elements/SearchLink.svelte';
 
 	export let formName: string;

@@ -5,7 +5,7 @@
 	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 	import InlineSpinner from '$lib/elements/form/InlineSpinner.svelte';
 	import WarningIcon from '$lib/elements/vectors/Warning.svelte';
-	import { beveragePhotosStore } from '../../../../utils/stores';
+	import { beveragePhotosStore } from '../../../../Beverage/utils/stores';
 	import Dropzone from '$lib/elements/Dropzone/Dropzone.svelte';
 	import ContentWrapper from '$lib/elements/ContentWrapper.svelte';
 	import SavedItem from '$lib/elements/SavedItem.svelte';

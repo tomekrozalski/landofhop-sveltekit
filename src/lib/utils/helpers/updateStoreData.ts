@@ -1,5 +1,6 @@
 import { get } from 'svelte/store';
-import apiCall, { Endpoints } from '$lib/utils/api/call';
+import { getJsonData } from '$lib/utils/api/getData';
+
 import {
 	ingredientsStore,
 	institutionStore,
@@ -13,28 +14,30 @@ import type { Style as StyleType } from '$lib/utils/types/Style';
 
 async function updateIngredientList() {
 	if (get(ingredientsStore).length === 0) {
-		const ingredients: IngredientType[] = await apiCall(fetch, Endpoints.ingredients);
+		const ingredients: IngredientType[] = await getJsonData({ path: '/api/ingredients' });
+
 		ingredientsStore.set(ingredients);
 	}
 }
 
 async function updateInstitutionList() {
 	if (get(institutionStore).length === 0) {
-		const institutions: InstitutionType[] = await apiCall(fetch, Endpoints.institutions);
+		const institutions: InstitutionType[] = await getJsonData({ path: '/api/institutions' });
+
 		institutionStore.set(institutions);
 	}
 }
 
 async function updatePlaceList() {
 	if (get(placeStore).length === 0) {
-		const places: PlaceType[] = await apiCall(fetch, Endpoints.places);
+		const places: PlaceType[] = await getJsonData({ path: '/api/places' });
 		placeStore.set(places);
 	}
 }
 
 async function updateStyleList() {
 	if (get(styleStore).length === 0) {
-		const styles: StyleType[] = await apiCall(fetch, Endpoints.styles);
+		const styles: StyleType[] = await getJsonData({ path: '/api/styles' });
 		styleStore.set(styles);
 	}
 }

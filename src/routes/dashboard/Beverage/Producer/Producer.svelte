@@ -9,8 +9,8 @@
 	import IngredientTags from '$lib/elements/form/fields/IngredientTags.svelte';
 
 	// Dashboard elements
-	import { producerStore } from '../../utils/stores';
-	import { page } from '../../utils/stores';
+	import { producerStore } from '../utils/stores';
+	import { page } from '../utils/stores';
 	import Aged from '../../fields/Aged/Aged.svelte';
 	import Alcohol from '../../fields/Alcohol.svelte';
 	import Bitterness from '../../fields/Bitterness.svelte';

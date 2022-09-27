@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash-es';
 
 import apiCall, { Endpoints } from '$lib/utils/api/call';
 
-import { editorialStore, labelStore, producerStore } from '../../utils/stores';
+import { editorialStore, labelStore, producerStore } from '../utils/stores';
 import formatLabelValues from '../../Beverage/Label/formatValues';
 import formatProducerValues from '../../Beverage/Producer/formatValues';
 import formatEditorialValues from './formatValues';

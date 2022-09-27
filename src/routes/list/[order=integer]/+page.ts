@@ -1,6 +1,6 @@
 import { redirect, error } from '@sveltejs/kit';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-import apiCall, { Endpoints } from '$lib/utils/api/call';
+import { getJsonData } from '$lib/utils/api/getData';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 
 import type { PageLoad } from './$types';
@@ -15,14 +15,15 @@ export const load: PageLoad = async ({ fetch, params }) => {
 		throw redirect(301, '/');
 	}
 
-	const total: number = await apiCall(fetch, Endpoints.beverageTotal);
+	const total: number = await getJsonData({ fetch, path: '/api/basics/total' });
 
 	if (skip > total) {
 		throw error(404, 'Not found. List order is too high');
 	}
 
-	const beverages: Basics[] = await apiCall(fetch, Endpoints.beverageBasics, {
-		pathParams: ['pl', skip, BEVERAGES_ON_PAGE]
+	const beverages: Basics[] = await getJsonData({
+		fetch,
+		path: `/api/basics/list/pl/${skip}/${BEVERAGES_ON_PAGE}`
 	});
 
 	return {

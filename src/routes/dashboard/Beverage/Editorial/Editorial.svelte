@@ -11,8 +11,8 @@
 	import StyleTags from '$lib/elements/form/fields/StyleTags.svelte';
 
 	// Dashboard elements
-	import { editorialStore } from '../../utils/stores';
-	import { page } from '../../utils/stores';
+	import { editorialStore } from '../utils/stores';
+	import { page } from '../utils/stores';
 	import Aged from '../../fields/Aged/Aged.svelte';
 	import AlcoholScope from '../../fields/AlcoholScope.svelte';
 	import Clarity from '../../fields/Clarity.svelte';

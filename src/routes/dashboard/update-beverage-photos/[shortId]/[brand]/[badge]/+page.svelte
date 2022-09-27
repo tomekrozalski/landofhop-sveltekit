@@ -26,9 +26,9 @@
 	import { translate, translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
 	// import { session } from '$app/stores';
-	import dictionary from '$lib/utils/dictionary/screens/dashboard.json';
+	import dictionary from '../../../../Beverage/dictionary.json';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
-	import UpdateBeveragePhotos from 'src/routes/dashboard/update-beverage/[shortId]/[brand]/[badge]/BeveragePhotos.svelte';
+	import UpdateBeveragePhotos from 'src/routes/dashboard/update-beverage/[badge]/BeveragePhotos.svelte';
 
 	translations.update(dictionary as Translations);
 

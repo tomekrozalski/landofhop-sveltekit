@@ -1,8 +1,9 @@
 import { json } from '@sveltejs/kit';
 import { getDbCollections } from '$lib/utils/api';
 import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
+import type { RequestHandler } from '@sveltejs/kit';
 
-export async function GET() {
+export const GET: RequestHandler = async () => {
 	const { institutions } = await getDbCollections();
 
 	const data: RawInstitutionWithoutId[] = await institutions
@@ -22,4 +23,4 @@ export async function GET() {
 		.toArray();
 
 	return json(data);
-}
+};

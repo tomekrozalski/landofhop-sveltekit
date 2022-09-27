@@ -10,7 +10,7 @@
 	import IngredientTags from '$lib/elements/form/fields/IngredientTags.svelte';
 
 	// Dashboard elements
-	import { labelStore } from '../../utils/stores';
+	import { labelStore } from '../utils/stores';
 	import Aged from '../../fields/Aged/Aged.svelte';
 	import Alcohol from '../../fields/Alcohol.svelte';
 	import Barcode from '../../fields/Barcode.svelte';
