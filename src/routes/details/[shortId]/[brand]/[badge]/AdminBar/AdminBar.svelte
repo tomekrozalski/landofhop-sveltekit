@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-
-	import apiCall, { Endpoints } from '$lib/utils/api/call';
+	import { getJsonData } from '$lib/utils/api/communication';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 	import InlineSpinner from '$lib/elements/spinners/Inline.svelte';
@@ -15,13 +14,9 @@
 	let adminData: AdminNotes;
 
 	onMount(async () => {
-		try {
-			adminData = await apiCall(fetch, Endpoints.beverageAdminNotes, {
-				pathParams: ['pl', details.shortId]
-			});
-		} catch (err) {
-			console.error(err);
-		}
+		adminData = await getJsonData({
+			path: `/api/admin/beverages/notes/pl/${details.shortId}`
+		});
 
 		isLoading = false;
 	});

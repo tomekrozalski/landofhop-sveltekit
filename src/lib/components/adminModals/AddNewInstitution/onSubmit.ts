@@ -1,14 +1,14 @@
 import { institutionStore } from '$lib/utils/stores/selects';
-import apiCall, { Endpoints } from '$lib/utils/api/call';
+import { postJsonData } from '$lib/utils/api/communication';
 import formatValues from './formatValues';
 
 export function onSubmit(close) {
 	return async function (values) {
 		const formattedValues = formatValues(values);
 
-		const updatedInstitutions = await apiCall(fetch, Endpoints.addInstitution, {
-			method: 'POST',
-			body: JSON.stringify(formattedValues)
+		const updatedInstitutions = await postJsonData({
+			path: '/api/admin/institutions',
+			data: formattedValues
 		});
 
 		institutionStore.set(updatedInstitutions);

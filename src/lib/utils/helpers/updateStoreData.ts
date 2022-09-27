@@ -1,6 +1,5 @@
 import { get } from 'svelte/store';
-import { getJsonData } from '$lib/utils/api/getData';
-
+import { getJsonData } from '$lib/utils/api/communication';
 import {
 	ingredientsStore,
 	institutionStore,

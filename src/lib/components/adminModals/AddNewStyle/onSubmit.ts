@@ -1,14 +1,14 @@
 import { styleStore } from '$lib/utils/stores/selects';
-import apiCall, { Endpoints } from '$lib/utils/api/call';
+import { postJsonData } from '$lib/utils/api/communication';
 import formatValues from './formatValues';
 
 export function onSubmit(close) {
 	return async function (values) {
 		const formattedValues = formatValues(values);
 
-		const updatedStyles = await apiCall(fetch, Endpoints.addStyle, {
-			method: 'POST',
-			body: JSON.stringify(formattedValues)
+		const updatedStyles = await postJsonData({
+			path: '/api/admin/styles',
+			data: formattedValues
 		});
 
 		styleStore.set(updatedStyles);

@@ -3,7 +3,7 @@
 	import { invalidate } from '$app/navigation';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
-	import apiCall, { Endpoints, getLink } from '$lib/utils/api/call';
+	import { postJsonData } from '$lib/utils/api/communication';
 	import Button from '$lib/elements/form/Button.svelte';
 
 	export let adminData: AdminNotes;
@@ -13,16 +13,16 @@
 	async function updateBeverageRatings() {
 		isLoading = true;
 
-		await apiCall(fetch, Endpoints.updateRatings, {
-			method: 'POST',
-			body: JSON.stringify({
+		await postJsonData({
+			path: '/api/admin/beverages/updateRatings',
+			data: {
 				...(adminData.ratings.rateBeer && { rateBeerId: adminData.ratings.rateBeer }),
 				...(adminData.ratings.untappd && { untappdBeverageSlug: adminData.ratings.untappd }),
 				beverageShortId: details.shortId
-			})
+			}
 		});
 
-		await invalidate(getLink(Endpoints.beverageDetails, ['pl', details.shortId]));
+		await invalidate(`/api/beverages/details/pl/${details.shortId}`);
 		isLoading = false;
 	}
 </script>

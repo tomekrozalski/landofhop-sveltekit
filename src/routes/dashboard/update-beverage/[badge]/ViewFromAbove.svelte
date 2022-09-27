@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
-	import apiCall, { Endpoints } from '$lib/utils/api/call';
+	import { deleteJsonData, postFormData } from '$lib/utils/api/communication';
 	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
 	import InlineSpinner from '$lib/elements/form/InlineSpinner.svelte';
@@ -24,10 +24,9 @@
 		formData.append('image', images[0]);
 		formData.append('shortId', shortId);
 
-		const photosData: PhotosDataTypes = await apiCall(fetch, Endpoints.addBeverageViewFromAbove, {
-			method: 'POST',
-			body: formData,
-			formData: true
+		const photosData: PhotosDataTypes = await postFormData({
+			path: '/api/admin/beverages/photos/addViewFromAbove',
+			data: formData
 		});
 
 		beveragePhotosStore.set(photosData);
@@ -35,14 +34,10 @@
 	}
 
 	async function removeImage() {
-		const photosData: PhotosDataTypes = await apiCall(
-			fetch,
-			Endpoints.removeBeverageViewFromAbove,
-			{
-				method: 'DELETE',
-				pathParams: [shortId]
-			}
-		);
+		const photosData: PhotosDataTypes = await deleteJsonData({
+			path: `/api/admin/beverages/photos/removeViewFromAbove/${shortId}`
+		});
+
 		beveragePhotosStore.set(photosData);
 	}
 </script>

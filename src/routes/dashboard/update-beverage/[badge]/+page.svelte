@@ -3,7 +3,6 @@
 		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
 	);
 
-	// import apiCall, { Endpoints } from '$lib/utils/api/call';
 	// import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormValues';
 	// import type { ProducerFormValues } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
 	// import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
@@ -16,9 +15,9 @@
 
 	// export async function load({ fetch, params }) {
 	// 	try {
-	// 		const beverage: DetailsAdmin = await apiCall(fetch, Endpoints.beverageDetailsAdmin, {
+	// 		const beverage: DetailsAdmin = await apiCallX(fetch, Endpoints.beverageDetailsAdmin, {
 	// 			pathParams: [params.shortId]
-	// 		});
+	// 		}); = /api/admin/beverages/details
 
 	// 		return { props: { beverage } };
 	// 	} catch (err) {

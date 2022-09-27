@@ -1,6 +1,5 @@
 import { error } from '@sveltejs/kit';
-
-import apiCall, { Endpoints } from '$lib/utils/api/call';
+import { getJsonData } from '$lib/utils/api/communication';
 import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
 
 import type { PageLoad } from './$types';
@@ -9,13 +8,10 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch, params }) => {
 	try {
-		const augmentedBeverageDetails: AugmentedDetails = await apiCall(
+		const augmentedBeverageDetails: AugmentedDetails = await getJsonData({
 			fetch,
-			Endpoints.beverageDetails,
-			{
-				pathParams: ['pl', params.shortId]
-			}
-		);
+			path: `/api/beverages/details/pl/${params.shortId}`
+		});
 
 		return augmentedBeverageDetails;
 	} catch {

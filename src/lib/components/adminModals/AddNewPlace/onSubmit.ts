@@ -1,14 +1,14 @@
 import { placeStore } from '$lib/utils/stores/selects';
-import apiCall, { Endpoints } from '$lib/utils/api/call';
+import { postJsonData } from '$lib/utils/api/communication';
 import formatValues from './formatValues';
 
 export function onSubmit(close) {
 	return async function (values) {
 		const formattedValues = formatValues(values);
 
-		const updatedPlaces = await apiCall(fetch, Endpoints.addPlace, {
-			method: 'POST',
-			body: JSON.stringify(formattedValues)
+		const updatedPlaces = await postJsonData({
+			path: '/api/admin/places',
+			data: formattedValues
 		});
 
 		placeStore.set(updatedPlaces);

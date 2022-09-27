@@ -3,13 +3,12 @@
 		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
 	);
 
-	// import apiCall, { Endpoints } from '$lib/utils/api/call';
 	// import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
 
 	// export async function load({ fetch, params }) {
 	// 	try {
-	// 		const photosData: PhotosDataTypes = await apiCall(fetch, Endpoints.beveragePhotos, {
-	// 			pathParams: [params.shortId]
+	// 		const photosData: PhotosDataTypes = await apiCallX(fetch, Endpoints.beveragePhotos, {
+	// 			pathParams: [params.shortId] = /api/admin/beverages/photos
 	// 		});
 	// 		return { props: { forbidden: false, photosData } };
 	// 	} catch (err) {

@@ -3,16 +3,15 @@
 		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
 	);
 
-	// import apiCall, { Endpoints } from '$lib/utils/api/call';
 	// import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
 
 	// // export const prerender = true;
 
 	// export async function load({ fetch, params }) {
 	// 	try {
-	// 		const institutionDetails: AugmentedDetails = await apiCall(
+	// 		const institutionDetails: AugmentedDetails = await apiCallX(
 	// 			fetch,
-	// 			Endpoints.institutionDetails,
+	// 			Endpoints.institutionDetails, = /api/brands
 	// 			{ pathParams: ['pl', params.shortId] }
 	// 		);
 

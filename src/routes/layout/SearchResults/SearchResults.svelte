@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { debounce } from 'lodash-es';
 
-	import apiCall, { Endpoints } from '$lib/utils/api/call';
+	import { getJsonData } from '$lib/utils/api/communication';
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import pushState from '$lib/utils/helpers/pushState';
@@ -21,8 +21,8 @@
 		const response: {
 			beverages: Basics[];
 			total: number;
-		} = await apiCall(fetch, Endpoints.searchByPhrase, {
-			pathParams: ['pl', phrase.trim(), page]
+		} = await getJsonData({
+			path: `/api/search/byPhrase/pl/${phrase.trim()}/${page}`
 		});
 
 		return response;

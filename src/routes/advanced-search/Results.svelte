@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-	import apiCall, { Endpoints } from '$lib/utils/api/call';
+	import { postJsonData } from '$lib/utils/api/communication';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import Spinner from '$lib/elements/spinners/FullWidth.svelte';
 	import Total from '$lib/components/Pagination/Total.svelte';
@@ -16,9 +16,9 @@
 		const response: {
 			beverages: Basics[];
 			total: number;
-		} = await apiCall(fetch, Endpoints.advancedSearch, {
-			method: 'POST',
-			body: JSON.stringify({ ...values, language: 'pl' })
+		} = await postJsonData({
+			path: '/api/search/advanced',
+			data: { ...values, language: 'pl' }
 		});
 
 		return response;

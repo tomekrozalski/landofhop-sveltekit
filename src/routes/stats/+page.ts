@@ -1,4 +1,4 @@
-import { getJsonData } from '$lib/utils/api/getData';
+import { getJsonData } from '$lib/utils/api/communication';
 import type { GeneralStats as GeneralStatsTypes } from '$lib/utils/types/stats/General';
 import type { PageLoad } from './$types';
 

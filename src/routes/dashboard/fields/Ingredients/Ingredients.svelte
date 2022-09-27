@@ -2,7 +2,7 @@
 	import { beforeUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { slide } from 'svelte/transition';
-	import apiCall, { Endpoints } from '$lib/utils/api/call';
+	import { postJsonData } from '$lib/utils/api/communication';
 	import Label from '$lib/elements/form/Label.svelte';
 	import LanguageSelect from '../../elements/selects/Language.svelte';
 	import RemoveButton from '../../elements/RemoveButton.svelte';
@@ -32,13 +32,13 @@
 				lastIngredients.list.length === 1 &&
 				lastIngredients.list[0] === ''
 			) {
-				const translations: string[] = await apiCall(fetch, Endpoints.translate, {
-					method: 'POST',
-					body: JSON.stringify({
+				const translations: string[] = await postJsonData({
+					path: '/api/admin/translate',
+					data: {
 						queries: $form[fieldName][0].list,
 						source: $form[fieldName][0].language,
 						target: lastIngredients.language
-					})
+					}
 				});
 
 				updateValidateField(`ingredients[${ingredientsLength - 1}].list`, translations);

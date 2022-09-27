@@ -6,7 +6,7 @@
 	import authentication from '$lib/utils/stores/authentication';
 	import Status from '$lib/utils/enums/Status.enum';
 	import Button from '$lib/elements/form/Button.svelte';
-	import apiCall, { Endpoints } from '$lib/utils/api/call';
+	import { postJsonData } from '$lib/utils/api/communication';
 
 	import Email from './Email.svelte';
 	import Password from './Password.svelte';
@@ -28,9 +28,9 @@
 		onSubmit: (values) => {
 			authentication.setLoginStatus(Status.pending);
 
-			apiCall(fetch, Endpoints.logIn, {
-				method: 'POST',
-				body: JSON.stringify(values)
+			postJsonData({
+				path: '/api/user/login',
+				data: values
 			})
 				.then(() => {
 					authentication.setLoginStatus(Status.fulfilled);
