@@ -4,13 +4,13 @@
 	import { page } from '$app/stores';
 
 	// import dictionary from 'src/routes/dashboard/Beverage/dictionary.json';
-	import ModalGrid from '$lib/dashboard/elements/ModalGrid.svelte';
+	import ModalGrid from '$lib/elements/form/ModalGrid.svelte';
 	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
 	import Button from '$lib/elements/form/Button.svelte';
-	import Badge from '$lib/dashboard/fields/Badge.svelte';
-	import IngredientType from '$lib/dashboard/fields/IngredientType.svelte';
-	import Name from '$lib/dashboard/fields/Name.svelte';
-	import ParentIngredient from '$lib/dashboard/fields/ParentIngredient.svelte';
+	import Badge from '$lib/elements/form/fields/Badge.svelte';
+	import IngredientType from '$lib/elements/form/fields/IngredientType.svelte';
+	import Name from '$lib/elements/form/fields/Name.svelte';
+	import ParentIngredient from '$lib/elements/form/fields/ParentIngredient.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import type { Ingredient } from '$lib/utils/types/Ingredient';
 	import { getValidationSchema } from './validationSchema';

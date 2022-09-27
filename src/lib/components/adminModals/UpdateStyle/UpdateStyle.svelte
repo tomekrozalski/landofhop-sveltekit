@@ -4,12 +4,12 @@
 
 	// import dictionary from 'src/routes/dashboard/Beverage/dictionary.json';
 	import type { Style } from '$lib/utils/types/Style';
-	import ModalGrid from '$lib/dashboard/elements/ModalGrid.svelte';
+	import ModalGrid from '$lib/elements/form/ModalGrid.svelte';
 	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
 	import Button from '$lib/elements/form/Button.svelte';
-	import Badge from '$lib/dashboard/fields/Badge.svelte';
-	import Name from '$lib/dashboard/fields/Name.svelte';
-	import StyleGroup from '$lib/dashboard/fields/StyleGroup.svelte';
+	import Badge from '$lib/elements/form/fields/Badge.svelte';
+	import Name from '$lib/elements/form/fields/Name.svelte';
+	import StyleGroup from '$lib/elements/form/fields/StyleGroup.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
 	import { onSubmit } from './onSubmit';

@@ -10,14 +10,14 @@ export const load: PageLoad = async ({ fetch }) => {
 	try {
 		if (get(authentication).isLoggedIn) {
 			const [statsData, styles]: [StylesStatsTypes[], StyleType[]] = await Promise.all([
-				getJsonData({ fetch, path: '/api/stats/style/pl' }),
+				getJsonData({ fetch, path: '/api/stats/styles/pl' }),
 				getJsonData({ fetch, path: '/api/styles' })
 			]);
 
 			return { statsData, styles };
 		}
 
-		const statsData = await getJsonData({ fetch, path: '/api/stats/style/pl' });
+		const statsData = await getJsonData({ fetch, path: '/api/stats/styles/pl' });
 
 		return { statsData, styles: [] };
 	} catch {

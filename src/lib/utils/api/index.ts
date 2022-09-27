@@ -1,7 +1,6 @@
 import adminDetailsNormalizer from './beverages/adminDetailsNormalizer';
 import formatBeverage from './beverages/format';
 import authenticate from './authenticate';
-import call, { Endpoints } from './call';
 import cleanDeep from './cleanDeep';
 import countryList from './countryList';
 import createSession from './sessions/create';
@@ -29,13 +28,11 @@ import updateUntappdRating from './beverages/updateUntappdRating';
 export {
 	adminDetailsNormalizer,
 	authenticate,
-	call,
 	cleanDeep,
 	countryList,
 	createSession,
 	deleteIfEmpty,
 	detailsNormalizer,
-	Endpoints,
 	formatBasics,
 	formatBeverage,
 	formatBeverageToBasics,

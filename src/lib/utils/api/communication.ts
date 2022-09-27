@@ -8,19 +8,17 @@ function handleResponse(response: Response) {
 	return response.json();
 }
 
-type GetJsonDataProps = {
+type CommonCommunicationProps = {
 	fetch?: (info: RequestInfo, init?: RequestInit | undefined) => Promise<Response>;
 	path: string;
 };
 
-export function getJsonData({ fetch: customFetch, path }: GetJsonDataProps) {
+export function getJsonData({ fetch: customFetch, path }: CommonCommunicationProps) {
 	return (customFetch || fetch)(host + path).then(handleResponse);
 }
 
-type PostJsonDataProps = {
+type PostJsonDataProps = CommonCommunicationProps & {
 	data: unknown;
-	fetch?: (info: RequestInfo, init?: RequestInit | undefined) => Promise<Response>;
-	path: string;
 };
 
 export function postJsonData({ data, fetch: customFetch, path }: PostJsonDataProps) {
@@ -30,10 +28,8 @@ export function postJsonData({ data, fetch: customFetch, path }: PostJsonDataPro
 	}).then(handleResponse);
 }
 
-type PostFormDataProps = {
+type PostFormDataProps = CommonCommunicationProps & {
 	data: FormData;
-	fetch?: (info: RequestInfo, init?: RequestInit | undefined) => Promise<Response>;
-	path: string;
 };
 
 export function postFormData({ data, fetch: customFetch, path }: PostFormDataProps) {
@@ -43,10 +39,8 @@ export function postFormData({ data, fetch: customFetch, path }: PostFormDataPro
 	}).then(handleResponse);
 }
 
-type PutDataProps = {
+type PutDataProps = CommonCommunicationProps & {
 	data: unknown;
-	fetch?: (info: RequestInfo, init?: RequestInit | undefined) => Promise<Response>;
-	path: string;
 };
 
 export function putJsonData({ data, fetch: customFetch, path }: PutDataProps) {
@@ -56,12 +50,7 @@ export function putJsonData({ data, fetch: customFetch, path }: PutDataProps) {
 	}).then(handleResponse);
 }
 
-type DeleteJsonDataProps = {
-	fetch?: (info: RequestInfo, init?: RequestInit | undefined) => Promise<Response>;
-	path: string;
-};
-
-export function deleteJsonData({ fetch: customFetch, path }: DeleteJsonDataProps) {
+export function deleteJsonData({ fetch: customFetch, path }: CommonCommunicationProps) {
 	return (customFetch || fetch)(host + path, {
 		method: 'DELETE'
 	}).then(handleResponse);
