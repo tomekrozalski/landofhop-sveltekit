@@ -35,7 +35,7 @@
 			<Badge {formName} {formData} />
 		</ModalGrid>
 		<ModalGrid columns={2}>
-			<Name {formName} {formData} />
+			<Name {formName} {formData} labelId="test" />
 		</ModalGrid>
 		<ModalGrid isOptional>
 			<Owner {formName} {formData} />
