@@ -2,9 +2,9 @@
 	import { getContext, onDestroy } from 'svelte';
 	import { translate } from 'svelte-intl';
 
-	import ProgressList from '../elements/ProgressList/ProgressList.svelte';
-	import Navigation from '../elements/Navigation.svelte';
-	import { page } from './utils/stores';
+	import ProgressList from './ProgressList/ProgressList.svelte';
+	import Navigation from './Navigation.svelte';
+	import { page } from './stores';
 	import Label from './Label/Label.svelte';
 	import Producer from './Producer/Producer.svelte';
 	import Editorial from './Editorial/Editorial.svelte';

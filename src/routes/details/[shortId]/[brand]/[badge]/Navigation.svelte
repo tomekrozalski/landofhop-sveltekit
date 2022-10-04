@@ -2,8 +2,8 @@
 	import { translate } from 'svelte-intl';
 
 	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
-	import LeftIcon from '$lib/elements/vectors/Left.svelte';
-	import RightIcon from '$lib/elements/vectors/Right.svelte';
+	import LeftIcon from '$lib/atoms/vectors/Left.svelte';
+	import RightIcon from '$lib/atoms/vectors/Right.svelte';
 
 	export let next: LinkData | null;
 	export let previous: LinkData | null;

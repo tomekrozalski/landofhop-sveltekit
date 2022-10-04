@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import MarkLanguage from '$lib/elements/MarkLanguage.svelte';
-	import FormattedList from '$lib/elements/FormattedList.svelte';
+	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
+	import FormattedList from '$lib/atoms/FormattedList.svelte';
 
 	export let details: Details;
 	const { dryHopped, isDryHopped } = details;

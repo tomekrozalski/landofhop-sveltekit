@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import type { Aged } from '$lib/utils/types/Beverage/fragments';
-	import FormattedList from '$lib/elements/FormattedList.svelte';
+	import FormattedList from '$lib/atoms/FormattedList.svelte';
 
 	export let item: Aged;
 	let { previousContent, time, type, wood } = item;

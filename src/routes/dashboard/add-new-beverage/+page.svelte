@@ -4,7 +4,7 @@
 
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 
-	import { editorialStore, labelStore, producerStore } from '../Beverage/utils/stores';
+	import { editorialStore, labelStore, producerStore } from '../Beverage/stores';
 	import { initialValues as initialLabelValues } from '../Beverage/Label/initialValues';
 	import { initialValues as initialProducerValues } from '../Beverage/Producer/initialValues';
 	import { initialValues as initialEditorialValues } from '../Beverage/Editorial/initialValues';

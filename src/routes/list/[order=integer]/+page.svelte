@@ -2,9 +2,9 @@
 	import { translate } from 'svelte-intl';
 
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import BeverageList from '$lib/components/BeverageList/BeverageList.svelte';
-	import Pagination from '$lib/components/Pagination/Pagination.svelte';
+	import Breadcrumbs from '$lib/atoms/Breadcrumbs.svelte';
+	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
+	import Pagination from '$lib/molecules/pagination/Pagination.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

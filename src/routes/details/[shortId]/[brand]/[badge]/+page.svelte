@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import Breadcrumbs from '$lib/atoms/Breadcrumbs.svelte';
 
 	import BeverageDetails from './BeverageDetails.svelte';
 	import dictionary from './dictionary.json';

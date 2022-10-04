@@ -4,7 +4,7 @@
 	import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
 	import { styleStore } from '$lib/utils/stores/selects';
 	import type { Style } from '$lib/utils/types/Style';
-	import UpdateStyle from '$lib/components/adminModals/UpdateStyle/UpdateStyle.svelte';
+	import UpdateStyle from '$lib/templates/modals/UpdateStyle/UpdateStyle.svelte';
 	import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
 
 	import Item from './Item.svelte';

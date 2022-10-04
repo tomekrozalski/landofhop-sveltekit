@@ -1,5 +1,5 @@
 <script>
-	import { page } from '../../Beverage/utils/stores';
+	import { page } from '../stores';
 	import EditorialIcon from './EditorialIcon.svelte';
 	import LabelIcon from './LabelIcon.svelte';
 	import ProducerIcon from './ProducerIcon.svelte';

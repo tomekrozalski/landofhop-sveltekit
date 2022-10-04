@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Markdown from '$lib/elements/Markdown.svelte';
+	import Markdown from '$lib/atoms/Markdown.svelte';
 
 	export let notes: string;
 </script>

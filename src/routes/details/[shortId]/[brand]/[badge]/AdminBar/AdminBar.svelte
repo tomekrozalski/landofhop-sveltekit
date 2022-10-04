@@ -3,7 +3,7 @@
 	import { getJsonData } from '$lib/utils/api/communication';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
-	import InlineSpinner from '$lib/elements/spinners/Inline.svelte';
+	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
 
 	import Notes from './Notes.svelte';
 	import Updated from './Updated.svelte';

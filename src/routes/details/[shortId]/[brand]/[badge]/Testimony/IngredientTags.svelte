@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import MarkLanguage from '$lib/elements/MarkLanguage.svelte';
+	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
 
 	export let details: Details;
 	const { label = [], producer = [] } = details.ingredientsTags ?? {};

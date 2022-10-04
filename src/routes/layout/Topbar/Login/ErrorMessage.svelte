@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import authentication from '$lib/utils/stores/authentication';
 	import Button from '$lib/elements/form/Button.svelte';
-	import WarningIcon from '$lib/elements/vectors/Warning.svelte';
+	import WarningIcon from '$lib/atoms/vectors/Warning.svelte';
 	import Status from '$lib/utils/enums/Status.enum';
 
 	const handleClick = () => {

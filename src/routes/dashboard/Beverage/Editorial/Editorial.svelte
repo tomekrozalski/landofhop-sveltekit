@@ -11,26 +11,25 @@
 	import StyleTags from '$lib/elements/form/fields/StyleTags.svelte';
 
 	// Dashboard elements
-	import { editorialStore } from '../utils/stores';
-	import { page } from '../utils/stores';
-	import Aged from '../../fields/Aged/Aged.svelte';
-	import AlcoholScope from '../../fields/AlcoholScope.svelte';
-	import Clarity from '../../fields/Clarity.svelte';
-	import Color from '../../fields/Color.svelte';
-	import Contract from '../../fields/Contract.svelte';
-	import Cooperation from '../../fields/Cooperation.svelte';
-	import DryHopped from '../../fields/DryHopped.svelte';
-	import Fermentation from '../../fields/Fermentation.svelte';
-	import Filtration from '../../fields/Filtration.svelte';
-	import Nitrogen from '../../fields/Nitrogen.svelte';
-	import Notes from '../../fields/Notes.svelte';
-	import Pasteurization from '../../fields/Pasteurization.svelte';
-	import Place from '../../fields/Place.svelte';
-	import Price from '../../fields/Price.svelte';
-	import RateBeer from '../../fields/RateBeer.svelte';
-	import Remark from '../../fields/Remark.svelte';
-	import Untappd from '../../fields/Untappd.svelte';
-	import Series from '../../fields/Series.svelte';
+	import { editorialStore, page } from '../stores';
+	import Aged from '$lib/elements/form/fields/Aged/Aged.svelte';
+	import AlcoholScope from '$lib/elements/form/fields/AlcoholScope.svelte';
+	import Clarity from '$lib/elements/form/fields/Clarity.svelte';
+	import Color from '$lib/elements/form/fields/Color.svelte';
+	import Contract from '$lib/elements/form/fields/Contract.svelte';
+	import Cooperation from '$lib/elements/form/fields/Cooperation.svelte';
+	import DryHopped from '$lib/elements/form/fields/DryHopped.svelte';
+	import Fermentation from '$lib/elements/form/fields/Fermentation.svelte';
+	import Filtration from '$lib/elements/form/fields/Filtration.svelte';
+	import Nitrogen from '$lib/elements/form/fields/Nitrogen.svelte';
+	import Notes from '$lib/elements/form/fields/Notes.svelte';
+	import Pasteurization from '$lib/elements/form/fields/Pasteurization.svelte';
+	import Place from '$lib/elements/form/fields/Place.svelte';
+	import Price from '$lib/elements/form/fields/Price.svelte';
+	import RateBeer from '$lib/elements/form/fields/RateBeer.svelte';
+	import Remark from '$lib/elements/form/fields/Remark.svelte';
+	import Untappd from '$lib/elements/form/fields/Untappd.svelte';
+	import Series from '$lib/elements/form/fields/Series.svelte';
 
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
