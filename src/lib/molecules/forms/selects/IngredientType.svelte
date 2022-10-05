@@ -9,7 +9,7 @@
 	export let value: IngredientType | null;
 
 	const items = Object.keys(IngredientType).map((value) => ({
-		label: $translate(`dashboard.ingredientType.${value}`),
+		label: $translate(`modals.labels.ingredient.type.${value}`),
 		value,
 		type: value
 	}));

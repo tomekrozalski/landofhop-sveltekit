@@ -46,7 +46,7 @@
 	{handleClear}
 	id={$form[fieldName] !== null ? id : null}
 	{setValue}
-	value={$form[fieldName]}
+	bind:value={$form[fieldName]}
 />
 {#if admin}
 	<OpenModal open={() => (isModalOpen = true)} />

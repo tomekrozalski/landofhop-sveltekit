@@ -5,6 +5,7 @@
 
 	export let formName: string;
 	export let formData: any;
+	export let labelId: string;
 	let { errors, form, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'parent';
 	let id = `${formName}-${fieldName}`;
@@ -19,7 +20,7 @@
 	}
 </script>
 
-<Label {id} isRequired>{$translate('dashboard.label.parentIngredient')}</Label>
+<Label {id} isRequired>{$translate(labelId)}</Label>
 <IngredientSelect
 	errors={$errors[fieldName]}
 	filter={$form.type}

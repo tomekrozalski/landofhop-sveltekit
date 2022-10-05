@@ -4,7 +4,7 @@ import { putJsonData } from '$lib/utils/api/communication';
 import formatValues from './formatValues';
 
 // @ToDo types
-export function onSubmit(initial, close, type) {
+export function onSubmit(initial, close: () => void, type) {
 	return async function (values) {
 		const formattedValues = formatValues(values);
 

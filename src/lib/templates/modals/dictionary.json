@@ -2,15 +2,31 @@
 	"en": {
 		"modals.buttons.save": "save",
 		"modals.labels.badge": "Badge",
+		"modals.labels.ingredient.parent": "Parent ingredient",
+		"modals.labels.ingredient.type": "Typ",
+		"modals.labels.ingredient.type.addition": "addition",
+		"modals.labels.ingredient.type.hop": "hop",
+		"modals.labels.ingredient.type.malt": "malt",
+		"modals.labels.ingredient.type.water": "water",
+		"modals.labels.ingredient.type.yeast": "yeast",
 		"modals.labels.name": "Name",
 		"modals.labels.styleGroup": "Style group",
-		"modals.names.updateStyle": "Update beverage style"
+		"modals.names.updateStyle": "Update beverage style",
+		"modals.names.updateIngredient": "Update ingredient"
 	},
 	"pl": {
 		"modals.buttons.save": "zapisz",
 		"modals.labels.badge": "Identyfikator",
+		"modals.labels.ingredient.parent": "Rodzic",
+		"modals.labels.ingredient.type": "Typ",
+		"modals.labels.ingredient.type.addition": "dodatek",
+		"modals.labels.ingredient.type.hop": "chmiel",
+		"modals.labels.ingredient.type.malt": "słód",
+		"modals.labels.ingredient.type.water": "woda",
+		"modals.labels.ingredient.type.yeast": "drożdże",
 		"modals.labels.name": "Nazwa",
 		"modals.labels.styleGroup": "Grupa stylu",
-		"modals.names.updateStyle": "Popraw styl"
+		"modals.names.updateStyle": "Popraw styl",
+		"modals.names.updateIngredient": "Popraw składnik"
 	}
 }

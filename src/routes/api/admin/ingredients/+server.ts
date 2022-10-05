@@ -1,20 +1,16 @@
-import { json } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { getDbCollections, recalculateIngredientsOccurrences } from '$lib/utils/api';
+import authentication from '$lib/utils/stores/authentication';
 import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
 
-export async function POST({ locals, request }) {
+export const POST: RequestHandler = async ({ request }) => {
 	const ingredientData = await request.json();
 	const { ingredients } = await getDbCollections();
 
-	if (!locals.authenticated) {
-		return json(
-			{
-				message: 'Unauthorized. Cannot add ingredient'
-			},
-			{
-				status: 401
-			}
-		);
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot add ingredient');
 	}
 
 	await ingredients.insertOne(ingredientData);
@@ -36,16 +32,11 @@ export async function POST({ locals, request }) {
 		.toArray();
 
 	return json(data);
-}
+};
 
-export async function PUT({ locals, request }) {
-	if (!locals.authenticated) {
-		return {
-			status: 401,
-			body: {
-				message: 'Unauthorized. Cannot update ingredient'
-			}
-		};
+export const PUT: RequestHandler = async ({ request }) => {
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot update ingredient');
 	}
 
 	const { beverages, ingredients } = await getDbCollections();
@@ -99,4 +90,4 @@ export async function PUT({ locals, request }) {
 		.toArray();
 
 	return json(data);
-}
+};
