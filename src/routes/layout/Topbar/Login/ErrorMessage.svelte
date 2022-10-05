@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import authentication from '$lib/utils/stores/authentication';
-	import Button from '$lib/elements/form/Button.svelte';
-	import WarningIcon from '$lib/atoms/vectors/Warning.svelte';
 	import Status from '$lib/utils/enums/Status.enum';
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
+	import WarningIcon from '$lib/atoms/vectors/Warning.svelte';
 
 	const handleClick = () => {
 		authentication.setLoginStatus(Status.idle);

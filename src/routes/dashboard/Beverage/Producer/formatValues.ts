@@ -7,7 +7,7 @@ import {
 	formatPlaceByShortId,
 	formatTaleArray,
 	parseFieldNumber
-} from '$lib/utils/admin/dataNormalizers';
+} from '$lib/utils/helpers/dataNormalizers';
 import type { ProducerFormValues, ProducerFormOutput } from './ProducerFormValues';
 
 export default function formatValues({

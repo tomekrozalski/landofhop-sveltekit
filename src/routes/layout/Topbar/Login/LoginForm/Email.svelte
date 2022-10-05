@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-
 	import Label from '$lib/atoms/forms/Label.svelte';
 	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 

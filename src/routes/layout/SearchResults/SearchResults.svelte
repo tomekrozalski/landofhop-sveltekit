@@ -1,14 +1,13 @@
 <script lang="ts">
 	import { debounce } from 'lodash-es';
-
 	import { getJsonData } from '$lib/utils/api/communication';
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import pushState from '$lib/utils/helpers/pushState';
 	import Spinner from '$lib/atoms/spinners/FullScreen.svelte';
 	import Total from '$lib/molecules/pagination/elements/Total.svelte';
-	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte'; // @ToDo: will be moved
 	import Pagination from '$lib/molecules/pagination/Pagination.svelte';
+	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
 	import NothingFound from '$lib/templates/BeverageList/NothingFound.svelte';
 
 	import layoutStore from '../store';

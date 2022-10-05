@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+// @ToDo types
 export function getValidationSchema(translate) {
 	return yup.object().shape({
 		badge: yup

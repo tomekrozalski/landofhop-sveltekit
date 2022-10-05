@@ -2,6 +2,7 @@ import { placeStore } from '$lib/utils/stores/selects';
 import { postJsonData } from '$lib/utils/api/communication';
 import formatValues from './formatValues';
 
+// @ToDo types
 export function onSubmit(close) {
 	return async function (values) {
 		const formattedValues = formatValues(values);

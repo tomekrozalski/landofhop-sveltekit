@@ -2,7 +2,7 @@ import type { PlaceRaw } from '$lib/utils/types/Place';
 import {
 	formatInstitutionByShortId,
 	formatLanguageValueArray
-} from '$lib/utils/admin/dataNormalizers';
+} from '$lib/utils/helpers/dataNormalizers';
 
 type Input = {
 	city: {

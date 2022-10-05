@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
-
 	import pushState from '$lib/utils/helpers/pushState';
-
 	import layoutStore from '../../../store';
 
 	function focusOnMount(input: HTMLInputElement) {

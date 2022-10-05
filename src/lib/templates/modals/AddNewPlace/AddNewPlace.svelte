@@ -1,14 +1,13 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
-
-	import ModalGrid from '$lib/elements/form/ModalGrid.svelte';
-	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
-	import Button from '$lib/elements/form/Button.svelte';
-	import City from '$lib/elements/form/fields/City.svelte';
-	import Country from '$lib/elements/form/fields/Country.svelte';
-	import Institutions from '$lib/elements/form/fields/Institutions.svelte';
-	import Coordinates from '$lib/elements/form/fields/Coordinates.svelte';
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
+	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
+	import City from '$lib/molecules/forms/fields/City.svelte';
+	import Country from '$lib/molecules/forms/fields/Country.svelte';
+	import Institutions from '$lib/molecules/forms/fields/Institutions.svelte';
+	import Coordinates from '$lib/molecules/forms/fields/Coordinates.svelte';
+	import ModalGrid from '../ModalGrid.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
 	import { initialValues } from './initialValues';

@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { goto } from '$app/navigation';
 	import { deleteJsonData } from '$lib/utils/api/communication';
-	import Button from '$lib/elements/form/Button.svelte';
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
 	export let details: Details;

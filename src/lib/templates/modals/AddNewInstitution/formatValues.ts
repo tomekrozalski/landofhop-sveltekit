@@ -2,7 +2,7 @@ import type { InstitutionRaw } from '$lib/utils/types/Institution';
 import {
 	formatInstitutionByShortId,
 	formatLanguageValueArray
-} from '$lib/utils/admin/dataNormalizers';
+} from '$lib/utils/helpers/dataNormalizers';
 
 type Input = {
 	badge: string;

@@ -2,15 +2,14 @@
 	import { translate, translations } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 	import { page } from '$app/stores';
-
 	// import dictionary from 'src/routes/dashboard/Beverage/dictionary.json';
-	import ModalGrid from '$lib/elements/form/ModalGrid.svelte';
-	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
-	import Button from '$lib/elements/form/Button.svelte';
-	import Badge from '$lib/elements/form/fields/Badge.svelte';
-	import IngredientType from '$lib/elements/form/fields/IngredientType.svelte';
-	import Name from '$lib/elements/form/fields/Name.svelte';
-	import ParentIngredient from '$lib/elements/form/fields/ParentIngredient.svelte';
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
+	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
+	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
+	import IngredientType from '$lib/molecules/forms/fields/IngredientType.svelte';
+	import NameGroup from '$lib/molecules/forms/fields/NameGroup.svelte';
+	import ParentIngredient from '$lib/molecules/forms/fields/ParentIngredient.svelte';
+	import ModalGrid from '../ModalGrid.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import type { Ingredient } from '$lib/utils/types/Ingredient';
 	import { getValidationSchema } from './validationSchema';
@@ -40,7 +39,7 @@
 			<Badge {formName} {formData} />
 		</ModalGrid>
 		<ModalGrid columns={2}>
-			<Name {formName} {formData} />
+			<NameGroup {formName} {formData} />
 		</ModalGrid>
 		<ModalGrid>
 			<IngredientType {formName} {formData} />

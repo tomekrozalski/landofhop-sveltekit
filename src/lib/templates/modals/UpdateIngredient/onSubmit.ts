@@ -3,6 +3,7 @@ import { ingredientsStore } from '$lib/utils/stores/selects';
 import { putJsonData } from '$lib/utils/api/communication';
 import formatValues from './formatValues';
 
+// @ToDo types
 export function onSubmit(initial, close, type) {
 	return async function (values) {
 		const formattedValues = formatValues(values);

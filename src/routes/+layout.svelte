@@ -8,7 +8,6 @@
 	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
 	import '$lib/utils/styles/global.css';
-
 	import dictionary from './layout/dictionary.json';
 	import layoutStore from './layout/store';
 	import Topbar from './layout/Topbar/Topbar.svelte';

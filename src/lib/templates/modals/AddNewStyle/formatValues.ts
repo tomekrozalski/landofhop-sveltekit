@@ -1,5 +1,5 @@
 import type { Style } from '$lib/utils/types/Style';
-import { formatLanguageValueArray } from '$lib/utils/admin/dataNormalizers';
+import { formatLanguageValueArray } from '$lib/utils/helpers/dataNormalizers';
 
 type Input = {
 	badge: string;

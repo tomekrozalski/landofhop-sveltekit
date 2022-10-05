@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
-
 	import Spinner from '$lib/atoms/spinners/FullScreen.svelte';
-
 	import layoutStore from '../layout/store';
 	import type AdvancedSearchData from './AdvancedSearchData.type';
 	import Form from './Form.svelte';

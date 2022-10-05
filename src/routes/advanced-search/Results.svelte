@@ -5,7 +5,7 @@
 	import Spinner from '$lib/atoms/spinners/FullWidth.svelte';
 	import Total from '$lib/molecules/pagination/elements/Total.svelte';
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
-	import NothingFound from '$lib/templates/BeverageList/NothingFound.svelte'; // @ToDo
+	import NothingFound from '$lib/templates/BeverageList/NothingFound.svelte';
 
 	import Pagination from './Pagination.svelte';
 	import type AdvancedSearchData from './AdvancedSearchData.type';

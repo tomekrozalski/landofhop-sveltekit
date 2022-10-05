@@ -1,6 +1,5 @@
 <script>
 	import { afterUpdate } from 'svelte';
-
 	import layoutStore from './store';
 	import SearchResults from './SearchResults/SearchResults.svelte';
 

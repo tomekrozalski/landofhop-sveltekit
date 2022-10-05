@@ -2,7 +2,6 @@ import { redirect, error } from '@sveltejs/kit';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import { getJsonData } from '$lib/utils/api/communication';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
-
 import type { PageLoad } from './$types';
 
 export const prerender = true;

@@ -1,15 +1,14 @@
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
-
 	// import dictionary from 'src/routes/dashboard/Beverage/dictionary.json';
 	import type { Style } from '$lib/utils/types/Style';
-	import ModalGrid from '$lib/elements/form/ModalGrid.svelte';
-	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
-	import Button from '$lib/elements/form/Button.svelte';
-	import Badge from '$lib/elements/form/fields/Badge.svelte';
-	import Name from '$lib/elements/form/fields/Name.svelte';
-	import StyleGroup from '$lib/elements/form/fields/StyleGroup.svelte';
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
+	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
+	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
+	import NameGroup from '$lib/molecules/forms/fields/NameGroup.svelte';
+	import StyleGroup from '$lib/molecules/forms/fields/StyleGroup.svelte';
+	import ModalGrid from '../ModalGrid.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
 	import { onSubmit } from './onSubmit';
@@ -38,7 +37,7 @@
 			<Badge {formName} {formData} />
 		</ModalGrid>
 		<ModalGrid columns={2}>
-			<Name {formName} {formData} />
+			<NameGroup {formName} {formData} />
 		</ModalGrid>
 		<ModalGrid>
 			<StyleGroup {formName} {formData} />

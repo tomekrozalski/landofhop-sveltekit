@@ -5,31 +5,31 @@
 	import { page as pageProps } from '$app/stores';
 
 	// Common elements
-	import Button from '$lib/elements/form/Button.svelte';
-	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
-	import Grid from '$lib/elements/form/Grid.svelte';
-	import StyleTags from '$lib/elements/form/fields/StyleTags.svelte';
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
+	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
+	import Grid from '$lib/atoms/forms/Grid.svelte';
+	import StyleTags from '$lib/molecules/forms/fields/StyleTags.svelte';
 
 	// Dashboard elements
 	import { editorialStore, page } from '../stores';
-	import Aged from '$lib/elements/form/fields/Aged/Aged.svelte';
-	import AlcoholScope from '$lib/elements/form/fields/AlcoholScope.svelte';
-	import Clarity from '$lib/elements/form/fields/Clarity.svelte';
-	import Color from '$lib/elements/form/fields/Color.svelte';
-	import Contract from '$lib/elements/form/fields/Contract.svelte';
-	import Cooperation from '$lib/elements/form/fields/Cooperation.svelte';
-	import DryHopped from '$lib/elements/form/fields/DryHopped.svelte';
-	import Fermentation from '$lib/elements/form/fields/Fermentation.svelte';
-	import Filtration from '$lib/elements/form/fields/Filtration.svelte';
-	import Nitrogen from '$lib/elements/form/fields/Nitrogen.svelte';
-	import Notes from '$lib/elements/form/fields/Notes.svelte';
-	import Pasteurization from '$lib/elements/form/fields/Pasteurization.svelte';
-	import Place from '$lib/elements/form/fields/Place.svelte';
-	import Price from '$lib/elements/form/fields/Price.svelte';
-	import RateBeer from '$lib/elements/form/fields/RateBeer.svelte';
-	import Remark from '$lib/elements/form/fields/Remark.svelte';
-	import Untappd from '$lib/elements/form/fields/Untappd.svelte';
-	import Series from '$lib/elements/form/fields/Series.svelte';
+	import Aged from '$lib/molecules/forms/fields/Aged/Aged.svelte';
+	import AlcoholScope from '$lib/molecules/forms/fields/AlcoholScope.svelte';
+	import Clarity from '$lib/molecules/forms/fields/Clarity.svelte';
+	import Color from '$lib/molecules/forms/fields/Color.svelte';
+	import Contract from '$lib/molecules/forms/fields/Contract.svelte';
+	import Cooperation from '$lib/molecules/forms/fields/Cooperation.svelte';
+	import DryHopped from '$lib/molecules/forms/fields/DryHopped.svelte';
+	import Fermentation from '$lib/molecules/forms/fields/Fermentation.svelte';
+	import Filtration from '$lib/molecules/forms/fields/Filtration.svelte';
+	import Nitrogen from '$lib/molecules/forms/fields/Nitrogen.svelte';
+	import Notes from '$lib/molecules/forms/fields/Notes.svelte';
+	import Pasteurization from '$lib/molecules/forms/fields/Pasteurization.svelte';
+	import Place from '$lib/molecules/forms/fields/Place.svelte';
+	import Price from '$lib/molecules/forms/fields/Price.svelte';
+	import RateBeer from '$lib/molecules/forms/fields/RateBeer.svelte';
+	import Remark from '$lib/molecules/forms/fields/Remark.svelte';
+	import Untappd from '$lib/molecules/forms/fields/Untappd.svelte';
+	import Series from '$lib/molecules/forms/fields/Series.svelte';
 
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';

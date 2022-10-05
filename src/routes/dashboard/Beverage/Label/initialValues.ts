@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash-es';
 
 import { ContainerUnit } from '$lib/utils/enums/Beverage.enum';
-import { emptyLanguageValue } from '$lib/utils/admin/emptyFieldValues';
+import { emptyLanguageValue } from '$lib/helpers/admin/emptyFieldValues';
 
 export const initialValues = {
 	badge: '',

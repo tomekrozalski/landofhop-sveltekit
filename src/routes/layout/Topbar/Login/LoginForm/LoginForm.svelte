@@ -2,12 +2,10 @@
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
-
 	import authentication from '$lib/utils/stores/authentication';
 	import Status from '$lib/utils/enums/Status.enum';
-	import Button from '$lib/elements/form/Button.svelte';
 	import { postJsonData } from '$lib/utils/api/communication';
-
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import Email from './Email.svelte';
 	import Password from './Password.svelte';
 

@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
-
 	import SuccessIcon from '$lib/atoms/vectors/Success.svelte';
-
 	import layoutStore from '../../store';
 
 	onMount(() => {

@@ -1,6 +1,6 @@
 import type { IngredientRaw } from '$lib/utils/types/Ingredient';
 import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
-import { formatLanguageValueArray } from '$lib/utils/admin/dataNormalizers';
+import { formatLanguageValueArray } from '$lib/utils/helpers/dataNormalizers';
 
 type Input = {
 	badge: string;

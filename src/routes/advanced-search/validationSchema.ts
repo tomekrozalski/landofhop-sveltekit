@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-type translateType = (value: string) => string;
+type translateType = (value: string) => string; // @ToDo: could have second argument, types to revalidate
 
 export function getValidationSchema(translate: translateType) {
 	return yup.object().shape({

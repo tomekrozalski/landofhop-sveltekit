@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-
 	import layoutStore from '../../store';
 </script>
 

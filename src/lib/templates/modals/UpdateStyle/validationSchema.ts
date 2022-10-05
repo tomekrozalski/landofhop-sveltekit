@@ -1,8 +1,8 @@
 import { get } from 'svelte/store';
 import * as yup from 'yup';
-
 import { styleStore } from '$lib/utils/stores/selects';
 
+// @ToDo types
 export function getValidationSchema(translate, badge) {
 	return yup.object().shape({
 		badge: yup

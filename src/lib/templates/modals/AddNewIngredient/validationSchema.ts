@@ -3,7 +3,8 @@ import * as yup from 'yup';
 
 import { ingredientsStore } from '$lib/utils/stores/selects';
 
-export function getValidationSchema(translate) {
+export function getValidationSchema(translate: any) {
+	// @ToDo fix type
 	return yup.object().shape({
 		badge: yup
 			.string()

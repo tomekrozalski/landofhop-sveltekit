@@ -4,7 +4,7 @@
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 	import { postJsonData } from '$lib/utils/api/communication';
-	import Button from '$lib/elements/form/Button.svelte';
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
 
 	export let adminData: AdminNotes;
 	export let details: Details;

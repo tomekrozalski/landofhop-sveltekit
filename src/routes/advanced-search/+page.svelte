@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
-
 	import dictionary from './dictionary.json';
 	import AdvancedSearch from './AdvancedSearch.svelte';
 

@@ -2,11 +2,9 @@
 	import { slide } from 'svelte/transition';
 	import { translations } from 'svelte-intl';
 	import { cubicInOut } from 'svelte/easing';
-
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 	import authentication from '$lib/utils/stores/authentication';
 	import Status from '$lib/utils/enums/Status.enum';
-
 	import ErrorMessage from './ErrorMessage.svelte';
 	import LoginForm from './LoginForm/LoginForm.svelte';
 	import SuccessMessage from './SuccessMessage.svelte';

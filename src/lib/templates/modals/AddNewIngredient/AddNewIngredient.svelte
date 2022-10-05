@@ -1,14 +1,13 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
-
-	import Badge from '$lib/elements/form/fields/Badge.svelte';
-	import Button from '$lib/elements/form/Button.svelte';
-	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
-	import IngredientType from '$lib/elements/form/fields/IngredientType.svelte';
-	import ModalGrid from '$lib/elements/form/ModalGrid.svelte';
-	import Name from '$lib/elements/form/fields/Name.svelte';
-	import ParentIngredient from '$lib/elements/form/fields/ParentIngredient.svelte';
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
+	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
+	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
+	import IngredientType from '$lib/molecules/forms/fields/IngredientType.svelte';
+	import NameGroup from '$lib/molecules/forms/fields/NameGroup.svelte';
+	import ParentIngredient from '$lib/molecules/forms/fields/ParentIngredient.svelte';
+	import ModalGrid from '../ModalGrid.svelte';
 
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
@@ -33,7 +32,7 @@
 			<Badge {formName} {formData} />
 		</ModalGrid>
 		<ModalGrid columns={2}>
-			<Name {formName} {formData} />
+			<NameGroup {formName} {formData} />
 		</ModalGrid>
 		<ModalGrid>
 			<IngredientType {formName} {formData} />

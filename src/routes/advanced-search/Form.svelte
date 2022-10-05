@@ -1,16 +1,14 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
-
 	import pushState from '$lib/utils/helpers/pushState';
-	import Button from '$lib/elements/form/Button.svelte';
-	import ButtonWrapper from '$lib/elements/form/ButtonWrapper.svelte';
-	import Grid from '$lib/elements/form/Grid.svelte';
-	import IngredientTags from '$lib/elements/form/fields/IngredientTags.svelte';
-	import Brands from '$lib/elements/form/fields/Brands.svelte';
-	import Name from '$lib/elements/form/fields/Name.svelte';
-	import StyleTags from '$lib/elements/form/fields/StyleTags.svelte';
-
+	import Button from '$lib/atoms/forms/Button/Button.svelte';
+	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
+	import Grid from '$lib/atoms/forms/Grid.svelte';
+	import Brands from '$lib/molecules/forms/fields/Brands.svelte';
+	import IngredientTags from '$lib/molecules/forms/fields/IngredientTags.svelte';
+	import Name from '$lib/molecules/forms/fields/Name.svelte';
+	import StyleTags from '$lib/molecules/forms/fields/StyleTags.svelte';
 	import type AdvancedSearchData from './AdvancedSearchData.type';
 	import { getValidationSchema } from './validationSchema';
 

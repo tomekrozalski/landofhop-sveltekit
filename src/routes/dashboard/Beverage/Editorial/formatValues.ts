@@ -7,7 +7,7 @@ import {
 	formatPlaceByShortId,
 	formatStyleByBadge,
 	parseFieldNumber
-} from '$lib/utils/admin/dataNormalizers';
+} from '$lib/utils/helpers/dataNormalizers';
 import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormValues';
 
 export default function formatValues({
