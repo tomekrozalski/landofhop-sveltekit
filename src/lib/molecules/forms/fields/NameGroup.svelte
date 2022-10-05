@@ -8,12 +8,13 @@
 
 	export let formName: string;
 	export let formData: any;
+	export let labelId: string;
 	let { errors, form, handleChange, touched, updateField, validateField } = formData;
 	let fieldName = 'name';
 	let id = `${formName}-${fieldName}`;
 </script>
 
-<Label {id} isRequired>{$translate('dashboard.label.name')}</Label>
+<Label {id} isRequired>{$translate(labelId)}</Label>
 {#each $form[fieldName] as _, i}
 	<TextInput
 		errors={$errors[fieldName][i]?.value ?? ''}

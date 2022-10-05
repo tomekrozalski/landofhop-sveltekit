@@ -31,7 +31,7 @@
 	{errors}
 	{handleClear}
 	{items}
-	placeholder={$translate('dashboard.select.placeholder.styleGroup')}
+	placeholder={$translate('form.select.placeholder.styleGroup')}
 	{setValue}
 	value={items.find((item) => item.value === value) ?? null}
 />

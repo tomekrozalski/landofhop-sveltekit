@@ -5,12 +5,13 @@
 
 	export let formName: string;
 	export let formData: any;
+	export let labelId: string;
 	let { errors, form, updateField, validateField } = formData;
 	let fieldName = 'group';
 	let id = `${formName}-${fieldName}`;
 </script>
 
-<Label {id} isRequired>{$translate('dashboard.label.styleGroup')}</Label>
+<Label {id} isRequired>{$translate(labelId)}</Label>
 <StyleGroupSelect
 	errors={$errors[fieldName]}
 	name={fieldName}

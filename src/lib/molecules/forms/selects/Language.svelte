@@ -59,7 +59,7 @@
 	{isWide}
 	{items}
 	{name}
-	placeholder={$translate('dashboard.select.placeholder.language')}
+	placeholder={$translate('form.select.placeholder.language')}
 	{setValue}
 	value={items.find((item) => item.value === value) ?? null}
 />

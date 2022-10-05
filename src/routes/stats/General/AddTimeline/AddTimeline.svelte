@@ -2,10 +2,8 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
-
 	import type { AddTimelineBar } from '$lib/utils/types/stats/General';
 	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
-
 	import type { Sizes } from '../utils/Sizes';
 	import Xaxis from '../utils/timeline/XAxis.svelte';
 	import Yaxis from '../utils/timeline/YAxis.svelte';

@@ -25,7 +25,7 @@
 	isDisabled={value === null}
 	isMulti
 	{items}
-	placeholder={$translate('dashboard.select.placeholder.agedPreviousContent')}
+	placeholder={$translate('form.select.placeholder.agedPreviousContent')}
 	{setValue}
 	value={selectedValues}
 />

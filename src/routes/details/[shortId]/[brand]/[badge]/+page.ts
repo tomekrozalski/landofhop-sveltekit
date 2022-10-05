@@ -1,7 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { getJsonData } from '$lib/utils/api/communication';
 import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
-
 import type { PageLoad } from './$types';
 
 // export const prerender = true;

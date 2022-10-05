@@ -1,0 +1,16 @@
+{
+	"en": {
+		"modals.buttons.save": "save",
+		"modals.labels.badge": "Badge",
+		"modals.labels.name": "Name",
+		"modals.labels.styleGroup": "Style group",
+		"modals.names.updateStyle": "Update beverage style"
+	},
+	"pl": {
+		"modals.buttons.save": "zapisz",
+		"modals.labels.badge": "Identyfikator",
+		"modals.labels.name": "Nazwa",
+		"modals.labels.styleGroup": "Grupa stylu",
+		"modals.names.updateStyle": "Popraw styl"
+	}
+}

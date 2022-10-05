@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-
 	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
 	import LeftIcon from '$lib/atoms/vectors/Left.svelte';
 	import RightIcon from '$lib/atoms/vectors/Right.svelte';

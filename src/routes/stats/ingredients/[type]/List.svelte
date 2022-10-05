@@ -1,7 +1,6 @@
 <script lang="ts">
 	import authentication from '$lib/utils/stores/authentication';
 	import type { IngredientTree } from '$lib/utils/types/Ingredient.d';
-
 	import FindAll from '../../elements/FindAll.svelte';
 	import UpdateButton from '../../elements/UpdateButton.svelte';
 	import ToggleBox from './ToggleBox.svelte';

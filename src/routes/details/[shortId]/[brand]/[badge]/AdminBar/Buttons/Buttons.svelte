@@ -2,11 +2,9 @@
 	import { translate } from 'svelte-intl';
 	import { fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
-
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
-
 	import Remove from './Remove.svelte';
 	import UpdateRatings from './UpdateRatings.svelte';
 

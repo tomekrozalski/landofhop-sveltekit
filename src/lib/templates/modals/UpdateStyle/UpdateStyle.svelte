@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
-	// import dictionary from 'src/routes/dashboard/Beverage/dictionary.json';
 	import type { Style } from '$lib/utils/types/Style';
+	import formDictionary from '$lib/utils/dictionary/form.json';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
 	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
@@ -10,10 +10,12 @@
 	import StyleGroup from '$lib/molecules/forms/fields/StyleGroup.svelte';
 	import ModalGrid from '../ModalGrid.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
+	import dictionary from '../dictionary.json';
 	import { getValidationSchema } from './validationSchema';
 	import { onSubmit } from './onSubmit';
 
-	// translations.update(dictionary);
+	translations.update(formDictionary);
+	translations.update(dictionary);
 
 	export let initialValues: Style;
 	export let close: () => void;
@@ -31,20 +33,20 @@
 <ModalWrapper {close}>
 	<form on:submit={formData.handleSubmit} novalidate>
 		<header>
-			<h2>{$translate('dashboard.updateStyle')}</h2>
+			<h2>{$translate('modals.names.updateStyle')}</h2>
 		</header>
 		<ModalGrid>
-			<Badge {formName} {formData} />
+			<Badge {formName} {formData} labelId="modals.labels.badge" />
 		</ModalGrid>
 		<ModalGrid columns={2}>
-			<NameGroup {formName} {formData} />
+			<NameGroup {formName} {formData} labelId="modals.labels.name" />
 		</ModalGrid>
 		<ModalGrid>
-			<StyleGroup {formName} {formData} />
+			<StyleGroup {formName} {formData} labelId="modals.labels.styleGroup" />
 		</ModalGrid>
 		<ButtonWrapper modal>
 			<Button isIrreversible isSubmitting={$isSubmitting} type="submit">
-				{$translate('dashboard.button.save')}
+				{$translate('modals.buttons.save')}
 			</Button>
 		</ButtonWrapper>
 	</form>

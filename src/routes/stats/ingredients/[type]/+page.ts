@@ -1,5 +1,4 @@
 import { get } from 'svelte/store';
-
 import { getJsonData } from '$lib/utils/api/communication';
 import authentication from '$lib/utils/stores/authentication';
 import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';

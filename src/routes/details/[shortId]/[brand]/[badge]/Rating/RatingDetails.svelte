@@ -5,7 +5,7 @@
 
 	export let details: Details;
 
-	const { rateBeer, total, untappd } = details.ratings;
+	const { rateBeer, total, untappd } = details.ratings; // @ToDo types
 </script>
 
 <footer transition:slide|local>

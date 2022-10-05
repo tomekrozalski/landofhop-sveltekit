@@ -1,10 +1,7 @@
 <script lang="ts">
 	import { translate, translations } from 'svelte-intl';
-	import { page } from '$app/stores';
-
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import Breadcrumbs from '$lib/atoms/Breadcrumbs.svelte';
-
 	import BeverageDetails from './BeverageDetails.svelte';
 	import dictionary from './dictionary.json';
 	import type { PageData } from './$types';

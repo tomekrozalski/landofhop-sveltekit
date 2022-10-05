@@ -18,7 +18,7 @@
 	{errors}
 	{handleClear}
 	{items}
-	placeholder={$translate('dashboard.select.placeholder.containerType')}
+	placeholder={$translate('form.select.placeholder.containerType')}
 	{setValue}
 	value={items.find((item) => item.value === value) ?? null}
 />

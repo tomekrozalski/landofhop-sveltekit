@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { isNumber } from 'lodash-es';
-
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 
 	export let details: Details;

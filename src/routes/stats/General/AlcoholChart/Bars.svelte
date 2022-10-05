@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { AlcoholChartBar } from '$lib/utils/types/stats/General';
-
 	import Info from './Info.svelte';
 
 	export let alcoholChartData: AlcoholChartBar[];

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { translations, translate } from 'svelte-intl';
-
 	import StatsWrapper from './elements/Wrapper.svelte';
 	import commonStatsDictionary from './commonStatsDictionary.json';
 	import dictionary from './General/dictionary.json';

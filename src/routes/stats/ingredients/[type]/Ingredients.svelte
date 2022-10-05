@@ -3,7 +3,6 @@
 	import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
 	import type { Ingredient } from '$lib/utils/types/Ingredient';
 	import UpdateIngredient from '$lib/templates/modals/UpdateIngredient/UpdateIngredient.svelte';
-
 	import Content from './Content.svelte';
 	import Navigation from './Navigation.svelte';
 

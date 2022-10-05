@@ -49,7 +49,7 @@
 	{errors}
 	{handleClear}
 	{items}
-	placeholder={$translate('dashboard.select.placeholder.shop')}
+	placeholder={$translate('form.select.placeholder.shop')}
 	{setValue}
 	style="grid-column: 3/5"
 	value={items.find((item) => item.value === value) ?? null}

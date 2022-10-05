@@ -2,7 +2,6 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
-
 	import type { RatingsChartBar } from '$lib/utils/types/stats/General';
 
 	import type { Sizes } from '../utils/Sizes';

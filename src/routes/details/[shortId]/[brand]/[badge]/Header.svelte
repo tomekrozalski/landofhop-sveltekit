@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
 	import FormattedList from '$lib/atoms/FormattedList.svelte';

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
-
 	import type { AlcoholChartBar } from '$lib/utils/types/stats/General';
 
 	export let average: boolean;

@@ -4,7 +4,6 @@
 	import type { Details } from '$lib/utils/types/Beverage/Details';
 	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
 	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
-
 	import Notes from './Notes.svelte';
 	import Updated from './Updated.svelte';
 	import Buttons from './Buttons/Buttons.svelte';

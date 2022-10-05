@@ -34,7 +34,7 @@
 	{handleClear}
 	{items}
 	{name}
-	placeholder={$translate('dashboard.select.placeholder.country')}
+	placeholder={$translate('form.select.placeholder.country')}
 	{setValue}
 	value={items.find((item) => item.value === value) ?? null}
 />
