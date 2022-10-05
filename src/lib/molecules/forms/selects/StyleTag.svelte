@@ -26,7 +26,7 @@
 		}))
 		.sort((a, b) => (a.label < b.label ? -1 : 1)) as SelectType[];
 
-	const selectedValues =
+	const getSelectedValues = () =>
 		value?.map((id) => items.find((item) => item.value === id) as SelectType) ?? null;
 </script>
 
@@ -42,6 +42,6 @@
 		{items}
 		placeholder={$translate('form.select.placeholder.styleTag')}
 		{setValue}
-		value={selectedValues}
+		value={getSelectedValues()}
 	/>
 {/if}

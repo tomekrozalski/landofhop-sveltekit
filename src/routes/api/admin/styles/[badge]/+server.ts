@@ -1,19 +1,17 @@
-import { json } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
+import authentication from '$lib/utils/stores/authentication';
 import { getDbCollections } from '$lib/utils/api';
 import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles.d';
 import type { RawIngredientTag } from '$lib/utils/types/api/RawBeverage/RawIngredientTag.d';
 
-export async function PUT({ locals, params, request }) {
-	const { badge } = params;
+export const PUT: RequestHandler = async ({ params, request }) => {
+	const badge = params.badge ?? '';
 	const styleData = await request.json();
 
-	if (!locals.authenticated) {
-		return {
-			status: 401,
-			body: {
-				message: 'Unauthorized. Cannot update styles'
-			}
-		};
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot update styles');
 	}
 
 	const { beverages, styles } = await getDbCollections();
@@ -25,7 +23,7 @@ export async function PUT({ locals, params, request }) {
 		.toArray();
 
 	beveragesWithStyle.forEach(async ({ _id, editorial }) => {
-		const styleTags = editorial.brewing.styleTags as RawIngredientTag[];
+		const styleTags = editorial?.brewing?.styleTags as RawIngredientTag[];
 		const updatedStyleTags = styleTags.map((props) => (props.badge === badge ? styleData : props));
 
 		await beverages.updateOne(
@@ -49,4 +47,4 @@ export async function PUT({ locals, params, request }) {
 		.toArray();
 
 	return json(data);
-}
+};

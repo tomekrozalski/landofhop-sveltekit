@@ -9,7 +9,7 @@
 
 	export let errors: string;
 	export let handleClear: () => void;
-	export let id: string = null;
+	export let id: string | null = null;
 	export let setValue: (event: any) => void;
 	export let value: string | null;
 

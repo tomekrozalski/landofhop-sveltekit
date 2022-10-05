@@ -25,7 +25,7 @@
 		on:clear={handleClear}
 		containerClasses="select"
 		{id}
-		isDisabled={isDisabled || value === null}
+		{isDisabled}
 		{isMulti}
 		{Item}
 		{items}

@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import { navigating } from '$app/stores';
-	import authentication from '$lib/utils/stores/authentication';
-	import Status from '$lib/utils/enums/Status.enum';
 	import { locale, translations } from 'svelte-intl';
 	import '$lib/utils/styles/app.postcss';
 	import '$lib/utils/styles/fonts.css';
@@ -12,16 +10,9 @@
 	import layoutStore from './layout/store';
 	import Topbar from './layout/Topbar/Topbar.svelte';
 	import Main from './layout/Main.svelte';
-	import type { LayoutData } from './$types';
 
 	translations.update(dictionary);
 	locale.set('pl');
-
-	export let data: LayoutData;
-
-	if (data.authenticated) {
-		authentication.setLoginStatus(Status.fulfilled);
-	}
 
 	afterNavigate(() => {
 		// when path change, close navigation

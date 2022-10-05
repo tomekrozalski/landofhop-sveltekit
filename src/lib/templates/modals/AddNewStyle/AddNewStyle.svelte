@@ -31,13 +31,13 @@
 			<h2>{$translate('dashboard.addNewStyle')}</h2>
 		</header>
 		<ModalGrid>
-			<Badge {formName} {formData} />
+			<Badge {formName} {formData} labelId="modals.labels.badge" />
 		</ModalGrid>
 		<ModalGrid columns={2}>
-			<NameGroup {formName} {formData} />
+			<NameGroup {formName} {formData} labelId="modals.labels.name" />
 		</ModalGrid>
 		<ModalGrid>
-			<StyleGroup {formName} {formData} />
+			<StyleGroup {formName} {formData} labelId="modals.labels.styleGroup" />
 		</ModalGrid>
 		<ButtonWrapper modal>
 			<Button isIrreversible isSubmitting={$isSubmitting} type="submit">

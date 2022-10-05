@@ -25,7 +25,7 @@
 	if (withBlank) {
 		languageList.unshift({
 			value: '--',
-			label: $translate('dashboard.language.notApplicable'),
+			label: $translate('form.select.language.notApplicable'),
 			group: 'mostPopular'
 		});
 	}
@@ -38,7 +38,7 @@
 	const groupBy = (item: { group: string }) => item.group;
 
 	let getGroupHeaderLabel = (option: { label: string }) => {
-		return $translate(`dashboard.language.${option.label}`);
+		return $translate(`form.select.language.${option.label}`);
 	};
 
 	function handleClear() {

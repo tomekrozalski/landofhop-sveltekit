@@ -11,7 +11,7 @@ export const GET: RequestHandler = async function ({ cookies }) {
 
 	try {
 		const { sessionToken } = jwt.verify(
-			cookies.get('refreshToken'),
+			cookies.get('refreshToken') ?? '',
 			import.meta.env.VITE_JWT_SECRET
 		);
 		const { sessions } = await getDbCollections();

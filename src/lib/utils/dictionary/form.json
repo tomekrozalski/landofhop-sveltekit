@@ -1,5 +1,8 @@
 {
 	"en": {
+		"form.select.language.mostPopular": "most popular",
+		"form.select.language.notApplicable": "not applicable",
+		"form.select.language.rest": "rest",
 		"form.select.placeholder.agedPreviousContent": "select previous content of barrel / wood",
 		"form.select.placeholder.containerColor": "color",
 		"form.select.placeholder.containerType": "type",
@@ -15,11 +18,27 @@
 		"form.select.placeholder.styleTag": "select beverage style",
 		"form.validation.atLeastOneBrandRequired": "At least one brand required",
 		"form.validation.atLeastOneFilterRequired": "At least one filter required",
+		"form.validation.badge": "Only alphanumeric characters and a pause are allowed",
+		"form.validation.badgeAlreadyExists": "The badge already exists in the database",
+		"form.validation.brandSelectionRequired": "At least one brand required",
+		"form.validation.incorrectColorFormat": "Incorrect color format",
+		"form.validation.ingredientSelectionRequired": "At least one ingredient required",
+		"form.validation.integer": "Value has to be integer",
+		"form.validation.invalidUrl": "Valid URL address required",
+		"form.validation.min": "Minimum value: {value}",
+		"form.validation.minChars": "Minimum allowed chars are {value}",
+		"form.validation.max": "Maximum value: {value}",
 		"form.validation.numeric": "Field should be a number",
 		"form.validation.required": "Field is required",
-		"form.validation.tagSelectionRequired": "At least one tag required"
+		"form.validation.tagSelectionRequired": "At least one tag required",
+		"form.validation.typeErrorNumber": "Number required",
+		"form.validation.wrongDate": "Wrong date value",
+		"form.validation.wrongSlugFormat": "Wrong slug format"
 	},
 	"pl": {
+		"form.select.language.mostPopular": "najczęściej wybierane",
+		"form.select.language.notApplicable": "nie dotyczy",
+		"form.select.language.rest": "pozostałe",
 		"form.select.placeholder.agedPreviousContent": "wybierz poprzednią zawartość beczki / drewna",
 		"form.select.placeholder.containerColor": "kolor",
 		"form.select.placeholder.containerType": "typ",
@@ -35,8 +54,21 @@
 		"form.select.placeholder.styleTag": "wybierz styl piwa",
 		"form.validation.atLeastOneBrandRequired": "Wymagana przynajmniej jedna marka",
 		"form.validation.atLeastOneFilterRequired": "Wymagany przynajmniej jeden rodzaj filtra",
+		"form.validation.badge": "Dozwolone tylko znaki alfanumeryczne i pauza",
+		"form.validation.badgeAlreadyExists": "Element o tym identyfikatorze już istnieje",
+		"form.validation.brandSelectionRequired": "Wymagana przynajmniej jedna marka",
+		"form.validation.incorrectColorFormat": "Nieprawidłowy format koloru",
+		"form.validation.ingredientSelectionRequired": "Wymagany przynajmniej jeden składnik",
+		"form.validation.integer": "Wamagana liczba całkowita",
+		"form.validation.invalidUrl": "Wymagany poprawny adres URL",
+		"form.validation.min": "Minimalna wartość: {value}",
+		"form.validation.minChars": "Wymagane minimum {value} znaków",
+		"form.validation.max": "Maksymalna wartość: {value}",
 		"form.validation.numeric": "Wymagana wartość numeryczna",
 		"form.validation.required": "Pole jest wymagane",
-		"form.validation.tagSelectionRequired": "Wymagany przynajmniej jeden tag"
+		"form.validation.tagSelectionRequired": "Wymagany przynajmniej jeden tag",
+		"form.validation.typeErrorNumber": "Wymagana cyfra",
+		"form.validation.wrongDate": "Błędny format daty",
+		"form.validation.wrongSlugFormat": "Błędny format"
 	}
 }
