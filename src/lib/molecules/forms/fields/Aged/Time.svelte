@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TextInput from '../../TextInput.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import TimeUnitSelect from '../../selects/aged/Time.svelte';
 
 	export let formData: any;
@@ -11,7 +11,7 @@
 		updateField(`aged[${i}].time.unit`, '');
 	}
 
-	function setUnit(event) {
+	function setUnit(event: any) {
 		updateField(`aged[${i}].time.unit`, event.detail.value);
 		validateField(`aged[${i}].time.unit`);
 	}

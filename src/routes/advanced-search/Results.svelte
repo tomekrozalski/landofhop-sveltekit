@@ -3,7 +3,7 @@
 	import { postJsonData } from '$lib/utils/api/communication';
 	import type { Basics } from '$lib/utils/types/Beverage/Basics';
 	import Spinner from '$lib/atoms/spinners/FullWidth.svelte';
-	import Total from '$lib/molecules/pagination/Total.svelte';
+	import Total from '$lib/molecules/pagination/elements/Total.svelte';
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
 	import NothingFound from '$lib/templates/BeverageList/NothingFound.svelte'; // @ToDo
 

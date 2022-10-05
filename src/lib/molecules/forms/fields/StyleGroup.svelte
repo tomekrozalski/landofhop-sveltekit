@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-
-	import StyleGroupSelect from '$lib/elements/form/fields/StyleGroup.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import StyleGroupSelect from '../selects/StyleGroup.svelte';
 
 	export let formName: string;
 	export let formData: any;

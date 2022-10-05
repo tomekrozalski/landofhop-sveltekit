@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
 	import { Fermentation } from '$lib/utils/enums/Beverage.enum';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import Conditional from '$lib/atoms/forms/Conditional.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -18,7 +18,9 @@
 
 		updateField(
 			fieldName,
-			checkbox.checked ? [...selectedValues, type] : selectedValues.filter((item) => item !== type)
+			checkbox.checked
+				? [...selectedValues, type]
+				: selectedValues.filter((item: any) => item !== type)
 		);
 	};
 </script>

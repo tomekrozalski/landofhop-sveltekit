@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import { emptyAged } from '$lib/utils/admin/emptyFieldValues';
-
-	import AddButton from '../../AddButton.svelte';
-	import RemoveButton from '../../RemoveButton.svelte';
-	import Plug from '../../Plug.svelte';
+	import { emptyAged } from '$lib/utils/helpers/emptyFieldValues';
+	import AddButton from '$lib/atoms/forms/AddButton.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import RemoveButton from '$lib/atoms/forms/RemoveButton.svelte';
+	import Plug from '$lib/atoms/forms/Plug.svelte';
 	import PreviousContent from '../PreviousContent.svelte';
 	import Time from './Time.svelte';
 	import Type from './Type.svelte';

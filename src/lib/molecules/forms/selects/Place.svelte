@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
-	import { placeStore } from '$lib/utils/stores/selects';
 	import { updatePlaceList } from '$lib/utils/helpers/updateStoreData';
-	import Loading from '$lib/elements/form/selects/elements/Loading.svelte';
-	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
+	import { placeStore } from '$lib/utils/stores/selects';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
+	import Loading from './elements/Loading.svelte';
+	import SelectWrapper from './SelectWrapper.svelte';
 
 	export let errors: string;
 	export let handleClear: () => void;
@@ -37,6 +37,6 @@
 		{items}
 		placeholder={$translate('dashboard.select.placeholder.place')}
 		{setValue}
-		value={value === null ? null : items.find((item) => item.value === value)}
+		value={value === null ? null : items.find((item) => item.value === value) ?? null}
 	/>
 {/if}

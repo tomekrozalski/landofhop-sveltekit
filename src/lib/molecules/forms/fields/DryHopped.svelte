@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { IngredientType } from '$lib/utils/enums/Beverage.enum';
-	import Label from '$lib/elements/form/Label.svelte';
-	import IngredientSelect from '$lib/elements/form/selects/Ingredient.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
+	import Conditional from '$lib/atoms/forms/Conditional.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import IngredientSelect from '../selects/Ingredient.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -15,11 +15,11 @@
 		updateField(fieldName, []);
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		if (event?.detail) {
 			updateField(
 				fieldName,
-				event.detail.map(({ value }) => value)
+				event.detail.map(({ value }: any) => value)
 			);
 			validateField(fieldName);
 		}
@@ -40,7 +40,7 @@
 	errors={$errors[fieldName]}
 	filter={IngredientType.hop}
 	{handleClear}
-	id={$form[fieldName] !== null && id}
+	id={$form[fieldName] !== null ? id : null}
 	isMulti
 	{setValue}
 	bind:value={$form[fieldName]}

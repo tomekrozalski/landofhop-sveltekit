@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import TextInput from '$lib/elements/form/TextInput.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
+	import Conditional from '$lib/atoms/forms/Conditional.svelte';
+	import SearchLink from '$lib/atoms/forms/SearchLink.svelte';
 	import { institutionStore } from '$lib/utils/stores/selects';
-
 	// import { labelStore } from '$lib/utils/stores';
-	import SearchLink from '../SearchLink.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -19,6 +18,7 @@
 	function getUntappdSearchLink() {
 		const params = new URLSearchParams();
 
+		// @Todo
 		const brand = $institutionStore
 			.find(({ shortId }) => shortId === $labelStore.brand)
 			.badge.replaceAll('-', ' ')

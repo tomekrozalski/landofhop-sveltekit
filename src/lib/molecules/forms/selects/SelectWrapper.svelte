@@ -1,14 +1,14 @@
 <script lang="ts">
 	import Select from 'svelte-select';
 	import { isEmpty } from 'lodash-es';
-	import Error from '$lib/elements/form/Error.svelte';
-	import Item from '$lib/elements/form/selects/elements/Item.svelte';
-	import MultiSelection from '$lib/elements/form/selects/elements/MultiSelection.svelte';
+	import Error from '$lib/atoms/forms/Error.svelte';
+	import type { Select as SelectType } from '$lib/utils/types/common/Select.d';
+	import Item from './elements/Item.svelte';
+	import MultiSelection from './elements/MultiSelection.svelte';
 
-	type SelectType = { value: string; label: string };
 	export let errors: string | string[];
 	export let handleClear: () => void;
-	export let id: string = null;
+	export let id: string | null = null;
 	export let isDisabled: boolean = false;
 	export let isMulti: boolean = false;
 	export let isWide: boolean = false;

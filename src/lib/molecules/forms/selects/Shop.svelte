@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
+	import SelectWrapper from './SelectWrapper.svelte';
 
 	export let errors: string;
 	export let name: string;
@@ -12,6 +12,10 @@
 		{
 			label: 'sklep specjalistyczny',
 			value: 'specialist shop'
+		},
+		{
+			label: 'internetowy sklep specjalistyczny',
+			value: 'e-commerce specialist shop'
 		},
 		{
 			label: 'Aldi',
@@ -35,7 +39,7 @@
 		updateField(name, '');
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		updateField(name, event.detail.value);
 		validateField(name);
 	}
@@ -48,5 +52,5 @@
 	placeholder={$translate('dashboard.select.placeholder.shop')}
 	{setValue}
 	style="grid-column: 3/5"
-	value={items.find((item) => item.value === value)}
+	value={items.find((item) => item.value === value) ?? null}
 />

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import SuccessIcon from '$lib/atoms/vectors/Success.svelte';
-	import WarningIcon from '$lib/atoms/vectors/Warning.svelte';
+	import SuccessIcon from '../vectors/Success.svelte';
+	import WarningIcon from '../vectors/Warning.svelte';
 
 	export let disabled: boolean = false;
 	export let isTouched: boolean, isValid: boolean;

@@ -3,7 +3,7 @@
 	import languages, { getAlpha2Codes } from '@cospired/i18n-iso-languages/index.js';
 	import en from '@cospired/i18n-iso-languages/langs/en.json';
 	import pl from '@cospired/i18n-iso-languages/langs/pl.json';
-	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
+	import SelectWrapper from './SelectWrapper.svelte';
 
 	languages.registerLocale(en);
 	languages.registerLocale(pl);
@@ -18,7 +18,7 @@
 
 	const languageList = Object.keys(getAlpha2Codes()).map((value) => ({
 		value,
-		label: languages.getName(value, 'pl'),
+		label: languages.getName(value, 'pl') ?? '',
 		group: ['pl', 'en'].includes(value) ? 'mostPopular' : 'rest'
 	}));
 
@@ -35,9 +35,9 @@
 		...languageList.filter(({ group }) => group === 'rest')
 	];
 
-	const groupBy = (item) => item.group;
+	const groupBy = (item: { group: string }) => item.group;
 
-	let getGroupHeaderLabel = (option) => {
+	let getGroupHeaderLabel = (option: { label: string }) => {
 		return $translate(`dashboard.language.${option.label}`);
 	};
 
@@ -45,7 +45,7 @@
 		updateField(name, '');
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		updateField(name, event.detail.value);
 		validateField(name);
 	}
@@ -61,5 +61,5 @@
 	{name}
 	placeholder={$translate('dashboard.select.placeholder.language')}
 	{setValue}
-	value={items.find((item) => item.value === value)}
+	value={items.find((item) => item.value === value) ?? null}
 />

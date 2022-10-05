@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import InstitutionSelect from '$lib/elements/form/selects/Institution.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import InstitutionSelect from '../selects/Institution.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -13,7 +13,7 @@
 		updateField(fieldName, '');
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		updateField(fieldName, event.detail.value);
 		validateField(fieldName);
 	}

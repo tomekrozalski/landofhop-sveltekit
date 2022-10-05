@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
-
+	import Conditional from '$lib/atoms/forms/Conditional.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
 	import ClaritySelect from '../selects/Clarity.svelte';
 
 	export let formName: string;
@@ -15,7 +14,7 @@
 		updateField(fieldName, '');
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		updateField(fieldName, event.detail.value);
 		validateField(fieldName);
 	}

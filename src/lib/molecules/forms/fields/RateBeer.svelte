@@ -1,12 +1,11 @@
 <script lang="ts">
 	// import { institutionStore } from '$lib/utils/stores/selects';
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import TextInput from '$lib/elements/form/TextInput.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
-
+	import Conditional from '$lib/atoms/forms/Conditional.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import SearchLink from '$lib/atoms/forms/SearchLink.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	// import { labelStore } from '$lib/utils/stores';
-	import SearchLink from '../SearchLink.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -20,6 +19,7 @@
 		const params = new URLSearchParams();
 		const labelStore = { badge: '' }; // @ToDo
 
+		// @Todo
 		const brand = a
 			.find(({ shortId }) => shortId === labelStore.brand)
 			.badge.replaceAll('-', ' ')

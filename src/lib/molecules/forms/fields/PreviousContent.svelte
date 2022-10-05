@@ -10,11 +10,11 @@
 		updateField(`aged[${i}].previousContent`, []);
 	}
 
-	function setUnit(event) {
+	function setUnit(event: any) {
 		if (event?.detail) {
 			updateField(
 				`aged[${i}].previousContent`,
-				event.detail.map(({ value }) => value)
+				event.detail.map(({ value }: any) => value)
 			);
 			validateField(`aged[${i}].previousContent`);
 		}

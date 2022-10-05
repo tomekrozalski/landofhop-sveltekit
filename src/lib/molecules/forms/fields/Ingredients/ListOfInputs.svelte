@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TextInput from '$lib/elements/form/TextInput.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import Button from './ActionButton.svelte';
 
 	export let i: number;
@@ -33,7 +33,7 @@
 				focusOnMount={j === $form.ingredients[i].list.length - 1}
 				{handleChange}
 				isTouched={$touched.ingredients?.[i]?.list?.[j]}
-				onEnter={j === $form.ingredients[i].list.length - 1 ? addNewRow : null}
+				onEnter={() => (j === $form.ingredients[i].list.length - 1 ? addNewRow() : null)}
 				value={$form.ingredients[i].list[j]}
 			/>
 			{#if j !== 0}

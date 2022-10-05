@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import IngredientSelect from '$lib/elements/form/selects/Ingredient.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import IngredientSelect from '../selects/Ingredient.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -14,7 +13,7 @@
 		updateField(fieldName, '');
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		updateField(fieldName, event.detail.value);
 		validateField(fieldName);
 	}
@@ -25,7 +24,7 @@
 	errors={$errors[fieldName]}
 	filter={$form.type}
 	{handleClear}
-	id={$form[fieldName] !== null && id}
+	id={$form[fieldName] !== null ? id : null}
 	isDisabled={!$form.type}
 	{setValue}
 	bind:value={$form[fieldName]}

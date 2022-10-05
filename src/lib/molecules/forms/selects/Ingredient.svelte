@@ -2,24 +2,24 @@
 	import { translate } from 'svelte-intl';
 	import { isArray, isString } from 'lodash-es';
 
-	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
-	import Loading from '$lib/elements/form/selects/elements/Loading.svelte';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
+	import { updateIngredientList } from '$lib/utils/helpers/updateStoreData';
 	import { ingredientsStore } from '$lib/utils/stores/selects';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-	import { updateIngredientList } from '$lib/utils/helpers/updateStoreData';
+	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
+	import Loading from './elements/Loading.svelte';
 	import SelectWrapper from './SelectWrapper.svelte';
 
 	export let errors: string | string[];
 	export let handleClear: () => void;
-	export let id: string = null;
+	export let id: string | null = null;
 	export let isDisabled: boolean = false;
 	export let isMulti: boolean = false;
 	export let setValue: (event: any) => void;
-	export let filter: IngredientType = null;
+	export let filter: IngredientType | null = null;
 	export let value: string | string[] | null;
 
-	function getSelectValue(value) {
+	function getSelectValue(value: any) {
 		if (isArray(value)) {
 			return value.map((id) => items.find((item) => item.value === id));
 		}

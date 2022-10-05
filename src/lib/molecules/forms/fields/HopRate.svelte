@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-
-	import Label from '$lib/elements/form/Label.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
-	import TextInput from '$lib/elements/form/TextInput.svelte';
-	import { emptyHopRate, getNullishObject } from '$lib/utils/admin/emptyFieldValues';
-
+	import { emptyHopRate, getNullishObject } from '$lib/utils/helpers/emptyFieldValues';
+	import Conditional from '$lib/atoms/forms/Conditional.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import HopRateUnitSelect from '../selects/HopRateUnit.svelte';
 
 	export let formName: string;
@@ -19,7 +17,7 @@
 		updateField('hopRate.unit', '');
 	}
 
-	function setUnit(event) {
+	function setUnit(event: any) {
 		updateField('hopRate.unit', event.detail.value);
 		validateField('hopRate.unit');
 	}

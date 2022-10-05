@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { cloneDeep } from 'lodash-es';
-
-	import { emptyLanguageValue } from '../../../lib/utils/admin/emptyFieldValues';
+	import { emptyLanguageValue } from '$lib/utils/helpers/emptyFieldValues';
 
 	export let formData: any;
 	export let fieldName: string;

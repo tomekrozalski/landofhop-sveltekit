@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-
 	import {
 		ContainerMaterialBottle,
 		ContainerMaterialCan,
 		ContainerType
 	} from '$lib/utils/enums/Beverage.enum';
-	import Label from '$lib/elements/form/Label.svelte';
-	import TextInput from '$lib/elements/form/TextInput.svelte';
-
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import ContainerTypeSelect from '../selects/container/Type.svelte';
 	import ContainerMaterialSelect from '../selects/container/Material.svelte';
 	import ContainerColorSelect from '../selects/container/Color.svelte';
@@ -47,24 +45,24 @@
 		}
 	}
 
-	function setType(event) {
+	function setType(event: any) {
 		updateField('container.type', event.detail.value);
 		updateField('container.material', getDefaultMaterial(event.detail.value));
 		updateField('container.color', '');
 		validateField('container.type');
 	}
 
-	function setMaterial(event) {
+	function setMaterial(event: any) {
 		updateField('container.material', event.detail.value);
 		validateField('container.material');
 	}
 
-	function setColor(event) {
+	function setColor(event: any) {
 		updateField('container.color', event.detail.value);
 		validateField('container.color');
 	}
 
-	function setUnit(event) {
+	function setUnit(event: any) {
 		updateField('container.unit', event.detail.value);
 		validateField('container.unit');
 	}

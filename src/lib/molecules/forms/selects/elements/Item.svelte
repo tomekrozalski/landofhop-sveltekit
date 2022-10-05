@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
 	import { IngredientType } from '$lib/utils/enums/Beverage.enum';
 
 	export let isActive = false;
 	export let isFirst = false;
 	export let isHover = false;
 	export let isSelectable = false;
-	export let getOptionLabel = undefined;
-	export let item = undefined;
+	export let getOptionLabel: any = undefined;
+	export let item: any = undefined;
 	export let filterText = '';
 
 	let itemClasses = '';

@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-
-	import Element from './Element.svelte';
-	import Wrapper from './Wrapper.svelte';
-	import getElements from './getElements';
+	import Element from './elements/Element.svelte';
+	import Wrapper from './elements/Wrapper.svelte';
+	import getElements from './utils/getElements';
 
 	export let order: number;
 	export let total: number;

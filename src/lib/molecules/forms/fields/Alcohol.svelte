@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-
+	import { emptyAlcohol, getNullishObject } from '$lib/utils/helpers/emptyFieldValues';
 	import { AlcoholRelate, AlcoholUnit } from '$lib/utils/enums/Beverage.enum';
-	import Label from '$lib/elements/form/Label.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
-	import TextInput from '$lib/elements/form/TextInput.svelte';
-	import { emptyAlcohol, getNullishObject } from '$lib/utils/admin/emptyFieldValues';
-
+	import Conditional from '$lib/atoms/forms/Conditional.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import AlcoholRelateSelect from '../selects/alcohol/Relate.svelte';
 	import AlcoholScopeSelect from '../selects/alcohol/Scope.svelte';
 	import AlcoholUnitSelect from '../selects/alcohol/Unit.svelte';
@@ -22,7 +20,7 @@
 		updateField('alcohol.unit', '');
 	}
 
-	function setUnit(event) {
+	function setUnit(event: any) {
 		updateField('alcohol.unit', event.detail.value);
 		validateField('alcohol.unit');
 
@@ -39,7 +37,7 @@
 		updateField('alcohol.relate', '');
 	}
 
-	function setRelate(event) {
+	function setRelate(event: any) {
 		updateField('alcohol.relate', event.detail.value);
 		validateField('alcohol.relate');
 	}
@@ -48,7 +46,7 @@
 		updateField('alcohol.scope', '');
 	}
 
-	function setScope(event) {
+	function setScope(event: any) {
 		updateField('alcohol.scope', event.detail.value);
 		validateField('alcohol.scope');
 	}

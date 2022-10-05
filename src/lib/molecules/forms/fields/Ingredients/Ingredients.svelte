@@ -3,11 +3,11 @@
 	import { translate } from 'svelte-intl';
 	import { slide } from 'svelte/transition';
 	import { postJsonData } from '$lib/utils/api/communication';
-	import Label from '$lib/elements/form/Label.svelte';
+	import { emptyIngredients } from '$lib/utils/helpers/emptyFieldValues';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import Plug from '$lib/atoms/forms/Plug.svelte';
+	import RemoveButton from '$lib/atoms/forms/RemoveButton.svelte';
 	import LanguageSelect from '../../selects/Language.svelte';
-	import RemoveButton from '../../RemoveButton.svelte';
-	import Plug from '../../Plug.svelte';
-	import { emptyIngredients } from '$lib/utils/admin/emptyFieldValues';
 	import IsListComplete from './IsListComplete.svelte';
 	import ListOfInputs from './ListOfInputs.svelte';
 	import Preview from './Preview.svelte';

@@ -2,7 +2,7 @@
 	import { translations, translate } from 'svelte-intl';
 	import dictionary from '$lib/utils/dictionary/lists/styleGroup.json';
 	import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
-	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
+	import SelectWrapper from './SelectWrapper.svelte';
 
 	export let errors: string;
 	export let name: string;
@@ -21,7 +21,7 @@
 		updateField(name, '');
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		updateField(name, event.detail.value);
 		validateField(name);
 	}
@@ -33,5 +33,5 @@
 	{items}
 	placeholder={$translate('dashboard.select.placeholder.styleGroup')}
 	{setValue}
-	value={items.find((item) => item.value === value)}
+	value={items.find((item) => item.value === value) ?? null}
 />

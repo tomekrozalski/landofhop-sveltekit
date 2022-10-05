@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import StyleTagSelect from '$lib/elements/form/selects/StyleTag.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
-	import OpenModal from '$lib/elements/form/OpenModal.svelte';
-
-	import AddNewStyle from '$lib/modals/AddNewStyle/AddNewStyle.svelte';
+	import Conditional from '$lib/atoms/forms/Conditional.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import OpenModal from '$lib/atoms/forms/OpenModal.svelte';
+	import AddNewStyle from '$lib/templates/modals/AddNewStyle/AddNewStyle.svelte';
+	import StyleTagSelect from '../selects/StyleTag.svelte';
 
 	export let admin: boolean = false;
 	export let formName: string;
@@ -19,11 +18,11 @@
 		updateField(fieldName, []);
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		if (event?.detail) {
 			updateField(
 				fieldName,
-				event.detail.map(({ value }) => value)
+				event.detail.map(({ value }: any) => value)
 			);
 			validateField(fieldName);
 		}
@@ -45,7 +44,7 @@
 <StyleTagSelect
 	errors={$errors[fieldName]}
 	{handleClear}
-	id={$form[fieldName] !== null && id}
+	id={$form[fieldName] !== null ? id : null}
 	{setValue}
 	bind:value={$form[fieldName]}
 />

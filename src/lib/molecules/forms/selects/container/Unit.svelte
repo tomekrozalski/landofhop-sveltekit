@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { ContainerUnit } from '$lib/utils/enums/Beverage.enum';
-	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
+	import SelectWrapper from '../SelectWrapper.svelte';
 
 	export let errors: string | string[];
 	export let handleClear: () => void;
@@ -20,5 +20,5 @@
 	{items}
 	placeholder={$translate('dashboard.select.placeholder.containerUnit')}
 	{setValue}
-	value={items.find((item) => item.value === value)}
+	value={items.find((item) => item.value === value) ?? null}
 />

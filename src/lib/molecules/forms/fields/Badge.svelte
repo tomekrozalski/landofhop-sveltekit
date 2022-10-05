@@ -3,9 +3,8 @@
 	import { beforeUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import slugify from 'slugify';
-
-	import Label from '$lib/elements/form/Label.svelte';
-	import TextInput from '$lib/elements/form/TextInput.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 
 	export let formName: string;
 	export let formData: any;

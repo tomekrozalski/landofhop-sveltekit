@@ -4,14 +4,14 @@
 
 	export let errors: string;
 	export let focusOnMount: boolean = false;
-	export let handleChange: (e: any) => void;
+	export let handleChange: (e: Event) => void;
 	export let hasInvertedColors: boolean = false;
-	export let id: string = '';
+	export let id: string | null = null;
 	export let isDisabled: boolean = false;
 	export let isTextarea: boolean = false;
 	export let isTouched: boolean;
 	export let fieldName: string;
-	export let onEnter: () => void | null = null;
+	export let onEnter: () => void | null = () => null;
 	export let style: string = '';
 	export let type: 'email' | 'number' | 'password' | 'text' = 'text';
 	export let withStatusIndicator: boolean = false;

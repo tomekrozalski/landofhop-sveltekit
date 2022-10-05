@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
+	import SelectWrapper from './SelectWrapper.svelte';
 
 	export let errors: string;
 	export let name: string;
@@ -18,7 +18,7 @@
 		updateField(name, '');
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		updateField(name, event.detail.value);
 		validateField(name);
 	}

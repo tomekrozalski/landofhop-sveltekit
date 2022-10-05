@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import countries from 'i18n-iso-countries';
 	import pl from 'i18n-iso-countries/langs/pl.json';
-	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
+	import SelectWrapper from './SelectWrapper.svelte';
 
 	export let errors: string;
 	export let name: string;
@@ -23,7 +23,7 @@
 		updateField(name, '');
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		updateField(name, event.detail.value);
 		validateField(name);
 	}
@@ -36,5 +36,5 @@
 	{name}
 	placeholder={$translate('dashboard.select.placeholder.country')}
 	{setValue}
-	value={items.find((item) => item.value === value)}
+	value={items.find((item) => item.value === value) ?? null}
 />

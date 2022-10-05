@@ -5,7 +5,8 @@
 		ContainerMaterialCan,
 		ContainerType
 	} from '$lib/utils/enums/Beverage.enum';
-	import SelectWrapper from '$lib/elements/form/selects/SelectWrapper.svelte';
+	import type { Select as SelectType } from '$lib/utils/types/common/Select.d';
+	import SelectWrapper from '../SelectWrapper.svelte';
 
 	export let errors: string | string[];
 	export let handleClear: () => void;
@@ -13,7 +14,7 @@
 	export let type: ContainerType;
 	export let value: ContainerMaterialBottle | ContainerMaterialCan | string;
 
-	let items = [];
+	let items: SelectType[] = [];
 
 	$: if (type === ContainerType.bottle) {
 		items = Object.keys(ContainerMaterialBottle).map((value) => ({
@@ -36,5 +37,5 @@
 	{items}
 	placeholder={$translate('dashboard.select.placeholder.containerMaterial')}
 	{setValue}
-	value={items.find((item) => item.value === value)}
+	value={items.find((item) => item.value === value) ?? null}
 />

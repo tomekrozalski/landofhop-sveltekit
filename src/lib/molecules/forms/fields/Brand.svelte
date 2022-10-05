@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import OpenModal from '$lib/elements/form/OpenModal.svelte';
-	import InstitutionSelect from '$lib/elements/form/selects/Institution.svelte';
-	import AddNewInstitution from '$lib/modals/AddNewInstitution/AddNewInstitution.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import OpenModal from '$lib/atoms/forms/OpenModal.svelte';
+	import AddNewInstitution from '$lib/templates/modals/AddNewInstitution/AddNewInstitution.svelte';
+	import InstitutionSelect from '../selects/Institution.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -17,7 +17,7 @@
 		updateField(fieldName, '');
 	}
 
-	function setValue(event) {
+	function setValue(event: any) {
 		updateField(fieldName, event.detail.value);
 		validateField(fieldName);
 	}

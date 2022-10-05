@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-
-	import Label from '$lib/elements/form/Label.svelte';
-	import Conditional from '$lib/elements/form/Conditional.svelte';
-	import TextInput from '$lib/elements/form/TextInput.svelte';
-	import { emptyTemperature, getNullishObject } from '$lib/utils/admin/emptyFieldValues';
-
+	import { emptyTemperature, getNullishObject } from '$lib/utils/helpers/emptyFieldValues';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import Conditional from '$lib/atoms/forms/Conditional.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import TemperatureUnitSelect from '../selects/Temperature.svelte';
 
 	export let formName: string;
@@ -15,12 +13,12 @@
 	let id = `${formName}-${fieldName}`;
 	const nullishExtract = getNullishObject(emptyTemperature);
 
-	function handleFromChange(e) {
-		updateField('temperature.from', e.target.value);
+	function handleFromChange(e: Event) {
+		updateField('temperature.from', (e.target as HTMLInputElement).value);
 	}
 
-	function handleToChange(e) {
-		updateField('temperature.to', e.target.value);
+	function handleToChange(e: Event) {
+		updateField('temperature.to', (e.target as HTMLInputElement).value);
 		validateField('temperature.from');
 		validateField('temperature.to');
 	}
@@ -29,7 +27,7 @@
 		updateField('temperature.unit', '');
 	}
 
-	function setUnit(event) {
+	function setUnit(event: any) {
 		updateField('temperature.unit', event.detail.value);
 		validateField('temperature.unit');
 	}

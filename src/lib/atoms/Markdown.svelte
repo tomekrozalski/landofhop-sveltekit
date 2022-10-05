@@ -1,14 +1,12 @@
 <script lang="ts">
 	import marked from 'marked';
 
-	import removeOrphans from '$lib/utils/helpers/removeOrphans';
-
 	export let style: string = '';
 	export let value: string;
 </script>
 
 <span {style}>
-	{@html removeOrphans(marked(value))}
+	{@html marked(value)}
 </span>
 
 <style>

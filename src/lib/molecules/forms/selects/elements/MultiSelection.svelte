@@ -1,15 +1,15 @@
-<script>
+<script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 
-	export let value = [];
-	export let activeValue = undefined;
+	export let value: any[] = [];
+	export let activeValue: number | undefined = undefined;
 	export let isDisabled = false;
 	export let multiFullItemClearable = false;
-	export let getSelectionLabel = undefined;
+	export let getSelectionLabel: any = undefined;
 
-	function handleClear(i, event) {
+	function handleClear(i: number, event: Event) {
 		event.stopPropagation();
 		dispatch('multiItemClear', { i });
 	}

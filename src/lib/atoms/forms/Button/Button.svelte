@@ -1,6 +1,6 @@
 <script lang="ts">
-	import DatabaseIcon from '$lib/atoms/vectors/Database.svelte';
-	import InlineSpinner from './InlineSpinner.svelte';
+	import InlineSpinner from '../InlineSpinner.svelte';
+	import DatabaseIcon from './DatabaseIcon.svelte';
 
 	export let handleClick: () => void = () => {};
 	export let isIrreversible: boolean = false;

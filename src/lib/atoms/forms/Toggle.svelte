@@ -1,6 +1,6 @@
 <script lang="ts">
-	import CloseIcon from '$lib/atoms/vectors/Close.svelte';
-	import SuccessIcon from '$lib/atoms/vectors/Success.svelte';
+	import CloseIcon from '../vectors/Close.svelte';
+	import SuccessIcon from '../vectors/Success.svelte';
 
 	export let fieldName: string;
 	export let id: string;

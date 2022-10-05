@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Label from '$lib/elements/form/Label.svelte';
-	import TextInput from '$lib/elements/form/TextInput.svelte';
-
+	import AddButton from '$lib/atoms/forms/AddButton.svelte';
+	import Label from '$lib/atoms/forms/Label.svelte';
+	import Plug from '$lib/atoms/forms/Plug.svelte';
+	import RemoveButton from '$lib/atoms/forms/RemoveButton.svelte';
+	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import LanguageSelect from '../selects/Language.svelte';
-	import AddButton from '../AddButton.svelte';
-	import RemoveButton from '../RemoveButton.svelte';
-	import Plug from '../Plug.svelte';
 
 	export let formName: string;
 	export let formData: any;
