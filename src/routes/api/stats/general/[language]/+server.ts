@@ -1,10 +1,11 @@
 import { json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { getDbCollections } from '$lib/utils/api';
 import { deleteIfEmpty, translate } from '$lib/utils/api';
 import { normalizer } from '$lib/utils/api/stats/general/normalizer';
 import type { RawGeneralStats } from '$lib/utils/types/api/RawStats/RawGeneralStats.d';
 
-export async function GET({ params }) {
+export const GET: RequestHandler = async ({ params }) => {
 	const { language } = params;
 	const { beverages } = await getDbCollections();
 
@@ -97,4 +98,4 @@ export async function GET({ params }) {
 	const formattedData = normalizer(rawData, language);
 
 	return json(formattedData);
-}
+};

@@ -1,13 +1,12 @@
-import { json as json$1 } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { getDbCollections, updateRateBeerRating, updateUntappdRating } from '$lib/utils/api';
+import authentication from '$lib/utils/stores/authentication';
 
-export async function POST({ locals, request }) {
-	if (!locals.authenticated) {
-		return json$1({
-			message: 'Unauthorized. Cannot add update beverage'
-		}, {
-			status: 401
-		});
+export const POST: RequestHandler = async ({ request }) => {
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot update beverage ratings');
 	}
 
 	const { rateBeerId, untappdBeverageSlug, beverageShortId } = await request.json();
@@ -35,14 +34,10 @@ export async function POST({ locals, request }) {
 			}
 		);
 	} catch (err) {
-		return json$1({
-			message: 'Updating beverage ratings failed'
-		}, {
-			status: 500
-		});
+		throw error(500, 'Updating beverage ratings failed');
 	}
 
-	return json$1({
+	return json({
 		message: 'Beverage ratings updated successfully'
 	});
-}
+};

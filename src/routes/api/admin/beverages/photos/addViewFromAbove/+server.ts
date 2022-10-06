@@ -1,7 +1,10 @@
-import { json } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { getDbCollections, saveViewFromAboveJpg, saveViewFromAboveWebp } from '$lib/utils/api';
+import authentication from '$lib/utils/stores/authentication';
 
-export async function POST({ locals, request }) {
+export const POST: RequestHandler = async ({ request }) => {
 	const data = await request.formData();
 	const badge = data.get('badge');
 	const brand = data.get('brand');
@@ -11,15 +14,8 @@ export async function POST({ locals, request }) {
 	const shortId = data.get('shortId');
 	const path = `${brand}/${badge}/${shortId}`;
 
-	if (!locals.authenticated) {
-		return json(
-			{
-				message: 'Unauthorized. Cannot add beverage view from above photo'
-			},
-			{
-				status: 401
-			}
-		);
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot add beverage view from above photo');
 	}
 
 	await Promise.all([
@@ -41,4 +37,4 @@ export async function POST({ locals, request }) {
 	};
 
 	return json(formattedData);
-}
+};

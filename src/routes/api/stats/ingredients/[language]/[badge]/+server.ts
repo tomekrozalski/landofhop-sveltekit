@@ -1,13 +1,13 @@
 import { json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { set } from 'lodash-es';
-
 import { getDbCollections } from '$lib/utils/api';
 import { translate } from '$lib/utils/api';
 import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import type { IngredientTree } from '$lib/utils/types/Ingredient';
 import type { IngredientsStatsNavigation } from '$lib/utils/types/stats/General';
 
-export async function GET({ params }) {
+export const GET: RequestHandler = async ({ params }) => {
 	const language = params.language ?? AppLanguage.en;
 	const badge = params.badge;
 
@@ -91,4 +91,4 @@ export async function GET({ params }) {
 		navigation,
 		tree
 	});
-}
+};

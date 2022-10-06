@@ -1,4 +1,5 @@
 import { json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { detailsNormalizer, getDbCollections } from '$lib/utils/api';
 import type { LinkData } from '$lib/utils/types/Beverage/LinkData.d';
 import type { Details } from '$lib/utils/types/Beverage/Details';
@@ -6,11 +7,11 @@ import countryList from '$lib/utils/api/countryList';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 
-export async function GET({ params }) {
+export const GET: RequestHandler = async ({ params }) => {
 	const { language, shortId } = params;
 	const { basics, beverages } = await getDbCollections();
 
-	const beverage: RawBeverage = await beverages.findOne({ shortId });
+	const beverage: RawBeverage | null = await beverages.findOne({ shortId });
 
 	if (!beverage) {
 		return new Response(undefined, { status: 404 });
@@ -57,4 +58,4 @@ export async function GET({ params }) {
 		details: formattedDetails,
 		next: nextBasics.length ? nextBasics[0] : null
 	});
-}
+};

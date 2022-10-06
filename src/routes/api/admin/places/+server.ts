@@ -1,20 +1,16 @@
-import { json } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { generateShortId, getDbCollections } from '$lib/utils/api';
 import type { RawPlaceWithoutId } from '$lib/utils/types/api/RawPlace';
+import authentication from '$lib/utils/stores/authentication';
 
-export async function POST({ locals, request }) {
+export const POST: RequestHandler = async ({ request }) => {
 	const placeData = await request.json();
 	const { places } = await getDbCollections();
 
-	if (!locals.authenticated) {
-		return json(
-			{
-				message: 'Unauthorized. Cannot add place'
-			},
-			{
-				status: 401
-			}
-		);
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot add place');
 	}
 
 	await places.insertOne({
@@ -40,4 +36,4 @@ export async function POST({ locals, request }) {
 	});
 
 	return json(data);
-}
+};

@@ -1,20 +1,16 @@
-import { json } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { generateShortId, getDbCollections } from '$lib/utils/api';
 import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
+import authentication from '$lib/utils/stores/authentication';
 
-export async function POST({ locals, request }) {
+export const POST: RequestHandler = async ({ request }) => {
 	const institutionData = await request.json();
 	const { institutions } = await getDbCollections();
 
-	if (!locals.authenticated) {
-		return json(
-			{
-				message: 'Unauthorized. Cannot add institution'
-			},
-			{
-				status: 401
-			}
-		);
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot add institution');
 	}
 
 	await institutions.insertOne({
@@ -38,5 +34,5 @@ export async function POST({ locals, request }) {
 		)
 		.toArray();
 
-	return json$1(data);
-}
+	return json(data);
+};

@@ -1,8 +1,9 @@
 import { json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { getDbCollections } from '$lib/utils/api';
 import type { RawPlaceWithoutId } from '$lib/utils/types/api/RawPlace';
 
-export async function GET() {
+export const GET: RequestHandler = async () => {
 	const { places } = await getDbCollections();
 
 	const data: RawPlaceWithoutId[] = [];
@@ -23,4 +24,4 @@ export async function GET() {
 	});
 
 	return json(data);
-}
+};

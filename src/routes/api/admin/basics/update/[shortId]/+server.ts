@@ -1,19 +1,17 @@
-import { formatBasics, getDbCollections } from '$lib/utils/api';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
+import { formatBasics, getDbCollections } from '$lib/utils/api';
+import authentication from '$lib/utils/stores/authentication';
 
-export async function PUT({ locals, params, request }) {
-	const { shortId } = params;
+export const PUT: RequestHandler = async ({ params, request }) => {
+	const shortId = params.shortId ?? '';
 	const beverageData = await request.json();
-
 	const { basics } = await getDbCollections();
 
-	if (!locals.authenticated) {
-		return {
-			status: 401,
-			body: {
-				message: 'Unauthorized. Cannot add new beverage'
-			}
-		};
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot add new beverage');
 	}
 
 	try {
@@ -23,12 +21,7 @@ export async function PUT({ locals, params, request }) {
 		);
 
 		if (!updatingBasics) {
-			return {
-				status: 404,
-				body: {
-					message: 'No basics found'
-				}
-			};
+			throw error(404, 'No basics found');
 		}
 
 		const formattedBasics: RawBasicsWithoutId = formatBasics(
@@ -44,17 +37,10 @@ export async function PUT({ locals, params, request }) {
 
 		await basics.replaceOne({ shortId }, formattedBasics as RawBasics);
 	} catch (err) {
-		return {
-			status: 500,
-			body: {
-				message: 'Updating basics failed'
-			}
-		};
+		throw error(500, 'Updating basics failed');
 	}
 
-	return {
-		body: {
-			message: 'Beverage basics updated successfully'
-		}
-	};
-}
+	return json({
+		message: 'Beverage basics updated successfully'
+	});
+};

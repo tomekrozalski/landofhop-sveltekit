@@ -1,8 +1,9 @@
 import { json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { getDbCollections } from '$lib/utils/api';
 import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
 
-export async function GET() {
+export const GET: RequestHandler = async () => {
 	const { ingredients } = await getDbCollections();
 
 	const data: RawIngredientWithoutId[] = await ingredients
@@ -22,4 +23,4 @@ export async function GET() {
 		.toArray();
 
 	return json(data);
-}
+};

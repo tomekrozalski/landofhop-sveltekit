@@ -1,4 +1,6 @@
-import { json } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { formatBeverage, getDbCollections } from '$lib/utils/api';
 import type {
 	RawBeverage,
@@ -6,19 +8,15 @@ import type {
 } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 import type { RawEditorialPhotos } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
+import authentication from '$lib/utils/stores/authentication';
 
-export async function PUT({ locals, params, request }) {
+export const PUT: RequestHandler = async ({ params, request }) => {
 	const { shortId } = params;
 	const beverageData = await request.json();
 	const { beverages } = await getDbCollections();
 
-	if (!locals.authenticated) {
-		return {
-			status: 401,
-			body: {
-				message: 'Unauthorized. Cannot add update beverage'
-			}
-		};
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot add update beverage');
 	}
 
 	try {
@@ -45,12 +43,7 @@ export async function PUT({ locals, params, request }) {
 		);
 
 		if (!updatingBeverage) {
-			return {
-				status: 404,
-				body: {
-					message: 'No beverage found'
-				}
-			};
+			throw error(404, 'No beverage found');
 		}
 
 		const formattedBeverage: RawBeverageWithoutId = formatBeverage(
@@ -67,14 +60,9 @@ export async function PUT({ locals, params, request }) {
 		);
 
 		await beverages.replaceOne({ shortId }, formattedBeverage as RawBeverage);
-	} catch (err) {
-		return {
-			status: 500,
-			body: {
-				message: 'Updating beverage failed'
-			}
-		};
+	} catch {
+		throw error(500, 'Updating beverage failed');
 	}
 
 	return json({ message: 'Beverage updated successfully' });
-}
+};

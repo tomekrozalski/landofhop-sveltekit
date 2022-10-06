@@ -1,4 +1,6 @@
-import { json as json$1 } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { formatBasics, formatBeverage, generateShortId, getDbCollections } from '$lib/utils/api';
 import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
 import type { NewBeverageRequest } from '$lib/utils/types/api/requests/Beverage';
@@ -6,17 +8,14 @@ import type {
 	RawBeverage,
 	RawBeverageWithoutId
 } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
+import authentication from '$lib/utils/stores/authentication';
 
-export async function POST({ locals, request }) {
+export const POST: RequestHandler = async ({ request }) => {
 	const beverageData: NewBeverageRequest = await request.json();
 	const { basics, beverages } = await getDbCollections();
 
-	if (!locals.authenticated) {
-		return json$1({
-			message: 'Unauthorized. Cannot add new beverage'
-		}, {
-			status: 401
-		});
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot add new beverage');
 	}
 
 	const commonProps = {
@@ -31,9 +30,9 @@ export async function POST({ locals, request }) {
 	await basics.insertOne(formattedBasics as RawBasics);
 	await beverages.insertOne(formattedBeverage as RawBeverage);
 
-	return json$1({
+	return json({
 		badge: formattedBasics.badge,
 		brand: formattedBasics.brand.badge,
 		shortId: formattedBasics.shortId
 	});
-}
+};

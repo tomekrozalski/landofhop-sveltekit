@@ -1,26 +1,28 @@
-import { json } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { getDbCollections, removeViewFromAbove } from '$lib/utils/api';
+import authentication from '$lib/utils/stores/authentication';
 
-export async function DELETE({ locals, params }) {
+export const DELETE: RequestHandler = async ({ params }) => {
 	const { shortId } = params;
 	const { beverages } = await getDbCollections();
 
-	if (!locals.authenticated) {
-		return json({
-			message: 'Unauthorized. Cannot remove beverage'
-		}, {
-			status: 401
-		});
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot remove beverage');
 	}
 
 	const beverageToRemove = await beverages.findOne({ shortId });
 
 	if (!beverageToRemove) {
-		return json({
-			message: 'Could not find the beverage'
-		}, {
-			status: 404
-		});
+		return json(
+			{
+				message: 'Could not find the beverage'
+			},
+			{
+				status: 404
+			}
+		);
 	}
 
 	const name = beverageToRemove.badge;
@@ -35,4 +37,4 @@ export async function DELETE({ locals, params }) {
 		...(updatedBeverage.editorial?.photos && { ...updatedBeverage.editorial.photos }),
 		type: updatedBeverage.label.container.type
 	});
-}
+};

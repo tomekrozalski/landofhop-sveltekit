@@ -1,32 +1,21 @@
-import { json } from '@sveltejs/kit';
+import { get } from 'svelte/store';
+import { error, json } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 import { getDbCollections } from '$lib/utils/api';
+import authentication from '$lib/utils/stores/authentication';
 
-export async function GET({ locals, params }) {
-	if (!locals.authenticated) {
-		return json(
-			{
-				message: 'Unauthorized. Cannot get admin beverage photos'
-			},
-			{
-				status: 401
-			}
-		);
-	}
-
-	const { shortId } = params;
+export const GET: RequestHandler = async ({ params }) => {
+	const shortId = params.shortId ?? '';
 	const { beverages } = await getDbCollections();
+
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot get admin beverage photos');
+	}
 
 	const data = await beverages.findOne({ shortId });
 
 	if (!data) {
-		return json(
-			{
-				message: 'No beverage found'
-			},
-			{
-				status: 404
-			}
-		);
+		throw error(404, 'No beverage found');
 	}
 
 	const formattedData = {
@@ -35,4 +24,4 @@ export async function GET({ locals, params }) {
 	};
 
 	return json(formattedData);
-}
+};
