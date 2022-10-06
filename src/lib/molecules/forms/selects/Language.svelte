@@ -61,5 +61,5 @@
 	{name}
 	placeholder={$translate('form.select.placeholder.language')}
 	{setValue}
-	value={items.find((item) => item.value === value) ?? null}
+	value={items.find((item) => item.value === value) ?? ''}
 />

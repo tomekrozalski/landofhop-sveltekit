@@ -37,5 +37,5 @@
 	{items}
 	placeholder={$translate('form.select.placeholder.containerMaterial')}
 	{setValue}
-	value={items.find((item) => item.value === value) ?? null}
+	value={items.find((item) => item.value === value) ?? ''}
 />

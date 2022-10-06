@@ -15,7 +15,7 @@
 	export let items: SelectType[];
 	export let setValue: (event: any) => void;
 	export let style: string = '';
-	export let value: SelectType | SelectType[] | null;
+	export let value: SelectType | SelectType[] | '' | null;
 
 	$: formattedErrors = Array.isArray(errors) ? errors.filter(Boolean).join(', ') : errors;
 </script>
@@ -25,7 +25,7 @@
 		on:clear={handleClear}
 		containerClasses="select"
 		{id}
-		{isDisabled}
+		isDisabled={isDisabled || value === null}
 		{isMulti}
 		{Item}
 		{items}
@@ -99,6 +99,7 @@
 
 		flex-grow: 1;
 		width: min-content;
+		min-height: var(--size-input-height);
 		position: relative;
 	}
 

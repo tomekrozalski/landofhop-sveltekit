@@ -4,7 +4,7 @@
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
 	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
-	import Name from '$lib/molecules/forms/fields/Name.svelte';
+	import NameGroup from '$lib/molecules/forms/fields/NameGroup.svelte';
 	import Owner from '$lib/molecules/forms/fields/Owner.svelte';
 	import Website from '$lib/molecules/forms/fields/Website.svelte';
 	import ModalGrid from '../ModalGrid.svelte';
@@ -34,7 +34,7 @@
 			<Badge {formName} {formData} />
 		</ModalGrid>
 		<ModalGrid columns={2}>
-			<Name {formName} {formData} labelId="test" />
+			<NameGroup {formName} {formData} />
 		</ModalGrid>
 		<ModalGrid isOptional>
 			<Owner {formName} {formData} />

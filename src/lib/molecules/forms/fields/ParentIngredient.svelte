@@ -5,8 +5,8 @@
 
 	export let formName: string;
 	export let formData: any;
-	export let labelId: string;
-	let { errors, form, updateField, updateTouched, validateField } = formData;
+	export let labelId: string = 'dashboard.label.ingredient.parent';
+	let { errors, form, updateField, validateField } = formData;
 	let fieldName = 'parent';
 	let id = `${formName}-${fieldName}`;
 

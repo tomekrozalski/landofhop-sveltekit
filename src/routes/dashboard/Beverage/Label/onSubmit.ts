@@ -1,4 +1,4 @@
-import { labelStore, page } from '../utils/stores';
+import { labelStore, page } from '../stores';
 
 export function onSubmit(values) {
 	labelStore.set(values);

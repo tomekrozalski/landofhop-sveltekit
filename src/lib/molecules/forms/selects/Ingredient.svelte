@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { isArray, isString } from 'lodash-es';
-
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { updateIngredientList } from '$lib/utils/helpers/updateStoreData';
 	import { ingredientsStore } from '$lib/utils/stores/selects';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
+	import type { Select as SelectType } from '$lib/utils/types/common/Select.d';
 	import Loading from './elements/Loading.svelte';
 	import SelectWrapper from './SelectWrapper.svelte';
 
@@ -17,15 +17,15 @@
 	export let isMulti: boolean = false;
 	export let setValue: (event: any) => void;
 	export let filter: IngredientType | null = null;
-	export let value: string | string[] | null;
+	export let value: string | string[] | '' | null;
 
 	function getSelectValue(value: any) {
 		if (isArray(value)) {
-			return value.map((id) => items.find((item) => item.value === id));
+			return value.map((id) => items.find((item) => item.value === id)) as SelectType[];
 		}
 
 		if (isString(value)) {
-			return items.find((item) => item.value === value);
+			return (items.find((item) => item.value === value) as SelectType) ?? '';
 		}
 
 		return null;

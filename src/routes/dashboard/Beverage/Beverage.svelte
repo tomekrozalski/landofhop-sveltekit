@@ -1,13 +1,19 @@
 <script lang="ts">
 	import { getContext, onDestroy } from 'svelte';
-	import { translate } from 'svelte-intl';
-
+	import { translate, translations } from 'svelte-intl';
+	import formsDictionary from '$lib/utils/dictionary/form.json';
 	import ProgressList from './ProgressList/ProgressList.svelte';
 	import Navigation from './Navigation.svelte';
 	import { page } from './stores';
 	import Label from './Label/Label.svelte';
 	import Producer from './Producer/Producer.svelte';
 	import Editorial from './Editorial/Editorial.svelte';
+	import labelsDictionary from './labels.json';
+	import dictionary from './dictionary.json';
+
+	translations.update(dictionary);
+	translations.update(labelsDictionary);
+	translations.update(formsDictionary);
 
 	const type = getContext('formType');
 

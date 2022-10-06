@@ -52,5 +52,5 @@
 	placeholder={$translate('form.select.placeholder.shop')}
 	{setValue}
 	style="grid-column: 3/5"
-	value={items.find((item) => item.value === value) ?? null}
+	value={items.find((item) => item.value === value) ?? ''}
 />

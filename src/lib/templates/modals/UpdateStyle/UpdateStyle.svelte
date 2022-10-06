@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { translations, translate } from 'svelte-intl';
+	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 	import type { Style } from '$lib/utils/types/Style';
-	import formDictionary from '$lib/utils/dictionary/form.json';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
 	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
@@ -10,12 +9,8 @@
 	import StyleGroup from '$lib/molecules/forms/fields/StyleGroup.svelte';
 	import ModalGrid from '../ModalGrid.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
-	import dictionary from '../dictionary.json';
 	import { getValidationSchema } from './validationSchema';
 	import { onSubmit } from './onSubmit';
-
-	translations.update(formDictionary);
-	translations.update(dictionary);
 
 	export let initialValues: Style;
 	export let close: () => void;

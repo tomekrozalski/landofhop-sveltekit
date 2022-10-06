@@ -2,17 +2,12 @@
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 
-	// Common elements
-	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
 	import Grid from '$lib/atoms/forms/Grid.svelte';
-	import IngredientTags from '$lib/molecules/forms/fields/IngredientTags.svelte';
-
-	// Dashboard elements
-	import { labelStore } from '../stores';
 	import Aged from '$lib/molecules/forms/fields/Aged/Aged.svelte';
 	import Alcohol from '$lib/molecules/forms/fields/Alcohol.svelte';
+	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
 	import Barcode from '$lib/molecules/forms/fields/Barcode.svelte';
 	import Bitterness from '$lib/molecules/forms/fields/Bitterness.svelte';
 	import Brand from '$lib/molecules/forms/fields/Brand.svelte';
@@ -28,7 +23,8 @@
 	import Hoppyness from '$lib/molecules/forms/fields/Hoppyness.svelte';
 	import HopRate from '$lib/molecules/forms/fields/HopRate.svelte';
 	import Ingredients from '$lib/molecules/forms/fields/Ingredients/Ingredients.svelte';
-	import Name from '$lib/elements/form/adminFields/Name.svelte';
+	import IngredientTags from '$lib/molecules/forms/fields/IngredientTags.svelte';
+	import NameGroup from '$lib/molecules/forms/fields/NameGroup.svelte';
 	import Nitrogen from '$lib/molecules/forms/fields/Nitrogen.svelte';
 	import Pasteurization from '$lib/molecules/forms/fields/Pasteurization.svelte';
 	import Place from '$lib/molecules/forms/fields/Place.svelte';
@@ -41,6 +37,7 @@
 	import Sweetness from '$lib/molecules/forms/fields/Sweetness.svelte';
 	import Tale from '$lib/molecules/forms/fields/Tale.svelte';
 	import Temperature from '$lib/molecules/forms/fields/Temperature.svelte';
+	import { labelStore } from '../stores';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
@@ -64,7 +61,7 @@
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.brandInfo')}</span></h3>
 		<Grid columns={2}>
-			<Name {formName} {formData} />
+			<NameGroup {formName} {formData} />
 		</Grid>
 		<Grid columns={2}>
 			<Series {formName} {formData} />

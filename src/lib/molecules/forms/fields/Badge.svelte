@@ -8,7 +8,7 @@
 
 	export let formName: string;
 	export let formData: any;
-	export let labelId: string;
+	export let labelId: string = 'dashboard.label.badge';
 	let { errors, form, handleChange, touched, updateValidateField } = formData;
 	let fieldName = 'badge';
 	let id = `${formName}-${fieldName}`;

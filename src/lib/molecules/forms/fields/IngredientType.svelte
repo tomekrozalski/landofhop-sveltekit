@@ -5,7 +5,7 @@
 
 	export let formName: string;
 	export let formData: any;
-	export let labelId: string;
+	export let labelId: string = 'dashboard.label.ingredient.type';
 	let { errors, form, updateField, validateField } = formData;
 	let fieldName = 'type';
 	let id = `${formName}-${fieldName}`;

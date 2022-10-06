@@ -79,7 +79,10 @@ export function getValidationSchema(translate) {
 		style: yup.array().of(
 			yup.object().shape({
 				language: yup.string().required(translate('form.validation.required')),
-				value: yup.string().min(3).required()
+				value: yup
+					.string()
+					.min(3, translate('form.validation.minChars', { value: 3 }))
+					.required()
 			})
 		),
 		extract: yup.object().shape({

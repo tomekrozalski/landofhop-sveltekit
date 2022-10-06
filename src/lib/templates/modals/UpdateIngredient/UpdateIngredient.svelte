@@ -2,7 +2,6 @@
 	import { translate, translations } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 	import { page } from '$app/stores';
-	import formDictionary from '$lib/utils/dictionary/form.json';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
 	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
@@ -11,13 +10,9 @@
 	import ParentIngredient from '$lib/molecules/forms/fields/ParentIngredient.svelte';
 	import ModalGrid from '../ModalGrid.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
-	import dictionary from '../dictionary.json';
 	import type { Ingredient } from '$lib/utils/types/Ingredient';
 	import { getValidationSchema } from './validationSchema';
 	import { onSubmit } from './onSubmit';
-
-	translations.update(formDictionary);
-	translations.update(dictionary);
 
 	export let initialValues: Ingredient;
 	export let close: () => void;

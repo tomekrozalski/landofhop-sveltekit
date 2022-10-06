@@ -2,9 +2,9 @@ import { get } from 'svelte/store';
 import { isEmpty } from 'lodash-es';
 
 import { postJsonData, putJsonData } from '$lib/utils/api/communication';
-import { editorialStore, labelStore, producerStore } from '../utils/stores';
 import formatLabelValues from '../../Beverage/Label/formatValues';
 import formatProducerValues from '../../Beverage/Producer/formatValues';
+import { editorialStore, labelStore, producerStore } from '../stores';
 import formatEditorialValues from './formatValues';
 import { goto } from '$app/navigation';
 

@@ -1,6 +1,14 @@
 <script lang="ts">
+	import { translations } from 'svelte-intl';
 	import { fade, fly } from 'svelte/transition';
 	import CloseIcon from '$lib/atoms/vectors/Close.svelte';
+	import formDictionary from '$lib/utils/dictionary/form.json';
+	import dictionary from './dictionary.json';
+
+	export let close: () => void;
+
+	translations.update(formDictionary);
+	translations.update(dictionary);
 
 	function portal(node: HTMLDivElement) {
 		let target;
@@ -17,8 +25,6 @@
 		update();
 		return { update, destroy };
 	}
-
-	export let close: () => void;
 </script>
 
 <div class="overlay" use:portal hidden transition:fade>

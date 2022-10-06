@@ -27,5 +27,5 @@
 	{items}
 	{setValue}
 	{style}
-	value={items.find((item) => item.value === value) ?? null}
+	value={items.find((item) => item.value === value) ?? ''}
 />
