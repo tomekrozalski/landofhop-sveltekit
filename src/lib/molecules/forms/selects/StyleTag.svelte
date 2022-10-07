@@ -26,7 +26,7 @@
 		}))
 		.sort((a, b) => (a.label < b.label ? -1 : 1)) as SelectType[];
 
-	const getSelectedValues = () =>
+	$: getSelectedValues = () =>
 		value?.map((id) => items.find((item) => item.value === id) as SelectType) ?? null;
 </script>
 

@@ -1,31 +1,30 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/atoms/forms/Label.svelte';
+	import type { InstitutionEssence } from '$lib/utils/types/Institution';
 	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import Conditional from '$lib/atoms/forms/Conditional.svelte';
 	import SearchLink from '$lib/atoms/forms/SearchLink.svelte';
 	import { institutionStore } from '$lib/utils/stores/selects';
-	// import { labelStore } from '$lib/utils/stores';
 
+	export let badge: string;
+	export let brandId: string;
 	export let formName: string;
 	export let formData: any;
 	let { errors, form, handleChange, touched, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'untappd';
 	let id = `${formName}-${fieldName}`;
 
-	const labelStore = {};
-
 	function getUntappdSearchLink() {
 		const params = new URLSearchParams();
 
-		// @Todo
-		const brand = $institutionStore
-			.find(({ shortId }) => shortId === $labelStore.brand)
-			.badge.replaceAll('-', ' ')
-			.replaceAll('browar ', '');
-		const name = $labelStore.badge.replaceAll('-', ' ');
+		const brand = $institutionStore.find(
+			({ shortId }) => shortId === brandId
+		) as InstitutionEssence;
+		const formattedBrand = brand.badge.replaceAll('-', ' ').replaceAll('browar ', '');
+		const name = badge.replaceAll('-', ' ');
 
-		params.set('q', [brand, name].join('+'));
+		params.set('q', [formattedBrand, name].join('+'));
 
 		return `https://untappd.com/search?${params}`;
 	}

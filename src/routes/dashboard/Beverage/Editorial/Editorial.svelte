@@ -4,14 +4,9 @@
 	import { createForm } from 'svelte-forms-lib';
 	import { page as pageProps } from '$app/stores';
 
-	// Common elements
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
 	import Grid from '$lib/atoms/forms/Grid.svelte';
-	import StyleTags from '$lib/molecules/forms/fields/StyleTags.svelte';
-
-	// Dashboard elements
-	import { editorialStore, page } from '../stores';
 	import Aged from '$lib/molecules/forms/fields/Aged/Aged.svelte';
 	import AlcoholScope from '$lib/molecules/forms/fields/AlcoholScope.svelte';
 	import Clarity from '$lib/molecules/forms/fields/Clarity.svelte';
@@ -30,7 +25,8 @@
 	import Remark from '$lib/molecules/forms/fields/Remark.svelte';
 	import Untappd from '$lib/molecules/forms/fields/Untappd.svelte';
 	import Series from '$lib/molecules/forms/fields/Series.svelte';
-
+	import StyleTags from '$lib/molecules/forms/fields/StyleTags.svelte';
+	import { editorialStore, labelStore, page } from '../stores';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 
@@ -101,10 +97,10 @@
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.rating')}</span></h3>
 		<Grid isOptional>
-			<RateBeer {formName} {formData} />
+			<RateBeer {formName} {formData} badge={$labelStore.badge} brandId={$labelStore.brand} />
 		</Grid>
 		<Grid isOptional>
-			<Untappd {formName} {formData} />
+			<Untappd {formName} {formData} badge={$labelStore.badge} brandId={$labelStore.brand} />
 		</Grid>
 		<h3><span>{$translate('dashboard.beverage.otherInfo')}</span></h3>
 		<Grid columns={3}>

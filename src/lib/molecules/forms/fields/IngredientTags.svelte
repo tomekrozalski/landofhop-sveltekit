@@ -9,7 +9,7 @@
 	export let admin: boolean = false;
 	export let formName: string;
 	export let formData: any;
-	export let labelId: string;
+	export let labelId: string = 'dashboard.label.ingredientTags';
 	let { errors, form, updateField, updateTouched, validateField } = formData;
 	let fieldName = 'ingredientTags';
 	let id = `${formName}-${fieldName}`;

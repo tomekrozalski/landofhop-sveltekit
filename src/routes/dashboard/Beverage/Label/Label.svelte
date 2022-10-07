@@ -126,7 +126,7 @@
 			<Ingredients {formName} {formData} />
 		</Grid>
 		<Grid isOptional>
-			<IngredientTags {formName} {formData} labelId="dashboard.label.ingredientTags" admin />
+			<IngredientTags {formName} {formData} admin />
 		</Grid>
 		<Grid isOptional>
 			<SmokedMalt {formName} {formData} />
