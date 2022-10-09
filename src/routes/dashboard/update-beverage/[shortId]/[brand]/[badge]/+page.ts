@@ -1,7 +1,8 @@
 import { getJsonData } from '$lib/utils/api/communication';
-import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormValues';
-import type { ProducerFormValues } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
-import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
+import type { LabelFormValues } from '../../../../Beverage/Label/LabelFormValues';
+import type { ProducerFormValues } from '../../../../Beverage/Producer/ProducerFormValues';
+import type { EditorialFormValues } from '../../../../Beverage/Editorial/EditorialFormValues';
+import type { PageLoad } from './$types';
 
 type DetailsAdmin = {
 	label: LabelFormValues;
@@ -9,7 +10,7 @@ type DetailsAdmin = {
 	editorial: EditorialFormValues;
 };
 
-export async function load({ fetch, params }) {
+export const load: PageLoad = async ({ fetch, params }) => {
 	try {
 		const beverage: DetailsAdmin = await getJsonData({
 			fetch,
@@ -20,4 +21,4 @@ export async function load({ fetch, params }) {
 	} catch (err) {
 		return { beverage: null };
 	}
-}
+};

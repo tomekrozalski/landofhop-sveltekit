@@ -31,7 +31,7 @@ export const DELETE: RequestHandler = async ({ params }) => {
 			await removeGallery(path, beverageToRemove.editorial.photos.gallery);
 		}
 
-		if (beverageToRemove.editorial?.photos?.cap) {
+		if (beverageToRemove.editorial?.photos?.viewFromAbove) {
 			await removeViewFromAbove(path);
 		}
 	} catch {

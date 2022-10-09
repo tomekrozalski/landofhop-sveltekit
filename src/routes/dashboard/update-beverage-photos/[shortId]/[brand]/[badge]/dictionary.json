@@ -1,8 +1,18 @@
 {
 	"en": {
-		"x": "X"
+		"dashboard.beverage.photos.cover": "Cover",
+		"dashboard.beverage.photos.gallery": "Gallery",
+		"dashboard.beverage.photos.imageNotFound": "not found",
+		"dashboard.beverage.photos.name": "Edit photos",
+		"dashboard.beverage.photos.title": "update beverage photos",
+		"dashboard.beverage.photos.viewFromAbove": "View from above"
 	},
 	"pl": {
-		"x": "X"
+		"dashboard.beverage.photos.cover": "Okładka",
+		"dashboard.beverage.photos.gallery": "Galeria",
+		"dashboard.beverage.photos.imageNotFound": "nie znaleziono",
+		"dashboard.beverage.photos.name": "Edytuj fotografie",
+		"dashboard.beverage.photos.title": "popraw zdjęcia",
+		"dashboard.beverage.photos.viewFromAbove": "Widok z góry"
 	}
 }

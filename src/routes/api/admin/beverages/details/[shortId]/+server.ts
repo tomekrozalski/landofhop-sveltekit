@@ -8,7 +8,7 @@ import type { LabelFormValues } from '../../../../../dashboard/Beverage/Label/La
 import type { ProducerFormValues } from '../../../../../dashboard/Beverage/Producer/ProducerFormValues';
 import type { EditorialFormValues } from '../../../../../dashboard/Beverage/Editorial/EditorialFormValues';
 
-export const PUT: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
 	const shortId = params.shortId ?? '';
 	const { beverages } = await getDbCollections();
 

@@ -1,20 +1,21 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 	import { postFormData } from '$lib/utils/api/communication';
 	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
-	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
-	import InlineSpinner from '$lib/elements/form/InlineSpinner.svelte';
+	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
 	import WarningIcon from '$lib/atoms/vectors/Warning.svelte';
-	import Dropzone from '../elements/Dropzone/Dropzone.svelte';
-	import ContentWrapper from '../elements/ContentWrapper.svelte';
-	import SavedItem from '../elements/SavedItem.svelte';
-	import NoImage from '../elements/NoImage.svelte';
-	import GalleryThumbs from '../elements/GalleryThumbs.svelte';
-	import Image from '../elements/Image.svelte';
+	import Dropzone from './elements/Dropzone/Dropzone.svelte';
+	import ContentWrapper from './elements/ContentWrapper.svelte';
+	import SavedItem from './elements/SavedItem.svelte';
+	import NoImage from './elements/NoImage.svelte';
+	import GalleryThumbs from './elements/GalleryThumbs.svelte';
+	import Image from './elements/Image.svelte';
+	import { beveragePhotosStore } from './stores';
 
 	const { badge, brand, shortId } = $page.params;
-	let version: number = Date.now();
+	let version: number | null = Date.now();
 
 	async function saveGallery(images: File[]) {
 		version = null;
@@ -41,18 +42,18 @@
 </script>
 
 <section>
-	<h2>{$translate('dashboard.beveragePhotos.gallery')}</h2>
-	<ContentWrapper isEmpty={!$beveragePhotosStore.gallery}>
+	<h2>{$translate('dashboard.beverage.photos.gallery')}</h2>
+	<ContentWrapper let:gallery let:galleryOutline>
 		<SavedItem>
-			{#if $beveragePhotosStore.outlines?.gallery}
-				{@html $beveragePhotosStore.outlines.gallery}
+			{#if galleryOutline}
+				{@html galleryOutline}
 			{:else}
 				<WarningIcon />
 			{/if}
 		</SavedItem>
 		<SavedItem>
 			{#if version}
-				{#if $beveragePhotosStore.gallery}
+				{#if gallery}
 					<Image {badge} {brand} {shortId} type="gallery" {version} />
 				{:else}
 					<NoImage />
@@ -61,8 +62,10 @@
 				<InlineSpinner isGrey />
 			{/if}
 		</SavedItem>
-		<Dropzone isMultiple save={saveGallery} />
-		{#if version && $beveragePhotosStore.gallery}
+		{#if browser}
+			<Dropzone isMultiple save={saveGallery} />
+		{/if}
+		{#if version && gallery}
 			<GalleryThumbs {version} />
 		{/if}
 	</ContentWrapper>

@@ -1,13 +1,13 @@
 <script>
 	import { translate } from 'svelte-intl';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
 	import { ContainerType } from '$lib/utils/enums/Beverage.enum';
+	import { beveragePhotosStore } from '../stores';
 </script>
 
 <img
-	alt={$translate('beverageList.imageNotFound')}
-	src="{PHOTO_SERVER}/broken-{$beveragePhotosStore.type ?? ContainerType.bottle}.svg"
+	alt={$translate('dashboard.beverage.photos.imageNotFound')}
+	src="{PHOTO_SERVER}/broken-{$beveragePhotosStore?.type ?? ContainerType.bottle}.svg"
 />
 
 <style>

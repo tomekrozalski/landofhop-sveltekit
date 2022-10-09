@@ -1,10 +1,17 @@
 <script lang="ts">
-	export let isEmpty: boolean = false;
+	import { beveragePhotosStore } from '../stores';
+
 	export let isViewFromAbove: boolean = false;
 </script>
 
-<div class:isEmpty class:isViewFromAbove>
-	<slot />
+<div class:isEmpty={!$beveragePhotosStore?.cover?.height} class:isViewFromAbove>
+	<slot
+		cover={$beveragePhotosStore?.cover}
+		coverOutline={$beveragePhotosStore?.outlines?.cover}
+		gallery={$beveragePhotosStore?.gallery}
+		galleryOutline={$beveragePhotosStore?.outlines?.gallery}
+		viewFromAbove={$beveragePhotosStore?.viewFromAbove}
+	/>
 </div>
 
 <style>

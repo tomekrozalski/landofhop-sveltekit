@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>Land of Hop 🔒 Dashboard, {$translate('dashboard.title.updateBeveragePhotos')}</title>
+	<title>Land of Hop 🔒 Dashboard, {$translate('dashboard.beverage.photos.title')}</title>
 </svelte:head>
 
 <UpdateBeveragePhotos />

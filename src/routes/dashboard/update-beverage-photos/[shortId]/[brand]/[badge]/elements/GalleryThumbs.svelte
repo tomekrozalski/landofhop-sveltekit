@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { beveragePhotosStore } from '$lib/dashboard/utils/stores';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
+	import { beveragePhotosStore } from '../stores';
 
 	const { badge, brand, shortId } = $page.params;
 	export let version: number;

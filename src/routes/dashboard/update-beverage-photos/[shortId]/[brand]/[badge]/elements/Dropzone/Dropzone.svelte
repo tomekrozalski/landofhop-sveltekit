@@ -6,7 +6,7 @@
 	export let save: (images: File[]) => void;
 	let error = '';
 
-	function handleFilesSelect(e) {
+	function handleFilesSelect(e: any) {
 		const { acceptedFiles, fileRejections } = e.detail;
 
 		if (fileRejections.length) {

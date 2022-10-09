@@ -1,16 +1,17 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 	import { postFormData } from '$lib/utils/api/communication';
 	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
-	import InlineSpinner from '$lib/elements/form/InlineSpinner.svelte';
+	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
 	import WarningIcon from '$lib/atoms/vectors/Warning.svelte';
-	import { beveragePhotosStore } from '../../../../Beverage/utils/stores';
-	import Dropzone from '$lib/elements/Dropzone/Dropzone.svelte';
-	import ContentWrapper from '$lib/elements/ContentWrapper.svelte';
-	import SavedItem from '$lib/elements/SavedItem.svelte';
-	import NoImage from '$lib/elements/NoImage.svelte';
-	import Image from '$lib/elements/Image.svelte';
+	import Dropzone from './elements/Dropzone/Dropzone.svelte';
+	import ContentWrapper from './elements/ContentWrapper.svelte';
+	import SavedItem from './elements/SavedItem.svelte';
+	import NoImage from './elements/NoImage.svelte';
+	import Image from './elements/Image.svelte';
+	import { beveragePhotosStore } from './stores';
 
 	const { badge, brand, shortId } = $page.params;
 	let version: number | null = Date.now();
@@ -35,18 +36,18 @@
 </script>
 
 <section>
-	<h2>{$translate('dashboard.beveragePhotos.cover')}</h2>
-	<ContentWrapper isEmpty={!$beveragePhotosStore.cover?.height}>
+	<h2>{$translate('dashboard.beverage.photos.cover')}</h2>
+	<ContentWrapper let:cover let:coverOutline>
 		<SavedItem>
-			{#if $beveragePhotosStore.outlines?.cover}
-				{@html $beveragePhotosStore.outlines.cover}
+			{#if coverOutline}
+				{@html coverOutline}
 			{:else}
 				<WarningIcon />
 			{/if}
 		</SavedItem>
 		<SavedItem>
 			{#if version}
-				{#if $beveragePhotosStore.cover}
+				{#if cover}
 					<Image {badge} {brand} {shortId} type="cover" {version} />
 				{:else}
 					<NoImage />
@@ -55,6 +56,8 @@
 				<InlineSpinner isGrey />
 			{/if}
 		</SavedItem>
-		<Dropzone save={saveCover} />
+		{#if browser}
+			<Dropzone save={saveCover} />
+		{/if}
 	</ContentWrapper>
 </section>

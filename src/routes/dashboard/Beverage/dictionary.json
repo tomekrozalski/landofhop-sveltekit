@@ -41,10 +41,6 @@
 		"dashboard.beverage.producerInfo.title": "Producer",
 		"dashboard.beverage.rating": "Community rating",
 		"dashboard.beverage.updateBeverage": "Update beverage",
-		"dashboard.beveragePhotos.cover": "Cover",
-		"dashboard.beveragePhotos.gallery": "Gallery",
-		"dashboard.beveragePhotos.title": "Edit photos",
-		"dashboard.beveragePhotos.viewFromAbove": "View from above",
 		"dashboard.clarity.clear": "clear",
 		"dashboard.clarity.crystalline": "crystalline",
 		"dashboard.clarity.hazy": "hazy",
@@ -86,7 +82,6 @@
 		"dashboard.ratings.search": "search",
 		"dashboard.temperature.unit.celcius": "°C",
 		"dashboard.title.addNewBeverage": "add new beverage",
-		"dashboard.title.updateBeveragePhotos": "update beverage photos",
 		"dashboard.title.updateBeverage": "update beverage"
 	},
 	"pl": {
@@ -131,10 +126,6 @@
 		"dashboard.beverage.producerInfo.title": "Informacje od producenta",
 		"dashboard.beverage.rating": "Ocena społeczności",
 		"dashboard.beverage.updateBeverage": "Popraw piwo",
-		"dashboard.beveragePhotos.cover": "Okładka",
-		"dashboard.beveragePhotos.gallery": "Galeria",
-		"dashboard.beveragePhotos.title": "Edytuj fotografie",
-		"dashboard.beveragePhotos.viewFromAbove": "Widok z góry",
 		"dashboard.clarity.clear": "czyste",
 		"dashboard.clarity.crystalline": "krystaliczne",
 		"dashboard.clarity.hazy": "hazy",
@@ -176,7 +167,6 @@
 		"dashboard.ratings.search": "szukaj",
 		"dashboard.temperature.unit.celcius": "°C",
 		"dashboard.title.addNewBeverage": "dodaj piwo",
-		"dashboard.title.updateBeveragePhotos": "popraw zdjęcia",
 		"dashboard.title.updateBeverage": "popraw piwo"
 	}
 }

@@ -3,7 +3,7 @@
 	import { translate, translations } from 'svelte-intl';
 	import formsDictionary from '$lib/utils/dictionary/form.json';
 	import ProgressList from './ProgressList/ProgressList.svelte';
-	import Navigation from './Navigation.svelte';
+	import Navigation from '../Navigation.svelte';
 	import { page } from './stores';
 	import Label from './Label/Label.svelte';
 	import Producer from './Producer/Producer.svelte';
