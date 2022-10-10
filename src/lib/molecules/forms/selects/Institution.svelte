@@ -47,12 +47,12 @@
 			}))
 			.sort((a, b) => (a.label < b.label ? -1 : 1));
 
-		items.unshift({ label: $translate('form.institutions.unknownContract'), value: '--' });
+		items.unshift({ label: $translate('dashboard.contract.unknown'), value: '--' });
 
 		groupBy = (item: { group: string }) => item.group;
 
 		getGroupHeaderLabel = (option: { label: string }) => {
-			return $translate(`form.institutions.${option.label}`);
+			return $translate(`dashboard.institutions.${option.label}`);
 		};
 	} else {
 		items = $institutionStore
