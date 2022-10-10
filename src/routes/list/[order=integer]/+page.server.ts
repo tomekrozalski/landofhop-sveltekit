@@ -9,8 +9,6 @@ import type { RawBasics } from '$lib/utils/types/api/RawBasics';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
 import type { PageServerLoad } from './$types';
 
-export const prerender = true;
-
 export const load: PageServerLoad = async ({ params }) => {
 	const order = +params.order;
 
