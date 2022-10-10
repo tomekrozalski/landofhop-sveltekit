@@ -1,12 +1,12 @@
 import * as jwt from 'jsonwebtoken';
 import type { Cookies } from '@sveltejs/kit';
-import { generateTokens, getDbCollections, updateSession } from '$lib/utils/api';
+import { JWT_SECRET } from '$env/static/private';
+import { generateTokens, updateSession } from '$lib/utils/api';
+import { sessions } from '$db/mongo';
 
 async function authenticate(cookies: Cookies): Promise<boolean> {
 	const accessToken = cookies.get('accessToken');
 	const refreshToken = cookies.get('refreshToken');
-
-	const { sessions } = await getDbCollections();
 
 	if (!accessToken && !refreshToken) {
 		return false;
@@ -14,7 +14,7 @@ async function authenticate(cookies: Cookies): Promise<boolean> {
 
 	if (accessToken) {
 		try {
-			const payload = jwt.verify(accessToken, import.meta.env.VITE_JWT_SECRET);
+			const payload = jwt.verify(accessToken, JWT_SECRET);
 
 			const session = await sessions.findOne({
 				sessionToken: payload.sessionToken,
@@ -29,7 +29,7 @@ async function authenticate(cookies: Cookies): Promise<boolean> {
 
 	if (refreshToken) {
 		try {
-			const payload = jwt.verify(refreshToken, import.meta.env.VITE_JWT_SECRET);
+			const payload = jwt.verify(refreshToken, JWT_SECRET);
 
 			const session = await sessions.findOne({
 				sessionToken: payload.sessionToken

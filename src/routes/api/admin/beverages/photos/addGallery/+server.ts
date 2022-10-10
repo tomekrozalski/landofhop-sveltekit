@@ -1,14 +1,9 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import {
-	removeGallery,
-	getDbCollections,
-	getTracedSvg,
-	saveGalleryJpg,
-	saveGalleryWebp
-} from '$lib/utils/api';
+import { removeGallery, getTracedSvg, saveGalleryJpg, saveGalleryWebp } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
+import { beverages } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const data = await request.formData();
@@ -22,7 +17,6 @@ export const POST: RequestHandler = async ({ request }) => {
 		throw error(401, 'Unauthorized. Cannot add beverage gallery');
 	}
 
-	const { beverages } = await getDbCollections();
 	const beverageToUpdate = await beverages.findOne({ shortId });
 	const removeCount = beverageToUpdate.editorial?.photos?.gallery ?? 0;
 

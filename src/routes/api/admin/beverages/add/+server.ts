@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { formatBasics, formatBeverage, generateShortId, getDbCollections } from '$lib/utils/api';
+import { formatBasics, formatBeverage, generateShortId } from '$lib/utils/api';
 import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
 import type { NewBeverageRequest } from '$lib/utils/types/api/requests/Beverage';
 import type {
@@ -9,10 +9,10 @@ import type {
 	RawBeverageWithoutId
 } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
 import authentication from '$lib/utils/stores/authentication';
+import { basics, beverages } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const beverageData: NewBeverageRequest = await request.json();
-	const { basics, beverages } = await getDbCollections();
 
 	if (!get(authentication).isLoggedIn) {
 		throw error(401, 'Unauthorized. Cannot add new beverage');

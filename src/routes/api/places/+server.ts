@@ -1,11 +1,9 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { getDbCollections } from '$lib/utils/api';
+import { places } from '$db/mongo';
 import type { RawPlaceWithoutId } from '$lib/utils/types/api/RawPlace';
 
 export const GET: RequestHandler = async () => {
-	const { places } = await getDbCollections();
-
 	const data: RawPlaceWithoutId[] = [];
 
 	await places.find().forEach(({ city, country, institution, location, shortId }) => {

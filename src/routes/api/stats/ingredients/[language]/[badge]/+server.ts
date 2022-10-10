@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { set } from 'lodash-es';
-import { getDbCollections } from '$lib/utils/api';
+import { ingredients } from '$db/mongo';
 import { translate } from '$lib/utils/api';
 import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import type { IngredientTree } from '$lib/utils/types/Ingredient';
@@ -10,8 +10,6 @@ import type { IngredientsStatsNavigation } from '$lib/utils/types/stats/General'
 export const GET: RequestHandler = async ({ params }) => {
 	const language = params.language ?? AppLanguage.en;
 	const badge = params.badge;
-
-	const { ingredients } = await getDbCollections();
 
 	/* create navigation data */
 

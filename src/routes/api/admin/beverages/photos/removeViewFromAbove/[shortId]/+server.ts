@@ -1,12 +1,12 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { getDbCollections, removeViewFromAbove } from '$lib/utils/api';
+import { removeViewFromAbove } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
+import { beverages } from '$db/mongo';
 
 export const DELETE: RequestHandler = async ({ params }) => {
 	const { shortId } = params;
-	const { beverages } = await getDbCollections();
 
 	if (!get(authentication).isLoggedIn) {
 		throw error(401, 'Unauthorized. Cannot remove beverage');

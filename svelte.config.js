@@ -9,7 +9,11 @@ const config = {
 		})
 	],
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		alias: {
+			$db: './src/db',
+			$routes: './src/routes'
+		}
 	}
 };
 

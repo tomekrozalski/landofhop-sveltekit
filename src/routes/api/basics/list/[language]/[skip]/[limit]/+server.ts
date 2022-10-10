@@ -3,18 +3,18 @@ import { json } from '@sveltejs/kit';
 import { format } from 'date-fns';
 import type { RequestHandler } from '@sveltejs/kit';
 
-import { getDbCollections, translate } from '$lib/utils/api';
+import { translate } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
 import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import type { RawBasics } from '$lib/utils/types/api/RawBasics';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
+import { basics } from '$db/mongo';
 
 export const GET: RequestHandler = async ({ params }) => {
 	const language = (params.language as AppLanguage) ?? AppLanguage.pl;
 	const limit = params.limit ?? 10;
 	const skip = params.skip ?? 0;
 
-	const { basics } = await getDbCollections();
 	const translatedValues: Basics[] = [];
 
 	await basics

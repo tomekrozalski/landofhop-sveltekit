@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-import { getDbCollections } from '$lib/utils/api';
+import { beverages } from '$db/mongo';
 
 async function updateUntappdRating(untappBeerSlug: string, beverageShortId: string) {
 	try {
@@ -25,8 +25,6 @@ async function updateUntappdRating(untappBeerSlug: string, beverageShortId: stri
 		});
 
 		await browser.close();
-
-		const { beverages } = await getDbCollections();
 
 		await beverages.updateOne(
 			{ shortId: beverageShortId },

@@ -2,7 +2,7 @@ import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import authentication from '$lib/utils/stores/authentication';
-import { getDbCollections } from '$lib/utils/api';
+import { beverages, styles } from '$db/mongo';
 import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles.d';
 import type { RawIngredientTag } from '$lib/utils/types/api/RawBeverage/RawIngredientTag.d';
 
@@ -13,8 +13,6 @@ export const PUT: RequestHandler = async ({ params, request }) => {
 	if (!get(authentication).isLoggedIn) {
 		throw error(401, 'Unauthorized. Cannot update styles');
 	}
-
-	const { beverages, styles } = await getDbCollections();
 
 	await styles.replaceOne({ badge }, styleData as RawStylesWithoutId);
 

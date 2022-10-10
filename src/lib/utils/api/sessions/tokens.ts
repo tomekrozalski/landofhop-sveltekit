@@ -1,6 +1,7 @@
 import { add } from 'date-fns';
 import jwt from 'jsonwebtoken';
 import type { Cookies } from '@sveltejs/kit';
+import { JWT_SECRET } from '$env/static/private';
 
 type generateTokensTypes = {
 	cookies: Cookies;
@@ -9,8 +10,8 @@ type generateTokensTypes = {
 };
 
 export function generateTokens({ cookies, sessionToken, userId }: generateTokensTypes) {
-	const accessToken = jwt.sign({ sessionToken, userId }, import.meta.env.VITE_JWT_SECRET);
-	const refreshToken = jwt.sign({ sessionToken }, import.meta.env.VITE_JWT_SECRET);
+	const accessToken = jwt.sign({ sessionToken, userId }, JWT_SECRET);
+	const refreshToken = jwt.sign({ sessionToken }, JWT_SECRET);
 
 	cookies.set('accessToken', accessToken, {
 		httpOnly: true,

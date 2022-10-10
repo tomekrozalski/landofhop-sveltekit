@@ -2,8 +2,9 @@ import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import sizeOf from 'buffer-image-size';
-import { getDbCollections, getTracedSvg, saveCoverJpg, saveCoverWebp } from '$lib/utils/api';
+import { getTracedSvg, saveCoverJpg, saveCoverWebp } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
+import { basics, beverages } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const data = await request.formData();
@@ -30,8 +31,6 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const outlines = await getTracedSvg(image);
 	const { height, width } = sizeOf(image);
-
-	const { basics, beverages } = await getDbCollections();
 
 	await beverages.updateOne(
 		{ shortId },

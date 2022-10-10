@@ -1,9 +1,7 @@
 import { randomBytes } from 'crypto';
-import { getDbCollections } from '$lib/utils/api';
+import { sessions } from '$db/mongo';
 
 async function update(sessionToken: string) {
-	const { sessions } = await getDbCollections();
-
 	try {
 		const newSessionToken = randomBytes(43).toString('hex');
 

@@ -1,5 +1,6 @@
 import type { Handle } from '@sveltejs/kit';
 import { minify } from 'html-minifier';
+import { start_mongo } from '$db/mongo';
 
 const minification_options = {
 	collapseBooleanAttributes: true,
@@ -19,6 +20,14 @@ const minification_options = {
 	sortAttributes: true,
 	sortClassName: true
 };
+
+start_mongo()
+	.then(() => {
+		console.log('Mongo started');
+	})
+	.catch(() => {
+		console.error('Mongo launch failed');
+	});
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const response = await resolve(event, {

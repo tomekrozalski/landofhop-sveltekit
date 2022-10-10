@@ -10,7 +10,6 @@ import detailsNormalizer from './beverages/detailsNormalizer';
 import formatBasics from './basics/format';
 import formatBeverageToBasics from './formatBeverageToBasics';
 import generateShortId from './generateShortId';
-import getDbCollections from './getDbCollections';
 import institutionNormalizer from './brands/institutionNormalizer';
 import translate from './translate';
 import updateSession from './sessions/update';
@@ -38,7 +37,6 @@ export {
 	formatBeverageToBasics,
 	generateShortId,
 	generateTokens,
-	getDbCollections,
 	getTracedSvg,
 	institutionNormalizer,
 	recalculateIngredientsOccurrences,

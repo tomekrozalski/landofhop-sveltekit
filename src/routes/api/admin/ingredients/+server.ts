@@ -1,13 +1,13 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { getDbCollections, recalculateIngredientsOccurrences } from '$lib/utils/api';
+import { recalculateIngredientsOccurrences } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
 import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
+import { beverages, ingredients } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const ingredientData = await request.json();
-	const { ingredients } = await getDbCollections();
 
 	if (!get(authentication).isLoggedIn) {
 		throw error(401, 'Unauthorized. Cannot add ingredient');
@@ -38,8 +38,6 @@ export const PUT: RequestHandler = async ({ request }) => {
 	if (!get(authentication).isLoggedIn) {
 		throw error(401, 'Unauthorized. Cannot update ingredient');
 	}
-
-	const { beverages, ingredients } = await getDbCollections();
 
 	const ingredientData = await request.json();
 	const { initial, ...rest } = ingredientData;

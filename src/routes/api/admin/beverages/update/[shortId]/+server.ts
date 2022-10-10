@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { formatBeverage, getDbCollections } from '$lib/utils/api';
+import { formatBeverage } from '$lib/utils/api';
 import type {
 	RawBeverage,
 	RawBeverageWithoutId
@@ -9,11 +9,11 @@ import type {
 import type { RawEditorialPhotos } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 import authentication from '$lib/utils/stores/authentication';
+import { beverages } from '$db/mongo';
 
 export const PUT: RequestHandler = async ({ params, request }) => {
 	const { shortId } = params;
 	const beverageData = await request.json();
-	const { beverages } = await getDbCollections();
 
 	if (!get(authentication).isLoggedIn) {
 		throw error(401, 'Unauthorized. Cannot add update beverage');

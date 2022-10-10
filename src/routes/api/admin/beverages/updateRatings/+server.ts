@@ -1,8 +1,9 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { getDbCollections, updateRateBeerRating, updateUntappdRating } from '$lib/utils/api';
+import { updateRateBeerRating, updateUntappdRating } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
+import { beverages } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {
 	if (!get(authentication).isLoggedIn) {
@@ -20,8 +21,6 @@ export const POST: RequestHandler = async ({ request }) => {
 		const totalQuantity = results.reduce((acc, { quantity }) => acc + quantity, 0);
 		const totalValue = results.reduce((acc, { quantity, value }) => acc + quantity * value, 0);
 		const total = Number((Math.round((totalValue / totalQuantity) * 100000) / 100000).toFixed(5));
-
-		const { beverages } = await getDbCollections();
 
 		await beverages.updateOne(
 			{ shortId: beverageShortId },

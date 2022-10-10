@@ -1,13 +1,13 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { generateShortId, getDbCollections } from '$lib/utils/api';
+import { generateShortId } from '$lib/utils/api';
 import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
 import authentication from '$lib/utils/stores/authentication';
+import { institutions } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const institutionData = await request.json();
-	const { institutions } = await getDbCollections();
 
 	if (!get(authentication).isLoggedIn) {
 		throw error(401, 'Unauthorized. Cannot add institution');

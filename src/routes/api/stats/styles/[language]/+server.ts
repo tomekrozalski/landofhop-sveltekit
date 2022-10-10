@@ -1,14 +1,12 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { getDbCollections } from '$lib/utils/api';
+import { beverages, styles } from '$db/mongo';
 import { translate } from '$lib/utils/api';
 import type { RawStyleTag } from '$lib/utils/types/api/RawBeverage/RawEditorial';
 import type { RawStylesStats } from '$lib/utils/types/api/RawStats/RawStylesStats.d';
 
 export const GET: RequestHandler = async ({ params }) => {
 	const { language } = params;
-	const { beverages, styles } = await getDbCollections();
-
 	const rawData: RawStylesStats[] = [];
 
 	await styles.find().forEach(({ badge, name, group }) => {

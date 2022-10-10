@@ -1,12 +1,9 @@
 import { format } from 'date-fns';
 import type { RequestHandler } from '@sveltejs/kit';
-
-import { getDbCollections } from '$lib/utils/api';
+import { basics } from '$db/mongo';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 
 export const GET: RequestHandler = async function ({ setHeaders }) {
-	const { basics } = await getDbCollections();
-
 	// -----------------------------------
 	// Beverage lists pages
 

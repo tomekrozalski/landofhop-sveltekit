@@ -1,4 +1,4 @@
-import { getDbCollections } from '$lib/utils/api';
+import { beverages } from '$db/mongo';
 
 async function updateRateBeerRating(rateBeerid: string, beverageShortId: string) {
 	try {
@@ -16,8 +16,6 @@ async function updateRateBeerRating(rateBeerid: string, beverageShortId: string)
 		});
 
 		const { data } = await response.json();
-		const { beverages } = await getDbCollections();
-
 		const quantity = data.beer.ratingsCount;
 		const value = Number((Math.round(data.beer.averageQuickRating * 100000) / 100000).toFixed(5));
 

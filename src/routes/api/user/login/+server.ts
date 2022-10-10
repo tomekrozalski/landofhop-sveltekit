@@ -1,13 +1,11 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import bcrypt from 'bcryptjs';
-
-import { createSession, generateTokens, getDbCollections } from '$lib/utils/api';
+import { createSession, generateTokens } from '$lib/utils/api';
+import { users } from '$db/mongo';
 
 export const POST: RequestHandler = async function ({ cookies, request }) {
 	const { email, password } = await request.json();
-	const { users } = await getDbCollections();
-
 	const user = await users.findOne({ email });
 
 	if (!user) {

@@ -1,8 +1,6 @@
-import { getDbCollections } from '$lib/utils/api';
+import { beverages, ingredients } from '$db/mongo';
 
 async function recalculateOccurrences() {
-	const { beverages, ingredients } = await getDbCollections();
-
 	/* reset ingredients occurrences */
 
 	await ingredients.updateMany(

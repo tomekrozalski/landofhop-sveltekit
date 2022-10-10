@@ -2,7 +2,7 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { format } from 'date-fns';
 
-import { getDbCollections } from '$lib/utils/api';
+import { beverages } from '$db/mongo';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
 import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
 import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
@@ -18,7 +18,6 @@ export const GET: RequestHandler = async ({ cookies, params }) => {
 
 	const language = (params.language as AppLanguage) ?? AppLanguage.pl;
 	const shortId = params.shortId ?? '';
-	const { beverages } = await getDbCollections();
 
 	type RawData = {
 		notes?: string;

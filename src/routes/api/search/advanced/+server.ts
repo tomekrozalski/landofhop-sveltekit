@@ -2,8 +2,9 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-import { formatBeverageToBasics, getDbCollections } from '$lib/utils/api';
+import { formatBeverageToBasics } from '$lib/utils/api';
 import type { Basics } from '$lib/utils/types/Beverage/Basics';
+import { beverages, ingredients } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const advancedSearchData = await request.json();
@@ -15,7 +16,6 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	let total = 0;
 	const foundArr: Basics[] = [];
-	const { beverages, ingredients } = await getDbCollections();
 
 	async function getCompleteIngredientTags() {
 		const ingredientsDescendants: string[] = [];

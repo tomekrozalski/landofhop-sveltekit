@@ -1,6 +1,7 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
+import { GCP_KEY } from '$env/static/private';
 import authentication from '$lib/utils/stores/authentication';
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -12,7 +13,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const urlParts = [
 		'https://www.googleapis.com/language/translate/v2/',
-		'?key=' + import.meta.env.VITE_GCP_KEY,
+		'?key=' + GCP_KEY,
 		`&target=${target}`,
 		`&source=${source}`,
 		`&format=text`,

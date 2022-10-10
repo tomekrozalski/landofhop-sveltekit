@@ -1,15 +1,15 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { detailsNormalizer, getDbCollections } from '$lib/utils/api';
+import { detailsNormalizer } from '$lib/utils/api';
 import type { LinkData } from '$lib/utils/types/Beverage/LinkData.d';
 import type { Details } from '$lib/utils/types/Beverage/Details';
 import countryList from '$lib/utils/api/countryList';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
+import { basics, beverages } from '$db/mongo';
 
 export const GET: RequestHandler = async ({ params }) => {
 	const { language, shortId } = params;
-	const { basics, beverages } = await getDbCollections();
 
 	const beverage: RawBeverage | null = await beverages.findOne({ shortId });
 
