@@ -1,15 +1,16 @@
-import { json } from '@sveltejs/kit';
-import type { RequestHandler } from '@sveltejs/kit';
+import { basics, beverages } from '$db/mongo';
 import { detailsNormalizer } from '$lib/utils/api';
+import countryList from '$lib/utils/api/countryList';
+import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
+import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import type { LinkData } from '$lib/utils/types/Beverage/LinkData.d';
 import type { Details } from '$lib/utils/types/Beverage/Details';
-import countryList from '$lib/utils/api/countryList';
-import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
-import { basics, beverages } from '$db/mongo';
+import type { PageServerLoad } from './$types';
 
-export const GET: RequestHandler = async ({ params }) => {
-	const { language, shortId } = params;
+export const load: PageServerLoad = async ({ params }) => {
+	const { shortId } = params;
+	const language = AppLanguage.pl;
 
 	const beverage: RawBeverage | null = await beverages.findOne({ shortId });
 
@@ -20,7 +21,7 @@ export const GET: RequestHandler = async ({ params }) => {
 	const formattedDetails: Details = detailsNormalizer(
 		beverage,
 		language,
-		language === 'pl' ? countryList.pl : countryList.en
+		language === AppLanguage.pl ? countryList.pl : countryList.en
 	);
 
 	const previousBasics: LinkData[] = [];
@@ -52,10 +53,10 @@ export const GET: RequestHandler = async ({ params }) => {
 			});
 		});
 
-	return json({
+	return {
 		listPage: Math.ceil((beveragesBefore + 1) / BEVERAGES_ON_PAGE),
 		previous: previousBasics.length ? previousBasics[0] : null,
 		details: formattedDetails,
 		next: nextBasics.length ? nextBasics[0] : null
-	});
+	};
 };
