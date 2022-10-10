@@ -27,7 +27,7 @@
 		<Element
 			active={page !== '…'}
 			current={page === order}
-			href={page === 1 ? '/' : `/list/${page}`}
+			href={page === '…' ? null : page === 1 ? '/' : `/list/${page}`}
 			label={page.toString()}
 			data-sveltekit-prefetch=""
 			tag={page === '…' ? 'span' : 'a'}
