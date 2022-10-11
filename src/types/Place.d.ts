@@ -1,5 +1,5 @@
-import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
-import type { InstitutionEssence } from '$lib/utils/types/Institution';
+import type { LanguageValue } from '$types/common/LanguageValue';
+import type { InstitutionEssence } from '$types/Institution';
 
 export type PlaceRaw = {
 	city: LanguageValue[];

@@ -1,5 +1,5 @@
 import { getJsonData } from '$lib/utils/api/communication';
-import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
+import type { AugmentedDetails } from '$types/Beverage/AugmentedDetails';
 
 // export const prerender = true;
 

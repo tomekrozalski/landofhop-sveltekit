@@ -1,4 +1,4 @@
-import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
+import type { LanguageValue } from '$types/common/LanguageValue';
 import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
 
 export type IngredientRaw = {

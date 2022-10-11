@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { translations, translate } from 'svelte-intl';
-	import dictionary from '$lib/utils/dictionary/lists/styleGroup.json';
+	import { translate } from 'svelte-intl';
 	import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
 	import SelectWrapper from './SelectWrapper.svelte';
 
@@ -9,8 +8,6 @@
 	export let updateField: (fieldName: string, value: any) => void;
 	export let validateField: (fieldName: string) => void;
 	export let value: string;
-
-	translations.update(dictionary);
 
 	const items = Object.values(StyleGroup).map((value) => ({
 		label: $translate(`styleGroup.${value}`),

@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
+import type { RawIngredientWithoutId } from '$types/api/RawIngredient';
 import { ingredients } from '$db/mongo';
 
 export const GET: RequestHandler = async () => {

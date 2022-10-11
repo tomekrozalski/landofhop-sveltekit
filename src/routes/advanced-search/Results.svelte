@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 	import { postJsonData } from '$lib/utils/api/communication';
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import type { Basics } from '$types/Beverage/Basics';
 	import Spinner from '$lib/atoms/spinners/FullWidth.svelte';
 	import Total from '$lib/molecules/pagination/elements/Total.svelte';
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';

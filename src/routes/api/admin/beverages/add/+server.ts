@@ -2,12 +2,9 @@ import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { formatBasics, formatBeverage, generateShortId } from '$lib/utils/api';
-import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
-import type { NewBeverageRequest } from '$lib/utils/types/api/requests/Beverage';
-import type {
-	RawBeverage,
-	RawBeverageWithoutId
-} from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
+import type { RawBasics, RawBasicsWithoutId } from '$types/api/RawBasics.d';
+import type { NewBeverageRequest } from '$types/api/requests/Beverage';
+import type { RawBeverage, RawBeverageWithoutId } from '$types/api/RawBeverage/RawBeverage.d';
 import authentication from '$lib/utils/stores/authentication';
 import { basics, beverages } from '$db/mongo';
 

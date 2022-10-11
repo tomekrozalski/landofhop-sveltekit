@@ -1,19 +1,17 @@
 import { isBoolean, isEmpty, isNumber } from 'lodash-es';
 import { format } from 'date-fns';
-
 import { deleteIfEmpty, translate } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
-import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
-import type { Details } from '$lib/utils/types/Beverage/Details';
-import type { RawInstitution } from '$lib/utils/types/api/RawBeverage/RawInstitution';
-import type { Institution } from '$lib/utils/types/Beverage/fragments/Institution';
+import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
+import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
+import type { Details } from '$types/Beverage/Details';
+import type { RawInstitution } from '$types/api/RawBeverage/RawInstitution';
+import type { Institution } from '$types/Beverage/fragments/Institution';
+import countryList from './countryList';
 
-function detailsNormalizer(
-	beverage: RawBeverage,
-	desiredLanguage: AppLanguage,
-	countryList: { [value: string]: string }
-): Details {
+function detailsNormalizer(beverage: RawBeverage, desiredLanguage: AppLanguage): Details {
+	const countries = desiredLanguage === AppLanguage.pl ? countryList.pl : countryList.en;
+
 	function formatIntitution({ badge, name, shortId, owner }: RawInstitution): Institution {
 		return {
 			badge,
@@ -78,19 +76,19 @@ function detailsNormalizer(
 			...(beverage.label.general.place?.city && {
 				label: {
 					city: translate(beverage.label.general.place.city, desiredLanguage),
-					country: countryList[beverage.label.general.place.country]
+					country: countries[beverage.label.general.place.country]
 				}
 			}),
 			...(beverage.producer?.general?.place?.city && {
 				producer: {
 					city: translate(beverage.producer.general.place.city, desiredLanguage),
-					country: countryList[beverage.producer.general.place.country]
+					country: countries[beverage.producer.general.place.country]
 				}
 			}),
 			...(beverage.editorial?.general?.place?.city && {
 				editorial: {
 					city: translate(beverage.editorial.general.place.city, desiredLanguage),
-					country: countryList[beverage.editorial.general.place.country]
+					country: countries[beverage.editorial.general.place.country]
 				}
 			})
 		},

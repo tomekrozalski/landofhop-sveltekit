@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { AddTimelineBar } from '$lib/utils/types/stats/General';
+	import type { AddTimelineBar } from '$types/stats/General';
 
 	export let addTimelineData: AddTimelineBar[];
 	export let selectedLine: 'bottles' | 'cans' | 'total' | null;

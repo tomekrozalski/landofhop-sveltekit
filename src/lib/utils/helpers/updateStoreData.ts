@@ -6,10 +6,10 @@ import {
 	placeStore,
 	styleStore
 } from '$lib/utils/stores/selects';
-import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
-import type { Institution as InstitutionType } from '$lib/utils/types/Institution';
-import type { Place as PlaceType } from '$lib/utils/types/Place';
-import type { Style as StyleType } from '$lib/utils/types/Style';
+import type { Ingredient as IngredientType } from '$types/Ingredient';
+import type { Institution as InstitutionType } from '$types/Institution';
+import type { Place as PlaceType } from '$types/Place';
+import type { Style as StyleType } from '$types/Style';
 
 async function updateIngredientList() {
 	if (get(ingredientsStore).length === 0) {

@@ -1,9 +1,9 @@
 import { cleanDeep } from '$lib/utils/api';
-import type { NewBeverageRequest } from '$lib/utils/types/api/requests/Beverage';
-import type { RawCommonBasicsBeverage } from '$lib/utils/types/api/RawBasics.d';
-import type { RawBeverageWithoutId } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
-import type { RawEditorialPhotos } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
-import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
+import type { NewBeverageRequest } from '$types/api/requests/Beverage';
+import type { RawCommonBasicsBeverage } from '$types/api/RawBasics.d';
+import type { RawBeverageWithoutId } from '$types/api/RawBeverage/RawBeverage.d';
+import type { RawEditorialPhotos } from '$types/api/RawBeverage/RawEditorial.d';
+import type { RawRatings } from '$types/api/RawBeverage/RawEditorial.d';
 
 function formatBeverage(
 	{ editorial, label, producer }: NewBeverageRequest,

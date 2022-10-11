@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import type { Basics } from '$types/Beverage/Basics';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export let beverage: Basics;

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { draw } from 'svelte/transition';
 	import { curveCardinal, line } from 'd3-shape';
-	import type { TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
+	import type { TopBrandsTimelineBar } from '$types/stats/General';
 	import sortData from './utils/sortData';
 
 	export let selectedBrand: string | null;

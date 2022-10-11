@@ -1,4 +1,4 @@
-import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
+import type { LanguageValue } from '$types/common/LanguageValue';
 import { AlcoholScope, Clarity, Fermentation } from '$lib/utils/enums/Beverage.enum';
 import { RawAged } from './RawAged';
 import { RawIngredientTag } from './RawIngredientTag';

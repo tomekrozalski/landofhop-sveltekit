@@ -2,17 +2,15 @@ import { format } from 'date-fns';
 
 import { AgedTimeUnit } from '$lib/utils/enums/Beverage.enum';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
-import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
-import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
-import type { RawPrice } from '$lib/utils/types/api/RawBeverage/RawPrice';
-import type { RawTale } from '$lib/utils/types/api/RawBeverage/RawTale';
+import type { LanguageValue } from '$types/common/LanguageValue';
+import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
+import type { RawPrice } from '$types/api/RawBeverage/RawPrice';
+import type { RawTale } from '$types/api/RawBeverage/RawTale';
 import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormValues';
 import type { ProducerFormValues } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
 import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
 
-function adminDetailsNormalizer(
-	beverage: RawBeverage
-): {
+function adminDetailsNormalizer(beverage: RawBeverage): {
 	label: LabelFormValues;
 	producer: ProducerFormValues;
 	editorial: EditorialFormValues;
@@ -24,12 +22,7 @@ function adminDetailsNormalizer(
 		};
 	}
 
-	function normalizePrice({
-		currency,
-		date,
-		shop,
-		value
-	}: RawPrice): {
+	function normalizePrice({ currency, date, shop, value }: RawPrice): {
 		currency: string;
 		date: string;
 		shop: string | null;

@@ -1,9 +1,9 @@
-import type { NewBeverageRequest } from '$lib/utils/types/api/requests/Beverage';
+import type { NewBeverageRequest } from '$types/api/requests/Beverage';
 import type {
 	RawCommonBasicsBeverage,
 	RawBasicsCoverImage,
 	RawBasicsWithoutId
-} from '$lib/utils/types/api/RawBasics.d';
+} from '$types/api/RawBasics.d';
 
 function formatBasics(
 	{ label }: NewBeverageRequest,

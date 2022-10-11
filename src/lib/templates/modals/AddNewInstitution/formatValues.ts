@@ -1,4 +1,4 @@
-import type { InstitutionRaw } from '$lib/utils/types/Institution';
+import type { InstitutionRaw } from '$types/Institution';
 import {
 	formatInstitutionByShortId,
 	formatLanguageValueArray

@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import { formatBeverageToBasics } from '$lib/utils/api';
-import type { Basics } from '$lib/utils/types/Beverage/Basics';
+import type { Basics } from '$types/Beverage/Basics';
 import { beverages, ingredients } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {

@@ -1,11 +1,11 @@
 import { MongoClient } from 'mongodb';
 import { MONGODB_URL } from '$env/static/private';
-import type { RawBasics } from '$lib/utils/types/api/RawBasics';
-import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage';
-import type { RawIngredient } from '$lib/utils/types/api/RawIngredient';
-import type { RawInstitution } from '$lib/utils/types/api/RawInstitution';
-import type { RawPlace } from '$lib/utils/types/api/RawPlace';
-import type { RawStyles } from '$lib/utils/types/api/RawStyles';
+import type { RawBasics } from '$types/api/RawBasics';
+import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage';
+import type { RawIngredient } from '$types/api/RawIngredient';
+import type { RawInstitution } from '$types/api/RawInstitution';
+import type { RawPlace } from '$types/api/RawPlace';
+import type { RawStyles } from '$types/api/RawStyles';
 
 const client = new MongoClient(MONGODB_URL);
 

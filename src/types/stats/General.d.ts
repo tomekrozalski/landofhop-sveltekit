@@ -1,6 +1,6 @@
-import LanguageValue from '$lib/utils/types/common/LanguageValue';
+import LanguageValue from '$types/common/LanguageValue';
 import { Fermentation } from '$lib/utils/enums/Beverage';
-import type { IngredientTree } from '$lib/utils/types/Ingredient';
+import type { IngredientTree } from '$types/Ingredient';
 
 export type AddTimelineBar = {
 	date: string;

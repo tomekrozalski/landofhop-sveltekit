@@ -4,7 +4,7 @@
 	import { styleStore } from '$lib/utils/stores/selects';
 	import { updateStyleList } from '$lib/utils/helpers/updateStoreData';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-	import type { Select as SelectType } from '$lib/utils/types/common/Select.d';
+	import type { Select as SelectType } from '$types/common/Select.d';
 	import Loading from './elements/Loading.svelte';
 	import SelectWrapper from './SelectWrapper.svelte';
 

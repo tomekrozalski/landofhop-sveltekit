@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import { deleteJsonData, postFormData } from '$lib/utils/api/communication';
-	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
+	import type { PhotosDataWithContainerType as PhotosDataTypes } from '$types/Beverage/PhotosData';
 	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
 	import Dropzone from './elements/Dropzone/Dropzone.svelte';
 	import ContentWrapper from './elements/ContentWrapper.svelte';

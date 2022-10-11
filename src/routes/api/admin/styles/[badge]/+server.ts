@@ -3,8 +3,8 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import authentication from '$lib/utils/stores/authentication';
 import { beverages, styles } from '$db/mongo';
-import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles.d';
-import type { RawIngredientTag } from '$lib/utils/types/api/RawBeverage/RawIngredientTag.d';
+import type { RawStylesWithoutId } from '$types/api/RawStyles.d';
+import type { RawIngredientTag } from '$types/api/RawBeverage/RawIngredientTag.d';
 
 export const PUT: RequestHandler = async ({ params, request }) => {
 	const badge = params.badge ?? '';

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import type { LinkData } from '$lib/utils/types/Beverage/LinkData';
+	import type { Details } from '$types/Beverage/Details';
+	import type { LinkData } from '$types/Beverage/LinkData';
 	import authentication from '$lib/utils/stores/authentication';
 	import Navigation from './Navigation.svelte';
 	import Gallery from './Gallery/Gallery.svelte';

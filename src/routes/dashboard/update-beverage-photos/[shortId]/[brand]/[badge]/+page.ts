@@ -1,5 +1,5 @@
 import { getJsonData } from '$lib/utils/api/communication';
-import type { PhotosDataWithContainerType as PhotosDataTypes } from '$lib/utils/types/Beverage/PhotosData';
+import type { PhotosDataWithContainerType as PhotosDataTypes } from '$types/Beverage/PhotosData';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch, params }) => {

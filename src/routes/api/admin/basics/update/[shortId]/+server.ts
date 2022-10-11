@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import type { RawBasics, RawBasicsWithoutId } from '$lib/utils/types/api/RawBasics.d';
+import type { RawBasics, RawBasicsWithoutId } from '$types/api/RawBasics.d';
 import { formatBasics } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
 import { basics } from '$db/mongo';

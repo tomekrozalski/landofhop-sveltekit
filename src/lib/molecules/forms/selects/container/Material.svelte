@@ -5,7 +5,7 @@
 		ContainerMaterialCan,
 		ContainerType
 	} from '$lib/utils/enums/Beverage.enum';
-	import type { Select as SelectType } from '$lib/utils/types/common/Select.d';
+	import type { Select as SelectType } from '$types/common/Select.d';
 	import SelectWrapper from '../SelectWrapper.svelte';
 
 	export let errors: string | string[];

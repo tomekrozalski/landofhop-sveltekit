@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { invalidate } from '$app/navigation';
-	import type { Details } from '$lib/utils/types/Beverage/Details';
-	import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
+	import type { Details } from '$types/Beverage/Details';
+	import type { AdminNotes } from '$types/Beverage/AdminNotes.d';
 	import { postJsonData } from '$lib/utils/api/communication';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 

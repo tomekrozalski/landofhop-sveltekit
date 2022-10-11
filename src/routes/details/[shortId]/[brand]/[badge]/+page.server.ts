@@ -1,11 +1,10 @@
 import { error } from '@sveltejs/kit';
 import { basics, beverages } from '$db/mongo';
-import countryList from '$lib/utils/api/countryList';
 import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-import type { LinkData } from '$lib/utils/types/Beverage/LinkData.d';
-import type { Details } from '$lib/utils/types/Beverage/Details';
-import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
+import type { LinkData } from '$types/Beverage/LinkData.d';
+import type { Details } from '$types/Beverage/Details';
+import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
 import detailsNormalizer from './utils/detailsNormalizer';
 import type { PageServerLoad } from './$types';
 
@@ -19,11 +18,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404);
 	}
 
-	const formattedDetails: Details = detailsNormalizer(
-		beverage,
-		language,
-		language === AppLanguage.pl ? countryList.pl : countryList.en
-	);
+	const formattedDetails: Details = detailsNormalizer(beverage, language);
 
 	const previousBasics: LinkData[] = [];
 	const nextBasics: LinkData[] = [];

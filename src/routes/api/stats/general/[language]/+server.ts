@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { beverages } from '$db/mongo';
 import { deleteIfEmpty, translate } from '$lib/utils/api';
 import { normalizer } from '$lib/utils/api/stats/general/normalizer';
-import type { RawGeneralStats } from '$lib/utils/types/api/RawStats/RawGeneralStats.d';
+import type { RawGeneralStats } from '$types/api/RawStats/RawGeneralStats.d';
 
 export const GET: RequestHandler = async ({ params }) => {
 	const { language } = params;

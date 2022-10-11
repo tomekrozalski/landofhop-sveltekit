@@ -1,5 +1,5 @@
 import { getJsonData } from '$lib/utils/api/communication';
-import type { GeneralStats as GeneralStatsTypes } from '$lib/utils/types/stats/General';
+import type { GeneralStats as GeneralStatsTypes } from '$types/stats/General';
 import type { PageLoad } from './$types';
 
 export const prerender = true;

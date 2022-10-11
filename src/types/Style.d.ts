@@ -1,4 +1,4 @@
-import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
+import type { LanguageValue } from '$types/common/LanguageValue';
 
 export type Style = {
 	badge: string;

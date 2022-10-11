@@ -6,7 +6,7 @@
 	import { ingredientsStore } from '$lib/utils/stores/selects';
 	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
-	import type { Select as SelectType } from '$lib/utils/types/common/Select.d';
+	import type { Select as SelectType } from '$types/common/Select.d';
 	import Loading from './elements/Loading.svelte';
 	import SelectWrapper from './SelectWrapper.svelte';
 

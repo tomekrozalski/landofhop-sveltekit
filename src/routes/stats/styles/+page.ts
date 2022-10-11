@@ -1,8 +1,8 @@
 import { get } from 'svelte/store';
 import { getJsonData } from '$lib/utils/api/communication';
 import authentication from '$lib/utils/stores/authentication';
-import type { Style as StyleType } from '$lib/utils/types/Style';
-import type { StylesStats as StylesStatsTypes } from '$lib/utils/types/stats/Styles';
+import type { Style as StyleType } from '$types/Style';
+import type { StylesStats as StylesStatsTypes } from '$types/stats/Styles';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch }) => {

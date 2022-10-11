@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
+import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
 import { adminDetailsNormalizer } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
 import type { LabelFormValues } from '../../../../../dashboard/Beverage/Label/LabelFormValues';

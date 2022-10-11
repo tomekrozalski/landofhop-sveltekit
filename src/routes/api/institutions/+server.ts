@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { institutions } from '$db/mongo';
-import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
+import type { RawInstitutionWithoutId } from '$types/api/RawInstitution';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async () => {

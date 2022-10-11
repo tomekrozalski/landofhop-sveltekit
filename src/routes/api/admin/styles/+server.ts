@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles';
+import type { RawStylesWithoutId } from '$types/api/RawStyles';
 import authentication from '$lib/utils/stores/authentication';
 import { styles } from '$db/mongo';
 

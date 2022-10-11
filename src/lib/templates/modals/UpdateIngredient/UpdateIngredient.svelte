@@ -10,7 +10,7 @@
 	import ParentIngredient from '$lib/molecules/forms/fields/ParentIngredient.svelte';
 	import ModalGrid from '../ModalGrid.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
-	import type { Ingredient } from '$lib/utils/types/Ingredient';
+	import type { Ingredient } from '$types/Ingredient';
 	import { getValidationSchema } from './validationSchema';
 	import { onSubmit } from './onSubmit';
 

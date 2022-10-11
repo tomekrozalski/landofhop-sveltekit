@@ -1,4 +1,4 @@
-import type { Style } from '$lib/utils/types/Style';
+import type { Style } from '$types/Style';
 import { formatLanguageValueArray } from '$lib/utils/helpers/dataNormalizers';
 
 type Input = {

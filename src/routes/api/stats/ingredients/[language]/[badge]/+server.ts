@@ -4,8 +4,8 @@ import { set } from 'lodash-es';
 import { ingredients } from '$db/mongo';
 import { translate } from '$lib/utils/api';
 import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { IngredientTree } from '$lib/utils/types/Ingredient';
-import type { IngredientsStatsNavigation } from '$lib/utils/types/stats/General';
+import type { IngredientTree } from '$types/Ingredient';
+import type { IngredientsStatsNavigation } from '$types/stats/General';
 
 export const GET: RequestHandler = async ({ params }) => {
 	const language = params.language ?? AppLanguage.en;

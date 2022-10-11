@@ -1,7 +1,7 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { institutionNormalizer } from '$lib/utils/api';
-import type { RawInstitution } from '$lib/utils/types/api/RawInstitution.d';
+import type { RawInstitution } from '$types/api/RawInstitution.d';
 import { institutions } from '$db/mongo';
 
 export const GET: RequestHandler = async ({ params }) => {

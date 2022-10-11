@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { styles } from '$db/mongo';
-import type { RawStylesWithoutId } from '$lib/utils/types/api/RawStyles';
+import type { RawStylesWithoutId } from '$types/api/RawStyles';
 
 export const GET: RequestHandler = async () => {
 	const data: RawStylesWithoutId[] = await styles

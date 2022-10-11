@@ -2,7 +2,6 @@ import adminDetailsNormalizer from './beverages/adminDetailsNormalizer';
 import formatBeverage from './beverages/format';
 import authenticate from './authenticate';
 import cleanDeep from './cleanDeep';
-import countryList from './countryList';
 import createSession from './sessions/create';
 import { generateTokens, removeTokens } from './sessions/tokens';
 import deleteIfEmpty from './deleteIfEmpty';
@@ -27,7 +26,6 @@ export {
 	adminDetailsNormalizer,
 	authenticate,
 	cleanDeep,
-	countryList,
 	createSession,
 	deleteIfEmpty,
 	formatBasics,

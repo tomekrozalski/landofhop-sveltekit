@@ -4,8 +4,8 @@ import { format } from 'date-fns';
 
 import { beverages } from '$db/mongo';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
-import type { RawRatings } from '$lib/utils/types/api/RawBeverage/RawEditorial.d';
-import type { AdminNotes } from '$lib/utils/types/Beverage/AdminNotes.d';
+import type { RawRatings } from '$types/api/RawBeverage/RawEditorial.d';
+import type { AdminNotes } from '$types/Beverage/AdminNotes.d';
 import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import { authenticate } from '$lib/utils/api';
 

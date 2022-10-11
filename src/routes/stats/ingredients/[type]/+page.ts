@@ -1,8 +1,8 @@
 import { get } from 'svelte/store';
 import { getJsonData } from '$lib/utils/api/communication';
 import authentication from '$lib/utils/stores/authentication';
-import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
-import type { Ingredient as IngredientType } from '$lib/utils/types/Ingredient';
+import type { IngredientsStats as IngredientsStatsTypes } from '$types/stats/General';
+import type { Ingredient as IngredientType } from '$types/Ingredient';
 import type { PageLoad } from './$types';
 
 // export const prerender = true;

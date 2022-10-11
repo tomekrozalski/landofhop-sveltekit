@@ -2,8 +2,8 @@ import { format } from 'date-fns';
 import { translate } from '$lib/utils/api';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
 import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { RawBeverage } from '$lib/utils/types/api/RawBeverage/RawBeverage.d';
-import type { Basics } from '$lib/utils/types/Beverage/Basics';
+import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
+import type { Basics } from '$types/Beverage/Basics';
 
 function formatBeverageToBasics(results: Basics[], language: AppLanguage) {
 	return function ({ added, badge, editorial, label, shortId }: RawBeverage) {

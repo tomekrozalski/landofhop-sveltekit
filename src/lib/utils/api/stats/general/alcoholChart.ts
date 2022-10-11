@@ -1,7 +1,7 @@
 import { isNumber, round } from 'lodash-es';
 
-import type { AlcoholChartBar } from '$lib/utils/types/stats/General';
-import type { RawGeneralStats } from '$lib/utils/types/api/RawStats/RawGeneralStats';
+import type { AlcoholChartBar } from '$types/stats/General';
+import type { RawGeneralStats } from '$types/api/RawStats/RawGeneralStats';
 
 export function alcoholChart(values: RawGeneralStats[]): AlcoholChartBar[] {
 	const alcoholValues = values

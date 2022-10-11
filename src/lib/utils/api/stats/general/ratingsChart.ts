@@ -1,7 +1,7 @@
 import { isNumber, round } from 'lodash-es';
 
-import type { RatingsChartBar } from '$lib/utils/types/stats/General';
-import type { RawGeneralStats } from '$lib/utils/types/api/RawStats/RawGeneralStats';
+import type { RatingsChartBar } from '$types/stats/General';
+import type { RawGeneralStats } from '$types/api/RawStats/RawGeneralStats';
 
 export function ratingsChart(values: RawGeneralStats[]): RatingsChartBar[] {
 	const domain: RatingsChartBar[] = [];

@@ -4,7 +4,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { formatBeverageToBasics } from '$lib/utils/api';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { Basics } from '$lib/utils/types/Beverage/Basics';
+import type { Basics } from '$types/Beverage/Basics';
 import { beverages } from '$db/mongo';
 
 export const GET: RequestHandler = async ({ params }) => {

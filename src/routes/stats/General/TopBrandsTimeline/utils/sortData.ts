@@ -1,4 +1,4 @@
-import type { Brand, TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
+import type { Brand, TopBrandsTimelineBar } from '$types/stats/General';
 
 function checkTrend(
 	months: TopBrandsTimelineBar[],

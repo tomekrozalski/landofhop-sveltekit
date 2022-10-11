@@ -3,7 +3,7 @@
 		'@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)'
 	);
 
-	// import type { AugmentedDetails } from '$lib/utils/types/Beverage/AugmentedDetails';
+	// import type { AugmentedDetails } from '$types/Beverage/AugmentedDetails';
 
 	// // export const prerender = true;
 

@@ -3,7 +3,7 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { recalculateIngredientsOccurrences } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
-import type { RawIngredientWithoutId } from '$lib/utils/types/api/RawIngredient';
+import type { RawIngredientWithoutId } from '$types/api/RawIngredient';
 import { beverages, ingredients } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {

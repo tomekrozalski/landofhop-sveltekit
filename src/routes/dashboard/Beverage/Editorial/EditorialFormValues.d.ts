@@ -1,6 +1,6 @@
-import type { Institution } from '$lib/utils/types/Beverage/fragments/Institution';
-import type { Price } from '$lib/utils/types/Beverage/fragments/Price';
-import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
+import type { Institution } from '$types/Beverage/fragments/Institution';
+import type { Price } from '$types/Beverage/fragments/Price';
+import type { LanguageValue } from '$types/common/LanguageValue';
 import {
 	AgedPreviousContent,
 	AgedTimeUnit,

@@ -7,7 +7,7 @@
 	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { Confetti } from 'svelte-confetti';
-	import type { Details } from '$lib/utils/types/Beverage/Details';
+	import type { Details } from '$types/Beverage/Details';
 	import RatingDetails from './RatingDetails.svelte';
 	import Stars from './Stars.svelte';
 

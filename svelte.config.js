@@ -12,7 +12,7 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			$db: './src/db',
-			$routes: './src/routes'
+			$types: './src/types'
 		}
 	}
 };

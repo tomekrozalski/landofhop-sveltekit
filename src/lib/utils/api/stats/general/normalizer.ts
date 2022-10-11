@@ -1,5 +1,5 @@
 import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { RawGeneralStats } from '$lib/utils/types/api/RawStats/RawGeneralStats';
+import type { RawGeneralStats } from '$types/api/RawStats/RawGeneralStats';
 import type {
 	AddTimelineBar,
 	AlcoholChartBar,
@@ -7,7 +7,7 @@ import type {
 	GeneralStats,
 	RatingsChartBar,
 	TopBrandsTimelineBar
-} from '$lib/utils/types/stats/General';
+} from '$types/stats/General';
 import { addTimeline } from './addTimeline';
 import { alcoholChart } from './alcoholChart';
 import { ratingsChart } from './ratingsChart';

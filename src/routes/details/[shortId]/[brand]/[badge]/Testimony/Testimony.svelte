@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Details } from '$lib/utils/types/Beverage/Details';
+	import type { Details } from '$types/Beverage/Details';
 	import Barcode from './Barcode.svelte';
 	import City from './City.svelte';
 	import Country from './Country.svelte';

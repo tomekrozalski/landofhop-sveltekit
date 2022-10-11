@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Details } from '$lib/utils/types/Beverage/Details';
+	import type { Details } from '$types/Beverage/Details';
 	import Group from './Group.svelte';
 	import RotableIcon from './RotableIcon.svelte';
 	import RotableSpinner from './RotableSpinner.svelte';

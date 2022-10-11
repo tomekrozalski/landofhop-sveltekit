@@ -1,4 +1,4 @@
-import type { PlaceRaw } from '$lib/utils/types/Place';
+import type { PlaceRaw } from '$types/Place';
 import {
 	formatInstitutionByShortId,
 	formatLanguageValueArray

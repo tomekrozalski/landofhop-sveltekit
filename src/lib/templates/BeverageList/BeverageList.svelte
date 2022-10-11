@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translations } from 'svelte-intl';
-	import type { Basics } from '$lib/utils/types/Beverage/Basics';
+	import type { Basics } from '$types/Beverage/Basics';
 	import CoverImageWrapper from './CoverImageWrapper.svelte';
 	import BrokenCoverImage from './BrokenCoverImage.svelte';
 	import dictionary from './dictionary.json';

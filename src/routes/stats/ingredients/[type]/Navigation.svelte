@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { IngredientsStats as IngredientsStatsTypes } from '$lib/utils/types/stats/General';
+	import type { IngredientsStats as IngredientsStatsTypes } from '$types/stats/General';
 
 	export let data: IngredientsStatsTypes;
 </script>

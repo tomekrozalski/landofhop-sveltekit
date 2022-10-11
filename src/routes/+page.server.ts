@@ -4,8 +4,8 @@ import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import { translate } from '$lib/utils/api';
 import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
-import type { RawBasics } from '$lib/utils/types/api/RawBasics';
-import type { Basics } from '$lib/utils/types/Beverage/Basics';
+import type { RawBasics } from '$types/api/RawBasics';
+import type { Basics } from '$types/Beverage/Basics';
 import type { PageServerLoad } from './$types';
 
 export const prerender = true;

@@ -1,4 +1,4 @@
-import type { IngredientRaw } from '$lib/utils/types/Ingredient';
+import type { IngredientRaw } from '$types/Ingredient';
 import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
 import { formatLanguageValueArray } from '$lib/utils/helpers/dataNormalizers';
 

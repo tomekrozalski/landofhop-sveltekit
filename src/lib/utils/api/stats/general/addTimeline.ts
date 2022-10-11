@@ -1,8 +1,8 @@
 import { add, format, isBefore, max, min } from 'date-fns';
 
 import { ContainerType } from '$lib/utils/enums/Beverage.enum';
-import type { AddTimelineBar } from '$lib/utils/types/stats/General';
-import type { RawGeneralStats } from '$lib/utils/types/api/RawStats/RawGeneralStats';
+import type { AddTimelineBar } from '$types/stats/General';
+import type { RawGeneralStats } from '$types/api/RawStats/RawGeneralStats';
 
 export function addTimeline(values: RawGeneralStats[]): AddTimelineBar[] {
 	const domain: AddTimelineBar[] = [];

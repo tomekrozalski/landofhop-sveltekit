@@ -2,7 +2,7 @@ import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { generateShortId } from '$lib/utils/api';
-import type { RawInstitutionWithoutId } from '$lib/utils/types/api/RawInstitution';
+import type { RawInstitutionWithoutId } from '$types/api/RawInstitution';
 import authentication from '$lib/utils/stores/authentication';
 import { institutions } from '$db/mongo';
 

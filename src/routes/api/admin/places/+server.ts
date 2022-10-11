@@ -2,7 +2,7 @@ import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { generateShortId } from '$lib/utils/api';
-import type { RawPlaceWithoutId } from '$lib/utils/types/api/RawPlace';
+import type { RawPlaceWithoutId } from '$types/api/RawPlace';
 import authentication from '$lib/utils/stores/authentication';
 import { places } from '$db/mongo';
 

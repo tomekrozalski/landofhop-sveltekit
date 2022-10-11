@@ -1,8 +1,8 @@
 import { add, format, isBefore, max, min } from 'date-fns';
 
-import type { LanguageValue } from '$lib/utils/types/common/LanguageValue';
-import type { Brand, TopBrandsTimelineBar } from '$lib/utils/types/stats/General';
-import type { RawGeneralStats } from '$lib/utils/types/api/RawStats/RawGeneralStats';
+import type { LanguageValue } from '$types/common/LanguageValue';
+import type { Brand, TopBrandsTimelineBar } from '$types/stats/General';
+import type { RawGeneralStats } from '$types/api/RawStats/RawGeneralStats';
 
 export function getTopBrands(values: RawGeneralStats[], skip = 0, limit = 10): Brand[] {
 	type AccType = {
