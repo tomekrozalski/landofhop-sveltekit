@@ -8,6 +8,8 @@
 
 	translations.update(dictionary);
 
+	export const prerender = true;
+
 	export let data: PageData;
 </script>
 

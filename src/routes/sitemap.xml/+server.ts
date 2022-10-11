@@ -7,7 +7,7 @@ export const GET: RequestHandler = async function ({ setHeaders }) {
 	// -----------------------------------
 	// Beverage lists pages
 
-	const total: number = await basics.count();
+	const total: number = await basics.countDocuments();
 	const pagesCount = Math.ceil(total / BEVERAGES_ON_PAGE);
 	const beverageListArray = new Array(pagesCount)
 		.fill('')

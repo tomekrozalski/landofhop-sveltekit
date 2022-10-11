@@ -6,7 +6,6 @@ import countryList from './countryList';
 import createSession from './sessions/create';
 import { generateTokens, removeTokens } from './sessions/tokens';
 import deleteIfEmpty from './deleteIfEmpty';
-import detailsNormalizer from './beverages/detailsNormalizer';
 import formatBasics from './basics/format';
 import formatBeverageToBasics from './formatBeverageToBasics';
 import generateShortId from './generateShortId';
@@ -31,7 +30,6 @@ export {
 	countryList,
 	createSession,
 	deleteIfEmpty,
-	detailsNormalizer,
 	formatBasics,
 	formatBeverage,
 	formatBeverageToBasics,
