@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
+	import { StyleGroup } from 'src/oldTypes/enums/StyleGroup.enum';
 	import { styleStore } from '$lib/utils/stores/selects';
-	import type { Style } from '$types/Style';
+	import type { Style } from 'src/oldTypes/Style';
 	import UpdateStyle from '$lib/templates/modals/UpdateStyle/UpdateStyle.svelte';
-	import type { StylesStats as StylesStatsTypes } from '$types/stats/Styles';
+	import type { StylesStats as StylesStatsTypes } from 'src/oldTypes/stats/Styles';
 	import Item from './Item.svelte';
 
 	export let data: StylesStatsTypes[];

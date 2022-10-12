@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Basics } from '$types/Beverage/Basics';
-	import { PHOTO_SERVER } from '$lib/utils/constants';
+	import { PHOTO_SERVER } from '$constants';
 	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
 	import CoverImage from './CoverImage.svelte';
+	import type { Beverage } from './Beverage.d';
 
-	export let beverage: Basics;
+	export let beverage: Beverage;
 	export let eager: boolean;
 	const { badge, brand, name, coverImage, shortId } = beverage;
 

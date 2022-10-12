@@ -1,8 +1,8 @@
 {
 	"en": {
-		"brand.title": "🏠 Brand page, {name}"
+		"brand.title": "🏭 Brand page, {name}"
 	},
 	"pl": {
-		"brand.title": "🏠 Strona marki, {name}"
+		"brand.title": "🏭 Strona marki, {name}"
 	}
 }

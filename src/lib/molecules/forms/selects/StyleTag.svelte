@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import { APP_LANGUAGE } from '$constants';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
+	import { updateStyleList } from '$lib/molecules/forms/selects/updateStoreData';
 	import { styleStore } from '$lib/utils/stores/selects';
-	import { updateStyleList } from '$lib/utils/helpers/updateStoreData';
-	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-	import type { Select as SelectType } from '$types/common/Select.d';
+	import type { Select as SelectType } from './Select.d';
 	import Loading from './elements/Loading.svelte';
 	import SelectWrapper from './SelectWrapper.svelte';
 
@@ -21,7 +21,7 @@
 
 	$: items = $styleStore
 		.map(({ badge, name }) => ({
-			label: getFromArray(name, 'pl' as AppLanguage).value,
+			label: getFromArray(name, APP_LANGUAGE.PL).value,
 			value: badge
 		}))
 		.sort((a, b) => (a.label < b.label ? -1 : 1)) as SelectType[];

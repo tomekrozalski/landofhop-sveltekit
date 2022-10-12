@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
-	import type { Details } from '$types/Beverage/Details';
+	import type { Details } from 'src/oldTypes/Beverage/Details';
 	export let details: Details;
 	const { badge, brand, name, shortId } = details;
 

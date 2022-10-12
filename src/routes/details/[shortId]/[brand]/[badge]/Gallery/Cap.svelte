@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
-	import type { Details } from '$types/Beverage/Details';
+	import type { Details } from 'src/oldTypes/Beverage/Details';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export let details: Details;

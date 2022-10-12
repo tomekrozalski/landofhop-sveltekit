@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { translations } from 'svelte-intl';
-	import type { Basics } from '$types/Beverage/Basics';
 	import CoverImageWrapper from './CoverImageWrapper.svelte';
 	import BrokenCoverImage from './BrokenCoverImage.svelte';
 	import dictionary from './dictionary.json';
+	import type { Beverage } from './Beverage.d';
 
-	export let beverages: Basics[];
+	export let beverages: Beverage[];
 
 	translations.update(dictionary);
 </script>

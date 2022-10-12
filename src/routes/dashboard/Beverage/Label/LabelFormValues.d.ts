@@ -18,7 +18,7 @@ import {
 	ExtractUnit,
 	Fermentation,
 	IngredientType
-} from '$lib/utils/enums/Beverage.enum';
+} from '$types/enums/Beverage.enum';
 
 export type LabelFormValues = {
 	badge: string;

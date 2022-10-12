@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { Fermentation } from '$lib/utils/enums/Beverage.enum';
+	import { Fermentation } from '$types/enums/Beverage.enum';
 	import Label from '$lib/atoms/forms/Label.svelte';
 	import Conditional from '$lib/atoms/forms/Conditional.svelte';
 

@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { translate, translations } from 'svelte-intl';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
+	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
 	import dictionary from './dictionary.json';
 	import type { PageData } from './$types';
 
 	translations.update(dictionary);
 
 	export let data: PageData;
+
+	$: ({ name } = data.insitution);
 </script>
 
 <svelte:head>
@@ -15,6 +18,6 @@
 </svelte:head>
 
 <article>
-	<h1>{data.insitution.name.value}</h1>
+	<MarkLanguage tag="h1" {name} />
 	<div>{JSON.stringify(data, null, '\n')}</div>
 </article>

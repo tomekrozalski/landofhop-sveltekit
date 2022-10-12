@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { deleteJsonData } from '$lib/utils/api/communication';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
-	import type { Details } from '$types/Beverage/Details';
+	import type { Details } from 'src/oldTypes/Beverage/Details';
 
 	export let details: Details;
 	let confirmed = false;

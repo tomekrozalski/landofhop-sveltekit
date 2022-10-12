@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
-	import type { AlcoholChartBar } from '$types/stats/General';
+	import type { AlcoholChartBar } from 'src/oldTypes/stats/General';
 	import type { Sizes } from '../utils/Sizes';
 	import Xaxis from '../utils/chartBars/XAxis.svelte';
 	import Yaxis from '../utils/chartBars/YAxis.svelte';

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
-	import type { Details } from '$types/Beverage/Details';
+	import type { Details } from 'src/oldTypes/Beverage/Details';
 
 	export let details: Details;
 

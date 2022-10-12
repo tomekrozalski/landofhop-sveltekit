@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { IngredientType } from '$lib/utils/enums/Beverage.enum';
+	import { IngredientType } from '$types/enums/Beverage.enum';
 
 	export let isActive = false;
 	export let isFirst = false;

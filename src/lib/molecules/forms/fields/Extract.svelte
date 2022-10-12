@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { emptyExtract, getNullishObject } from '$lib/utils/helpers/emptyFieldValues';
-	import { ExtractRelate, ExtractUnit } from '$lib/utils/enums/Beverage.enum';
+	import { ExtractRelate, ExtractUnit } from '$types/enums/Beverage.enum';
 	import Conditional from '$lib/atoms/forms/Conditional.svelte';
 	import Label from '$lib/atoms/forms/Label.svelte';
 	import TextInput from '$lib/atoms/forms/TextInput.svelte';

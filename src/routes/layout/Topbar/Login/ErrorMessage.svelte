@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import authentication from '$lib/utils/stores/authentication';
-	import Status from '$lib/utils/enums/Status.enum';
+	import Status from '$types/enums/Status.enum';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import WarningIcon from '$lib/atoms/vectors/Warning.svelte';
 

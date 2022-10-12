@@ -1,5 +1,5 @@
 import type { LanguageValue } from '$types/common/LanguageValue';
-import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
+import type { IngredientType } from '$types/enums/Beverage.enum';
 
 export type IngredientRaw = {
 	badge: string;

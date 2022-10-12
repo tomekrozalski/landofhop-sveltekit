@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { StyleGroup } from '$lib/utils/enums/StyleGroup.enum';
 	import SelectWrapper from './SelectWrapper.svelte';
 
 	export let errors: string;
@@ -9,7 +8,14 @@
 	export let validateField: (fieldName: string) => void;
 	export let value: string;
 
-	const items = Object.values(StyleGroup).map((value) => ({
+	const items = [
+		'british-and-irish-ales',
+		'the-lager-family',
+		'continental-ales-weissbiers-and-ale-lager-hybrids',
+		'the-beers-of-belgium',
+		'craft-beer-in-america-and-beyond',
+		'a-sip-beyond'
+	].map((value) => ({
 		label: $translate(`styleGroup.${value}`),
 		value
 	}));

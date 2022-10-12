@@ -3,9 +3,9 @@ import {
 	ContainerMaterial,
 	ContainerType,
 	ContainerUnit
-} from '$lib/utils/enums/Beverage.enum';
+} from '$types/enums/Beverage.enum';
 
-export type RawContainer = {
+export type Container = {
 	color: ContainerColor;
 	material: ContainerMaterial;
 	unit: ContainerUnit;

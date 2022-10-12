@@ -8,7 +8,7 @@ import {
 	ExtractUnit,
 	HopRateUnit,
 	TemperatureUnit
-} from '$lib/utils/enums/Beverage.enum';
+} from '$types/enums/Beverage.enum';
 
 export const emptyLanguageValue = { language: '', value: '' };
 export const emptyTale = { article: '', language: '', lead: '' };

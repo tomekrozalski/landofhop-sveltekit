@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
-	import type { Style } from '$types/Style';
+	import type { Style } from 'src/oldTypes/Style';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
 	import Badge from '$lib/molecules/forms/fields/Badge.svelte';

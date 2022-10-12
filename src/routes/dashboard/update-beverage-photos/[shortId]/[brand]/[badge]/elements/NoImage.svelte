@@ -1,7 +1,7 @@
 <script>
 	import { translate } from 'svelte-intl';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import { ContainerType } from '$lib/utils/enums/Beverage.enum';
+	import { ContainerType } from '$types/enums/Beverage.enum';
 	import { beveragePhotosStore } from '../stores';
 </script>
 

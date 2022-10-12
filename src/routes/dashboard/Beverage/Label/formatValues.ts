@@ -13,7 +13,7 @@ import type {
 	ContainerMaterial,
 	ContainerType,
 	ContainerUnit
-} from '$lib/utils/enums/Beverage.enum';
+} from '$types/enums/Beverage.enum';
 import type { LabelFormValues, LabelFormOutput } from './LabelFormValues';
 
 export default function formatValues({

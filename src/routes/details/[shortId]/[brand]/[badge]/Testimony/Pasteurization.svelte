@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { isBoolean } from 'lodash-es';
-	import type { Details } from '$types/Beverage/Details';
+	import type { Details } from 'src/oldTypes/Beverage/Details';
 
 	export let details: Details;
 	const { pasteurization } = details;

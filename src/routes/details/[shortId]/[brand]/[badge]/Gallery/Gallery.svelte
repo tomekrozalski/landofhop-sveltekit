@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Details } from '$types/Beverage/Details';
+	import type { Details } from 'src/oldTypes/Beverage/Details';
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
 
 	import CoverImage from './CoverImage.svelte';

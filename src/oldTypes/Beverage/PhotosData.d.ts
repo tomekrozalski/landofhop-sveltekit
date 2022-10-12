@@ -1,4 +1,4 @@
-import type { ContainerType } from '$lib/utils/enums/Beverage.enum';
+import type { ContainerType } from '$types/enums/Beverage.enum';
 
 export type PhotosData = {
 	cap?: boolean;

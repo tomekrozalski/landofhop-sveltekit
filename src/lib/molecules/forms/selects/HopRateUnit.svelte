@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { HopRateUnit } from '$lib/utils/enums/Beverage.enum';
+	import { HopRateUnit } from '$types/enums/Beverage.enum';
 	import SelectWrapper from './SelectWrapper.svelte';
 
 	export let errors: string | string[];

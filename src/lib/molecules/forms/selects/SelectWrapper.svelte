@@ -2,9 +2,9 @@
 	import Select from 'svelte-select';
 	import { isEmpty } from 'lodash-es';
 	import Error from '$lib/atoms/forms/Error.svelte';
-	import type { Select as SelectType } from '$types/common/Select.d';
 	import Item from './elements/Item.svelte';
 	import MultiSelection from './elements/MultiSelection.svelte';
+	import type { Select as SelectType } from './Select.d';
 
 	export let errors: string | string[];
 	export let handleClear: () => void;

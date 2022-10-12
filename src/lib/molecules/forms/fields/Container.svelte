@@ -4,7 +4,7 @@
 		ContainerMaterialBottle,
 		ContainerMaterialCan,
 		ContainerType
-	} from '$lib/utils/enums/Beverage.enum';
+	} from '$types/enums/Beverage.enum';
 	import Label from '$lib/atoms/forms/Label.svelte';
 	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import ContainerTypeSelect from '../selects/container/Type.svelte';

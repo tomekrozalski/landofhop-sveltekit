@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import { APP_LANGUAGE } from '$constants';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
-	import { updatePlaceList } from '$lib/utils/helpers/updateStoreData';
+	import { updatePlaceList } from '$lib/molecules/forms/selects/updateStoreData';
 	import { placeStore } from '$lib/utils/stores/selects';
-	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 	import Loading from './elements/Loading.svelte';
 	import SelectWrapper from './SelectWrapper.svelte';
 
@@ -19,8 +19,8 @@
 
 	$: items = $placeStore
 		.map(({ city, institution, shortId }) => ({
-			label: `${getFromArray(city, 'pl' as AppLanguage).value} (${
-				getFromArray(institution.name, 'pl' as AppLanguage).value
+			label: `${getFromArray(city, APP_LANGUAGE.PL).value} (${
+				getFromArray(institution.name, APP_LANGUAGE.PL).value
 			})`,
 			value: shortId
 		}))

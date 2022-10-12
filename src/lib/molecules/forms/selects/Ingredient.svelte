@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { isArray, isString } from 'lodash-es';
+	import { APP_LANGUAGE } from '$constants';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
-	import { updateIngredientList } from '$lib/utils/helpers/updateStoreData';
+	import { updateIngredientList } from '$lib/molecules/forms/selects/updateStoreData';
 	import { ingredientsStore } from '$lib/utils/stores/selects';
-	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-	import type { IngredientType } from '$lib/utils/enums/Beverage.enum';
-	import type { Select as SelectType } from '$types/common/Select.d';
+	import type { IngredientType } from '$types/enums/Beverage.enum';
+	import type { Select as SelectType } from './Select.d';
 	import Loading from './elements/Loading.svelte';
 	import SelectWrapper from './SelectWrapper.svelte';
 
@@ -39,7 +39,7 @@
 		.filter(({ type }) => (filter ? type === filter : true))
 		.sort((a, b) => (a.occurrences.alone > b.occurrences.alone ? -1 : 1))
 		.map(({ badge, name, type }) => ({
-			label: getFromArray(name, 'pl' as AppLanguage).value,
+			label: getFromArray(name, APP_LANGUAGE.PL).value,
 			value: badge,
 			type
 		}));

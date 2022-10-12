@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { IngredientsStats as IngredientsStatsTypes } from '$types/stats/General';
+	import type { IngredientsStats as IngredientsStatsTypes } from 'src/oldTypes/stats/General';
 
 	import List from './List.svelte';
 	import ToggleBox from './ToggleBox.svelte';

@@ -1,32 +1,29 @@
 import { format } from 'date-fns';
 import { basics } from '$db/mongo';
-import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
+import { APP_LANGUAGE, BEVERAGES_ON_PAGE, DATE_FORMAT } from '$constants';
 import { translate } from '$lib/utils/api';
-import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
-import type { RawBasics } from '$types/api/RawBasics';
-import type { Basics } from '$types/Beverage/Basics';
+import type { Beverage } from '$lib/templates/BeverageList/Beverage.d';
 import type { PageServerLoad } from './$types';
 
 export const prerender = true;
 
 export const load: PageServerLoad = async () => {
 	const total: number = await basics.countDocuments();
-	const beverages: Basics[] = [];
+	const beverages: Beverage[] = [];
 
 	await basics
 		.find()
 		.sort({ added: -1 })
 		.limit(BEVERAGES_ON_PAGE)
-		.forEach(({ added, badge, brand, containerType, coverImage, name, shortId }: RawBasics) => {
+		.forEach(({ added, badge, brand, containerType, coverImage, name, shortId }) => {
 			beverages.push({
 				shortId,
 				badge,
 				brand: {
 					...brand,
-					name: translate(brand.name, AppLanguage.pl)
+					name: translate(brand.name, APP_LANGUAGE.PL)
 				},
-				name: translate(name, AppLanguage.pl),
+				name: translate(name, APP_LANGUAGE.PL),
 				...(coverImage && {
 					coverImage: {
 						height: coverImage.height,
@@ -35,7 +32,7 @@ export const load: PageServerLoad = async () => {
 					}
 				}),
 				containerType,
-				added: format(new Date(added), DateFormat[AppLanguage.pl])
+				added: format(new Date(added), DATE_FORMAT.PL)
 			});
 		});
 

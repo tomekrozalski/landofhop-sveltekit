@@ -10,7 +10,7 @@ import {
 	Clarity,
 	Fermentation,
 	IngredientType
-} from '$lib/utils/enums/Beverage.enum';
+} from '$types/enums/Beverage.enum';
 
 export type EditorialFormValues = {
 	series: {

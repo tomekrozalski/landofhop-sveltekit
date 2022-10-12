@@ -1,6 +1,6 @@
 import { add, format, isBefore, max, min } from 'date-fns';
 
-import { ContainerType } from '$lib/utils/enums/Beverage.enum';
+import { ContainerType } from '$types/enums/Beverage.enum';
 import type { AddTimelineBar } from '$types/stats/General';
 import type { RawGeneralStats } from '$types/api/RawStats/RawGeneralStats';
 

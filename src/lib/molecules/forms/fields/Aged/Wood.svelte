@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { AgedWood } from '$lib/utils/enums/Beverage.enum';
+	import { AgedWood } from '$types/enums/Beverage.enum';
 	import List from '../List.svelte';
 
 	export let i: number;

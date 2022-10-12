@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
+	import { BEVERAGES_ON_PAGE } from '$constants';
 
 	export let currentPage: number;
 	export let inline: boolean = false;

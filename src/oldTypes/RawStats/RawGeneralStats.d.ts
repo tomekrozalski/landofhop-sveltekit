@@ -7,7 +7,7 @@ import {
 	ExtractRelate,
 	ExtractUnit,
 	Fermentation
-} from '$lib/utils/enums/Beverage.enum';
+} from '$types/enums/Beverage.enum';
 
 export type RawGeneralStats = {
 	shortId: string;

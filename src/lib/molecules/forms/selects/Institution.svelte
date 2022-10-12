@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { isArray, isString } from 'lodash-es';
+	import { APP_LANGUAGE } from '$constants';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
-	import { updateInstitutionList } from '$lib/utils/helpers/updateStoreData';
+	import { updateInstitutionList } from '$lib/molecules/forms/selects/updateStoreData';
 	import { institutionStore } from '$lib/utils/stores/selects';
-	import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-	import type { Select as SelectType } from '$types/common/Select.d';
+	import type { Select as SelectType } from './Select.d';
 	import Loading from './elements/Loading.svelte';
 	import SelectWrapper from './SelectWrapper.svelte';
 
@@ -41,7 +41,7 @@
 	$: if (withUnknown) {
 		items = $institutionStore
 			.map(({ name, shortId }) => ({
-				label: getFromArray(name, 'pl' as AppLanguage).value,
+				label: getFromArray(name, APP_LANGUAGE.PL).value,
 				value: shortId,
 				group: 'brands'
 			}))
@@ -57,7 +57,7 @@
 	} else {
 		items = $institutionStore
 			.map(({ name, shortId }) => ({
-				label: getFromArray(name, 'pl' as AppLanguage).value,
+				label: getFromArray(name, APP_LANGUAGE.PL).value,
 				value: shortId
 			}))
 			.sort((a, b) => (a.label < b.label ? -1 : 1));

@@ -7,7 +7,7 @@ import {
 	AgedWood,
 	Clarity,
 	Fermentation
-} from '$lib/utils/enums/Beverage.enum';
+} from '$types/enums/Beverage.enum';
 import { isValidDate } from '../../utils/isValidDate';
 
 export function getValidationSchema(translate) {

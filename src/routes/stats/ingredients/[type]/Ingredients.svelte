@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ingredientsStore } from '$lib/utils/stores/selects';
-	import type { IngredientsStats as IngredientsStatsTypes } from '$types/stats/General';
-	import type { Ingredient } from '$types/Ingredient';
+	import type { IngredientsStats as IngredientsStatsTypes } from 'src/oldTypes/stats/General';
+	import type { Ingredient } from 'src/oldTypes/Ingredient';
 	import UpdateIngredient from '$lib/templates/modals/UpdateIngredient/UpdateIngredient.svelte';
 	import Content from './Content.svelte';
 	import Navigation from './Navigation.svelte';

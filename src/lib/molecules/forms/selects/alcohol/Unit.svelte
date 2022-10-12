@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { AlcoholUnit } from '$lib/utils/enums/Beverage.enum';
+	import { AlcoholUnit } from '$types/enums/Beverage.enum';
 	import SelectWrapper from '../SelectWrapper.svelte';
 
 	export let errors: string | string[];

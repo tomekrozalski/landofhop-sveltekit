@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { institutionStore } from '$lib/utils/stores/selects';
 	import { translate } from 'svelte-intl';
-	import type { InstitutionEssence } from '$types/Institution';
+	import type { InstitutionEssence } from 'src/oldTypes/Institution';
 	import Conditional from '$lib/atoms/forms/Conditional.svelte';
 	import Label from '$lib/atoms/forms/Label.svelte';
 	import SearchLink from '$lib/atoms/forms/SearchLink.svelte';

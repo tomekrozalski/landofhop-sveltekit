@@ -1,16 +1,16 @@
 import { isBoolean, isEmpty, isNumber } from 'lodash-es';
 import { format } from 'date-fns';
 import { deleteIfEmpty, translate } from '$lib/utils/api';
-import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
-import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
+import { APP_LANGUAGE, AppLanguageTypes, DATE_FORMAT } from '$constants';
+
 import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
 import type { Details } from '$types/Beverage/Details';
 import type { RawInstitution } from '$types/api/RawBeverage/RawInstitution';
 import type { Institution } from '$types/Beverage/fragments/Institution';
 import countryList from './countryList';
 
-function detailsNormalizer(beverage: RawBeverage, desiredLanguage: AppLanguage): Details {
-	const countries = desiredLanguage === AppLanguage.pl ? countryList.pl : countryList.en;
+function detailsNormalizer(beverage: RawBeverage, desiredLanguage: AppLanguageTypes): Details {
+	const countries = desiredLanguage === APP_LANGUAGE.PL ? countryList.pl : countryList.en;
 
 	function formatIntitution({ badge, name, shortId, owner }: RawInstitution): Institution {
 		return {
@@ -408,7 +408,10 @@ function detailsNormalizer(beverage: RawBeverage, desiredLanguage: AppLanguage):
 				total: {
 					quantity: beverage.editorial.ratings.total.quantity,
 					value: beverage.editorial.ratings.total.value,
-					date: format(new Date(beverage.editorial.ratings.total.date), DateFormat[desiredLanguage])
+					date: format(
+						new Date(beverage.editorial.ratings.total.date),
+						DATE_FORMAT[desiredLanguage]
+					)
 				}
 			})
 		},
@@ -455,9 +458,9 @@ function detailsNormalizer(beverage: RawBeverage, desiredLanguage: AppLanguage):
 			}),
 			...(beverage.editorial?.photos?.viewFromAbove && { viewFromAbove: true })
 		},
-		added: format(new Date(beverage.added), DateFormat[desiredLanguage]),
+		added: format(new Date(beverage.added), DATE_FORMAT[desiredLanguage]),
 		...(beverage.updated && {
-			updated: format(new Date(beverage.updated), DateFormat[desiredLanguage])
+			updated: format(new Date(beverage.updated), DATE_FORMAT[desiredLanguage])
 		})
 	};
 

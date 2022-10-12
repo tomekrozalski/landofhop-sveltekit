@@ -1,4 +1,4 @@
-import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
+import { BEVERAGES_ON_PAGE } from '$constants';
 
 function getElements(current: number, total: number) {
 	const pagesCount = Math.ceil(total / BEVERAGES_ON_PAGE);

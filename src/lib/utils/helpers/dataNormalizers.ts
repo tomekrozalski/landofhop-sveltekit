@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import type { LanguageValue } from '$types/common/LanguageValue';
+import type { LanguageValue } from '$types/LanguageValue.d';
 import {
 	ingredientsStore,
 	institutionStore,

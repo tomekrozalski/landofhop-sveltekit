@@ -3,10 +3,10 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { format } from 'date-fns';
 
 import { beverages } from '$db/mongo';
-import { DateFormat } from '$lib/utils/enums/DateFormat.enum';
+import { DATE_FORMAT } from '$constants';
 import type { RawRatings } from '$types/api/RawBeverage/RawEditorial.d';
 import type { AdminNotes } from '$types/Beverage/AdminNotes.d';
-import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
+
 import { authenticate } from '$lib/utils/api';
 
 export const GET: RequestHandler = async ({ cookies, params }) => {
@@ -16,7 +16,7 @@ export const GET: RequestHandler = async ({ cookies, params }) => {
 		throw error(401, 'Unauthorized. Cannot load admin beverage notes');
 	}
 
-	const language = (params.language as AppLanguage) ?? AppLanguage.pl;
+	// const language = params.language ?? APP_LANGUAGE.PL;
 	const shortId = params.shortId ?? '';
 
 	type RawData = {
@@ -44,7 +44,7 @@ export const GET: RequestHandler = async ({ cookies, params }) => {
 	const formattedData: AdminNotes = {
 		...(data.notes && { notes: data.notes }),
 		...(data.updated && {
-			updated: format(new Date(data.updated), DateFormat[language])
+			updated: format(new Date(data.updated), DATE_FORMAT.PL)
 		}),
 		...(data.ratings && {
 			ratings: {

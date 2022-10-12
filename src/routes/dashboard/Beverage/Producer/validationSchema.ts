@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { AgedTimeUnit, AgedType, AgedWood, Fermentation } from '$lib/utils/enums/Beverage.enum';
+import { AgedTimeUnit, AgedType, AgedWood, Fermentation } from '$types/enums/Beverage.enum';
 import { isValidDate } from '../../utils/isValidDate';
 
 export function getValidationSchema(translate) {

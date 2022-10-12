@@ -2,7 +2,7 @@
 	import { debounce } from 'lodash-es';
 	import { getJsonData } from '$lib/utils/api/communication';
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-	import type { Basics } from '$types/Beverage/Basics';
+	import type { Basics } from 'src/oldTypes/Beverage/Basics';
 	import pushState from '$lib/utils/helpers/pushState';
 	import Spinner from '$lib/atoms/spinners/FullScreen.svelte';
 	import Total from '$lib/molecules/pagination/elements/Total.svelte';

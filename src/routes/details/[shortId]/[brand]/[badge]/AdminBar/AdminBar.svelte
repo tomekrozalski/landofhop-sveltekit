@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { getJsonData } from '$lib/utils/api/communication';
-	import type { Details } from '$types/Beverage/Details';
-	import type { AdminNotes } from '$types/Beverage/AdminNotes.d';
+	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import type { AdminNotes } from 'src/oldTypes/Beverage/AdminNotes';
 	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
 	import Notes from './Notes.svelte';
 	import Updated from './Updated.svelte';
