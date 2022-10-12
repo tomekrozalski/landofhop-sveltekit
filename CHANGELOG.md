@@ -1,8 +1,8 @@
 🗓️ 12.10.2022
 
-My main focus in the last months was to align my project to rapid changes of SvelteKit. The meta framework evolves fast before it will reach version 1.0.0. It is interesting time. I believe all these brainstormings about better file organization, simplifying some concepts will result better readability and scalability.
+My main focus in the last months was to align my project to rapid changes of SvelteKit. The meta framework evolves fast before it will reach version 1.0.0. It is an interesting time. I believe all these brainstorming about better file organization, simplifying some concepts will result in better readability and scalability.
 
-I accomplished some of my ideas, like integrating RateBeer and Untappd with the app. Now I start to work on brewery page. Meantime a have a lot of refactor to do. I will try to split my time between new features and technical parts.
+I accomplished some of my ideas, like integrating RateBeer and Untappd with the app. Now I start to work on the brewery page. Meantime I have a lot of refactoring to do. I will try to split my time between new features and technical parts.
 
 🗓️ 22.06.2022
 
