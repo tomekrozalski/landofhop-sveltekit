@@ -12,7 +12,7 @@ The database is MongoDB which stands on paid plan on MongoDB Atlas. I do not use
 
 There is also a kind of database for images: AWS S3. I connect the app with it through Amazon CloudFront.
 
-Static texts do not come from any database, I use `svelte-intl` powered with JSON files (they live in `src/lib/utils/dictionary/` folder).
+Static texts do not come from any database, I use `svelte-intl` powered with JSON files.
 
 I use pure CSS with CSS variables. PostCSS is needed only for media-queries variables. I use just one utility library, `lodash-es`. Besides that all other dependencies are used to a limited extent, like `d3` for charts on statistics pages. Most of them are used only in the admin pages (dashboard) to generate slugs (`slugify`, `nanoid`), authenticate (`jsonwebtoken`), save an images (`potrace`, `sharp`, `svgo`, `buffer-image-size`), validate form fields (`yup`), transform dates (`date-fns`) or get data from other services (web scraping with `puppeteer`). I hope that with such simple tools the application is truly scalable.
 
@@ -24,12 +24,12 @@ I work on Node 16. Install dependencies by:
 npm install
 ```
 
-To run the project locally you will need an `.env` file with at least one variable: `VITE_MONGODB_URI`. These are credentials to connect SvelteKit Endpoints with MongoDB Atlas. It is top secret. `VITE_JWT_SECRET` is a salt for JSON Web Tokens (for authentication only) and `VITE_GCP_KEY` is Google Key for auto-translations in the admin, dashboard pages.
+To run the project locally you will need an `.env` file with at least one variable: `MONGODB_URL`. These are credentials to connect SvelteKit Endpoints with MongoDB Atlas. It is top secret. `JWT_SECRET` is a salt for JSON Web Tokens (for authentication only) and `GCP_KEY` is Google Key for auto-translations in the admin, dashboard pages.
 
 ```bash
-VITE_JWT_SECRET = example
-VITE_MONGODB_URI = mongodb+srv://<user>:<password>@landofhop.sample.mongodb.net/db
-VITE_GCP_KEY = example
+JWT_SECRET = example
+MONGODB_URL = mongodb+srv://<user>:<password>@landofhop.sample.mongodb.net/db
+GCP_KEY = example
 ```
 
 If you have at least the one environmental variable, you can init a development server:
@@ -44,7 +44,7 @@ npm run dev -- --open
 
 ## Folder structure
 
-Let's start from the root folder:
+I will describe folder structure in a future, but recently I make a lot of changes, because SvelteKit also changes rapidly. Sorry for the inconvenience.
 
 ```
 .
@@ -65,96 +65,6 @@ Let's start from the root folder:
 ├── svelte.config.js
 └── tsconfig.json
 ```
-
-We can see here mostly configuration files for ESLint, Prettier, PostCSS, SvelteKit and TypeScript. Nothing fancy, everything is set as simple as possible. SvelteKit is setup with `@sveltejs/adapter-node`. `.vscode` folder contains settings for my local Visual Studio Code, you can ignore it. `static` folder contains static files for the application: favicons, fonts, `robots.txt` and `manifest.json` files. Again, standards. The fun starts in `src` folder:
-
-```
-📁 src
-├── 📁 lib
-├── 📁 routes
-├── app.d.ts
-├── app.html
-└── hooks.ts
-```
-
-`app.d.ts` is global TypeScript file where I define types for `locals` and `session` properties. `locals` has `authenticated` as `true` or `false`, `session` quite the same, but instead `authenticated` it is `isLoggedIn`. We will get to there. `app.html` is standard root SvelteKit HTML file. I did not change it. `hooks.ts` is the first file I wrote. I do two things inside it:
-
-- set up code minification for production build,
-- check for authentication cookies (with JWT), if they exist I validate them, pass to `getSession` and pass further as `isLoggedIn`
-
-`app.d.ts` is now more understandable, isn't it? `routes` is folder with all routes and `lib` contains everything else, most of the code: components, utils etc. Let's start from `routes` though.
-
-```
-📁 routes
-├── 📁 api
-├── 📁 dashboard
-├── 📁 details/[shortId]/[brand]
-├── 📁 list
-├── 📁 stats
-├── __error.svelte
-├── __layout.svelte
-├── about.svelte
-├── advanced-search.svelte
-├── index.svelte
-└── sitemap.xml.ts
-```
-
-`__error.svelte` is a basic SvelteKit 404 page. `__layout.svelte` is a layout, wrapper for all pages where I check authentication status, load some global translations, set favicons in metatags, render `Topbar` and wrap content inside `Main` component. The `Topbar` lives in `src/lib/components/Topbar/` and it is divided into three parts: `Header`, `Navigation` and `Login`.
-
-![enter image description here](https://i.ibb.co/W0nVnbx/topbar.jpg)
-
-Inside `Topbar` -> `Header` we also have `Searchbar`.
-
-![enter image description here](https://i.ibb.co/LRG12kv/searchbar.jpg)
-
-The search input here just passes the search parameter to the URL by `window.history.pushState()`. The place where we listen for search parameter change is `Main`. When we are in search mode, we can see `SearchResults`, otherwise it is regular content (`<slot />`). `Main` also wraps HTML in the `<main>` tag which has defined global styling.
-
-We have here `sitemap.xml.ts` which is site for bots with sitemap: https://hop.land/sitemap.xml. We have all public pages:
-
-- `index.svelte` - main page with last 60 beverages (https://hop.land)
-- `list/[order].svelte` - continuation of main page with beverage listing (https://hop.land/list/2 etc.)
-- `details/[shortId]/[brand]/[badge].svelte` - with beverage details (e.g. https://hop.land/details/54ffw5/trzech-kumpli/pan-ipani)
-- `about.svelte` - about page
-- `advanced-search.svelte` - advanced search page
-- `stats` - all pages related to statistics (e.g. https://hop.land/stats/ingredients/yeast)
-
-Finally we have `api` folder with SvelteKit Endpoints and `dashboard` with admin pages.
-
-The `api` is pretty essential. There are endpoints connecting the database with the front-end application. On public pages I use this endpoints in files in the `routes` folder inside `<script context="module">`, e.g. in the `index.svelte` I request for - through `apiCall()` utility method - `beverageTotal` and `beverageBasics`. I pass this data to the front-end. Beverage basics data are necessary to render links and images of the first 60 beverages. Beverage total, so count of all beverages in the database, is necessary to render pagination. In some cases, for example in `advanced-search.svelte` or some dashboard pages, I do not call for data inside `<script context="module">`. I do it on the front-end side only. Inside the `api` directory there is an `admin` folder. There are endpoints for admin purposes. Inside the `api` directory there is an `admin` folder. There are endpoints for admin purposes, for example to create new beverages in the database or to update an ingredient data. To use them, you need to be logged in.
-
-There are only three pages inside the dashboard so far: add new beverage, update beverage and update beverage photos. Add new beverage looks like:
-
-![](https://i.ibb.co/YpWQK57/Screenshot-2022-07-10-at-15-42-46.png)
-
-It is quite a big form to fulfill data about a beer. I add and update data about brands, ingredients or places by additional pop up forms. There is also a `__layout.svelte` file where I check if a user is authenticated, if not I redirect to the main page.
-
-Let's move to the last folder, `lib`:
-
-```
-📁 lib
-├── 📁 components
-├── 📁 dashboard
-├── 📁 elements
-└── 📁 utils
-```
-
-Essentially I keep here all Svelte `components` I use in public pages and all components I use in `dashboard` pages. Common components are in `elements`. Inside utils I have:
-
-```
-📁 utils
-├── 📁 api
-├── 📁 dictionary
-├── 📁 enums
-├── 📁 helpers
-├── 📁 stores
-├── 📁 styles
-├── 📁 types
-└── constants.ts
-```
-
-The `api` folder is for helper functions to transform data from the database. The `dictionary` is for JSON files where I keep all translations. The `enums` and `types` are for TypeScript files. The rest does not require any comment.
-
-I should and I will describe the structure in more details, but I expect major changes in SvelteKit v 1.0.0 so most probably I will deeply refactor the files concept.
 
 ## Live preview
 
