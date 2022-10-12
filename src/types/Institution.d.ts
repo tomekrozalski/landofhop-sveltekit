@@ -12,7 +12,7 @@ export type InstitutionEssence = InstitutionRaw & { shortId: string };
 export type Institution = InstitutionEssence & { _id: string };
 
 export type InstitutionDetails = {
-	name: LanguageValue[];
+	name: LanguageValue;
 	owner?: InstitutionDetails;
 	website?: string;
 };

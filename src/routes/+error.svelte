@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
-
-	// @ToDo: verify on production, do we have correct message, should be not found not internal error
 </script>
 
 <svelte:head>

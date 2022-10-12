@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import type { RequestHandler } from '@sveltejs/kit';
 import { basics } from '$db/mongo';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
+import type { RawBasics } from '$types/api/RawBasics';
 
 export const GET: RequestHandler = async function ({ setHeaders }) {
 	// -----------------------------------
@@ -13,7 +14,7 @@ export const GET: RequestHandler = async function ({ setHeaders }) {
 		.fill('')
 		.map((_, index) => index + 1)
 		.slice(1);
-	const lastAddedBeverage = await basics.findOne({}, { sort: { _id: -1 } });
+	const lastAddedBeverage = (await basics.findOne({}, { sort: { _id: -1 } })) as RawBasics;
 
 	const beverageListsPages = `
     <url>

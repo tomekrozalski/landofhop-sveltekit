@@ -8,16 +8,8 @@ import deleteIfEmpty from './deleteIfEmpty';
 import formatBasics from './basics/format';
 import formatBeverageToBasics from './formatBeverageToBasics';
 import generateShortId from './generateShortId';
-import institutionNormalizer from './brands/institutionNormalizer';
 import translate from './translate';
 import updateSession from './sessions/update';
-import { saveViewFromAboveJpg, saveViewFromAboveWebp } from './photos/saveViewFromAbove';
-import { saveCoverJpg, saveCoverWebp } from './photos/saveCover';
-import { saveGalleryJpg, saveGalleryWebp } from './photos/saveGallery';
-import getTracedSvg from './photos/getTracedSvg';
-import removeViewFromAbove from './photos/removeViewFromAbove';
-import removeCover from './photos/removeCover';
-import removeGallery from './photos/removeGallery';
 import recalculateIngredientsOccurrences from './ingredients/recalculateOccurrences';
 import updateRateBeerRating from './beverages/updateRateBeerRating';
 import updateUntappdRating from './beverages/updateUntappdRating';
@@ -33,19 +25,8 @@ export {
 	formatBeverageToBasics,
 	generateShortId,
 	generateTokens,
-	getTracedSvg,
-	institutionNormalizer,
 	recalculateIngredientsOccurrences,
-	removeCover,
-	removeGallery,
 	removeTokens,
-	removeViewFromAbove,
-	saveCoverJpg,
-	saveCoverWebp,
-	saveGalleryJpg,
-	saveGalleryWebp,
-	saveViewFromAboveJpg,
-	saveViewFromAboveWebp,
 	translate,
 	updateRateBeerRating,
 	updateSession,
