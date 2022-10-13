@@ -1,7 +1,7 @@
-import type { APP_LANGUAGE_KEYS_VALUES } from '$constants';
+import type { AppLanguage } from '$types/enums/Globals.enum';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getFromArray(values: any[], desiredLanguage: APP_LANGUAGE_KEYS_VALUES) {
+export function getFromArray(values: any[], desiredLanguage: AppLanguage) {
 	return (
 		values.find((item) => item.language === desiredLanguage) ||
 		values.find((item) => !item.language) ||

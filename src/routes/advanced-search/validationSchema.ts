@@ -1,8 +1,7 @@
 import * as yup from 'yup';
+import type { Translate } from '$types/Translate.d';
 
-type translateType = (value: string) => string; // @ToDo: could have second argument, types to revalidate
-
-export function getValidationSchema(translate: translateType) {
+export function getValidationSchema(translate: Translate) {
 	return yup.object().shape({
 		styleTags: yup
 			.array()

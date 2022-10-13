@@ -1,9 +1,8 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { format } from 'date-fns';
-
+import { AppLanguage, DateFormat } from '$types/enums/Globals.enum';
 import { beverages } from '$db/mongo';
-import { DATE_FORMAT } from '$constants';
 import type { RawRatings } from '$types/api/RawBeverage/RawEditorial.d';
 import type { AdminNotes } from '$types/Beverage/AdminNotes.d';
 
@@ -16,7 +15,7 @@ export const GET: RequestHandler = async ({ cookies, params }) => {
 		throw error(401, 'Unauthorized. Cannot load admin beverage notes');
 	}
 
-	// const language = params.language ?? APP_LANGUAGE.PL;
+	const language = (params.language as AppLanguage) ?? AppLanguage.pl;
 	const shortId = params.shortId ?? '';
 
 	type RawData = {
@@ -44,7 +43,7 @@ export const GET: RequestHandler = async ({ cookies, params }) => {
 	const formattedData: AdminNotes = {
 		...(data.notes && { notes: data.notes }),
 		...(data.updated && {
-			updated: format(new Date(data.updated), DATE_FORMAT.PL)
+			updated: format(new Date(data.updated), DateFormat[language])
 		}),
 		...(data.ratings && {
 			ratings: {

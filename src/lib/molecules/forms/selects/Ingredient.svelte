@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { isArray, isString } from 'lodash-es';
-	import { APP_LANGUAGE } from '$constants';
+	import { AppLanguage } from '$types/enums/Globals.enum';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { updateIngredientList } from '$lib/molecules/forms/selects/updateStoreData';
 	import { ingredientsStore } from '$lib/utils/stores/selects';
@@ -39,7 +39,7 @@
 		.filter(({ type }) => (filter ? type === filter : true))
 		.sort((a, b) => (a.occurrences.alone > b.occurrences.alone ? -1 : 1))
 		.map(({ badge, name, type }) => ({
-			label: getFromArray(name, APP_LANGUAGE.PL).value,
+			label: getFromArray(name, AppLanguage.pl).value,
 			value: badge,
 			type
 		}));

@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 
 import { AgedTimeUnit } from '$types/enums/Beverage.enum';
-import { DATE_FORMAT } from '$constants';
+import { DateFormat } from '$types/enums/Globals.enum';
 import type { LanguageValue } from '$types/common/LanguageValue';
 import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
 import type { RawPrice } from '$types/api/RawBeverage/RawPrice';
@@ -30,7 +30,7 @@ function adminDetailsNormalizer(beverage: RawBeverage): {
 	} {
 		return {
 			currency,
-			date: format(new Date(date), DATE_FORMAT.PL),
+			date: format(new Date(date), DateFormat.pl),
 			shop: shop ?? null,
 			value: value.toString()
 		};

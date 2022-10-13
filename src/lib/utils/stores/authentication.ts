@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import Status from '$types/enums/Status.enum';
+import { Status } from '$types/enums/Globals.enum';
 
 const { subscribe, update, set } = writable<{
 	isLoggedIn: boolean;

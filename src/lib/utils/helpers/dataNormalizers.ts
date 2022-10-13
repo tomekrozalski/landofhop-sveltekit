@@ -1,36 +1,6 @@
 import { get } from 'svelte/store';
 import type { LanguageValue } from '$types/LanguageValue.d';
-import {
-	ingredientsStore,
-	institutionStore,
-	placeStore,
-	styleStore
-} from '$lib/utils/stores/selects';
-
-export function formatInstitutionByShortId(value: string) {
-	const selectedInstitution = get(institutionStore).find(({ shortId }) => shortId === value);
-
-	return {
-		badge: selectedInstitution.badge,
-		name: selectedInstitution.name,
-		shortId: selectedInstitution.shortId,
-		...(selectedInstitution.owner && {
-			owner: formatInstitutionByShortId(selectedInstitution.owner.shortId)
-		})
-	};
-}
-
-export function formatLanguageValueArray(
-	arr: {
-		language: string;
-		value: string;
-	}[]
-) {
-	return arr.map(({ language, value }) => ({
-		...(language !== '--' && { language }),
-		value: value.trim()
-	}));
-}
+import { ingredientsStore, placeStore, styleStore } from '$lib/utils/stores/selects';
 
 export function formatTaleArray({
 	article,

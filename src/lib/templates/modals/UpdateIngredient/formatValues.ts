@@ -1,25 +1,7 @@
-import type { IngredientRaw } from '$types/Ingredient';
-import type { IngredientType } from '$types/enums/Beverage.enum';
-import { formatLanguageValueArray } from '$lib/utils/helpers/dataNormalizers';
+import formatLanguageValueArray from '$lib/utils/normalizers/language';
+import type { Input, Output } from './types.d';
 
-type Input = {
-	badge: string;
-	name: {
-		value: string;
-		language: string;
-	}[];
-	occurrences: { alone: number; withSuccessors: number };
-	parent: string;
-	type: IngredientType;
-};
-
-export default function formatValues({
-	badge,
-	name,
-	occurrences,
-	parent,
-	type
-}: Input): IngredientRaw {
+export default function formatValues({ badge, name, occurrences, parent, type }: Input): Output {
 	return {
 		badge: badge.trim(),
 		name: formatLanguageValueArray(name),

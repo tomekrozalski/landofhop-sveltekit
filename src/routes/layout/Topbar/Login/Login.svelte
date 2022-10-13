@@ -2,7 +2,7 @@
 	import { slide } from 'svelte/transition';
 	import { translations } from 'svelte-intl';
 	import { cubicInOut } from 'svelte/easing';
-	import Status from '$types/enums/Status.enum';
+	import { Status } from '$types/enums/Globals.enum';
 	import commonFormsDictionary from '$lib/utils/dictionary/form.json';
 	import authentication from '$lib/utils/stores/authentication';
 	import ErrorMessage from './ErrorMessage.svelte';

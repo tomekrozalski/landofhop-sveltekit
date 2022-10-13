@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { PHOTO_SERVER } from '$constants';
+	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
 	import CoverImage from './CoverImage.svelte';

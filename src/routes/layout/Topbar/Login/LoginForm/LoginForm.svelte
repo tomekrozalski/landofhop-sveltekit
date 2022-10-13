@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 	import * as yup from 'yup';
-	import Status from '$types/enums/Status.enum';
+	import { Status } from '$types/enums/Globals.enum';
 	import authentication from '$lib/utils/stores/authentication';
 	import { postJsonData } from '$lib/utils/api/communication';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';

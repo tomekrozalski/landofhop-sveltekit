@@ -1,14 +1,13 @@
 import { format } from 'date-fns';
 import { translate } from '$lib/utils/api';
-import { DATE_FORMAT } from '$constants';
-import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
+import { AppLanguage, DateFormat } from '$types/enums/Globals.enum';
+import type { RawBeverage } from '$types/RawBeverage.d';
 import type { Basics } from '$types/Beverage/Basics';
 
 function formatBeverageToBasics(results: Basics[], language: AppLanguage) {
 	return function ({ added, badge, editorial, label, shortId }: RawBeverage) {
 		results.push({
-			added: format(new Date(added), DATE_FORMAT.PL),
+			added: format(new Date(added), DateFormat.pl),
 			badge,
 			brand: {
 				badge: label.general.brand.badge,

@@ -1,11 +1,10 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-
+import { beverages } from '$db/mongo';
 import { formatBeverageToBasics } from '$lib/utils/api';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { Basics } from '$types/Beverage/Basics';
-import { beverages } from '$db/mongo';
+import type { Beverage } from '$lib/templates/BeverageList/Beverage.d';
+import { AppLanguage } from '$types/enums/Globals.enum';
 
 export const GET: RequestHandler = async ({ params }) => {
 	const language = (params.language as AppLanguage) ?? AppLanguage.pl;
@@ -13,7 +12,7 @@ export const GET: RequestHandler = async ({ params }) => {
 	const phrase = params.phrase ?? '';
 
 	let total = 0;
-	const foundArr: Basics[] = [];
+	const foundArr: Beverage[] = [];
 
 	const query = {
 		$or: [

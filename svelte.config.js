@@ -11,7 +11,6 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$constants: './src/lib/utils/constants.ts',
 			$db: './src/db',
 			$types: './src/types'
 		}

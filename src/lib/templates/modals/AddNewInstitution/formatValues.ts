@@ -1,20 +1,8 @@
-import type { InstitutionRaw } from '$types/Institution';
-import {
-	formatInstitutionByShortId,
-	formatLanguageValueArray
-} from '$lib/utils/helpers/dataNormalizers';
+import formatInstitutionByShortId from '$lib/utils/normalizers/institution';
+import formatLanguageValueArray from '$lib/utils/normalizers/language';
+import type { Input, Output } from './types.d';
 
-type Input = {
-	badge: string;
-	name: {
-		value: string;
-		language: string;
-	}[];
-	owner: string | null;
-	website: string | null;
-};
-
-export default function formatValues({ badge, name, owner, website }: Input): InstitutionRaw {
+export default function formatValues({ badge, name, owner, website }: Input): Output {
 	return {
 		badge: badge.trim(),
 		name: formatLanguageValueArray(name),

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { isArray, isString } from 'lodash-es';
-	import { APP_LANGUAGE } from '$constants';
+	import { AppLanguage } from '$types/enums/Globals.enum';
 	import { getFromArray } from '$lib/utils/helpers/getFromArray';
 	import { updateInstitutionList } from '$lib/molecules/forms/selects/updateStoreData';
 	import { institutionStore } from '$lib/utils/stores/selects';
@@ -41,7 +41,7 @@
 	$: if (withUnknown) {
 		items = $institutionStore
 			.map(({ name, shortId }) => ({
-				label: getFromArray(name, APP_LANGUAGE.PL).value,
+				label: getFromArray(name, AppLanguage.pl).value,
 				value: shortId,
 				group: 'brands'
 			}))
@@ -57,7 +57,7 @@
 	} else {
 		items = $institutionStore
 			.map(({ name, shortId }) => ({
-				label: getFromArray(name, APP_LANGUAGE.PL).value,
+				label: getFromArray(name, AppLanguage.pl).value,
 				value: shortId
 			}))
 			.sort((a, b) => (a.label < b.label ? -1 : 1));

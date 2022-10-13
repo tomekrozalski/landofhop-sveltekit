@@ -2,12 +2,12 @@ import { isBoolean } from 'lodash-es';
 import {
 	formatDateFromString,
 	formatIngredientByBadge,
-	formatInstitutionByShortId,
-	formatLanguageValueArray,
 	formatPlaceByShortId,
 	formatStyleByBadge,
 	parseFieldNumber
 } from '$lib/utils/helpers/dataNormalizers';
+import formatInstitutionByShortId from '$lib/utils/normalizers/institution';
+import formatLanguageValueArray from '$lib/utils/normalizers/language';
 import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormValues';
 
 export default function formatValues({

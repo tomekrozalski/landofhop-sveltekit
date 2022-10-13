@@ -1,7 +1,8 @@
 import { format } from 'date-fns';
 import { basics } from '$db/mongo';
-import { APP_LANGUAGE, BEVERAGES_ON_PAGE, DATE_FORMAT } from '$constants';
+import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import { translate } from '$lib/utils/api';
+import { AppLanguage, DateFormat } from '$types/enums/Globals.enum';
 import type { Beverage } from '$lib/templates/BeverageList/Beverage.d';
 import type { PageServerLoad } from './$types';
 
@@ -21,9 +22,9 @@ export const load: PageServerLoad = async () => {
 				badge,
 				brand: {
 					...brand,
-					name: translate(brand.name, APP_LANGUAGE.PL)
+					name: translate(brand.name, AppLanguage.pl)
 				},
-				name: translate(name, APP_LANGUAGE.PL),
+				name: translate(name, AppLanguage.pl),
 				...(coverImage && {
 					coverImage: {
 						height: coverImage.height,
@@ -32,7 +33,7 @@ export const load: PageServerLoad = async () => {
 					}
 				}),
 				containerType,
-				added: format(new Date(added), DATE_FORMAT.PL)
+				added: format(new Date(added), DateFormat[AppLanguage.pl])
 			});
 		});
 

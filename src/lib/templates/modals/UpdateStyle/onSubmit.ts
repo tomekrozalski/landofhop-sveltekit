@@ -2,10 +2,10 @@ import { invalidate } from '$app/navigation';
 import { styleStore } from '$lib/utils/stores/selects';
 import { putJsonData } from '$lib/utils/api/communication';
 import formatValues from './formatValues';
+import type { Input } from './types.d';
 
-// @ToDo types
 export function onSubmit(close: () => void, badge: string) {
-	return async function (values) {
+	return async function (values: Input) {
 		const formattedValues = formatValues(values);
 
 		const updatedStyles = await putJsonData({

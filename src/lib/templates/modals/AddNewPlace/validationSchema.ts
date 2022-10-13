@@ -1,7 +1,7 @@
 import * as yup from 'yup';
+import type { Translate } from '$types/Translate.d';
 
-// @ToDo types
-export function getValidationSchema(translate) {
+export function getValidationSchema(translate: Translate) {
 	return yup.object().shape({
 		city: yup
 			.array()

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
-	import type { Style } from 'src/oldTypes/Style';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import ButtonWrapper from '$lib/atoms/forms/ButtonWrapper.svelte';
 	import Badge from '$lib/molecules/forms/fields/Badge.svelte';
@@ -11,8 +10,9 @@
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
 	import { onSubmit } from './onSubmit';
+	import type { Input } from './types.d';
 
-	export let initialValues: Style;
+	export let initialValues: Input;
 	export let close: () => void;
 	const formName = 'style';
 

@@ -8,12 +8,13 @@
 	import NameGroup from '$lib/molecules/forms/fields/NameGroup.svelte';
 	import ParentIngredient from '$lib/molecules/forms/fields/ParentIngredient.svelte';
 	import ModalGrid from '../ModalGrid.svelte';
-
 	import ModalWrapper from '../ModalWrapper.svelte';
 	import { getValidationSchema } from './validationSchema';
 	import { initialValues } from './initialValues';
 	import { onSubmit } from './onSubmit';
+
 	export let close: () => void;
+
 	const formName = 'ingredient';
 	const formData = createForm({
 		initialValues,

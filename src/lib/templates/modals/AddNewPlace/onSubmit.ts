@@ -1,10 +1,10 @@
 import { placeStore } from '$lib/utils/stores/selects';
 import { postJsonData } from '$lib/utils/api/communication';
 import formatValues from './formatValues';
+import type { Input } from './types.d';
 
-// @ToDo types
-export function onSubmit(close) {
-	return async function (values) {
+export function onSubmit(close: () => void) {
+	return async function (values: Input) {
 		const formattedValues = formatValues(values);
 
 		const updatedPlaces = await postJsonData({

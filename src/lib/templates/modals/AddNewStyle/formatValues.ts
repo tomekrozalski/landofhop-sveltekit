@@ -1,16 +1,7 @@
-import type { Style } from '$types/Style';
-import { formatLanguageValueArray } from '$lib/utils/helpers/dataNormalizers';
+import formatLanguageValueArray from '$lib/utils/normalizers/language';
+import type { Input, Output } from './types.d';
 
-type Input = {
-	badge: string;
-	name: {
-		value: string;
-		language: string;
-	}[];
-	group: string;
-};
-
-export default function formatValues({ badge, name, group }: Input): Style {
+export default function formatValues({ badge, name, group }: Input): Output {
 	return {
 		badge: badge.trim(),
 		name: formatLanguageValueArray(name),

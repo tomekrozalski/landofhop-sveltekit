@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { translate, translations } from 'svelte-intl';
+	import { translate } from 'svelte-intl';
 	import { createForm } from 'svelte-forms-lib';
 	import { page } from '$app/stores';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
@@ -10,11 +10,11 @@
 	import ParentIngredient from '$lib/molecules/forms/fields/ParentIngredient.svelte';
 	import ModalGrid from '../ModalGrid.svelte';
 	import ModalWrapper from '../ModalWrapper.svelte';
-	import type { Ingredient } from 'src/oldTypes/Ingredient';
+	import type { Input } from './types.d';
 	import { getValidationSchema } from './validationSchema';
 	import { onSubmit } from './onSubmit';
 
-	export let initialValues: Ingredient;
+	export let initialValues: Input;
 	export let close: () => void;
 	const formName = 'ingredient';
 

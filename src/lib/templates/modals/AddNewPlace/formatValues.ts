@@ -1,23 +1,8 @@
-import type { PlaceRaw } from '$types/Place';
-import {
-	formatInstitutionByShortId,
-	formatLanguageValueArray
-} from '$lib/utils/helpers/dataNormalizers';
+import formatInstitutionByShortId from '$lib/utils/normalizers/institution';
+import formatLanguageValueArray from '$lib/utils/normalizers/language';
+import type { Input, Output } from './types.d';
 
-type Input = {
-	city: {
-		value: string;
-		language: string;
-	}[];
-	country: string;
-	institution: string;
-	coordinates: {
-		longitude: string | null;
-		latitude: string | null;
-	};
-};
-
-export default function formatValues({ city, country, institution, coordinates }: Input): PlaceRaw {
+export default function formatValues({ city, country, institution, coordinates }: Input): Output {
 	return {
 		city: formatLanguageValueArray(city),
 		country,
