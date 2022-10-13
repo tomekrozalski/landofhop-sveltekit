@@ -1,4 +1,4 @@
-import { LanguageValue } from 'utils/types/common';
+import { LanguageValue } from '$types/LanguageValue.d';
 import {
 	AlcoholRelate,
 	AlcoholScope,
@@ -11,7 +11,7 @@ import {
 	HopRateUnit,
 	IngredientType,
 	TemperatureUnit
-} from 'utils/enums/Beverage';
+} from '$types/enums/Beverage.enum';
 import { InsitutionOutput } from '../Institution';
 import { Aged, Container, Price, Tale } from './fragments';
 

@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { isBoolean } from 'lodash-es';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 
-	export let details: Details;
-	const { smokedMalt } = details;
+	$: ({ smokedMalt } = $page.data.details);
 </script>
 
 {#if smokedMalt}

@@ -1,34 +1,32 @@
-<script context="module" lang="ts">
-	import { tweened } from 'svelte/motion';
-	export const ratingStore = tweened<number>(0);
-</script>
-
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { translate } from 'svelte-intl';
+	import { tweened } from 'svelte/motion';
 	import { Confetti } from 'svelte-confetti';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { afterNavigate } from '$app/navigation';
+	import { page } from '$app/stores';
 	import RatingDetails from './RatingDetails.svelte';
 	import Stars from './Stars.svelte';
 
-	export let details: Details;
+	$: ({ ratings } = $page.data.details);
 	let isDetailsOpened = false;
 
-	onMount(() => {
-		ratingStore.set(details.ratings.total.value, { duration: $ratingStore ? 400 : 0 });
+	const ratingStore = tweened<number>(0);
+
+	afterNavigate(() => {
+		ratingStore.set(ratings.total.value, { duration: $ratingStore ? 400 : 0 });
 	});
 </script>
 
 <section>
 	<header class:isDetailsOpened>
 		<h3>{$translate('beverage.rating')}</h3>
-		{#if details.ratings.total.value >= 4}
+		{#if ratings.total.value >= 4}
 			<Confetti />
 		{/if}
-		<Stars score={$ratingStore || details.ratings.total.value} />
+		<Stars score={$ratingStore || ratings.total.value} />
 	</header>
 	{#if isDetailsOpened}
-		<RatingDetails {details} />
+		<RatingDetails />
 	{/if}
 	<button
 		class:isDetailsOpened

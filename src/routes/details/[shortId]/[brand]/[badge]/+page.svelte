@@ -8,8 +8,6 @@
 
 	translations.update(dictionary);
 
-	export const prerender = true;
-
 	export let data: PageData;
 </script>
 
@@ -19,18 +17,16 @@
 </svelte:head>
 
 {#if data.details}
-	{#key data.details.shortId}
-		<Breadcrumbs
-			steps={[
-				{
-					label: $translate('beverage.breadcrumbs.list', { listPage: data.listPage }),
-					link: `/list/${data.listPage}`
-				},
-				{
-					label: $translate('beverage.breadcrumbs.details')
-				}
-			]}
-		/>
-		<BeverageDetails details={data.details} next={data.next} previous={data.previous} />
-	{/key}
+	<Breadcrumbs
+		steps={[
+			{
+				label: $translate('beverage.breadcrumbs.list', { listPage: data.listPage }),
+				link: `/list/${data.listPage}`
+			},
+			{
+				label: $translate('beverage.breadcrumbs.details')
+			}
+		]}
+	/>
+	<BeverageDetails />
 {/if}

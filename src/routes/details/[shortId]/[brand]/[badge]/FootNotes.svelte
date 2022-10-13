@@ -1,13 +1,11 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
-
-	export let details: Details;
+	import { page } from '$app/stores';
 </script>
 
 <dl>
 	<dt>{$translate('beverage.footnotes.added')}</dt>
-	<dd>{details.added}</dd>
+	<dd>{$page.data.details.added}</dd>
 </dl>
 
 <style>

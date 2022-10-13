@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type { Details } from 'src/oldTypes/Beverage/Details';
-	import type { LinkData } from 'src/oldTypes/Beverage/LinkData';
-	import authentication from '$lib/utils/stores/authentication';
+	import { page } from '$app/stores';
 	import Navigation from './Navigation.svelte';
 	import Gallery from './Gallery/Gallery.svelte';
 	import Header from './Header.svelte';
@@ -12,27 +10,25 @@
 	import AdminBar from './AdminBar/AdminBar.svelte';
 	import Rating from './Rating/Rating.svelte';
 
-	export let details: Details;
-	export let next: LinkData | null;
-	export let previous: LinkData | null;
+	$: ({ authenticated, details, next, previous } = $page.data);
 </script>
 
 <article>
-	<Gallery {details} />
+	<Gallery />
 	<div>
-		<Header {details} />
-		<Tale {details} />
-		<Testimony {details} />
-		<Impressions {details} />
-		<FootNotes {details} />
-		{#if $authentication.isLoggedIn}
-			<AdminBar {details} />
+		<Header />
+		<Tale />
+		<Testimony />
+		<Impressions />
+		<FootNotes />
+		{#if authenticated}
+			<AdminBar />
 		{/if}
 	</div>
 	<aside>
-		<Navigation {next} {previous} />
+		<Navigation />
 		{#if details.ratings}
-			<Rating {details} />
+			<Rating />
 		{/if}
 	</aside>
 </article>

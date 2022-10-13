@@ -1,30 +1,35 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { getJsonData } from '$lib/utils/api/communication';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
-	import type { AdminNotes } from 'src/oldTypes/Beverage/AdminNotes';
 	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
 	import Notes from './Notes.svelte';
 	import Updated from './Updated.svelte';
 	import Buttons from './Buttons/Buttons.svelte';
+	import type { AdminData } from './AdminData.d';
 
-	export let details: Details;
+	let adminData: AdminData | null = null;
 	let isLoading = true;
-	let adminData: AdminNotes;
 
-	onMount(async () => {
+	async function getAdminData() {
+		isLoading = true;
+
 		adminData = await getJsonData({
-			path: `/api/admin/beverages/notes/pl/${details.shortId}`
+			path: `/api/admin/beverages/notes/pl/${$page.data.details.shortId}`
 		});
 
 		isLoading = false;
-	});
+	}
+
+	onMount(getAdminData);
+	afterNavigate(getAdminData);
 </script>
 
+<Buttons {adminData} />
 {#if isLoading}
 	<InlineSpinner />
-{:else}
-	<Buttons {adminData} {details} />
+{:else if adminData}
 	<div class="adminNotes">
 		{#if adminData.notes}<Notes notes={adminData.notes} />{/if}
 		{#if adminData.updated}<Updated updated={adminData.updated} />{/if}

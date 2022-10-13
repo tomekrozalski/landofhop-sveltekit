@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import Image from './Image.svelte';
 
 	export let areImagesLoaded: boolean;
-	export let details: Details;
 	export let currentlyVisibleImageIndex: number;
-	const imagesInGallery = details.photos.gallery;
-	const imageIndexArray = new Array(imagesInGallery).fill('').map((_, i) => i + 1);
+
+	$: imagesInGallery = $page.data.details.photos.gallery;
+	$: imageIndexArray = new Array(imagesInGallery).fill('').map((_, i) => i + 1);
 
 	let loaded = 0;
 
@@ -19,7 +19,6 @@
 	<Image
 		{imageIndex}
 		isVisible={[currentlyVisibleImageIndex, currentlyVisibleImageIndex - 1].includes(imageIndex)}
-		{details}
 		bind:loaded
 	/>
 {/each}

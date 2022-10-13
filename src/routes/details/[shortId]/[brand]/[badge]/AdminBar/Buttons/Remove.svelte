@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { deleteJsonData } from '$lib/utils/api/communication';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
 
-	export let details: Details;
 	let confirmed = false;
 	let isSubmitting = false;
 
@@ -23,7 +22,7 @@
 
 		try {
 			await deleteJsonData({
-				path: `/api/admin/beverages/remove/${details.shortId}`
+				path: `/api/admin/beverages/remove/${$page.data.details.shortId}`
 			});
 
 			goto('/');

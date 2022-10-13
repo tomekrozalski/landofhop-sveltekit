@@ -1,7 +1,22 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Aged } from 'src/oldTypes/Beverage/fragments';
 	import FormattedList from '$lib/atoms/FormattedList.svelte';
+	import type {
+		AgedPreviousContent,
+		AgedTimeUnit,
+		AgedType,
+		AgedWood
+	} from '$types/enums/Beverage.enum';
+
+	type Aged = {
+		type?: AgedType;
+		wood?: AgedWood;
+		time?: {
+			value: number;
+			unit: AgedTimeUnit;
+		};
+		previousContent?: AgedPreviousContent[];
+	};
 
 	export let item: Aged;
 	let { previousContent, time, type, wood } = item;

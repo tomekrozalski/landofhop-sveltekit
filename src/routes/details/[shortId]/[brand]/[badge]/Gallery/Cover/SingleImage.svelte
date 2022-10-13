@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { PHOTO_SERVER } from '$lib/utils/constants';
+	import { page } from '$app/stores';
 
-	import type { Details } from 'src/oldTypes/Beverage/Details';
-	export let details: Details;
-	const { badge, brand, name, shortId } = details;
-
+	const { badge, brand, name, shortId } = $page.data.details;
 	const basicPath = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}`;
 	const pathWebpRegular = `${basicPath}/container/webp/1x/01.webp`;
 	const pathWebpLarge = `${basicPath}/container/webp/2x/01.webp`;

@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { isNumber } from 'lodash-es';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 
-	export let details: Details;
-	const { bitterness, clarity, color, fullness, hoppyness, power, sweetness } = details;
+	$: ({ bitterness, clarity, color, fullness, hoppyness, power, sweetness } = $page.data.details);
 </script>
 
 {#if bitterness || clarity || color || fullness || hoppyness || power || sweetness}

@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import FormattedList from '$lib/atoms/FormattedList.svelte';
 	import AgedItem from './AgedItem.svelte';
 
-	export let details: Details;
-	const { aged, isAged } = details;
+	$: ({ aged, isAged } = $page.data.details);
 </script>
 
 {#if aged || isAged}

@@ -1,10 +1,9 @@
 <script lang="ts">
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import Markdown from '$lib/atoms/Markdown.svelte';
 	import Article from './Article.svelte';
 
-	export let details: Details;
-	const { tale } = details;
+	$: ({ tale } = $page.data.details);
 </script>
 
 {#if tale}

@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 
-	export let details: Details;
-	const { type, material, color, value, unit } = details.container;
+	$: ({ type, material, color, value, unit } = $page.data.details.container);
 </script>
 
 <dt>

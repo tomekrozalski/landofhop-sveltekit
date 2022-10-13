@@ -1,15 +1,14 @@
 <script lang="ts">
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
 	export let loaded: number;
 	export let imageIndex: number;
 	export let isVisible: boolean = false;
-	export let details: Details;
-	const { badge, brand, shortId } = details;
 
+	$: ({ badge, brand, shortId } = $page.data.details);
+	$: imagePathBase = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}/container/webp/${pixelRatio}`;
 	const pixelRatio = window.devicePixelRatio && window.devicePixelRatio >= 1.5 ? '2x' : '1x';
-	const imagePathBase = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}/container/webp/${pixelRatio}`;
 </script>
 
 <img

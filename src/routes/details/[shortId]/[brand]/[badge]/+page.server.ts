@@ -1,11 +1,11 @@
 import { error } from '@sveltejs/kit';
 import { basics, beverages } from '$db/mongo';
-import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-import type { LinkData } from '$types/Beverage/LinkData.d';
-import type { Details } from '$types/Beverage/Details';
-import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
-import detailsNormalizer from './utils/detailsNormalizer';
+import { AppLanguage } from '$types/enums/Globals.enum';
+import type { RawBeverage } from '$types/RawBeverage.d';
+import detailsNormalizer from './utils/normalizer';
+import type { LinkData } from './LinkData.d';
+import type { Details } from './Details.d';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -19,7 +19,6 @@ export const load: PageServerLoad = async ({ params }) => {
 	}
 
 	const formattedDetails: Details = detailsNormalizer(beverage, language);
-
 	const previousBasics: LinkData[] = [];
 	const nextBasics: LinkData[] = [];
 

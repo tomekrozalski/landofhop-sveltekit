@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 
-	export let details: Details;
-	const { label, producer } = details.ingredients ?? {};
+	$: ({ label, producer } = $page.data.details);
 </script>
 
 {#if label}

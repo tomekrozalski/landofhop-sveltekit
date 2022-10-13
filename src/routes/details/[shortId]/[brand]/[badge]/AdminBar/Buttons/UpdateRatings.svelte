@@ -1,32 +1,35 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { invalidate } from '$app/navigation';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
-	import type { AdminNotes } from 'src/oldTypes/Beverage/AdminNotes';
+	import { page } from '$app/stores';
 	import { postJsonData } from '$lib/utils/api/communication';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
+	import type { AdminData } from '../AdminData.d';
 
-	export let adminData: AdminNotes;
-	export let details: Details;
+	export let adminData: AdminData | null;
 	let isLoading = false;
 
 	async function updateBeverageRatings() {
-		isLoading = true;
+		if (adminData?.ratings) {
+			isLoading = true;
 
-		await postJsonData({
-			path: '/api/admin/beverages/updateRatings',
-			data: {
-				...(adminData.ratings.rateBeer && { rateBeerId: adminData.ratings.rateBeer }),
-				...(adminData.ratings.untappd && { untappdBeverageSlug: adminData.ratings.untappd }),
-				beverageShortId: details.shortId
-			}
-		});
+			await postJsonData({
+				path: '/api/admin/beverages/updateRatings',
+				data: {
+					...(adminData.ratings.rateBeer && { rateBeerId: adminData.ratings.rateBeer }),
+					...(adminData.ratings.untappd && { untappdBeverageSlug: adminData.ratings.untappd }),
+					beverageShortId: $page.data.details.shortId
+				}
+			});
 
-		await invalidate(`/api/beverages/details/pl/${details.shortId}`);
-		isLoading = false;
+			await invalidate(`/api/beverages/details/pl/${$page.data.details.shortId}`);
+			isLoading = false;
+		}
 	}
 </script>
 
-<Button handleClick={updateBeverageRatings} isSubmitting={isLoading}>
-	{$translate('beverage.adminBar.updateRatings')}
-</Button>
+{#if adminData?.ratings}
+	<Button handleClick={updateBeverageRatings} isSubmitting={isLoading}>
+		{$translate('beverage.adminBar.updateRatings')}
+	</Button>
+{/if}

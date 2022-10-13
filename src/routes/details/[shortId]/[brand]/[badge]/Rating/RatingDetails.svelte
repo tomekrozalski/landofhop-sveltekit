@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 
-	export let details: Details;
-
-	const { rateBeer, total, untappd } = details.ratings; // @ToDo types
+	$: ({ rateBeer, total, untappd } = $page.data.details.ratings);
 </script>
 
 <footer transition:slide|local>

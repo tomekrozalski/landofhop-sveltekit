@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
 
-	export let details: Details;
-	const { place } = details;
+	$: ({ place } = $page.data.details);
 </script>
 
 {#if place}

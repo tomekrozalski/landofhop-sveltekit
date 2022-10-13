@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 
-	export let details: Details;
-	const { expirationDate } = details;
+	$: ({ expirationDate } = $page.data.details);
 </script>
 
 {#if expirationDate}

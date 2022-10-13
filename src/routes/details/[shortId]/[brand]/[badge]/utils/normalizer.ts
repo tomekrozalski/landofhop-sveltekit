@@ -8,7 +8,7 @@ import type { RawInstitution } from '$types/api/RawBeverage/RawInstitution';
 import type { Institution } from '$types/Beverage/fragments/Institution';
 import countryList from './countryList';
 
-function detailsNormalizer(beverage: RawBeverage, desiredLanguage: AppLanguage): Details {
+function normalizer(beverage: RawBeverage, desiredLanguage: AppLanguage): Details {
 	const countries = desiredLanguage === AppLanguage.pl ? countryList.pl : countryList.en;
 
 	function formatIntitution({ badge, name, shortId, owner }: RawInstitution): Institution {
@@ -506,4 +506,4 @@ function detailsNormalizer(beverage: RawBeverage, desiredLanguage: AppLanguage):
 	return formattedObject;
 }
 
-export default detailsNormalizer;
+export default normalizer;

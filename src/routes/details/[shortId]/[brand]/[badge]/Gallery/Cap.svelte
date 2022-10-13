@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 
-	export let details: Details;
-	const { badge, brand, photos, shortId } = details;
+	$: ({ badge, brand, photos, shortId } = $page.data.details);
+	$: basicPath = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}`;
+
 	let isOpened = false;
-	const basicPath = `${PHOTO_SERVER}/${brand.badge}/${badge}/${shortId}`;
 </script>
 
 {#if photos?.cap}

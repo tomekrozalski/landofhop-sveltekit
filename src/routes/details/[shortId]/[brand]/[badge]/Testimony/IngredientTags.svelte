@@ -1,13 +1,20 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
+	import type { LanguageValue } from '$types/LanguageValue.d';
+	import type { IngredientType } from '$types/enums/Beverage.enum';
 
-	export let details: Details;
-	const { label = [], producer = [] } = details.ingredientsTags ?? {};
+	type IngredientTags = {
+		badge: string;
+		name: LanguageValue;
+		type: IngredientType;
+	};
 
-	const ingredients = [...label, ...producer].reduce(
-		(acc, curr) => (acc.find(({ badge }) => badge === curr.badge) ? acc : [...acc, curr]),
+	$: ingredientsTags = $page.data.details.ingredientsTags ?? {};
+	$: ingredients = [...(ingredientsTags.label ?? []), ...(ingredientsTags.producer ?? [])].reduce(
+		(acc, curr) =>
+			acc.find(({ badge }: IngredientTags) => badge === curr.badge) ? acc : [...acc, curr],
 		[]
 	);
 </script>

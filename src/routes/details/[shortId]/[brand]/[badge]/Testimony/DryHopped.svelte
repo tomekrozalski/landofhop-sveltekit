@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
 	import FormattedList from '$lib/atoms/FormattedList.svelte';
 
-	export let details: Details;
-	const { dryHopped, isDryHopped } = details;
+	$: ({ dryHopped, isDryHopped } = $page.data.details);
 </script>
 
 {#if dryHopped || isDryHopped}

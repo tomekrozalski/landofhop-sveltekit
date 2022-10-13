@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import FormattedList from '$lib/atoms/FormattedList.svelte';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
 
-	export let details: Details;
-	const { styleTags } = details;
+	$: ({ styleTags } = $page.data.details);
 </script>
 
 {#if styleTags}

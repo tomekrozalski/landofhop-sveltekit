@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { LinkData } from 'src/oldTypes/Beverage/LinkData';
+	import { page } from '$app/stores';
 	import LeftIcon from '$lib/atoms/vectors/Left.svelte';
 	import RightIcon from '$lib/atoms/vectors/Right.svelte';
 
-	export let next: LinkData | null;
-	export let previous: LinkData | null;
+	$: ({ next, previous } = $page.data);
 </script>
 
 <nav>

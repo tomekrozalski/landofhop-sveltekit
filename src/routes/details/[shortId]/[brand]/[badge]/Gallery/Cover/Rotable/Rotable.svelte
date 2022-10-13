@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Details } from 'src/oldTypes/Beverage/Details';
+	import { page } from '$app/stores';
 	import Group from './Group.svelte';
 	import RotableIcon from './RotableIcon.svelte';
 	import RotableSpinner from './RotableSpinner.svelte';
@@ -18,8 +18,7 @@
 		mounted = true;
 	});
 
-	export let details: Details;
-	const imagesInGallery = details.photos.gallery;
+	$: imagesInGallery = $page.data.details.photos.gallery;
 
 	let currentlyVisibleImageIndex = 1;
 
@@ -76,7 +75,7 @@
 		{:else}
 			<RotableSpinner />
 		{/if}
-		<Group {currentlyVisibleImageIndex} {details} bind:areImagesLoaded />
+		<Group {currentlyVisibleImageIndex} bind:areImagesLoaded />
 	</div>
 {/if}
 

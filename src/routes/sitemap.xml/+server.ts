@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import type { RequestHandler } from '@sveltejs/kit';
 import { basics } from '$db/mongo';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-import type { RawBasics } from '$types/api/RawBasics';
+import type { RawBasics } from '$types/RawBasics';
 
 export const GET: RequestHandler = async function ({ setHeaders }) {
 	// -----------------------------------
