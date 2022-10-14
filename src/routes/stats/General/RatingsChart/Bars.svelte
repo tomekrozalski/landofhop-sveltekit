@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { RatingsChartBar } from 'src/oldTypes/stats/General';
+	import type { RatingsChartBar } from 'src/routes/stats/General/utils/normalizers/Output';
 
 	export let ratingsChartData: RatingsChartBar[];
 	export let innerHeight: number;

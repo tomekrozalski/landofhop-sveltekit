@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
-	import type { AlcoholChartBar } from 'src/oldTypes/stats/General';
+	import type { AlcoholChartBar } from '../utils/normalizers/Output.d';
 
 	export let average: boolean;
 	export let averageWithoutNonAlcoholicBeverages: boolean;

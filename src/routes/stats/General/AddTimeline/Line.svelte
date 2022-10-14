@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { draw } from 'svelte/transition';
 	import { curveBasis, line } from 'd3-shape';
-	import type { AddTimelineBar } from 'src/oldTypes/stats/General';
+	import type { AddTimelineBar } from '../utils/normalizers/Output.d';
 
 	export let addTimelineData: AddTimelineBar[];
 	export let isBarSelected: boolean = false;

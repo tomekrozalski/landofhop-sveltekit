@@ -2,8 +2,9 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
-	import type { AddTimelineBar } from 'src/oldTypes/stats/General';
+	import { page } from '$app/stores';
 	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
+	import type { AddTimelineBar } from '../utils/normalizers/Output.d';
 	import type { Sizes } from '../utils/Sizes';
 	import Xaxis from '../utils/timeline/XAxis.svelte';
 	import Yaxis from '../utils/timeline/YAxis.svelte';
@@ -11,7 +12,7 @@
 	import Line from './Line.svelte';
 	import Legend from './Legend.svelte';
 
-	export let addTimelineData: AddTimelineBar[];
+	const { addTimelineData } = $page.data.stats;
 
 	const sizes: Sizes = {
 		width: 1160,
@@ -46,7 +47,7 @@
 		.range([innerHeight, 0]);
 
 	let isBarSelected = false;
-	let selectedLine = null;
+	let selectedLine: 'bottles' | 'cans' | 'total' | null = null;
 </script>
 
 <h2>{$translate('stats.general.addTimeline.name')}</h2>

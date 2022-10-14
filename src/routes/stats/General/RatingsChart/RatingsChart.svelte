@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
-	import type { RatingsChartBar } from 'src/oldTypes/stats/General';
+	import type { RatingsChartBar } from 'src/routes/stats/General/utils/normalizers/Output';
 
 	import type { Sizes } from '../utils/Sizes';
 	import Xaxis from '../utils/chartBars/XAxis.svelte';

@@ -1,5 +1,5 @@
-import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { RawGeneralStats } from '$types/api/RawStats/RawGeneralStats';
+import type { AppLanguage } from '$types/enums/Globals.enum';
+import type { RawGeneralStats } from './RawGeneralStats.d';
 import type {
 	AddTimelineBar,
 	AlcoholChartBar,
@@ -7,14 +7,14 @@ import type {
 	GeneralStats,
 	RatingsChartBar,
 	TopBrandsTimelineBar
-} from '$types/stats/General';
+} from './Output';
 import { addTimeline } from './addTimeline';
 import { alcoholChart } from './alcoholChart';
 import { ratingsChart } from './ratingsChart';
 import { getTopBrands, topBrandsTimeline } from './topBrandsTimeline';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function normalizer(rawData: RawGeneralStats[], language: AppLanguage) {
+function normalizer(rawData: RawGeneralStats[], language: AppLanguage) {
 	const addTimelineData: AddTimelineBar[] = addTimeline(rawData);
 	const alcoholChartData: AlcoholChartBar[] = alcoholChart(rawData);
 	const topBrandsTimelineData: TopBrandsTimelineBar[] = topBrandsTimeline(rawData);
@@ -32,3 +32,5 @@ export function normalizer(rawData: RawGeneralStats[], language: AppLanguage) {
 
 	return completeData;
 }
+
+export default normalizer;

@@ -1,6 +1,5 @@
-import LanguageValue from '$types/common/LanguageValue';
-import { Fermentation } from '$lib/utils/enums/Beverage';
-import type { IngredientTree } from '$types/Ingredient';
+import LanguageValue from '$types/LanguageValue.d';
+import { Fermentation } from '$types/enums/Beverage.enum';
 
 export type AddTimelineBar = {
 	date: string;
@@ -51,6 +50,17 @@ export type IngredientsStatsNavigation = {
 	badge: string;
 	occurrences: number;
 }[];
+
+type IngredientTree = {
+	badge: string;
+	name: LanguageValue;
+	occurrences: {
+		alone: number;
+		withSuccessors: number;
+	};
+	successors?: IngredientTree[];
+	successorsList?: string[];
+};
 
 export type IngredientsStats = {
 	navigation: IngredientsStatsNavigation;

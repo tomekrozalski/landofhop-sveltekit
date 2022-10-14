@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
-	import type { Brand, TopBrandsTimelineBar } from 'src/oldTypes/stats/General';
+	import type {
+		Brand,
+		TopBrandsTimelineBar
+	} from 'src/routes/stats/General/utils/normalizers/Output';
 	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
 	import type { Sizes } from '../utils/Sizes';
 	import Xaxis from '../utils/timeline/XAxis.svelte';

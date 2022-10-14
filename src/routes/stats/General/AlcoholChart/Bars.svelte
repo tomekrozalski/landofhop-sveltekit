@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { AlcoholChartBar } from 'src/oldTypes/stats/General';
+	import type { AlcoholChartBar } from '../utils/normalizers/Output.d';
 	import Info from './Info.svelte';
 
 	export let alcoholChartData: AlcoholChartBar[];

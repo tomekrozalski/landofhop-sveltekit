@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { format } from 'date-fns';
 	import pl from 'date-fns/locale/pl/index.js';
-	import type { AddTimelineBar } from 'src/oldTypes/stats/General';
+	import type { AddTimelineBar } from '../utils/normalizers/Output.d';
 
 	export let addTimelineData: AddTimelineBar[];
 	export let isBarSelected: boolean = false;

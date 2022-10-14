@@ -1,12 +1,14 @@
-import { json } from '@sveltejs/kit';
-import type { RequestHandler } from '@sveltejs/kit';
 import { beverages } from '$db/mongo';
 import { deleteIfEmpty, translate } from '$lib/utils/api';
-import { normalizer } from '$lib/utils/api/stats/general/normalizer';
-import type { RawGeneralStats } from '$types/api/RawStats/RawGeneralStats.d';
+import { AppLanguage } from '$types/enums/Globals.enum';
+import normalizer from './General/utils/normalizers';
+import type { RawGeneralStats } from './General/utils/normalizers/RawGeneralStats.d';
+import type { PageLoad } from './$types';
 
-export const GET: RequestHandler = async ({ params }) => {
-	const { language } = params;
+export const prerender = true;
+
+export const load: PageLoad = async () => {
+	const language = AppLanguage.pl;
 	const rawData: RawGeneralStats[] = [];
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -93,7 +95,7 @@ export const GET: RequestHandler = async ({ params }) => {
 			rawData.push(data);
 		});
 
-	const formattedData = normalizer(rawData, language);
+	const stats = normalizer(rawData, language);
 
-	return json(formattedData);
+	return { stats };
 };

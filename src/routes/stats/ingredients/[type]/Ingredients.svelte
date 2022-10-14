@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ingredientsStore } from '$lib/utils/stores/selects';
-	import type { IngredientsStats as IngredientsStatsTypes } from 'src/oldTypes/stats/General';
+	import type { IngredientsStats as IngredientsStatsTypes } from 'src/routes/stats/General/utils/normalizers/Output';
 	import type { Ingredient } from 'src/oldTypes/Ingredient';
 	import UpdateIngredient from '$lib/templates/modals/UpdateIngredient/UpdateIngredient.svelte';
 	import Content from './Content.svelte';

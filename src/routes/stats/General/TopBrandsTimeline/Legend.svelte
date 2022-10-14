@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { Brand, TopBrandsTimelineBar } from 'src/oldTypes/stats/General';
+	import type {
+		Brand,
+		TopBrandsTimelineBar
+	} from 'src/routes/stats/General/utils/normalizers/Output';
 
 	export let selectedBrand: string | null;
 	export let morePopularBrandsData: Brand[];

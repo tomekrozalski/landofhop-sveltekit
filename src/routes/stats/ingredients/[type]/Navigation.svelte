@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import type { IngredientsStats as IngredientsStatsTypes } from 'src/oldTypes/stats/General';
+	import type { IngredientsStats as IngredientsStatsTypes } from 'src/routes/stats/General/utils/normalizers/Output';
 
 	export let data: IngredientsStatsTypes;
 </script>
