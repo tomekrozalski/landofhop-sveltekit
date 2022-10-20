@@ -3,10 +3,7 @@
 	import { translate } from 'svelte-intl';
 	import { format } from 'date-fns';
 	import pl from 'date-fns/locale/pl/index.js';
-	import type {
-		Brand,
-		TopBrandsTimelineBar
-	} from 'src/routes/stats/General/utils/normalizers/Output';
+	import type { Brand, TopBrandsTimelineBar } from '../utils/normalizers/Output.d';
 
 	export let selectedBrand: string | null;
 	export let topBrandsTimelineData: TopBrandsTimelineBar[];

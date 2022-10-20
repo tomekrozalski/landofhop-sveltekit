@@ -2,14 +2,14 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
-	import type { RatingsChartBar } from 'src/routes/stats/General/utils/normalizers/Output';
-
+	import { page } from '$app/stores';
+	import type { RatingsChartBar } from '../utils/normalizers/Output.d';
 	import type { Sizes } from '../utils/Sizes';
 	import Xaxis from '../utils/chartBars/XAxis.svelte';
 	import Yaxis from '../utils/chartBars/YAxis.svelte';
 	import Bars from './Bars.svelte';
 
-	export let ratingsChartData: RatingsChartBar[];
+	const { ratingsChartData } = $page.data.stats;
 
 	const sizes: Sizes = {
 		width: 1160,
