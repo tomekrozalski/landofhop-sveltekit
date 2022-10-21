@@ -7,7 +7,7 @@ import {
 	parseFieldNumber
 } from '$lib/utils/helpers/dataNormalizers';
 import formatInstitutionByShortId from '$lib/utils/normalizers/institution';
-import formatLanguageValueArray from '$lib/utils/normalizers/language';
+import { formatLanguageValueToDb } from '$lib/utils/normalizers/language';
 import type {
 	ContainerColor,
 	ContainerMaterial,
@@ -53,19 +53,19 @@ export default function formatValues({
 	return {
 		badge: badge.trim(),
 		// -----------
-		name: formatLanguageValueArray(name),
-		...(series.length && { series: formatLanguageValueArray(series) }),
+		name: formatLanguageValueToDb(name),
+		...(series.length && { series: formatLanguageValueToDb(series) }),
 		brand: formatInstitutionByShortId(brand),
 		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
 		...(place && { place: formatPlaceByShortId(place) }),
-		...(remark.length && { remark: formatLanguageValueArray(remark) }),
+		...(remark.length && { remark: formatLanguageValueToDb(remark) }),
 		...(tale.length && { tale: tale.map(formatTaleArray) }),
 		...(barcode && { barcode: barcode.trim() }),
 		// -----------
 		...(fermentation && fermentation.length && { fermentation }),
-		...(style.length && { style: formatLanguageValueArray(style) }),
+		...(style.length && { style: formatLanguageValueToDb(style) }),
 		...(!Object.values(extract).every((prop) => prop === null) && {
 			extract: {
 				value: parseFieldNumber(extract.value),

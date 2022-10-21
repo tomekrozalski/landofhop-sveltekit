@@ -7,7 +7,7 @@ import {
 	parseFieldNumber
 } from '$lib/utils/helpers/dataNormalizers';
 import formatInstitutionByShortId from '$lib/utils/normalizers/institution';
-import formatLanguageValueArray from '$lib/utils/normalizers/language';
+import { formatLanguageValueToDb } from '$lib/utils/normalizers/language';
 import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormValues';
 
 export default function formatValues({
@@ -32,12 +32,12 @@ export default function formatValues({
 	untappd
 }: EditorialFormValues): EditorialFormOutput {
 	return {
-		...(series.length && { series: formatLanguageValueArray(series) }),
+		...(series.length && { series: formatLanguageValueToDb(series) }),
 		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
 		...(place && { place: formatPlaceByShortId(place) }),
-		...(remark.length && { remark: formatLanguageValueArray(remark) }),
+		...(remark.length && { remark: formatLanguageValueToDb(remark) }),
 		// -----------
 		...(fermentation && fermentation.length && { fermentation }),
 		...(styleTags && { styleTags: styleTags.map(formatStyleByBadge) }),

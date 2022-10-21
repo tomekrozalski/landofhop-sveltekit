@@ -14,7 +14,7 @@
 
 	export let data: PageData;
 
-	styleStore.set(data.styles);
+	styleStore.set(data.styleList);
 </script>
 
 <svelte:head>

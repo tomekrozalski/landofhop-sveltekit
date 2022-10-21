@@ -1,10 +1,10 @@
 import formatInstitutionByShortId from '$lib/utils/normalizers/institution';
-import formatLanguageValueArray from '$lib/utils/normalizers/language';
+import { formatLanguageValueToDb } from '$lib/utils/normalizers/language';
 import type { Input, Output } from './types.d';
 
 export default function formatValues({ city, country, institution, coordinates }: Input): Output {
 	return {
-		city: formatLanguageValueArray(city),
+		city: formatLanguageValueToDb(city),
 		country,
 		institution: formatInstitutionByShortId(institution),
 		...(coordinates.latitude !== null &&

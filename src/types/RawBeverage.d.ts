@@ -311,7 +311,10 @@ export type RawBeverage = {
 		};
 		brewing?: {
 			fermentation?: Fermentation[];
-			styleTags?: string[];
+			styleTags?: {
+				badge: string;
+				name: LanguageValue[];
+			}[];
 			alcohol?: {
 				scope: AlcoholScope;
 			};

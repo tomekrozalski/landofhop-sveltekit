@@ -1,6 +1,6 @@
 <script lang="ts">
 	import authentication from '$lib/utils/stores/authentication';
-	import type { StylesStats as StylesStatsTypes } from 'src/oldTypes/stats/Styles';
+	import type { StylesStats as StylesStatsTypes } from 'src/routes/stats/styles/Styles';
 	import FindAll from '../elements/FindAll.svelte';
 	import UpdateButton from '../elements/UpdateButton.svelte';
 
