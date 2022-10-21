@@ -1,30 +1,27 @@
-import { json } from '@sveltejs/kit';
-import type { RequestHandler } from '@sveltejs/kit';
 import { set } from 'lodash-es';
 import { ingredients } from '$db/mongo';
 import { translate } from '$lib/utils/api';
-import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { IngredientTree } from '$types/Ingredient';
-// import type { IngredientsStatsNavigation } from '$types/stats/General';
+import { AppLanguage } from '$types/enums/Globals.enum';
+import type { RawIngredient } from '$types/RawIngredient.d';
+import type { LanguageValue } from '$types/LanguageValue.d';
+import type { Ingredient } from '$lib/utils/stores/types/Ingredient.d';
+import type { IngredientTree, Navigation } from './types.d';
+import type { PageServerLoad } from './$types';
 
-export const GET: RequestHandler = async ({ params }) => {
-	const language = params.language ?? AppLanguage.en;
-	const badge = params.badge;
+// export const prerender = true;
+
+export const load: PageServerLoad = async ({ params, parent }) => {
+	const language = AppLanguage.en;
+	const badge = params.type as string;
 
 	/* create navigation data */
 
-	let navigation: {
-		badge: string;
-		occurrences: {
-			alone: number;
-			withSuccessors: number;
-		};
-	}[] = [];
+	let navigation: Navigation = [];
 
 	await ingredients
 		.find({ parent: { $exists: false } }, { projection: { badge: 1, occurrences: 1 } })
 		.sort({ _id: 1 })
-		.forEach(({ badge, occurrences }) => {
+		.forEach(({ badge, occurrences }: RawIngredient) => {
 			navigation.push({
 				badge,
 				occurrences: occurrences.withSuccessors
@@ -37,12 +34,12 @@ export const GET: RequestHandler = async ({ params }) => {
 	/* create three data */
 	/* step 1: generate path, eg. ['addition', 'vanilla', 'vanilla-extract'] */
 
-	const path = [];
+	const path: string[] = [];
 
-	async function generatePath(value) {
-		path.unshift(value);
+	async function generatePath(badge: string) {
+		path.unshift(badge);
 
-		const ingredientData = await ingredients.findOne({ badge: value });
+		const ingredientData = await ingredients.findOne({ badge });
 
 		if (ingredientData.parent) {
 			await generatePath(ingredientData.parent);
@@ -53,7 +50,7 @@ export const GET: RequestHandler = async ({ params }) => {
 
 	/* step 2: generate source object (main category object) */
 
-	const sourceRaw = await ingredients.findOne({ badge: path[0] });
+	const sourceRaw = (await ingredients.findOne({ badge: path[0] })) as RawIngredient;
 
 	const tree: IngredientTree = {
 		badge: sourceRaw.badge,
@@ -62,7 +59,15 @@ export const GET: RequestHandler = async ({ params }) => {
 	};
 
 	async function createSuccessors(index: number, target: string) {
-		const successorsData: IngredientTree[] = [];
+		const successorsData: {
+			badge: string;
+			name: LanguageValue;
+			occurrences: {
+				alone: number;
+				withSuccessors: number;
+			};
+			successorsList?: string[];
+		}[] = [];
 
 		await ingredients
 			.find(
@@ -91,8 +96,32 @@ export const GET: RequestHandler = async ({ params }) => {
 
 	await createSuccessors(0, 'successors');
 
-	return json({
-		navigation,
-		tree
-	});
+	const { authenticated } = await parent();
+	let ingredientList: Ingredient[] | null = null;
+
+	if (authenticated) {
+		ingredientList = await ingredients
+			.find(
+				{},
+				{
+					projection: {
+						_id: 0,
+						badge: 1,
+						name: 1,
+						occurrences: 1,
+						parent: 1,
+						type: 1
+					}
+				}
+			)
+			.toArray();
+	}
+
+	return {
+		statsData: {
+			navigation,
+			tree
+		},
+		ingredients: ingredientList
+	};
 };

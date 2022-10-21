@@ -2,7 +2,7 @@
 	export let badge: string;
 </script>
 
-<a href={`/stats/ingredients/${badge}`} data-sveltekit-noscroll>+</a>
+<a href="/stats/ingredients/{badge}" data-sveltekit-noscroll>+</a>
 
 <style>
 	a {

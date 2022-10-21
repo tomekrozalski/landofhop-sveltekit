@@ -1,7 +1,7 @@
 import type { IngredientType } from './enums/Beverage.enum';
 import type { LanguageValue } from './LanguageValue.d';
 
-export type RawIngredient = RawIngredientWithoutId & {
+export type RawIngredient = {
 	_id: string;
 	badge: string;
 	name: LanguageValue[];
