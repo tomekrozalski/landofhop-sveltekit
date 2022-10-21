@@ -3,7 +3,6 @@
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import { postFormData } from '$lib/utils/api/communication';
-	import type { PhotosDataWithContainerType as PhotosDataTypes } from 'src/oldTypes/Beverage/PhotosData';
 	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
 	import WarningIcon from '$lib/atoms/vectors/Warning.svelte';
 	import Dropzone from './elements/Dropzone/Dropzone.svelte';
@@ -13,6 +12,7 @@
 	import GalleryThumbs from './elements/GalleryThumbs.svelte';
 	import Image from './elements/Image.svelte';
 	import { beveragePhotosStore } from './stores';
+	import type { PhotosDataTypes } from './types.d';
 
 	const { badge, brand, shortId } = $page.params;
 	let version: number | null = Date.now();

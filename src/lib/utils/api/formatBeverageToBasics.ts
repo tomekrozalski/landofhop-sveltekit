@@ -2,9 +2,9 @@ import { format } from 'date-fns';
 import { translate } from '$lib/utils/api';
 import { AppLanguage, DateFormat } from '$types/enums/Globals.enum';
 import type { RawBeverage } from '$types/RawBeverage.d';
-import type { Basics } from '$types/Beverage/Basics';
+import type { Beverage } from '$lib/templates/BeverageList/Beverage.d';
 
-function formatBeverageToBasics(results: Basics[], language: AppLanguage) {
+function formatBeverageToBasics(results: Beverage[], language: AppLanguage) {
 	return function ({ added, badge, editorial, label, shortId }: RawBeverage) {
 		results.push({
 			added: format(new Date(added), DateFormat.pl),

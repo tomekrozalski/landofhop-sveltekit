@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { LanguageValue } from 'src/oldTypes/common/LanguageValue';
+	import type { LanguageValue } from '$types/LanguageValue.d';
 
 	export let editorial: boolean = false;
 	export let label: boolean = false;

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import Label from '$lib/atoms/forms/Label.svelte';
-	import type { InstitutionEssence } from 'src/oldTypes/Institution';
 	import TextInput from '$lib/atoms/forms/TextInput.svelte';
 	import Conditional from '$lib/atoms/forms/Conditional.svelte';
 	import SearchLink from '$lib/atoms/forms/SearchLink.svelte';
 	import { institutionStore } from '$lib/utils/stores/selects';
+	import type { Institution } from '$lib/utils/stores/types/Institution.d';
 
 	export let badge: string;
 	export let brandId: string;
@@ -18,9 +18,7 @@
 	function getUntappdSearchLink() {
 		const params = new URLSearchParams();
 
-		const brand = $institutionStore.find(
-			({ shortId }) => shortId === brandId
-		) as InstitutionEssence;
+		const brand = $institutionStore.find(({ shortId }) => shortId === brandId) as Institution;
 		const formattedBrand = brand.badge.replaceAll('-', ' ').replaceAll('browar ', '');
 		const name = badge.replaceAll('-', ' ');
 
