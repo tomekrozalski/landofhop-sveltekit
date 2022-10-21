@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-import type { RawInstitution } from '$types/api/RawInstitution.d';
-import { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
+import type { RawInstitution } from '$types/RawInstitution.d';
+import { AppLanguage } from '$types/enums/Globals.enum';
 import { institutions } from '$db/mongo';
 import responseNormalizer from './utils/responseNormalizer';
 import type { PageServerLoad } from './$types';

@@ -59,7 +59,7 @@
 		{:else}
 			{$translate('beverage.header.by')}
 		{/if}
-		<MarkLanguage label tag="em" name={brand.name} />
+		<MarkLanguage href="/brand/{brand.shortId}/{brand.badge}" label tag="a" name={brand.name} />
 		{#if series}
 			{$translate('beverage.header.series')}
 			{#if series.label?.length}
