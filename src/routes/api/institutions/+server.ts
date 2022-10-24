@@ -1,10 +1,10 @@
 import { json } from '@sveltejs/kit';
 import { institutions } from '$db/mongo';
-import type { RawInstitutionWithoutId } from '$types/api/RawInstitution';
+import type { RawInstitution } from '$types/RawInstitution.d';
 import type { RequestHandler } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async () => {
-	const data: RawInstitutionWithoutId[] = await institutions
+	const data: RawInstitution[] = await institutions
 		.find(
 			{},
 			{

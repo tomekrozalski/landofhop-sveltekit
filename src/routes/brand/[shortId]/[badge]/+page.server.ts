@@ -5,7 +5,7 @@ import { institutions } from '$db/mongo';
 import responseNormalizer from './utils/responseNormalizer';
 import type { PageServerLoad } from './$types';
 
-// export const prerender = true;
+export const prerender = true;
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { badge, shortId } = params;

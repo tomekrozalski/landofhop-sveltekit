@@ -62,11 +62,14 @@
 		font-weight: initial;
 		color: inherit;
 	}
-
+	article :global(a.label),
+	article :global(a.producer),
 	article :global(a.editorial) {
 		transition: background-position var(--transition-default);
 	}
 
+	article :global(a.label:hover),
+	article :global(a.producer:hover),
 	article :global(a.editorial:hover) {
 		background-position: 0px 0.2em;
 	}
