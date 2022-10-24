@@ -8,7 +8,7 @@ import type { Ingredient } from '$lib/utils/stores/types/Ingredient.d';
 import type { IngredientTree, Navigation } from './types.d';
 import type { PageServerLoad } from './$types';
 
-// export const prerender = true;
+export const prerender = true;
 
 export const load: PageServerLoad = async ({ params, parent }) => {
 	const language = AppLanguage.en;

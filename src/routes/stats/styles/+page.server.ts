@@ -6,6 +6,8 @@ import type { LanguageValue } from '$types/LanguageValue.d';
 import type { RawStylesStats } from './RawStylesStats.d';
 import type { PageServerLoad } from './$types';
 
+export const prerender = true;
+
 export const load: PageServerLoad = async ({ parent }) => {
 	let styleList: StyleType[] = [];
 	const rawData: RawStylesStats[] = [];
