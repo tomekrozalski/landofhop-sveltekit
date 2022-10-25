@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import { invalidate } from '$app/navigation';
+	import { invalidateAll } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { postJsonData } from '$lib/utils/api/communication';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
@@ -22,7 +22,7 @@
 				}
 			});
 
-			await invalidate(`/api/beverages/details/pl/${$page.data.details.shortId}`);
+			await invalidateAll();
 			isLoading = false;
 		}
 	}

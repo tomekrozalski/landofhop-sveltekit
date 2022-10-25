@@ -1,7 +1,7 @@
 import { translate } from '$lib/utils/api';
-import type { AppLanguage } from '$lib/utils/enums/AppLanguage.enum';
-import type { RawInstitution } from '$types/api/RawInstitution.d';
-import type { InstitutionDetails } from '$types/Institution.d';
+import type { AppLanguage } from '$types/enums/Globals.enum';
+import type { RawInstitution } from '$types/RawInstitution.d';
+import type { InstitutionDetails } from '../types.d';
 
 function responseNormalizer(
 	{ name, owner, website }: RawInstitution,
@@ -9,7 +9,13 @@ function responseNormalizer(
 ): InstitutionDetails {
 	return {
 		name: translate(name, desiredLanguage),
-		...(owner && { owner: responseNormalizer(owner, desiredLanguage) }),
+		...(owner && {
+			owner: {
+				badge: owner.badge,
+				name: translate(owner.name, desiredLanguage),
+				website: owner.website
+			}
+		}),
 		...(website && { website })
 	};
 }

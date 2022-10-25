@@ -2,12 +2,15 @@
 	import { translate, translations } from 'svelte-intl';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
+	import Timeline from './Timeline.svelte';
 	import dictionary from './dictionary.json';
 	import type { PageData } from './$types';
 
 	translations.update(dictionary);
 
 	export let data: PageData;
+
+	$: console.log('data', data);
 
 	$: ({ name } = data.insitution);
 </script>
@@ -19,5 +22,5 @@
 
 <article>
 	<MarkLanguage tag="h1" {name} />
-	<div>{JSON.stringify(data, null, '\n')}</div>
+	<Timeline />
 </article>
