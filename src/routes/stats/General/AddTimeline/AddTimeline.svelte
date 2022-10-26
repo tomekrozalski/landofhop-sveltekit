@@ -40,10 +40,9 @@
 	// Define vertical scale
 
 	const total = (d: AddTimelineBar) => d.bottle + d.can;
+	const highestValue = (max(addTimelineData, total) || 0) + 3;
 
-	const yScale = scaleLinear()
-		.domain([0, (max(addTimelineData, total) || 0) + 3])
-		.range([innerHeight, 0]);
+	const yScale = scaleLinear().domain([0, highestValue]).range([innerHeight, 0]);
 
 	let isBarSelected = false;
 	let selectedLine: 'bottles' | 'cans' | 'total' | null = null;
@@ -52,7 +51,7 @@
 <h2>{$translate('stats.general.addTimeline.name')}</h2>
 
 <div>
-	<TimelineWrapper highestValue={(max(addTimelineData, total) || 0) + 3} let:intersecting>
+	<TimelineWrapper {highestValue} let:intersecting>
 		<Bars
 			{addTimelineData}
 			{innerWidth}

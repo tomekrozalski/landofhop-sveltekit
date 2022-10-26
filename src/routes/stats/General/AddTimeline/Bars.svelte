@@ -48,7 +48,7 @@
 		</g>
 	{/each}
 	{#if info}
-		<text class="label" x={innerWidth / 2} y="30" text-anchor="middle">
+		<text x={innerWidth / 2} y="30" text-anchor="middle">
 			{$translate('stats.general.addTimeline.depiction', info)}
 		</text>
 	{/if}
@@ -80,5 +80,10 @@
 
 	rect.bottle {
 		fill: var(--color-bottle);
+	}
+
+	text {
+		font: var(--font-weight-regular) 1.2rem / 1 var(--font-primary);
+		font-size: 1.8rem;
 	}
 </style>

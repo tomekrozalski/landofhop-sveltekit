@@ -104,4 +104,9 @@
 	.hidden {
 		opacity: 0;
 	}
+
+	text {
+		font: var(--font-weight-regular) 1.2rem / 1 var(--font-primary);
+		font-size: 1.8rem;
+	}
 </style>

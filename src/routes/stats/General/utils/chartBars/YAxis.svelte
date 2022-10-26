@@ -18,3 +18,22 @@
 		</g>
 	{/each}
 </g>
+
+<style>
+	line {
+		stroke: var(--color-black);
+	}
+
+	line.light {
+		stroke: var(--color-grey-3);
+	}
+
+	text {
+		font: var(--font-weight-light) 1.2rem / 1 var(--font-primary);
+	}
+
+	text.label {
+		font-weight: var(--font-weight-regular);
+		font-size: 1.8rem;
+	}
+</style>

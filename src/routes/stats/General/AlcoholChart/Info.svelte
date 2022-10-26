@@ -54,5 +54,6 @@
 
 	text {
 		fill: var(--color-white);
+		font: var(--font-weight-light) 1.2rem / 1 var(--font-primary);
 	}
 </style>
