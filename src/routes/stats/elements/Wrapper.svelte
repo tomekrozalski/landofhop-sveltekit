@@ -10,23 +10,6 @@
 </article>
 
 <style>
-	:global(line) {
-		stroke: var(--color-black);
-	}
-
-	:global(line.light) {
-		stroke: var(--color-grey-3);
-	}
-
-	:global(text) {
-		font: var(--font-weight-light) 1.2rem / 1 var(--font-primary);
-	}
-
-	:global(text.label) {
-		font-weight: var(--font-weight-regular);
-		font-size: 1.8rem;
-	}
-
 	:global(path.line) {
 		fill: none;
 		stroke-width: 5;

@@ -2,11 +2,9 @@
 	import { translate } from 'svelte-intl';
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { page } from '$app/stores';
+	import TimelineWrapper from '$lib/templates/TimelineWrapper/TimelineWrapper.svelte';
 	import type { TopBrandsTimelineBar } from '../utils/normalizers/Output.d';
-	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
 	import type { Sizes } from '../utils/Sizes';
-	import Xaxis from '../utils/timeline/XAxis.svelte';
-	import Yaxis from '../utils/timeline/YAxis.svelte';
 	import Line from './Line.svelte';
 	import Legend from './Legend.svelte';
 	import Points from './Points.svelte';
@@ -52,17 +50,11 @@
 
 <h2>{$translate('stats.general.topBrandsTimeline.name')}</h2>
 
-<IntersectionObserver once={true} let:intersecting threshold={1}>
-	<svg viewBox="0 0 {width} {height}">
-		<g style="transform: translate({margin.left}px, {margin.top}px)">
-			<Xaxis {innerHeight} {xScale} />
-			<Yaxis {innerWidth} {yScale} />
-			{#if intersecting}
-				<Line {topBrandsTimelineData} {xScale} {xValue} {yScale} bind:selectedBrand />
-				<Points {topBrandsTimelineData} {xScale} {yScale} bind:selectedBrand />
-			{/if}
-		</g>
-	</svg>
-</IntersectionObserver>
+<TimelineWrapper highestValue={highestValue + 3} let:intersecting>
+	{#if intersecting}
+		<Line {topBrandsTimelineData} {xScale} {xValue} {yScale} bind:selectedBrand />
+		<Points {topBrandsTimelineData} {xScale} {yScale} bind:selectedBrand />
+	{/if}
+</TimelineWrapper>
 
 <Legend {morePopularBrandsData} {topBrandsTimelineData} bind:selectedBrand />

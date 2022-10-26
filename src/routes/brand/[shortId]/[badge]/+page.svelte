@@ -2,7 +2,7 @@
 	import { translate, translations } from 'svelte-intl';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
-	import Timeline from './Timeline.svelte';
+	import TimelineWrapper from '$lib/templates/TimelineWrapper/TimelineWrapper.svelte';
 	import dictionary from './dictionary.json';
 	import type { PageData } from './$types';
 
@@ -10,7 +10,7 @@
 
 	export let data: PageData;
 
-	$: console.log('data', data);
+	// $: console.log('data', data);
 
 	$: ({ name } = data.insitution);
 </script>
@@ -22,5 +22,5 @@
 
 <article>
 	<MarkLanguage tag="h1" {name} />
-	<Timeline />
+	<TimelineWrapper highestValue={30}>test</TimelineWrapper>
 </article>

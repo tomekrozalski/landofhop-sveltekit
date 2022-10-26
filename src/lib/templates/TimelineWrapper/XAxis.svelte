@@ -21,3 +21,13 @@
 		</g>
 	{/each}
 </g>
+
+<style>
+	line {
+		stroke: var(--color-black);
+	}
+
+	text {
+		font: var(--font-weight-light) 1.2rem / 1 var(--font-primary);
+	}
+</style>

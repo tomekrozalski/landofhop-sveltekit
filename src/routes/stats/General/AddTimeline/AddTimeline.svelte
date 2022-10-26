@@ -4,10 +4,9 @@
 	import { max } from 'd3-array';
 	import { page } from '$app/stores';
 	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
+	import TimelineWrapper from '$lib/templates/TimelineWrapper/TimelineWrapper.svelte';
 	import type { AddTimelineBar } from '../utils/normalizers/Output.d';
 	import type { Sizes } from '../utils/Sizes';
-	import Xaxis from '../utils/timeline/XAxis.svelte';
-	import Yaxis from '../utils/timeline/YAxis.svelte';
 	import Bars from './Bars.svelte';
 	import Line from './Line.svelte';
 	import Legend from './Legend.svelte';
@@ -52,31 +51,28 @@
 
 <h2>{$translate('stats.general.addTimeline.name')}</h2>
 
-<IntersectionObserver once={true} let:intersecting threshold={1}>
-	<svg viewBox="0 0 {width} {height}">
-		<g style="transform: translate({margin.left}px, {margin.top}px)">
-			<Xaxis {innerHeight} {xScale} />
-			<Yaxis {innerWidth} {yScale} />
-			<Bars
-				{addTimelineData}
-				{innerWidth}
-				{innerHeight}
-				{xScale}
-				{xValue}
-				{yScale}
-				{selectedLine}
-				bind:isBarSelected
-			/>
-			{#if intersecting}
-				<Line {addTimelineData} {xScale} {xValue} {yScale} bind:selectedLine {isBarSelected} />
-			{/if}
-		</g>
-	</svg>
-</IntersectionObserver>
+<div>
+	<TimelineWrapper highestValue={(max(addTimelineData, total) || 0) + 3} let:intersecting>
+		<Bars
+			{addTimelineData}
+			{innerWidth}
+			{innerHeight}
+			{xScale}
+			{xValue}
+			{yScale}
+			{selectedLine}
+			bind:isBarSelected
+		/>
+		{#if intersecting}
+			<Line {addTimelineData} {xScale} {xValue} {yScale} bind:selectedLine {isBarSelected} />
+		{/if}
+	</TimelineWrapper>
+</div>
+
 <Legend {addTimelineData} bind:selectedLine />
 
 <style>
-	svg {
+	:global(svg) {
 		--color-bottle: var(--color-brand-6);
 		--color-can: var(--color-brand-5);
 		--color-total: var(--color-brand-8);
