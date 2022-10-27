@@ -42,6 +42,7 @@
 <TimelineWrapper {highestValue} {sizes}>
 	<Bars {timelineData} {innerHeight} {xScale} {xValue} {yScale} bind:selectedBar />
 </TimelineWrapper>
+<a href="/advanced-search?brands={$page.params.shortId}">Zobacz wszystkie piwa marki</a>
 
 <style>
 	p {
@@ -60,5 +61,16 @@
 		border-radius: 50%;
 		content: '?';
 		color: var(--color-grey-1);
+	}
+
+	a {
+		float: right;
+		margin-inline: 2rem;
+		font-size: 1.6rem;
+		color: var(--color-black);
+	}
+
+	a:hover {
+		text-decoration: underline;
 	}
 </style>
