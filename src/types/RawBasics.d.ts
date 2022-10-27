@@ -8,6 +8,7 @@ export type RawBasics = {
 	brand: {
 		badge: string;
 		name: LanguageValue[];
+		shortId: string;
 	};
 	name: LanguageValue[];
 	coverImage?: {

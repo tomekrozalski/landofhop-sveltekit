@@ -4,7 +4,7 @@
 	import { max } from 'd3-array';
 	import { page } from '$app/stores';
 	import type { AlcoholChartBar } from '../utils/normalizers/Output.d';
-	import type { Sizes } from '../utils/Sizes';
+	import type { Sizes } from '$types/Charts.d';
 	import Xaxis from '../utils/chartBars/XAxis.svelte';
 	import Yaxis from '../utils/chartBars/YAxis.svelte';
 	import Bars from './Bars.svelte';

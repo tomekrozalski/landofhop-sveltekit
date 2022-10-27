@@ -1,39 +1,53 @@
-import { add, format, isBefore, max, min } from 'date-fns';
+import { format } from 'date-fns';
 import { error } from '@sveltejs/kit';
 import { basics, institutions } from '$db/mongo';
 import { translate } from '$lib/utils/api';
-import { AppLanguage } from '$types/enums/Globals.enum';
+import generateMonthList from '$lib/utils/helpers/generateMonthList';
+import { AppLanguage, DateFormat } from '$types/enums/Globals.enum';
 import type { RawInstitution } from '$types/RawInstitution.d';
 import type { LanguageValue } from '$types/LanguageValue.d';
 import responseNormalizer from './utils/responseNormalizer';
+import type { RawBasics } from '$types/RawBasics.d';
 import type { PageServerLoad } from './$types';
+import type { Beverage } from '$lib/templates/BeverageList/Beverage.d';
 
 export const prerender = true;
 
-type OutputType = { date: string; beverages?: LanguageValue[] }[];
+type OutputType = { date: string; beverages?: Beverage[] }[];
 
-const abc = (values: { added: Date; name: LanguageValue[] }[]): OutputType => {
+const createTimelineData = (values: RawBasics[]): OutputType => {
 	const domain: { date: string; beverages: LanguageValue[] }[] = [];
-	const dates = values.map(({ added }) => new Date(added));
-	const earliest = min(dates);
-	const latest = max(dates);
-	const endpoint = new Date(`${format(add(latest, { months: 1 }), 'yyyy-MM', {})}-01`);
-	let current = earliest;
+	const dateList = generateMonthList();
 
-	do {
+	dateList.forEach((date) => {
 		domain.push({
-			date: format(current, 'yyyy-MM'),
+			date: format(date, 'yyyy-MM'),
 			beverages: values
 				.filter(({ added }) => {
-					if (format(added, 'yyyy-MM') === format(current, 'yyyy-MM')) {
+					if (format(added, 'yyyy-MM') === format(date, 'yyyy-MM')) {
 						return true;
 					}
 				})
-				.map(({ name }) => translate(name, AppLanguage.pl))
+				.map(({ added, badge, brand, containerType, coverImage, name, shortId }) => ({
+					shortId,
+					badge,
+					brand: {
+						...brand,
+						name: translate(brand.name, AppLanguage.pl)
+					},
+					name: translate(name, AppLanguage.pl),
+					...(coverImage && {
+						coverImage: {
+							height: coverImage.height,
+							width: coverImage.width,
+							outline: coverImage.outlines
+						}
+					}),
+					containerType,
+					added: format(new Date(added), DateFormat[AppLanguage.pl])
+				}))
 		});
-
-		current = add(current, { months: 1 });
-	} while (isBefore(current, endpoint));
+	});
 
 	return domain.map(({ date, beverages }) => ({
 		date,
@@ -49,20 +63,11 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404, 'Institution not found');
 	}
 
-	const abb = await basics
-		.find(
-			{ 'brand.badge': badge, 'brand.shortId': shortId },
-			{
-				projection: {
-					_id: 0,
-					name: 1,
-					added: 1
-				}
-			}
-		)
-		.toArray();
+	const rawBasics = await basics.find({ 'brand.badge': badge, 'brand.shortId': shortId }).toArray();
+	const timelineData: OutputType = createTimelineData(rawBasics);
 
-	const formattedBasics: OutputType = abc(abb);
-
-	return { formattedBasics, insitution: responseNormalizer(rawInstitution, AppLanguage.pl) };
+	return {
+		timelineData,
+		insitution: responseNormalizer(rawInstitution, AppLanguage.pl)
+	};
 };

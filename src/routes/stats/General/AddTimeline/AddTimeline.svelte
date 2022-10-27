@@ -3,10 +3,9 @@
 	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
 	import { page } from '$app/stores';
-	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
 	import TimelineWrapper from '$lib/templates/TimelineWrapper/TimelineWrapper.svelte';
 	import type { AddTimelineBar } from '../utils/normalizers/Output.d';
-	import type { Sizes } from '../utils/Sizes';
+	import type { Sizes } from '$types/Charts.d';
 	import Bars from './Bars.svelte';
 	import Line from './Line.svelte';
 	import Legend from './Legend.svelte';
@@ -50,23 +49,21 @@
 
 <h2>{$translate('stats.general.addTimeline.name')}</h2>
 
-<div>
-	<TimelineWrapper {highestValue} let:intersecting>
-		<Bars
-			{addTimelineData}
-			{innerWidth}
-			{innerHeight}
-			{xScale}
-			{xValue}
-			{yScale}
-			{selectedLine}
-			bind:isBarSelected
-		/>
-		{#if intersecting}
-			<Line {addTimelineData} {xScale} {xValue} {yScale} bind:selectedLine {isBarSelected} />
-		{/if}
-	</TimelineWrapper>
-</div>
+<TimelineWrapper {highestValue} let:intersecting {sizes}>
+	<Bars
+		{addTimelineData}
+		{innerWidth}
+		{innerHeight}
+		{xScale}
+		{xValue}
+		{yScale}
+		{selectedLine}
+		bind:isBarSelected
+	/>
+	{#if intersecting}
+		<Line {addTimelineData} {xScale} {xValue} {yScale} bind:selectedLine {isBarSelected} />
+	{/if}
+</TimelineWrapper>
 
 <Legend {addTimelineData} bind:selectedLine />
 
