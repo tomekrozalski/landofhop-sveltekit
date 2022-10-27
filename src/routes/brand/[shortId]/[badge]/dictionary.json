@@ -1,8 +1,10 @@
 {
 	"en": {
+		"brand.clickOnBarInfo": "Click on a bar to show the beverages which I drank in the selected month",
 		"brand.title": "🏭 Brand page, {name}"
 	},
 	"pl": {
+		"brand.clickOnBarInfo": "Kliknij w słupek, aby zobaczyć piwa, które wypiłem we wskazanym miesiącu",
 		"brand.title": "🏭 Strona marki, {name}"
 	}
 }
