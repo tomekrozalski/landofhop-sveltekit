@@ -1,5 +1,6 @@
 import { add, format, isBefore } from 'date-fns';
 import type { YearMonth } from '$types/Charts.d';
+
 type GenerateMonthListTypes = {
 	startDate: YearMonth;
 	finishDate: YearMonth;
@@ -15,14 +16,14 @@ const generateMonthList = (
 	}
 ): Date[] => {
 	const dateList = [];
-	let currentDate = new Date(`${startDate.year} ${startDate.month} 1`);
+	let currentDate = new Date(startDate.year, startDate.month - 1);
 
 	do {
 		dateList.push(currentDate);
 		const nextMonthDate = add(currentDate, { months: 1 });
 		currentDate = nextMonthDate;
 	} while (
-		isBefore(currentDate, add(new Date(`${finishDate.year} ${finishDate.month} 1`), { months: 1 }))
+		isBefore(currentDate, add(new Date(finishDate.year, finishDate.month - 1), { months: 1 }))
 	);
 
 	return dateList;
