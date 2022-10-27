@@ -8,7 +8,7 @@
 	import Pagination from '$lib/molecules/pagination/Pagination.svelte';
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
 	import NothingFound from '$lib/templates/BeverageList/NothingFound.svelte';
-	import type { Beverage } from '$lib/templates/BeverageList/Beverage.d';
+	import type { Basics } from '$lib/templates/BeverageList/Basics.d';
 	import layoutStore from '../store';
 	import AdvancedSearchLink from './AdvancedSearchLink.svelte';
 
@@ -17,7 +17,7 @@
 
 	async function callToApi(phrase: string, page: number) {
 		const response: {
-			beverages: Beverage[];
+			beverages: Basics[];
 			total: number;
 		} = await getJsonData({
 			path: `/api/search/byPhrase/pl/${phrase.trim()}/${page}`

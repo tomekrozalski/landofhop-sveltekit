@@ -4,9 +4,9 @@
 	import IntersectionObserver from '$lib/utils/helpers/IntersectionObserver.svelte';
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
 	import CoverImage from './CoverImage.svelte';
-	import type { Beverage } from './Beverage.d';
+	import type { Basics } from './Basics.d';
 
-	export let beverage: Beverage;
+	export let beverage: Basics;
 	export let eager: boolean;
 	const { badge, brand, name, coverImage, shortId } = beverage;
 

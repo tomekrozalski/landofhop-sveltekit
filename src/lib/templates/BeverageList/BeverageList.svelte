@@ -3,9 +3,9 @@
 	import CoverImageWrapper from './CoverImageWrapper.svelte';
 	import BrokenCoverImage from './BrokenCoverImage.svelte';
 	import dictionary from './dictionary.json';
-	import type { Beverage } from './Beverage.d';
+	import type { Basics } from './Basics.d';
 
-	export let beverages: Beverage[];
+	export let beverages: Basics[];
 
 	translations.update(dictionary);
 </script>

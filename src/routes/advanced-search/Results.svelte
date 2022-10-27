@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 	import { postJsonData } from '$lib/utils/api/communication';
-	import type { Beverage } from '$lib/templates/BeverageList/Beverage.d';
+	import type { Basics } from '$lib/templates/BeverageList/Basics.d';
 	import Spinner from '$lib/atoms/spinners/FullWidth.svelte';
 	import Total from '$lib/molecules/pagination/elements/Total.svelte';
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
@@ -14,7 +14,7 @@
 
 	async function callToApi(values: AdvancedSearchData) {
 		const response: {
-			beverages: Beverage[];
+			beverages: Basics[];
 			total: number;
 		} = await postJsonData({
 			path: '/api/search/advanced',

@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 import { beverages } from '$db/mongo';
 import { formatBeverageToBasics } from '$lib/utils/api';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-import type { Beverage } from '$lib/templates/BeverageList/Beverage.d';
+import type { Basics } from '$lib/templates/BeverageList/Basics.d';
 import { AppLanguage } from '$types/enums/Globals.enum';
 
 export const GET: RequestHandler = async ({ params }) => {
@@ -12,7 +12,7 @@ export const GET: RequestHandler = async ({ params }) => {
 	const phrase = params.phrase ?? '';
 
 	let total = 0;
-	const foundArr: Beverage[] = [];
+	const foundArr: Basics[] = [];
 
 	const query = {
 		$or: [

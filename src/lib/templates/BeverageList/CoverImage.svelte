@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import type { Beverage } from './Beverage.d';
+	import type { Basics } from './Basics.d';
 
-	export let beverage: Beverage;
+	export let beverage: Basics;
 	export let eager: boolean;
 	export let loaded: boolean;
 

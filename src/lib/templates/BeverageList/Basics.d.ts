@@ -1,6 +1,6 @@
 import type { LanguageValue } from '$types/LanguageValue.d';
 
-export type Beverage = {
+export type Basics = {
 	shortId: string;
 	badge: string;
 	brand: {
