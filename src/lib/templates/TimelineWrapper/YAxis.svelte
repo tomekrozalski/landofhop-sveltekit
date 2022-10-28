@@ -4,13 +4,15 @@
 	export let innerWidth: number;
 	export let yScale: any;
 	export let ticks: number;
+
+	const formattedTicks = yScale.ticks(ticks).filter((tick: number) => Number.isInteger(tick));
 </script>
 
 <g>
 	<text x="0" y="-60" style="transform: rotate(-90deg)" text-anchor="end" class="label">
 		{$translate('timelineWrapper.numberOfBeverages')}
 	</text>
-	{#each yScale.ticks(ticks) as tick, index}
+	{#each formattedTicks as tick, index}
 		<g style="transform: translate(0, {yScale(tick)}px)">
 			<line x2={innerWidth} class:light={index > 0} />
 			{#if index !== 0}

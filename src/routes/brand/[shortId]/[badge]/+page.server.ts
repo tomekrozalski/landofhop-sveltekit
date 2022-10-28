@@ -1,7 +1,8 @@
 import { error } from '@sveltejs/kit';
-import { basics, institutions } from '$db/mongo';
+import { beverages, institutions } from '$db/mongo';
 import { AppLanguage } from '$types/enums/Globals.enum';
 import type { RawInstitution } from '$types/RawInstitution.d';
+import type { RawBeverage } from '$types/RawBeverage.d';
 import institutionApiNormalizer from './utils/institutionApiNormalizer';
 import timelineApiNormalizer from './utils/timelineApiNormalizer';
 import type { PageServerLoad } from './$types';
@@ -16,10 +17,28 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404, 'Institution not found');
 	}
 
-	const rawBasics = await basics.find({ 'brand.badge': badge, 'brand.shortId': shortId }).toArray();
+	const rawBeverages: RawBeverage[] = await beverages
+		.find({
+			$or: [
+				{ 'label.general.brand.badge': badge, 'label.general.brand.shortId': shortId },
+				{ 'label.general.cooperation.badge': badge, 'label.general.cooperation.shortId': shortId },
+				{
+					'producer.general.cooperation.badge': badge,
+					'producer.general.cooperation.shortId': shortId
+				},
+				{
+					'editorial.general.cooperation.badge': badge,
+					'editorial.general.cooperation.shortId': shortId
+				},
+				{ 'label.general.contract.badge': badge, 'label.general.contract.shortId': shortId },
+				{ 'producer.general.contract.badge': badge, 'producer.general.contract.shortId': shortId },
+				{ 'editorial.general.contract.badge': badge, 'editorial.general.contract.shortId': shortId }
+			]
+		})
+		.toArray();
 
 	return {
-		timelineData: timelineApiNormalizer(rawBasics),
+		timelineData: timelineApiNormalizer({ badge, rawBeverages, shortId }),
 		insitution: institutionApiNormalizer(rawInstitution, AppLanguage.pl)
 	};
 };

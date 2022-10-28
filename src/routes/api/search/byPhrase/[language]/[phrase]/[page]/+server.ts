@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { beverages } from '$db/mongo';
-import { formatBeverageToBasics } from '$lib/utils/api';
+import { formatBeveragesToBasics } from '$lib/utils/api';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import type { Basics } from '$lib/templates/BeverageList/Basics.d';
 import { AppLanguage } from '$types/enums/Globals.enum';
@@ -12,7 +12,6 @@ export const GET: RequestHandler = async ({ params }) => {
 	const phrase = params.phrase ?? '';
 
 	let total = 0;
-	const foundArr: Basics[] = [];
 
 	const query = {
 		$or: [
@@ -78,6 +77,8 @@ export const GET: RequestHandler = async ({ params }) => {
 		]
 	};
 
+	let foundArr: Basics[] = [];
+
 	await beverages
 		.aggregate([
 			{
@@ -94,7 +95,7 @@ export const GET: RequestHandler = async ({ params }) => {
 		])
 		.forEach((data) => {
 			total = data.count[0]?.count ?? 0;
-			return data.values.forEach(formatBeverageToBasics(foundArr, language));
+			foundArr = formatBeveragesToBasics(data.values, language);
 		});
 
 	return json({

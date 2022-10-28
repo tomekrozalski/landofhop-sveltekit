@@ -2,7 +2,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { beverages, ingredients } from '$db/mongo';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
-import { formatBeverageToBasics } from '$lib/utils/api';
+import { formatBeveragesToBasics } from '$lib/utils/api';
 import type { Basics } from '$lib/templates/BeverageList/Basics.d';
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -14,7 +14,6 @@ export const POST: RequestHandler = async ({ request }) => {
 	}
 
 	let total = 0;
-	const foundArr: Basics[] = [];
 
 	async function getCompleteIngredientTags() {
 		const ingredientsDescendants: string[] = [];
@@ -59,6 +58,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		]
 	};
 
+	let foundArr: Basics[] = [];
+
 	await beverages
 		.aggregate([
 			{
@@ -75,7 +76,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		])
 		.forEach((data) => {
 			total = data.count[0]?.count ?? 0;
-			return data.values.forEach(formatBeverageToBasics(foundArr, language));
+			foundArr = formatBeveragesToBasics(data.values, language);
 		});
 
 	return json({

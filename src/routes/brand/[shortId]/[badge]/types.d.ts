@@ -11,4 +11,15 @@ export type InstitutionDetails = {
 	website?: string;
 };
 
-export type BrandTimelineData = { date: string; beverages?: Basics[] };
+export type BrandTimelineData = {
+	date: string;
+	beverages?: Basics[];
+	asCooperator?: Basics[];
+	asContractor?: Basics[];
+};
+
+export type SelectedBar = {
+	date: string;
+	items: Basics[];
+	type: 'beverages' | 'cooperator' | 'contractor';
+};

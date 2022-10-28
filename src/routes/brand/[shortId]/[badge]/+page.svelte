@@ -5,13 +5,13 @@
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
 	import Timeline from './Timeline/Timeline.svelte';
 	import dictionary from './dictionary.json';
-	import type { BrandTimelineData } from './types.d';
+	import type { SelectedBar } from './types.d';
 	import type { PageData } from './$types';
 
 	translations.update(dictionary);
 
 	export let data: PageData;
-	let selectedBar: BrandTimelineData | null = null;
+	let selectedBar: SelectedBar | null = null;
 
 	$: ({ name } = data.insitution);
 </script>
@@ -26,6 +26,6 @@
 	<Timeline bind:selectedBar />
 </article>
 
-{#if selectedBar?.beverages}
-	<BeverageList beverages={selectedBar.beverages} />
+{#if selectedBar?.items}
+	<BeverageList beverages={selectedBar.items} />
 {/if}

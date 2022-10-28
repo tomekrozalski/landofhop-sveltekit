@@ -1,10 +1,16 @@
 {
 	"en": {
 		"brand.clickOnBarInfo": "Click on a bar to show the beverages which I drank in the selected month",
+		"brand.legend.beverages": "beverages",
+		"brand.legend.contractor": "as contractor",
+		"brand.legend.cooperator": "as cooperator",
 		"brand.title": "🏭 Brand page, {name}"
 	},
 	"pl": {
 		"brand.clickOnBarInfo": "Kliknij w słupek, aby zobaczyć piwa, które wypiłem we wskazanym miesiącu",
+		"brand.legend.beverages": "piwa własne",
+		"brand.legend.contractor": "jako kontraktor",
+		"brand.legend.cooperator": "jako kooperator",
 		"brand.title": "🏭 Strona marki, {name}"
 	}
 }

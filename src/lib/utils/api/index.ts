@@ -6,7 +6,7 @@ import createSession from './sessions/create';
 import { generateTokens, removeTokens } from './sessions/tokens';
 import deleteIfEmpty from './deleteIfEmpty';
 import formatBasics from './basics/format';
-import formatBeverageToBasics from './formatBeverageToBasics';
+import formatBeveragesToBasics from './formatBeveragesToBasics';
 import generateShortId from './generateShortId';
 import getTracedSvg from './photos/getTracedSvg';
 import translate from './translate';
@@ -29,7 +29,7 @@ export {
 	deleteIfEmpty,
 	formatBasics,
 	formatBeverage,
-	formatBeverageToBasics,
+	formatBeveragesToBasics,
 	generateShortId,
 	generateTokens,
 	getTracedSvg,

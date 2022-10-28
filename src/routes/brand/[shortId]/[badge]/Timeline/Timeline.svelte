@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { scaleBand, scaleLinear } from 'd3-scale';
 	import { max } from 'd3-array';
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
 	import TimelineWrapper from '$lib/templates/TimelineWrapper/TimelineWrapper.svelte';
 	import type { Sizes } from '$types/Charts.d';
-	import type { BrandTimelineData } from '../types.d';
+	import type { BrandTimelineData, SelectedBar } from '../types.d';
 	import Bars from './Bars.svelte';
+	import Legend from './Legend.svelte';
 
-	export let selectedBar: BrandTimelineData | null;
+	export let selectedBar: SelectedBar | null;
 	const timelineData: BrandTimelineData[] = $page.data.timelineData ?? [];
 
 	const sizes: Sizes = {
@@ -26,22 +26,16 @@
 	const innerWidth = width - margin.left - margin.right;
 	const innerHeight = height - margin.top - margin.bottom;
 
-	// Define horizontal scale
-
-	const xValue = (d: BrandTimelineData) => d.date;
-	const xScale = scaleBand().domain(timelineData.map(xValue)).range([0, innerWidth]).padding(0.1);
-
-	// Define vertical scale
-
-	const total = (d: BrandTimelineData) => d.beverages?.length ?? 0;
+	const total = ({ beverages, asCooperator, asContractor }: BrandTimelineData) =>
+		(beverages?.length || 0) + (asCooperator?.length || 0) + (asContractor?.length || 0);
 	const highestValue = (max(timelineData, total) || 0) + 1;
-	const yScale = scaleLinear().domain([0, highestValue]).range([innerHeight, 0]);
 </script>
 
 <p>{$translate('brand.clickOnBarInfo')}</p>
 <TimelineWrapper {highestValue} {sizes}>
-	<Bars {timelineData} {innerHeight} {xScale} {xValue} {yScale} bind:selectedBar />
+	<Bars {highestValue} {innerWidth} {innerHeight} bind:selectedBar />
 </TimelineWrapper>
+<Legend />
 <a href="/advanced-search?brands={$page.params.shortId}">Zobacz wszystkie piwa marki</a>
 
 <style>

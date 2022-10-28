@@ -25,13 +25,28 @@
 		{#if contract}
 			{$translate('beverage.header.by')}
 			{#if contract.label}
-				<MarkLanguage label tag="span" name={contract.label.name} />
+				<MarkLanguage
+					href="/brand/{contract.label.shortId}/{contract.label.badge}"
+					label
+					tag="a"
+					name={contract.label.name}
+				/>
 			{/if}
 			{#if contract.producer}
-				<MarkLanguage producer tag="span" name={contract.producer.name} />
+				<MarkLanguage
+					href="/brand/{contract.producer.shortId}/{contract.producer.badge}"
+					producer
+					tag="a"
+					name={contract.producer.name}
+				/>
 			{/if}
 			{#if contract.editorial}
-				<MarkLanguage editorial tag="span" name={contract.editorial.name} />
+				<MarkLanguage
+					href="/brand/{contract.editorial.shortId}/{contract.editorial.badge}"
+					editorial
+					tag="a"
+					name={contract.editorial.name}
+				/>
 			{/if}
 		{/if}
 		<!-- cooperation -->
@@ -39,17 +54,27 @@
 			{$translate('beverage.header.inCooperationWith')}
 			{#if cooperation.label?.length}
 				<FormattedList mode="short" let:item data={cooperation.label}>
-					<MarkLanguage label tag="span" name={item.name} />
+					<MarkLanguage href="/brand/{item.shortId}/{item.badge}" label tag="a" name={item.name} />
 				</FormattedList>
 			{/if}
 			{#if cooperation.producer?.length}
 				<FormattedList mode="short" let:item data={cooperation.producer}>
-					<MarkLanguage producer tag="span" name={item.name} />
+					<MarkLanguage
+						href="/brand/{item.shortId}/{item.badge}"
+						producer
+						tag="a"
+						name={item.name}
+					/>
 				</FormattedList>
 			{/if}
 			{#if cooperation.editorial?.length}
 				<FormattedList mode="short" let:item data={cooperation.editorial}>
-					<MarkLanguage editorial tag="span" name={item.name} />
+					<MarkLanguage
+						href="/brand/{item.shortId}/{item.badge}"
+						editorial
+						tag="a"
+						name={item.name}
+					/>
 				</FormattedList>
 			{/if}
 		{/if}
