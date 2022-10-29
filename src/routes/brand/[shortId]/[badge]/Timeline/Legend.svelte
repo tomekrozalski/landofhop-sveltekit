@@ -1,11 +1,28 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+	import { page } from '$app/stores';
+	import type { BrandTimelineData } from '../types.d';
+
+	const timelineData: BrandTimelineData[] = $page.data.timelineData ?? [];
+	const beveragesTotal = timelineData.reduce((acc, curr) => acc + (curr.beverages?.length ?? 0), 0);
+	const cooperatorTotal = timelineData.reduce(
+		(acc, curr) => acc + (curr.asCooperator?.length ?? 0),
+		0
+	);
+	const contractorTotal = timelineData.reduce(
+		(acc, curr) => acc + (curr.asContractor?.length ?? 0),
+		0
+	);
 </script>
 
 <ul>
-	<li class="beverages">{$translate('brand.legend.beverages')}</li>
-	<li class="cooperator">{$translate('brand.legend.cooperator')}</li>
-	<li class="contractor">{$translate('brand.legend.contractor')}</li>
+	<li class="beverages">{$translate('brand.legend.beverages')} <span>({beveragesTotal})</span></li>
+	<li class="cooperator">
+		{$translate('brand.legend.cooperator')} <span>({cooperatorTotal})</span>
+	</li>
+	<li class="contractor">
+		{$translate('brand.legend.contractor')} <span>({contractorTotal})</span>
+	</li>
 </ul>
 
 <style>
@@ -40,5 +57,10 @@
 
 	li.contractor::before {
 		background-color: var(--color-brand-5-light);
+	}
+
+	span {
+		font-size: 1.5rem;
+		color: var(--color-grey-1);
 	}
 </style>
