@@ -4,7 +4,11 @@ import type { CommonProps, NewBeverageRequest } from './ApiTypes.d';
 export const formatBasicsToDb = (
 	{ label }: NewBeverageRequest,
 	commonProps: CommonProps,
-	coverImage?: RawBasicsCoverImage // @ToDo unknown types
+	coverImage?: {
+		height: number;
+		width: number;
+		outlines: string;
+	}
 ): RawBasics => ({
 	brand: {
 		badge: label.brand.badge,

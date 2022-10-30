@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
 	import { translate } from 'svelte-intl';
-	import { editorialStore, labelStore, producerStore } from '../../../../Beverage/utils/stores';
-	import Beverage from '../../../../Beverage/Beverage.svelte';
+	import { editorialStore, labelStore, producerStore } from '$Beverage/utils/stores';
+	import Beverage from '$Beverage/Beverage.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

@@ -1,48 +1,69 @@
 import { format } from 'date-fns';
-
-import { AgedTimeUnit } from '$types/enums/Beverage.enum';
+import { AgedTimeUnit, Currency } from '$types/enums/Beverage.enum';
 import { DateFormat } from '$types/enums/Globals.enum';
-import type { LanguageValue } from '$types/common/LanguageValue';
-import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
-import type { RawPrice } from '$types/api/RawBeverage/RawPrice';
-import type { RawTale } from '$types/api/RawBeverage/RawTale';
-import type { LabelFormValues } from '$lib/dashboard/Beverage/Label/LabelFormValues';
-import type { ProducerFormValues } from '$lib/dashboard/Beverage/Producer/ProducerFormValues';
-import type { EditorialFormValues } from '$lib/dashboard/Beverage/Editorial/EditorialFormValues';
+import type { LanguageValue } from '$types/LanguageValue.d';
+import type { RawBeverage } from '$types/RawBeverage.d';
+import type { LabelFormValues } from '$Beverage/Label/LabelFormValues';
+import type { ProducerFormValues } from '$Beverage/Producer/ProducerFormValues';
+import type { EditorialFormValues } from '$Beverage/Editorial/EditorialFormValues';
 
-function adminDetailsNormalizer(beverage: RawBeverage): {
+type Output = {
 	label: LabelFormValues;
 	producer: ProducerFormValues;
 	editorial: EditorialFormValues;
-} {
-	function normalizeLanguageValue({ language, value }: LanguageValue) {
-		return {
-			language: language ?? '--',
-			value
-		};
-	}
+};
 
-	function normalizePrice({ currency, date, shop, value }: RawPrice): {
+export const adminDetailsNormalizer = (beverage: RawBeverage): Output => {
+	const normalizeLanguageValue = ({
+		language,
+		value
+	}: LanguageValue): {
+		language: string;
+		value: string;
+	} => ({
+		language: language ?? '--',
+		value
+	});
+
+	const normalizePrice = ({
+		currency,
+		date,
+		shop,
+		value
+	}: {
+		currency: Currency;
+		date: Date;
+		shop?: string;
+		value: number;
+	}): {
 		currency: string;
 		date: string;
 		shop: string | null;
 		value: string;
-	} {
-		return {
-			currency,
-			date: format(new Date(date), DateFormat.pl),
-			shop: shop ?? null,
-			value: value.toString()
-		};
-	}
+	} => ({
+		currency,
+		date: format(new Date(date), DateFormat.pl),
+		shop: shop ?? null,
+		value: value.toString()
+	});
 
-	function normalizeTale({ article, language, lead }: RawTale) {
-		return {
-			article: article ?? '',
-			language: language ?? '--',
-			lead
-		};
-	}
+	const normalizeTale = ({
+		article,
+		language,
+		lead
+	}: {
+		article?: string;
+		language: string;
+		lead: string;
+	}): {
+		article: string;
+		language: string;
+		lead: string;
+	} => ({
+		article: article ?? '',
+		language: language ?? '--',
+		lead
+	});
 
 	const formattedObject = {
 		label: {
@@ -223,7 +244,7 @@ function adminDetailsNormalizer(beverage: RawBeverage): {
 			color: beverage.editorial?.impressions?.color ?? null,
 			clarity: beverage.editorial?.impressions?.clarity ?? null,
 			// -----------
-			rateBeer: beverage.editorial?.ratings?.rateBeer?.beverageId ?? null,
+			rateBeer: beverage.editorial?.ratings?.rateBeer?.beverageId?.toString() ?? null,
 			untappd: beverage.editorial?.ratings?.untappd?.beverageSlug ?? null,
 			// -----------
 			price: beverage.editorial?.price?.map(normalizePrice) ?? [],
@@ -232,6 +253,4 @@ function adminDetailsNormalizer(beverage: RawBeverage): {
 	};
 
 	return formattedObject;
-}
-
-export default adminDetailsNormalizer;
+};

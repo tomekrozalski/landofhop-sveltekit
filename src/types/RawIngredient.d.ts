@@ -2,7 +2,7 @@ import type { IngredientType } from './enums/Beverage.enum';
 import type { LanguageValue } from './LanguageValue.d';
 
 export type RawIngredient = {
-	_id: string;
+	// _id: string;
 	badge: string;
 	name: LanguageValue[];
 	type: IngredientType;

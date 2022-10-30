@@ -1,4 +1,3 @@
-import adminDetailsNormalizer from './beverages/adminDetailsNormalizer';
 import authenticate from './authenticate';
 import cleanDeep from './cleanDeep';
 import createSession from './sessions/create';
@@ -20,7 +19,6 @@ import updateRateBeerRating from './beverages/updateRateBeerRating';
 import updateUntappdRating from './beverages/updateUntappdRating';
 
 export {
-	adminDetailsNormalizer,
 	authenticate,
 	cleanDeep,
 	createSession,

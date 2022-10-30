@@ -9,7 +9,9 @@ export type NewBeverageRequest = {
 };
 
 export type CommonProps = {
+	_id?: string;
 	badge: string;
 	shortId: string;
 	added: Date;
+	updated?: Date;
 };

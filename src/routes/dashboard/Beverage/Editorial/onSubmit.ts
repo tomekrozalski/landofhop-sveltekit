@@ -40,12 +40,12 @@ export function onSubmit(
 			const { shortId, brand, badge } = params;
 
 			await putJsonData({
-				path: `/api/admin/basics/update/${shortId}`,
+				path: `/dashboard/api/update-basics/${shortId}`,
 				data: completeData
 			});
 
 			await putJsonData({
-				path: `/api/admin/beverages/update/${shortId}`,
+				path: `/dashboard/api/update-beverage/${shortId}`,
 				data: completeData
 			});
 

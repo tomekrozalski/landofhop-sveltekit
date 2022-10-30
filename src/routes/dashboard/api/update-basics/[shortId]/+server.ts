@@ -1,17 +1,17 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import type { RawBasics, RawBasicsWithoutId } from '$types/api/RawBasics.d';
-import { formatBasics } from '$lib/utils/api';
-import authentication from '$lib/utils/stores/authentication';
 import { basics } from '$db/mongo';
+import type { NewBeverageRequest } from '$Beverage/utils/apiNormalizers/ApiTypes.d';
+import authentication from '$lib/utils/stores/authentication';
+import { formatBasicsToDb } from '$Beverage/utils/apiNormalizers';
 
 export const PUT: RequestHandler = async ({ params, request }) => {
-	const shortId = params.shortId ?? '';
-	const beverageData = await request.json();
+	const shortId = params.shortId as string;
+	const beverageData: NewBeverageRequest = await request.json();
 
-	if (!get(authentication).isLoggedIn) {
-		throw error(401, 'Unauthorized. Cannot add new beverage');
+	if (!params.shortId || !get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot update new beverage');
 	}
 
 	try {
@@ -24,7 +24,7 @@ export const PUT: RequestHandler = async ({ params, request }) => {
 			throw error(404, 'No basics found');
 		}
 
-		const formattedBasics: RawBasicsWithoutId = formatBasics(
+		const formattedBasics = formatBasicsToDb(
 			beverageData,
 			{
 				_id: updatingBasics._id,
@@ -35,7 +35,7 @@ export const PUT: RequestHandler = async ({ params, request }) => {
 			updatingBasics.coverImage
 		);
 
-		await basics.replaceOne({ shortId }, formattedBasics as RawBasics);
+		await basics.replaceOne({ shortId }, formattedBasics);
 	} catch (err) {
 		throw error(500, 'Updating basics failed');
 	}

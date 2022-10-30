@@ -5,8 +5,38 @@ import type { CommonProps, NewBeverageRequest } from './ApiTypes.d';
 export const formatBeverageToDb = (
 	{ editorial, label, producer }: NewBeverageRequest,
 	commonProps: CommonProps,
-	photos?: RawEditorialPhotos, // @ToDo unknown types
-	ratings?: RawRatings // @ToDo unknown types
+	photos?: {
+		cap?: boolean;
+		cover?: {
+			height: number;
+			width: number;
+		};
+		gallery?: number;
+		outlines?: {
+			cover?: string;
+			gallery?: string;
+		};
+		viewFromAbove?: boolean;
+	},
+	ratings?: {
+		rateBeer: {
+			beverageId: number;
+			quantity?: number;
+			value?: number;
+			date?: Date;
+		};
+		untappd: {
+			beverageSlug: string;
+			quantity?: number;
+			value?: number;
+			date?: Date;
+		};
+		total?: {
+			quantity: number;
+			value: number;
+			date?: Date;
+		};
+	}
 ) => {
 	return cleanDeep({
 		label: {
@@ -126,7 +156,7 @@ export const formatBeverageToDb = (
 			ratings: {
 				rateBeer: {
 					...(ratings?.rateBeer ?? {}),
-					beverageId: editorial?.rateBeer
+					beverageId: Number(editorial?.rateBeer)
 				},
 				untappd: {
 					...(ratings?.untappd ?? {}),

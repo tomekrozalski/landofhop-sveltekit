@@ -1,7 +1,7 @@
 import type { LanguageValue } from './LanguageValue.d';
 
 export type RawPlace = {
-	_id: string;
+	// _id: string;
 	city: LanguageValue[];
 	country: string;
 	institution: {

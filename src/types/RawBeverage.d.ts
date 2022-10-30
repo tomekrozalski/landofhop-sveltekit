@@ -23,7 +23,7 @@ import {
 import type { LanguageValue } from './LanguageValue.d';
 
 export type RawBeverage = {
-	_id: string;
+	// _id: string;
 	shortId: string;
 	badge: string;
 	// label

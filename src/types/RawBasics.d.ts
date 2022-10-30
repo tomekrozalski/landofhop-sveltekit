@@ -2,7 +2,7 @@ import type { ContainerType } from './enums/Beverage.enum';
 import type { LanguageValue } from './LanguageValue.d';
 
 export type RawBasics = {
-	_id: string;
+	// _id: string;
 	shortId: string;
 	badge: string;
 	brand: {
