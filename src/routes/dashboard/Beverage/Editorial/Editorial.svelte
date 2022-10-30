@@ -26,7 +26,7 @@
 	import Untappd from '$lib/molecules/forms/fields/Untappd.svelte';
 	import Series from '$lib/molecules/forms/fields/Series.svelte';
 	import StyleTags from '$lib/molecules/forms/fields/StyleTags.svelte';
-	import { editorialStore, labelStore, page } from '../stores';
+	import { editorialStore, labelStore, page } from '../utils/stores';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 

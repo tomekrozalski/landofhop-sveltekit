@@ -2,14 +2,14 @@
 	import { getContext, onDestroy } from 'svelte';
 	import { translate, translations } from 'svelte-intl';
 	import formsDictionary from '$lib/utils/dictionary/form.json';
-	import ProgressList from './ProgressList/ProgressList.svelte';
-	import Navigation from '../Navigation.svelte';
-	import { page } from './stores';
-	import Label from './Label/Label.svelte';
-	import Producer from './Producer/Producer.svelte';
-	import Editorial from './Editorial/Editorial.svelte';
-	import labelsDictionary from './labels.json';
-	import dictionary from './dictionary.json';
+	import Navigation from '$Beverage/Navigation.svelte';
+	import ProgressList from '$Beverage/ProgressList/ProgressList.svelte';
+	import { page } from '$Beverage/utils/stores';
+	import Label from '$Beverage/Label/Label.svelte';
+	import Producer from '$Beverage/Producer/Producer.svelte';
+	import Editorial from '$Beverage/Editorial/Editorial.svelte';
+	import labelsDictionary from '$Beverage/utils/dictionary/labels.json';
+	import dictionary from '$Beverage/utils/dictionary/dictionary.json';
 
 	translations.update(dictionary);
 	translations.update(labelsDictionary);

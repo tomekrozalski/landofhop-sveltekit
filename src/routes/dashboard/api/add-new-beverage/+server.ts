@@ -1,10 +1,11 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { formatBasics, formatBeverage, generateShortId } from '$lib/utils/api';
-import type { RawBasics, RawBasicsWithoutId } from '$types/api/RawBasics.d';
-import type { NewBeverageRequest } from '$types/api/requests/Beverage';
-import type { RawBeverage, RawBeverageWithoutId } from '$types/api/RawBeverage/RawBeverage.d';
+import { generateShortId } from '$lib/utils/api';
+import type { RawBasics } from '$types/RawBasics.d';
+import type { RawBeverage } from '$types/RawBeverage.d';
+import type { CommonProps, NewBeverageRequest } from '$Beverage/utils/apiNormalizers/ApiTypes.d';
+import { formatBasicsToDb, formatBeverageToDb } from '$Beverage/utils/apiNormalizers';
 import authentication from '$lib/utils/stores/authentication';
 import { basics, beverages } from '$db/mongo';
 
@@ -15,17 +16,17 @@ export const POST: RequestHandler = async ({ request }) => {
 		throw error(401, 'Unauthorized. Cannot add new beverage');
 	}
 
-	const commonProps = {
+	const commonProps: CommonProps = {
 		badge: beverageData.label.badge,
 		shortId: generateShortId(),
 		added: new Date()
 	};
 
-	const formattedBasics: RawBasicsWithoutId = formatBasics(beverageData, commonProps);
-	const formattedBeverage: RawBeverageWithoutId = formatBeverage(beverageData, commonProps);
+	const formattedBasics: RawBasics = formatBasicsToDb(beverageData, commonProps);
+	const formattedBeverage: RawBeverage = formatBeverageToDb(beverageData, commonProps);
 
-	await basics.insertOne(formattedBasics as RawBasics);
-	await beverages.insertOne(formattedBeverage as RawBeverage);
+	await basics.insertOne(formattedBasics);
+	await beverages.insertOne(formattedBeverage);
 
 	return json({
 		badge: formattedBasics.badge,

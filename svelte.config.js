@@ -11,6 +11,8 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
+			$Beverage: './src/routes/dashboard/Beverage',
+			$dashboard: './src/routes/dashboard',
 			$db: './src/db',
 			$types: './src/types'
 		}

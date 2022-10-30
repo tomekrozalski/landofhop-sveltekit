@@ -1,6 +1,4 @@
-import type { Institution } from '$types/Beverage/fragments/Institution';
-import type { Price } from '$types/Beverage/fragments/Price';
-import type { LanguageValue } from '$types/common/LanguageValue';
+import type { LanguageValue } from '$types/LanguageValue.d';
 import {
 	AgedPreviousContent,
 	AgedTimeUnit,
@@ -8,6 +6,7 @@ import {
 	AgedWood,
 	AlcoholScope,
 	Clarity,
+	Currency,
 	Fermentation,
 	IngredientType
 } from '$types/enums/Beverage.enum';
@@ -59,8 +58,26 @@ export type EditorialFormValues = {
 
 export type EditorialFormOutput = {
 	series?: LanguageValue[];
-	cooperation?: Institution[];
-	contract?: string;
+	cooperation?: {
+		badge: string;
+		name: LanguageValue[];
+		shortId: string;
+		owner?: {
+			badge: string;
+			name: LanguageValue[];
+			shortId: string;
+		};
+	}[];
+	contract?: {
+		badge: string;
+		name: LanguageValue[];
+		shortId: string;
+		owner?: {
+			badge: string;
+			name: LanguageValue[];
+			shortId: string;
+		};
+	};
 	isContract?: true;
 	place?: {
 		city: LanguageValue[];
@@ -97,9 +114,14 @@ export type EditorialFormOutput = {
 	color?: string;
 	clarity?: Clarity;
 	// -----------
-	rateBeer?: string;
+	rateBeer?: number;
 	untappd?: string;
 	// -----------
-	price?: Price[];
+	price?: {
+		currency: Currency;
+		date: Date;
+		shop?: string;
+		value: number;
+	}[];
 	notes?: string;
 };

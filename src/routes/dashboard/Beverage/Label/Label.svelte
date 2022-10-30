@@ -37,7 +37,7 @@
 	import Sweetness from '$lib/molecules/forms/fields/Sweetness.svelte';
 	import Tale from '$lib/molecules/forms/fields/Tale.svelte';
 	import Temperature from '$lib/molecules/forms/fields/Temperature.svelte';
-	import { labelStore } from '../stores';
+	import { labelStore } from '../utils/stores';
 	import { onSubmit } from './onSubmit';
 	import { getValidationSchema } from './validationSchema';
 

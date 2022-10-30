@@ -1,7 +1,4 @@
-import type { Institution } from '$types/Beverage/fragments/Institution';
-import type { Price } from '$types/Beverage/fragments/Price';
-import type { Tale } from '$types/Beverage/fragments/Tale';
-import type { LanguageValue } from '$types/common/LanguageValue';
+import type { LanguageValue } from '$types/LanguageValue.d';
 import {
 	AgedPreviousContent,
 	AgedTimeUnit,
@@ -10,9 +7,11 @@ import {
 	AlcoholRelate,
 	AlcoholScope,
 	AlcoholUnit,
+	Currency,
 	ExtractRelate,
 	ExtractUnit,
-	Fermentation
+	Fermentation,
+	IngredientType
 } from '$types/enums/Beverage.enum';
 
 export type ProducerFormValues = {
@@ -100,8 +99,26 @@ export type ProducerFormValues = {
 
 export type ProducerFormOutput = {
 	series?: LanguageValue[];
-	cooperation?: Institution[];
-	contract?: string;
+	cooperation?: {
+		badge: string;
+		name: LanguageValue[];
+		shortId: string;
+		owner?: {
+			badge: string;
+			name: LanguageValue[];
+			shortId: string;
+		};
+	}[];
+	contract?: {
+		badge: string;
+		name: LanguageValue[];
+		shortId: string;
+		owner?: {
+			badge: string;
+			name: LanguageValue[];
+			shortId: string;
+		};
+	};
 	isContract?: true;
 	place?: {
 		city: LanguageValue[];
@@ -109,7 +126,11 @@ export type ProducerFormOutput = {
 		shortId: string;
 	};
 	remark?: LanguageValue[];
-	tale?: Tale[];
+	tale?: {
+		article?: string;
+		language: string;
+		lead: string;
+	}[];
 	// -----------
 	fermentation?: Fermentation[];
 	style?: LanguageValue[];
@@ -174,5 +195,10 @@ export type ProducerFormOutput = {
 		unit: string;
 	};
 	// -----------
-	price?: Price[];
+	price?: {
+		currency: Currency;
+		date: Date;
+		shop?: string;
+		value: number;
+	}[];
 };

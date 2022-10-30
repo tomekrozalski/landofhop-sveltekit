@@ -1,9 +1,9 @@
 import * as yup from 'yup';
-
+import type { Translate } from '$types/Translate.d';
 import { AgedTimeUnit, AgedType, AgedWood, Fermentation } from '$types/enums/Beverage.enum';
-import { isValidDate } from '../../utils/isValidDate';
+import { isValidDate } from '$dashboard/utils/isValidDate';
 
-export function getValidationSchema(translate) {
+export function getValidationSchema(translate: Translate) {
 	return yup.object().shape({
 		series: yup.array().of(
 			yup.object().shape({

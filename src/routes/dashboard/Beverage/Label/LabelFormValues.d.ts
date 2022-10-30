@@ -1,7 +1,4 @@
-import type { Institution } from '$types/Beverage/fragments/Institution';
-import type { Price } from '$types/Beverage/fragments/Price';
-import type { Tale } from '$types/Beverage/fragments/Tale';
-import type { LanguageValue } from '$types/common/LanguageValue';
+import type { LanguageValue } from '$types/LanguageValue.d';
 import {
 	AgedPreviousContent,
 	AgedTimeUnit,
@@ -14,6 +11,7 @@ import {
 	ContainerMaterial,
 	ContainerType,
 	ContainerUnit,
+	Currency,
 	ExtractRelate,
 	ExtractUnit,
 	Fermentation,
@@ -125,9 +123,36 @@ export type LabelFormOutput = {
 	// -----------
 	name: LanguageValue[];
 	series?: LanguageValue[];
-	brand: Institution;
-	cooperation?: Institution[];
-	contract?: string;
+	brand: {
+		badge: string;
+		name: LanguageValue[];
+		shortId: string;
+		owner?: {
+			badge: string;
+			name: LanguageValue[];
+			shortId: string;
+		};
+	};
+	cooperation?: {
+		badge: string;
+		name: LanguageValue[];
+		shortId: string;
+		owner?: {
+			badge: string;
+			name: LanguageValue[];
+			shortId: string;
+		};
+	}[];
+	contract?: {
+		badge: string;
+		name: LanguageValue[];
+		shortId: string;
+		owner?: {
+			badge: string;
+			name: LanguageValue[];
+			shortId: string;
+		};
+	};
 	isContract?: true;
 	place?: {
 		city: LanguageValue[];
@@ -135,7 +160,11 @@ export type LabelFormOutput = {
 		shortId: string;
 	};
 	remark?: LanguageValue[];
-	tale?: Tale[];
+	tale?: {
+		article?: string;
+		language: string;
+		lead: string;
+	}[];
 	barcode?: string;
 	// -----------
 	fermentation?: Fermentation[];
@@ -210,5 +239,10 @@ export type LabelFormOutput = {
 		unit: ContainerUnit;
 		value: number;
 	};
-	price?: Price[];
+	price?: {
+		currency: Currency;
+		date: Date;
+		shop?: string;
+		value: number;
+	}[];
 };

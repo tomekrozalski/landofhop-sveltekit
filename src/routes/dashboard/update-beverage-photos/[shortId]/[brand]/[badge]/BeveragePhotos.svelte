@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import Navigation from '../../../../Navigation.svelte';
+	import Navigation from '$Beverage/Navigation.svelte';
 	import Cover from './Cover.svelte';
 	import Gallery from './Gallery.svelte';
 	import ViewFromAbove from './ViewFromAbove.svelte';

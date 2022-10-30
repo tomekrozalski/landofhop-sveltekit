@@ -5,7 +5,8 @@ import {
 	formatPlaceByShortId,
 	formatStyleByBadge,
 	parseFieldNumber
-} from '$lib/utils/helpers/dataNormalizers';
+} from '$Beverage/utils/normalizers';
+import type { Currency } from '$types/enums/Beverage.enum';
 import formatInstitutionByShortId from '$lib/utils/normalizers/institution';
 import { formatLanguageValueToDb } from '$lib/utils/normalizers/language';
 import type { EditorialFormValues, EditorialFormOutput } from './EditorialFormValues';
@@ -33,7 +34,9 @@ export default function formatValues({
 }: EditorialFormValues): EditorialFormOutput {
 	return {
 		...(series.length && { series: formatLanguageValueToDb(series) }),
-		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
+		...(cooperation && {
+			cooperation: cooperation.map((props) => formatInstitutionByShortId(props))
+		}),
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
 		...(place && { place: formatPlaceByShortId(place) }),
@@ -69,7 +72,7 @@ export default function formatValues({
 		// -----------
 		...(price.length && {
 			price: price.map(({ currency, date, shop, value }) => ({
-				currency,
+				currency: currency as Currency,
 				date: formatDateFromString(date),
 				...(shop && { shop }),
 				value: parseFieldNumber(value)

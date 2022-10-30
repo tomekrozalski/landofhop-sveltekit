@@ -1,4 +1,6 @@
-export const initialValues = {
+import type { ProducerFormValues } from './ProducerFormValues.d';
+
+export const initialValues: ProducerFormValues = {
 	series: [],
 	cooperation: null,
 	contract: null,

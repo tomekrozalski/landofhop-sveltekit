@@ -1,8 +1,9 @@
 import { cloneDeep } from 'lodash-es';
 import { emptyLanguageValue } from '$lib/utils/helpers/emptyFieldValues';
 import { ContainerUnit } from '$types/enums/Beverage.enum';
+import type { LabelFormValues } from './LabelFormValues.d';
 
-export const initialValues = {
+export const initialValues: LabelFormValues = {
 	badge: '',
 	// -----------
 	name: [cloneDeep(emptyLanguageValue)],

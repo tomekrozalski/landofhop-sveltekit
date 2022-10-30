@@ -1,4 +1,6 @@
-export const initialValues = {
+import type { EditorialFormValues } from './EditorialFormValues.d';
+
+export const initialValues: EditorialFormValues = {
 	series: [],
 	cooperation: null,
 	contract: null,

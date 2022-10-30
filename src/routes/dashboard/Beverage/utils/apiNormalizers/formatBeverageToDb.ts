@@ -1,16 +1,13 @@
 import { cleanDeep } from '$lib/utils/api';
-import type { NewBeverageRequest } from '$types/api/requests/Beverage';
-import type { RawCommonBasicsBeverage } from '$types/api/RawBasics.d';
-import type { RawBeverageWithoutId } from '$types/api/RawBeverage/RawBeverage.d';
-import type { RawEditorialPhotos } from '$types/api/RawBeverage/RawEditorial.d';
-import type { RawRatings } from '$types/api/RawBeverage/RawEditorial.d';
+import type { RawBeverage } from '$types/RawBeverage.d';
+import type { CommonProps, NewBeverageRequest } from './ApiTypes.d';
 
-function formatBeverage(
+export const formatBeverageToDb = (
 	{ editorial, label, producer }: NewBeverageRequest,
-	commonProps: RawCommonBasicsBeverage,
-	photos?: RawEditorialPhotos,
-	ratings?: RawRatings
-) {
+	commonProps: CommonProps,
+	photos?: RawEditorialPhotos, // @ToDo unknown types
+	ratings?: RawRatings // @ToDo unknown types
+) => {
 	return cleanDeep({
 		label: {
 			general: {
@@ -145,7 +142,5 @@ function formatBeverage(
 			notes: editorial?.notes
 		},
 		...commonProps
-	}) as RawBeverageWithoutId;
-}
-
-export default formatBeverage;
+	}) as RawBeverage;
+};

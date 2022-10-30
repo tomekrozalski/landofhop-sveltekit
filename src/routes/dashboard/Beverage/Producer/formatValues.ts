@@ -5,7 +5,8 @@ import {
 	formatPlaceByShortId,
 	formatTaleArray,
 	parseFieldNumber
-} from '$lib/utils/helpers/dataNormalizers';
+} from '$Beverage/utils/normalizers';
+import type { Currency } from '$types/enums/Beverage.enum';
 import formatInstitutionByShortId from '$lib/utils/normalizers/institution';
 import { formatLanguageValueToDb } from '$lib/utils/normalizers/language';
 import type { ProducerFormValues, ProducerFormOutput } from './ProducerFormValues';
@@ -41,7 +42,9 @@ export default function formatValues({
 }: ProducerFormValues): ProducerFormOutput {
 	return {
 		...(series.length && { series: formatLanguageValueToDb(series) }),
-		...(cooperation && { cooperation: cooperation.map(formatInstitutionByShortId) }),
+		...(cooperation && {
+			cooperation: cooperation.map((props) => formatInstitutionByShortId(props))
+		}),
 		...(contract && contract !== '--' && { contract: formatInstitutionByShortId(contract) }),
 		...(contract === '--' && { isContract: true }),
 		...(place && { place: formatPlaceByShortId(place) }),
@@ -50,21 +53,25 @@ export default function formatValues({
 		// -----------
 		...(fermentation && fermentation.length && { fermentation }),
 		...(style.length && { style: formatLanguageValueToDb(style) }),
-		...(!Object.values(extract).every((prop) => prop === null) && {
-			extract: {
-				value: parseFieldNumber(extract.value),
-				unit: extract.unit,
-				relate: extract.relate
-			}
-		}),
-		...(!Object.values(alcohol).every((prop) => prop === null) && {
-			alcohol: {
-				value: parseFieldNumber(alcohol.value),
-				unit: alcohol.unit,
-				relate: alcohol.relate,
-				...(alcohol.scope !== '--' && { scope: alcohol.scope })
-			}
-		}),
+		...(extract.value &&
+			extract.unit &&
+			extract.relate && {
+				extract: {
+					value: parseFieldNumber(extract.value),
+					unit: extract.unit,
+					relate: extract.relate
+				}
+			}),
+		...(alcohol.value &&
+			alcohol.unit &&
+			alcohol.relate && {
+				alcohol: {
+					value: parseFieldNumber(alcohol.value),
+					unit: alcohol.unit,
+					relate: alcohol.relate,
+					...(alcohol.scope && alcohol.scope !== '--' && { scope: alcohol.scope })
+				}
+			}),
 		...(isBoolean(filtration) && { filtration }),
 		...(isBoolean(pasteurization) && { pasteurization }),
 		...(aged.length && {
@@ -125,7 +132,7 @@ export default function formatValues({
 		// -----------
 		...(price.length && {
 			price: price.map(({ currency, date, shop, value }) => ({
-				currency,
+				currency: currency as Currency,
 				date: formatDateFromString(date),
 				...(shop && { shop }),
 				value: parseFieldNumber(value)

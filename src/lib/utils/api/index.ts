@@ -1,11 +1,9 @@
 import adminDetailsNormalizer from './beverages/adminDetailsNormalizer';
-import formatBeverage from './beverages/format';
 import authenticate from './authenticate';
 import cleanDeep from './cleanDeep';
 import createSession from './sessions/create';
 import { generateTokens, removeTokens } from './sessions/tokens';
 import deleteIfEmpty from './deleteIfEmpty';
-import formatBasics from './basics/format';
 import formatBeveragesToBasics from './formatBeveragesToBasics';
 import generateShortId from './generateShortId';
 import getTracedSvg from './photos/getTracedSvg';
@@ -27,8 +25,6 @@ export {
 	cleanDeep,
 	createSession,
 	deleteIfEmpty,
-	formatBasics,
-	formatBeverage,
 	formatBeveragesToBasics,
 	generateShortId,
 	generateTokens,

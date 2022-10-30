@@ -1,18 +1,18 @@
 import { get } from 'svelte/store';
 import { isEmpty } from 'lodash-es';
-
-import { postJsonData, putJsonData } from '$lib/utils/api/communication';
-import formatLabelValues from '../../Beverage/Label/formatValues';
-import formatProducerValues from '../../Beverage/Producer/formatValues';
-import { editorialStore, labelStore, producerStore } from '../stores';
-import formatEditorialValues from './formatValues';
 import { goto } from '$app/navigation';
+import { postJsonData, putJsonData } from '$lib/utils/api/communication';
+import formatLabelValues from '$Beverage/Label/formatValues';
+import formatProducerValues from '$Beverage/Producer/formatValues';
+import { editorialStore, labelStore, producerStore } from '$Beverage/utils/stores';
+import formatEditorialValues from './formatValues';
+import type { EditorialFormValues } from './EditorialFormValues.d';
 
 export function onSubmit(
 	type: 'add' | 'update',
 	params: { badge: string; brand: string; shortId: string }
 ) {
-	return async function (values) {
+	return async function (values: EditorialFormValues) {
 		editorialStore.set(values);
 		const labelValues = get(labelStore);
 		const producerValues = get(producerStore);
@@ -29,7 +29,7 @@ export function onSubmit(
 
 		if (type === 'add') {
 			const { badge, brand, shortId } = await postJsonData({
-				path: '/api/admin/beverages/add',
+				path: '/dashboard/api/add-new-beverage',
 				data: completeData
 			});
 
