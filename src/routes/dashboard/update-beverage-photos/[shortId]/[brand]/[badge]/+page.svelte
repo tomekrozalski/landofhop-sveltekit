@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { translate, translations } from 'svelte-intl';
 	import type { Translations } from 'svelte-intl';
-	import dictionary from './dictionary.json';
-	import { beveragePhotosStore } from './stores';
-	import UpdateBeveragePhotos from './BeveragePhotos.svelte';
+	import dictionary from './utils/dictionary.json';
+	import { beveragePhotosStore } from './utils/stores';
+	import Navigation from '$Beverage/Navigation.svelte';
+	import Cover from './Cover/Cover.svelte';
+	import Gallery from './Gallery/Gallery.svelte';
+	import ViewFromAbove from './ViewFromAbove/ViewFromAbove.svelte';
 	import type { PageData } from './$types';
 
 	translations.update(dictionary as Translations);
@@ -16,4 +19,10 @@
 	<title>Land of Hop 🔒 Dashboard, {$translate('dashboard.beverage.photos.title')}</title>
 </svelte:head>
 
-<UpdateBeveragePhotos />
+<article>
+	<h1>{$translate('dashboard.beverage.photos.name')}</h1>
+	<Navigation />
+	<Cover />
+	<Gallery />
+	<ViewFromAbove />
+</article>

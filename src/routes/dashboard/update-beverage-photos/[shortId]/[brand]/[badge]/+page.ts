@@ -1,13 +1,13 @@
-import { getJsonData } from '$lib/utils/api/communication';
-import type { PhotosDataWithContainerType as PhotosDataTypes } from '$types/Beverage/PhotosData';
+import type { PhotosDataTypes } from './utils/types.d';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch, params }) => {
 	try {
-		const photosData: PhotosDataTypes = await getJsonData({
-			fetch,
-			path: `/api/admin/beverages/photos/${params.shortId}`
-		});
+		const { badge, brand, shortId } = params;
+		const response = await fetch(
+			`/dashboard/update-beverage-photos/${shortId}/${brand}/${badge}/api/get-photos-data`
+		);
+		const photosData: PhotosDataTypes = await response.json();
 
 		return { photosData };
 	} catch {

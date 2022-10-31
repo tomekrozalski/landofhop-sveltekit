@@ -2,17 +2,16 @@
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
-	import { postFormData } from '$lib/utils/api/communication';
 	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
 	import WarningIcon from '$lib/atoms/vectors/Warning.svelte';
-	import Dropzone from './elements/Dropzone/Dropzone.svelte';
-	import ContentWrapper from './elements/ContentWrapper.svelte';
-	import SavedItem from './elements/SavedItem.svelte';
-	import NoImage from './elements/NoImage.svelte';
-	import GalleryThumbs from './elements/GalleryThumbs.svelte';
-	import Image from './elements/Image.svelte';
-	import { beveragePhotosStore } from './stores';
-	import type { PhotosDataTypes } from './types.d';
+	import Dropzone from '../common/Dropzone/Dropzone.svelte';
+	import ContentWrapper from '../common/ContentWrapper.svelte';
+	import SavedItem from '../common/SavedItem.svelte';
+	import NoImage from '../common/NoImage.svelte';
+	import GalleryThumbs from './GalleryThumbs.svelte';
+	import Image from '../common/Image.svelte';
+	import { beveragePhotosStore } from '../utils/stores';
+	import type { PhotosDataTypes } from '../utils/types';
 
 	const { badge, brand, shortId } = $page.params;
 	let version: number | null = Date.now();
@@ -21,17 +20,18 @@
 		version = null;
 
 		const formData = new FormData();
-		formData.append('badge', badge);
-		formData.append('brand', brand);
 		images.forEach((image) => {
 			formData.append('images', image);
 		});
-		formData.append('shortId', shortId);
 
-		const photosData: PhotosDataTypes = await postFormData({
-			path: '/api/admin/beverages/photos/addGallery',
-			data: formData
-		});
+		const response = await fetch(
+			`/dashboard/update-beverage-photos/${shortId}/${brand}/${badge}/api/add-gallery`,
+			{
+				method: 'POST',
+				body: formData
+			}
+		);
+		const photosData: PhotosDataTypes = await response.json();
 
 		beveragePhotosStore.set(photosData);
 

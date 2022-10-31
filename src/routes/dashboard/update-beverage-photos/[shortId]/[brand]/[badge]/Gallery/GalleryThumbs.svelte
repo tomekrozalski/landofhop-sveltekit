@@ -1,24 +1,26 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
-	import { beveragePhotosStore } from '../stores';
+	import { beveragePhotosStore } from '../utils/stores';
 
 	const { badge, brand, shortId } = $page.params;
 	export let version: number;
 </script>
 
-<ul>
-	{#each new Array($beveragePhotosStore.gallery) as _, index}
-		<li>
-			<img
-				alt=""
-				src="{PHOTO_SERVER}/{brand}/{badge}/{shortId}/container/webp/2x/{(index + 1)
-					.toString()
-					.padStart(2, '0')}.webp?v={version}"
-			/>
-		</li>
-	{/each}
-</ul>
+{#if $beveragePhotosStore}
+	<ul>
+		{#each new Array($beveragePhotosStore.gallery) as _, index}
+			<li>
+				<img
+					alt=""
+					src="{PHOTO_SERVER}/{brand}/{badge}/{shortId}/container/webp/2x/{(index + 1)
+						.toString()
+						.padStart(2, '0')}.webp?v={version}"
+				/>
+			</li>
+		{/each}
+	</ul>
+{/if}
 
 <style>
 	ul {

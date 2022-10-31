@@ -6,14 +6,13 @@ import { getTracedSvg, saveCoverJpg, saveCoverWebp } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
 import { basics, beverages } from '$db/mongo';
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ params, request }) => {
 	const data = await request.formData();
-	const badge = data.get('badge');
-	const brand = data.get('brand');
+	const { badge, brand, shortId } = params;
 	const imageFiles = data.get('image');
 	const images = await imageFiles.arrayBuffer();
 	const image = Buffer.from(images);
-	const shortId = data.get('shortId');
+
 	const path = `${brand}/${badge}/${shortId}`;
 
 	if (!badge || !brand || !shortId || !images || !get(authentication).isLoggedIn) {

@@ -5,12 +5,10 @@ import { removeGallery, getTracedSvg, saveGalleryJpg, saveGalleryWebp } from '$l
 import authentication from '$lib/utils/stores/authentication';
 import { beverages } from '$db/mongo';
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ params, request }) => {
 	const data = await request.formData();
-	const badge = data.get('badge');
-	const brand = data.get('brand');
+	const { badge, brand, shortId } = params;
 	const imageFiles = data.getAll('images');
-	const shortId = data.get('shortId');
 	const path = `${brand}/${badge}/${shortId}`;
 
 	if (!get(authentication).isLoggedIn) {

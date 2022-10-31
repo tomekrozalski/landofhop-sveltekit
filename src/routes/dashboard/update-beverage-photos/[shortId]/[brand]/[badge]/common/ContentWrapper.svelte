@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { beveragePhotosStore } from '../stores';
+	import { beveragePhotosStore } from '../utils/stores';
 
 	export let isViewFromAbove: boolean = false;
 </script>

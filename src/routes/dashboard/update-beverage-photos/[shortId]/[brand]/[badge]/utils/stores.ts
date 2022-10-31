@@ -1,4 +1,4 @@
 import { writable } from 'svelte/store';
-import type { PhotosDataWithContainerType as PhotosDataTypes } from '$types/Beverage/PhotosData';
+import type { PhotosDataTypes } from './types.d';
 
 export const beveragePhotosStore = writable<PhotosDataTypes | null>(null);

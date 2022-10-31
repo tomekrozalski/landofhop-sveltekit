@@ -2,16 +2,15 @@
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
-	import { deleteJsonData, postFormData } from '$lib/utils/api/communication';
 	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
-	import Dropzone from './elements/Dropzone/Dropzone.svelte';
-	import ContentWrapper from './elements/ContentWrapper.svelte';
-	import NoWiewFromAbove from './elements/NoWiewFromAbove.svelte';
-	import SavedItem from './elements/SavedItem.svelte';
-	import Image from './elements/Image.svelte';
-	import RemoveButton from './elements/RemoveButton.svelte';
-	import { beveragePhotosStore } from './stores';
-	import type { PhotosDataTypes } from './types.d';
+	import Dropzone from '../common/Dropzone/Dropzone.svelte';
+	import ContentWrapper from '../common/ContentWrapper.svelte';
+	import NoWiewFromAbove from './NoWiewFromAbove.svelte';
+	import SavedItem from '../common/SavedItem.svelte';
+	import Image from '../common/Image.svelte';
+	import RemoveButton from './RemoveButton.svelte';
+	import { beveragePhotosStore } from '../utils/stores';
+	import type { PhotosDataTypes } from '../utils/types';
 
 	const { badge, brand, shortId } = $page.params;
 	let version: number | null = Date.now();
@@ -20,24 +19,24 @@
 		version = null;
 
 		const formData = new FormData();
-		formData.append('badge', badge);
-		formData.append('brand', brand);
 		formData.append('image', images[0]);
-		formData.append('shortId', shortId);
 
-		const photosData: PhotosDataTypes = await postFormData({
-			path: '/api/admin/beverages/photos/addViewFromAbove',
-			data: formData
-		});
+		const response = await fetch(
+			`/dashboard/update-beverage-photos/${shortId}/${brand}/${badge}/api/add-view-from-above`,
+			{ method: 'POST', body: formData }
+		);
+		const photosData: PhotosDataTypes = await response.json();
 
 		beveragePhotosStore.set(photosData);
 		version = Date.now();
 	}
 
 	async function removeImage() {
-		const photosData: PhotosDataTypes = await deleteJsonData({
-			path: `/api/admin/beverages/photos/removeViewFromAbove/${shortId}`
-		});
+		const response = await fetch(
+			`/dashboard/update-beverage-photos/${shortId}/${brand}/${badge}/api/remove-view-from-above`,
+			{ method: 'DELETE' }
+		);
+		const photosData: PhotosDataTypes = await response.json();
 
 		beveragePhotosStore.set(photosData);
 	}
