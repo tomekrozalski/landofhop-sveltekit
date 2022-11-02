@@ -17,7 +17,7 @@
 		fill: var(--color-grey-1);
 	}
 
-	@media (--xl) {
+	@media (min-width: 1200px) {
 		img {
 			height: 28rem;
 		}

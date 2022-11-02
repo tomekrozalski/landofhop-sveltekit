@@ -30,7 +30,7 @@
 		margin: 0 auto;
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		div {
 			flex-direction: row-reverse;
 			justify-content: space-between;

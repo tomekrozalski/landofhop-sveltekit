@@ -97,7 +97,7 @@
 		color: var(--color-white);
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		ul {
 			flex-wrap: nowrap;
 		}

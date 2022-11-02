@@ -152,7 +152,7 @@
 		margin-top: 1rem;
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		div {
 			flex-grow: unset;
 			width: auto;

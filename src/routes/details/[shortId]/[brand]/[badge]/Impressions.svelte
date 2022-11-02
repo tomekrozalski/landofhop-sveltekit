@@ -187,7 +187,7 @@
 		border-radius: 50%;
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		dl {
 			flex-basis: 50%;
 		}

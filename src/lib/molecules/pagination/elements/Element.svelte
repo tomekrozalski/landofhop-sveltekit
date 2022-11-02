@@ -86,7 +86,7 @@
 		border-color: var(--color-black);
 	}
 
-	@media (--sm) {
+	@media (min-width: 560px) {
 		li {
 			width: auto;
 			margin: 0.5rem;
@@ -98,7 +98,7 @@
 		}
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		.pagination-element {
 			padding: 0.5rem 1rem;
 		}

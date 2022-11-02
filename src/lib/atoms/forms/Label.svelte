@@ -37,7 +37,7 @@
 		color: var(--color-danger);
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		label {
 			grid-column: 1 / 2;
 			text-align: right;

@@ -49,7 +49,7 @@
 		right: 0.8rem;
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		span {
 			flex-grow: unset;
 			width: 100%;

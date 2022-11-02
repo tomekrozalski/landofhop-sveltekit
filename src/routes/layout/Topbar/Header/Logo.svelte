@@ -99,14 +99,14 @@
 		transform-origin: 137.5px;
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		svg {
 			width: 8.5rem;
 			height: 4rem;
 		}
 	}
 
-	@media (--xl) {
+	@media (min-width: 1200px) {
 		svg {
 			width: 12.7rem;
 			height: 7rem;

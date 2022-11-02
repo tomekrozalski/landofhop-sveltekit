@@ -16,10 +16,9 @@
 		{
 			link: '/stats/ingredients/malt',
 			name: $translate('stats.common.navigation.ingredients'),
-			url: '^/stats/ingredients(\/.*)?$'
+			url: '^/stats/ingredients(/.*)?$'
 		}
 	];
-
 </script>
 
 <nav>
@@ -52,7 +51,7 @@
 		background-color: var(--color-grey-5);
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		ul {
 			flex-direction: row;
 		}

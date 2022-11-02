@@ -24,7 +24,7 @@
 		width: 100%;
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		div {
 			margin: 4rem 0 0 46rem;
 			width: 45rem;

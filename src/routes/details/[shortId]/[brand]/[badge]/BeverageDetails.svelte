@@ -91,7 +91,7 @@
 		padding: 0;
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		article {
 			grid-template-columns: 22rem 1fr 18rem;
 			grid-template-areas: 'gallery main navigation';

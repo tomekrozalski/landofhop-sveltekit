@@ -14,7 +14,7 @@
 		margin-bottom: 1rem;
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		div {
 			display: grid;
 			grid-gap: 1rem;

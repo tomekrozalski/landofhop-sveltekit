@@ -144,7 +144,7 @@
 		font-weight: var(--font-weight-regular);
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		ol,
 		ul {
 			flex-direction: row;

@@ -77,13 +77,13 @@
 		transform: scale(2.5);
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		nav {
 			justify-content: flex-end;
 		}
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		nav {
 			justify-content: center;
 			margin-top: 0;

@@ -38,13 +38,13 @@
 		outline: none;
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		input {
 			font-size: 3rem;
 		}
 	}
 
-	@media (--xl) {
+	@media (min-width: 1200px) {
 		input {
 			margin: 3rem 0;
 			border-bottom-color: var(--color-white);

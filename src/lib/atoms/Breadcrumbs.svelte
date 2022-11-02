@@ -69,7 +69,7 @@
 		font-weight: var(--font-weight-medium);
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		ul {
 			padding: 0 1rem;
 		}

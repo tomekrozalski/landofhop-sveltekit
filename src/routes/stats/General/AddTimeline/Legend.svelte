@@ -99,7 +99,7 @@
 		font: var(--font-weight-light) 1.2rem / 1 var(--font-primary);
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		li {
 			height: 3.5rem;
 			padding-left: 4.5rem;
