@@ -1,11 +1,11 @@
 import { MongoClient } from 'mongodb';
 import { MONGODB_URL } from '$env/static/private';
-import type { RawBasics } from '$types/api/RawBasics';
-import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage';
-import type { RawIngredient } from '$types/api/RawIngredient';
-import type { RawInstitution } from '$types/api/RawInstitution';
-import type { RawPlace } from '$types/api/RawPlace';
-import type { RawStyles } from '$types/api/RawStyles';
+import type { RawBasics } from '$types/RawBasics';
+import type { RawBeverage } from '$types/RawBeverage';
+import type { RawIngredient } from '$types/RawIngredient';
+import type { RawInstitution } from '$types/RawInstitution';
+import type { RawPlace } from '$types/RawPlace';
+import type { RawStyle } from '$types/RawStyle';
 
 const client = new MongoClient(MONGODB_URL);
 
@@ -22,5 +22,5 @@ export const ingredients = db.collection<RawIngredient>('ingredients');
 export const institutions = db.collection<RawInstitution>('institutions');
 export const places = db.collection<RawPlace>('places');
 export const sessions = db.collection('sessions');
-export const styles = db.collection<RawStyles>('styles');
+export const styles = db.collection<RawStyle>('styles');
 export const users = db.collection('users');
