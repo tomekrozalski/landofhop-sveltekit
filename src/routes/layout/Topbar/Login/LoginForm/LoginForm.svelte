@@ -66,13 +66,13 @@
 		align-self: flex-end;
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		form {
 			padding: 3rem 4rem;
 		}
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		form :global(.input-group) {
 			grid-template-columns: auto 30rem;
 			margin: 1rem;

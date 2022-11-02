@@ -14,7 +14,7 @@
 		z-index: 1;
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		span {
 			padding: 0.6rem 1rem 1rem 1rem;
 			font-size: 1.4rem;

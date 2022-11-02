@@ -37,7 +37,7 @@
 		margin-bottom: 1rem;
 	}
 
-	@media (--xl) {
+	@media (min-width: 1200px) {
 		.buttons {
 			flex-direction: row;
 		}

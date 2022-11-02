@@ -67,14 +67,14 @@
 		fill: var(--color-black);
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		button :global(svg) {
 			width: 2.4rem;
 			height: 2.4rem;
 		}
 	}
 
-	@media (--xl) {
+	@media (min-width: 1200px) {
 		button :global(svg) {
 			width: 3rem;
 			height: 3rem;

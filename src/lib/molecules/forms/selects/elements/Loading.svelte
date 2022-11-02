@@ -42,7 +42,7 @@
 		right: 0;
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		div {
 			flex-grow: unset;
 			width: 100%;

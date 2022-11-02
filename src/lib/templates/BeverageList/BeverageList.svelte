@@ -61,7 +61,7 @@
 		transform: scale(0.9);
 	}
 
-	@media (--xl) {
+	@media (min-width: 1200px) {
 		ul {
 			grid-template-columns: repeat(auto-fill, 220px);
 		}

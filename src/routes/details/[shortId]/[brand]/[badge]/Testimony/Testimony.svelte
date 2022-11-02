@@ -62,7 +62,7 @@
 		margin-bottom: 1rem;
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		dl {
 			grid-template-columns: 1fr 2fr;
 			grid-column-gap: 2rem;

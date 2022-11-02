@@ -1,5 +1,3 @@
-@import './app.postcss';
-
 :root {
 	--color-black: #222;
 	--color-white: #fff;
@@ -65,7 +63,7 @@
 	--transition-default: 0.2s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-@media (--md) {
+@media (min-width: 768px) {
 	:root {
 		--size-header-height: 8rem;
 		--size-header-button-width: 10rem;
@@ -78,7 +76,7 @@
 	}
 }
 
-@media (--lg) {
+@media (min-width: 1024px) {
 	:root {
 		--size-container-max-width: 1030px;
 		--size-loginbar-height: 12rem;
@@ -89,7 +87,7 @@
 	}
 }
 
-@media (--xl) {
+@media (min-width: 1200px) {
 	:root {
 		--size-container-max-width: 1160px;
 		--size-header-height: 12rem;

@@ -26,7 +26,7 @@
 		visibility: hidden;
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		div :global(svg) {
 			width: auto;
 			height: var(--size-loginbar-height);
@@ -39,7 +39,7 @@
 		}
 	}
 
-	@media (--lg) {
+	@media (min-width: 1024px) {
 		div :global(svg) {
 			left: 15%;
 		}

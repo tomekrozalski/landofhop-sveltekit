@@ -49,14 +49,14 @@
 		fill: var(--color-black);
 	}
 
-	@media (--md) {
+	@media (min-width: 768px) {
 		svg {
 			width: 3rem;
 			height: 0.6rem;
 		}
 	}
 
-	@media (--xxxl) {
+	@media (min-width: 1600px) {
 		svg {
 			width: 4rem;
 			height: 0.8rem;

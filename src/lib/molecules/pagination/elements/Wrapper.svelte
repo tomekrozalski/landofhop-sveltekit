@@ -9,13 +9,13 @@
 		margin: 6rem 0;
 	}
 
-	@media (--sm) {
+	@media (min-width: 560px) {
 		ul {
 			margin: 6rem auto;
 		}
 	}
 
-	@media (--xl) {
+	@media (min-width: 1200px) {
 		ul {
 			margin: 12rem auto 8rem auto;
 		}
