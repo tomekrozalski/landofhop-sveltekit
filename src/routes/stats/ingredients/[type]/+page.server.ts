@@ -11,7 +11,7 @@ import type { PageServerLoad } from './$types';
 export const prerender = true;
 
 export const load: PageServerLoad = async ({ params, parent }) => {
-	const language = AppLanguage.en;
+	const language = AppLanguage.pl;
 	const badge = params.type as string;
 
 	/* create navigation data */

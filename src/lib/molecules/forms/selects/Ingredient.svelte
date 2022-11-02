@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { afterUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { isArray, isString } from 'lodash-es';
 	import { AppLanguage } from '$types/enums/Globals.enum';
@@ -19,6 +20,19 @@
 	export let filter: IngredientType | null = null;
 	export let value: string | string[] | '' | null;
 
+	let items: SelectType[] = [];
+
+	$: if ($ingredientsStore.length) {
+		items = $ingredientsStore
+			.filter(({ type }) => (filter ? type === filter : true))
+			.sort((a, b) => (a.occurrences.alone > b.occurrences.alone ? -1 : 1))
+			.map(({ badge, name, type }) => ({
+				label: getFromArray(name, AppLanguage.pl).value,
+				value: badge,
+				type
+			}));
+	}
+
 	function getSelectValue(value: any) {
 		if (isArray(value)) {
 			return value.map((id) => items.find((item) => item.value === id)) as SelectType[];
@@ -31,18 +45,11 @@
 		return null;
 	}
 
-	$: if (value !== null) {
-		updateIngredientList();
-	}
-
-	$: items = $ingredientsStore
-		.filter(({ type }) => (filter ? type === filter : true))
-		.sort((a, b) => (a.occurrences.alone > b.occurrences.alone ? -1 : 1))
-		.map(({ badge, name, type }) => ({
-			label: getFromArray(name, AppLanguage.pl).value,
-			value: badge,
-			type
-		}));
+	afterUpdate(() => {
+		if (value !== null) {
+			updateIngredientList();
+		}
+	});
 </script>
 
 {#if value !== null && !items.length}

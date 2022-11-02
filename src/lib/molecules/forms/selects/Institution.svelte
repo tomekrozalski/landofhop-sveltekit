@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { afterUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { isArray, isString } from 'lodash-es';
 	import { AppLanguage } from '$types/enums/Globals.enum';
@@ -18,7 +19,12 @@
 	export let withUnknown: boolean = false;
 	export let value: string | string[] | null;
 
+	let items: SelectType[] = [];
+	let groupBy: (item: { group: string }) => string | undefined;
+	let getGroupHeaderLabel: (option: { label: string }) => string | undefined;
+
 	function getSelectValue(value: any) {
+		console.log('value', value, items);
 		if (isArray(value)) {
 			return value.map((id) => items.find((item) => item.value === id)) as SelectType[];
 		}
@@ -30,37 +36,37 @@
 		return null;
 	}
 
-	let items: SelectType[] = [];
-	let groupBy: (item: { group: string }) => string | undefined;
-	let getGroupHeaderLabel: (option: { label: string }) => string | undefined;
+	afterUpdate(() => {
+		if (value !== null) {
+			updateInstitutionList();
+		}
+	});
 
-	$: if (value !== null) {
-		updateInstitutionList();
-	}
+	$: if ($institutionStore.length) {
+		if (withUnknown) {
+			items = $institutionStore
+				.map(({ name, shortId }) => ({
+					label: getFromArray(name, AppLanguage.pl).value,
+					value: shortId,
+					group: 'brands'
+				}))
+				.sort((a, b) => (a.label < b.label ? -1 : 1));
 
-	$: if (withUnknown) {
-		items = $institutionStore
-			.map(({ name, shortId }) => ({
-				label: getFromArray(name, AppLanguage.pl).value,
-				value: shortId,
-				group: 'brands'
-			}))
-			.sort((a, b) => (a.label < b.label ? -1 : 1));
+			items.unshift({ label: $translate('dashboard.contract.unknown'), value: '--' });
 
-		items.unshift({ label: $translate('dashboard.contract.unknown'), value: '--' });
+			groupBy = (item: { group: string }) => item.group;
 
-		groupBy = (item: { group: string }) => item.group;
-
-		getGroupHeaderLabel = (option: { label: string }) => {
-			return $translate(`dashboard.institutions.${option.label}`);
-		};
-	} else {
-		items = $institutionStore
-			.map(({ name, shortId }) => ({
-				label: getFromArray(name, AppLanguage.pl).value,
-				value: shortId
-			}))
-			.sort((a, b) => (a.label < b.label ? -1 : 1));
+			getGroupHeaderLabel = (option: { label: string }) => {
+				return $translate(`dashboard.institutions.${option.label}`);
+			};
+		} else {
+			items = $institutionStore
+				.map(({ name, shortId }) => ({
+					label: getFromArray(name, AppLanguage.pl).value,
+					value: shortId
+				}))
+				.sort((a, b) => (a.label < b.label ? -1 : 1));
+		}
 	}
 </script>
 
