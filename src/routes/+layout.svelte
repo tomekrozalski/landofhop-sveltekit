@@ -1,18 +1,13 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import { navigating } from '$app/stores';
-	import { locale, translations } from 'svelte-intl';
-	import '$lib/utils/styles/app.postcss';
+	// import '$lib/utils/styles/app.postcss';
 	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
 	import '$lib/utils/styles/global.css';
-	import dictionary from './layout/dictionary.json';
 	import layoutStore from './layout/store';
 	import Topbar from './layout/Topbar/Topbar.svelte';
 	import Main from './layout/Main.svelte';
-
-	translations.update(dictionary);
-	locale.set('pl');
 
 	afterNavigate(() => {
 		// when path change, close navigation
