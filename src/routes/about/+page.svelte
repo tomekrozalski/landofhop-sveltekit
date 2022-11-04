@@ -1,9 +1,6 @@
 <script lang="ts">
-	import { translations, translate } from 'svelte-intl';
+	import { translate } from 'svelte-intl';
 	import Markdown from '$lib/atoms/Markdown.svelte';
-	import dictionary from './dictionary.json';
-
-	translations.update(dictionary);
 </script>
 
 <svelte:head>

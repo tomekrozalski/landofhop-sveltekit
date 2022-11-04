@@ -1,10 +1,7 @@
 <script lang="ts">
-	import { translate, translations } from 'svelte-intl';
+	import { translate } from 'svelte-intl';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
-	import dictionary from './dictionary.json';
 	import type { PageData } from './$types';
-
-	translations.update(dictionary);
 
 	export let data: PageData;
 </script>

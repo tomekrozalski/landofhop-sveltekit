@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { translate, translations } from 'svelte-intl';
+	import { translate } from 'svelte-intl';
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import Breadcrumbs from '$lib/atoms/Breadcrumbs.svelte';
 	import BeverageDetails from './BeverageDetails.svelte';
-	import dictionary from './dictionary.json';
 	import type { PageData } from './$types';
-
-	translations.update(dictionary);
 
 	export let data: PageData;
 </script>
@@ -21,7 +18,7 @@
 		steps={[
 			{
 				label: $translate('beverage.breadcrumbs.list', { listPage: data.listPage }),
-				link: `/list/${data.listPage}`
+				link: data.listPage === 1 ? '/' : `/list/${data.listPage}`
 			},
 			{
 				label: $translate('beverage.breadcrumbs.details')
