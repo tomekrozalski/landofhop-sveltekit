@@ -2,7 +2,7 @@ import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { generateShortId } from '$lib/utils/api';
-import type { RawInstitutionWithoutId } from '$types/api/RawInstitution';
+import type { RawInstitution } from '$types/RawInstitution';
 import authentication from '$lib/utils/stores/authentication';
 import { institutions } from '$db/mongo';
 
@@ -18,7 +18,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		shortId: generateShortId()
 	});
 
-	const data: RawInstitutionWithoutId[] = await institutions
+	const data: RawInstitution[] = await institutions
 		.find(
 			{},
 			{

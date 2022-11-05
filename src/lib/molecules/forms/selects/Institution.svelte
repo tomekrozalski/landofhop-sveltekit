@@ -24,7 +24,6 @@
 	let getGroupHeaderLabel: (option: { label: string }) => string | undefined;
 
 	function getSelectValue(value: any) {
-		console.log('value', value, items);
 		if (isArray(value)) {
 			return value.map((id) => items.find((item) => item.value === id)) as SelectType[];
 		}

@@ -156,7 +156,7 @@ export const formatBeverageToDb = (
 			ratings: {
 				rateBeer: {
 					...(ratings?.rateBeer ?? {}),
-					beverageId: Number(editorial?.rateBeer)
+					beverageId: editorial?.rateBeer
 				},
 				untappd: {
 					...(ratings?.untappd ?? {}),

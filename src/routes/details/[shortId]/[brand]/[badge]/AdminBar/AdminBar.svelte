@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { getJsonData } from '$lib/utils/api/communication';
 	import InlineSpinner from '$lib/atoms/spinners/Inline.svelte';
 	import Notes from './Notes.svelte';
 	import Updated from './Updated.svelte';
@@ -11,14 +10,12 @@
 
 	let adminData: AdminData | null = null;
 	let isLoading = true;
+	$: ({ badge, brand, shortId } = $page.data.details);
 
 	async function getAdminData() {
 		isLoading = true;
-
-		adminData = await getJsonData({
-			path: `/api/admin/beverages/notes/pl/${$page.data.details.shortId}`
-		});
-
+		const response = await fetch(`/details/${shortId}/${brand.badge}/${badge}/api/notes`);
+		adminData = await response.json();
 		isLoading = false;
 	}
 

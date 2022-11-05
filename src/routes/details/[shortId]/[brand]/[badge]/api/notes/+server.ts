@@ -1,49 +1,56 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { format } from 'date-fns';
-import { AppLanguage, DateFormat } from '$types/enums/Globals.enum';
 import { beverages } from '$db/mongo';
-import type { RawRatings } from '$types/api/RawBeverage/RawEditorial.d';
-import type { AdminNotes } from '$types/Beverage/AdminNotes.d';
-
 import { authenticate } from '$lib/utils/api';
+import { AppLanguage, DateFormat } from '$types/enums/Globals.enum';
+import type { AdminData } from '../../AdminBar/AdminData.d';
 
 export const GET: RequestHandler = async ({ cookies, params }) => {
 	const authenticated = await authenticate(cookies);
+	const { badge, shortId } = params;
 
 	if (!authenticated) {
 		throw error(401, 'Unauthorized. Cannot load admin beverage notes');
 	}
 
-	const language = (params.language as AppLanguage) ?? AppLanguage.pl;
-	const shortId = params.shortId ?? '';
-
 	type RawData = {
 		notes?: string;
 		updated?: Date;
-		ratings?: RawRatings;
+		ratings?: {
+			rateBeer: {
+				beverageId: number;
+				quantity?: number;
+				value?: number;
+				date?: Date;
+			};
+			untappd: {
+				beverageSlug: string;
+				quantity?: number;
+				value?: number;
+				date?: Date;
+			};
+			total?: {
+				quantity: number;
+				value: number;
+				date?: Date;
+			};
+		};
 	};
 
 	const data: RawData | null = await beverages.findOne(
-		{ shortId },
+		{ badge, shortId },
 		{ projection: { _id: 0, notes: '$editorial.notes', ratings: '$editorial.ratings', updated: 1 } }
 	);
 
 	if (!data) {
-		return json(
-			{
-				message: 'No beverage found'
-			},
-			{
-				status: 404
-			}
-		);
+		throw error(404, 'No beverage found');
 	}
 
-	const formattedData: AdminNotes = {
+	const formattedData: AdminData = {
 		...(data.notes && { notes: data.notes }),
 		...(data.updated && {
-			updated: format(new Date(data.updated), DateFormat[language])
+			updated: format(new Date(data.updated), DateFormat[AppLanguage.pl])
 		}),
 		...(data.ratings && {
 			ratings: {

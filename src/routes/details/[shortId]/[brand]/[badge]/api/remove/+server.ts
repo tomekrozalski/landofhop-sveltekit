@@ -6,21 +6,19 @@ import authentication from '$lib/utils/stores/authentication';
 import { basics, beverages } from '$db/mongo';
 
 export const DELETE: RequestHandler = async ({ params }) => {
-	const { shortId } = params;
+	const { badge, brand, shortId } = params;
 
 	if (!get(authentication).isLoggedIn) {
 		throw error(401, 'Unauthorized. Cannot remove beverage');
 	}
 
-	const beverageToRemove = await beverages.findOne({ shortId });
+	const beverageToRemove = await beverages.findOne({ badge, shortId });
 
 	if (!beverageToRemove) {
 		throw error(404, 'Could not find the beverage');
 	}
 
-	const name = beverageToRemove.badge;
-	const brand = beverageToRemove.label.general.brand.badge;
-	const path = `${brand}/${name}/${shortId}`;
+	const path = `${brand}/${badge}/${shortId}`;
 
 	try {
 		if (beverageToRemove.editorial?.photos?.cover) {
@@ -40,13 +38,13 @@ export const DELETE: RequestHandler = async ({ params }) => {
 
 	await beverages.deleteOne({
 		shortId,
-		badge: name,
+		badge,
 		'label.general.brand.badge': brand
 	});
 
 	await basics.deleteOne({
 		shortId,
-		badge: name,
+		badge,
 		'brand.badge': brand
 	});
 

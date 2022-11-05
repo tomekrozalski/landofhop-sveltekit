@@ -2,11 +2,11 @@
 	import { translate } from 'svelte-intl';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { deleteJsonData } from '$lib/utils/api/communication';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 
 	let confirmed = false;
 	let isSubmitting = false;
+	$: ({ badge, brand, shortId } = $page.data.details);
 
 	function removeBeverage() {
 		isSubmitting = true;
@@ -21,8 +21,8 @@
 		isSubmitting = true;
 
 		try {
-			await deleteJsonData({
-				path: `/api/admin/beverages/remove/${$page.data.details.shortId}`
+			await fetch(`/details/${shortId}/${brand.badge}/${badge}/api/remove`, {
+				method: 'DELETE'
 			});
 
 			goto('/');
