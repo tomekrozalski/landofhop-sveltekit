@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { isEmpty } from 'lodash-es';
 import { goto } from '$app/navigation';
-import { postJsonData, putJsonData } from '$lib/utils/api/communication';
+import { putJsonData } from '$lib/utils/api/communication';
 import formatLabelValues from '$Beverage/Label/formatValues';
 import formatProducerValues from '$Beverage/Producer/formatValues';
 import { editorialStore, labelStore, producerStore } from '$Beverage/utils/stores';
@@ -28,10 +28,11 @@ export function onSubmit(
 		};
 
 		if (type === 'add') {
-			const { badge, brand, shortId } = await postJsonData({
-				path: '/dashboard/api/add-new-beverage',
-				data: completeData
+			const response = await fetch('/dashboard/api/add-new-beverage', {
+				method: 'POST',
+				body: JSON.stringify(completeData)
 			});
+			const { badge, brand, shortId } = await response.json();
 
 			goto(`/dashboard/update-beverage-photos/${shortId}/${brand}/${badge}`);
 		}

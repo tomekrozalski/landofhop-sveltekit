@@ -2,7 +2,6 @@
 	import { beforeUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { slide } from 'svelte/transition';
-	import { postJsonData } from '$lib/utils/api/communication';
 	import { emptyIngredients } from '$lib/utils/helpers/emptyFieldValues';
 	import Label from '$lib/atoms/forms/Label.svelte';
 	import Plug from '$lib/atoms/forms/Plug.svelte';
@@ -32,15 +31,15 @@
 				lastIngredients.list.length === 1 &&
 				lastIngredients.list[0] === ''
 			) {
-				const translations: string[] = await postJsonData({
-					path: '/api/admin/translate',
-					data: {
+				const response = await fetch('/api/admin/translate', {
+					method: 'POST',
+					body: JSON.stringify({
 						queries: $form[fieldName][0].list,
 						source: $form[fieldName][0].language,
 						target: lastIngredients.language
-					}
+					})
 				});
-
+				const translations: string[] = await response.json();
 				updateValidateField(`ingredients[${ingredientsLength - 1}].list`, translations);
 			}
 		}

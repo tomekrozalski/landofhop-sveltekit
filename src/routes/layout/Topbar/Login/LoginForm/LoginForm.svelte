@@ -4,7 +4,6 @@
 	import * as yup from 'yup';
 	import { Status } from '$types/enums/Globals.enum';
 	import authentication from '$lib/utils/stores/authentication';
-	import { postJsonData } from '$lib/utils/api/communication';
 	import Button from '$lib/atoms/forms/Button/Button.svelte';
 	import Email from './Email.svelte';
 	import Password from './Password.svelte';
@@ -26,9 +25,9 @@
 		onSubmit: (values) => {
 			authentication.setLoginStatus(Status.pending);
 
-			postJsonData({
-				path: '/api/user/login',
-				data: values
+			fetch('/api/user/login', {
+				method: 'POST',
+				body: JSON.stringify(values)
 			})
 				.then(() => {
 					authentication.setLoginStatus(Status.fulfilled);
