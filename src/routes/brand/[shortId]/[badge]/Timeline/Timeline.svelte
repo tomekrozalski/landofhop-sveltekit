@@ -6,6 +6,7 @@
 	import type { Sizes } from '$types/Charts.d';
 	import type { BrandTimelineData, SelectedBar } from '../types.d';
 	import Bars from './Bars.svelte';
+	import RatingsData from './RatingsData.svelte';
 	import Legend from './Legend.svelte';
 
 	export let selectedBar: SelectedBar | null;
@@ -35,6 +36,7 @@
 <TimelineWrapper {highestValue} {sizes}>
 	<Bars {highestValue} {innerWidth} {innerHeight} bind:selectedBar />
 </TimelineWrapper>
+<RatingsData />
 <Legend />
 <a href="/advanced-search?brands={$page.params.shortId}">Zobacz wszystkie piwa marki</a>
 

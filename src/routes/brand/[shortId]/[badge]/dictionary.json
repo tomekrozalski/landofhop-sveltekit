@@ -4,6 +4,7 @@
 		"brand.legend.beverages": "beverages",
 		"brand.legend.contractor": "as contractor",
 		"brand.legend.cooperator": "as cooperator",
+		"brand.ratings.average": "average rating",
 		"brand.title": "🏭 Brand page, {name}"
 	},
 	"pl": {
@@ -11,6 +12,7 @@
 		"brand.legend.beverages": "piwa własne",
 		"brand.legend.contractor": "jako kontraktor",
 		"brand.legend.cooperator": "jako kooperator",
+		"brand.ratings.average": "średnia ocena",
 		"brand.title": "🏭 Strona marki, {name}"
 	}
 }
