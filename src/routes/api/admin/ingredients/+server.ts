@@ -3,7 +3,7 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { recalculateIngredientsOccurrences } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
-import type { RawIngredientWithoutId } from '$types/api/RawIngredient';
+import type { RawIngredient } from '$types/RawIngredient';
 import { beverages, ingredients } from '$db/mongo';
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -15,7 +15,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	await ingredients.insertOne(ingredientData);
 
-	const data: RawIngredientWithoutId[] = await ingredients
+	const data: RawIngredient[] = await ingredients
 		.find(
 			{},
 			{
@@ -71,7 +71,7 @@ export const PUT: RequestHandler = async ({ request }) => {
 
 	await recalculateIngredientsOccurrences();
 
-	const data: RawIngredientWithoutId[] = await ingredients
+	const data: RawIngredient[] = await ingredients
 		.find(
 			{},
 			{

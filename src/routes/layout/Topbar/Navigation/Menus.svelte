@@ -3,7 +3,7 @@
 	import authentication from '$lib/utils/stores/authentication';
 	import LockIcon from './icons/Lock.svelte';
 	import UnlockIcon from './icons/Unlock.svelte';
-	import layoutStore from '../../store';
+	import layoutStore from '../../utils/store';
 
 	function logOut() {
 		fetch('/api/user/logout')

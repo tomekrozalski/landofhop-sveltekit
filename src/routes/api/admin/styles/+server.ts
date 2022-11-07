@@ -1,7 +1,7 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import type { RawStylesWithoutId } from '$types/api/RawStyles';
+import type { RawStyle } from '$types/RawStyle';
 import authentication from '$lib/utils/stores/authentication';
 import { styles } from '$db/mongo';
 
@@ -14,7 +14,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	await styles.insertOne(styleData);
 
-	const data: RawStylesWithoutId[] = await styles
+	const data: RawStyle[] = await styles
 		.find(
 			{},
 			{

@@ -1,4 +1,3 @@
-import authenticate from './authenticate';
 import cleanDeep from './cleanDeep';
 import createSession from './sessions/create';
 import { generateTokens, removeTokens } from './sessions/tokens';
@@ -19,7 +18,6 @@ import updateRateBeerRating from './beverages/updateRateBeerRating';
 import updateUntappdRating from './beverages/updateUntappdRating';
 
 export {
-	authenticate,
 	cleanDeep,
 	createSession,
 	deleteIfEmpty,

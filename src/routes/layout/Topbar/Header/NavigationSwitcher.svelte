@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
-	import layoutStore from '../../store';
+	import layoutStore from '../../utils/store';
 </script>
 
 <button on:click={layoutStore.toggleNavbar}>

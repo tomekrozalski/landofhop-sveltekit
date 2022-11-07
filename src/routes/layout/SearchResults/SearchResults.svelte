@@ -8,7 +8,7 @@
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
 	import NothingFound from '$lib/templates/BeverageList/NothingFound.svelte';
 	import type { Basics } from '$lib/templates/BeverageList/Basics.d';
-	import layoutStore from '../store';
+	import layoutStore from '../utils/store';
 	import AdvancedSearchLink from './AdvancedSearchLink.svelte';
 
 	let order = 1;

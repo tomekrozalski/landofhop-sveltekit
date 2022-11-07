@@ -1,5 +1,5 @@
 <script lang="ts">
-	import layoutStore from '../../store';
+	import layoutStore from '../../utils/store';
 </script>
 
 <a on:click={layoutStore.close} href="/">

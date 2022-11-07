@@ -1,5 +1,5 @@
 <script lang="ts">
-	import layoutStore from '../../../store';
+	import layoutStore from '../../../utils/store';
 	import Magnifier from './Magnifier.svelte';
 	import Close from './Close.svelte';
 	import SearchInput from './SearchInput.svelte';

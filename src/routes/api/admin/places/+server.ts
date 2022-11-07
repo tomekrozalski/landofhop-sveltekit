@@ -2,7 +2,7 @@ import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { generateShortId } from '$lib/utils/api';
-import type { RawPlaceWithoutId } from '$types/api/RawPlace';
+import type { RawPlace } from '$types/RawPlace';
 import authentication from '$lib/utils/stores/authentication';
 import { places } from '$db/mongo';
 
@@ -18,7 +18,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		shortId: generateShortId()
 	});
 
-	const data: RawPlaceWithoutId[] = [];
+	const data: RawPlace[] = [];
 
 	await places.find().forEach(({ city, country, institution, location, shortId }) => {
 		data.push({

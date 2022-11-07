@@ -1,17 +1,17 @@
+import { get } from 'svelte/store';
+import { format } from 'date-fns';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { format } from 'date-fns';
 import { beverages } from '$db/mongo';
-import { authenticate } from '$lib/utils/api';
+import authentication from '$lib/utils/stores/authentication';
 import { AppLanguage, DateFormat } from '$types/enums/Globals.enum';
 import type { AdminData } from '../../AdminBar/AdminData.d';
 
-export const GET: RequestHandler = async ({ cookies, params }) => {
-	const authenticated = await authenticate(cookies);
+export const GET: RequestHandler = async ({ params }) => {
 	const { badge, shortId } = params;
 
-	if (!authenticated) {
-		throw error(401, 'Unauthorized. Cannot load admin beverage notes');
+	if (!get(authentication).isLoggedIn) {
+		throw error(401, 'Unauthorized. Cannot add new beverage');
 	}
 
 	type RawData = {

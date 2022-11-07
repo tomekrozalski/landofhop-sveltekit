@@ -5,7 +5,7 @@
 	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
 	import '$lib/utils/styles/global.css';
-	import layoutStore from './layout/store';
+	import layoutStore from './layout/utils/store';
 	import Topbar from './layout/Topbar/Topbar.svelte';
 	import Main from './layout/Main.svelte';
 

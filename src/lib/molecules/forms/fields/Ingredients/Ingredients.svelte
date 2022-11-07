@@ -31,7 +31,7 @@
 				lastIngredients.list.length === 1 &&
 				lastIngredients.list[0] === ''
 			) {
-				const response = await fetch('/api/admin/translate', {
+				const response = await fetch('/dashboard/api/translate', {
 					method: 'POST',
 					body: JSON.stringify({
 						queries: $form[fieldName][0].list,

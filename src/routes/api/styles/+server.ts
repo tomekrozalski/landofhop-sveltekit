@@ -1,10 +1,10 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import { styles } from '$db/mongo';
-import type { RawStylesWithoutId } from '$types/api/RawStyles';
+import type { RawStyle } from '$types/RawStyle';
 
 export const GET: RequestHandler = async () => {
-	const data: RawStylesWithoutId[] = await styles
+	const data: RawStyle[] = await styles
 		.find(
 			{},
 			{

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import layoutStore from '../../store';
+	import layoutStore from '../../utils/store';
 	import Logo from './Logo.svelte';
 	import SearchBar from './Searchbar/Searchbar.svelte';
 	import NavigationSwitcher from './NavigationSwitcher.svelte';

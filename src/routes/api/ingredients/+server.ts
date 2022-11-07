@@ -1,10 +1,10 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import type { RawIngredientWithoutId } from '$types/api/RawIngredient';
+import type { RawIngredient } from '$types/RawIngredient';
 import { ingredients } from '$db/mongo';
 
 export const GET: RequestHandler = async () => {
-	const data: RawIngredientWithoutId[] = await ingredients
+	const data: RawIngredient[] = await ingredients
 		.find(
 			{},
 			{

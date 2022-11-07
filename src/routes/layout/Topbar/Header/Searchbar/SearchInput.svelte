@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import { translate } from 'svelte-intl';
 	import pushState from '$lib/utils/helpers/pushState';
-	import layoutStore from '../../../store';
+	import layoutStore from '../../../utils/store';
 
 	function focusOnMount(input: HTMLInputElement) {
 		input.focus();
