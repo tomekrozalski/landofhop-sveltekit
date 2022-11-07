@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { debounce } from 'lodash-es';
-	import { getJsonData } from '$lib/utils/api/communication';
 	import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 	import pushState from '$lib/utils/helpers/pushState';
 	import Spinner from '$lib/atoms/spinners/FullScreen.svelte';
@@ -16,14 +15,10 @@
 	let value: string;
 
 	async function callToApi(phrase: string, page: number) {
-		const response: {
-			beverages: Basics[];
-			total: number;
-		} = await getJsonData({
-			path: `/api/search/byPhrase/pl/${phrase.trim()}/${page}`
-		});
+		const response = await fetch(`/api/search/byPhrase/pl/${phrase.trim()}/${page}`);
+		const data: { beverages: Basics[]; total: number } = await response.json();
 
-		return response;
+		return data;
 	}
 
 	const updateValue = debounce((newValue) => {

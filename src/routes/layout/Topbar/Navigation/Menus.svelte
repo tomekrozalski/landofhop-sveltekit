@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import authentication from '$lib/utils/stores/authentication';
-	import { getJsonData } from '$lib/utils/api/communication';
 	import LockIcon from './icons/Lock.svelte';
 	import UnlockIcon from './icons/Unlock.svelte';
 	import layoutStore from '../../store';
 
 	function logOut() {
-		getJsonData({ path: '/api/user/logout' })
+		fetch('/api/user/logout')
 			.then(authentication.logOut)
 			.catch(() => console.warn('Log out failed'));
 	}

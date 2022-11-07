@@ -1,4 +1,3 @@
-import { getJsonData } from '$lib/utils/api/communication';
 import type { LabelFormValues } from '$Beverage/Label/LabelFormValues';
 import type { ProducerFormValues } from '$Beverage/Producer/ProducerFormValues';
 import type { EditorialFormValues } from '$Beverage/Editorial/EditorialFormValues';
@@ -12,10 +11,8 @@ type DetailsAdmin = {
 
 export const load: PageLoad = async ({ fetch, params }) => {
 	try {
-		const beverage: DetailsAdmin = await getJsonData({
-			fetch,
-			path: `/dashboard/api/get-beverage-details/${params.shortId}`
-		});
+		const response = await fetch(`/dashboard/api/get-beverage-details/${params.shortId}`);
+		const beverage: DetailsAdmin = await response.json();
 
 		return { beverage };
 	} catch (err) {

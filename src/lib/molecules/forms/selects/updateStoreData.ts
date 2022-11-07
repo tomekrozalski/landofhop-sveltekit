@@ -1,5 +1,4 @@
 import { get } from 'svelte/store';
-import { getJsonData } from '$lib/utils/api/communication';
 import {
 	ingredientsStore,
 	institutionStore,
@@ -13,7 +12,8 @@ import type { Style as StyleType } from '$lib/utils/stores/types/Style.d';
 
 async function updateIngredientList() {
 	if (get(ingredientsStore).length === 0) {
-		const ingredients: IngredientType[] = await getJsonData({ path: '/api/ingredients' });
+		const response = await fetch('/api/ingredients');
+		const ingredients: IngredientType[] = await response.json();
 
 		ingredientsStore.set(ingredients);
 	}
@@ -21,7 +21,8 @@ async function updateIngredientList() {
 
 async function updateInstitutionList() {
 	if (get(institutionStore).length === 0) {
-		const institutions: InstitutionType[] = await getJsonData({ path: '/api/institutions' });
+		const response = await fetch('/api/institutions');
+		const institutions: InstitutionType[] = await response.json();
 
 		institutionStore.set(institutions);
 	}
@@ -29,14 +30,16 @@ async function updateInstitutionList() {
 
 async function updatePlaceList() {
 	if (get(placeStore).length === 0) {
-		const places: PlaceType[] = await getJsonData({ path: '/api/places' });
+		const response = await fetch('/api/places');
+		const places: PlaceType[] = await response.json();
 		placeStore.set(places);
 	}
 }
 
 async function updateStyleList() {
 	if (get(styleStore).length === 0) {
-		const styles: StyleType[] = await getJsonData({ path: '/api/styles' });
+		const response = await fetch('/api/styles');
+		const styles: StyleType[] = await response.json();
 		styleStore.set(styles);
 	}
 }

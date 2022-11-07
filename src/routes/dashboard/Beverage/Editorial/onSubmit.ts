@@ -1,7 +1,6 @@
 import { get } from 'svelte/store';
 import { isEmpty } from 'lodash-es';
 import { goto } from '$app/navigation';
-import { putJsonData } from '$lib/utils/api/communication';
 import formatLabelValues from '$Beverage/Label/formatValues';
 import formatProducerValues from '$Beverage/Producer/formatValues';
 import { editorialStore, labelStore, producerStore } from '$Beverage/utils/stores';
@@ -40,14 +39,14 @@ export function onSubmit(
 		if (type === 'update') {
 			const { shortId, brand, badge } = params;
 
-			await putJsonData({
-				path: `/dashboard/api/update-basics/${shortId}`,
-				data: completeData
+			await fetch(`/dashboard/api/update-basics/${shortId}`, {
+				method: 'PUT',
+				body: JSON.stringify(completeData)
 			});
 
-			await putJsonData({
-				path: `/dashboard/api/update-beverage/${shortId}`,
-				data: completeData
+			await fetch(`/dashboard/api/update-beverage/${shortId}`, {
+				method: 'PUT',
+				body: JSON.stringify(completeData)
 			});
 
 			goto(`/details/${shortId}/${brand}/${badge}`);
