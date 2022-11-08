@@ -12,11 +12,26 @@
 
 <article>
 	<h1>{$translate('brands.title')}</h1>
-	<ul>
-		{#each data.insitutions as { badge, name, shortId }}
-			<li><MarkLanguage href="/brand/{shortId}/{badge}" tag="a" {name} /></li>
+	<table>
+		<tr>
+			<th>Nazwa</th>
+			<th>ilość piw</th>
+			<th>jako kooperant</th>
+			<th>jako kontraktor</th>
+			<th>średnia ocena</th>
+			<th>punty</th>
+		</tr>
+		{#each data.insitutions as { avgRating, badge, name, shortId }}
+			<tr>
+				<td><MarkLanguage href="/brand/{shortId}/{badge}" tag="a" {name} /></td>
+				<td>x</td>
+				<td>x</td>
+				<td>x</td>
+				<td><strong style="color: red">{avgRating}</strong></td>
+				<td>x</td>
+			</tr>
 		{/each}
-	</ul>
+	</table>
 </article>
 
 <style>
