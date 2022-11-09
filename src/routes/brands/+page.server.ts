@@ -13,7 +13,8 @@ export const load: PageServerLoad = async () => {
 		badge: string;
 		name: LanguageValue;
 		shortId: string;
-		avgRating?: string;
+		beverages?: number;
+		avgRating?: number;
 	}[] = [];
 
 	await institutions
@@ -45,7 +46,8 @@ export const load: PageServerLoad = async () => {
 			{
 				$group: {
 					_id: '$label.general.brand.shortId',
-					avgRating: { $avg: '$editorial.ratings.total.value' }
+					avgRating: { $avg: '$editorial.ratings.total.value' },
+					beverages: { $count: {} }
 				}
 			},
 			{ $sort: { avgRating: -1 } },
@@ -53,17 +55,18 @@ export const load: PageServerLoad = async () => {
 				$project: {
 					_id: 0,
 					shortId: '$_id',
-					avgRating: 1
+					avgRating: 1,
+					beverages: 1,
+					test: 1
 				}
 			}
 		])
 		.forEach((props) => {
-			const a = formattedInsitutions.find(({ shortId }) => shortId === props.shortId);
+			const foundInsitution = formattedInsitutions.find(({ shortId }) => shortId === props.shortId);
 
-			if (a) {
-				a.avgRating = new Intl.NumberFormat(AppLanguage.pl, { maximumSignificantDigits: 3 }).format(
-					props.avgRating
-				);
+			if (foundInsitution && props.avgRating) {
+				foundInsitution.avgRating = props.avgRating;
+				foundInsitution.beverages = props.beverages;
 			}
 		});
 
