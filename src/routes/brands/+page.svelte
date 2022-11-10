@@ -4,8 +4,6 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
-	$: console.table(data.insitutions);
 </script>
 
 <svelte:head>
@@ -29,20 +27,19 @@
 			<th>średnia ocena</th>
 			<th>punty</th>
 		</tr>
-		{#each data.insitutions as { avgRating, badge, beverages, name, shortId }}
+		{#each data.insitutions as { badge, name, shortId, statsData }}
+			{@const { asContractor, asCooperator, avrScore, beverages, points } = statsData}
 			<tr>
 				<td><MarkLanguage href="/brand/{shortId}/{badge}" tag="a" {name} /></td>
+				<td>{beverages || '-'}</td>
+				<td>{asCooperator || '-'}</td>
+				<td>{asContractor || '-'}</td>
 				<td>
-					{#if beverages}{beverages}{/if}
-				</td>
-				<td>x</td>
-				<td>x</td>
-				<td>
-					{#if avgRating}
-						{new Intl.NumberFormat('pl', { maximumSignificantDigits: 3 }).format(avgRating)}
+					{#if avrScore}
+						{new Intl.NumberFormat('pl', { maximumSignificantDigits: 3 }).format(avrScore.value)}
 					{/if}
 				</td>
-				<td>x</td>
+				<td>{points.value}</td>
 			</tr>
 		{/each}
 	</table>

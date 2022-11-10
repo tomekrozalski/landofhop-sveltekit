@@ -4,7 +4,7 @@ import type { RawInstitution } from '$types/RawInstitution.d';
 import type { InstitutionDetails } from '../types.d';
 
 const institutionApiNormalizer = (
-	{ name, owner, website }: RawInstitution,
+	{ name, owner, website, statsData }: RawInstitution,
 	desiredLanguage: AppLanguage
 ): InstitutionDetails => ({
 	name: translate(name, desiredLanguage),
@@ -15,7 +15,18 @@ const institutionApiNormalizer = (
 			website: owner.website
 		}
 	}),
-	...(website && { website })
+	...(website && { website }),
+	statsData: {
+		...statsData,
+		...(statsData.avrScore && {
+			avrScore: {
+				value: new Intl.NumberFormat(desiredLanguage, { maximumSignificantDigits: 3 }).format(
+					statsData.avrScore.value
+				),
+				ranking: statsData.avrScore.ranking
+			}
+		})
+	}
 });
 
 export default institutionApiNormalizer;

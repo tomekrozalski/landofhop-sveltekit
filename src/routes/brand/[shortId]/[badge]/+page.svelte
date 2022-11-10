@@ -10,11 +10,11 @@
 	export let data: PageData;
 	let selectedBar: SelectedBar | null = null;
 
-	$: ({ name } = data.insitution);
+	$: ({ name } = data.institution);
 </script>
 
 <svelte:head>
-	<title>{$translate('brand.title', { name: data.insitution.name.value })}</title>
+	<title>{$translate('brand.title', { name: data.institution.name.value })}</title>
 	<link rel="preconnect" href={PHOTO_SERVER} />
 </svelte:head>
 

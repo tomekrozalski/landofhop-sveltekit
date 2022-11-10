@@ -37,41 +37,19 @@ export const load: PageServerLoad = async ({ params }) => {
 		})
 		.toArray();
 
-	let avgRating = '';
-	let ratingPlace = 0;
-	let ratingCount = 0;
-
-	await beverages
+	const brewingInstitution = await beverages
 		.aggregate([
 			{
 				$group: {
-					_id: '$label.general.brand.shortId',
-					avgRating: { $avg: '$editorial.ratings.total.value' }
-				}
-			},
-			{ $sort: { avgRating: -1 } },
-			{
-				$project: {
-					_id: 0,
-					shortId: '$_id',
-					avgRating: 1
+					_id: '$label.general.brand.shortId'
 				}
 			}
 		])
-		.forEach((props) => {
-			ratingCount = ratingCount + 1;
-
-			if (props.shortId === shortId) {
-				avgRating = new Intl.NumberFormat(AppLanguage.pl, { maximumSignificantDigits: 3 }).format(
-					props.avgRating
-				);
-				ratingPlace = ratingCount;
-			}
-		});
+		.toArray();
 
 	return {
 		timelineData: timelineApiNormalizer({ badge, rawBeverages, shortId }),
-		insitution: institutionApiNormalizer(rawInstitution, AppLanguage.pl),
-		...(avgRating && { ratingsData: { avgRating, ratingPlace, ratingCount } })
+		institution: institutionApiNormalizer(rawInstitution, AppLanguage.pl),
+		ratingCount: brewingInstitution.length
 	};
 };
