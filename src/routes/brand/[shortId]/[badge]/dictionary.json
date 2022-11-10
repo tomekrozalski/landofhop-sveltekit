@@ -5,6 +5,8 @@
 		"brand.legend.contractor": "as contractor",
 		"brand.legend.cooperator": "as cooperator",
 		"brand.ratings.average": "average rating",
+		"brand.ratings.points": "apoints",
+		"brand.showList": "show list of brands",
 		"brand.title": "🏭 Brand page, {name}"
 	},
 	"pl": {
@@ -13,6 +15,8 @@
 		"brand.legend.contractor": "jako kontraktor",
 		"brand.legend.cooperator": "jako kooperator",
 		"brand.ratings.average": "średnia ocena",
+		"brand.ratings.points": "punkty",
+		"brand.showList": "pokaż listę marek",
 		"brand.title": "🏭 Strona marki, {name}"
 	}
 }

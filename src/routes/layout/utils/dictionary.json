@@ -16,6 +16,7 @@
 		"header.search.nothingFound": "Nothing found",
 		"navigation.about": "About",
 		"navigation.addNewBeverage": "Add new beverage",
+		"navigation.brands": "Brands",
 		"navigation.login": "Log in",
 		"navigation.logout": "Log out",
 		"navigation.stats": "Stats"
@@ -37,6 +38,7 @@
 		"header.search.nothingFound": "Nic nie znaleziono",
 		"navigation.about": "O stronie",
 		"navigation.addNewBeverage": "Dodaj nowe piwo",
+		"navigation.brands": "Marki",
 		"navigation.login": "Zaloguj",
 		"navigation.logout": "Wyloguj",
 		"navigation.stats": "Statystyki"

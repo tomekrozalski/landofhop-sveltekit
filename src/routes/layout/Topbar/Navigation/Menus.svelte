@@ -28,6 +28,7 @@
 	</li>
 	<li><a href="/about">{$translate('navigation.about')}</a></li>
 	<li><a href="/stats">{$translate('navigation.stats')}</a></li>
+	<li><a href="/brands">{$translate('navigation.brands')}</a></li>
 	{#if $authentication.isLoggedIn}
 		<li>
 			<a href="/dashboard/add-new-beverage">
