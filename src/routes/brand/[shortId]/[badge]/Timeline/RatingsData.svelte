@@ -2,12 +2,10 @@
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
 
-	console.log('$page.data.institution', $page.data);
-
 	$: ({ institution, ratingCount } = $page.data);
 </script>
 
-{#if institution.statsData.beverages}
+{#if institution.statsData.avrScore}
 	<section>
 		{$translate('brand.ratings.average')}: <strong>{institution.statsData.avrScore.value}</strong>
 		<span>({institution.statsData.avrScore.ranking} miejsce na {ratingCount})</span>
