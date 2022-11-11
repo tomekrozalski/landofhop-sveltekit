@@ -7,7 +7,6 @@ import generateShortId from './generateShortId';
 import getTracedSvg from './photos/getTracedSvg';
 import translate from './translate';
 import updateSession from './sessions/update';
-import recalculateIngredientsOccurrences from './ingredients/recalculateOccurrences';
 import removeCover from './photos/removeCover';
 import removeGallery from './photos/removeGallery';
 import removeViewFromAbove from './photos/removeViewFromAbove';
@@ -25,7 +24,6 @@ export {
 	generateShortId,
 	generateTokens,
 	getTracedSvg,
-	recalculateIngredientsOccurrences,
 	removeCover,
 	removeGallery,
 	removeTokens,

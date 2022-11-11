@@ -2,7 +2,7 @@
 	import InlineSpinner from '../InlineSpinner.svelte';
 	import DatabaseIcon from './DatabaseIcon.svelte';
 
-	export let handleClick: () => void = () => {};
+	export let handleClick: (e: Event) => void = () => {};
 	export let isIrreversible: boolean = false;
 	export let isSecondary: boolean = false;
 	export let isSubmitting: boolean = false;
