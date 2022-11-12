@@ -45,7 +45,7 @@
 		<ButtonWrapper modal>
 			<RecalculateButton />
 			<Button isIrreversible isSubmitting={$isSubmitting} type="submit">
-				{$translate('dashboard.button.save')}
+				{$translate('modals.buttons.save')}
 			</Button>
 		</ButtonWrapper>
 	</form>

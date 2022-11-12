@@ -12,6 +12,7 @@
 	import { getValidationSchema } from './validationSchema';
 	import { initialValues } from './initialValues';
 	import { onSubmit } from './onSubmit';
+	import RecalculateButton from './RecalculateButton.svelte';
 
 	export let close: () => void;
 	const formName = 'institution';
@@ -43,6 +44,7 @@
 			<Website {formName} {formData} />
 		</ModalGrid>
 		<ButtonWrapper modal>
+			<RecalculateButton />
 			<Button isIrreversible isSubmitting={$isSubmitting} type="submit">
 				{$translate('dashboard.button.save')}
 			</Button>

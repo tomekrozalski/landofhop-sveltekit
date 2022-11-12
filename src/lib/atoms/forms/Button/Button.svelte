@@ -9,6 +9,7 @@
 	export let isWarning: boolean = false;
 	export let type: string = 'button';
 	export let disabled: boolean = false;
+	export let style: string = '';
 </script>
 
 <button
@@ -19,6 +20,7 @@
 	disabled={disabled || isSubmitting}
 	on:click={handleClick}
 	{type}
+	{style}
 >
 	<span><slot /></span>
 	{#if isIrreversible}

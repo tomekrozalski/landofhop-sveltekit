@@ -1,6 +1,7 @@
 {
 	"en": {
-		"modals.buttons.save": "save",
+		"modals.buttons.save": "Save",
+		"modals.buttons.recalculate": "Recalculate",
 		"modals.labels.badge": "Badge",
 		"modals.labels.ingredient.parent": "Parent ingredient",
 		"modals.labels.ingredient.type": "Typ",
@@ -15,7 +16,8 @@
 		"modals.names.updateIngredient": "Update ingredient"
 	},
 	"pl": {
-		"modals.buttons.save": "zapisz",
+		"modals.buttons.save": "Zapisz",
+		"modals.buttons.recalculate": "Przelicz",
 		"modals.labels.badge": "Identyfikator",
 		"modals.labels.ingredient.parent": "Rodzic",
 		"modals.labels.ingredient.type": "Typ",

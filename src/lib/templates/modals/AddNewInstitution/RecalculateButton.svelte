@@ -8,7 +8,7 @@
 		e.preventDefault();
 		isRecalculating = true;
 
-		await fetch('/api/admin/recalculate/ingredients');
+		await fetch('/api/admin/recalculate/institutions');
 
 		isRecalculating = false;
 	};
