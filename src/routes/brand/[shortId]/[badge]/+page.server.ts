@@ -47,7 +47,19 @@ export const load: PageServerLoad = async ({ params }) => {
 		])
 		.toArray();
 
+	const ratings = await beverages
+		.aggregate([
+			{
+				$group: {
+					_id: null,
+					avgRating: { $avg: '$editorial.ratings.total.value' }
+				}
+			}
+		])
+		.toArray();
+
 	return {
+		averageScoreForAllBeverages: ratings[0].avgRating,
 		timelineData: timelineApiNormalizer({ badge, rawBeverages, shortId }),
 		institution: institutionApiNormalizer(rawInstitution, AppLanguage.pl),
 		ratingCount: brewingInstitution.length

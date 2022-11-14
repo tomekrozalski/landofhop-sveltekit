@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { beverages, institutions } from '$db/mongo';
+import { institutions } from '$db/mongo';
 import { translate } from '$lib/utils/api';
 import { AppLanguage } from '$types/enums/Globals.enum';
 import type { RawInstitution } from '$types/RawInstitution.d';
@@ -53,35 +53,6 @@ export const load: PageServerLoad = async () => {
 	if (!formattedInsitutions?.length) {
 		throw error(404, 'No institution found');
 	}
-
-	// 	await beverages
-	// 		.aggregate([
-	// 			{
-	// 				$group: {
-	// 					_id: '$label.general.brand.shortId',
-	// 					avgRating: { $avg: '$editorial.ratings.total.value' },
-	// 					beverages: { $count: {} }
-	// 				}
-	// 			},
-	// 			{ $sort: { avgRating: -1 } },
-	// 			{
-	// 				$project: {
-	// 					_id: 0,
-	// 					shortId: '$_id',
-	// 					avgRating: 1,
-	// 					beverages: 1,
-	// 					test: 1
-	// 				}
-	// 			}
-	// 		])
-	// 		.forEach((props) => {
-	// 			const foundInsitution = formattedInsitutions.find(({ shortId }) => shortId === props.shortId);
-	//
-	// 			if (foundInsitution && props.avgRating) {
-	// 				foundInsitution.avgRating = props.avgRating;
-	// 				foundInsitution.beverages = props.beverages;
-	// 			}
-	// 		});
 
 	return {
 		insitutions: formattedInsitutions.sort((a, b) =>

@@ -5,9 +5,13 @@
 	export let value: string;
 </script>
 
-<span {style}>
+{#if style}
+	<span {style}>
+		{@html marked(value)}
+	</span>
+{:else}
 	{@html marked(value)}
-</span>
+{/if}
 
 <style>
 	span :global(p) {

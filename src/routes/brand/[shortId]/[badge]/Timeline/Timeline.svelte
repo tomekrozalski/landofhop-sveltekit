@@ -6,8 +6,6 @@
 	import type { Sizes } from '$types/Charts.d';
 	import type { BrandTimelineData, SelectedBar } from '../types.d';
 	import Bars from './Bars.svelte';
-	import RatingsData from './RatingsData.svelte';
-	import Legend from './Legend.svelte';
 
 	export let selectedBar: SelectedBar | null;
 	const timelineData: BrandTimelineData[] = $page.data.timelineData ?? [];
@@ -36,37 +34,10 @@
 <TimelineWrapper {highestValue} {sizes}>
 	<Bars {highestValue} {innerWidth} {innerHeight} bind:selectedBar />
 </TimelineWrapper>
-<RatingsData />
-<Legend />
-<a href="/advanced-search?brands={$page.params.shortId}">Zobacz wszystkie piwa marki</a>
 
 <style>
 	p {
 		margin: 4rem 0 2rem 0;
 		font: var(--font-weight-regular) 1.6rem / 1 var(--font-primary);
-	}
-
-	p::before {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		margin-right: 1rem;
-		width: 2rem;
-		height: 2rem;
-		border: 0.1rem solid var(--color-grey-1);
-		border-radius: 50%;
-		content: '?';
-		color: var(--color-grey-1);
-	}
-
-	a {
-		float: right;
-		margin-inline: 2rem;
-		font-size: 1.6rem;
-		color: var(--color-black);
-	}
-
-	a:hover {
-		text-decoration: underline;
 	}
 </style>
