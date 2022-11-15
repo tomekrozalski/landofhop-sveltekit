@@ -1,7 +1,6 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { recalculateIngredientsOccurrences } from '$lib/utils/api';
 import authentication from '$lib/utils/stores/authentication';
 import type { RawIngredient } from '$types/RawIngredient';
 import { beverages, ingredients } from '$db/mongo';
@@ -68,8 +67,6 @@ export const PUT: RequestHandler = async ({ request }) => {
 			}
 		}
 	);
-
-	await recalculateIngredientsOccurrences();
 
 	const data: RawIngredient[] = await ingredients
 		.find(
