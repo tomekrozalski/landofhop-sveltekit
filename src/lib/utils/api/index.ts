@@ -13,8 +13,6 @@ import removeViewFromAbove from './photos/removeViewFromAbove';
 import { saveCoverJpg, saveCoverWebp } from './photos/saveCover';
 import { saveGalleryJpg, saveGalleryWebp } from './photos/saveGallery';
 import { saveViewFromAboveJpg, saveViewFromAboveWebp } from './photos/saveViewFromAbove';
-import updateRateBeerRating from './beverages/updateRateBeerRating';
-import updateUntappdRating from './beverages/updateUntappdRating';
 
 export {
 	cleanDeep,
@@ -35,7 +33,5 @@ export {
 	saveViewFromAboveJpg,
 	saveViewFromAboveWebp,
 	translate,
-	updateRateBeerRating,
-	updateSession,
-	updateUntappdRating
+	updateSession
 };

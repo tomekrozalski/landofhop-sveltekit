@@ -1,9 +1,10 @@
 import { get } from 'svelte/store';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
-import { updateRateBeerRating, updateUntappdRating } from '$lib/utils/api';
-import authentication from '$lib/utils/stores/authentication';
 import { beverages } from '$db/mongo';
+import authentication from '$lib/utils/stores/authentication';
+import updateRateBeerRating from './updateRateBeerRating';
+import updateUntappdRating from './updateUntappdRating';
 
 export const POST: RequestHandler = async ({ request }) => {
 	if (!get(authentication).isLoggedIn) {

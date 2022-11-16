@@ -1,6 +1,6 @@
 import { beverages } from '$db/mongo';
 
-async function updateRateBeerRating(rateBeerid: string, beverageShortId: string) {
+const updateRateBeerRating = async (rateBeerid: string, beverageShortId: string) => {
 	try {
 		const response = await fetch('https://beta.ratebeer.com/v1/api/graphql/', {
 			method: 'POST',
@@ -35,6 +35,6 @@ async function updateRateBeerRating(rateBeerid: string, beverageShortId: string)
 		console.error(e.message);
 		return null;
 	}
-}
+};
 
 export default updateRateBeerRating;
