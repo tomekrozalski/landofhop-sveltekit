@@ -7,6 +7,7 @@
 		"brand.pointsInfo": "Depending on average rating from the RateBeer and Untappd portals we give each beverage points. The number of points depends on the deviation of the average rating from the average rating for all beers rated in the database, i.e. currently around `{average}`. One point corresponds to `0.1` deviation point. So if a beer is rated `{higher}`, i.e. it is rated `0.65` higher than the average of all beers, the beer gets 7 points. Conversely, if a beer is rated `{lower}', so it is rated `0.21` lower, the beer gets -3 points.",
 		"brand.ratings.average": "average rating",
 		"brand.ratings.points": "apoints",
+		"brand.ratings.ranking": "{rating} out of {count}",
 		"brand.showList": "show list of brands",
 		"brand.title": "🏭 Brand page, {name}"
 	},
@@ -18,6 +19,7 @@
 		"brand.pointsInfo": "Za każde piwo własne, a więc uwarzone pod własną marką, przyznawane są punkty w zależności od jego średniej oceny z portali RateBeer oraz Untappd. Ilość punktów zależy od odchylenia jego średniej oceny od średniej oceny dla wszystkich piw ocenionych w bazie danych, tj. obecnie około `{average}`. Jeden punkt odpowiada `0,1` punktu odchylenia. Jeżeli więc piwo ma ocenę `{higher}`, a więc jest ocenione o `0,65` wyżej niż średnia wszystkich piw, piwo dostaje 7 punktów. I w drugą stronę, jeżeli piwo ma ocenę `{lower}`, a więc jest ocenione o `0,21` niżej, piwo dostaje -3 punkty.",
 		"brand.ratings.average": "średnia ocena",
 		"brand.ratings.points": "punkty",
+		"brand.ratings.ranking": "{rating} miejsce na {count}",
 		"brand.showList": "pokaż listę marek",
 		"brand.title": "🏭 Strona marki, {name}"
 	}

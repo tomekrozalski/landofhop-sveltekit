@@ -25,12 +25,23 @@
 			<li>
 				{$translate('brand.ratings.average')}:
 				<strong>{avrScore.value}</strong>
-				<span>({avrScore.ranking} miejsce na {ratingCount})</span>
+				<span>
+					{$translate('brand.ratings.ranking', {
+						count: ratingCount,
+						rating: avrScore.ranking
+					})}
+				</span>
 			</li>
 		{/if}
 		<li>
 			{$translate('brand.ratings.points')}:
 			<strong>{points.value}</strong>
+			<span>
+				{$translate('brand.ratings.ranking', {
+					count: ratingCount,
+					rating: points.ranking
+				})}
+			</span>
 		</li>
 	</ul>
 	<p><Markdown value={$translate('brand.pointsInfo', { average, higher, lower })} /></p>
@@ -41,6 +52,14 @@
 	span {
 		font-size: 1.5rem;
 		color: var(--color-grey-1);
+	}
+
+	span::before {
+		content: '(';
+	}
+
+	span::after {
+		content: ')';
 	}
 
 	p {
