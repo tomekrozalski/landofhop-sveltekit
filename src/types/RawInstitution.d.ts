@@ -4,7 +4,11 @@ export type RawInstitution = {
 	// _id: string;
 	badge: string;
 	name: LanguageValue[];
-	owner?: Institution;
+	owner?: {
+		badge: string;
+		name: LanguageValue[];
+		website?: string;
+	};
 	shortId: string;
 	website?: string;
 	statsData: {

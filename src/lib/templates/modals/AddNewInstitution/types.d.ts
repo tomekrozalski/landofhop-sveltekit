@@ -1,4 +1,4 @@
-import type { LanguageValue } from '$types/LanguageValue.d';
+import type { LanguageValue } from './LanguageValue.d';
 
 export type Input = {
 	badge: string;
@@ -10,8 +10,8 @@ export type Input = {
 	website: string | null;
 };
 
-// @ToDo: is it correct type?
 export type Output = {
+	// _id: string;
 	badge: string;
 	name: LanguageValue[];
 	owner?: {
@@ -20,4 +20,17 @@ export type Output = {
 		website?: string;
 	};
 	website?: string;
+	statsData: {
+		beverages: number;
+		asCooperator: number;
+		asContractor: number;
+		avrScore?: {
+			value: number;
+			ranking: number;
+		};
+		points: {
+			value: number;
+			ranking: number;
+		};
+	};
 };

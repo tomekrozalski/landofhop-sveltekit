@@ -2,7 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
 
-	$: ({ label, producer } = $page.data.details);
+	$: ({ label, producer } = $page.data.details.ingredients);
 </script>
 
 {#if label}
