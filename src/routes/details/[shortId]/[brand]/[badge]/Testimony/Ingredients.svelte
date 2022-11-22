@@ -2,24 +2,26 @@
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
 
-	$: ({ label, producer } = $page.data.details.ingredients);
+	$: ({ ingredients } = $page.data.details);
 </script>
 
-{#if label}
+{#if ingredients?.label}
 	<dt>
 		{$translate(
-			label.complete ? 'beverage.testimonial.ingredients' : 'beverage.testimonial.contains'
+			ingredients.label.complete
+				? 'beverage.testimonial.ingredients'
+				: 'beverage.testimonial.contains'
 		)}
 	</dt>
 	<dd>
 		<ul>
-			{#each label.list as ingredient}
+			{#each ingredients.label.list as ingredient}
 				<li><span class="label">{ingredient}</span></li>
 			{/each}
 		</ul>
-		{#if producer && label.complete === producer.complete}
+		{#if ingredients.producer && ingredients.label?.complete === ingredients.producer?.complete}
 			<ul>
-				{#each producer.list as ingredient}
+				{#each ingredients.producer?.list as ingredient}
 					<li><span class="producer">{ingredient}</span></li>
 				{/each}
 			</ul>
@@ -27,15 +29,17 @@
 	</dd>
 {/if}
 
-{#if producer && label?.complete !== producer.complete}
+{#if ingredients?.producer && ingredients?.label?.complete !== ingredients?.producer?.complete}
 	<dt>
 		{$translate(
-			producer.complete ? 'beverage.testimonial.ingredients' : 'beverage.testimonial.contains'
+			ingredients.producer.complete
+				? 'beverage.testimonial.ingredients'
+				: 'beverage.testimonial.contains'
 		)}
 	</dt>
 	<dd>
 		<ul>
-			{#each producer.list as ingredient}
+			{#each ingredients.producer.list as ingredient}
 				<li><span class="producer">{ingredient}</span></li>
 			{/each}
 		</ul>
