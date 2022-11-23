@@ -7,7 +7,7 @@
 	import RatingDetails from './RatingDetails.svelte';
 	import Stars from './Stars.svelte';
 
-	$: ({ ratings } = $page.data.details);
+	$: ({ ratings, shortId } = $page.data.details);
 	let isDetailsOpened = false;
 
 	const ratingStore = tweened<number>(0);
@@ -21,7 +21,9 @@
 	<header class:isDetailsOpened>
 		<h3>{$translate('beverage.rating')}</h3>
 		{#if ratings.total.value >= 4}
-			<Confetti />
+			{#key shortId}
+				<Confetti />
+			{/key}
 		{/if}
 		<Stars score={$ratingStore || ratings.total.value} />
 	</header>
