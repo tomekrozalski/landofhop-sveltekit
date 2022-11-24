@@ -1,6 +1,7 @@
 {
 	"en": {
 		"brand.clickOnBarInfo": "Click on a bar to show the beverages which I drank in the selected month",
+		"brand.hidePointsRules": "Hide points rules",
 		"brand.legend.beverages": "beverages",
 		"brand.legend.contractor": "as contractor",
 		"brand.legend.cooperator": "as cooperator",
@@ -8,11 +9,14 @@
 		"brand.ratings.average": "average rating",
 		"brand.ratings.points": "apoints",
 		"brand.ratings.ranking": "{rating} out of {count}",
+		"brand.showAllBrands": "Show all brands",
 		"brand.showList": "show list of brands",
+		"brand.showPointsRules": "Show points rules",
 		"brand.title": "🏭 Brand page, {name}"
 	},
 	"pl": {
 		"brand.clickOnBarInfo": "Kliknij w słupek, aby zobaczyć piwa, które wypiłem we wskazanym miesiącu",
+		"brand.hidePointsRules": "Schowaj zasady przyznawania punktów",
 		"brand.legend.beverages": "piwa własne",
 		"brand.legend.contractor": "jako kontraktor",
 		"brand.legend.cooperator": "jako kooperator",
@@ -20,7 +24,9 @@
 		"brand.ratings.average": "średnia ocena",
 		"brand.ratings.points": "punkty",
 		"brand.ratings.ranking": "{rating} miejsce na {count}",
+		"brand.showAllBrands": "Zobacz wszystkie marki",
 		"brand.showList": "pokaż listę marek",
+		"brand.showPointsRules": "Pokaż zasady przyznawania punktów",
 		"brand.title": "🏭 Strona marki, {name}"
 	}
 }
