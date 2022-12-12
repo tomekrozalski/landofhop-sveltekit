@@ -5,6 +5,7 @@
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
 	import Timeline from './Timeline/Timeline.svelte';
 	import Legend from './Legend/Legend.svelte';
+	import Map from './Map/Map.svelte';
 	import type { SelectedBar } from './types.d';
 	import type { PageData } from './$types';
 
@@ -23,6 +24,7 @@
 	<MarkLanguage tag="h1" {name} />
 	<Timeline bind:selectedBar />
 	<Legend />
+	<Map />
 </article>
 
 {#if selectedBar?.items}
