@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { geoMercator, geoPath } from 'd3-geo';
 	import pl from './wojewodztwa-medium.json';
 
@@ -6,6 +7,20 @@
 	const pathGenerator = geoPath(projection);
 
 	const bum = projection([17.0203977, 51.1244591]);
+
+	const smth = () => {
+		fetch('http://test.com')
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('data', data);
+			})
+			.catch((error) => {
+				console.log('error', error.message);
+				throw new Error('Jakiś błąd', error.message);
+			});
+	};
+
+	onMount(smth);
 
 	console.log('bum', bum);
 </script>

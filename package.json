@@ -58,6 +58,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sentry/svelte": "^7.25.0",
+		"@sentry/tracing": "^7.25.0",
 		"aws-sdk": "^2.1241.0",
 		"bcryptjs": "^2.4.3",
 		"buffer-image-size": "^0.6.4",

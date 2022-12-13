@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import { navigating } from '$app/stores';
+	import * as Sentry from '@sentry/svelte';
+	import { BrowserTracing } from '@sentry/tracing';
 	// import '$lib/utils/styles/app.postcss';
 	import '$lib/utils/styles/fonts.css';
 	import '$lib/utils/styles/variables.css';
@@ -8,6 +10,12 @@
 	import layoutStore from './layout/utils/store';
 	import Topbar from './layout/Topbar/Topbar.svelte';
 	import Main from './layout/Main.svelte';
+
+	Sentry.init({
+		dsn: 'https://8c4fe696441240bf8e55f681656ee32b@o422922.ingest.sentry.io/4504322494431232',
+		integrations: [new BrowserTracing()],
+		tracesSampleRate: 1.0
+	});
 
 	afterNavigate(() => {
 		// when path change, close navigation
