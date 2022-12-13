@@ -11,9 +11,13 @@
 	import Topbar from './layout/Topbar/Topbar.svelte';
 	import Main from './layout/Main.svelte';
 
+	const appVersion = __version__ as string;
+
 	Sentry.init({
 		dsn: 'https://8c4fe696441240bf8e55f681656ee32b@o422922.ingest.sentry.io/4504322494431232',
 		integrations: [new BrowserTracing()],
+		environment: import.meta.env.MODE,
+		release: 'land-of-hop@' + appVersion,
 		tracesSampleRate: 1.0
 	});
 
