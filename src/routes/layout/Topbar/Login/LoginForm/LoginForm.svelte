@@ -29,10 +29,17 @@
 				method: 'POST',
 				body: JSON.stringify(values)
 			})
-				.then(() => {
+				.then(async (response) => {
+					if (response.status >= 300) {
+						const data = await response.json();
+						throw new Error(data.message);
+					}
+
 					authentication.setLoginStatus(Status.fulfilled);
 				})
-				.catch(() => authentication.setLoginStatus(Status.rejected));
+				.catch(() => {
+					authentication.setLoginStatus(Status.rejected);
+				});
 		}
 	});
 
