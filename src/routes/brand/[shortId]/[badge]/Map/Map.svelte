@@ -22,7 +22,9 @@
 	{#each pl.features as country}
 		<path d={pathGenerator(country)} />
 	{/each}
-	<rect x={bum[0]} y={bum[1]} width="10" height="10" rx="5" transform="translate(-5px)" />
+	<g style="transform: translate(-5px, -5px)">
+		<rect x={bum[0]} y={bum[1]} width="10" height="10" rx="5" />
+	</g>
 </svg>
 
 <style>

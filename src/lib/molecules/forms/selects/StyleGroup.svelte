@@ -20,14 +20,14 @@
 		value
 	}));
 
-	function handleClear() {
+	const handleClear = () => {
 		updateField(name, '');
-	}
+	};
 
-	function setValue(event: any) {
+	const setValue = (event: any) => {
 		updateField(name, event.detail.value);
 		validateField(name);
-	}
+	};
 </script>
 
 <SelectWrapper
@@ -36,5 +36,5 @@
 	{items}
 	placeholder={$translate('form.select.placeholder.styleGroup')}
 	{setValue}
-	value={items.find((item) => item.value === value) ?? null}
+	value={items.find((item) => item.value === value) ?? ''}
 />
