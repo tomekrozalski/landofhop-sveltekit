@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { geoMercator, geoPath } from 'd3-geo';
 	import pl from './wojewodztwa-medium.json';
 
@@ -6,8 +7,6 @@
 	const pathGenerator = geoPath(projection);
 
 	const bum = projection([17.0203977, 51.1244591]);
-
-	console.log('bum', bum);
 </script>
 
 <!-- <canvas

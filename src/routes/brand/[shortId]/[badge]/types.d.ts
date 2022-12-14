@@ -14,7 +14,7 @@ export type InstitutionDetails = {
 		asCooperator: number;
 		asContractor: number;
 		avrScore?: {
-			value: number;
+			value: string;
 			ranking: number;
 		};
 		points: {
@@ -29,6 +29,13 @@ export type BrandTimelineData = {
 	beverages?: Basics[];
 	asCooperator?: Basics[];
 	asContractor?: Basics[];
+};
+
+export type BrandPlaceData = {
+	beverages?: number;
+	asCooperator?: number;
+	asContractor?: number;
+	coordinates: [number, number];
 };
 
 export type SelectedBar = {
