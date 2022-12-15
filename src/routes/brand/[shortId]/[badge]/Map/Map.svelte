@@ -1,12 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { geoMercator, geoPath } from 'd3-geo';
+	import { page } from '$app/stores';
 	import pl from './wojewodztwa-medium.json';
+	import type { BrandPlaceData } from '../types.d';
 
 	const projection = geoMercator().scale(2240).translate([-490, 2600]);
 	const pathGenerator = geoPath(projection);
 
-	const bum = projection([17.0203977, 51.1244591]);
+	const timelineData: BrandPlaceData[] = $page.data.mapData ?? [];
+
+	console.log('timelineData', timelineData);
+
+	// const bum = projection([17.0203977, 51.1244591]);
 </script>
 
 <!-- <canvas
@@ -21,9 +27,12 @@
 	{#each pl.features as country}
 		<path d={pathGenerator(country)} />
 	{/each}
-	<g style="transform: translate(-5px, -5px)">
-		<rect x={bum[0]} y={bum[1]} width="10" height="10" rx="5" />
-	</g>
+	{#each timelineData as place}
+		{@const [latitude, longitude] = projection([place.coordinates[1], place.coordinates[0]])}
+		<g style="transform: translate(-5px, -5px)">
+			<rect x={latitude} y={longitude} width="10" height="10" rx="5" />
+		</g>
+	{/each}
 </svg>
 
 <style>
