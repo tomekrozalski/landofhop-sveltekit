@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { geoMercator, geoPath } from 'd3-geo';
 	import { page } from '$app/stores';
 	import pl from './wojewodztwa-medium.json';
@@ -8,30 +7,56 @@
 	const projection = geoMercator().scale(2240).translate([-490, 2600]);
 	const pathGenerator = geoPath(projection);
 
-	const timelineData: BrandPlaceData[] = $page.data.mapData ?? [];
+	const mapData: BrandPlaceData[] = $page.data.mapData ?? [];
 
-	console.log('timelineData', timelineData);
-
-	// const bum = projection([17.0203977, 51.1244591]);
+	// console.log('mapData', mapData);
 </script>
-
-<!-- <canvas
-	width={960 * pixelRatio}
-	height={600 * pixelRatio}
-	bind:this={canvas}
-	style:width="960px"
-	style:height="600px"
-/> -->
 
 <svg viewBox="0 0 500 400">
 	{#each pl.features as country}
 		<path d={pathGenerator(country)} />
 	{/each}
-	{#each timelineData as place}
-		{@const [latitude, longitude] = projection([place.coordinates[1], place.coordinates[0]])}
-		<g style="transform: translate(-5px, -5px)">
-			<rect x={latitude} y={longitude} width="10" height="10" rx="5" />
-		</g>
+	{#each mapData as { asContractor, asCooperator, beverages, coordinates }}
+		{@const [latitude, longitude] = projection([coordinates[1], coordinates[0]])}
+
+		{#if asContractor}
+			<g style={`transform: translate(-${asContractor / 2}px, -${asContractor / 2}px)`}>
+				<rect
+					class:asContractor
+					x={latitude}
+					y={longitude}
+					width={asContractor}
+					height={asContractor}
+					rx={asContractor / 2}
+				/>
+			</g>
+		{/if}
+
+		{#if asCooperator}
+			<g style={`transform: translate(-${asCooperator / 2}px, -${asCooperator / 2}px)`}>
+				<rect
+					class:asCooperator
+					x={latitude}
+					y={longitude}
+					width={asCooperator}
+					height={asCooperator}
+					rx={asCooperator / 2}
+				/>
+			</g>
+		{/if}
+
+		{#if beverages}
+			<g style={`transform: translate(-${beverages / 2}px, -${beverages / 2}px)`}>
+				<rect
+					class:beverages
+					x={latitude}
+					y={longitude}
+					width={beverages}
+					height={beverages}
+					rx={beverages / 2}
+				/>
+			</g>
+		{/if}
 	{/each}
 </svg>
 
@@ -44,5 +69,13 @@
 		fill: #ccc;
 		stroke-width: 0.05rem;
 		stroke: #eee;
+	}
+
+	g {
+		opacity: 0.2;
+	}
+
+	rect.beverages {
+		fill: blue;
 	}
 </style>

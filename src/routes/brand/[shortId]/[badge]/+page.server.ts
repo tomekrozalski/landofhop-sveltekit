@@ -82,6 +82,6 @@ export const load: PageServerLoad = async ({ params }) => {
 		timelineData: timelineApiNormalizer({ badge, rawBeverages, shortId }),
 		institution: institutionApiNormalizer(rawInstitution, AppLanguage.pl),
 		ratingCount: brewingInstitution.length,
-		mapData: mapApiNormalizer({ rawBeverages, rawPlaces })
+		mapData: mapApiNormalizer({ badge, shortId, rawBeverages, rawPlaces })
 	};
 };

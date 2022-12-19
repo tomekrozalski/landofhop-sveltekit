@@ -32,10 +32,13 @@ export type BrandTimelineData = {
 };
 
 export type BrandPlaceData = {
-	beverages?: number;
-	asCooperator?: number;
-	asContractor?: number;
+	beverages: number;
+	asCooperator: number;
+	asContractor: number;
 	coordinates: [number, number];
+	shortId: string;
+	city: LanguageValue;
+	country: string;
 };
 
 export type SelectedBar = {

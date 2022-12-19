@@ -1,75 +1,125 @@
+import { AppLanguage } from '$types/enums/Globals.enum';
+import { translate } from '$lib/utils/api';
 import type { RawBeverage } from '$types/RawBeverage.d';
 import type { RawPlace } from '$types/RawPlace';
 import type { BrandPlaceData } from '../types.d';
 
 type MapApiNormalizerTypes = {
+	badge: string;
 	rawBeverages: RawBeverage[];
 	rawPlaces: RawPlace[];
+	shortId: string;
+};
+
+type RawPlaceTypeData = {
+	placeId: string;
+	type: 'beverage' | 'asContractor' | 'asCooperator';
+};
+
+const getPlaceId = (beverage: RawBeverage): string | null =>
+	beverage.label.general.place?.shortId ||
+	beverage.producer?.general?.place?.shortId ||
+	beverage.editorial?.general?.place?.shortId ||
+	null;
+
+const checkIsContractor = (
+	{ editorial, label, producer }: RawBeverage,
+	badge: string,
+	shortId: string
+): boolean => {
+	const isLabelContractor =
+		label.general.contract?.badge === badge && label.general.contract?.shortId === shortId;
+	const isProducerContractor =
+		producer?.general?.contract?.badge === badge &&
+		producer?.general?.contract?.shortId === shortId;
+	const isEditorialContractor =
+		editorial?.general?.contract?.badge === badge &&
+		editorial?.general?.contract?.shortId === shortId;
+
+	return isLabelContractor || isProducerContractor || isEditorialContractor;
 };
 
 const checkIsCooperation = (
+	{ editorial, label, producer }: RawBeverage,
 	badge: string,
-	shortId: string,
-	values?: { badge: string; shortId: string }[]
-) =>
-	!!values?.find((props) => props.badge === badge) &&
-	!!values?.find((props) => props.shortId === shortId);
+	shortId: string
+): boolean => {
+	const isLabelCooperation =
+		!!label.general.cooperation?.find((props) => props.badge === badge) &&
+		!!label.general.cooperation?.find((props) => props.shortId === shortId);
+	const isProducerCooperation =
+		!!producer?.general?.cooperation?.find((props) => props.badge === badge) &&
+		!!producer?.general?.cooperation?.find((props) => props.shortId === shortId);
+	const isEditorialCooperation =
+		!!editorial?.general?.cooperation?.find((props) => props.badge === badge) &&
+		!!editorial?.general?.cooperation?.find((props) => props.shortId === shortId);
 
-const mapApiNormalizer = ({ rawBeverages, rawPlaces }: MapApiNormalizerTypes): BrandPlaceData[] => {
-	// const a: {
-	//   placeId: string;
-	//   type: 'beverage' | 'asCooperator' | 'asCooperator'
-	// }[] = [];
+	return isLabelCooperation || isProducerCooperation || isEditorialCooperation;
+};
 
-	const pl = rawBeverages.reduce((acc, { badge, shortId, label, producer, editorial }) => {
-		const isCooperation =
-			checkIsCooperation(badge, shortId, label.general.cooperation) ||
-			checkIsCooperation(badge, shortId, producer?.general?.cooperation) ||
-			checkIsCooperation(badge, shortId, editorial?.general?.cooperation);
-		const isContractor =
-			(label.general.contract?.badge === badge && label.general.contract?.shortId === shortId) ||
-			(producer?.general?.contract?.badge === badge &&
-				producer?.general?.contract?.shortId === shortId) ||
-			(editorial?.general?.contract?.badge === badge &&
-				editorial?.general?.contract?.shortId === shortId);
+const mapApiNormalizer = ({
+	badge,
+	rawBeverages,
+	rawPlaces,
+	shortId
+}: MapApiNormalizerTypes): BrandPlaceData[] => {
+	const rawData: RawPlaceTypeData[] = rawBeverages
+		.filter((beverage) => !!getPlaceId(beverage))
+		.map((beverage) => {
+			const placeId = getPlaceId(beverage) as string;
 
-		const placeId =
-			label.general.place?.shortId ||
-			producer?.general?.place?.shortId ||
-			editorial?.general?.place?.shortId;
-
-		if (placeId) {
-			if (acc[placeId]) {
-				acc[placeId] = {
-					beverages:
-						!isCooperation && !isContractor ? acc[placeId].beverages + 1 : acc[placeId].beverages,
-					asCooperator: isCooperation ? acc[placeId].asCooperator + 1 : acc[placeId].asCooperator,
-					asContractor: isContractor ? acc[placeId].asContractor + 1 : acc[placeId].asContractor
+			if (checkIsContractor(beverage, badge, shortId)) {
+				return {
+					placeId,
+					type: 'asContractor'
 				};
-			} else {
-				acc[placeId] = {
-					beverages: !isCooperation && !isContractor ? 1 : 0,
-					asCooperator: isCooperation ? 1 : 0,
-					asContractor: isContractor ? 1 : 0
+			}
+
+			if (checkIsCooperation(beverage, badge, shortId)) {
+				return {
+					placeId,
+					type: 'asCooperator'
 				};
+			}
+
+			return {
+				placeId,
+				type: 'beverage'
+			};
+		});
+
+	return rawData.reduce((acc: BrandPlaceData[], { placeId, type }: RawPlaceTypeData) => {
+		const selectedIndex = acc.findIndex(({ shortId }) => shortId === placeId);
+
+		if (selectedIndex >= 0) {
+			switch (type) {
+				case 'beverage':
+					acc[selectedIndex].beverages += 1;
+					break;
+				case 'asContractor':
+					acc[selectedIndex].asContractor += 1;
+					break;
+				case 'asCooperator':
+					acc[selectedIndex].asCooperator += 1;
+			}
+		} else {
+			const selectedPlace = rawPlaces.find(({ shortId }) => shortId === placeId) as RawPlace;
+
+			if (selectedPlace.location?.coordinates) {
+				acc.push({
+					beverages: type === 'beverage' ? 1 : 0,
+					asCooperator: type === 'asCooperator' ? 1 : 0,
+					asContractor: type === 'asContractor' ? 1 : 0,
+					coordinates: selectedPlace.location?.coordinates,
+					shortId: placeId,
+					city: translate(selectedPlace?.city, AppLanguage.pl),
+					country: selectedPlace?.country
+				});
 			}
 		}
 
 		return acc;
-	}, {});
-
-	const a = Object.entries(pl)
-		.map(([key, values]) => {
-			const place = rawPlaces.find(({ shortId }) => shortId === key);
-
-			return {
-				...values,
-				...(place?.location?.coordinates?.length && { coordinates: place.location.coordinates })
-			};
-		})
-		.filter(({ coordinates }) => !!coordinates?.length);
-
-	return a;
+	}, []);
 };
 
 export default mapApiNormalizer;
