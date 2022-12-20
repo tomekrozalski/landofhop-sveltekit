@@ -22,11 +22,21 @@
 
 <article>
 	<MarkLanguage tag="h1" {name} />
+	<div>
+		<Map />
+	</div>
+
 	<Timeline bind:selectedBar />
 	<Legend />
-	<Map />
 </article>
 
 {#if selectedBar?.items}
 	<BeverageList beverages={selectedBar.items} />
 {/if}
+
+<style>
+	div {
+		display: flex;
+		justify-content: flex-end;
+	}
+</style>
