@@ -4,6 +4,7 @@
 	import pl from './wojewodztwa-medium.json';
 	import type { BrandPlaceData } from '../types.d';
 	import Cicle from './Circle.svelte';
+	import Point from './Point.svelte';
 	import getCircleSize from './getCircleSize';
 
 	const projection = geoMercator().scale(520).translate([-123, 606]);
@@ -56,7 +57,7 @@
 			<Cicle {geoCoordinates} data={cooperationCircleData} type="cooperation" />
 			<Cicle {geoCoordinates} data={contractorCircleData} type="contract" />
 			<Cicle {geoCoordinates} data={beverageCircleData} type="beverages" />
-			<Cicle {geoCoordinates} data={beverageCircleData} type="point" />
+			<Point {geoCoordinates} />
 		</g>
 	{/each}
 </svg>
@@ -71,5 +72,15 @@
 		fill: var(--color-grey-4);
 		stroke-width: 0.025rem;
 		stroke: var(--color-white);
+	}
+
+	g :global(circle) {
+		opacity: 0.5;
+		transition: opacity var(--transition-default);
+		cursor: pointer;
+	}
+
+	g:hover :global(circle) {
+		opacity: 1;
 	}
 </style>
