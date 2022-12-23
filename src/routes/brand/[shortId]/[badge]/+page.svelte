@@ -25,7 +25,6 @@
 	<div>
 		<Map />
 	</div>
-
 	<Timeline bind:selectedBar />
 	<Legend />
 </article>
