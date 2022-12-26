@@ -5,7 +5,7 @@
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
 	import Timeline from './Timeline/Timeline.svelte';
 	import Legend from './Legend/Legend.svelte';
-	import Map from './Map/Map.svelte';
+	import Places from './Places/Places.svelte';
 	import type { SelectedBar } from './types.d';
 	import type { PageData } from './$types';
 
@@ -23,7 +23,7 @@
 <article>
 	<MarkLanguage tag="h1" {name} />
 	<div>
-		<Map />
+		<Places />
 	</div>
 	<Timeline bind:selectedBar />
 	<Legend />

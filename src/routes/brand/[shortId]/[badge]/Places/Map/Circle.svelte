@@ -1,6 +1,8 @@
 <script lang="ts">
+	import type { CircleData } from '../../types.d';
+
 	export let geoCoordinates: [number, number] | null;
-	export let data: { size: number; stroke: number };
+	export let data: CircleData;
 	export let type: 'cooperation' | 'contract' | 'beverages';
 
 	const [latitude, longitude] = geoCoordinates || [0, 0];
@@ -21,10 +23,10 @@
 	}
 
 	circle.contract {
-		stroke: var(--color-brand-8);
+		stroke: var(--color-brand-5);
 	}
 
 	circle.beverages {
-		stroke: var(--color-brand-5);
+		stroke: var(--color-brand-6);
 	}
 </style>
