@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
 	import type { BrandPlaceData } from '../types.d';
 	import Map from './Map/Map.svelte';
@@ -20,7 +21,7 @@
 </script>
 
 <section>
-	<h4>Miejsca związane z marką</h4>
+	<h2>{$translate('brand.placesTitle')}</h2>
 	<div>
 		<Map {formattedPlaces} {selectPlace} {selectedPlace} {unselectPlace} />
 		<Legend {formattedPlaces} {selectPlace} {selectedPlace} {unselectPlace} />
@@ -28,6 +29,11 @@
 </section>
 
 <style>
+	h2 {
+		margin-bottom: 0;
+		border: none;
+	}
+
 	div {
 		display: flex;
 	}

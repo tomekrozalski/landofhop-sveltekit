@@ -51,11 +51,11 @@
 	}
 
 	li.cooperator::before {
-		background-color: var(--color-brand-10-light);
+		background-color: var(--color-brand-10);
 	}
 
 	li.contractor::before {
-		background-color: var(--color-brand-5-light);
+		background-color: var(--color-brand-5);
 	}
 
 	span {
