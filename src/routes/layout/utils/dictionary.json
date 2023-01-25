@@ -19,6 +19,7 @@
 		"navigation.brands": "Brands",
 		"navigation.login": "Log in",
 		"navigation.logout": "Log out",
+		"navigation.places": "Places",
 		"navigation.stats": "Stats"
 	},
 	"pl": {
@@ -41,6 +42,7 @@
 		"navigation.brands": "Marki",
 		"navigation.login": "Zaloguj",
 		"navigation.logout": "Wyloguj",
+		"navigation.places": "Miejsca",
 		"navigation.stats": "Statystyki"
 	}
 }
