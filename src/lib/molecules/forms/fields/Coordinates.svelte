@@ -3,6 +3,7 @@
 	import Conditional from '$lib/atoms/forms/Conditional.svelte';
 	import Label from '$lib/atoms/forms/Label.svelte';
 	import TextInput from '$lib/atoms/forms/TextInput.svelte';
+	import InfoBox from '$lib/molecules/InfoBox/InfoBox.svelte';
 
 	export let formName: string;
 	export let formData: any;
@@ -11,7 +12,10 @@
 	let id = `${formName}-${fieldName}`;
 </script>
 
-<Label {id}>{$translate('dashboard.label.coordinates')}</Label>
+<Label {id}>
+	{$translate('dashboard.label.coordinates')}
+	<InfoBox messageKey="dashboard.label.coordinates.info" />
+</Label>
 <Conditional
 	{fieldName}
 	{id}

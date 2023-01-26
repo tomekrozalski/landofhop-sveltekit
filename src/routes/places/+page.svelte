@@ -5,15 +5,25 @@
 	import 'mapbox-gl/dist/mapbox-gl.css';
 	import { PUBLIC_MAPBOX_KEY } from '$env/static/public';
 	import Spinner from '$lib/atoms/spinners/FullWidth.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	onMount(() => {
 		mapboxgl.accessToken = PUBLIC_MAPBOX_KEY;
 
 		const map = new mapboxgl.Map({
-			container: 'map', // container ID
-			style: 'mapbox://styles/mapbox/streets-v12', // style URL
-			center: [-74.5, 40], // starting position [lng, lat]
-			zoom: 9 // starting zoom
+			container: 'map',
+			style: 'mapbox://styles/mapbox/light-v11',
+			center: [18.8, 52],
+			projection: { name: 'mercator' },
+			zoom: 5
+		});
+
+		data.formattedPlaces.forEach(({ shortId, latitude, longitude }) => {
+			const popup = new mapboxgl.Popup({ offset: 25 }).setText('->' + shortId);
+
+			new mapboxgl.Marker().setLngLat([longitude, latitude]).setPopup(popup).addTo(map);
 		});
 	});
 </script>
