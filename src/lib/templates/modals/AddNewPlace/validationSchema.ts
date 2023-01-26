@@ -28,18 +28,16 @@ export function getValidationSchema(translate: Translate) {
 				(value) => value === null || value.length
 			),
 		coordinates: yup.object().shape({
+			latitude: yup
+				.number()
+				.typeError(translate('form.validation.typeErrorNumber'))
+				.min(0, translate('form.validation.min', { value: 0 }))
+				.max(90, translate('form.validation.max', { value: 90 })),
 			longitude: yup
 				.number()
 				.typeError(translate('form.validation.typeErrorNumber'))
 				.min(0, translate('form.validation.min', { value: 0 }))
 				.max(180, translate('form.validation.max', { value: 180 }))
-				.nullable(true),
-			latitude: yup
-				.number()
-				.typeError(translate('form.validation.typeErrorNumber'))
-				.min(0, translate('form.validation.min', { value: 0 }))
-				.max(90, translate('form.validation.max', { value: 90 }))
-				.nullable(true)
 		})
 	});
 }

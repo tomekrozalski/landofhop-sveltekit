@@ -39,7 +39,7 @@
 		<ModalGrid>
 			<Institutions {formName} {formData} />
 		</ModalGrid>
-		<ModalGrid columns={2} isOptional>
+		<ModalGrid columns={2}>
 			<Coordinates {formName} {formData} />
 		</ModalGrid>
 		<ButtonWrapper modal>

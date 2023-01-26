@@ -47,10 +47,8 @@ export const load: PageServerLoad = async ({ params }) => {
 			country,
 			institution,
 			...(location && {
-				location: {
-					type: location.type,
-					coordinates: [+location.coordinates[0], +location.coordinates[1]]
-				}
+				// @ToDo: location should always be there
+				location: [+location[0], +location[1]]
 			}),
 			shortId
 		});

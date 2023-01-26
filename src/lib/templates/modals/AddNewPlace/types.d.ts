@@ -8,8 +8,8 @@ export type Input = {
 	country: string;
 	institution: string;
 	coordinates: {
-		longitude: string | null;
-		latitude: string | null;
+		longitude: string;
+		latitude: string;
 	};
 };
 
@@ -29,8 +29,5 @@ export type Output = {
 		website?: string;
 		shortId: string;
 	};
-	location?: {
-		type: 'Point';
-		coordinates: [number, number];
-	};
+	location: [number, number];
 };

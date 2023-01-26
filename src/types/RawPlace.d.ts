@@ -11,9 +11,6 @@ export type RawPlace = {
 		shortId: string;
 		website?: string;
 	};
-	location?: {
-		type: 'Point';
-		coordinates: [number, number];
-	};
+	location: [number, number];
 	shortId: string;
 };

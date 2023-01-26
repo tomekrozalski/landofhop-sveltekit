@@ -7,7 +7,7 @@ export const initialValues: Input = {
 	country: '',
 	institution: '',
 	coordinates: {
-		longitude: null,
-		latitude: null
+		latitude: '',
+		longitude: ''
 	}
 };

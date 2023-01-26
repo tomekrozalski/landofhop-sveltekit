@@ -20,20 +20,21 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const data: RawPlace[] = [];
 
-	await places.find().forEach(({ city, country, institution, location, shortId }) => {
-		data.push({
-			city,
-			country,
-			institution,
-			...(location && {
-				location: {
-					type: location.type,
-					coordinates: [+location.coordinates[0], +location.coordinates[1]]
+	await places
+		.find(
+			{},
+			{
+				projection: {
+					_id: 0,
+					city: 1,
+					country: 1,
+					institution: 1,
+					location: 1,
+					shortId: 1
 				}
-			}),
-			shortId
-		});
-	});
+			}
+		)
+		.toArray();
 
 	return json(data);
 };

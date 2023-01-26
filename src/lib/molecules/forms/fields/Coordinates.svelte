@@ -12,26 +12,10 @@
 	let id = `${formName}-${fieldName}`;
 </script>
 
-<Label {id}>
+<Label {id} isRequired>
 	{$translate('dashboard.label.coordinates')}
 	<InfoBox messageKey="dashboard.label.coordinates.info" />
 </Label>
-<Conditional
-	{fieldName}
-	{id}
-	initialValue={{
-		longitude: '0',
-		latitude: '0'
-	}}
-	nullishValue={{
-		longitude: null,
-		latitude: null
-	}}
-	{updateField}
-	{updateTouched}
-	{validateField}
-	value={$form[fieldName]}
-/>
 <TextInput
 	errors={$errors[fieldName].latitude}
 	fieldName={`${fieldName}.latitude`}

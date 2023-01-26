@@ -7,12 +7,6 @@ export default function formatValues({ city, country, institution, coordinates }
 		city: formatLanguageValueToDb(city),
 		country,
 		institution: formatInstitutionByShortId(institution),
-		...(coordinates.latitude !== null &&
-			coordinates.longitude !== null && {
-				location: {
-					type: 'Point',
-					coordinates: [+coordinates.latitude, +coordinates.longitude]
-				}
-			})
+		location: [+coordinates.latitude, +coordinates.longitude]
 	};
 }
