@@ -84,7 +84,8 @@
 		"dashboard.ratings.search": "search",
 		"dashboard.temperature.unit.celcius": "°C",
 		"dashboard.title.addNewBeverage": "add new beverage",
-		"dashboard.title.updateBeverage": "update beverage"
+		"dashboard.title.updateBeverage": "update beverage",
+		"dashboard.updatePlace": "Edit place"
 	},
 	"pl": {
 		"dashboard.addNewIngredient": "Dodaj nowy składnik",
@@ -171,6 +172,7 @@
 		"dashboard.ratings.search": "szukaj",
 		"dashboard.temperature.unit.celcius": "°C",
 		"dashboard.title.addNewBeverage": "dodaj piwo",
-		"dashboard.title.updateBeverage": "popraw piwo"
+		"dashboard.title.updateBeverage": "popraw piwo",
+		"dashboard.updatePlace": "Edytuj miejsce"
 	}
 }

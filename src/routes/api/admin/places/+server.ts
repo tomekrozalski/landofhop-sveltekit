@@ -29,7 +29,7 @@ export const POST: RequestHandler = async ({ request }) => {
 					city: 1,
 					country: 1,
 					institution: 1,
-					location: 1,
+					coordinates: 1,
 					shortId: 1
 				}
 			}

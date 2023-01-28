@@ -15,9 +15,6 @@ export type Place = {
 		shortId: string;
 		website?: string;
 	};
-	location?: {
-		type: 'Point';
-		coordinates: [number, number];
-	};
+	coordinates?: [number, number]; // @ToDo: required
 	shortId: string;
 };

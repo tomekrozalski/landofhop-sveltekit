@@ -1,4 +1,8 @@
-<div class="lds-ellipsis">
+<script lang="ts">
+	export let style: string = '';
+</script>
+
+<div class="lds-ellipsis" {style}>
 	<div />
 	<div />
 	<div />

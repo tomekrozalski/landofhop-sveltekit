@@ -41,14 +41,14 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	const rawPlaces: RawPlace[] = [];
 
-	await places.find().forEach(({ city, country, institution, location, shortId }) => {
+	await places.find().forEach(({ city, country, institution, coordinates, shortId }) => {
 		rawPlaces.push({
 			city,
 			country,
 			institution,
-			...(location && {
+			...(coordinates && {
 				// @ToDo: location should always be there
-				location: [+location[0], +location[1]]
+				coordinates: [+coordinates[0], +coordinates[1]]
 			}),
 			shortId
 		});

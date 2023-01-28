@@ -105,12 +105,12 @@ const mapApiNormalizer = ({
 		} else {
 			const selectedPlace = rawPlaces.find(({ shortId }) => shortId === placeId) as RawPlace;
 
-			if (selectedPlace.location?.coordinates) {
+			if (selectedPlace.coordinates) {
 				acc.push({
 					beverages: type === 'beverage' ? 1 : 0,
 					asCooperator: type === 'asCooperator' ? 1 : 0,
 					asContractor: type === 'asContractor' ? 1 : 0,
-					coordinates: selectedPlace.location?.coordinates,
+					coordinates: selectedPlace.coordinates,
 					shortId: placeId,
 					city: translate(selectedPlace?.city, AppLanguage.pl),
 					country: selectedPlace?.country

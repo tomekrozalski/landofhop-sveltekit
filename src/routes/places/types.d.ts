@@ -1,12 +1,11 @@
 import type { LanguageValue } from './LanguageValue.d';
 
-export type RawPlace = {
-	// _id: string;
-	city: LanguageValue[];
+export type Place = {
+	city: LanguageValue;
 	country: string;
 	institution: {
 		badge: string;
-		name: LanguageValue[];
+		name: LanguageValue;
 		shortId: string;
 	};
 	coordinates: [number, number];

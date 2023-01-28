@@ -8,11 +8,12 @@ export type Input = {
 	country: string;
 	institution: string;
 	coordinates: {
-		longitude: string;
 		latitude: string;
+		longitude: string;
 	};
 };
 
+// @ToDo is it correct type?
 export type Output = {
 	city: LanguageValue[];
 	country: string;

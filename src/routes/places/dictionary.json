@@ -1,8 +1,10 @@
 {
 	"en": {
+		"places.edit": "edit",
 		"places.title": "🗺️ Map of places"
 	},
 	"pl": {
+		"places.edit": "edytuj",
 		"places.title": "🗺️ Mapa miejsc"
 	}
 }
