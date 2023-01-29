@@ -2,6 +2,7 @@
 	import { translate } from 'svelte-intl';
 	import Spinner from '$lib/atoms/spinners/FullWidth.svelte';
 	import Map from './Map.svelte';
+	import Edit from './Edit.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -17,6 +18,14 @@
 		<Map places={data.places} />
 		<Spinner />
 	</div>
+	<h3>@ToDo: miejsca bez współrzędnych</h3>
+	<ul>
+		{#each data.places as { city, coordinates, institution, shortId }}
+			{#if !coordinates}
+				<li>{institution.name.value} - {city.value} - <Edit {shortId} /></li>
+			{/if}
+		{/each}
+	</ul>
 </article>
 
 <style>

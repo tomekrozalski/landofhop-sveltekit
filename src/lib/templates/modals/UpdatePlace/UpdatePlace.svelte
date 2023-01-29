@@ -11,14 +11,10 @@
 	let details: Input | null = null;
 
 	onMount(() => {
-		fetch(`/api/admin/modals/update-place/get-details/${shortId}`)
+		fetch(`/api/admin/modals/update-place/${shortId}/get-details`)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('shortId', shortId, data);
 				details = data;
-			})
-			.catch((e) => {
-				console.error(e);
 			});
 	});
 </script>
@@ -28,7 +24,7 @@
 		<h2>{$translate('dashboard.updatePlace')}</h2>
 	</header>
 	{#if details}
-		<Form {close} initialValues={details} />
+		<Form {close} initialValues={details} {shortId} />
 	{:else}
 		<Spinner style="margin-top: 4rem" />
 	{/if}

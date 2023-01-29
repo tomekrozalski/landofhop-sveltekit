@@ -27,9 +27,9 @@ export const POST: RequestHandler = async ({ request }) => {
 				projection: {
 					_id: 0,
 					city: 1,
+					coordinates: 1,
 					country: 1,
 					institution: 1,
-					coordinates: 1,
 					shortId: 1
 				}
 			}

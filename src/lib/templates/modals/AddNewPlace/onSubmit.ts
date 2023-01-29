@@ -6,7 +6,7 @@ export function onSubmit(close: () => void) {
 	return async function (values: Input) {
 		const formattedValues = formatValues(values);
 
-		const response = await fetch('/api/admin/places', {
+		const response = await fetch('/api/admin/modals/add-new-place', {
 			method: 'POST',
 			body: JSON.stringify(formattedValues)
 		});

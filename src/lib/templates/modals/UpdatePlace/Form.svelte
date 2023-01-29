@@ -14,14 +14,13 @@
 
 	export let close: () => void;
 	export let initialValues: Input;
+	export let shortId: string;
 	const formName = 'place';
-
-	console.log('initialValues', initialValues);
 
 	const formData = createForm({
 		initialValues,
 		validationSchema: getValidationSchema($translate),
-		onSubmit: onSubmit(close)
+		onSubmit: onSubmit(close, shortId)
 	});
 
 	const { isSubmitting } = formData;

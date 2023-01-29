@@ -13,7 +13,6 @@ export type Input = {
 	};
 };
 
-// @ToDo is it correct type?
 export type Output = {
 	city: LanguageValue[];
 	country: string;

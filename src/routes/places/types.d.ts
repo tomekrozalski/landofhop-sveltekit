@@ -2,7 +2,7 @@ import type { LanguageValue } from './LanguageValue.d';
 
 export type Place = {
 	city: LanguageValue;
-	country: string;
+	country: string; // As full name, eg. Poland
 	institution: {
 		badge: string;
 		name: LanguageValue;

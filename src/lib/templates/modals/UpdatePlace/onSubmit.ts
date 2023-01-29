@@ -1,18 +1,17 @@
-import { placeStore } from '$lib/utils/stores/selects';
+import { invalidateAll } from '$app/navigation';
 import formatValues from './formatValues';
 import type { Input } from './types.d';
 
-export function onSubmit(close: () => void) {
+export function onSubmit(close: () => void, shortId: string) {
 	return async function (values: Input) {
 		const formattedValues = formatValues(values);
 
-		const response = await fetch('/api/admin/places', {
-			method: 'POST',
+		await fetch(`/api/admin/modals/update-place/${shortId}/update`, {
+			method: 'PUT',
 			body: JSON.stringify(formattedValues)
 		});
-		const updatedPlaces = await response.json();
 
-		placeStore.set(updatedPlaces);
+		await invalidateAll();
 		close();
 	};
 }
