@@ -16,10 +16,9 @@ export const GET: RequestHandler = async ({ params }) => {
 		city: data.city,
 		country: data.country,
 		institution: data.institution.shortId,
-
 		coordinates: {
-			latitude: data.coordinates?.[0]?.toString() ?? '', /// @ToDo: to remove, coordinates are required
-			longitude: data.coordinates?.[1]?.toString() ?? '' /// @ToDo: to remove, coordinates are required
+			latitude: data.coordinates[0].toString(),
+			longitude: data.coordinates[1].toString()
 		}
 	} as Input);
 };

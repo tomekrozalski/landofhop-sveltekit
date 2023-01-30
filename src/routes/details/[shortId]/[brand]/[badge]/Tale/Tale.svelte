@@ -36,6 +36,7 @@
 
 <style>
 	.tale-producer {
+		margin: 2rem 0;
 		border-left: 1rem solid var(--color-producer);
 		padding-left: 2rem;
 	}

@@ -8,6 +8,6 @@ export type Place = {
 		name: LanguageValue[];
 		shortId: string;
 	};
-	coordinates?: [number, number]; // @ToDo: required
+	coordinates: [number, number];
 	shortId: string;
 };

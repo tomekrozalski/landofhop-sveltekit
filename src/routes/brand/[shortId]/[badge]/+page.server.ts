@@ -46,10 +46,7 @@ export const load: PageServerLoad = async ({ params }) => {
 			city,
 			country,
 			institution,
-			...(coordinates && {
-				// @ToDo: location should always be there
-				coordinates: [+coordinates[0], +coordinates[1]]
-			}),
+			coordinates: [+coordinates[0], +coordinates[1]],
 			shortId
 		});
 	});

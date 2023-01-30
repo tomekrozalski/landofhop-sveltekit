@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { beforeUpdate } from 'svelte';
 	import { translate } from 'svelte-intl';
 	import { slide } from 'svelte/transition';
 	import { emptyIngredients } from '$lib/utils/helpers/emptyFieldValues';
@@ -20,7 +19,7 @@
 	let id = `${formName}-${fieldName}`;
 	let hidden = ['en'];
 
-	beforeUpdate(async () => {
+	const checkTranslations = async () => {
 		const ingredientsLength = $form[fieldName]?.length ?? 0;
 
 		if (ingredientsLength > 1) {
@@ -29,7 +28,8 @@
 			if (
 				lastIngredients.language &&
 				lastIngredients.list.length === 1 &&
-				lastIngredients.list[0] === ''
+				lastIngredients.list[0] === '' &&
+				$form[fieldName][0].language !== lastIngredients.language
 			) {
 				const response = await fetch('/dashboard/api/translate', {
 					method: 'POST',
@@ -43,7 +43,9 @@
 				updateValidateField(`ingredients[${ingredientsLength - 1}].list`, translations);
 			}
 		}
-	});
+	};
+
+	$: $form[fieldName]?.length && checkTranslations();
 </script>
 
 <Label {id}>{$translate('dashboard.label.ingredients')}</Label>

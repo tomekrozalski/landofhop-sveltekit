@@ -18,14 +18,6 @@
 		<Map places={data.places} />
 		<Spinner />
 	</div>
-	<h3>@ToDo: miejsca bez współrzędnych</h3>
-	<ul>
-		{#each data.places as { city, coordinates, institution, shortId }}
-			{#if !coordinates}
-				<li>{institution.name.value} - {city.value} - <Edit {shortId} /></li>
-			{/if}
-		{/each}
-	</ul>
 </article>
 
 <style>
