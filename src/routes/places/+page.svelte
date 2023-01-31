@@ -2,7 +2,6 @@
 	import { translate } from 'svelte-intl';
 	import Spinner from '$lib/atoms/spinners/FullWidth.svelte';
 	import Map from './Map.svelte';
-	import Edit from './Edit.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

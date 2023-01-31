@@ -23,3 +23,16 @@
 		<UpdatePlace close={() => (updatePlaceShortId = null)} shortId={updatePlaceShortId} />
 	{/if}
 {/if}
+
+<style>
+	button {
+		padding: 0.2rem 1rem;
+		background-color: var(--color-brand-8);
+		translate: background-color var(--transition-default);
+		color: var(--color-white);
+	}
+
+	button:hover {
+		background-color: var(--color-brand-10);
+	}
+</style>
