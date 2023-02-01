@@ -40,23 +40,73 @@
 		content: '';
 		width: 0;
 		height: 0;
-		border-left: 1rem solid transparent;
-		border-right: 1rem solid transparent;
 		position: absolute;
 		top: 0;
 		left: 0;
 	}
 
 	:global(.mapboxgl-popup-tip::before) {
-		border-top: 1rem solid var(--color-white);
-		transform: translate(-50%, -1px);
 		z-index: 2;
 	}
 
 	:global(.mapboxgl-popup-tip::after) {
-		border-top: 1rem solid var(--color-black);
-		transform: translate(-50%, 0);
 		z-index: 1;
+	}
+
+	:global(.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip::before) {
+		border-top: 1rem solid var(--color-white);
+		border-right: 1rem solid transparent;
+		border-left: 1rem solid transparent;
+		transform: translate(-50%, -1px);
+	}
+
+	:global(.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip::after) {
+		border-top: 1rem solid var(--color-black);
+		border-right: 1rem solid transparent;
+		border-left: 1rem solid transparent;
+		transform: translate(-50%, 0);
+	}
+
+	:global(.mapboxgl-popup-anchor-right .mapboxgl-popup-tip::before) {
+		border-top: 1rem solid transparent;
+		border-bottom: 1rem solid transparent;
+		border-left: 1rem solid var(--color-white);
+		transform: translate(-1px, -50%);
+	}
+
+	:global(.mapboxgl-popup-anchor-right .mapboxgl-popup-tip::after) {
+		border-top: 1rem solid transparent;
+		border-bottom: 1rem solid transparent;
+		border-left: 1rem solid var(--color-black);
+		transform: translate(0, -50%);
+	}
+
+	:global(.mapboxgl-popup-anchor-left .mapboxgl-popup-tip::before) {
+		border-top: 1rem solid transparent;
+		border-right: 1rem solid var(--color-white);
+		border-bottom: 1rem solid transparent;
+		transform: translate(calc(-100% + 1px), -50%);
+	}
+
+	:global(.mapboxgl-popup-anchor-left .mapboxgl-popup-tip::after) {
+		border-top: 1rem solid transparent;
+		border-right: 1rem solid var(--color-black);
+		border-bottom: 1rem solid transparent;
+		transform: translate(-100%, -50%);
+	}
+
+	:global(.mapboxgl-popup-anchor-top .mapboxgl-popup-tip::before) {
+		border-right: 1rem solid transparent;
+		border-bottom: 1rem solid var(--color-white);
+		border-left: 1rem solid transparent;
+		transform: translate(-50%, calc(-100% + 1px));
+	}
+
+	:global(.mapboxgl-popup-anchor-top .mapboxgl-popup-tip::after) {
+		border-right: 1rem solid transparent;
+		border-bottom: 1rem solid var(--color-black);
+		border-left: 1rem solid transparent;
+		transform: translate(-50%, -100%);
 	}
 
 	.popup a {
@@ -65,5 +115,9 @@
 
 	.popup a:hover {
 		text-decoration: underline;
+	}
+
+	.popup a:focus {
+		outline: none;
 	}
 </style>
