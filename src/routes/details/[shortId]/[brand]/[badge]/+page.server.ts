@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { beverages } from '$db/mongo';
+import { basics, beverages } from '$db/mongo';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import { AppLanguage } from '$types/enums/Globals.enum';
 import type { RawBeverage } from '$types/RawBeverage.d';
@@ -22,36 +22,36 @@ export const load: PageServerLoad = async ({ params }) => {
 	const previousBasics: LinkData[] = [];
 	const nextBasics: LinkData[] = [];
 
-	// const beveragesBefore = await basics.find({ added: { $gt: beverage.added } }).count();
+	const beveragesBefore = await basics.find({ added: { $gt: beverage.added } }).count();
 
-	// 	await basics
-	// 		.find({ added: { $lt: beverage.added } })
-	// 		.sort({ added: -1 })
-	// 		.limit(1)
-	// 		.forEach(({ badge, brand, shortId }) => {
-	// 			previousBasics.push({
-	// 				badge,
-	// 				brand: brand.badge,
-	// 				shortId
-	// 			});
-	// 		});
-	//
-	// 	await basics
-	// 		.find({ added: { $gt: beverage.added } })
-	// 		.sort({ added: 1 })
-	// 		.limit(1)
-	// 		.forEach(({ badge, brand, shortId }) => {
-	// 			nextBasics.push({
-	// 				badge,
-	// 				brand: brand.badge,
-	// 				shortId
-	// 			});
-	// 		});
+	await basics
+		.find({ added: { $lt: beverage.added } })
+		.sort({ added: -1 })
+		.limit(1)
+		.forEach(({ badge, brand, shortId }) => {
+			previousBasics.push({
+				badge,
+				brand: brand.badge,
+				shortId
+			});
+		});
+
+	await basics
+		.find({ added: { $gt: beverage.added } })
+		.sort({ added: 1 })
+		.limit(1)
+		.forEach(({ badge, brand, shortId }) => {
+			nextBasics.push({
+				badge,
+				brand: brand.badge,
+				shortId
+			});
+		});
 
 	return {
-		listPage: Math.ceil((10 + 1) / BEVERAGES_ON_PAGE),
-		previous: null,
+		listPage: Math.ceil((beveragesBefore + 1) / BEVERAGES_ON_PAGE),
+		previous: previousBasics.length ? previousBasics[0] : null,
 		details: formattedDetails,
-		next: null
+		next: nextBasics.length ? nextBasics[0] : null
 	};
 };
