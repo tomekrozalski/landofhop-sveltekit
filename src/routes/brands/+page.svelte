@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
+	import RatesInfo from './RatesInfo.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -12,74 +13,68 @@
 
 <article>
 	<h1>{$translate('brands.title')}</h1>
-	<table>
-		<tr>
-			<th />
-			<th colspan="3">ilość piw uwarzonych</th>
-			<th />
-			<th />
-		</tr>
-		<tr>
-			<th>Nazwa</th>
-			<th>samodzielnie</th>
-			<th>w kooperacji</th>
-			<th>jako kontraktor</th>
-			<th>średnia ocena</th>
-			<th>punty</th>
-		</tr>
+	<RatesInfo />
+	<section>
+		<h2>ilość piw uwarzonych</h2>
+		<ul>
+			<li>nazwa</li>
+			<li>samodzielnie</li>
+			<li>w kooperacji</li>
+			<li>jako kontraktor</li>
+			<li>średnia ocena</li>
+			<li>punty</li>
+		</ul>
 		{#each data.insitutions as { badge, name, shortId, statsData }}
 			{@const { asContractor, asCooperator, avrScore, beverages, points } = statsData}
-			<tr>
-				<td><MarkLanguage href="/brand/{shortId}/{badge}" tag="a" {name} /></td>
-				<td>{beverages || '-'}</td>
-				<td>{asCooperator || '-'}</td>
-				<td>{asContractor || '-'}</td>
-				<td>
+			<a href="/brand/{shortId}/{badge}">
+				<div><MarkLanguage tag="span" {name} /></div>
+				<div>{beverages || '-'}</div>
+				<div>{asCooperator || '-'}</div>
+				<div>{asContractor || '-'}</div>
+				<div>
 					{#if avrScore}
 						{new Intl.NumberFormat('pl', { maximumSignificantDigits: 3 }).format(avrScore.value)}
 					{/if}
-				</td>
-				<td>{points.value}</td>
-			</tr>
+				</div>
+				<div>{points.value}</div>
+			</a>
 		{/each}
-	</table>
+	</section>
 </article>
 
 <style>
-	table {
-		width: 100%;
-		border-collapse: collapse;
-	}
-
-	tr:not(:first-of-type) {
-		background-color: var(--color-white);
-		transition: background-color var(--transition-default);
-		cursor: pointer;
-	}
-
-	tr:not(:first-of-type):hover {
-		background-color: var(--color-grey-3);
-	}
-
-	tr:not(:last-of-type) {
-		border-bottom: 0.1rem solid var(--color-grey-3);
-	}
-
-	th,
-	td {
-		text-align: left;
-		padding: 0.4rem 0.6rem;
-	}
-
-	th[colspan] {
+	h2 {
+		margin: 0;
 		text-align: center;
 	}
 
-	table :global(a) {
-		color: var(--color-black);
+	ul {
+		background-color: var(--color-brand-6-light);
+		display: grid;
+		grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
 	}
 
-	table :global(a:hover) {
-		text-decoration: underline;
+	a {
+		border-bottom: 0.1rem solid var(--color-grey-3);
+		display: grid;
+		grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+	}
+
+	a:hover {
+		background-color: var(--color-brand-6);
+		color: var(--color-white);
+	}
+
+	li,
+	div {
+		padding: 0.4rem 1rem;
+	}
+
+	div:not(:first-of-type) {
+		font-size: 1.5rem;
+	}
+
+	section :global(a) {
+		color: var(--color-black);
 	}
 </style>
