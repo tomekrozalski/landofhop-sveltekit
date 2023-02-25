@@ -32,7 +32,7 @@ export const load: PageServerLoad = async ({ params }) => {
 			.forEach(({ badge, brand, shortId }) => {
 				previousBasics.push({
 					badge,
-					brand: brand.badge,
+					brand: brand?.badge ?? '',
 					shortId
 				});
 			});
@@ -44,7 +44,7 @@ export const load: PageServerLoad = async ({ params }) => {
 			.forEach(({ badge, brand, shortId }) => {
 				nextBasics.push({
 					badge,
-					brand: brand.badge,
+					brand: brand?.badge ?? '',
 					shortId
 				});
 			});
