@@ -46,3 +46,23 @@ export type SelectedBar = {
 	items: Basics[];
 	type: 'beverages' | 'cooperator' | 'contractor';
 };
+
+export type FormattedPlaceData = {
+	cooperationCircleData: {
+		size: number;
+		stroke: number;
+	};
+	contractorCircleData: {
+		size: number;
+		stroke: number;
+	};
+	beverageCircleData: {
+		size: number;
+		stroke: number;
+	};
+	city: LanguageValue;
+	coordinates: [number, number];
+	country: string;
+	size: number;
+	shortId: string;
+};

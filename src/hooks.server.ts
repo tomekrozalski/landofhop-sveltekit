@@ -35,7 +35,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 		// ssr: !event.url.pathname.startsWith('/dashboard')
 	});
 
-	if (response.headers.get('content-type') === 'text/html') {
+	const mode = process.env.NODE_ENV;
+	const dev = mode === 'development';
+
+	if (!dev && response.headers.get('content-type') === 'text/html') {
 		return new Response(minify(await response.text(), minification_options), {
 			status: response.status,
 			headers: response.headers

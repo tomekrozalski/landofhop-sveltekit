@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
 	import { page } from '$app/stores';
+	import Spinner from '$lib/atoms/spinners/FullWidth.svelte';
 	import type { BrandPlaceData } from '../types.d';
-	import Map from './Map/Map.svelte';
 	import Legend from './Legend/Legend.svelte';
 	import formatPlaces from './formatPlaces';
 
@@ -23,7 +23,13 @@
 <section>
 	<h2>{$translate('brand.placesTitle')}</h2>
 	<div>
-		<Map {formattedPlaces} {selectPlace} {selectedPlace} {unselectPlace} />
+		<div class="map-wrapper">
+			{#await import('./Map/Map.svelte')}
+				<Spinner />
+			{:then Module}
+				<Module.default {formattedPlaces} {selectPlace} {selectedPlace} {unselectPlace} />
+			{/await}
+		</div>
 		<Legend {formattedPlaces} {selectPlace} {selectedPlace} {unselectPlace} />
 	</div>
 </section>
@@ -36,5 +42,12 @@
 
 	div {
 		display: flex;
+	}
+
+	.map-wrapper {
+		display: flex;
+		align-items: center;
+		width: 30rem;
+		height: 30rem;
 	}
 </style>
