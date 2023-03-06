@@ -8,14 +8,17 @@
 </script>
 
 <ol>
-	{#each topBrandsTimelineData[topBrandsTimelineData.length - 1].brands as { amount, id, name }, index}
-		<li
-			class="top-brands-legend-{index + 1}"
-			class:highlighted={id === selectedBrand}
-			on:mouseenter={() => (selectedBrand = id)}
-			on:mouseleave={() => (selectedBrand = null)}
-		>
-			{name.value} <span>({amount})</span>
+	{#each topBrandsTimelineData[topBrandsTimelineData.length - 1].brands as { amount, badge, id, name }, index}
+		<li>
+			<a
+				class="top-brands-legend-{index + 1}"
+				class:highlighted={id === selectedBrand}
+				href="/brand/{id}/{badge}"
+				on:mouseenter={() => (selectedBrand = id)}
+				on:mouseleave={() => (selectedBrand = null)}
+			>
+				{name.value} <span>({amount})</span>
+			</a>
 		</li>
 	{/each}
 </ol>
@@ -23,8 +26,10 @@
 <h3>{$translate('stats.general.topBrandsTimeline.morePopularBrands')}</h3>
 
 <ul>
-	{#each morePopularBrandsData as { amount, name }}
-		<li>{name.value} <span>({amount})</span></li>
+	{#each morePopularBrandsData as { amount, badge, id, name }}
+		<li>
+			<a href="/brand/{id}/{badge}">{name.value} <span>({amount})</span></a>
+		</li>
 	{/each}
 </ul>
 
@@ -41,11 +46,24 @@
 
 	ol li {
 		counter-increment: item;
-		border-radius: 0.8rem;
-		cursor: pointer;
 	}
 
-	ul li::before {
+	li a {
+		display: inline-block;
+		border-radius: 0.8rem;
+		padding-right: 0.3rem;
+		color: inherit;
+	}
+
+	ul a:hover {
+		text-decoration: underline;
+	}
+
+	li:last-of-type a {
+		padding-right: 0.8rem;
+	}
+
+	ul a::before {
 		display: inline-block;
 		content: '';
 		width: 0.6rem;
@@ -54,7 +72,7 @@
 		background-color: var(--color-black);
 	}
 
-	ol li::before {
+	ol a::before {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
@@ -66,7 +84,7 @@
 		color: var(--color-white);
 	}
 
-	li:not(:last-of-type)::after {
+	li:not(:last-of-type) a::after {
 		content: ',';
 	}
 

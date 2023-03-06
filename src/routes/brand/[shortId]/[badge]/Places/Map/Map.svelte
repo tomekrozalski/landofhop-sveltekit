@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { geoMercator, geoPath } from 'd3-geo';
 	import type { FormattedPlaceData } from '../../types.d';
-	import pl from './wojewodztwa-medium.json';
+	import pl from './wojewodztwa-medium.json'; // @ToDo: 1.4MB!
 	import Cicle from './Circle.svelte';
 	import Point from './Point.svelte';
 

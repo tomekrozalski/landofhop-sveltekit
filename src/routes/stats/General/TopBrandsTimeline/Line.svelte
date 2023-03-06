@@ -37,15 +37,17 @@
 </script>
 
 <g style="transform: translate({Math.round(xScale.bandwidth() / 2)}px, 0">
-	{#each sortData(topBrandsTimelineData) as { id }, index}
-		<path
-			class="line top-brand-line-{index + 1}"
-			class:muted={selectedBrand && selectedBrand !== id}
-			d={linePath(id)}
-			in:draw
-			on:mouseenter={() => (selectedBrand = id)}
-			on:mouseleave={() => (selectedBrand = null)}
-		/>
+	{#each sortData(topBrandsTimelineData) as { id, badge }, index}
+		<a href="/brand/{id}/{badge}">
+			<path
+				class="line top-brand-line-{index + 1}"
+				class:muted={selectedBrand && selectedBrand !== id}
+				d={linePath(id)}
+				in:draw
+				on:mouseenter={() => (selectedBrand = id)}
+				on:mouseleave={() => (selectedBrand = null)}
+			/>
+		</a>
 	{/each}
 </g>
 
