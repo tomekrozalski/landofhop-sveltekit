@@ -15,7 +15,9 @@
 
 	onMount(() => {
 		// Render only client-side
-		mounted = true;
+		setTimeout(() => {
+			mounted = true;
+		}, 2500);
 	});
 
 	$: imagesInGallery = $page.data.details.photos.gallery;
