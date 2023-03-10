@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { tweened } from 'svelte/motion';
+	import type { Tweened } from 'svelte/motion';
+	import { sineInOut } from 'svelte/easing';
+	import { derived, writable } from 'svelte/store';
+	import type { Writable } from 'svelte/store';
 	import { page } from '$app/stores';
 	import Group from './Group.svelte';
 	import RotableIcon from './RotableIcon.svelte';
 	import RotableSpinner from './RotableSpinner.svelte';
 
-	let mounted = false;
 	let areImagesLoaded = false;
 	let isRotable = false;
 	let dragData = {
@@ -13,32 +16,34 @@
 		currentXPosition: 0
 	};
 
-	onMount(() => {
-		// Render only client-side
-		setTimeout(() => {
-			mounted = true;
-		}, 2500);
-	});
-
 	$: imagesInGallery = $page.data.details.photos.gallery;
 
-	let currentlyVisibleImageIndex = 1;
+	const point = tweened<number>(1, {
+		delay: 1500,
+		duration: 1500,
+		easing: sineInOut
+	});
 
-	function turnLeft() {
-		currentlyVisibleImageIndex =
-			currentlyVisibleImageIndex - 1 === 0 ? imagesInGallery : currentlyVisibleImageIndex - 1;
-	}
+	const selectedImage = writable<number>(0);
 
-	function turnRight() {
-		currentlyVisibleImageIndex =
-			currentlyVisibleImageIndex + 1 > imagesInGallery ? 1 : currentlyVisibleImageIndex + 1;
-	}
+	const actualImage = derived<[Tweened<number>, Writable<number>], number>(
+		[point, selectedImage],
+		([$point, $selectedImage]) => Math.round(($point + $selectedImage) % imagesInGallery) + 1
+	);
 
-	function onWheelMove(e) {
+	const turnLeft = () => {
+		selectedImage.update((index) => (index - 1 === 0 ? imagesInGallery : index - 1));
+	};
+
+	const turnRight = () => {
+		selectedImage.update((index) => (index + 1 > imagesInGallery ? 1 : index + 1));
+	};
+
+	const onWheelMove = (e: WheelEvent) => {
 		e.deltaY > 1 ? turnRight() : turnLeft();
-	}
+	};
 
-	function onMove(e) {
+	const onMove = (e: MouseEvent) => {
 		if (isRotable && e.clientX !== dragData.currentXPosition) {
 			dragData.beforeXPosition = dragData.currentXPosition;
 			dragData.currentXPosition = e.clientX;
@@ -49,37 +54,27 @@
 				turnLeft();
 			}
 		}
-	}
-
-	function rotate() {
-		turnRight();
-
-		if (currentlyVisibleImageIndex !== 1) {
-			requestAnimationFrame(rotate);
-		}
-	}
+	};
 
 	$: if (areImagesLoaded) {
-		requestAnimationFrame(rotate);
+		point.set(imagesInGallery);
 	}
 </script>
 
-{#if mounted}
-	<div
-		on:pointerup={() => (isRotable = false)}
-		on:pointerdown={() => (isRotable = true)}
-		on:pointerout={() => (isRotable = false)}
-		on:pointermove={onMove}
-		on:wheel={onWheelMove}
-	>
-		{#if areImagesLoaded}
-			<RotableIcon />
-		{:else}
-			<RotableSpinner />
-		{/if}
-		<Group {currentlyVisibleImageIndex} bind:areImagesLoaded />
-	</div>
-{/if}
+<div
+	on:pointerup={() => (isRotable = false)}
+	on:pointerdown={() => (isRotable = true)}
+	on:pointerout={() => (isRotable = false)}
+	on:pointermove={onMove}
+	on:wheel={onWheelMove}
+>
+	{#if areImagesLoaded}
+		<RotableIcon />
+	{:else}
+		<RotableSpinner />
+	{/if}
+	<Group image={$actualImage} bind:areImagesLoaded />
+</div>
 
 <style>
 	div {

@@ -1,9 +1,18 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { toggleVisibility } from '$lib/utils/helpers/transitions';
 	import SingleImage from './SingleImage.svelte';
 	import Rotable from './Rotable/Rotable.svelte';
 	import BrokenContainer from './BrokenContainer.svelte';
+
+	let isRotableGalleryVisible = false;
+
+	onMount(() => {
+		setTimeout(() => {
+			isRotableGalleryVisible = true;
+		}, 1500);
+	});
 
 	let loaded = false;
 </script>
@@ -14,7 +23,7 @@
 			<span class="outline-wrapper" transition:toggleVisibility>
 				{@html $page.data.details.photos.outline}
 			</span>
-		{:else}
+		{:else if isRotableGalleryVisible}
 			<Rotable />
 		{/if}
 		<SingleImage bind:loaded />

@@ -3,7 +3,7 @@
 	import Image from './Image.svelte';
 
 	export let areImagesLoaded: boolean;
-	export let currentlyVisibleImageIndex: number;
+	export let image: number;
 
 	$: imagesInGallery = $page.data.details.photos.gallery;
 	$: imageIndexArray = new Array(imagesInGallery).fill('').map((_, i) => i + 1);
@@ -16,9 +16,5 @@
 </script>
 
 {#each imageIndexArray as imageIndex}
-	<Image
-		{imageIndex}
-		isVisible={[currentlyVisibleImageIndex, currentlyVisibleImageIndex - 1].includes(imageIndex)}
-		bind:loaded
-	/>
+	<Image {imageIndex} isVisible={[image, image - 1].includes(imageIndex)} bind:loaded />
 {/each}
