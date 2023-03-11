@@ -1,57 +1,29 @@
+import { get } from 'svelte/store';
 import { error } from '@sveltejs/kit';
-import { basics, beverages } from '$db/mongo';
-import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
+import authentication from '$lib/utils/stores/authentication';
 import { AppLanguage } from '$types/enums/Globals.enum';
-import type { RawBeverage } from '$types/RawBeverage.d';
-import detailsNormalizer from './utils/normalizer';
-import type { LinkData } from './LinkData.d';
-import type { Details } from './Details.d';
+import { getAdminData, getDetails, getListPage, getNext, getPrevious } from './utils/load';
+import detailsNormalizer from './utils/load/getDetails/normalizer';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-	const { shortId } = params;
-	const language = AppLanguage.pl;
+	const badge = params.badge;
+	const shortId = params.shortId;
 
-	const beverage: RawBeverage | null = await beverages.findOne({ shortId });
-
-	if (!beverage) {
-		throw error(404);
+	if (!badge || !shortId) {
+		throw error(404, 'Incorrect params');
 	}
 
-	const formattedDetails: Details = detailsNormalizer(beverage, language);
-	const previousBasics: LinkData[] = [];
-	const nextBasics: LinkData[] = [];
-
-	const beveragesBefore = await basics.find({ added: { $gt: beverage.added } }).count();
-
-	await basics
-		.find({ added: { $lt: beverage.added } })
-		.sort({ added: -1 })
-		.limit(1)
-		.forEach(({ badge, brand, shortId }) => {
-			previousBasics.push({
-				badge,
-				brand: brand.badge,
-				shortId
-			});
-		});
-
-	await basics
-		.find({ added: { $gt: beverage.added } })
-		.sort({ added: 1 })
-		.limit(1)
-		.forEach(({ badge, brand, shortId }) => {
-			nextBasics.push({
-				badge,
-				brand: brand.badge,
-				shortId
-			});
-		});
+	const beverage = await getDetails({ shortId });
+	const formattedDetails = detailsNormalizer(beverage, AppLanguage.pl);
 
 	return {
-		listPage: Math.ceil((beveragesBefore + 1) / BEVERAGES_ON_PAGE),
-		previous: previousBasics.length ? previousBasics[0] : null,
+		listPage: getListPage({ added: beverage.added }),
+		previous: getPrevious({ added: beverage.added }),
 		details: formattedDetails,
-		next: nextBasics.length ? nextBasics[0] : null
+		next: getNext({ added: beverage.added }),
+		streamed: {
+			...(get(authentication).isLoggedIn && { adminData: getAdminData({ badge, shortId }) })
+		}
 	};
 };

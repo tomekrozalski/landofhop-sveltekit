@@ -10,6 +10,8 @@ locale.set('pl');
 export const load: LayoutLoad = async ({ data }) => {
 	if (data.authenticated) {
 		authentication.setLoginStatus(Status.fulfilled);
+	} else {
+		authentication.logOut();
 	}
 
 	return data;

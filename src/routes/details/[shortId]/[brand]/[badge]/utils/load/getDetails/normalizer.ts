@@ -2,10 +2,10 @@ import { isBoolean, isEmpty, isNumber } from 'lodash-es';
 import { format } from 'date-fns';
 import { deleteIfEmpty, translate } from '$lib/utils/api';
 import { AppLanguage, DateFormat } from '$types/enums/Globals.enum';
-import type { RawBeverage } from '$types/api/RawBeverage/RawBeverage.d';
-import type { Details } from '$types/Beverage/Details';
-import type { RawInstitution } from '$types/api/RawBeverage/RawInstitution';
-import type { Institution } from '$types/Beverage/fragments/Institution';
+import type { RawBeverage } from '$types/RawBeverage.d';
+import type { Details } from '../../types/Details.d';
+import type { RawInstitution } from '$types/api/RawBeverage/RawInstitution'; // @ToDo
+import type { Institution } from '$types/Beverage/fragments/Institution'; // @ToDo
 import countryList from './countryList';
 
 function normalizer(beverage: RawBeverage, desiredLanguage: AppLanguage): Details {
