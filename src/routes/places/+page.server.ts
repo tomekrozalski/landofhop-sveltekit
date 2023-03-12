@@ -3,11 +3,10 @@ import { places } from '$db/mongo';
 import { translate } from '$lib/utils/api';
 import { AppLanguage } from '$types/enums/Globals.enum';
 import type { Place } from './types.d';
-import type { PageServerLoad } from './$types';
 
 export const prerender = true;
 
-export const load: PageServerLoad = async () => {
+export const load = async () => {
 	const formattedPlaces: Place[] = [];
 
 	await places.find().forEach(({ city, institution, coordinates, shortId }) => {

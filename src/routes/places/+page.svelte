@@ -2,9 +2,8 @@
 	import { translate } from 'svelte-intl';
 	import Spinner from '$lib/atoms/spinners/FullWidth.svelte';
 	import Map from './Map.svelte';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	export let data;
 </script>
 
 <svelte:head>

@@ -7,9 +7,8 @@
 	import Legend from './Legend/Legend.svelte';
 	import Places from './Places/Places.svelte';
 	import type { SelectedBar } from './types.d';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	export let data;
 	let selectedBar: SelectedBar | null = null;
 
 	$: ({ name } = data.institution);

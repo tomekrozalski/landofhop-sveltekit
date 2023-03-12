@@ -4,9 +4,8 @@
 	import Breadcrumbs from '$lib/atoms/Breadcrumbs.svelte';
 	import Pagination from '$lib/molecules/pagination/Pagination.svelte';
 	import BeverageList from '$lib/templates/BeverageList/BeverageList.svelte';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	export let data;
 </script>
 
 <svelte:head>

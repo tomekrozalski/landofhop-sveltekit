@@ -3,9 +3,8 @@
 	import { styleStore } from '$lib/utils/stores/selects';
 	import StatsWrapper from '../elements/Wrapper.svelte';
 	import Styles from './Styles.svelte';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	export let data;
 
 	styleStore.set(data.styleList);
 </script>

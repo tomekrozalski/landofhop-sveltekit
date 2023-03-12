@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { redirect } from '@sveltejs/kit';
-	import type { LayoutData } from './$types';
 
-	export let data: LayoutData;
+	export let data;
 
 	if (!data.authenticated) {
-		throw redirect(403, '/');
+		throw redirect(303, '/');
 	}
 </script>
 

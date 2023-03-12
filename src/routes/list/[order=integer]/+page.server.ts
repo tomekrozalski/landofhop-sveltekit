@@ -2,11 +2,10 @@ import { redirect, error } from '@sveltejs/kit';
 import { basics } from '$db/mongo';
 import { BEVERAGES_ON_PAGE } from '$lib/utils/constants';
 import normalizeApiData from '$lib/templates/BeverageList/normalizeApiData';
-import type { PageServerLoad } from './$types';
 
 export const prerender = true;
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load = async ({ params }) => {
 	const order = +params.order;
 
 	if (!order || order === 1) {

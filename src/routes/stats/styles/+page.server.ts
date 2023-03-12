@@ -4,11 +4,10 @@ import { AppLanguage } from '$types/enums/Globals.enum';
 import type { Style as StyleType } from '$lib/utils/stores/types/Style.d';
 import type { LanguageValue } from '$types/LanguageValue.d';
 import type { RawStylesStats } from './RawStylesStats.d';
-import type { PageServerLoad } from './$types';
 
 export const prerender = true;
 
-export const load: PageServerLoad = async ({ parent }) => {
+export const load = async ({ parent }) => {
 	let styleList: StyleType[] = [];
 	const rawData: RawStylesStats[] = [];
 

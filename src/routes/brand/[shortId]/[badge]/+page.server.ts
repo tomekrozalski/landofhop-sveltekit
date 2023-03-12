@@ -7,11 +7,10 @@ import type { RawPlace } from '$types/RawPlace';
 import institutionApiNormalizer from './utils/institutionApiNormalizer';
 import timelineApiNormalizer from './utils/timelineApiNormalizer';
 import mapApiNormalizer from './utils/mapApiNormalizer';
-import type { PageServerLoad } from './$types';
 
 export const prerender = true;
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load = async ({ params }) => {
 	const { badge, shortId } = params;
 	const rawInstitution: RawInstitution | null = await institutions.findOne({ badge, shortId });
 

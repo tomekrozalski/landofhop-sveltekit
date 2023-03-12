@@ -6,11 +6,10 @@ import type { RawIngredient } from '$types/RawIngredient.d';
 import type { LanguageValue } from '$types/LanguageValue.d';
 import type { Ingredient } from '$lib/utils/stores/types/Ingredient.d';
 import type { IngredientTree, Navigation } from './types.d';
-import type { PageServerLoad } from './$types';
 
 export const prerender = true;
 
-export const load: PageServerLoad = async ({ params, parent }) => {
+export const load = async ({ params, parent }) => {
 	const language = AppLanguage.pl;
 	const badge = params.type as string;
 

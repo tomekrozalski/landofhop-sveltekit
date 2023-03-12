@@ -3,9 +3,8 @@
 	import { PHOTO_SERVER } from '$lib/utils/constants';
 	import Breadcrumbs from '$lib/atoms/Breadcrumbs.svelte';
 	import BeverageDetails from './BeverageDetails.svelte';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	export let data;
 </script>
 
 <svelte:head>

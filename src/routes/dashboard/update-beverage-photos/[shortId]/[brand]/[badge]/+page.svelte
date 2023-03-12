@@ -7,11 +7,10 @@
 	import Cover from './Cover/Cover.svelte';
 	import Gallery from './Gallery/Gallery.svelte';
 	import ViewFromAbove from './ViewFromAbove/ViewFromAbove.svelte';
-	import type { PageData } from './$types';
 
 	translations.update(dictionary as Translations);
 
-	export let data: PageData;
+	export let data;
 	beveragePhotosStore.set(data.photosData);
 </script>
 

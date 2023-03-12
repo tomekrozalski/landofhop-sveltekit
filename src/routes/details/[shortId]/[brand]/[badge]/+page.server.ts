@@ -4,9 +4,8 @@ import authentication from '$lib/utils/stores/authentication';
 import { AppLanguage } from '$types/enums/Globals.enum';
 import { getAdminData, getDetails, getListPage, getNext, getPrevious } from './utils/load';
 import detailsNormalizer from './utils/load/getDetails/normalizer';
-import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load = async ({ params }) => {
 	const badge = params.badge;
 	const shortId = params.shortId;
 

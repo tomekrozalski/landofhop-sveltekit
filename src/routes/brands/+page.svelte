@@ -2,9 +2,8 @@
 	import { translate } from 'svelte-intl';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
 	import RatesInfo from './RatesInfo.svelte';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	export let data;
 </script>
 
 <svelte:head>

@@ -3,11 +3,10 @@ import { deleteIfEmpty, translate } from '$lib/utils/api';
 import { AppLanguage } from '$types/enums/Globals.enum';
 import normalizer from './General/utils/normalizers';
 import type { RawGeneralStats } from './General/utils/normalizers/RawGeneralStats.d';
-import type { PageServerLoad } from './$types';
 
 export const prerender = true;
 
-export const load: PageServerLoad = async () => {
+export const load = async () => {
 	const language = AppLanguage.pl;
 	const rawData: RawGeneralStats[] = [];
 

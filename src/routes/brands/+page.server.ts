@@ -4,11 +4,10 @@ import { translate } from '$lib/utils/api';
 import { AppLanguage } from '$types/enums/Globals.enum';
 import type { RawInstitution } from '$types/RawInstitution.d';
 import type { LanguageValue } from '$types/LanguageValue';
-import type { PageServerLoad } from './$types';
 
 export const prerender = true;
 
-export const load: PageServerLoad = async () => {
+export const load = async () => {
 	const formattedInsitutions: {
 		badge: string;
 		name: LanguageValue;
