@@ -1,23 +1,29 @@
+<script lang="ts">
+	import { translate } from 'svelte-intl';
+</script>
+
 <ul class="header">
-	<li>nazwa</li>
+	<li>{$translate('brands.header.name')}</li>
 	<li class="withSublist">
-		ilość piw uwarzonych
+		{$translate('brands.header.beveragesSummary')}
 		<ul>
-			<li>samodzielnie</li>
-			<li>w kooperacji</li>
-			<li>jako kontraktor</li>
+			<li>{$translate('brands.header.independently')}</li>
+			<li>{$translate('brands.header.asCooperator')}</li>
+			<li>{$translate('brands.header.asContractor')}</li>
 		</ul>
 	</li>
-	<li>średnia ocena</li>
-	<li>punty</li>
+	<li>{$translate('brands.header.averageRate')}</li>
+	<li>{$translate('brands.header.points')}</li>
 </ul>
 
 <style>
 	ul.header {
 		display: grid;
 		grid-template-columns: 3fr 3fr 1fr 1fr;
-		background-color: var(--color-brand-6-light);
 		border-bottom: 0.1rem solid var(--color-black);
+		background-color: var(--color-grey-5);
+		position: sticky;
+		top: var(--size-header-height);
 	}
 
 	li {
@@ -26,12 +32,15 @@
 	}
 
 	li.withSublist {
+		padding: 0.8rem 0 0 0;
 		text-align: center;
-		background-color: var(--color-brand-5-light);
 	}
 
 	ul ul {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
+		border-top: 0.1rem solid var(--color-grey-2);
+		margin-top: 0.8rem;
+		text-align: left;
 	}
 </style>

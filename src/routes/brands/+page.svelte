@@ -11,5 +11,12 @@
 <article>
 	<h1>{$translate('brands.title')}</h1>
 	<RatesInfo />
-	<Table />
 </article>
+
+<Table />
+
+<style>
+	article {
+		padding-bottom: 1rem;
+	}
+</style>

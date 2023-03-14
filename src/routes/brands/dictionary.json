@@ -1,8 +1,28 @@
 {
 	"en": {
+		"brands.header.asContractor": "as contractor",
+		"brands.header.asCooperator": "as cooperator",
+		"brands.header.averageRate": "average rate",
+		"brands.header.name": "name",
+		"brands.header.independently": "independently",
+		"brands.header.beveragesSummary": "number of beverages",
+		"brands.header.points": "points",
+		"brands.rates.rules": "Za każde piwo własne, a więc uwarzone pod własną marką, przyznawane są punkty w zależności od jego średniej oceny z portali RateBeer oraz Untappd. Ilość punktów zależy od odchylenia jego średniej oceny od średniej oceny dla wszystkich piw ocenionych w bazie danych, tj. obecnie około 3,61. Jeden punkt odpowiada 0,1 punktu odchylenia. Jeżeli więc piwo ma ocenę 4,26, a więc jest ocenione o 0,65 wyżej niż średnia wszystkich piw, piwo dostaje 7 punktów. I w drugą stronę, jeżeli piwo ma ocenę 3,4, a więc jest ocenione o 0,21 niżej, piwo dostaje -3 punkty.",
+		"brands.rates.thoughts": "Nie jestem przekonany co do sprawiedliwości tej oceny i w ogóle ocen pochodzących z RateBeer czy Untappd. Mocne, aromatyczne RISy mają z reguły wyższe oceny niż codzienne schwarzbiery, portery, pilsy czy ogólnie piwa nisko-alkoholowe, choćby były najwyższej jakości.",
+		"brands.rates.title": "Rates",
 		"brands.title": "🏭 Brands list"
 	},
 	"pl": {
+		"brands.header.asContractor": "jako kontraktor",
+		"brands.header.asCooperator": "w kooperacji",
+		"brands.header.averageRate": "średnia ocena",
+		"brands.header.name": "nazwa",
+		"brands.header.independently": "samodzielnie",
+		"brands.header.beveragesSummary": "liczba piw uwarzonych",
+		"brands.header.points": "punkty",
+		"brands.rates.rules": "Za każde piwo własne, a więc uwarzone pod własną marką, przyznawane są punkty w zależności od jego średniej oceny z portali RateBeer oraz Untappd. Ilość punktów zależy od odchylenia jego średniej oceny od średniej oceny dla wszystkich piw ocenionych w bazie danych, tj. obecnie około 3,61. Jeden punkt odpowiada 0,1 punktu odchylenia. Jeżeli więc piwo ma ocenę 4,26, a więc jest ocenione o 0,65 wyżej niż średnia wszystkich piw, piwo dostaje 7 punktów. I w drugą stronę, jeżeli piwo ma ocenę 3,4, a więc jest ocenione o 0,21 niżej, piwo dostaje -3 punkty.",
+		"brands.rates.thoughts": "Nie jestem przekonany co do sprawiedliwości tej oceny i w ogóle ocen pochodzących z RateBeer czy Untappd. Mocne, aromatyczne RISy mają z reguły wyższe oceny niż codzienne schwarzbiery, portery, pilsy czy ogólnie piwa nisko-alkoholowe, choćby były najwyższej jakości.",
+		"brands.rates.title": "Punktacja",
 		"brands.title": "🏭 Lista marek"
 	}
 }
