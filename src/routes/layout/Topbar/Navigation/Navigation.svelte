@@ -23,7 +23,7 @@
 
 	div {
 		display: flex;
-		flex-direction: column-reverse;
+		flex-direction: row;
 		width: 100%;
 		height: var(--size-navbar-height);
 		max-width: var(--size-container-max-width);

@@ -3,29 +3,12 @@ import { institutions } from '$db/mongo';
 import { translate } from '$lib/utils/api';
 import { AppLanguage } from '$types/enums/Globals.enum';
 import type { RawInstitution } from '$types/RawInstitution.d';
-import type { LanguageValue } from '$types/LanguageValue';
+import type { FormattedInsitutionsType } from './types.d';
 
 export const prerender = true;
 
 export const load = async () => {
-	const formattedInsitutions: {
-		badge: string;
-		name: LanguageValue;
-		shortId: string;
-		statsData: {
-			beverages: number;
-			asCooperator: number;
-			asContractor: number;
-			avrScore?: {
-				value: number;
-				ranking: number;
-			};
-			points: {
-				value: number;
-				ranking: number;
-			};
-		};
-	}[] = [];
+	const formattedInsitutions: FormattedInsitutionsType[] = [];
 
 	await institutions
 		.find(

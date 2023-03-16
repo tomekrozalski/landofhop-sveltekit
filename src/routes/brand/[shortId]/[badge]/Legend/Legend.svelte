@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import Ratings from './Ratings.svelte';
 	import Timeline from './Timeline.svelte';
 </script>

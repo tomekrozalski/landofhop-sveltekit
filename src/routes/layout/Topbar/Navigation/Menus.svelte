@@ -12,7 +12,7 @@
 	}
 </script>
 
-<ul>
+<ul class="navigation">
 	<li>
 		{#if $authentication.isLoggedIn}
 			<button class="unlock-button" on:click={logOut}>
@@ -40,17 +40,22 @@
 </ul>
 <ul class="languages">
 	<li><a href="/">PL</a></li>
-	<li><span class="disabled-link" href="/">EN</span></li>
+	<li><span class="disabled-link">EN</span></li>
 </ul>
 
 <style>
 	ul {
 		display: flex;
+		flex-direction: column;
 		padding: 0.5rem 0;
 	}
 
+	ul.navigation {
+		flex-grow: 1;
+	}
+
 	ul.languages {
-		justify-content: flex-end;
+		margin-right: 2rem;
 	}
 
 	li {
@@ -104,5 +109,19 @@
 
 	button:hover :global(svg path) {
 		fill: var(--color-white);
+	}
+
+	@media (min-width: 768px) {
+		ul {
+			flex-direction: row;
+		}
+
+		ul.navigation {
+			flex-grow: 0;
+		}
+
+		ul.languages {
+			justify-content: flex-end;
+		}
 	}
 </style>

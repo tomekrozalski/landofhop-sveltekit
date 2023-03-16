@@ -28,6 +28,7 @@
 
 	button:focus {
 		background-color: var(--color-white);
+		border: 0.2rem solid var(--color-black);
 	}
 
 	svg {
