@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { translate } from 'svelte-intl';
+
+	export let isHeaderFixed: boolean;
 </script>
 
-<div data-scrollsync>
+<div class:isHeaderFixed data-scrollsync>
 	<ul class="header">
 		<li>{$translate('brands.header.name')}</li>
 		<li class="withSublist">
@@ -19,20 +21,20 @@
 </div>
 
 <style>
-	div {
+	.isHeaderFixed {
+		width: 100%;
+		max-width: var(--size-container-max-width);
+		position: fixed;
+		top: var(--size-header-height);
 		overflow-x: scroll;
 	}
 
 	ul.header {
-		min-width: 80rem;
-
 		display: grid;
 		grid-template-columns: 3fr 3fr 1fr 1fr;
 		border-bottom: 0.1rem solid var(--color-black);
+		min-width: 80rem;
 		background-color: var(--color-grey-5);
-
-		position: sticky;
-		top: var(--size-header-height);
 	}
 
 	li {
