@@ -1,10 +1,37 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
 	import { translate } from 'svelte-intl';
+	import { browser } from '$app/environment';
+	import { scrollLeft } from './store';
 
 	export let isHeaderFixed: boolean;
+	let headerElement: HTMLDivElement;
+
+	$: {
+		if (headerElement) {
+			headerElement.scrollLeft = $scrollLeft;
+		}
+	}
+
+	const setScrollPosition = (event: Event) => {
+		const element = event.target as HTMLDivElement;
+		scrollLeft.set(element.scrollLeft);
+	};
+
+	onMount(() => {
+		if (browser) {
+			headerElement.addEventListener('scroll', setScrollPosition);
+		}
+	});
+
+	onDestroy(() => {
+		if (browser) {
+			headerElement.removeEventListener('scroll', setScrollPosition);
+		}
+	});
 </script>
 
-<div class:isHeaderFixed data-scrollsync>
+<div class:isHeaderFixed data-scrollsync bind:this={headerElement}>
 	<ul class="header">
 		<li>{$translate('brands.header.name')}</li>
 		<li class="withSublist">

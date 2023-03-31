@@ -1,30 +1,45 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import 'easy-scroll-sync';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import MarkLanguage from '$lib/atoms/MarkLanguage.svelte';
 	import Header from './Header.svelte';
 	import Points from './Points.svelte';
+	import { scrollLeft } from './store';
 
 	$: insitutions = $page.data.insitutions;
 
 	let scrollArea: HTMLElement;
 	let isHeaderFixed = false;
 
-	const setHeader = () => {
+	$: {
+		if (scrollArea) {
+			scrollArea.scrollLeft = $scrollLeft;
+		}
+	}
+
+	const setScrollPosition = (event: Event) => {
+		const element = event.target as HTMLDivElement;
+		scrollLeft.set(element.scrollLeft);
+	};
+
+	const setHeaderAndScroll = () => {
 		const headerHeight = document.querySelector('header')?.offsetHeight ?? 0;
 		const distanceFromTop = scrollArea.getBoundingClientRect().top;
 		isHeaderFixed = distanceFromTop - headerHeight < 0;
 	};
 
 	onMount(() => {
-		document.addEventListener('scroll', setHeader);
+		if (browser) {
+			document.addEventListener('scroll', setHeaderAndScroll);
+			scrollArea.addEventListener('scroll', setScrollPosition);
+		}
 	});
 
 	onDestroy(() => {
 		if (browser) {
-			document.removeEventListener('scroll', setHeader);
+			document.removeEventListener('scroll', setHeaderAndScroll);
+			scrollArea.removeEventListener('scoll', setScrollPosition);
 		}
 	});
 </script>
