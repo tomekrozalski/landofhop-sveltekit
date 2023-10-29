@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This version of Land of Hop is no longer evolve. [New versions is here](https://github.com/tomekrozalski/landofhop-v6).
+
 # Land of Hop
 
 Beer catalogue with beverages I have drunk last few years. This is my playground to test some technologies and, above all, a place where I can prove that it is possible to build quite big application which is highly performant, scalable, has good accessibility etc. More about my motivation and development timeline you will find in the [CHANGELOG](CHANGELOG.md).
@@ -65,7 +68,3 @@ I will describe folder structure in a future, but recently I make a lot of chang
 ├── svelte.config.js
 └── tsconfig.json
 ```
-
-## Live preview
-
-I develop the application only by myself, so all changes I add to `develop` branch. When a release is ready, I rebase to `main` branch, and it is production deployed to [hop.land](https://hop.land).
